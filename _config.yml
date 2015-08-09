@@ -4,3 +4,7 @@ description: Julien Couvreur's programming blog and more
 tagline:             Julien Couvreur's programming blog and more
 url:                 http://blog2.monstuff.com
 paginate:            1
+
+sass:
+  sass_dir:          _sass
+  style:            :compressed
