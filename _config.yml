@@ -20,3 +20,5 @@ defaults:
 sass:
   sass_dir:          _sass
   style:            :compressed
+
+pages_list:       { 'Archive':'/archives.html', 'Feed':'/index.xml'}
