@@ -1,8 +1,6 @@
 ---
 title: Ad blocking on iOS
-published: true
 ---
-
 
 Mobile browsers don't support extensions like their desktop counterparts and most don't have an ad blocker built-in. But it turns out that iOS (and probably Android and Windows Phone) supports good old "proxy auto-configuration" (PAC).  
 PAC is a mechanism by which the operating system uses a simple script file to choose when to use a proxy. The script receives the host and url of each web request and tells the operating system whether to connect directly (as normal) or instead use a proxy.   
@@ -14,14 +12,14 @@ You can try this solution by following the instructions below, but please read t
 You should note that PAC only works for wi-fi in iOS, not on cellular or other connections.  
 Also, you should know that iOS 9 may have official support for ad blocking extensions. The details are not yet known.  
 
-## How to install
+# How to install
 
 On iOS, go to Settings > Wi-Fi and open the configuration for the wi-fi you're connected to. At the bottom, switch the HTTP proxy option to "Auto" and copy and paste [http://blog.monstuff.com/ad-block-pac.js](http://blog.monstuff.com/ad-block-pac.js) into the box. 
  
 ![PAC configuration in iOS](http://i59.tinypic.com/dlnskh.png)
 
 
-## Security considerations
+# Security considerations
 
 Configuring a PAC file into your operating system can be dangerous. If the PAC file is adversarial or was modified by a hacker, the attacker could send parts or all of your web traffic through a proxy of his choice.  
 
@@ -35,7 +33,7 @@ Another approach I'm going to investigate to solve this security problem is tryi
 
 Any other ideas are appreciated.  
 
-## Using Google DNS as blackhole
+# Using Google DNS as blackhole
 
 The idea of using Google DNS servers comes from the [FAQ of Weblock](https://www.weblockapp.com/faq/#question-7), an iOS app which generates PAC files. The FAQ offers a good explanation for this choice:
 
