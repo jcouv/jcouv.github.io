@@ -1,3 +1,0 @@
-Hello world
-<br/>
-this is a tiny text file posted at http://blog.monstuff.com/archives/images/small.txt
