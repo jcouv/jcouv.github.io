@@ -15,12 +15,12 @@ layout: null
   <channel>
     <title>{{ site.title }}</title>
     <link>{{ site.url }}</link>
-    <description>{{index.BlogDescription | Escape}}</description>
+    <description>{{ index.description }}</description>
     <language>en-us</language>
     <lastBuildDate>{{ site.time | date_to_xmlschema }}</lastBuildDate>
     <pubDate>{{ site.time | date_to_xmlschema }}</pubDate>
     <managingEditor>{{ site.author.name }}</managingEditor>
-    <webfeeds:analytics id="UA-74363-1" engine="GoogleAnalytics"/>
+    <webfeeds:analytics id="{{ site.ga }}" engine="GoogleAnalytics"/>
 
     <!--
         <webfeeds:cover image="http://yoursite.com/a-large-cover-image.png" />
