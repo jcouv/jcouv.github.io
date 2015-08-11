@@ -1,7 +1,6 @@
 ---
 layout: post
 title: 
-publish: false
-draft: true
+published: false
 ---
 Why have to choose in advance how long you will stay in a parking spot? 

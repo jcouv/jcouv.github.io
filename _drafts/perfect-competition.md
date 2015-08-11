@@ -1,8 +1,7 @@
 ---
 layout: post
 title: 
-publish: false
-draft: true
+published: false
 ---
 Some notes on Milton Shapiro chapter on neoclassical models of competition (perfect competition, monopoly, oligopoly and competitive monopoly) in "Foundations of the Market Price System".
 

@@ -1,8 +1,7 @@
 ---
 layout: post
 title: 
-publish: false
-draft: true
+published: false
 ---
 Personal cell
 

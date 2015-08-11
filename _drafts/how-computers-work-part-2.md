@@ -1,8 +1,6 @@
 ---
 layout: post
 title: How computers work (part 2)
-publish: false
-draft: true
 published: false
 ---
 
