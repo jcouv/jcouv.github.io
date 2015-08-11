@@ -1,0 +1,297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Wiki and tagged bookmarks integration</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000225.html" title="Google hinting: rel=nofollow" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000219.html" title="Laminate floor installation 101" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000223.html">
+<dc:title>Wiki and tagged bookmarks integration</dc:title>
+<dc:description>Here&apos;s a quick idea: allow a wiki to pull a list of links from a bookmark store using the WikiWord as the requested tag. The links could be broken down into multiple buckets depending on other specific tags like &quot;read&quot; or &quot;unread&quot; for example. The tags on these imported links could be updated directly from the wiki, using some javascript and DHTML. This would be quite useful for organizing information during the research phase. Looking at del.icio.us for the bookmark+tag store, it turns out the APIs don&apos;t allow modifying tags on an item (it looks like you can only add...</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2005-01-20T15:17:03-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000225.html">« Google hinting: rel=nofollow</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">January 20, 2005</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">Wiki and tagged bookmarks integration</h2>
+
+<p>Here's a quick idea: allow a wiki to pull a list of links from a bookmark store using the WikiWord as the requested tag. <br />
+The links could be broken down into multiple buckets depending on other specific tags like "read" or "unread" for example. The tags on these imported links could be updated directly from the wiki, using some javascript and DHTML. This would be quite useful for organizing information during the research phase.</p>
+
+<p>Looking at del.icio.us for the bookmark+tag store, it turns out the <a href="http://del.icio.us/doc/api">APIs</a> don't allow modifying tags on an item (it looks like you can only add new tags). Re-tagging is important so that you can mark items "read" or "unread" as you progress in your research. </p>
+
+<p>Another problem with del.icio.us is that it doesn't offer any private "space". But the wiki and tagged bookmark integration makes more sense with a private wiki and private bookmarks ("read" or "unread" tags should be personal, not shared, and wikiwords need to be scoped to a single wiki, not global). Unfortunately, I couldn't find any project for private bookmark+tag store, on freshmeat or sourceforge.</p>
+
+<p>Trying to think about other integration scenarios, another case seemed to have potential: using urls as wikiwords. This would turn a private wiki into a personal annotation store. </p>
+
+<a name="more"></a>
+<p><u>Update (2005/02/01):</u> Matt Biddulph posted an related hack: <a href="http://www.hackdiary.com/archives/000067.html">integrating del.icio.us tagging into a website</a> (<a href="http://www.corante.com/many/archives/2005/01/31/embedded_delicious_taggings_future_illustrated.php">via Boing Boing</a>). He's using DHTML and javascript for adding tags to the current page and fetching and displaying other urls with the same tags.</p>
+
+<span class="posted">Posted by Julien on January 20, 2005. <a href="http://blog.monstuff.com/archives/000223.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '223';
+        var disqus_url = 'http://blog.monstuff.com/archives/000223.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+<div class="comments-body">
+<p>I think you're mistaken about the API.  I think it's  perfectly valid to use /api/posts/add to re-post an existing URL with a different set of tags, so you can add or subtract tags with this technique.  </p>
+
+<p>There are still several operations which are missing, like fetch a post by URL, and fetch "all users posts" on a URL.</p>
+
+<p>I like what you're suggesting about using tags to track workflow; there has been some discussion along these lines on the delicious-discuss list:<br />
+<a href="http://lists.burri.to/pipermail/delicious-discuss/2004-December/001529.html">http://lists.burri.to/pipermail/delicious-discuss/2004-December/001529.html</a></p>
+
+<p>related to this discussion of a del.icio.us use case:<br />
+<a href="http://www.spreadfirefox.com/?q=node/view/9094">http://www.spreadfirefox.com/?q=node/view/9094</a></p>
+
+<p>I have been wanting to make an inside out version of what you're suggesting out of wikalong + delicious, so that for each page I visit, a Firefox sidebar shows tagging information from delicious.  I suspect that Joshua wouldn't like this idea much, though, because it would result in an expensive hit on the del.icio.us database for every page loaded in my browser, which is several thousand a day.</p>
+
+<p>It could work easily enough with a local copy of your own del.icio.us information, but it would be cacheing of the "all users" data scalable.</p>
+
+<p>PS I found your post via pubsub: <br />
+<a href="http://atom.pubsub.com/fe/1b/fb6e656feb86ed3753127c84e2.xml">http://atom.pubsub.com/fe/1b/fb6e656feb86ed3753127c84e2.xml</a></p>
+<span class="comments-post">Posted by: <a href="http://www.hybernaut.com/bdv/">Brian Del Vecchio</a> at February  1, 2005 05:53 PM</span>
+</div>
+<div class="comments-body">
+<p>What I meant was:</p>
+
+<p>It could work easily enough with a local copy of your own del.icio.us information, but it would be [difficult to make] cacheing of the "all users" data scalable.</p>
+<span class="comments-post">Posted by: <a href="http://hybernaut.com/bdv/">Brian Del Vecchio</a> at February  2, 2005 12:27 PM</span>
+</div>
+<div class="comments-body">
+<p>Thanks Brian. I see what you mean about being to update a tag list using the API. <br />
+I also just realized that the "recent" API only returns results from my bookmarks (not from other users).<br />
+Cool! It seems like these APIs are sufficient for scenario I described. The only problem is the scenario is not very community friendly, as it tags items with wikiwords from my private wiki...<br />
+Since the APIs return xml, it seems like javascript+XmlHttpRequest is a good candidate :-)<br />
+</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien</a> at February 27, 2005 09:48 AM</span>
+</div>
+<div class="comments-body">
+<p>Actually, remote del.icio.us integration using javascript doesn't work, XmlHttpRequest only lets you load a url in the same domain as the current page :-(<br />
+See the "permission denied" comment at <a href="http://xulplanet.com/references/objref/XMLHttpRequest.html">http://xulplanet.com/references/objref/XMLHttpRequest.html</a></p>
+
+<p>I tried the iframe approach as well, but the "same domain" security policy in javascript also prevents access to any data returned by del.icio.us within the iframe... :-(</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien</a> at February 27, 2005 03:20 PM</span>
+</div>
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

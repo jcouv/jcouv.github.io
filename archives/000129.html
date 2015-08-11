@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Remote Javascript Scripting</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000172.html" title="C# port of dChat" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000165.html" title="PageRank and new content" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000129.html">
+<dc:title>Remote Javascript Scripting</dc:title>
+<dc:description><![CDATA[Remote scripting is a way to interact with the server, rather that have to refresh the complete page to fetch new data. For example, RSLite is a simple javascript object that allows to call the server with a certain string and get a response string back. The request is done using a image and the return value is passed using a cookie which is polled. Remote javascript include: Useful javascript "libraries" usually come in a separate .js file, that can be included into the html using &lt;script type="text/javascript" language="JavaScript" src="foo.js" />. This is generally used to factorize the code out...]]></dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2004-05-04T15:08:12-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000172.html">« C# port of dChat</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">May 04, 2004</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">Remote Javascript Scripting</h2>
+
+<p>Remote scripting is a way to interact with the server, rather that have to refresh the complete page to fetch new data.</p>
+
+<p>For example, <a href="http://www.ashleyit.com/rs/rslite/">RSLite</a> is a simple javascript object that allows to call the server with a certain string and get a response string back. The request is done using a image and the return value is passed using a cookie which is polled. </p>
+
+<p><br />
+<b>Remote javascript include:</b><br />
+Useful javascript "libraries" usually come in a separate .js file, that can be included into the html using <i>&lt;script type="text/javascript" language="JavaScript" src="foo.js" /></i>. This is generally used to factorize the code out of the html or a bookmarklet.</p>
+
+<p>The problem with bookmarklets is that IE 6 restricts bookmark urls to 500 characters. <br />
+But if all your bookmarklet does is dynamically insert a &lt;script src="http://remoteserver.com/foo.js"> tag in the page, you can avoid this limitation by having most of the code in the remote .js file.</p>
+
+<p>Here are some examples of use of this technique: <a href="http://www.xml.com/pub/a/2003/10/08/udell.html">Jon Udell's quote bookmarklet</a>, <a href="http://lists.evolt.org/archive/Week-of-Mon-20020812/120229.html">Simon Willison's page weight</a> (<a href="javascript:void((function(){var element=document.createElement('script');element.setAttribute('src','http://www.gazingus.org/js/pageWeight.js');document.body.appendChild(element)})())">page weight bookmarklet</a>) and some <a href="http://www.searchlores.org/nemo_SEO.htm#book">simple text processing bookmarklets</a>.</p>
+
+<p><br />
+<b>Remote scripting via script include:</b><br />
+Remote script includes can be used as another way to interact with the server to achieve remote scripting.<br />
+For example, the <a href="http://bodytag.org/dchat/">dChat online chat</a> and my <a href="/archives/000172.html">port of dChat to C#</a> will add new script tags dynamically to the DOM to call server-side functions (with a certain calling convention). The server returns javascript that ensures the DOM is cleaned after the call succeeds and can pass some additional return values in the form of client-side javascript calls.</p>
+
+<p><br />
+I've also seen this used in a weird way before: you can have the server output the response javascript slowly while keeping the connection open. <a href="http://www.mod-pubsub.org/">mod_pubsub</a> uses this trick to delivery updates to various types of clients (flash, javascript,...).</p>
+
+<a name="more"></a>
+<p><b>Related:</b><br />
+RSLite's author, Brent Ashley, also wrote the <a href="http://www.ashleyit.com/rs/">JSRS (Javascript Remote Scripting)</a> library.</p>
+
+<p><a href="http://bugzilla.mozilla.org/show_bug.cgi?id=18843">Mozilla bug 18843</a> (dynamically added script not executable).</p>
+
+<p>An <a href="http://wp.netscape.com/assist/net_sites/pushpull.html">explanation</a> of server push via multipart mime-type content.<br />
+A server push framework in Java, based on <a href="http://www.javaworld.com/javaworld/jw-03-2000/jw-03-pushlet-p2.html">javascript and maintaining the connection open to a servlet (pushlet)</a>.</p>
+
+<p><a href="http://openthought.net/">OpenThought framework</a> (javascript and iframes).</p>
+
+<p>A project using <a href="http://www.codeproject.com/aspnet/AlvaroRemoteScripting.asp">client-side JavaScript to remotely invoke methods in ASP.NET pages</a>.</p>
+
+<span class="posted">Posted by Julien on May 04, 2004. <a href="http://blog.monstuff.com/archives/000129.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '129';
+        var disqus_url = 'http://blog.monstuff.com/archives/000129.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+<div class="comments-body">
+<p>I didn't actually write the page-weight bookmarklet. However, I did recently write a bookmarklet tutorial for SitePoint which describes the external-script include technique in additional detail: <a href="http://www.sitepoint.com/article/bookmarklets">http://www.sitepoint.com/article/bookmarklets</a></p>
+<span class="comments-post">Posted by: <a href="http://simon.incutio.com/">Simon Willison</a> at May  4, 2004 03:42 PM</span>
+</div>
+<div class="comments-body">
+<p>Hi,</p>
+
+<p>Can't seem to access your RSLite thing - where's it gone?!</p>
+
+<p>Thanks.<br />
+Auf<br />
+</p>
+<span class="comments-post">Posted by: <a href="http://www.yahoo.com">aufladen</a> at October  6, 2004 04:01 PM</span>
+</div>
+<div class="comments-body">
+<p>Auf,<br />
+The link had changed. Instead of <a href="http://ashleyit.com/rs/rslite/">http://ashleyit.com/rs/rslite/</a> it's now <a href="http://www.ashleyit.com/rs/rslite/">http://www.ashleyit.com/rs/rslite/</a> <br />
+I fixed the link in my post.</p>
+
+<p>Don't forget Google is your friend ;-)</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at October  6, 2004 07:26 PM</span>
+</div>
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

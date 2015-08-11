@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="3592"
+   name=""
+   committed-date="2006-04-17T22:34:34.907718Z"
+   url="http://svn.dojotoolkit.org/dojo/trunk/src/flash/flash6"
+   last-author="BradNeuberg"
+   kind="dir"
+   uuid="560b804f-0ae3-0310-86f3-f6aa0a117693"
+   repos="http://svn.dojotoolkit.org/dojo"
+   revision="4135"/>
+<entry
+   committed-rev="3529"
+   name="DojoExternalInterface.as"
+   text-time="2006-05-22T23:12:33.961056Z"
+   committed-date="2006-04-13T08:02:45.622929Z"
+   checksum="0fd80bce5b1f2192fcf705713313633a"
+   last-author="BradNeuberg"
+   kind="file"
+   prop-time="2006-05-22T23:12:33.898550Z"/>
+<entry
+   committed-rev="3592"
+   name="flash6_gateway.fla"
+   text-time="2006-05-22T23:12:33.976682Z"
+   committed-date="2006-04-17T22:34:34.907718Z"
+   checksum="a78ffe3a7e30109fddcce0a1c34ab642"
+   last-author="BradNeuberg"
+   kind="file"
+   prop-time="2006-05-22T23:12:33.914176Z"/>
+</wc-entries>

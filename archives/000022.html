@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Sub-Pixel Font Rendering (ClearType)</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000021.html" title="HalfKeyboard software emulation" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000023.html" title="Focus/Interruption management" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000022.html">
+<dc:title>Sub-Pixel Font Rendering (ClearType)</dc:title>
+<dc:description>Sub-Pixel Font Rendering is the technical name for the technology used in Windows XP, known as ClearType. If you use Windows XP, I definitely recommend that you turn it on (it&apos;s off by default). You&apos;ll see the greatest improvement if you use a laptop or other LCD screen, but even CRT screens will look a bit better. Here is a cool page that explains this technology in details. What is interesting is how color artifacts are avoided/minimized, by splitting the energy of the sub-pixel amongst its neighbors (see image below). A Java implementation is available with source code (mirrored here)....</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2003-03-12T10:40:43-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000021.html">« HalfKeyboard software emulation</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">March 12, 2003</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">Sub-Pixel Font Rendering (ClearType)</h2>
+
+<p>Sub-Pixel Font Rendering is the technical name for the technology used in Windows XP, known as ClearType. If you use Windows XP, I definitely recommend that you <a href="http://www.microsoft.com/typography/links/news.asp?NID=2241">turn it on</a> (it's off by default). You'll see the greatest improvement if you use a laptop or other LCD screen, but even CRT screens will look a bit better.</p>
+
+<p>Here is a <a href="http://grc.com/cleartype.htm">cool page</a> that explains this technology in details.<br />
+What is interesting is how color artifacts are avoided/minimized, by splitting the energy of the sub-pixel amongst its neighbors (see image below).</p>
+
+<p><img src="http://www.grc.com/image/cttech9.gif"/></p>
+
+<p><a href="http://www.bluecadaver.com/ClearType/">A Java implementation</a> is  available with source code (<a href="http://blog.monstuff.com/archives/images/ClearType.java">mirrored here</a>).</p>
+
+<a name="more"></a>
+<p>What I am not sure about yet is why this resolution improvement trick works best for horizontal text. A Tablet PC developper told me that improvements for this technology is on its way, for LCD screens used in portait mode. But he didn't tell me more about why it doesn't work as well vertically or how it's going to get fixed.</p>
+
+<p>Also, I have seen mentions of how the font needs to be created so that it gets "cleartyped" properly. I think they call this "hints", but I didn't get in the details yet.</p>
+
+<p>Update: a friend of mine explained me a very interesting sub-pixel font rendering approach. It is based on signal theory and filters. I'll dig in some more and blog it soon.</p>
+
+<p>Update: a little tool (<a href="http://www.offroadsearch.com/software/cleartweak/">ClearTweak</a>) that demonstrates ClearType and tweak your ClearType settings.</p>
+
+<span class="posted">Posted by Julien on March 12, 2003. <a href="http://blog.monstuff.com/archives/000022.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '22';
+        var disqus_url = 'http://blog.monstuff.com/archives/000022.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+<div class="comments-body">
+<p>Hi,</p>
+
+<p>I came across your blog and I had some comments on a couple of questions you've raised there:</p>
+
+<p>> What I am not sure about yet is why this<br />
+> resolution improvement trick works best for<br />
+> horizontal text. A Tablet PC developper told <br />
+> me that improvements for this technology is on <br />
+> its way, for LCD screens used in portait mode. <br />
+> But he didn't tell me more about why it doesn't<br />
+> work as well vertically or how it's going to<br />
+> get fixed.</p>
+
+<p>In an LCD (unlike a CRT), the red green and blue segments of each pixel are placed next to each other. Cleartype uses this fact to its advantage by effectively splitting a pixel into three segments to achieve font smoothing. I guess the reason it works only in landscape mode is that the three color segments are placed next to each other horizontally. Most text effects (like bold and italics) adjust the character glyphs horizontally only, so the anti-alias effect is really effective only in landscape mode. Perhaps the fact that most characters in English (and related languages) have diagonal strokes that are closer to the vertical than the horizontal also has something to do with it.</p>
+
+<p>> Also, I have seen mentions of how the font<br />
+> needs to be created so that it gets <br />
+> "cleartyped" properly. I think they call <br />
+> this "hints", but I didn't get in the <br />
+> details yet.</p>
+
+<p>I am no expert here, but font hints are basically special-purpose instructions provided by a font author to enable the rasterizer to render the font correctly at specific sizes. Typically, the rasterizer scales the font glyph to the size requested by the user. However if a very small size is requested, simply scaling the glyph results in artifacts and the text doesn't look very good. Hinted fonts overcome this problem by rendering the font at that size as a special case. In fact, TrueType includes a full-fledged hinting language that the font creator can use.</p>
+
+<p><a href="http://www.microsoft.com/typography/hinting/hinting.htm">http://www.microsoft.com/typography/hinting/hinting.htm</a></p>
+
+<p>By the way, you have some good stuff on your Web site! I would like to try out your Pen stroke recognition stuff sometime, but I need to install the .NET runtime before I can do that.</p>
+
+<p>Cheers!</p>
+
+<p>Kaushik</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;skaushik&#64;hotmail&#46;com">Kaushik</a> at March 29, 2003 10:29 PM</span>
+</div>
+<div class="comments-body">
+<p>I find your text here very informative. But I have a doubt and I don't know if you could help me. You say that ClearType is not the default, but what about the Standard anti-alias text effect? </p>
+
+<p>Thanks for your answer,</p>
+
+<p>Robson.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;robson&#64;irion&#46;com&#46;br">Robson</a> at October 21, 2004 02:40 PM</span>
+</div>
+<div class="comments-body">
+<p>Hi Robson,</p>
+
+<p>I'm not sure what's the default configuration comes on XP (I've already switched all my boxes to use ClearType). If I remember correctly, I would say it's the "Standard" smoothing option that was selected.<br />
+I just tried the "Standard" smoothing effect setting again (in the same drop-down where ClearType is available), but it doesn't seem to make much difference with no smoothing at all, even when looking at the fonts with the magnifier tool. So I'm not sure that "Standard" is anti-aliasing.</p>
+
+<p>Does that answer your question?</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at October 22, 2004 03:23 PM</span>
+</div>
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

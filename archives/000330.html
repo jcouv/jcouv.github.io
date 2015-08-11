@@ -1,0 +1,275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Hybrid neural network training</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000325.html" title="Useful Visual Studio 2005 shortcuts" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000333.html" title="Trends in computing" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000330.html">
+<dc:title>Hybrid neural network training</dc:title>
+<dc:description> I am not a machine learning expert by any means, but I found the results presented in Jeff&apos; Hinton&apos;s GoogleTalk presentation quite impressive and convincing. He demonstrates a specific kind of network which can be trained a clever way: mostly unsupervised, with unlabeled data, and partially supervised, with relatively little labeled data. He presents some results such as digit recognition, document classification and similar document search. The first interesting idea is that this kind of neural networks can not only recognize images (or other inputs), but can also generate them. The second is that if you can recognize and...</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2008-01-22T20:50:48-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000325.html">« Useful Visual Studio 2005 shortcuts</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">January 22, 2008</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">Hybrid neural network training</h2>
+
+<p><a href="http://www.flickr.com/photos/omgallanwtf/149899122/"><img src="http://farm1.static.flickr.com/40/149899122_2db138dcd9_m.jpg" alt="Brain age memory and drawing game" style="float: right; padding: 10px 0px 0px 20px; width:240; height:180; border: none" /></a></p>
+
+<p>I am not a machine learning expert by any means, but I found the results presented in <a href="http://www.youtube.com/watch?v=AyzOUbkUf3M">Jeff' Hinton's GoogleTalk presentation</a> quite impressive and convincing. </p>
+
+<p>He demonstrates a specific kind of network which can be trained a clever way: mostly unsupervised, with unlabeled data, and partially supervised, with relatively little labeled data. He presents some results such as digit recognition, document classification and similar document search.</p>
+
+<p>The first interesting idea is that this kind of neural networks can not only recognize images (or other inputs), but can also generate them.</p>
+
+<p>The second is that if you can recognize and regenerate a given input, then you can compare the original input with the regenerated one and use that comparison as training. <br />
+This makes it possible to train the net to model the data by feeding it unlabeled data (which is more available). The point is that you need too much labeled data to train a complex and deep networks, which is not realistic, so discovering and using smarter training algorithms is the only way to go.</p>
+
+<p>The third idea is to combine this mostly unsupervised training with a final training on a small(er) set of labeled data. <br />
+This allows the network to associate proper labels with the natural patterns that it discovered in the unlabeled data.</p>
+
+<p>What is most exciting is how Hinton ties the neural network training problem back to the question of how our brains learn. <br />
+The connections that compose the brain are too complex to be encoded in DNA, and there is way too little "labeled data" to train such a massive network. That must mean that the brain has evolved a really good learning algorithm which is able to leverage the huge amounts of (multi-)sensory input that it has available.</p>
+
+<p>It seems that the next logical step is to provide the machine some way of interacting with the world: just observing is not enough. Humans validate and strengthen their interpretation of the world thru constant experimentation. I see an object, interpret its structure in 3 dimensions, then confirm that belief by moving around the object, or maybe by touching it.</p>
+
+<p>More details are available on <a href="http://www.cs.toronto.edu/~hinton/">Jeff Hinton's homepage</a>.</p>
+
+<a name="more"></a>
+<p><u>Update (2008/01/24):</u> Coincidentally, I stumbled on Greg Linden's blog (who just joined the Live Labs).  While exploring his posts, I noticed he also <a href="http://glinden.blogspot.com/2007/12/geoffrey-hinton-on-next-generation-of.html">recommends Hinton's talk</a>.</p>
+
+<p><u>Update (2008/04/25):</u> I am half-way thru Dan Gilbert's book, <a href="http://www.amazon.com/Stumbling-Happiness-Daniel-Gilbert/dp/1400042666">Stumbling on Happiness</a>, and was struck by some similarities with Jeff Henton's approach.<br />
+Dan Gilbert observes that prediction and imagination are unique abilities of the human brain, and that imagination functions by feeding memories into the perception areas of the brain to simulate experiences. <br />
+In some limited way, it seems that Jeff Henton's neural networks emulate this behavior, by using current knowledge and fragments of perception to hallucinate or imagine things.</p>
+
+<p>As a side note: the book goes on to explain many limitations and tricks that accompany this special skill, and illustrates how they often mislead our efforts in pursuing happiness. So far, this is a great book (instructive, fun and challenging). Check out <a href="http://www.ted.com/index.php/talks/view/id/97">Dan's excellent TED talk (video)</a> if you are curious.</p>
+
+<span class="posted">Posted by Julien on January 22, 2008. <a href="http://blog.monstuff.com/archives/000330.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '330';
+        var disqus_url = 'http://blog.monstuff.com/archives/000330.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

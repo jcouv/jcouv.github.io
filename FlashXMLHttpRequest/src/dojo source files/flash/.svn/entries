@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="3638"
+   name=""
+   committed-date="2006-04-21T23:06:27.030467Z"
+   url="http://svn.dojotoolkit.org/dojo/trunk/src/flash"
+   last-author="BradNeuberg"
+   kind="dir"
+   uuid="560b804f-0ae3-0310-86f3-f6aa0a117693"
+   repos="http://svn.dojotoolkit.org/dojo"
+   revision="4135"/>
+<entry
+   name="flash6"
+   kind="dir"/>
+<entry
+   name="flash8"
+   kind="dir"/>
+</wc-entries>

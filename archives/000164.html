@@ -1,0 +1,352 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Object vs. Feed: vs. Mime-type</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000163.html" title="Web game collection" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000150.html" title="Firefox plugins" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000164.html">
+<dc:title>Object vs. Feed: vs. Mime-type</dc:title>
+<dc:description>Follow up on RFC: RSS one-click subscription As I&apos;m progressing on the prototype I have received some interesting feedback and thought a lot about how this solution compares to the two previous ones (feed: and mime-types). Thanks to Dare Obasanjo, Joshua Allen and Greg Reinacker amongst others for their comments. Cross-platform and cross-browser? The main criticism I have received so far (from Dare and Greg) is that this is platform specific. I believe it is not, although the html I posted so far is. Flash works on lots of platforms and lots of browsers. The FeedSubscriber button should be the...</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2004-04-06T13:10:02-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000163.html">« Web game collection</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">April 06, 2004</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">Object vs. Feed: vs. Mime-type</h2>
+
+<p>Follow up on <a href="/archives/000162.html">RFC: RSS one-click subscription</a></p>
+
+<p>As I'm progressing on the prototype I have received some interesting feedback and thought a lot about how this solution compares to the two previous ones (feed: and mime-types).<br />
+Thanks to <a href="http://www.25hoursaday.com/weblog/PermaLink.aspx?guid=e73af49b-09b5-47ac-bf6f-8636ed23d249">Dare Obasanjo</a>, <a href="http://www.netcrucible.com/blog/PermaLink.aspx?guid=8d4d5a4b-f035-4b28-9829-bbf4977208c0">Joshua Allen</a> and Greg Reinacker amongst others for their comments.</p>
+
+<p><br />
+<b>Cross-platform and cross-browser?</b><br />
+The main criticism I have received so far (from Dare and Greg) is that this is platform specific. I believe it is not, although the html I posted so far is. <br />
+Flash works on <a href="http://www.macromedia.com/shockwave/download/alternates/">lots of platforms</a> and <a href="http://www.macromedia.com/software/flash/productinfo/systemreqs/">lots of browsers</a>. <br />
+The FeedSubscriber button should be the same, instead that the media isn't some flash content, but instead a feed information blob (currently just a url).</p>
+
+<p><br />
+<b>Feed: scheme</b><br />
+The main problem I see with the "feed:" URI scheme is that it isn't friendly to new users.<br />
+Other than that, I rather like this solution (maybe it should be made a little bit more extensible, but that is a separate discussion).<br />
+ <br />
+As an RSS-unaware user, how the heck am I supposed to do with this weird orange button that links to feed://blog.monstuff.com/index.xml or feed:https://blog.monstuff.com/index.xml ?<br />
+This is what the FeedSubscriber control and XSL transformation of the feed tries to address.</p>
+
+<p>Also, the other URI schemes (http:, https:, gopher:, mailto:, irc:, nttp:, ftp:) all correspond to a different transport mechanism. Whereas feed: doesn't care about the transport (most feeds us HTTP today, but there is no reason why this couldn't change). <br />
+On the other hand, the feed: approach is much simpler to deploy on the publishing side, compared to mime-type based solutions (which needs an extra file to be published containing the feed description or advertisement, and served with the correct mime-type).</p>
+
+<a name="more"></a>
+<p><b>FeedSubscriber object</b><br />
+<u>Cross-browser support</u><br />
+As mentioned above it should be completely possible to make the FeedSubscriber be cross-platform and cross-browser.<br />
+But the html needs to be a bit more complex than what I originally proposed, to support this. A List Apart describes how to <a href="http://www.alistapart.com/articles/flashsatay/">combine the "embed" and "object" tags for flash</a> controls.<br />
+Also, supporting the embed tag involves declaring a new mime-type, which in this case would be a "feed information" media type.</p>
+
+<p><u>Cross-aggregator support</u><br />
+Lots of aggregators use a web request to subscribe to new feeds, like http://127.0.0.1:8082/subscribe?url=...<br />
+The component I'm prototyping will read this url from a configuration setting, so that it can be re-used for most aggregators. Only aggregators that have a very specific subscription method would need to re-implement the FeedSubscriber object.</p>
+
+<p><u>Right click</u><br />
+I recently saw some Firefox <a href="http://www.rendelmann.info/blog/#a39f7fa52-d6b3-40fe-a65b-8a3e4dd0489e">plugin</a> to add "subscribe to this feed" to the context menu for the feed button. But that isn't optimal: the most common/useful action should be on the left click instead and secondary actions should be in the context menu. <br />
+The FeedSubscriber allows this: a right click on it will open a context menu that allows newbies to get more information ("learn more") and power-users to get to the actual feed ("view feed"). <br />
+Actions like "copy feed location", "copy feed subscriber", "technorati" or "subscribe in another aggregator" could also be useful.</p>
+
+<p><u>Is object overkill?</u><br />
+Honestly, the FeedSubscriber object seems a little overkill, because it adds lines of html to every feed button and needs to be installed separately (until the aggregators integrate it).</p>
+
+<p>Also it may be a bit confusing when you installed the FeedSubscriber and go to a site that doesn't support it: the feed button will be a regular button (no one-click subscription). <br />
+I'm planning on addressing this by having the FeedSubscriber look similar to the feed button it replaces, but slightly different (using visual cues when hovering, like a tooltip or an image effect).</p>
+
+<p><u>Then why?!</u><br />
+The FeedSubscriber object solution is the only one that gives us a way to handle the fall back case.<br />
+This is really important because user experience is a major roadblock in wide adoption of feeds outside of the blogger community.<br />
+Of course, if the deployed browsers had even minimal support for the feed: URI scheme (by showing you a help popup/page about feeds if you don't have an aggregator installed), the FeedSubscriber object approach would be un-necessary.</p>
+
+<p>It should be combined with a smart RSS beautification, to try and improve the "newbie scenario". <br />
+"smart" means the solution that I <a href="http://blog.monstuff.com/index.xml">implemented</a> so far is confusing experienced users. <br />
+I'll include a new approach in my prototype: the beautified RSS shouldn't display the feed, only a text for "this should not be viewed in a browser, get an aggregator instead" and two buttons: "view raw feed" and "view beautified feed".</p>
+
+<p><u>Future</u><br />
+I think the FeedSubscriber can be made pretty extensible to support future types of subscriptions. Currently the only thing you need to subscribe is the url of the feed. But richer distribution systems could appear similar to BitTorrent, where to actually subscribe to a feed you need a more complex "feed info" blob (a la .torrent file).</p>
+
+<p>This brings us a little bit closer to the mime-type solution:<br />
+The one where a mime-type is created for "feed information" (or "feed pointer") and may be hosted in a separate file, rather than inline in the &lt;object> tag. Another difference is that the subscription is triggered by an action in the client, not merely downloading a file.</p>
+
+<p>[Not the one where downloading the RSS triggers the subscription: that's bad for multiple reasons, including that a feed should not be confused with a "feed information" data type. The aggregator only needs the "feed information" (url), not the feed itself. This is different from the PDF or QuickTime examples that Tim Bray raises. <b>An aggregator is not an RSS viewer, it is a subscription manager.</b>]</p>
+
+<p><br />
+FeedSubscriber parameters should be maintained backward compatible when such upgrades occur. But I'll include a "required version" parameter that can be specified in the object tag, so that the FeedSubscriber can detect the situation and offer to upgrade itself.</p>
+
+<p><br />
+<b>"Subscribe Feeds" button in the browser</b><br />
+Joshua Allen and Gina Venolia brought up another approach, that I didn't understand right away but is pretty interesting. <br />
+The idea: users shouldn't have to search through the page for a "feed" button, the same way they don't have to search for a "print" button.</p>
+
+<p>The solution would work by looking for linked resources like &lt;link rel="..." application="..." ...> in the page. If multiple links are present, the user should be allowed to select which one he is interested in.</p>
+
+<p>[This functionality can even be implemented with a bookmarklet or a <a href="/archives/000033.html">remote context menu entry in IE</a>. The javascript needs to be aggregator specific, and can popup a window with links to subscribe to the linked resources that it extracted from the DOM.]</p>
+
+<p>In itself, this doesn't make it easier for feed un-aware users. Something else, like a prompt the first time the user encounters a feed-enabled page would help educate users. Also a little symbol next to the "SSL lock" could appear when feeds are available on a page. <br />
+It seems Mozilla Firefox would be a good browser to start experimenting with this, as the version 0.7 added a very similar feature for detecting alternate stylesheets and switching them.</p>
+
+<p>Also, one could argue that the location of the feed button within a page does in fact matter. It gives context as to what it actually will suscribe to: the main feed, the current category feed or the comment replies feed.<br />
+Whereas with a "print" approach, you don't know that there is a comment replies feed on this site until you activate the browser functionality.</p>
+
+<p><br />
+<b>Work items</b><br />
+... for me and anyone who can help ;-)<br />
+<ul><li>Complete a working FeedSubscriber object prototype, with at least support for IE and Mozilla on windows. A simple demo site to be provided.</li><li>Dig in the feed: solution a bit more and investigate whether that's something IE/wininet team would be ready to support.</li><li>Investigate adding a "feeds are available on this page" icon in the statusbar for Firefox (via a plugin/extension for a start).</li></ul></p>
+
+<p><b>Links:</b><br />
+<a href="http://www.25hoursaday.com/weblog/PermaLink.aspx?guid=e73af49b-09b5-47ac-bf6f-8636ed23d249">Singing the One Click Subscription Blues</a>.<br />
+<a href="http://www.25hoursaday.com/weblog/PermaLink.aspx?guid=385809e7-f9cd-4318-8066-37e0853a97b8">One-Click Subscription to RSS and ATOM Feeds</a>.<br />
+<a href="http://www.25hoursaday.com/weblog/PermaLink.aspx?guid=6deaa5e1-46b5-4e19-a9b9-576e14bb312f">Request For Comments: The "feed" URI Scheme [final draft]</a>.<br />
+<a href="http://www.seesaw.org/log/entries/2004/03/31/workrelated.php">Windows XP Expert Zone implemented the XSL transform for RSS</a>.<br />
+<a href="http://weblog.infoworld.com/udell/2004/04/04.html#a964">Introducing Aunt Tillie to RSS</a><br />
+<a href="http://weblog.infoworld.com/udell/2004/01/21.html#a892">One-click RSS subscriptions, continued: the lesser of two evils?</a>.<br />
+<a href="http://bitworking.org/news/Atom_Auto_Sub_How_To">How To Use Mime-Types To Get Your Aggregator To Subscribe To An Atom Feed</a>.<br />
+A list of <a href="http://www.lights.com/weblogs/rss.html">RSS aggregators</a>.<br />
+<a href="http://realdev1.realise.com/rossa/rendertest/quicktime.html">Standards Compliant method to add Quicktime movies to pages</a>.<br />
+<a href="http://ln.hixie.ch/?start=1081798064">Embedding flash without &lt;embed></a>.</p>
+
+<span class="posted">Posted by Julien on April 06, 2004. <a href="http://blog.monstuff.com/archives/000164.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '164';
+        var disqus_url = 'http://blog.monstuff.com/archives/000164.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+<div class="comments-body">
+<p>One idea would be to create a community edited site (like a Wiki) with a name like www.syndicatehelp.com. All the content of that site would be free and without commercial ads. That site would be very simple and explain clearly what the advantages of RSS are.</p>
+
+<p>Then, we could provide a standard html block (like Paypal do for example) that provides a beautiful standard image for RSS feeds. Also, that html block would also have a "help" link that goes to syndicatehelp.com.</p>
+
+<p>Then, every content site could paste that html block on their web site and new users would find a very convenient and easy place to educate themselves about the technology.</p>
+
+<p>Jean-Francois Nadeau<br />
+I have started an easy to use aggregator project: <a href="http://www.clickthenews.com">http://www.clickthenews.com</a></p>
+<span class="comments-post">Posted by: <a href="http://www.jfnadeau.com">Jean-Francois Nadeau</a> at April  7, 2004 07:28 AM</span>
+</div>
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Implementing threads in javascript</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000312.html" title="Dojo Offline Toolkit" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000316.html" title="Secure cooperation in javascript" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000315.html">
+<dc:title>Implementing threads in javascript</dc:title>
+<dc:description>Neil Mix implemented a cool solution to do threading in javascript. It achieves a specific kind of multi-threading, with voluntary yielding and interleaved execution, which is different than what C++, Java or C# offer (preemptive multi-threading). The idea is that the code for each &quot;thread&quot; needs to voluntarily interrupt its processing flow to let another thread execute for a while. When a thread suspends its execution, its state is saved. When the thread is later awoken, it continues its processing from where it stopped....</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2007-02-18T16:58:26-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000312.html">« Dojo Offline Toolkit</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">February 18, 2007</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">Implementing threads in javascript</h2>
+
+<p>Neil Mix implemented a cool solution to do <a href="http://www.neilmix.com/2007/02/07/threading-in-javascript-17/">threading in javascript</a>. It achieves a specific kind of multi-threading, with voluntary yielding and interleaved execution, which is different than what C++, Java or C# offer (preemptive multi-threading). </p>
+
+<p>The idea is that the code for each "thread" needs to voluntarily interrupt its processing flow to let another thread execute for a while. When a thread suspends its execution, its state is saved. When the thread is later awoken, it continues its processing from where it stopped.</p>
+
+<a name="more"></a>
+<p>To understand Neil's library, you first need to learn how to use <a href="http://en.wikipedia.org/wiki/Generator_%28computer_science%29">generators</a>. Generators are a new construct in javascript 1.7 (available in Firefox 2.0) which let your write a piece of code returning a sequence of results, pausing its execution for each result and restarting from its paused state to compute the next result. </p>
+
+<p>Normally, a function that receives execution control keeps it until it returns. But with generators, the execution control can be given up in the middle of the routine and later restored.<br />
+One way to look at it is that the code in the generator is dependent on the caller to call repeatedly to activate each "segment" of the processing. </p>
+
+<p>Some sample code will help you grop generators (taken from Brendan Eich's quick <a href="https://developer.mozilla.org/presentations/javascript2/#slide39">description of generators</a>): <br />
+<quote><br />
+<ul><li>"yield" in a function makes a generator:</li><br />
+      function count(n : int) {<br />
+      &nbsp;&nbsp;  for (let i = 0; i < n; i++)<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;    yield i;<br />
+      }<br />
+<li>A generator function returns an iterator, which exposes a method called "next":</li><br />
+      var gen = count(10);<br />
+      gen.next(); // returns 0; <br />
+      . . .; <br />
+      gen.next(); // returns 9<br />
+      gen.next(); // throws StopIteration<br />
+<li>Iterators also support "send" and "throw" methods:</li><br />
+    gen.send(value); // passes value back to yield<br />
+    gen.throw(exception); // throws exception from yield <br />
+</ul><br />
+</quote></p>
+
+<p>As you can see, generators offer much of what's needed to let our "threads" relinquish control, pause and restart, at least if our threads are single functions. <br />
+But if you need to have sub-functions called as part of the thread, generators fall short. As Neil puts it: "generators are unable to yield across multiple frames in the callstack".</p>
+
+<p>This is where his library comes in. It lets you write generators which call sub-generators, and it saves the state of an entire thread, when it gets paused, as a stack of paused generators. <br />
+The framework takes care of adding a new stack frame when a generator returns a sub-generator, lets the sub-generator segments get executed, and passes the value or exception returned by the sub-generator back to the calling frame (see gen.send(value) function above). <br />
+This is called trampolining generators. </p>
+
+<p>Here's a code example for a thread, when using the library. Note that "sleep" "waitForInput" and "animateUI" are themselves generators (ie. they use the "yield" keyword).<br />
+<div class="code">function myThreadedCall() {<br />
+&nbsp;&nbsp;    while (!ready) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;      yield sleep(100);<br />
+&nbsp;&nbsp;    }<br />
+&nbsp;&nbsp;    yield waitForInput();<br />
+&nbsp;&nbsp;    if ((yield post(getInput())) != null ) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;      yield animateUI();<br />
+&nbsp;&nbsp;    }<br />
+  }</div></p>
+
+<p>Obviously, making use of this multi-threading technique comes with a peculiar coding style, where you have to indicate explicit yield points. This approach does however avoid some of the more complex concurrency problems (atomic operations on shared state).</p>
+
+<p>It is good to see how the limits of javascript getting challenged with every incremental feature added to the language. And even though I haven't used this approach and I don't know if I'm going to use it any time soon, the technique is fascinating and definitely great mental exercise. <br />
+The <a href="http://www.neilmix.com/demos/js17threading/Thread.js">library code</a> is pretty small, about 150 lines of code, and is worth reading to get a better sense of the trampoline design.</p>
+
+<span class="posted">Posted by Julien on February 18, 2007. <a href="http://blog.monstuff.com/archives/000315.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '315';
+        var disqus_url = 'http://blog.monstuff.com/archives/000315.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

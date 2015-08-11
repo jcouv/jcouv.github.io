@@ -1,0 +1,303 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Dynamic Proxy Classes</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000097.html" title="Self-referential Google search" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000099.html" title="Multi-University/Research Lectures" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000098.html">
+<dc:title>Dynamic Proxy Classes</dc:title>
+<dc:description>O&apos;Reilly network had an article on uses of dynamic proxies to implement generic memoizing, in Java. Dynamic proxies are an interesting construct, that appeared in Java 1.3. Here is the JDK documentation for the Proxy class. Basically, they allow defining a class at runtime that implements any interfaces you want and funnels all its method calls to an InvocationHandler. All the InvocationHandler has to implement the generic Object invoke(Object proxiedObject, Method method, Object[] args) method....</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2003-08-25T22:02:46-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000097.html">« Self-referential Google search</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">August 25, 2003</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">Dynamic Proxy Classes</h2>
+
+<p>O'Reilly network had an article on uses of <a href="http://www.onjava.com/pub/a/onjava/2003/08/20/memoization.html">dynamic proxies to implement generic memoizing</a>, in Java.</p>
+
+<p>Dynamic proxies are an interesting construct, that appeared in Java 1.3. Here is the <a href="http://java.sun.com/j2se/1.3/docs/api/java/lang/reflect/Proxy.html">JDK documentation for the Proxy class</a>. <br />
+Basically, they allow defining a class at runtime that implements any interfaces you want and funnels all its method calls to an InvocationHandler. All the InvocationHandler has to implement the generic <i>Object invoke(Object proxiedObject, Method method, Object[] args)</i> method.</p>
+
+<a name="more"></a>
+<p><b>Java uses of dynamic proxy classes</b><br />
+<u>Interface tracing</u><br />
+Proxies can be used for method tracing, as shown <a href="http://www.jasonbock.net/javadynamicproxies.html">here</a>. <br />
+Note that only methods are proxied, not member variables (which can't be specified in interfaces anyway). But that means that you don't completely proxy the object and thus can't use a proxy to trace member variable access.<br />
+Although the code to add a proxy to a class is really small <br />
+(something like <i>IPerson tracePerson = (IPerson)LogProxyFactory.logObject(new Person("Jason", "Bock", 29));</i>), as Jason states, it may be inconvenient. But he doesn't have a solution to avoid it.</p>
+
+<p><u>Delegates implementation</u><br />
+Delegates can be emulated thru the use of reflection and dynamic proxy classes. Find it in O'Reilly's <a href="http://www.onjava.com/pub/a/onjava/2003/05/21/delegates.html">"A Java Programmer Looks at C# Delegates"</a>.<br />
+Although it is interesting to see how it is done, I think the overhead of using this framework just to bridge the "delegates vs. inner class" gap is overkill. Especially since interfaces are still needed for the compile-time type-safety (see scenario 2.). This remains an emulation and feels like one.</p>
+
+<p>I haven't looked at the source yet, but CGLib has an implementation of <a href="http://cglib.sourceforge.net/apidocs/net/sf/cglib/MethodDelegate.html">method delegates</a>. According to <a href="http://sixlegs.com/blog/java/delegates-history.html">Chris</a> it still relies on reflection, but should eventually be switched to runtime byte-code emission via BCEL (Byte Code Engineering Library), for a better invocation performance, traded against a slower creation.</p>
+
+<p><u>Others uses</u><br />
+Here are some quick links to other uses of dynamic proxies in Java:<br />
+A cleaner way to <a href="http://www.gnufoo.org/junit/">invoke tests in a JUnit extension: JFunc</a>.<br />
+<a href="http://www.javaworld.com/javaworld/jw-11-2000/jw-1110-proxy.html">Data type abstraction and access control</a>.<br />
+<a href="http://java.sun.com/products/jfc/tsc/articles/generic-listener2/">Generic event listeners</a>.</p>
+
+<p><br />
+<b>.NET dynamic proxy classes</b><br />
+A dynamic proxy generator or factory can be written in .NET using Reflection.Emit, as described <a href="http://www.dotnetguru.org/articles/dossiers/instrumentation/proxiesdynamiques.htm">here (sorry, link is in French)</a>.</p>
+
+<p><br />
+<b>Memoizing</b><br />
+Is there a way to implement a generic memoizing solution in .NET?</p>
+
+<p>I first thought that generics (in C# 2.0 and already available in Rotor and Mono) and delegates should allow for an even cleaner implementation of a re-usable memoizing component. You would make a delegate out of the method you want to memoize and then use a memoizer object using the method's delegate as it's parameterized type.<br />
+But trying to lay down the interface for the Memoizer, this seems like a tricky problem. Any suggestions?</p>
+
+<p>Ideally we'd want the Memoizer to take a method delegate and return a memoized delegate. The Memoizer object would hold a cache using the delegate's return type as its parameterized type.<br />
+There are two problems:<br />
+- how to type parameterize the cache so that it matches the delegates return value type?<br />
+- how to have the Memoizer expose and implement a method with the same interface as the delegate?</p>
+
+<p><u>Type parameterizing the cache</u><br />
+I can think of two approaches for this. Either there should be a way of make a reference to a delegates return type or there should be a way to constrain a delegates return type to match some other type.<br />
+For example, the first solution would mean writing <i>Memoizer&lt;DelegateType></i> and <i>Cache&lt;DelegateType.returnType> map;</i> <br />
+The other solution would be having <i>Memoizer&lt;DelegateType, CacheType> memoizer</i> with some way of enforcing that DelegateType's return type would be CacheType. I remember reading somewhere about constraining delegates interfaces, but I couldn't find it again. I'll add it here if I do.</p>
+
+<p><u>Expose a method with parameterized signature</u><br />
+The problem is to expose and implement a new method with the parameterized DelegateType's signature. A possible solution might be to have something like a runtime-generated dynamic proxy that would match a delegate instead of an interface as we have seen in the case of Java.<br />
+This means the Memoizer would implement the InvocationHandler interface and you would write <i>Proxy.newProxyInstance(&lt;DelegateType>, new Memoizer&lt;DelegateType>(origDelegate)</i>. All calls to this runtime generated delegate would be funneled (via some JIT trick) to the Memoizer's generic <i>object Invoke(object proxiedObject, MethodInfo method, object[] params)</i> where it could be handled using reflection.</p>
+
+<p><br />
+<b>Links</b><br />
+A set of introductory <a href="http://www.research.umbc.edu/~tarr/dp/lectures/DynProxies-2pp.pdf">slides on dynamic proxies in Java</a>.</p>
+
+<p>Another <a href="http://www.kuro5hin.org/story/2002/9/21/19225/2806">introduction to dynamic proxies in Java (Kuro5hin)</a>.</p>
+
+<p>A paper on <a href="http://ic2.epfl.ch/publications/documents/IC_TECH_REPORT_200317.pdf">extending dynamic proxies to support class proxying rather than just interface proxying</a>.</p>
+
+<span class="posted">Posted by Julien on August 25, 2003. <a href="http://blog.monstuff.com/archives/000098.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '98';
+        var disqus_url = 'http://blog.monstuff.com/archives/000098.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

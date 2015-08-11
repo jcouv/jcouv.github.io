@@ -1,0 +1,298 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Unittesting asynchronous methods</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000322.html" title="&quot;Inline IMDB ratings&quot; script" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000324.html" title="One-click video streaming from home server" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000323.html">
+<dc:title>Unittesting asynchronous methods</dc:title>
+<dc:description> How to unittest asynchronous methods in .Net? If you have encountered this situation, you probably wrote yourself a test harness which understands the asynchronous callback and can wait on either the callback(s) or a timeout. But like mock objects, writing such helpers objects quickly becomes tedious. I found a generic solution to avoid most of this repetitive code. The CallbackWaiter class generates your test harness, just like mock frameworks. You can browse the CallbackWaiter code or get the full project (including unittests and VS project files). This solution works for any .Net language. The same approach can easily be...</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2007-08-31T10:00:46-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000322.html">« "Inline IMDB ratings" script</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">August 31, 2007</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">Unittesting asynchronous methods</h2>
+
+<p><a href="http://www.flickr.com/photos/11431505@N00/1279665755/" border="0"><img src="http://farm2.static.flickr.com/1316/1279665755_a5a7cc64e4_m.jpg" alt="Boomerang catch" style="float: right; padding: 10px 0px 0px 20px; width:93; height:100; border: none" /></a></p>
+
+<p>How to unittest asynchronous methods in .Net?  </p>
+
+<p>If you have encountered this situation, you probably wrote yourself a test harness which understands the asynchronous callback and can wait on either the callback(s) or a timeout.<br />
+But like mock objects, writing such helpers objects quickly becomes tedious. <br />
+ <br />
+ <br />
+I found a generic solution to avoid most of this repetitive code. The CallbackWaiter class generates your test harness, just like mock frameworks. <br />
+You can <a href="http://jcouv.googlecode.com/svn/trunk/CallbackWaiter/src/">browse the CallbackWaiter code</a> or get the <a href="http://code.google.com/p/jcouv/wiki/CallbackWaiter">full project</a> (including unittests and VS project files).</p>
+
+<p>This solution works for any .Net language. The same approach can easily be implemented in Javascript and probably any dynamic language. I'm not sure about Java though (does it support runtime-defined methods?).</p>
+
+<a name="more"></a>
+<p> <br />
+<h4>Setting a goal:</h4> I started by imagining what my ideal unittest would look like, using the "magical thinking" approach:<br />
+<div class="code">    [Test]<br />
+    public void TestAsyncMethod()<br />
+    {<br />
+&nbsp;&nbsp;        MyAsyncService service = new MyAsyncService();</p>
+
+<p>&nbsp;&nbsp;        EventHandler<MyEventArgs> magicHandler = <br />
+&nbsp;&nbsp;&nbsp;&nbsp;            new MagicHandler<MyEventArgs>();</p>
+
+<p>&nbsp;&nbsp;        service.CallbackEvent += magicHandler;<br />
+&nbsp;&nbsp;        service.DoAsyncWork(3); // Start the asynchronous work. Doesn't block.</p>
+
+<p>&nbsp;&nbsp;        int timeout = 1000;<br />
+&nbsp;&nbsp;        MyEventArgs returnValue = magicHandler.Wait(timeout); // Wait for either the event or a timeout</p>
+
+<p>&nbsp;&nbsp;        Assert.AreEqual(3, returnValue.result); // Get the information channeled by the event.<br />
+    }</div></p>
+
+<p>The trouble is implementing the "MagicHandler" ;-)</p>
+
+<p><h4>RealProxy, a dead-end:</h4> To implement the MagicHandler, I first looked at the <a href="http://msdn2.microsoft.com/en-us/library/system.runtime.remoting.proxies.realproxy.aspx">RealProxy class</a>, since it is used by nMock to write generic objects. <br />
+RealProxy has the ability to camouflage as a different type (see the <a href="http://msdn2.microsoft.com/en-us/library/system.runtime.remoting.proxies.realproxy.gettransparentproxy.aspx">RealProxy.GetTransparentProxy</a> method), intercept any calls that it receives and funnel them through a generic <a href="http://msdn2.microsoft.com/en-us/library/system.runtime.remoting.proxies.realproxy.invoke.aspx">IMessage Invoke(IMessage myIMessage)</a> method that you have to implement.</p>
+
+<p>But it turns out that it RealProxy can only emulate MarshalByRef objects. That unfortunately does not work to write a generic delegate, since the Delegate base class is not a MarshalByRef object.</p>
+
+<p><h4>A working solution:</h4> Another approach that looked promising is using the <a href="http://msdn2.microsoft.com/en-us/library/exczf7b9.aspx">DynamicMethod</a> API, introduced in .Net 2.0, which allows to emit methods at runtime.</p>
+
+<p>After running into the <a href="http://geekswithblogs.net/kraki/archive/2006/03/29/73743.aspx">same issues</a> as Rich McColllister and Mike Woodring, including the weird <a href="http://msdn2.microsoft.com/en-us/library/56b2hk61(VS.80).aspx">CS0702 error</a>, I ended-up using the same workarounds.</p>
+
+<p>After validating that it is possible to generate dynamic methods and hook them to the generic class, I ironed out some smaller issues: match target signature, record event parameters, support value type parameters (code crashes without a boxing IL instruction), make the class thread safe and support multiple callbacks.</p>
+
+<p><h4>Some tricks learned:</h4> <ul><li>When you write code that needs to emit IL, you should write examples of the desired code in C#, compile it and look at the IL generated by the compiler (using <a href="http://msdn2.microsoft.com/en-us/library/f7dy01k1(VS.71).aspx">ildasm</a>) as an example. </li><li>When working with DynamicMethods, Haibo Luo's <a href="http://blogs.msdn.com/haibo_luo/archive/2006/11/16/take-two-il-visualizer.aspx">IL visualizer</a> is a useful VS.Net extension which let's you conveniently peek at the IL composing DynamicMethod objects. </li><li>If you generate bad IL, the CLR may throw an exception (InvalidProgramException) or crash. Both cases are hard to troubleshoot, as you get very little information as to what caused it (I wish the InvalidProgramException would tell you what is invalid about your program...). I would again recommend to compare your IL with some generated by the C# compiler. </li></ul></p>
+
+<p><h4>Update (2008/12/25):</h4> The Concurrency and Coordination Runtime (CCR) which started as a domain-specific toolkit (for robotics) is being opened up for general purpose. It allows you to deal with asynchrony very cleanly in your code, just like I was trying to achieve with the CallbackWaiter: the code that executes after the asynchronous call is in the same method that started it (no need for large delegates or separate methods). <br />
+But CallbackWaiter is obviously very specialized as it only deals with a single async call and has built-in logic for timeout. The CCR allows you to do that and much more.<br />
+Learn more with the <a href="http://channel9.msdn.com/pdc2008/TL55/">PDC2008 CCR presentation (video)</a> (the interesting part starts at 9:35).<br />
+</p>
+
+<span class="posted">Posted by Julien on August 31, 2007. <a href="http://blog.monstuff.com/archives/000323.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '323';
+        var disqus_url = 'http://blog.monstuff.com/archives/000323.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: HalfKeyboard software emulation</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000020.html" title="SSL sniffing on the client" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000022.html" title="Sub-Pixel Font Rendering (ClearType)" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000021.html">
+<dc:title>HalfKeyboard software emulation</dc:title>
+<dc:description>The HalfKeyboard is a one-handed keyboard, made and sold by Matias Corporation. Basically you can access a key from the &quot;missing&quot; half, by combining the corresponding mirrored key in the left half with the space bar. I wrote a windows software emulator for the HalfKeyboard, that gives you a similar functionality on a regular keyboard. Update (April 22nd, 2003): having received a legal notice from Matias Corporation, I have removed my program from my site (http://cvs.monstuff.com) until I get the issue sorted out. Update (April 23rd, 2003): the license offered by Matias Corporation doesn&apos;t seem to fit my program as...</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2003-03-07T23:17:26-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000020.html">« SSL sniffing on the client</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">March 07, 2003</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">HalfKeyboard software emulation</h2>
+
+<p>The HalfKeyboard is a one-handed keyboard, made and sold by <a href="http://www.halfkeyboard.com/">Matias Corporation</a>. Basically you can access a key from the "missing" half, by combining the corresponding mirrored key in the left half with the space bar.<br />
+I wrote a windows software emulator for the HalfKeyboard, that gives you a similar functionality on a regular keyboard.</p>
+
+<p><u>Update (April 22nd, 2003):</u> having received a legal notice from Matias Corporation, I have removed my program from my site (http://cvs.monstuff.com) until I get the issue sorted out.</p>
+
+<p><u>Update (April 23rd, 2003):</u> the <a href="http://blog.monstuff.com/archives/images/MatiasPublicLicenceVersion1.1.doc">license offered by Matias Corporation</a> doesn't seem to fit my program as it is restricted to non-system-wide applications. I am therefore removing all HalfKeyboard related functionality from my program and putting it back online (KeyCombo project). It's educational purpose remains as it shows the use of global system hooks in windows, but it's functionality is now limited to launching IE when the "space-1" keyboard combination is pressed and exit when "space-esc" is pressed, which I believe isn't covered by the <a href="http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&d=PALL&p=1&u=/netahtml/srchnum.htm&r=1&f=G&l=50&s1=5,288,158.WKU.&OS=PN/5,288,158&RS=PN/5,288,158">HalfKeyboard patent</a>. Other "space-&lt;key>" combinations are now let through as &lt;key> (instead of &lt;mirrored-key>) so that it doesn't mimic the HalfKeyboard functionality. Adding that mapping or more sophisticated ones is easy.</p>
+
+<a name="more"></a>
+<p>Here is the <a href="http://cvs.monstuff.com/cgi-bin/cvsweb.cgi/KeyCombo/">new project source location</a>. You can build it with VS.net.</p>
+
+<p>The code and the UI are not very advanced but the part that does the job (the Hook) uses some pretty interesting APIs from windows.</p>
+
+<p><b>Intercepting all keyboard events</b><br />
+Basically, using <i>SetWindowsHookEx</i>, a keyboard event hook or filter function is added in the windows event processing chain. It receives all the incoming keyboard events and may choose to either let the be processed by the remaining of the chain (with <i>CallNextHookEx</i>) or drop them.<br />
+A trick is that <i>SetWindowsHookEx</i> sets a callback function that has to be in a dll (because it is a global hook, per the msdn doc). This is why the code is split into a Hook dll and a Launcher that only instantiates the Hook.</p>
+
+<p>I recently came onto this <a href="http://www.codeproject.com/useritems/HookMgr.asp">Code Project post</a> that details a re-usable solution to implementing global system hooks. It will avoid you rewriting most of the hooking code like I did. It relies on a template trick to share the hooking code while having a different set of static callback per implementation. It also mentions other uses for windows hooks.</p>
+
+<p><b>Emitting new keyboard events</b><br />
+Also to replace key combinations like SPACE-F (replaced by J), new keyboard events are emitted with <i>keybd_event</i>.<br />
+Artificial keyboard events (that don't actually come from the keyboard) can be let through with no processing as they have a special flag (<i>LLKHF_INJECTED</i>).</p>
+
+<p><b>Other uses</b><br />
+A similar event catching and event emitting can be done for the mouse events. I once wrote a <a href="http://cvs.monstuff.com/cgi-bin/cvsweb.cgi/Keyboard-Mouse/">little keyboard and mouse sharing prototype program</a> based on this principle. The events are caught on one computer, serialized and sent through the network and replayed on the second computer.</p>
+
+<p><u>Update:</u> I bet <a href="http://www.activewords.com/">ActiveWords</a> is a global hook on the keyboard ;-)</p>
+
+<p><u>Update:</u> Another Code Project article on hooks: <a href="http://www.codeproject.com/useritems/KeyHook.asp">"An All-Purpose Keyboard Hooker"</a>.</p>
+
+<p><u>Update (2006-02-20):</u> After receiving a couple of requests by email, I dug up the source code for KeyCombo and got it to compile again. Here is the <a href="http://blog.monstuff.com/archives/images/KeyCombo.zip">new zip file of the project</a>.<br />
+Furthermore, Daniel Ra pointed out to another solution to achieve similar results using the AutoHotkey utility, as described on <a href="http://www.autohotkey.com/forum/viewtopic.php?t=1326&postdays=0&postorder=asc&start=0&sid=37e877fbc829edfad61bb6f0dd0a21ab">this forum</a>. Thanks for the tip.</p>
+
+<span class="posted">Posted by Julien on March 07, 2003. <a href="http://blog.monstuff.com/archives/000021.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '21';
+        var disqus_url = 'http://blog.monstuff.com/archives/000021.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+<div class="comments-body">
+<p>Another one-handed keyboard (for cellphones):<br />
+<a href="http://www.chicagologic.com/overview.htm">http://www.chicagologic.com/overview.htm</a></p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Dumky</a> at August  4, 2003 04:11 PM</span>
+</div>
+<div class="comments-body">
+<p>Nice example hook code. I tried it as it is but the space bar was not working. I can see there are / will be some tricks involved to keep the space bar responsive for normal typing while avoiding false key translations for faster typists. I find I have a tendancy to start pressing the next key before the spacebar is completly release.</p>
+
+<p>John</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;johnmarshall4&#64;hotmail&#46;com">John Marshall</a> at September  7, 2003 04:34 PM</span>
+</div>
+<div class="comments-body">
+<p>The code project just published an article on using windows hooks from C#.<br />
+Check it out at <a href="http://www.codeproject.com/csharp/NetWin32Hooks.asp">http://www.codeproject.com/csharp/NetWin32Hooks.asp</a><br />
+The MSDNMag article that it is based on goes into more details of the interop part. Unfortunately they don't do system-wide hooks, only local ones.</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/archives/000059.html">Dumky</a> at October  3, 2003 09:49 PM</span>
+</div>
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

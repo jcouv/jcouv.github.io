@@ -1,0 +1,440 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Pen stroke recognition</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000011.html" title="Introduction" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000013.html" title="Custom C# ASP.NET webcontrols" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000012.html">
+<dc:title>Pen stroke recognition</dc:title>
+<dc:description>A couple of months back, before I bought my Tablet PC, I tried to understand how pen input recognition works. Not being overly ambitious I looked at single stroke character or Graffiti-like recognizers. The result of a week-end of tweaking is a C# winforms recognizer, that only requires the .NET SDK (no Tablet PC). Run the .Net demo....</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2003-02-19T22:55:10-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000011.html">« Introduction</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">February 19, 2003</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">Pen stroke recognition</h2>
+
+<p>A couple of months back, before I bought my Tablet PC, I tried to understand how pen input recognition works.<br />
+Not being overly ambitious I looked at single stroke character or Graffiti-like recognizers. The result of a week-end of tweaking is a C# winforms recognizer, that only requires the .NET SDK (no Tablet PC).<br />
+<a href="/archives/images/graffiti.jpg" ><img src="/archives/images/graffiti.jpg" border="0"/></a></p>
+
+<p><a href="/archives/images/MainForm.exe">Run the .Net demo</a>.</p>
+
+<a name="more"></a>
+<p><b>Intro</b><br />
+The two main categories of handwritting recognizers are single-stroke (unistroke) and multi-stroke.<br />
+Palm and PocketPC only support a simplified unistroke alphabet, as it is easier to recognize.<br />
+If you don't have Palm you can try the <a href="http://www.palmone.com/us/products/input/">online Graffiti demo</a> (requires Java).<br />
+On the other hand, Tablet PC has a multi-stroke regognizer, that support real-life handwritting (at least with my handwritting ;-).</p>
+
+<p><b>Google</b><br />
+After some search on the subject, I was able to find at least two documented methods of recognizing unistroke alphabets.<br />
+One is base on the Rubine algorithm, which I didn't get to understand very well. <br />
+The other is based on the representation of a stroke as a serie of directions. I don't know the name for this algorithm, I call it the gesture recognizer, as I found it used for this purpose. </p>
+
+<p><b>The gesture recognizer</b><br />
+In this model, a stroke is represented by a serie of directions (Up, Up-and-Left, Left,...).<br />
+The reference strokes are represented as a sequence of directions as well, or even as a regex of directions (Up Up-and-Left? Left).</p>
+
+<p>After being normalized to this format, it is easy to compare an input with each reference letter to find out which one matches.</p>
+
+<p>The Mozilla gesture recognizer uses this model and its source code can be found on the <a href="http://www.mozdev.org/source/browse/optimoz/mozgest/mozgest/content/">Mozilla CVS web</a>. The code contains some good info in <a href="http://www.mozdev.org/source/browse/optimoz/mozgest/mozgest/content/gestures.js">gestures.js</a> and <a href="http://www.mozdev.org/source/browse/optimoz/mozgest/mozgest/content/gestimp.js">gestimp.js</a>.</p>
+
+<p>I did not experiment with this method, but would expect it to be rather cheap computationally. Also I wonder if it is powerful enough to recognize a full Graffiti-like alphabet.</p>
+
+<p><b>Graffiti demo</b><br />
+After finding the <a href="http://www.palmone.com/us/products/input/">Graffiti demo applet</a> I started reverse engineering it and decompiling it.<br />
+The demo is simple enough and it doesn't contain many classes. So method by method I went through the decompiled code and figured out the algorithm, commenting out the code and renaming variables to make sense.</p>
+
+<p>The principle for the Graffiti demo is that every stroke is normalized by bringing it back into a unit square and with a constant number of interpolations. The reference alphabet is also normalized.<br />
+Then the input stroke is compared to each reference stroke, by computing the distance between them, point by point.<br />
+The reference stroke that is found to be the closest is the match.<br />
+A manual refinement step is then applied to improve the result for letters that looks alike (like L and h, or D and P).</p>
+
+<p><b>Installing C# Graffiti</b><br />
+First, if you want to try my version of the Graffiti recognizer, go to my cvs repository and download <a href="http://cvs.monstuff.com/cgi-bin/cvsweb.cgi/Graffiti/MainForm.cs">MainForm.cs</a>. <u>Update:</u> CVS is down (I only have a web hosting solution for now), so I made a copy of <a href="/archives/images/MainForm.cs">MainForm.cs</a>, that you can download.</p>
+
+<p>Then run <b>csc MainForm.cs</b>.<br />
+You'll get a MainForm.exe executable that you can run. Try drawing <a href="http://www.palm.com/products/input/Palm_Graffiti.pdf">Graffiti symbols</a> in the form.<br />
+The Graffiti alpahabet that I used is slightly different than Palm's, but most letters are the same. The C# Graffiti also contains a digit recognizer but you need to change the code a little bit to use it.</p>
+
+<p><b>C# Graffiti code details</b><br />
+In terms of improvements, I cleaned up the code so that it should be easier to have a recognizer for letters, one for digits and also to add custom alphabets.</p>
+
+<p>There is also one thing that is bad with the Graffiti demo: it always finds a match, whatever you draw in. To resolve this, I added a constraint verification phase at the end of the recognition phase, that verifies that if an <b>A</b> was matched, the ends of the stroke should be in the lower left quadrant and in the lower right quadrant, for example. Other types of constraints are applied on a case by case basis, like the directory of the ends: the ends of <b>C</b> should point toward the right, for example.<br />
+Also there is another restriction on the quality of the matches: if the distance between the stroke and the matched letter is greater than a certain threshold, the match is discarded.</p>
+
+<p><b>Future</b><br />
+Overall I am pretty happy with the result. But I recently got a Tablet PC, which  includes the PocketPC recognizer in addition the multi-stroke recognizer, and for some reason I find it pretty inaccurate and uncomfortable.<br />
+So I plan on porting my C# recognizer to the <a href="http://www.tabletpctalk.com/developer/tabletReco/index.shtml">Ink API for custom recognizers</a> for Tablet PC, someday.<br />
+The ultimate feature that I find missing for Tablet PCs is some way of actually programming using the pen. Using heavy auto-completion with some heuristics  and improved UI (most common completions should be easy to reach), automatic code beautifying and some smart shortcuts (IF should directly display an extra pair of parenthesis and curly brackets), it should be possible to minimize the typing required.</p>
+
+<p>I hope you have fun with stroke recognition,<br />
+Dumky</p>
+
+<p>Some more related links:<br />
+<a href="http://www.mit.edu/people/cadet/strokes-algorithm.html">Another stroke recognition engine, used in Emacs</a></p>
+
+<p><u>Update:</u> Here's the location for the new <a href="http://www.palmone.com/us/products/input/">Palm Graffiti page</a>. It has a demo applet for Graffiti 2 as well.</p>
+
+<span class="posted">Posted by Julien on February 19, 2003. <a href="http://blog.monstuff.com/archives/000012.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '12';
+        var disqus_url = 'http://blog.monstuff.com/archives/000012.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+<div class="comments-body">
+<p>The Metropolis keyboard, another stylus based text input solution, based on an optimized virtual keyboard:<br />
+<a href="http://www.almaden.ibm.com/u/zhai/papers/Softkeyboard/UISTCamera.pdf">http://www.almaden.ibm.com/u/zhai/papers/Softkeyboard/UISTCamera.pdf</a></p>
+
+<p>Other papers by Shumin Zhai:<br />
+<a href="http://www.almaden.ibm.com/u/zhai/publications.html">http://www.almaden.ibm.com/u/zhai/publications.html</a></p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Dumky</a> at June 22, 2003 07:44 PM</span>
+</div>
+<div class="comments-body">
+<p>Here is another unistroke alphabet similar to Graffiti, called EdgeWrite. Its specificity is that it constraints the alphabet into a square, by adding a square hole on the input surface. <a href="http://www.cs.cmu.edu/~jrock/pubs/uist-03.pdf">http://www.cs.cmu.edu/~jrock/pubs/uist-03.pdf</a></p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Dumky</a> at July 30, 2003 11:03 AM</span>
+</div>
+<div class="comments-body">
+<p>Hello,</p>
+
+<p>I would like to download your Graffiti-like application. But I can't ! Please help me...</p>
+
+<p>Thanks</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/archives/000012.html">s-cls</a> at February  3, 2004 02:01 AM</span>
+</div>
+<div class="comments-body">
+<p>CVS is down for now (I don't have a hosting solution yet). I copied MainForm.cs so it is now directly available via <a href="http://blog.monstuff.com/archives/images/MainForm.cs">http://blog.monstuff.com/archives/images/MainForm.cs</a></p>
+
+<p>Cheers,<br />
+Dumky</p>
+<span class="comments-post">Posted by: <a href="http:///archives/images/MainForm.cs">Dumky</a> at February  3, 2004 10:15 AM</span>
+</div>
+<div class="comments-body">
+<p>Hi Dumky<br />
+Indeed you have a nice work in developing this MainForm.cs! Well, I would be really thankful to you if you could make me available the .class file of the Graffiti demo applet.I am comfortable with java but can't understand C#.<br />
+Looking forward for your help...<br />
+Thanks</p>
+<span class="comments-post">Posted by: <a href="http:\\home.iitk.ac.in\student\piyushag">Piyush Agrawal</a> at March 24, 2004 11:16 AM</span>
+</div>
+<div class="comments-body">
+<p>Palm’s Java applet has moved to <a href="http://www.palmone.com/us/products/input/">http://www.palmone.com/us/products/input/</a><br />
+Unfortunately I haven’t kept the de-compiled java source code. But any java decompiler ( <a href="http://www.google.com/search?q=java+decompiler">http://www.google.com/search?q=java+decompiler</a> ) will do the trick. With the decompiled source, you need to figure out what each method does and rename the variables to something meaningful.</p>
+
+<p>I suggest you give a look at the C# code if you want to avoid this hassle, as C# really is very close to Java.<br />
+The algorithm is simple: normalize (break down into a given number of sub-parts fitting in a 1x1 square) a reference alphabet, do the same with the input stroke, compute the distance (sum of distances between the nth part of the reference letter with the nth part of the input stroke) and find which reference letter has the minimal distance. Then apply some manual tweaks/hacks to improve the recognition and eliminate letters than don’t make sense using some constraints.<br />
+</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Dumky</a> at March 24, 2004 05:24 PM</span>
+</div>
+<div class="comments-body">
+<p>Hi Dumky,</p>
+
+<p>I can't seem to figure out how to decompile the java applet from the Palm page... and I don't know how to convert the C# code in java... </p>
+
+<p>Could you please help??</p>
+
+<p>Thanks</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;2fau&#64;qlink&#46;queensu&#46;ca">Lisa</a> at October 25, 2004 02:43 PM</span>
+</div>
+<div class="comments-body">
+<p>I am also intrested in obtaining or decompiling the java source code from the Graffiti applet but I am unable to retrive the code from the web site... PLEASE HELP<br />
+Thank YOu </p>
+<span class="comments-post">Posted by: <a href="mailto&#58;adriansuszko&#64;rogers&#46;com">Adrian</a> at October 25, 2004 05:54 PM</span>
+</div>
+<div class="comments-body">
+<p>Hi Lisa and Adrian,</p>
+
+<p>Searching on Google with <a href="http://www.google.com/search?q=java+decompiler">http://www.google.com/search?q=java+decompiler</a> you can find a couple of good de-compilers.<br />
+I think that I used DJ.<br />
+You first need to download the class or jar file from the Grafitti demo page. Then you run the decompiler on that file and you should get some java code. The code won't have nice function names or variable names though... so you have to figure out what each method is for, but the Grafitti 1 demo code is not very complex.<br />
+</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at October 26, 2004 10:22 AM</span>
+</div>
+<div class="comments-body">
+<p>I'm sorry i should have made myself more clear. I could not find the location of the Graffiti 1 demo code (class or jar). I was able to find the jar for the Graffiti 2 demo at www.palmone.com/us/images/products/basics/graffiti2/PalmG2Demo.jar<br />
+and I decompiled the classes. The java code had several goto errors in it but i got what seems like a crippled version to run. I would much rather look at the code for the Graffiti 1 demo though as it seems to be somewhat simpler. If you know where the .jar is located now that would be wonderful. Otherwise I think i will try to use the C# code to write a java program.</p>
+
+<p>Thanks Again</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;adriansuszko&#64;rogers&#46;com">Adrian</a> at October 26, 2004 12:15 PM</span>
+</div>
+<div class="comments-body">
+<p>Adrian, I tried to repeat my steps and de-compile the demo again (using DJ) and I ran into the same problem, trying to figure out which class implements the demo.<br />
+It turns out that the Graffiti 1 demo class is not in the jar file. Instead it is located at <a href="http://www.palmone.com/us/products/basics/graffiti/GraffitiRecognizer.class">http://www.palmone.com/us/products/basics/graffiti/GraffitiRecognizer.class</a> (the url of the demo page is used as the base for the GraffitiRecognizer.class applet).</p>
+
+<p><br />
+Hope that helps,<br />
+Julien</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/archives/images/MiniMediaPlayer.wmp10.src.zip">Julien</a> at March 14, 2005 05:35 PM</span>
+</div>
+<div class="comments-body">
+<p>Julien,</p>
+
+<p>You said, "So I plan on porting my C# recognizer to the Ink API for custom recognizers for Tablet PC, someday." in this blog.  Have you made any attempts at porting to the Tablet PC SDK?  I read the article by Casey Chestnut that you referenced, where he extends the RecoDLL example distributed with the SDK.  <a href="http://www.tabletpctalk.com/developer/tabletReco/index.shtml">http://www.tabletpctalk.com/developer/tabletReco/index.shtml</a></p>
+
+<p>The full source code is not listed, and a lot is left to inference with statements like: "Coded it to do a full recognition with sample code available from the SDK documentation."<br />
+ I can't get the CreateContext() and AddStroke() methods to fire.  It's a nice backgrounder on Custom Recognizers.  </p>
+
+<p>Larry O'Brien has another excellent "How To" article on Shape Recognition.  Again, "(Source code included.)" is stated at the beginning of the article.  Apparently the link to the source at the end of the article has been removed.</p>
+
+<p>The Leszynski Group probably has the best, freely available recognizer engine -- inShape.  Only, you have to bug them everytime you want a new shape.  They maintain a proprietary library.  Also, it's totally not supported.  The download says the eval period has expired after only 1 day!  I have yet to get a response back for a new evaluation or even to purchase a license for the thing.</p>
+<span class="comments-post">Posted by: <a href="http://www.powware.com">nhlpens66</a> at May 26, 2005 12:14 PM</span>
+</div>
+<div class="comments-body">
+<p>hello sir,<br />
+ <br />
+I, yaser irfan, am studying final year engineering in the feild of I.T.<br />
+I am doing my final year project,which consists of writing a software program to detect shapes and thus objects in images using C#.net.<br />
+I named the project as Robo-Vista. I am new to C#.</p>
+
+<p>My approach for the project is as follows:<br />
+we need to train the system with the image of the shape to be identified using neural network and then provide the sytem with the image from which the trained shape is to be recognised.<br />
+ <br />
+The deadlines for my project are near. The recognition part is ok but still i do not have a neural net to train the images. thus i request you to help me out with such kind of neural net.<br />
+ <br />
+with lot of hope,<br />
+yaser irfan<br />
+yaserirfan@gmail.com<br />
+ </p>
+<span class="comments-post">Posted by: <a href="mailto&#58;yaserirfan&#64;gmail&#46;com">yaser irfan</a> at February 11, 2006 06:15 AM</span>
+</div>
+<div class="comments-body">
+<p>Yaser,<br />
+I won't be able to help you much, as my knowledge of neural networks is still limited and I have little spare time. <br />
+You should check out The Code Project, which is a cool website with a lot of good articles. I seem to remember a couple of them related to neural networks in C#.<br />
+</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at February 20, 2006 11:35 AM</span>
+</div>
+<div class="comments-body">
+<p>Hi I'm working on a project, which has involved developing a gesture engine, and I think what you have done sounds interesting and very useful.</p>
+
+<p>I have tried your graffiti C# code. Excellent.<br />
+Myself, I have been using JavaStroke, which is a version of Libstroke which I ported to VB6 :/ so I could use the engine native on the win32 platform.  I also ported the gesture engine to C# (Java and C# are very similar so it was very straightforward). But your version of Graffiti is much more robust and accurate than the versions I have been using.</p>
+
+<p>Anyway wanted to acknowledge your efforts. Also you to have an interest in gesture so I though I'd drop in my ten penneth.</p>
+
+<p>There is a company called Sensiva.com that do a program called symbol commander, I love it and use it lots. Also there is Stroke It. But I guess you know about these. </p>
+<span class="comments-post">Posted by: <a href="mailto&#58;james&#64;cityzen451&#46;com">James Hudson</a> at April 27, 2006 07:15 AM</span>
+</div>
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

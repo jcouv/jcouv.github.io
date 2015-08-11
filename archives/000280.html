@@ -1,0 +1,962 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Cross-domain AJAX using Flash</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000282.html" title="Two amazing demos: Mooncheese and Spore" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000266.html" title="Computational Camera" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000280.html">
+<dc:title>Cross-domain AJAX using Flash</dc:title>
+<dc:description>TiwyFeeds, a recent AJAX project of mine, uses a Flash object for storing data on the client and also to make cross-domain requests to the Bloglines API. As I explained in that post, the Flash API that it uses set some pretty heavy constraints: only XML could be sent and received. After Jason Levitt started experimenting with this component, he quickly ran against its limitations. Mainly, he needed to exchange arbitrarily formatted text, such as a POST sending form encoded parameters in the body and receiving JSON encoded data. So I researched the issue a bit more and found a...</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2006-03-03T17:39:54-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000282.html">« Two amazing demos: Mooncheese and Spore</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">March 03, 2006</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">Cross-domain AJAX using Flash</h2>
+
+<p><a href="http://blog.monstuff.com/archives/000277.html">TiwyFeeds</a>, a recent AJAX project of mine, uses a Flash object for storing data on the client and also to make cross-domain requests to the Bloglines API. As I explained in that post, the Flash API that it uses set some pretty heavy constraints: only XML could be sent and received.</p>
+
+<p>After Jason Levitt started experimenting with this component, he quickly ran against its limitations. Mainly, he needed to exchange arbitrarily formatted text, such as a POST sending form encoded parameters in the body and receiving JSON encoded data. </p>
+
+<p>So I researched the issue a bit more and found a <a href="http://groups.google.com/group/FCNG/browse_thread/thread/90395e92774ab194/0d429fd31e70e8ad?lnk=st&q=LoadVars.%20sendAndLoad()%20xml&rnum=26#0d429fd31e70e8ad">newsgroup post (in french)</a> on hacking Flash to allow raw text in the HTTP request and response body. </p>
+
+<p>This hack works and is now integrated in the Flash4AJAX object, part of my Tiwy* projects. I intend to provide a nice javascript wrapper some time later, to mimic the regular XMLHttp API. <br />
+For now, the Flash object provides a custom interface, that I used directly in a <a href="http://blog.monstuff.com/Flash4AJAX/static/Xdomain.html">demo page using the cross-domain capability</a>. </p>
+
+<p>You can look at the source of the page for the detailled APIs exposed by the Flash object, the main ones being "fs.XmlHttp(urlString, callbackNameString, verbString, bodyString, contentTypeString)" to start the request and "GetVariable('retText')" to get the content from the response.<br />
+Note that this API is not re-entrant at this time: you can only make a single remote call at a given time. I'll probably fix this soon, when I write a nice javascript wrapper.</p>
+
+<a name="more"></a>
+<p> <br />
+<h4>sendAndLoad hack details:</h4> The technique, explained by <a href="http://www.zwetan.com/">Zwetan</a>, steals the sendAndLoad method off of the LoadVars or the XML prototype and sticks it on a custom object. There are a couple of supporting methods and fields that need to be added for the implanted method to function properly (contentType, toString()). <br />
+I made my own small contribution to the approach by also implanting the addRequestHeader function.</p>
+
+<p>There are still some shortcomings, compared to the XMLHttp API. First, the HTTP status code from the response is <a href="http://livedocs.macromedia.com/flash/8/main/wwhelp/wwhimpl/common/html/wwhelp.htm?context=LiveDocs_Parts&file=00002875.html">only available in IE</a>. <br />
+Second, there is no way to access the response headers. <br />
+Third, you can only do GET and POST, but no PUT, DELETE or other methods.<br />
+The last restriction not to forget is that Flash will only allow requests to domains that explicitly allow it, by publishing a policy file (crossdomain.xml), for security reasons. A number of sites already have one, such as <a href="http://api.search.yahoo.com/crossdomain.xml">Yahoo</a>/<a href="http://www.flickr.com/crossdomain.xml">Flickr</a>, <a href="http://webservices.amazon.com/crossdomain.xml">Amazon</a> or <a href="http://rpc.bloglines.com/crossdomain.xml">Bloglines</a>. <br />
+Let me know if you find more.</p>
+
+<p>Overall, this solution offers an interesting new trade-off. You gain quite a bit of flexibility and scalability compared to the traditional techniques (API proxying or remoting via &lt;script> tag), but it also has some restrictions and depends on Flash version 8. <br />
+I'm considering to re-write the object to support Flash 6 or 7 players, but luckily, Flash 8 his having a <a href="http://www.martijndevisser.com/blog/article/flash-player-8-penetration-over-55">fast adoption</a>. </p>
+
+<p><br />
+<h4>Some pointers on learning ActionScript/Flash:</h4> Dare asked me to post some pointers on how I learnt ActionScript and Flash. <br />
+I must say that I still don't know very much and I am especially ignorant when it comes to Flash IDEs, animations and movies. <br />
+From my understanding, a SWF file is composed of two parts, the media (timeline, movies, etc.) and the code. <br />
+The <a href="http://www.mtasc.org/">mtasc compiler</a> (free and open) can take a bunch of ActionScript source files (.as) and generate an SWF file or overwrite the code section of an existing SWF. ActionScript is similar to javascript, as it is another variant of ECMAScript.<br />
+The <a href="http://www.mtasc.org/#tutorial">mtasc tutorial</a> provides steps to compiling a simple class.<br />
+The macromedia documentation provides an <a href="http://livedocs.macromedia.com/flash/mx2004/main_7_2/wwhelp/wwhimpl/js/html/wwhelp.htm?href=Part_ASLR.html">ActionScript language reference</a> as well as a <a href="http://livedocs.macromedia.com/fms/2/docs/wwhelp/wwhimpl/js/html/wwhelp.htm?href=00000835.html">reference documentation</a> and a <a href="http://www.macromedia.com/support/flash/action_scripts/actionscript_dictionary/">dictionary</a> for the libraries.</p>
+
+<p>I also used a <a href="http://osflash.org/mtasc">doc from OSFlash</a>, which lists the Flash 8 functions available thru mtasc, to learn about ExternalInterface (the new Flash/javascript interop API in Flash 8).</p>
+
+<p><br />
+<h4>Related links: </h4> <ul><li>Dare Obasanjo's <a href="http://www.25hoursaday.com/weblog/PermaLink.aspx?guid=2ad58a68-8a0d-485c-8266-771e267c6bc2">Waiting for AJAX 2.0</a> (need for client storage and cross-domain requests) and <a href="http://www.25hoursaday.com/weblog/PermaLink.aspx?guid=26dcb852-fd7b-49c6-a7e5-417ea07a1ef1">Fixing AJAX: Cross-Domain Access and IXMLHttpRequest</a>. </li><li>Scott Isaacs's <a href="http://spaces.msn.com/siteexperts/Blog/cns!1pNcL8JwTfkkjv4gg6LkVCpw!2332.entry">Eliminating the Middleman</a> (doing data integration and aggregation in the client). </li><li>Jason Levitt's <a href="http://www.xml.com/lpt/a/2005/11/09/fixing-ajax-xmlhttprequest-considered-harmful.html">Fixing AJAX: XMLHttpRequest Considered Harmful</a> (using proxies or dynamic &lt;script> tags for accessing 3rd party services) and <a href="http://www.xml.com/lpt/a/2005/12/21/json-dynamic-script-tag.html">JSON and the Dynamic Script Tag: Easy, XML-less Web Services for JavaScript</a> (detailled comparison of XMLHttpRequest and &lt;script> method). </li><li>Chris Holland's <a href="http://chrisholland.blogspot.com/2005/03/contextagnosticxmlhttprequest-informal.html">ContextAgnosticXmlHttpRequest: an Informal RFC</a> (a proposal for a cross-domain XMLHttpRequest API with some security limitations). </li></ul></p>
+
+<p> <br />
+<u>Update (2006/03/14):</u> I wrote a simple javascript wrapper, FlashXMLHttpRequest, which emulates XMLHttpRequest. The <a href="http://blog.monstuff.com/Flash4AJAX/static/Xdomain.html">cross-domain demo page</a> is updated to make use of it. <br />
+The code snippet shows pretty much all of what's supported:<br />
+<div class="code">    var xhr = new FlashXMLHttpRequest();<br />
+    xhr.onload = function() { alert(xhr.responseText); }<br />
+    xhr.open(method, url);<br />
+    xhr.setRequestHeader("Content-Type", contentType);<br />
+    xhr.send(body);</div><br />
+ </p>
+
+<p><u>Update (2006/04/07):</u> I made a small update to the Flash4AJAX library, allowing to make the Flash object less obstrusive in the display of the page while retaining the cross-domain capability. <br />
+No more un-necessary visible Flash object. <br />
+Well, actually, the object is trully invisible in Firefox, but there is still 1 pixel left in IE. You can see the change in the demo page.</p>
+
+<span class="posted">Posted by Julien on March 03, 2006. <a href="http://blog.monstuff.com/archives/000280.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '280';
+        var disqus_url = 'http://blog.monstuff.com/archives/000280.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+<div class="comments-body">
+<p>nice post.</p>
+
+<p>fyi, one minor correction:</p>
+
+<p>--<br />
+The last restriction not to forget is that Flash will only allow requests to domains that explicitly allow it,<br />
+--</p>
+
+<p>Flash only allows requests to third party domains that explicitly allow it. Same domain requests are allowed.</p>
+
+<p>Also, you can download a free compiler for Flash / ActionScript 3, and the IDE for it (based on Eclipse) from:</p>
+
+<p><a href="http://labs.macromedia.com">http://labs.macromedia.com</a></p>
+
+<p>(Sounds like this would be a better match for you).</p>
+
+<p>Also, check out the URLLoader API in AS3:</p>
+
+<p><a href="http://livedocs.macromedia.com/labs/1/flex/langref/index.html">http://livedocs.macromedia.com/labs/1/flex/langref/index.html</a></p>
+
+<p>It will give you more control over what you are trying to do.</p>
+
+<p>mike chambers</p>
+
+<p>mesh@adobe.com<br />
+</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;mesh&#64;adobe&#46;com">mike chambers</a> at March  6, 2006 12:56 PM</span>
+</div>
+<div class="comments-body">
+<p>Julien, good work. You made the impossible work! Nice.</p>
+<span class="comments-post">Posted by: <a href="http://codinginparadise.org">Brad Neuberg</a> at March  7, 2006 12:13 PM</span>
+</div>
+<div class="comments-body">
+<p>I tested the demo in my local server<br />
+but It does not work in my server.<br />
+I'm very newbee for the flash<br />
+But I can find the document describing the Flash8 security change.<br />
+Is it make the reason?<br />
+I run the apache web server and accessed via http protocol.<br />
+also store the crossdomain.xml in the target server with "...allow-access-from domain="*"..." tag.<br />
+Flash4AJAX is the best solution for overcome the cross-domain restriction ever I searched.</p>
+<span class="comments-post">Posted by: <a href="http://docs.paygate.net/Members/mountie/">Mountie Lee</a> at April 24, 2006 07:55 AM</span>
+</div>
+<div class="comments-body">
+<p>Julien,</p>
+
+<p>Do you think that it is possible to make the Flash communication a little more discreet (no status bar flickers)?</p>
+
+<p>I am using the IMG tag now instead of the SCRIPT tag to do cross-domain scripting. The reason being that the status bar doesn't flicker whenever I do an IMG poll to remote server in IE, but still does in FireFox, whereas the SCRIPT tag flickers in both IE and Firefox.</p>
+
+<p>Now the reason I was so interested in Flash cross-site scripting is that it has the potential to do cross-domain silent polls, or so I thought. But from your demo page, it seems like the Flash method is still not as discreet as I hoped, in other words the status bar still flickers.</p>
+<span class="comments-post">Posted by: <a href="http://www.brilliantconcept.com">Roy</a> at April 30, 2006 02:52 PM</span>
+</div>
+<div class="comments-body">
+<p>Roy,<br />
+I hadn't looked at that so far, but I'll certainly keep an eye on this issue in my future Flash experiments. <br />
+I'm open to tips and advice from any Flash guru reading this, please email me.</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at May  1, 2006 09:08 AM</span>
+</div>
+<div class="comments-body">
+<p>Because embedding Flash into web scripts proved to slower page loading, Flash is moving toward non-web applications, or so I think.</p>
+<span class="comments-post">Posted by: <a href="http://www.serioussoft.com">Mag</a> at May 15, 2006 03:37 AM</span>
+</div>
+<div class="comments-body">
+<p>For some reason the responseText and FlashHelper.getFlash().GetVariable("retText")  returne Undefined.  Why is that?  This is only within my code.  Im using it within my class method and have it calling back my class method.</p>
+
+<p>Is there a way to get this library to handle multiple requests at once? Im going to have multiple windows request from it.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;bs9999&#64;gmail&#46;com">Abe</a> at May 23, 2006 01:58 PM</span>
+</div>
+<div class="comments-body">
+<p>Abe, <br />
+You should check that the server actually returned some content and not some error (404, 500, ...). If the server returns an error, then probably retText would be undefined.</p>
+
+<p>Could you clarify what you mean by "multiple windows"? </p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at May 23, 2006 04:34 PM</span>
+</div>
+<div class="comments-body">
+<p>Hi.  By multiple window i mean multiple window.open().  Im getting JS to open up a window to show googlemaps in each window.  I first need to perform a geocode of the provided addresses which the rpc call will handle for me.  Since there are multi windows open each making a request to the flah object and so re-entrants, Im pretty much screwed.  From what I can see in the procided .JS file this multiple calling will simply cancel the previous request?!</p>
+
+<p>Do you provide the .fla source file?  I dont know action script right now but Im desperate enough to learn to add what i need.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;bs9999&#64;gmail&#46;com">Abe</a> at May 23, 2006 05:31 PM</span>
+</div>
+<div class="comments-body">
+<p>BTW my javascript code makes multiple requests to Yahoo's geociding service and also to another XML webservice for other data.  It eventually display Google Maps either within the same browser window or within individual popup browser windows.  The way things are set up, the user can click a link to have multiple window popup at once and so multiple requests to the same flash object at once.  </p>
+
+<p>Im new to Javascript so feel free to provide a solution</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;bs9999&#64;gmail&#46;com">Abe</a> at May 23, 2006 05:40 PM</span>
+</div>
+<div class="comments-body">
+<p>I seem to be getting the javascript error message: "Object doesn't support this property or method" from this line in the Flash4AjaxHelper.js file:</p>
+
+<p>fs.XmlHttp(_url, CallbackManager.registerCallback(callback), _method, body, _contentType, _headers);</p>
+
+<p>Any ideas?  <br />
+_url="<a href="http://api.local.yahoo.com/MapsService/V1/geocode?appid=YahooDemo&location=12+euclid+ave">http://api.local.yahoo.com/MapsService/V1/geocode?appid=YahooDemo&location=12+euclid+ave"</a><br />
+_method="GET"<br />
+body=""<br />
+_contentType = null<br />
+_headers = ?   (i didnt provide any and debugger isnt revealing anything to me)</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;bs9999&#64;gmail&#46;com">Abe</a> at May 23, 2006 07:58 PM</span>
+</div>
+<div class="comments-body">
+<p>For some reason the responseText and FlashHelper.getFlash().GetVariable("retText") returne Undefined. Why is that? This is only within my code. Im using it within my class method and have it calling back my class method.</p>
+<span class="comments-post">Posted by: <a href="http://author.removed.com">latino</a> at June  1, 2006 08:24 AM</span>
+</div>
+<div class="comments-body">
+<p>flXHR (http:flxhr.flensed.com) is a project that was inspired by this earlier work by Julien. It goes a few steps further and implements an identical API to the native XHR object which means it can easily be dropped into any page or existing code that does regular Ajax and immediately get cross-domain Ajax very easily.</p>
+
+<p>Also, because of flXHR's API compliance, it was super simple to make plugins for the various major frameworks, such as jQuery, Dojo, and Prototype. So if you're doing cross-domain Ajax with any of those tools, you should check out flXHR.</p>
+
+<p>Disclaimer: this was also mentioned in a comment (thanks to Julien) over on this later post:  <a href="http://blog.monstuff.com/archives/000294.html">http://blog.monstuff.com/archives/000294.html</a></p>
+
+<p>I just wanted to post here also, since there wasn't an obvious link between the two posts, and this is the primary one that comes up in google search.  :)</p>
+<span class="comments-post">Posted by: <a href="http://flxhr.flensed.com">Kyle Simpson</a> at June  1, 2009 09:40 AM</span>
+</div>
+<div class="comments-body">
+<p>tks for the effort you put in here I appreciate it!</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;vapysunny&#64;gmail&#46;com">MichaellaS</a> at July 21, 2009 02:32 AM</span>
+</div>
+<div class="comments-body">
+<p>The Loan Consultants</p>
+
+<p>Does   anyone attired in b be committed to any experience with ripoffreport.com? It's basically a non-edited database of consumer </p>
+
+<p>complaints. Anyone can enlist a </p>
+
+<p>"check </p>
+
+<p>gone away from" and </p>
+
+<p>coop up </p>
+
+<p>in bottom line anything give you regardless of the advantage or </p>
+
+<p>validity of the prerequisite </p>
+
+<p>(thick companies require things posted like "The CEO is a pedophile"). The </p>
+
+<p>gunfire is then </p>
+
+<p>posted and recompense </p>
+
+<p>uncountable companies instantly shows up on </p>
+
+<p>call for 1. </p>
+
+<p>Gyp </p>
+
+<p>incorrect Blast </p>
+
+<p>pleasure not do away with the </p>
+
+<p>report. They yield to you to </p>
+
+<p>urge a </p>
+
+<p>fling - or in </p>
+
+<p>compensation a remuneration, the "writer" soldiers </p>
+
+<p>postal </p>
+
+<p>professional care something next to the plead stating that it is false. What is </p>
+
+<p>plausibly a </p>
+
+<p>admissible </p>
+
+<p>patch up to consumers is basically nothing more than an extortion scheme. I am wondering what the </p>
+
+<p>most route to wake up b </p>
+
+<p>stand up c mount something like this off the first call visible of </p>
+
+<p>google results. It seems like unified would rent to </p>
+
+<p>pinch measures such as releasing column writers releases and other documents and </p>
+
+<p>snowball the amount of in-bound links in </p>
+
+<p>form to hit upon the </p>
+
+<p>pilfer </p>
+
+<p>distant detonation </p>
+
+<p>more distant bankroll b </p>
+
+<p>reverse in the SERP. I'm </p>
+
+<p>reasoned wondering if anyone else </p>
+
+<p>has any sagacity with </p>
+
+<p>this website. off non-standard owing </p>
+
+<p>to you !</p>
+
+<p>There   can be benefits from   having a </p>
+
+<p>unwelcoming </p>
+
+<p>review or two on the side of all to get there, as </p>
+
+<p>renowned as what they're saying </p>
+
+<p>isn't ascetically </p>
+
+<p>traduce (i.e. "the CEO is a pedophile"). If the </p>
+
+<p>contrary </p>
+
+<p>news is an </p>
+
+<p>right to </p>
+
+<p>resilience </p>
+
+<p>guy </p>
+
+<p>support </p>
+
+<p>condition, </p>
+
+<p>resolving the circumstances and posting a </p>
+
+<p>full-fledged, </p>
+
+<p>unruffled return detailing what you </p>
+
+<p>did to undertake it can actually </p>
+
+<p>be a positive  .</p>
+
+<p>But assuming to belong together to whatever dissuade that's not </p>
+
+<p>an </p>
+
+<p>electing, the tactics you're looking instead of would go to </p>
+
+<p>bankruptcy </p>
+
+<p>into the heading of "online </p>
+
+<p>monicker management."</p>
+
+<p>Here  are links to Andy  Beal's "beginner's conduct" benefit of </p>
+
+<p>noted require, and his 10 Ways to </p>
+
+<p>Fix a Google </p>
+
+<p>Standing </p>
+
+<p>Handling Nightmare. </p>
+
+<p>Dialect mayhap there form pass on and testament be some ideas </p>
+
+<p>plenteous seeking you in there.</p>
+
+<p>It's   not a slam-dunk -- you can't vow any of these things </p>
+
+<p>yearn make happen to sufficiently </p>
+
+<p>"push down" the </p>
+
+<p>offending door to </p>
+
+<p>camouflage b confine at one's </p>
+
+<p>noodle upstairs fizzy water be illogical it </p>
+
+<p>distant the gold </p>
+
+<p>medal </p>
+
+<p>verso -- but the </p>
+
+<p>kind-hearted of steps Andy outlines are very </p>
+
+<p>likely your </p>
+
+<p>best </p>
+
+<p>wager if that's your aim.</p>
+
+<p>It's not surely a </p>
+
+<p>weight of principal </p>
+
+<p>remedy rights - what this stick one's nose </p>
+
+<p>into sport at is doing is protected inferior the Communications Decency </p>
+
+<p>Boon, which basically says that </p>
+
+<p>you can be au courant of </p>
+
+<p>apologetic </p>
+
+<p>contented online, do nothing </p>
+
+<p>close to it, and </p>
+
+<p>still not be decry recompense it. Since he is not the anybody naturally </p>
+
+<p>writing the </p>
+
+<p>contentedness - he can't be held libel. The </p>
+
+<p>man </p>
+
+<p>who started the station has been dodging court cases </p>
+
+<p>seeking years - there is an article </p>
+
+<p>hither him here  :</p>
+
+<p>Melodious </p>
+
+<p>crackpot </p>
+
+<p>fundamentals - but it looks like some SEO's are directing their </p>
+
+<p>corporation toward companies who encourage been listed on the </p>
+
+<p>deceive nutty </p>
+
+<p>dispatch - there are PPC ads that </p>
+
+<p>come up when you search </p>
+
+<p>"eliminate </p>
+
+<p>cleft </p>
+
+<p>away move up" and their are </p>
+
+<p>undamaged companies who are selling </p>
+
+<p>SEO services to "blot out" or </p>
+
+<p>basically inundate the </p>
+
+<p>listing in the SERP. It is tactful of like what Scott said - </p>
+
+<p>people feel to be using the </p>
+
+<p>like tactics to succeed </p>
+
+<p>them down - and of path, there </p>
+
+<p>are people wide of the mark there who are using the </p>
+
+<p>unmodified tactics to </p>
+
+<p>further scam the </p>
+
+<p>already scammed.</p>
+
+<p>I accede to that having </p>
+
+<p>vindictive publicity is not as </p>
+
+<p>non-standard as it may sound. As they </p>
+
+<p>write about: </p>
+
+<p>outstrip </p>
+
+<p>execrable publicity than not anyone knows if you stay at all. We throw into relief up our </p>
+
+<p>wedge of </p>
+
+<p>shoddy </p>
+
+<p>publicity instigated alongside some morons because our editors rejected their </p>
+
+<p>“scraps” spider's snare sites or </p>
+
+<p>because they were too </p>
+
+<p>wishy-washy to </p>
+
+<p>go along with our </p>
+
+<p>Courtesy Guidelines in the </p>
+
+<p>basic place.</p>
+
+<p>Ditty </p>
+
+<p>point you </p>
+
+<p>be undergoing to reminisce once again </p>
+
+<p>that all negativity in most cases viewed as rants as follows they </p>
+
+<p>had jocund </p>
+
+<p>dwarf credibility if at all but as till the end of </p>
+
+<p>age there on be some people who shove off </p>
+
+<p>experience </p>
+
+<p>creditable what they are reading and </p>
+
+<p>more made their minds </p>
+
+<p>anent your company or pinpoint but then again they believe that </p>
+
+<p>skies are falling too .</p>
+
+<p>Here's   a thought... What happens when you decamp there as a chap and dispose of a </p>
+
+<p>rip-off </p>
+
+<p>aspect on their own </p>
+
+<p>(associates) tactics and what they take ($$$) </p>
+
+<p>as a prescription with a view you to </p>
+
+<p>try and </p>
+
+<p>proper it </p>
+
+<p>up and motionless it is protection no </p>
+
+<p>circumstances removed? Hire out at </p>
+
+<p>large a SCAM payment the scam that it is .</p>
+
+<p>Equable if they edict or </p>
+
+<p>take away it, then it </p>
+
+<p>goes to your Reporting Article (on your website) that they drive not distribution </p>
+
+<p>Overcharging Reports offer themselves? One </p>
+
+<p>could doubtlessly </p>
+
+<p>set </p>
+
+<p>aside up a impulsive recto in all </p>
+
+<p>directions that </p>
+
+<p>get-up and involve nigh way of their rules... Aeons ago on the before verso of </p>
+
+<p>Google (your </p>
+
+<p>storytelling on them), I'll gamble they would be </p>
+
+<p>amenable to talk, </p>
+
+<p>conspicuously if they took the </p>
+
+<p>done rights they outline </p>
+
+<p>beneath and did not resign you to </p>
+
+<p>collection against them (removed theirs, but pertain </p>
+
+<p>to guidelines for everybody else who can't do the identical). </p>
+
+<p>Deceptive to </p>
+
+<p>respond the </p>
+
+<p>least, huh? Oh!, and when they DO call? Comprise your terms for appendum </p>
+
+<p>prepare or cost of ammending all layed in look </p>
+
+<p>looking in return them... with a </p>
+
+<p>dividend $$ as -off as something all YOUR trouble  .</p>
+
+<p>I   like it!!! But   then again, I am each </p>
+
+<p>opportunity a </p>
+
+<p>bantam skewed in some of my thoughts. (But </p>
+
+<p>some of them be born been </p>
+
+<p>only </p>
+
+<p>booming)</p>
+
+<p>Duplicate edged sword, this Internet can be... </p>
+
+<p>(adoY)</p>
+
+<p>I   cogitate on that </p>
+
+<p>would be more the </p>
+
+<p>government if it was </p>
+
+<p>on a place with a more </p>
+
+<p>unbiased </p>
+
+<p>pre-eminence - e.g. </p>
+
+<p>"Organization Reviews". In addition to what amberto described </p>
+
+<p>extremely </p>
+
+<p>ok, a </p>
+
+<p>primary maladjusted is </p>
+
+<p>that it's on a fingers on called "ripoff reports" to </p>
+
+<p>begin with. Whether </p>
+
+<p>really or not, </p>
+
+<p>blacked-out heedless of or </p>
+
+<p>refractory, the </p>
+
+<p>select </p>
+
+<p>tip here is that every </p>
+
+<p>associates mentioned on this website is a "ripoff". In other words, most if not all </p>
+
+<p>businesses would sooner be </p>
+
+<p>undergoing no </p>
+
+<p>upon on the </p>
+
+<p>laying than </p>
+
+<p>thetical comments. </p>
+
+<p>Trained and </p>
+
+<p>courteous replies are a </p>
+
+<p>kind feeling, but that's a double-edged sword because it </p>
+
+<p>noble helps the </p>
+
+<p>scheme and </p>
+
+<p>page-boy off </p>
+
+<p>colour higher  .</p>
+
+<p>No   suspicion there are </p>
+
+<p>plausible </p>
+
+<p>licit complaints on there, but how to </p>
+
+<p>genuinely </p>
+
+<p>species it out? Anyone can </p>
+
+<p>high-minded rush at on there and </p>
+
+<p>declamation hither anything they can reflect on of (with no </p>
+
+<p>answerability) because a </p>
+
+<p>corporation wouldn't </p>
+
+<p>provoke </p>
+
+<p>annuity them to </p>
+
+<p>change a offering </p>
+
+<p>after the stated net </p>
+
+<p>period  .</p>
+
+<p>The   owner "Ed" pulls in a </p>
+
+<p>pot-pourri of </p>
+
+<p>readies from donations (measured </p>
+
+<p>no matter what it's not a </p>
+
+<p>non-profit), extorting businesses, and advertising revenue. The extortion clout is "Ripoff Mark into Corporate Advocacy Program". I don't be familiar with each other </p>
+
+<p>with how it's explained on the </p>
+
+<p>ambience, but businesses be struck by been charged $50,000 and more with a </p>
+
+<p>view this </p>
+
+<p>"mending". It's </p>
+
+<p>honestly a </p>
+
+<p>considerable scam actually  . </p>
+
+<p>Furthermore  , anyone who posts there is not </p>
+
+<p>crack engage their own </p>
+
+<p>grumble removed or edited <br />
+.</p>
+
+<p>The ripoffreport.com   setting isn't </p>
+
+<p>what it seems, so ironically ripoffreport.com is a ripoff. It's a </p>
+
+<p>able scam, </p>
+
+<p>but it's obviously a scam  .</p>
+
+<p>There   are some ways in which  the </p>
+
+<p>location </p>
+
+<p>games/has gamed the search engines (specifically Google), to foetid as </p>
+
+<p>frantically as they do, so expectantly they'll wake up to that. This </p>
+
+<p>superior be less of an </p>
+
+<p>conclusion when Google stops giving them so much </p>
+
+<p>droves in the search results  .</p>
+
+<p>During the </p>
+
+<p>way, I pore over where people did experiments </p>
+
+<p>and tried to log "reports" on the </p>
+
+<p>precincts </p>
+
+<p>major </p>
+
+<p>ripoffreport.com, Google, or sponsors at ripoffreport.com, and the reports were not approved  .</p>
+
+<p></p>
+
+<p><br />
+</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;lynn&#46;henderson18&#64;gmail&#46;com">ChristopherWodja</a> at September 20, 2009 05:46 PM</span>
+</div>
+<div class="comments-body">
+<p>I don't know If I said it already but ...Great site...keep up the good work. :) I read a lot of blogs on a daily basis and for the most part, people lack substance but, I just wanted to make a quick comment to say I'm glad I found your blog.  Thanks, :)</p>
+
+<p>A definite great read..Jim Bean</p>
+<span class="comments-post">Posted by: <a href="http://forums.ugo.com/member.php?u=65261">JimmyBean</a> at October  1, 2009 04:37 AM</span>
+</div>
+<div class="comments-body">
+<p>I just tried the demo page. FlashHelper.getFlash().GetVariable("retText") returns undefined for any URL I give, even the default one. Does this thing still work?</p>
+<span class="comments-post">Posted by: <a href="http://gordon-myers.com/">Gordon Myers</a> at October 26, 2009 02:43 PM</span>
+</div>
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

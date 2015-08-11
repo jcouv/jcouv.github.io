@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd"> 
+
+<html>
+
+<head>
+	<title>FlashXMLHttpRequest demo</title>
+
+	<script type="text/javascript">
+		var djConfig = { isDebug: true /* , forceFlashComm: 8 */ };
+		
+		function $() {
+          var elements = new Array();
+
+          for (var i = 0; i < arguments.length; i++) {
+            var element = arguments[i];
+            if (typeof element == 'string')
+              element = document.getElementById(element);
+
+            if (arguments.length == 1)
+              return element;
+
+            elements.push(element);
+          }
+
+          return elements;
+        }
+
+	</script>
+	
+	<script type="text/javascript" src="../dojo-0.3.0-ajax/dojo.js"></script>
+    <script type="text/javascript" src="FlashXMLHttpRequest.js"></script>
+    
+	<script language="JavaScript">
+        InitFlash("flashLoaded");
+		
+		function flashLoaded(){
+	        var results = dojo.flash.comm.sayHello("Flash is locked and loaded!");
+	        dojo.debug(results);
+        }
+		
+		function javascriptSayHello(msg){
+			dojo.debug("javascriptSayHello");
+			
+			return "Hello from JavaScript, msg=" + msg;
+		}
+
+        function makeCall() {
+            var url = $("url").value;
+            var method = $("method").value;
+            var body = $("body").value;
+            var contentType = $("contentType").value;
+            
+            dojo.flash.comm.XmlHttp(url, "displayResponse", method, body, contentType);
+
+            $("response").value = "loading...";
+        }
+        
+        function displayResponse(text) {
+            $("response").value = text;
+        }
+        
+        function makeCall2() {
+            var url = $("url").value;
+            var method = $("method").value;
+            var body = $("body").value;
+            var contentType = $("contentType").value;
+
+            $("response").value = "loading...";
+
+            var xhr = new FlashXMLHttpRequest();
+            xhr.onload = function() { $("response").value = xhr.responseText; }
+            xhr.open(method, url);
+            
+            
+            // note: Content-Type is a special header (other headers are not supported yet)
+            xhr.setRequestHeader("Content-Type", contentType);
+            
+            xhr.send(body);
+        }
+        
+        function makeGetCall() 
+        {
+            var url = $("url").value;
+        
+            $("response").value = "loading...";
+
+            var xhr = new FlashXMLHttpRequest();
+            xhr.onload = function() { $("response").value = xhr.responseText; }
+            xhr.open("GET", url);
+            
+            xhr.send("");
+        }
+        
+	</script>	
+</head>
+
+<body>
+
+<form>
+URL: <input type="text" id="url" value="http://api.search.yahoo.com/ImageSearchService/V1/imageSearch?appid=YahooDemo&query=Madonna&results=2&output=json" size="100"/><br />
+Verb: <input type="text" id="method" value="POST" /><br />
+Body: <textarea id="body" rows="10" cols="100"></textarea><br />
+Content Type: <input type="text" id="contentType" value="application/x-www-form-urlencoded" size="50"/><br />
+<button onclick="makeCall(); return false;" value="Make HTTP request (raw API)">Make HTTP request (raw API)</button><br />
+<button onclick="makeCall2(); return false;" value="Make HTTP request (FlashXMLHttpRequest)">Make HTTP request (FlashXMLHttpRequest)</button><br />
+<button onclick="makeGetCall(); return false;" value="Make GET request (FlashXMLHttpRequest)">Make GET request (FlashXMLHttpRequest)</button><br />
+
+<br />
+<br />
+<textarea id="response" rows="20" cols="100"></textarea><br />
+
+</form>
+
+</body>
+
+</html>

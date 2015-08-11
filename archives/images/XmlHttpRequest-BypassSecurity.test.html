@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>XmlHttpRequest - Bypass Security test page</title></head>
+<body>
+<button onclick="DoRequest()">Do Request</button>
+<div id="output"></div>
+
+<script>
+function Output(txt) {
+    var div = document.getElementById("output");
+    div.innerHTML = txt;
+}
+
+function DoRequest() {
+    Output("hello");
+    
+    var xhr = new XMLHttpRequest();
+    var method = "GET";
+    var url = "http://google.com/";
+    xhr.open(method, url, true);
+
+    xhr.setRequestHeader("x-foo", "blah!!");
+    xhr.setRequestHeader("Content-type","text/xml; charset=utf-8");
+    xhr.setRequestHeader("SOAPAction", "http://www.msn.com/webservices/AddressBook/ABFindAll");
+
+    xhr.onreadystatechange = function() { Output("onreadystatechange"); } 
+    xhr.onload =  function() { Output(xhr.responseText); }
+    
+    xhr.send(null);
+}
+
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>

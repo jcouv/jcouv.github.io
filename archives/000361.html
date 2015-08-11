@@ -1,0 +1,306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Science of human action</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000359.html" title="Reactive programming in javascript and C#" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000362.html" title="Expectations and accountability in Economics" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000361.html">
+<dc:title>Science of human action</dc:title>
+<dc:description> I attended the Mises University 2009, a one-week seminar on Austrian school economics, earlier this month. One thing that struck me what the attention paid to epistemology. I would like to share some highlights of that topic. Encarta defines epistemology as &quot;theory of knowledge: the branch of philosophy that studies the nature of knowledge, in particular its foundations, scope, and validity&quot;. In other words, &quot;How do you know?&quot;. Back in college, the micro- and macroeconomics classes barely touched on the methodology. Because a large part of our education was natural sciences, we had little trouble accepting the positivist approach....</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2009-08-17T20:57:39-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000359.html">« Reactive programming in javascript and C#</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">August 17, 2009</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">Science of human action</h2>
+
+<p><a href="http://www.flickr.com/photos/ifijay/953664150/"><img src="http://farm2.static.flickr.com/1189/953664150_f5f5c2ff53_m.jpg" style="float: right; padding: 10px 0px 0px 20px; width:186; height:240; border: none"  alt="apple" /></a>  I attended the <a href="http://mises.org/events/110">Mises University 2009</a>, a one-week seminar on Austrian school economics, earlier this month. One thing that struck me what the attention paid to epistemology. I would like to share some highlights of that topic. </p>
+
+<p>Encarta defines epistemology as "theory of knowledge: the branch of philosophy that studies the nature of knowledge, in particular its foundations, scope, and validity". <br />
+In other words, "How do you know?".<br />
+ <br />
+ <br />
+Back in college, the micro- and macroeconomics classes barely touched on the methodology. Because a large part of our education was natural sciences, we had little trouble accepting the positivist approach. It progresses like physics: you use observation, build a theory, then validate its predictions empirically via experiments. If it predicts better than the last theory, then it is a better theory. </p>
+
+<p>Notably, any assumptions (such as perfect rationality or information) are an acceptable means to building an approximate model, whether they are realistic or not. </p>
+
+<p>Of course, a fundamental issue lingers: without access to controlled parallel universes, it is not possible to experiment with such a complex system. Simple statements such as "raising the minimum wages causes more un-employment", let alone more complicated ones like "even greater government intervention during the Great Depression would have hastened the recovery", cannot be validated or invalidated by such a standard. Unlike in physics, events are not reproducible.<br />
+ <br />
+ <br />
+Recognizing this and the availability of a priori knowledge of human action (ie. "man acts purposefully"), the Austrian theory uses a different methodology, which continues the classical tradition which dominated the field until the beginning of the 20th century. It is built by deductive reasoning strictly from the axiomatic knowledge that humans act. This foundation is called <a href="http://en.wikipedia.org/wiki/Praxeology">Praxeology</a>, or "science of human action". </p>
+
+<p>Because it makes few but indisputable assumptions, the conclusions it reaches are very strong. Even the economic findings which bear the most similarity with mainstream economics benefit from a strong causal roots and ties with reality, as every reasoning can be brought back down to the level of the actions of individuals. </p>
+
+<p>Also, on principle, its propositions can only be denied by reasoning. Empirical evidence such as historical events cannot validate or disprove them, but merely illustrate them, as the causal factors cannot be disentangled and isolated.</p>
+
+<p>Finally, it is scoped to only qualitative statements and it acknowledges and embraces its inability to produce quantitative forecasts. Two individuals equipped with the same understanding of the theory can easily make different quantitative predictions, as it involves a lot of judgment.<br />
+ <br />
+ <br />
+This philosophical debate may seem rather academic and abstract, but it is more current than ever. The methodology question informs how to debate and find the truth in economic issues, which we have plenty of in this time of bubble busting.</p>
+
+<p>From the point of view of mainstream economists, the failure to predict the housing and financial crisis should raise some questions. It is interesting to read the <a href="http://austrianeconomists.typepad.com/weblog/2009/08/at-her-majesty-the-queens-service.html">economists' responses to Queen Elizabeth's query</a> on the matter. <br />
+(You can also check out this good summary of <a href="http://thinkmarkets.wordpress.com/2009/08/15/not-prediction-but-explanation/">the issue with economic forecasts</a>). <br />
+On a personal level, many wonder why trust the people who got us into the current mess to get us out of it.</p>
+
+<p>In this context, people are (marginally) more inclined to take a fresh and critical look at economic theory, trying to understand the system we live in.<br />
+ <br />
+ <br />
+I'm still trying to process the materials which were presented and review some mainstream textbooks for comparison, but I find the Austrian theory quite strong and rigorous so far. <br />
+It doesn't hurt that it warned about the bubble before the fact (without making claims about its specific timing) and also explains the situation very convincingly after the fact.</p>
+
+<p>I recommend this <a href="http://www.mises.org/rothbard/schuller.pdf">paper by Murray Rothbard on praxeology</a> (a short 4 pages), a clear overview of the praxeologic-economic approach and how it relates to historical economics and economic forecasting.</p>
+
+<p>Bob Murphy sums it up well in <a href="http://mises.org/daily/1304">Mises's Non-Trivial Insight</a>t: "It's not so much that the method of the natural sciences doesn't work when it comes to human action, but rather that their use would overlook such an incredibly better set of tools that all of us possess."</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by Julien on August 17, 2009. <a href="http://blog.monstuff.com/archives/000361.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '361';
+        var disqus_url = 'http://blog.monstuff.com/archives/000361.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+<div class="comments-body">
+<p>Scripts, plans, goals, and knowledge. , </p>
+<span class="comments-post">Posted by: <a href="http://link">SouthWind10</a> at October 12, 2009 11:25 PM</span>
+</div>
+<div class="comments-body">
+<p>GrhY3W <a href="http://mMs93Hfppskd6wngIosSu.net">http://mMs93Hfppskd6wngIosSu.net</a></p>
+<span class="comments-post">Posted by: <a href="http://greenwildworld.org">tonny</a> at October 17, 2009 04:12 AM</span>
+</div>
+<div class="comments-body">
+<p>In my opinion, Klein would be well advised to use her tremendous energy to work on helping turn the country local and addressing concrete problems such as food, energy and transportation. , </p>
+<span class="comments-post">Posted by: <a href="http://link">Alex57</a> at October 21, 2009 11:30 PM</span>
+</div>
+<div class="comments-body">
+<p>Resentment against foreigners, including even those from Malaysia and Singapore, has been high for some time. , </p>
+<span class="comments-post">Posted by: <a href="http://link">Arnold51</a> at October 22, 2009 12:05 PM</span>
+</div>
+<div class="comments-body">
+<p>When performing ongoing sampling events, it is critical to place the passive sampler in the same location or depth for consistency and comparability of results over time. , </p>
+<span class="comments-post">Posted by: <a href="http://link">SouthWind36</a> at October 22, 2009 11:08 PM</span>
+</div>
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

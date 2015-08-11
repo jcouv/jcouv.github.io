@@ -1,0 +1,329 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Video streaming over HTTP</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000138.html" title="Upcoming fix for IE url spoofing bug" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000140.html" title="Information wants to be decentralized" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000139.html">
+<dc:title>Video streaming over HTTP</dc:title>
+<dc:description>My previous roommate and I used to run into this problem a lot: we&apos;d want to watch a movie in one room, but the file would be on another computer. This is a general problem that I mentioned before in &quot;Private Information Network&quot;. But we now have a partial solution to this video/DivX streaming problem. It uses the super cool&amp;#153; streaming-over-HTTP feature of the VideoLAN client and a custom HTTP proxy....</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2004-02-04T13:55:54-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000138.html">« Upcoming fix for IE url spoofing bug</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">February 04, 2004</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">Video streaming over HTTP</h2>
+
+<p>My previous roommate and I used to run into this problem a lot: we'd want to watch a movie in one room, but the file would be on another computer.<br />
+This is a general problem that I mentioned before in <a href="/archives/000085.html">"Private Information Network"</a>. </p>
+
+<p>But we now have a partial solution to this video/DivX streaming problem. It uses the <i>super cool&#153;</i> streaming-over-HTTP feature of the <a href="http://www.videolan.org/">VideoLAN client</a> and a custom HTTP proxy.</p>
+
+<a name="more"></a>
+<p><b>VideoLAN:</b><br />
+I had heard about the MPEG-2 (DVD) streaming capabilities of this software before, but only recently found out about the DivX support. To use it, you just need to put the DivX file on an HTTP1.1 web server and use the url in VLC (VideoLAN client).<br />
+It supports jumping to a specific part of the file, but it takes a few seconds (until a keyframe is reached, I guess) for the complete image to be refreshed to the new location in the stream.</p>
+
+<p><b>StreamAgent:</b><br />
+The idea of StreamAgent is to have a local HTTP agent map all the servers in a group together and proxy the requests to the appropriate server. <br />
+For example, on machine1 (running agent1), you could use <u>http://localhost:&lt;StreamAgentPort>/agent2/GetFile?file=test.avi</u> to stream test.avi from machine2 (running agent2).</p>
+
+<p>Our tests on a wired LAN were successful and the video streamed smoothly. But usability problems made it a pain to actually use, because inter-agent module wasn't flexible enough (use of IP addresses, agents have to be started in a specific order,...) and we only had basic content discovery/browsing.</p>
+
+<p>In terms of proxying the HTTP requests, supporting the Content-Range header is key for VLC to download chunks of the file.<br />
+Parsing the HTTP request and response was more trouble though. The standard IO packages from the .Net framework wouldn't let us parse mixed streams (text and binary data), and switching stream objects on the fly didn't work because of buffering issues.</p>
+
+<p>The inter-agent communication is supposed to use a P2P transport, to ensure "connectivity" between agents that are separated by NATs. It would also handle the naming the agents within the group (most home machines aren't registered in the DNS). But our initial implementation only supports two machines that can directly connect to each other by IP, because we couldn't find a P2P framework for use in C#. <br />
+<a href="http://www.microsoft.com/windowsxp/p2p/">Microsoft's P2P SDK</a> doesn't come with managed wrappers, and doesn't support traversing IPv4 NATs.<br />
+<a href="http://www.jxta.org/">JXTA</a> seems pretty suitable from what I read (restores end-to-end connectivity as much as possible, secures the peer group,...), but there is any .Net implementation.</p>
+
+<p><b>Future:</b><br />
+I'm thinking about learning some more about JXTA and attempting a Java implementation of the StreamAgent. Let me know if you'd be interested.<br />
+The current implementation isn't online, as I don't have a running CVS server for now, but I still have the CVS archive. Also, it is fairly limited anyway, since the inter-agent communication component is the most trivial possible and most of the code is HTTP proxying...</p>
+
+<p>An interesting extension would be to offer a programmatic API to a running StreamAgent (rather than thru HTTP). This could be used to allow applications to replicate/sync data accross the group, like bookmarks for example. It could also be used to provide remote file access with local caching (see Intermezzo).</p>
+
+<span class="posted">Posted by Julien on February 04, 2004. <a href="http://blog.monstuff.com/archives/000139.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '139';
+        var disqus_url = 'http://blog.monstuff.com/archives/000139.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+<div class="comments-body">
+<p><br />
+But Clipstream is the best playerless Video Streaming.</p>
+
+<p>See the Application Service Provider Model at <a href="http://www.VideosOnWeb.com">http://www.VideosOnWeb.com</a></p>
+
+<p>Video Streaming at less than a cent per view !</p>
+
+<p>This is http also and it needs no players or plugins so offers universal reachability.</p>
+<span class="comments-post">Posted by: <a href="http://www.VideosOnWeb.com">Abhijit</a> at July 21, 2004 12:16 PM</span>
+</div>
+<div class="comments-body">
+<p>I also found out about Wimpy (at <a href="http://www.wimpyplayer.com/">http://www.wimpyplayer.com/</a> ), which seems nice with a flash-based player for audio (mp3) and video (not sure what format). The server install seems quite simple. <br />
+No client install, but the product is not free (and the source is obfuscated). I still like VideoLAN better ;-)</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/archives/000033.html">Julien</a> at August 23, 2004 04:46 PM</span>
+</div>
+<div class="comments-body">
+<p>There is a new divx/xvid/3ivx (and more), mpeg4 and Theora player for streaming over HTTP , with Ogg Vorbis audio streams:  Streamplug </p>
+
+<p>It's an advanced mpeg4 browser plugin , with a 200Ko size. <br />
+No pre-required codec, and got a perfectly smooth playback, even on 30fps movies, into mozilla/firefox and Internet explorer browsers !<br />
+Speed and quality are impressive !</p>
+
+<p><a href="http://www.streamplug.com">http://www.streamplug.com</a></p>
+
+<p>and some websites to test it with some free movies  (you'll need to accept the installation of streamplug (the web-player plugin is only 200K ):</p>
+
+<p><a href="http://www.troma-france.net/flims.htm/">http://www.troma-france.net/flims.htm/</a> 2 films Troma<br />
+<a href="http://bongben.free.fr/">http://bongben.free.fr/</a> <br />
+<a href="http://www.play-mpeg4.com/">http://www.play-mpeg4.com/</a> Merry christmas<br />
+<a href="http://www.dream-plug.com/">http://www.dream-plug.com/</a> 4 films <br />
+<a href="http://www.play-divx.com/">http://www.play-divx.com/</a> Gullivers travel<br />
+<a href="http://www.divx-plugin.com/">http://www.divx-plugin.com/</a> Nosferatu<br />
+<a href="http://www.play-xvid.com/">http://www.play-xvid.com/</a> Superman<br />
+<a href="http://www.acte-gratuit.net/">http://www.acte-gratuit.net/</a><br />
+<a href="http://www.avi-stream.com/">http://www.avi-stream.com/</a> Duckncover<br />
+<a href="http://www.video-plug.com/">http://www.video-plug.com/</a> <br />
+<a href="http://www.dream-player.com/">http://www.dream-player.com/</a> spooks run wild<br />
+<a href="http://www.direct-stream.com/">http://www.direct-stream.com/</a> night of the living dead<br />
+<a href="http://www.stream-plugin.com/">http://www.stream-plugin.com/</a> the brain that wouldnt die<br />
+<a href="http://www.ogm-stream.com/">http://www.ogm-stream.com/</a> A man on the moon<br />
+<a href="http://www.mpeg4-stream.com/">http://www.mpeg4-stream.com/</a> 3d cinema <br />
+<a href="http://www.mp4-stream.com/">http://www.mp4-stream.com/</a> Spasman2, from Lopeprod.com<br />
+<a href="http://www.real-stream.com/">http://www.real-stream.com/</a> the lounge</p>
+
+<p>and some audio ones : <br />
+<a href="http://www.download-ogg.com/">http://www.download-ogg.com/</a><br />
+<a href="http://rod.cat.free.fr/Rod_Noises_In_My_Head_streamplug.html/">http://rod.cat.free.fr/Rod_Noises_In_My_Head_streamplug.html/</a> Rod Noises In My Head<br />
+<a href="http://www.skyzophrene.org/">http://www.skyzophrene.org/</a> </p>
+
+<p>Even on small computers, it supports full screen resizing, 16/9, 4/3 and square ratio, and proxy settings... and more<br />
+This plugin is free for non-commercial purposes for audio and video web-streaming, you can use it for your own streams !<br />
+Maybe is it what you need ?</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;gcluber&#64;free&#46;fr">gcluber</a> at March 22, 2005 07:42 AM</span>
+</div>
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

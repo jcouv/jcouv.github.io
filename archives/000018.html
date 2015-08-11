@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Cool Operating Systems and Language projects</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000015.html" title="Object Oriented Javascript" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000019.html" title="Unsolved HTML/CSS layout challenge" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000018.html">
+<dc:title>Cool Operating Systems and Language projects</dc:title>
+<dc:description>Here are a couple projects that are worth checking out. They have been out there for some time, and are still under construction, but they contain ideas that are pretty interesting and exciting. They are based on simple and clean principles, that aim at improving the security models while breaking down the software into numerous smaller components, for a easier development and an improved reliability....</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2003-03-04T21:51:52-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000015.html">« Object Oriented Javascript</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">March 04, 2003</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">Cool Operating Systems and Language projects</h2>
+
+<p>Here are a couple projects that are worth checking out.<br />
+They have been out there for some time, and are still under construction, but they contain ideas that are pretty interesting and exciting. They are based on simple and clean principles, that aim at improving the security models while breaking down the software into numerous smaller components, for a easier development and an improved reliability.</p>
+
+<a name="more"></a>
+<p><b>Capability-based security</b>:<br />
+Capabilities is a security model that mixes objects with access control.<br />
+The idea is pretty simple, but it brings lots of benefits when you look in the details: if you hold a reference/handle/capability to an object, this handle gives you some authority on that object and gives you access to some of the functions that it offers.</p>
+
+<p>An analogy that is sometimes used to explain capabilities is that of a set of capabilities that you hold is like a set of keys, as it gives you access to the corresponding resources. But this analogy is somewhat limited, as this <a href="http://zesty.ca/capmyths/usenix.pdf">ACL vs. Capabilities article</a> details.<br />
+This article also explains how a capability-based system have nice properties that can't be implemented via ACLs.</p>
+
+<p>To summarize, capability-based systems allow a fine grain access control (that helps respecting the least privilege principle), use explicit authority (a program doesn't implicitely inherit access permissions from the user/principal who launched it and each capability explicitly binds the resource and the authority used to access it) and are elegant and uniform (no need for extra 'special' access rules to give permission to modify the access permissions themselves).</p>
+
+<p>Some more information about capabilities can be found at <a href="http://www.cap-lore.com/">Norman's Hardy homepage</a>.</p>
+
+<p><b>E language</b>:<br />
+I first found out about capabilities on the <a href="http://www.erights.org/">E language homepage</a>, when searching information about security models for mobile code in browser (ie. applets/viruses).</p>
+
+<p>E is a capability-based language that can be used to implement secure distributed applications, as a chat program or a web browser, where both trust (communication/cooperation) and distrust (strong security boundaries) co-exist.</p>
+
+<p>It allows virus resistant software to be written, although security needs to be analyzed during the design of an E application, to reach this goal. This means that the impact of a component being corrupted by a virus is limited, instead of compromising the whole system.</p>
+
+<p><b>Security oriented UI</b>:<br />
+Obviously, capabilities needs to be managed and thus made available to the user. This <a href="http://www.sims.berkeley.edu/%7Eping/sid/">secure interaction design page</a>, although more general, is definitely related to capabilities.<br />
+It lists some practical guidelines for secure interaction, with illustrated examples of the proposed do's and don'ts.</p>
+
+<p><b>EROS</b>:<br />
+The only thing that I still find a bit mysterious about capabilities is how the permissions (expressed in the network of objects/capabilities) are set up initially, when the system starts.</p>
+
+<p><a href="http://www.eros-os.org/">EROS</a> is a small capacity-based operating system that solves this issue by using orthogonal persistence.<br />
+This means that whenever you shutdown the system, the state is saved so that you can find all the components back in the same arrangement when you boot back up. Actually the state of the system is backed up periodically, to handle the brutal shutdown case (unplugging the computer).</p>
+
+<p>Again, quite some documentation and papers are available from the EROS homepage.  I think this <a href="http://www.eros-os.org/papers/IEEE-Software-Jan-2002.pdf">introductory paper to EROS</a> is a very good overview of the principles behind this OS.</p>
+
+<p>EROS relies heavily on passing messages between components, and seems to have been optimized for this purpose quite a lot. Which brings me to another minimalistic message passing operating system, that I keep an eye on, as it seems promising.</p>
+
+<p><b>HURD</b><br />
+The HURD is the core of the GNU operating system. Here is the <a href="http://www.gnu.org/software/hurd/">HURD Homepage</a>.</p>
+
+<p>It is a microkernel based OS, that relies on a lightweight and efficient message passing interface to support many user-mode system servers. These servers implement most of the classic OS functions like filesystem, memory management, authentication, etc.</p>
+
+<p>The HURD doesn't have the strong security background that EROS has with it's capability model, but instead focuses on making the OS more modularized and maintainable, although its user-mode modules design also provides some nice security improvements.</p>
+
+<p>User-mode servers allow users to implement their own filesystems, for example, which traditionally was made difficult because this code  belonged in the kernel (for monolithic kernels).<br />
+Also, by breaking down the system into components, simpler pieces may be designed and they may be implemented separately, which should contribute improving the quality of the software and ease the testing.</p>
+
+<p><b>Conclusion</b>:<br />
+Reading all these papers about these systems really make me want to try them and I will. Probably E will come first as it seems easier to play with than EROS or HURD.<br />
+Anyway, I hope these introductions will awaken your curiosity and will lead you to learn more about those projects, which are definitely food for thought today and I hope will be great systems in practice.</p>
+
+<p>Have fun,<br />
+Dumky</p>
+
+<p><b>More links</b><br />
+I just (April 2003) found this new project, aimed at having a .NET-like platform using capability principles: <a href="http://sebyla.sourceforge.net/index.html">Sebyla Project</a>. I haven't had time to look at it very much yet, but it doesn't seem very advanced so far.</p>
+
+<span class="posted">Posted by Julien on March 04, 2003. <a href="http://blog.monstuff.com/archives/000018.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '18';
+        var disqus_url = 'http://blog.monstuff.com/archives/000018.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

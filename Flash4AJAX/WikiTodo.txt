@@ -1,0 +1,32 @@
+
+
+*Add versioning
+*Fix memory leaks in IE
+
+*Handle [[http://www.onjava.com/lpt/a/6293 history back/forward]] (there may be a problem with the iframe needing to be in online mode...)
+**Can some of the browser history frameworks work offline?
+
+*Add security checks (to prevent XSS and more)
+*Put timeout on all XHR requests, or make the "please wait" be a cancel button?
+*Add listing of local wiki entries
+**Add auto-complete on the wikiword input box
+*Do automatic local save (options)
+*Handle server errors better (report to the user, let the user log in)
+*Handle storage error cases ("pending")
+*Figure out how to show the Flash storage prompt
+*Make Flash object floating?
+*What merge tool/library to use?
+*Add "prefetch all" funtionality
+*Add smart pre-fetch feature: start withthe entries I tried to access while offline, then update the entries I have in my cache, then get the new entries.
+*Add preview function
+*Add local search
+*Think about solution for Google indexing of the site
+*Add "hide" button on the information bar
+*How to support update scenarios? How to bust the cache?
+*Add more wiki formatting
+
+
+
+
+*How to handle a load when we already have a local entry that is dirty?
+*How to handle change conflict (a remote change occurs and a local change occur and a load or a save occur)?

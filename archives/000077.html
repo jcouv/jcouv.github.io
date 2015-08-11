@@ -1,0 +1,552 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: IL modification at runtime (step III)</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000084.html" title="Acrobat Reader 6.0 speedup" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000087.html" title="Video playback on the Tablet PC" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000077.html">
+<dc:title>IL modification at runtime (step III)</dc:title>
+<dc:description>Here is one more incremental step in instrumenting IL at runtime. This time, the method call that will be inserted will be implemented in a separate dll and will take an int as an input. If you missed the previous episodes you can find them here: Step I, Step II and Step II+. Calling a method from a separate assembly requires that some metadata be created so that we can reference the foreign method using tokens. Multiple references (tokens) need to be generated: first the dll containing the Logger::Log method (using DefineAssemblyRef), then the Logger class itself (using DefineTypeRefByName) and...</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2003-07-26T12:20:25-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000084.html">« Acrobat Reader 6.0 speedup</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">July 26, 2003</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">IL modification at runtime (step III)</h2>
+
+<p>Here is one more incremental step in instrumenting IL at runtime. This time, the method call that will be inserted will be implemented in a separate dll and will take an int as an input.<br />
+If you missed the previous episodes you can find them here: <a href="http://blog.monstuff.com/archives/000058.html">Step I</a>, <a href="http://blog.monstuff.com/archives/000059.html">Step II</a> and <a href="http://blog.monstuff.com/archives/000060.html">Step II+</a>.</p>
+
+<p>Calling a method from a separate assembly requires that some metadata be created so that we can reference the foreign method using tokens. <br />
+Multiple references (tokens) need to be generated: first the dll containing the Logger::Log method (using <i>DefineAssemblyRef</i>), then the Logger class itself (using <i>DefineTypeRefByName</i>) and finally the Logger::Log(int) method (using <i>DefineMemberRef</i>).<br />
+When we have the token for the Logger::Log method we can insert a call to it, with the regular IL code: 0x28 (<i>call</i>) followed by the method token.</p>
+
+<p>When you are ready to call the Log(int) method, you need to decide what integer you want to pass it. You can either load a constant on the stack (with the <i>ldc.i4</i> IL opcode to load the integer 4, for example) or pass it a copy of an int from the current method context. In our case, we'll see this second technique, were the method getting instrumented takes some integers as input parameters, and one of these inputs gets logged.</p>
+
+<p>Now to the code:</p>
+
+<a name="more"></a>
+<div class="code">HRESULT CProfilerCallback::JITCompilationStarted(UINT functionId,
+&nbsp;&nbsp;&nbsp;&nbsp;												 BOOL fIsSafeToBlock)
+{
+&nbsp;	wchar_t wszClass[512];
+&nbsp;	wchar_t wszMethod[512];
+
+<p>&nbsp;	HRESULT hr = S_OK;</p>
+
+<p>&nbsp;	ClassID classId = 0;<br />
+&nbsp;	ModuleID moduleId = 0;<br />
+&nbsp;	mdToken tkMethod = 0;</p>
+
+<p>&nbsp;	// Only execute for the blah method<br />
+&nbsp;	if (GetMethodNameFromFunctionId(functionId, wszClass, wszMethod))<br />
+&nbsp;	{<br />
+&nbsp;&nbsp;		ProfilerPrintf("JITCompilationStarted: %ls::%ls\n",wszClass,wszMethod);<br />
+&nbsp;&nbsp;		if (wcscmp(wszClass, L"Hello") != 0 || <br />
+&nbsp;&nbsp;&nbsp;&nbsp;			wcscmp(wszMethod, L"blah") != 0) {<br />
+&nbsp;&nbsp;&nbsp;			goto exit;<br />
+&nbsp;&nbsp;		}<br />
+&nbsp;	} else {<br />
+&nbsp;&nbsp;		ProfilerPrintf( "JITCompilationStarted\n" );<br />
+&nbsp;&nbsp;		goto exit;<br />
+&nbsp;	}</p>
+
+<p>&nbsp;	// Get the moduleID and tkMethod<br />
+&nbsp;	hr = m_pICorProfilerInfo->GetFunctionInfo(functionId, &classId, &moduleId, &tkMethod);<br />
+&nbsp;	if (FAILED(hr))<br />
+&nbsp;&nbsp;	{ goto exit; }</p>
+
+<p>&nbsp;	// Get the metadata import<br />
+&nbsp;	IMetaDataImport* pMetaDataImport = NULL;<br />
+&nbsp;	hr = m_pICorProfilerInfo->GetModuleMetaData(moduleId, ofRead, IID_IMetaDataImport,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;		(IUnknown** )&pMetaDataImport);<br />
+&nbsp;	if (FAILED(hr))<br />
+&nbsp;&nbsp;	{ goto exit; }</p>
+
+<p><br />
+&nbsp;	//<br />
+&nbsp;	// Metadata modification<br />
+&nbsp;	//<br />
+&nbsp;	IMetaDataEmit* pMetaDataEmit = NULL;<br />
+&nbsp;	IMetaDataAssemblyEmit* pMetaDataAssemblyEmit = NULL;<br />
+&nbsp;	mdAssemblyRef tkLoggerLib;</p>
+
+<p>&nbsp;	hr = m_pICorProfilerInfo->GetModuleMetaData(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;				moduleId, ofRead | ofWrite, IID_IMetaDataEmit,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;				(IUnknown** )&pMetaDataEmit);<br />
+&nbsp;	if (FAILED(hr)) { goto exit; }<br />
+&nbsp;	hr = pMetaDataEmit->QueryInterface(IID_IMetaDataAssemblyEmit,<br />
+								(void**)&pMetaDataAssemblyEmit);<br />
+&nbsp;	if (FAILED(hr)) { goto exit; }</p>
+
+<p>&nbsp;	// Get the token for the Logger class and its Log method<br />
+&nbsp;	mdTypeDef tkLogger = 0;<br />
+&nbsp;	mdMethodDef tkLog = 0;</p>
+
+<p>&nbsp;	// Create a token for the Logger.dll assembly<br />
+&nbsp;	ASSEMBLYMETADATA amd;<br />
+&nbsp;	ZeroMemory(&amd, sizeof(amd));<br />
+&nbsp;	amd.usMajorVersion = 0;<br />
+&nbsp;	amd.usMinorVersion = 0;<br />
+&nbsp;	amd.usBuildNumber = 0;<br />
+&nbsp;	amd.usRevisionNumber = 0;<br />
+&nbsp;	hr = pMetaDataAssemblyEmit->DefineAssemblyRef(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;			NULL, 0, // No public key token<br />
+&nbsp;&nbsp;&nbsp;&nbsp;			L"Logger", <br />
+&nbsp;&nbsp;&nbsp;&nbsp;			&amd, NULL, 0, 0, <br />
+&nbsp;&nbsp;&nbsp;&nbsp;			&tkLoggerLib);<br />
+&nbsp;	if (FAILED(hr)) { goto exit; }</p>
+
+<p>&nbsp;	// Create a token for the Logger class<br />
+&nbsp;	hr = pMetaDataEmit->DefineTypeRefByName(tkLoggerLib,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;			L"DumkyNamespace.Logger", &tkLogger);<br />
+&nbsp;	if (FAILED(hr)) { goto exit; }</p>
+
+<p>&nbsp;	// Create a token for the Log method<br />
+&nbsp;	BYTE Sig_void_String[] = { <br />
+&nbsp;&nbsp;			0, // IMAGE_CEE_CS_CALLCONV_DEFAULT<br />
+&nbsp;&nbsp;			0x1, // argument count<br />
+&nbsp;&nbsp;			0x1, // ret = ELEMENT_TYPE_VOID<br />
+&nbsp;&nbsp;			ELEMENT_TYPE_I4<br />
+&nbsp;	}; </p>
+
+<p>&nbsp;	hr = pMetaDataEmit->DefineMemberRef(tkLogger,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;		L"Log",<br />
+&nbsp;&nbsp;&nbsp;&nbsp;		Sig_void_String, sizeof(Sig_void_String),<br />
+&nbsp;&nbsp;&nbsp;&nbsp;		&tkLog);<br />
+&nbsp;	if (FAILED(hr)) { goto exit; }</p>
+
+<p>&nbsp;	//<br />
+&nbsp;	// IL modification<br />
+&nbsp;	//</p>
+
+<p>#include &lt;pshpack1.h><br />
+&nbsp;	struct {<br />
+&nbsp;&nbsp;		BYTE opCode1;<br />
+&nbsp;&nbsp;		BYTE call; DWORD method_token;<br />
+&nbsp;	} ILCode;<br />
+#include &lt;poppack.h></p>
+
+<p>&nbsp;	//ILCode.opCode1 = 0x19; // load integer '3' or CEE_LDC_I4_3 from opcode.def<br />
+&nbsp;	ILCode.opCode1 = 0x02; // load arg 0 opdcode (ldarg.0 or CEE_LDARG_0)<br />
+&nbsp;	ILCode.call = 0x28;<br />
+&nbsp;	ILCode.method_token = tkLog;</p>
+
+<p>&nbsp;	InsertIL(moduleId, tkMethod, (BYTE*) &ILCode, sizeof(ILCode));</p>
+
+<p>exit:<br />
+&nbsp;	return hr;<br />
+}</p>
+
+<p><br />
+HRESULT CProfilerCallback::InsertIL(ModuleID moduleId, mdToken tkMethod, BYTE* pbNewIL, int iNewILLen) {<br />
+&nbsp;	HRESULT hr = S_OK;</p>
+
+<p>&nbsp;	//<br />
+&nbsp;	// Get the existing IL<br />
+&nbsp;	//<br />
+&nbsp;	LPCBYTE pMethodHeader = NULL;<br />
+&nbsp;	ULONG iMethodSize = 0;<br />
+&nbsp;	hr = m_pICorProfilerInfo->GetILFunctionBody(moduleId, tkMethod, &pMethodHeader, &iMethodSize);<br />
+&nbsp;	if (FAILED(hr))<br />
+&nbsp;&nbsp;	{ goto exit; }</p>
+
+<p>&nbsp;	//<br />
+&nbsp;	// Print the existing IL<br />
+&nbsp;	//<br />
+&nbsp;	IMAGE_COR_ILMETHOD* pMethod = (IMAGE_COR_ILMETHOD*)pMethodHeader;<br />
+&nbsp;	COR_ILMETHOD_FAT* fatImage = (COR_ILMETHOD_FAT*)&pMethod->Fat;</p>
+
+<p>&nbsp;	if(!fatImage->IsFat()) {<br />
+&nbsp;&nbsp;		goto exit;<br />
+&nbsp;	}</p>
+
+<p>&nbsp;	ProfilerPrintf("\n");<br />
+&nbsp;	ProfilerPrintIL(fatImage);</p>
+
+<p><br />
+&nbsp;	//<br />
+&nbsp;	// Get the IL Allocator<br />
+&nbsp;	//<br />
+&nbsp;	IMethodMalloc* pIMethodMalloc = NULL;<br />
+&nbsp;	IMAGE_COR_ILMETHOD* pNewMethod = NULL;<br />
+&nbsp;	hr = m_pICorProfilerInfo->GetILFunctionBodyAllocator(moduleId, &pIMethodMalloc);<br />
+&nbsp;	if (FAILED(hr))<br />
+&nbsp;&nbsp;	{ goto exit; }</p>
+
+<p>&nbsp;	//<br />
+&nbsp;	// Allocate IL space and copy the IL in it<br />
+&nbsp;	//<br />
+&nbsp;	pNewMethod = (IMAGE_COR_ILMETHOD*) pIMethodMalloc->Alloc(iMethodSize+iNewILLen);<br />
+&nbsp;	if (pNewMethod == NULL)<br />
+&nbsp;&nbsp;	{ goto exit; }<br />
+&nbsp;	COR_ILMETHOD_FAT* newFatImage = (COR_ILMETHOD_FAT*)&pNewMethod->Fat;</p>
+
+<p><br />
+&nbsp;	//<br />
+&nbsp;	// Modify IL<br />
+&nbsp;	//<br />
+&nbsp;	// Copy the header<br />
+&nbsp;	memcpy((BYTE*)newFatImage, (BYTE*)fatImage, fatImage->Size * sizeof(DWORD));</p>
+
+<p>&nbsp;	// Add a call to "Log"<br />
+&nbsp;	memcpy(newFatImage->GetCode(), pbNewIL, iNewILLen);</p>
+
+<p>&nbsp;	// Copy the remaining of the method<br />
+&nbsp;	memcpy(newFatImage->GetCode() + iNewILLen,<br />
+&nbsp;&nbsp;		fatImage->GetCode(),<br />
+&nbsp;&nbsp;		fatImage->CodeSize);</p>
+
+<p><br />
+&nbsp;	// Update the code size<br />
+&nbsp;	newFatImage->CodeSize += iNewILLen;<br />
+&nbsp;	newFatImage->MaxStack += 1;</p>
+
+<p>&nbsp;	// Print modified IL<br />
+&nbsp;	ProfilerPrintf("\n");<br />
+&nbsp;	ProfilerPrintIL(newFatImage);</p>
+
+<p>&nbsp;	// Push IL back in<br />
+&nbsp;	hr = m_pICorProfilerInfo->SetILFunctionBody(moduleId, tkMethod, (LPCBYTE) pNewMethod);<br />
+&nbsp;	if (FAILED(hr))<br />
+&nbsp;&nbsp;	{ goto exit; }</p>
+
+<p>&nbsp;	pIMethodMalloc->Release();<br />
+exit:<br />
+&nbsp;	return hr;<br />
+}</div></p>
+
+<p>A couple of notes:</p>
+
+<p>Increasing the MaxStack might not be necessary in all cases, instead it should be updated to be the max of the stack used for the injected code and the stack used by the existing code. But the current code is safe, as the MaxStack will always be larger than the maximum stack used.</p>
+
+<p>If you mistype the names of the assembly, class or method, then you get quite interesting errors at runtime, that are actually quite helpful. My thanks to the CLR team for that.</p>
+
+<p><br />
+Here is the code for the assembly containing the "instrumentation" (Logger.cs):<br />
+<div class="code">using System;</p>
+
+<p>namespace DumkyNamespace <br />
+{<br />
+&nbsp;	public class Logger<br />
+&nbsp;	{<br />
+&nbsp;&nbsp;		public static void Log(int i) <br />
+&nbsp;&nbsp;		{<br />
+&nbsp;&nbsp;			Console.WriteLine("Log!" + i);<br />
+&nbsp;&nbsp;		}<br />
+&nbsp;	}<br />
+}</div></p>
+
+<p>You can compile it with "csc /t:library Logger.cs".</p>
+
+<p>And as usual the code to be instrumented (Hello.cs):<br />
+<div class="code">using System;</p>
+
+<p>public class Hello <br />
+{<br />
+&nbsp;	public static void Main(string[] prms) <br />
+&nbsp;	{<br />
+&nbsp;&nbsp;		Console.WriteLine("main!");<br />
+&nbsp;&nbsp;		blah(4,5);<br />
+&nbsp;	}</p>
+
+<p>&nbsp;	public static void blah(int i, int j) {<br />
+&nbsp;&nbsp;		Console.WriteLine("blah!");<br />
+&nbsp;&nbsp;		Console.WriteLine(i);<br />
+&nbsp;&nbsp;		Console.WriteLine(j);<br />
+&nbsp;	}<br />
+}</div></p>
+
+<p>When the blah method gets JITed, a call to Logger::Log(i) is added, so you get the following output:<br />
+<div class="code">main!<br />
+Log!4<br />
+blah!<br />
+4<br />
+5</div></p>
+
+<span class="posted">Posted by Julien on July 26, 2003. <a href="http://blog.monstuff.com/archives/000077.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '77';
+        var disqus_url = 'http://blog.monstuff.com/archives/000077.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+<div class="comments-body">
+<p>MSDN Mag has a good article on IL modification at runtime at <a href="http://msdn.microsoft.com/msdnmag/issues/03/09/NETProfilingAPI/default.aspx">http://msdn.microsoft.com/msdnmag/issues/03/09/NETProfilingAPI/default.aspx</a> (Rewrite MSIL Code on the Fly with the .NET Framework Profiling API -- MSDN Magazine, September 2003).</p>
+
+<p>Also, I generated a new VS.Net ATL/COM project for this, to use the "standard" COM template. Matt's DNProfiler codebase was causing me some problems when trying to use some ATL includes. The VS.Net 2002 project is available via anonymous CVS access (see AnonCVS blog entry).</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Dumky</a> at September  7, 2003 08:43 PM</span>
+</div>
+<div class="comments-body">
+<p>I wonder what happen when the dll is GACed or strongly named. I wonder if CLR will verify the byte code before calling the JITCompilationStart? if verification is performed prior to the execution of the acutal IL code, the dynamica injection of IL may fail.  Do you think this is the case?  if so what work around can you think of?  Thanks</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;xin&#46;chen&#64;ubs&#46;com">xin</a> at March 27, 2004 02:49 PM</span>
+</div>
+<div class="comments-body">
+<p>Hi,</p>
+
+<p>Do you know if there exists an unmanaged component that can pass the original IL to a C# application to be instrumented?<br />
+</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;exchange&#64;ok&#46;kz">AlexB</a> at May  8, 2004 03:05 PM</span>
+</div>
+<div class="comments-body">
+<p>I can't seem to get this working.  I've modified the existing DNProfiler with the code suggested here and it wouldn't work, so I downloaded the project provided in part II and it wouldn't work.  I'm getting a System.InvalidProgramException.  All I can seem to find about the error is that it means that the MSIL is corrupt, which kind of makes sense considering I am modifying the MSIL, however the changes made here should work.  Any suggestions?</p>
+
+<p>Thanks.</p>
+<span class="comments-post">Posted by: <a href="http://www.cs.unb.ca/research-groups/rcg/">JoshD</a> at May 13, 2004 04:24 PM</span>
+</div>
+<div class="comments-body">
+<p>Josh, I'd recommend that you look closely at the IL that you generate. Maybe a bytecode you introduced is wrong. Also, you may need to modify the MaxStack.<br />
+What kind of modification are you doing? Start with no modification and then include them in little by little.<br />
+Does the exception contain any more information?<br />
+</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Dumky</a> at May 14, 2004 11:11 AM</span>
+</div>
+<div class="comments-body">
+<p>Hi,</p>
+
+<p>An excellent series of articles.</p>
+
+<p>I've been myself experimenting with introducing IL at runtime for profling the app. So far I've been able to <br />
+- modify the offsets for correct branch instructions<br />
+- modify the SEH sections to adjust the try and catch block offsets and length</p>
+
+<p>The only place where the program fails is when the an exception does occur and control moves to the exception block.</p>
+
+<p>I take care that the 1st IL command in the catch block is to pop off the element (exception object) and store it in a location. It's only after that I introduce my Call for instrumentation. HOwever I receive a runtime error.</p>
+
+<p>Any help / suggestions??</p>
+
+<p>Rgds</p>
+
+<p>Nilesh</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;nilux&#64;vsnl&#46;com">Nilesh Malpekar</a> at June 26, 2005 06:26 PM</span>
+</div>
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+<div class="trackback-body">
+<a name="40"></a>
+<span class="trackback-post"><a href="http://www.cnblogs.com/dudu/archive/2004/05/19/10251.aspx" target="new">Modifying IL at runtime</a><br />
+<b>Excerpt:</b> Modifying IL at runtime<br />
+<b>Weblog:</b> dudu<br />
+<b>Tracked:</b> May 18, 2004 10:24 PM</span>
+</div>
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Storage, Filesystems and Information retrieval</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000100.html" title="How Everyday Things Are Made" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000103.html" title="Digitally signed ID cards" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000101.html">
+<dc:title>Storage, Filesystems and Information retrieval</dc:title>
+<dc:description>Recently, I have been reading quite a bit about filesystems and their current and future development. Their seems to be at least three major areas of interest: performance, user interface and distribution. We&apos;ll see various projects along these axes and in particular the search engine backed user interface, that might set the trend for some time. Being no filesystem or information retrieval expert, all corrections or additions to this storage survey are welcome....</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2003-09-14T12:08:27-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000100.html">« How Everyday Things Are Made</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">September 14, 2003</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">Storage, Filesystems and Information retrieval</h2>
+
+<p>Recently, I have been reading quite a bit about filesystems and their current and future development. Their seems to be at least three major areas of interest: performance, user interface and distribution. We'll see various projects along these axes and in particular the search engine backed user interface, that might set the trend for some time.<br />
+Being no filesystem or information retrieval expert, all corrections or additions to this storage survey are welcome.</p>
+
+<a name="more"></a>
+<p><b>Performance and core features</b><br />
+Performance is a domain specific measure, as different applications will have very different data access patterns. The resources (HDD, RAM, CPU, network,...) directly relate to the trade-offs and determine the criteria for evaluation: response time/latency, throughput, resource efficiency (space on HDD, CPU utilization),... All these aspects make it difficult to say that a filesystem is "better" in absolute terms, especially in the changing landscape of evolving technologies (larger and faster components). It is even harder if you add to that different data models (what metadata is stored) and feature sets (whether transactions, indexing or replication is supported).</p>
+
+<p>Here is an <a href="http://www.acmqueue.org/modules.php?name=Content&pa=showpage&pid=43">interview with Josh Gray on storage</a>. <br />
+He compares the evolution of storage capacity versus that of access times, and thinks architectural changes will be occurring to handle the huge capacity disks, because linear access (like tapes) is faster than random and can be improved by using larger chunks.<br />
+He also discusses TeraScale SneakerNet that are basically PCs full of disks that he mails around. Apparently this is cheaper bandwidth than network transfers, but doesn't detail whether this trend might change in future.<br />
+Personally, if I had a TeraByte drive, I'd be really concerned about having it crash. On the other hand, since I'd probably use a good part of that storage to store music and films, I probably could backup the metadata (title, size, signature,...) by replicating it onto distributed machines. In case of a crash, I'd use this metadata to recover a copy from somebody else. Of course, any original or important files would have to be mirrored entirely, instead of just shadowed. This would fit nicely in the <a href="http://blog.monstuff.com/archives/000085.html">private information network</a> that I tried to explore recently.</p>
+
+<p><u>Conquest filesystem</u><br />
+The <a href="http://lasr.cs.ucla.edu/conquest/">Conquest filesystem</a> is a very interesting project (mentioned on <a href="http://developers.slashdot.org/article.pl?sid=03/04/21/151229&mode=thread&tid=198&tid=137">slashdot a little while back</a>) that brings another component into the equation: persistent RAM. Basically, the filesystem uses some non-volatile/battery-backed RAM both for storing a subset of files and provide some caching to the hard drive.<br />
+The cost of the RAM makes it possible to economically store the metadata, small files, executables, and shared libraries, while the larger files that aren't as frequently used and/or don't benefit as much from fast access times can be stored on the slower medium.<br />
+It seems that this approach could benefit lots of other filesystems if not all, as there doesn't seem to be constraints on the structure of the filesystem itself.</p>
+
+<p><u>ReiserFS 4</u><br />
+Kur5hin has an article that presents some of the <a href="http://www.kuro5hin.org/story/2003/8/9/172159/7912">features of Reiser 4</a>. Reiser manages to push the envelope without using new hardware: better performances, improved efficiency for small files, while including features like journaling and atomicity, and exploring a new data model (entries are both files and directories), at the expense of a higher CPU usage.<br />
+An important question is whether the non-transparent features (like the new data model for files and directories) will be adopted. Also, how well do they integrate in cross-platform scenarios: if you send a file that has metadata attached in ReiserFS, is the metadata somehow packaged or is it lost when read by a non-ReiserFS system?</p>
+
+<p><br />
+<b>User interface: information retrieval</b><br />
+With the mass of information that flows by us each day (mail, blogs/feeds, web, ...), it would make sense for computers to do a better job at helping us finding relevant information. There seems to be an important push in this area these days.</p>
+
+<p>For example, <a href="http://www.x1.com/">X1</a> is a file and email indexer and search engine. <a href="http://www.oreillynet.com/pub/a/network/2002/10/07/udell.html">ZOE (via O'ReillyNet)</a> is an open source program that follows a similar approach for emails only.<br />
+Microsoft backs this shift to a search oriented interface, in Longhorn, with winFS, that will handle mails, contacts, calendar events as first order objects and index them (apparently using the Yukon engine on top of NTFS).<br />
+Gnome also has two very promising projects: <a href="http://www.gnome.org/~seth/storage/index.html">Storage</a> (mentioned <a href="http://developers.slashdot.org/article.pl?sid=03/09/05/1241235">here on slashdot</a>), a SQL backed storage with a VFS adapter, and <a href="http://members.cox.net/sinzui/medusa/index.html">Medusa</a>, a user-level indexing application.</p>
+
+<p>The <a href="http://www.seruku.com/">Seruku toolbar for Internet Explorer</a> records all the web pages that you visit (but there is a configurable exception list) and lets you query them by keywords.<br />
+<a href="http://research.microsoft.com/barc/MediaPresence/MyLifeBits.aspx">MyLifeBits MS Research project</a> (described <a href="http://www.wired.com/news/technology/0,1282,56734,00.html">on Wired here</a>) combines the Seruku web recording with other data sources (files, emails,...). But the program doesn't seem to be publicly available.</p>
+
+<p><a href="http://www.nat.org/dashboard/">Dashboard</a> brings two interesting variations to the projects listed so far: it's architecture is extensible to support multiple data sources (like the Evolution mail client and the Epiphany web browser) and displays the information interactively (based on context clues sent by the applications you use).<br />
+I'm not sure the continuous search will suit me, but the common infrastructure for the indexer is certainly very exciting. I also look forward to having more information used, like how I got to a certain page or who sent me a link.</p>
+
+<p><br />
+<b>Distributing</b><br />
+There are many different approaches to making your files available in a distributed system. </p>
+
+<p>The <a href="http://www.coda.cs.cmu.edu/">CODA filesystem</a> is an interesting one, with support for disconnected operations. The files are cached on the replica (that may be a laptop for example) for fast access and to allow edition while the computer is online or disconnected from the master. The cache is configurable and the user can force some files to be cached/replicated. Conflicts can be resolved by application specific resolvers or manually.</p>
+
+<p><a href="http://www.cis.upenn.edu/~bcpierce/harmony/">Harmony</a> on the other hand doesn't have a master and tries to keep all replicas in synchronization.</p>
+
+<p>Another approach to making your files ubiquitous is to carry something like <a href="http://linuxdevices.com/articles/AT5772921353.html">Intel's personal server</a> around with you.<br />
+What I like about this device is that it can act like a high bandwitdh channel between machines that can't connect to each other (maybe one is off when the other is on). <br />
+But in the pure server model, I don't think it brings much. Because the server moves along with you the file access might be a bit faster (local) than with a regular server (on the internet), but not that fast because of the use of a wireless link. Also the hard drive won't be large enough to store all your files, you'll have to have a separate backup solution and a battery is always trouble.</p>
+
+<p>Apparently Longhorn's winFS will also have facilities for replicating/distributing your files over on multiple machines, but not many details are publicly available yet.<br />
+The <a href="http://www.osafoundation.org/our_product_desc.htm">Chandler project</a> also wants to distribute your information, but it isn't clear whether it will be at the filesystem level or managed by the application.</p>
+
+<p><br />
+<b>More info</b><br />
+The <a href="http://epoxy.mrs.umn.edu/~minerg/homepage/fs.pdf">"New Advances in the Filesystem Space"</a> paper (by Grant Miner and mentioned on <a href="http://developers.slashdot.org/article.pl?sid=03/07/15/0615221">slashdot here</a>) makes a great case for the namespace unification and allowing a uniform handling of attributes and metadata. </p>
+
+<p>Jon Udell on <a href="http://udell.roninhouse.com/bytecols/2001-05-30.html">"The future of the file system"</a> and <a href="http://nooface.net/articles/01/11/05/186204.shtml">Nooface's reference to it</a> with other pointers.</p>
+
+<p>Lambda the Ultimate on the <a href="http://lambda.weblogs.com/discuss/msgReader$7919#7921">USENIX2003 talks: a logical file system</a>.</p>
+
+<p><a href="http://citeseer.nj.nec.com/kon96distributed.html">Distributed File Systems Past, Present and Future A Distributed File System for 2006</a>.</p>
+
+<p><a href="http://www.acm.uiuc.edu/macwarriors/projects/trailblazer/">TrailBlazer</a>, a cool MacOSX browser history tool that shows how you navigated from page to page.</p>
+
+<p><a href="http://arxiv.org/abs/cs.HC/0310011">Re-Finding Found Things: An Exploratory Study of How Users Re-Find Information</a>.</p>
+
+<p><u>Update:</u><br />
+The "Underground Economist" wonders about <a href="http://undergroundeconomist.com/blog/Decentralization/Personal_search_engine.html">personal search engines</a>, revolving around bookmarks, browser history and blogs.</p>
+
+<p><a href="http://www.furl.net">FURL</a> is another stab at this, based on special bookmarking and search through cached pages.</p>
+
+<span class="posted">Posted by Julien on September 14, 2003. <a href="http://blog.monstuff.com/archives/000101.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '101';
+        var disqus_url = 'http://blog.monstuff.com/archives/000101.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+<div class="comments-body">
+<p>Speaking to your comments on information retrieval, my company is about to go beta on an Internet companion application that runs on top of and integrates with a user’s web browser, email software and email address book, enabling users to make saving, organizing and sharing (“SOS”) a fulcrum of Internet productivity.  </p>
+
+<p>The idea is that whereas most search-related activities end up being relegated to the 'get it and forget it' bucket, with SOS baked into the online realm, three productivity leaps can be realized in terms of managing information of interest that's found on the Internet:</p>
+
+<p>1. "Saving": No matter where you are and what you are doing on the Internet—be it reading email, performing a search or browsing the web—when a given web page or email inspires you, you can call up and capture both the online content and any products or businesses referenced in it quickly and non-disruptively.  We call this discovery mode, and have an underlying construct that we call actionable listings to enable you to actually “do something” with the information when you find it.</p>
+
+<p>2. "Organize": Through support for automatic and manual associations, modalities and real-time filtering capabilities, you can increase the context, relevance and reusability of product or business listings, supporting web content and related emails.   This is intended to address the paradox of whether to bookmark, email to self or save to local folder, and then what to do when a given piece of information is applicable to multiple contexts.</p>
+
+<p>3. "Share":  Share the personalized lists you create of products, businesses and supporting content easily with a multi-selection list view.  Choose the recipient or recipients using your email address book, and with a click, convert it to an email ready web page and you're done.</p>
+
+<p>The basic product is a free download, although there will be a paid version of the software targeted at corporations and participants in associates programs.  If you want to find out what exactly we are doing and why you would want to use the software, there are whitepapers and overview documents on the site (www.verdada.com).  Or, wait until the start of October when the public beta begins.</p>
+<span class="comments-post">Posted by: <a href="http://www.verdada.com">hypermark</a> at September 23, 2003 11:40 AM</span>
+</div>
+<div class="comments-body">
+<p>The roadmap slides for Mozilla 2.0 (<a href="http://mozilla.org/events/dev-day-feb-2004/mozilla-futures/">http://mozilla.org/events/dev-day-feb-2004/mozilla-futures/</a> ) lists some end-user innvoations related to this:<br />
+-Personal intertwingled data server<br />
+-Shared web page annotations <br />
+</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;dumky_ATR&#64;hotmail&#46;com">Dumky</a> at March  2, 2004 12:53 PM</span>
+</div>
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>
