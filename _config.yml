@@ -12,7 +12,7 @@ disqus_shortname:    curiosityisbliss
 defaults:
   -
     scope:
-      path: "" # an empty string here means all files in the project
+      path: "" 
     values:
       layout: "post"
 
