@@ -3,7 +3,9 @@ layout: post
 title: How computers work (part 2)
 publish: false
 draft: true
+published: false
 ---
+
 The building block of a modern computer is the transistor. But it takes many. Your phone has a few billions of them (I'll discuss fabrication later).    
 The solution to this complexity is abstraction. We'll take a couple of transistors to make a simple component. Those components will be combined to achieve more complex components and so on. It is like Russian dolls.  
 For today, we'll consider a single transistor and then put two together to achieve something useful.  
@@ -22,5 +24,4 @@ The next question is how to implement the NOT. As the diagram below shows, all i
 TODO: diagrams for NOT with a transistor
 
 When the control is off, the transistor behaves like a disconnected wire. So the output is connected through a resistor to V, which means the output will have tension (it is on).  
-But when the control is on, the transistor behaves like a wire. The output is still connected through a resistor to V but it is also directly connected to 0. The result is no tension on the output (it is off).  
-
+But when the control is on, the transistor behaves like a wire. The output is still connected through a resistor to V but it is also directly connected to 0. The result is no tension on the output (it is off).
