@@ -6,6 +6,7 @@ url:                 http://blog2.monstuff.com
 paginate:            1
 author_name:         Julien Couvreur
 ga:                  UA-74363-1
+permalink:           /archives/:year/:month/:day/:title.html
 
 sass:
   sass_dir:          _sass
