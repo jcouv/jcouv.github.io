@@ -15,7 +15,7 @@ defaults:
       path: "" 
     values:
       layout: "post"
-	  comments: true
+      comments: true
 
 sass:
   sass_dir:          _sass
