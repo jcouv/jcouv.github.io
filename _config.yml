@@ -17,6 +17,12 @@ defaults:
       layout: "post"
       comments: True
 
+prose:
+  media: "assets"
+  rooturl: '_posts'
+  relativeLinks: 'http://blog2.monstuff.com/links.jsonp'
+  siteurl: 'http://blog2.monstuff.com/'
+
 sass:
   sass_dir:          _sass
   style:            :compressed
