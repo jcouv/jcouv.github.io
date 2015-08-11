@@ -1,7 +1,3 @@
----
-published: false
----
-
 I came back from vacation with a few topics to blog about (in particular, I will start a series on the fundamentals of computing). Being an efficient procrastinator, I naturally decided this would involve moving away from MovableType first ;-)
 
 What tool to use? I don't like set up or administering SQL instances. I appreciate flat files for content, static files for HTML output (easier to backup and migrate to new hosts) and the idea of managing my content in git/GitHub (versioning, access control, Markdown preview). Also, I want to keep continuity with my previous content. I looked at a few [flat-file blogging platforms](http://www.freshtechtips.com/2014/01/flat-file-blogging-software.html), but none quite fit the bill.
@@ -24,5 +20,4 @@ It is structured as follows:
     /src/BlogBuilder/
       *.cs
 
-## Update (2015/08/11): 
-I found out that Jekyll is platform built on those same ideas (static files, liquid templates, yaml configuration) and it happens to be supported by GitHub Pages. I'll be switching over shortly.
+Update (2015/08/11): I found out that Jekyll is platform built on those same ideas (static files, liquid templates, yaml configuration) and it happens to be supported by GitHub Pages. I'll be switching over shortly.
