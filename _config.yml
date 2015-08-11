@@ -12,11 +12,9 @@ disqus_shortname:    curiosityisbliss
 defaults:
   -
     scope:
-	  path: ""
-	  type: "posts"
+      path: "" # an empty string here means all files in the project
     values:
-      layout: post
-      comments: true
+      layout: "post"
 
 sass:
   sass_dir:          _sass
