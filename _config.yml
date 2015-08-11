@@ -7,6 +7,7 @@ paginate:            1
 author_name:         Julien Couvreur
 ga:                  UA-74363-1
 permalink:           /archives/:year/:month/:title.html
+disqus_shortname:    curiosityisbliss
 
 sass:
   sass_dir:          _sass
