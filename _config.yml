@@ -8,8 +8,14 @@ author_name:         Julien Couvreur
 ga:                  UA-74363-1
 permalink:           /archives/:year/:month/:title.html
 disqus_shortname:    curiosityisbliss
-layout:              post
-comments:            true
+
+defaults:
+  -
+    scope:
+	  path: ""
+    values:
+      layout: post
+      comments: true
 
 sass:
   sass_dir:          _sass
