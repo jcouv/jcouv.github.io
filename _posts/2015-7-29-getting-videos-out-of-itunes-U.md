@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Getting videos out of iTunes U
+published: false
 ---
 I wanted to get a video out of iTunes U for viewing offline without iTunes or special apps.
 

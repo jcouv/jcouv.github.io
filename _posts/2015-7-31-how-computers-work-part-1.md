@@ -1,6 +1,7 @@
 ---
 layout: post
 title: How computers work (part 1)
+published: false
 ---
 A while back, one of my nephews asked me how computers work. During our recent sailing trip, I spent some time with him to answer that question. I will share the introduction I gave him over the next few  posts.  
 Feel free to drop a comment if something needs elaborating. A later post will list technical references for further reading.
