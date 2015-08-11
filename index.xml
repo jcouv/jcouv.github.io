@@ -15,11 +15,11 @@ layout: null
   <channel>
     <title>{{ site.title }}</title>
     <link>{{ site.url }}</link>
-    <description>{{ index.description }}</description>
+    <description>{{ site.description }}</description>
     <language>en-us</language>
     <lastBuildDate>{{ site.time | date_to_xmlschema }}</lastBuildDate>
     <pubDate>{{ site.time | date_to_xmlschema }}</pubDate>
-    <managingEditor>{{ site.author.name }}</managingEditor>
+    <managingEditor>{{ site.author_name }}</managingEditor>
     <webfeeds:analytics id="{{ site.ga }}" engine="GoogleAnalytics"/>
 
     <!--
