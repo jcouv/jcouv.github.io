@@ -1,54 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Platform issues for movie listings on-the-go</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Platform issues for movie listings on-the-go</h2>
+---
+title: Platform issues for movie listings on-the-go
+date: 2007-05-24 12:07:24 +0800
+disqus_identifier: 319
+disqus_url: http://blog.monstuff.com/archives/000319.html
+---
 
 <p><img src="http://farm1.static.flickr.com/58/185984028_12f1f60ded_m.jpg" style="float: right; padding: 30px 0px 0px 20px" /><br />
 I have been thinking about the problem of movie listings on-the-go, after seeing it implemented on a SPOT watch. <br />
 Here are some thoughts and comparisons on how to build this experience on different devices (SPOT, cellphones, laptops, and PDAs). In that process, it will become apparent that some additional platform functionality in browsers (and maybe in the cellphone operating systems as well) would help make such scenarios easier to implement: background services.</p>
-
-<a name="more"></a>
 <p> <br />
 <h4>SPOT:</h4> My wife just started working on the SPOT/MSN Direct team last week. <a href="http://direct.msn.com/">MSN Direct</a> is the service that lets you pick some channels of information (stock, traffic, calendar, movies, weather, ...) and have them sent to your device.<br />
 I especially liked the "movies" channel, which lists movie show times in your area, since I've been frustrated in the past trying to go to see a movie on an impulse (while away from a PC).</p>
@@ -75,41 +34,8 @@ That javascript code should have access to some existing APIs to access the netw
 <p><u>Update (2008/01/14):</u> Lina ordered a Kindle device for my birthday and I am starting to think about some cool ways to use it. The Kindle seems very appropriate for such applications (not very good for interaction, but good for information display). <br />
 Movie listings would be convenient on the Kindle, but there is one obvious issue already: I cannot seem to find a movie listing API which I could build upon...</p>
 
-<span class="posted">Posted by Julien on May 24, 2007. <a href="http://blog.monstuff.com/archives/000319.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
-
-
-
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '319';
-        var disqus_url = 'http://blog.monstuff.com/archives/000319.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
+______________________________________
 
 
 
 
-
-
-
-</div>
-</div>
-
-
-</body>
-</html>

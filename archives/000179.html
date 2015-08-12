@@ -1,48 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Despairing for IIS error logs</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Despairing for IIS error logs</h2>
+---
+title: Despairing for IIS error logs
+date: 2004-05-20 16:06:39 +0800
+disqus_identifier: 179
+disqus_url: http://blog.monstuff.com/archives/000179.html
+---
 
 <p>This has been bugging me for many months, essentially every time I need to troubleshoot a deployment issue related to IIS.<br />
 <em>Where are the damn error logs!?!?</em></p>
@@ -61,77 +22,57 @@ Apache provides a very useful and <a href="http://httpd.apache.org/docs/logs.htm
 
 <p>These logs can be monitored interactively with utilities like <a href="http://www.gnu.org/software/coreutils/manual/html_node/coreutils_19.html">tail</a> with the "-f" option.</p>
 
-<a name="more"></a>
 
-
-<span class="posted">Posted by Julien on May 20, 2004. <a href="http://blog.monstuff.com/archives/000179.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
+______________________________________
 
 
 
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '179';
-        var disqus_url = 'http://blog.monstuff.com/archives/000179.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>Yes!! Doesn't that suck!?? I am not sure if they don't exist yet... but how about this: Search for "error log" in the IIS manager help, and you get... NO TOPICS! And the troubleshooting tips don't even mention looking at the error log... the most BASIC and ESSENTIAL thing in Apace!</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;greenweb66-tinker&#64;yahoo&#46;com">Chris</a> at August 19, 2004 12:03 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;greenweb66-tinker&#64;yahoo&#46;com">Chris</a> at August 19, 2004 12:03 PM
+
+
 <p>There are some IIS logs at C:\WINNT\system32\LogFiles\W3SVC1</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;fu&#64;fu&#46;com">bill</a> at February  7, 2005 12:34 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;fu&#64;fu&#46;com">bill</a> at February  7, 2005 12:34 AM
+
+
 <p>Bill, these are regular access logs. When you run into a problem (say a 401, 500,...) they only contain the error code, some IP addresses, the querystring, cookies, ...<br />
 But the Apache error logs are much, much more useful for troubleshooting. They give you a textual description of the error (couldn't find file x, couldn't get read permission to file x, script blah couldn't load include script foo,...) that are much more informative than the simple HTTP codes.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien</a> at February  7, 2005 09:00 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com/">Julien</a> at February  7, 2005 09:00 AM
+
+
 <p>system32\LogFiles\HTTPERR</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;kevlay&#64;gmail&#46;com">kevlay</a> at February 14, 2005 12:37 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;kevlay&#64;gmail&#46;com">kevlay</a> at February 14, 2005 12:37 AM
+
+
 <p>Kev, httperr logs in IIS6 are for requests that are rejected by http.sys. <br />
 They don't provide any level of application- or configuration-specific information.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at February 15, 2005 04:27 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at February 15, 2005 04:27 PM
+
+
 <p>This URL may help you find some information about worker status.  </p>
 
 <p><a href="http://www.microsoft.com/technet/prodtechnol/WindowsServer2003/Library/IIS/87892589-4eda-4003-b4ac-3879eac4bf48.mspx">http://www.microsoft.com/technet/prodtechnol/WindowsServer2003/Library/IIS/87892589-4eda-4003-b4ac-3879eac4bf48.mspx</a></p>
-<span class="comments-post">Posted by: <a href="http://www.microsoft.com/technet/prodtechnol/WindowsServer2003/Library/IIS/87892589-4eda-4003-b4ac-3879eac4bf48.mspx">Gabe Brown</a> at June 28, 2005 04:35 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.microsoft.com/technet/prodtechnol/WindowsServer2003/Library/IIS/87892589-4eda-4003-b4ac-3879eac4bf48.mspx">Gabe Brown</a> at June 28, 2005 04:35 PM
+
+
 <p>Gabe, the logs that I'm looking for are general error logs, not specifically for worker process events.<br />
 An example is when IIS returns a 404 because an extension was not enabled (new security feature in IIS6.0). It's actually super hard to figure out what is going on.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at June 28, 2005 04:49 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> at June 28, 2005 04:49 PM
+
+
 <p>Actually if you look at the sub-status field in that IIS log, you should have a pretty good idea why the 404 is happening.  I believe Log Parser (<a href="http://www.logparser.com)">http://www.logparser.com)</a> has an example of how to pull these out.<br />
 </p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/archives/000179.html">jeff</a> at June 28, 2005 05:42 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com/archives/000179.html">jeff</a> at June 28, 2005 05:42 PM
+
+
 <p>oh lord - why oh why can't MS keep things simple.<br />
 I mean -"Worker Process Recycling Events"? - as a developer you need a error log - it's that simple.</p>
 
@@ -142,22 +83,17 @@ I believe that Sagat (funk dat) would 'rap' about it something like this.</p>
 "everytime I try to develop with IIS and I theres an error, the online help tells me to look for 'Worker Process Recycling Event' - comon man - FUNK DAT!" <br />
 - could've been Sagat<br />
 </p>
-<span class="comments-post">Posted by: <a href="mailto&#58;jollo&#64;bollo&#46;com">JL</a> at September 21, 2005 02:24 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;jollo&#64;bollo&#46;com">JL</a> at September 21, 2005 02:24 AM
+
+
 <p>I feel your pain. I've also been trying to track down the error logs and poking through the multiple IIS configuration screens, desperately trying to find the location of the error log file. Then I found an error message saying that the details could be found in the application log, aha! Control Panel->Administrative tools->Computer Management->Event Viewer->Application. Simple :-P I know that it's crashing because of a bad configuration file (I broke it myself, now looking for specific errors) it gives me this: </p>
 
 <p>"aspnet_wp.exe could not be started. The error code for the failure is 80004005. This error can be caused when the worker process account has insufficient rights to read the .NET Framework files. Please ensure that the .NET Framework is correctly installed and that the ACLs on the installation directory allow access to the configured account."</p>
 
 <p>Oh man, give me nice Apache error logs any day. I've just wasted hours on this</p>
-<span class="comments-post">Posted by: <a href="http://electricsloth.com/blog/">Dave</a> at December 12, 2005 09:25 AM</span>
-</div>
+
+Posted by: <a href="http://electricsloth.com/blog/">Dave</a> at December 12, 2005 09:25 AM
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>

@@ -1,48 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: One-click video streaming from home server</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">One-click video streaming from home server</h2>
+---
+title: One-click video streaming from home server
+date: 2007-09-15 11:43:12 +0800
+disqus_identifier: 324
+disqus_url: http://blog.monstuff.com/archives/000324.html
+---
 
 <p><img src="http://farm2.static.flickr.com/1349/753713999_ee2283e99d_m_d.jpg" alt="Kitty with remote" style="float: right; padding: 10px 0px 0px 20px; width:240; height:180; border: none" /></p>
 
@@ -54,8 +15,6 @@
 The script adds a "one-click play" icon next to each video in the directory listings. Clicking that icon launches a media player, automatically opening the corresponding video stream.</p>
 
 <p>Note that when you install the script, you need to specific the url patterns that should trigger this script. In my case, that's the root url for my media server.</p>
-
-<a name="more"></a>
 <p> <br />
 If you are curious about how this script works, here's the gist. <br />
 First, notice that if you create a playlist file containing the url to a video as the single line, opening that file will get the url loaded by the media player. <br />
@@ -67,54 +26,23 @@ That's it.</p>
 For example, one-click <a href="http://weblog.infoworld.com/udell/2004/01/21.html">subscription to RSS feeds in your favorite aggregator</a>, <a href="http://blog.monstuff.com/archives/000238.html">composing/sending of email from mailto: links in Gmail</a>, or <a href="http://userscripts.org/scripts/show/11310">downloading of ed2k: links by a remote instance of Emule</a>.<br />
 Some cool stuff around this problem is coming in Firefox 3, but that will be the topic of another post. </p>
 
-<span class="posted">Posted by Julien on September 15, 2007. <a href="http://blog.monstuff.com/archives/000324.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
+______________________________________
 
 
 
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '324';
-        var disqus_url = 'http://blog.monstuff.com/archives/000324.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>The script contains<br />
 onclick=\"deleteFile('" + link.href + "')</p>
 
 <p>but I can't see deleteFile defined anywhere. What gives?</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;splintor&#64;gmail&#46;com">splintor</a> at September 17, 2007 02:18 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;splintor&#64;gmail&#46;com">splintor</a> at September 17, 2007 02:18 PM
+
+
 <p>That's just a commented line, which I copied from another script. That other script lets me delete a file directly from browser by adding a delete icon next to each entry in the listing.<br />
 I'll go ahead and remove that comment.<br />
 Thanks for picking that up.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at September 19, 2007 09:34 AM</span>
-</div>
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> at September 19, 2007 09:34 AM
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>

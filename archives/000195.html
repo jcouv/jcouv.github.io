@@ -1,48 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Video transcription tool</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Video transcription tool</h2>
+---
+title: Video transcription tool
+date: 2004-07-28 18:22:08 +0800
+disqus_identifier: 195
+disqus_url: http://blog.monstuff.com/archives/000195.html
+---
 
 <p>If you need to type a transcript for a recorded talk or event (video or audio), you might find this tool useful. <br />
 It's basically a minimal text editor integrated with a media player. Shortcuts are used to control the player while you're typing: pause/unpause (Ctrl-Space) and rewind 5 seconds (Ctrl-R). <br />
@@ -57,43 +18,15 @@ The C# source files come with a VS.net 2003 project and might need that you inst
 <p>Of course, transcripting can probably be done with sophisticated speech recognition too, but that would not be a 30 minutes project ;-)<br />
 Also, I can easily see how this tool could be extended to allow capturing the timing for the text, for generating subtitle files: you would first segment the text and then just capture time marks when the user presses space.<br />
 Another good feature would be spell checking.</p>
-
-<a name="more"></a>
 <p> <br />
 <u>Update:</u> A rant about <a href="http://www.oreillynet.com/pub/wlg/5814">why text rocks</a>.</p>
 
 <p><u>Update (2005/10/28):</u> Added a timestamp feature. Press Ctrl+T to print the current video time position into the transcript.</p>
 
-<span class="posted">Posted by Julien on July 28, 2004. <a href="http://blog.monstuff.com/archives/000195.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
+______________________________________
 
 
 
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '195';
-        var disqus_url = 'http://blog.monstuff.com/archives/000195.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>Hrmmm.... I got excited.... for a while. Until I read that:</p>
 
 <p>1. It's written using bloody MS .NET and requires the bloody huge runtime. (For an explanation of why I think Microsoft's dot-net sucks, see my article at <a href="http://www.theinquirer.net/?article=16677">http://www.theinquirer.net/?article=16677</a> , and scroll down to the section "the joy of asp-dot-net".</p>
@@ -103,9 +36,10 @@ Another good feature would be spell checking.</p>
 And download it from: <a href="http://catsoft.wz.cz/sp/">http://catsoft.wz.cz/sp/</a> .<br />
 Anyway... nice blog you have!. Kudos from down under.<br />
 Fernando Cassia - Buenos Aires, Argentina</p>
-<span class="comments-post">Posted by: <a href="http://www.os2guru.com/articles.shtml">Fernando Cassia</a> at September 30, 2004 12:53 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.os2guru.com/articles.shtml">Fernando Cassia</a> at September 30, 2004 12:53 AM
+
+
 <p>Hi Fernando. Thanks for the feedback.<br />
 1. The Java runtime download is also around 15MB to download. .Net comes pre-installed on windows XP and further I think, the same way you don't need to download Java if you install some Linux distros. <br />
 My guess is that when .Net allocates memory "in advance" that memory is virtually allocated and doesn't actually fill up the physical memory.<br />
@@ -116,9 +50,10 @@ My guess is that when .Net allocates memory "in advance" that memory is virtuall
 <p>Cheers,<br />
 Julien<br />
 </p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at September 30, 2004 10:59 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> at September 30, 2004 10:59 AM
+
+
 <p>I really like this program!  One small thing to add that would be very useful: a shortcut to resume showing in full screen mode.  Right now there is no way to do it.  I am using the program to document some long videos taken in full screen (1280x1024) mode using Camtasia screen movie capturing.</p>
 
 <p>One more feature request: a timer to automatically prompt the user every 5 minutes or so (user settable) to remind them to add a comment.  Ideally, the video would pause, the time stamp would be added, and the text window would appear in focus.</p>
@@ -127,14 +62,8 @@ Julien<br />
 
 <p><br />
 Jeremy</p>
-<span class="comments-post">Posted by: <a href="http://epsilon.phyast.pitt.edu">Jeremy Levy</a> at April 15, 2006 07:05 PM</span>
-</div>
+
+Posted by: <a href="http://epsilon.phyast.pitt.edu">Jeremy Levy</a> at April 15, 2006 07:05 PM
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>

@@ -1,54 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: FlashXMLHttpRequest: cross-domain requests</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">FlashXMLHttpRequest: cross-domain requests</h2>
+---
+title: FlashXMLHttpRequest: cross-domain requests
+date: 2006-06-04 19:04:54 +0800
+disqus_identifier: 294
+disqus_url: http://blog.monstuff.com/archives/000294.html
+---
 
 <p>I've been working with <a href="http://www.soaeosconference.sys-con.com/read/178702.htm">Jason Levitt</a> (from Yahoo) recently to iron the wrinkles out of my <a href="http://blog.monstuff.com/archives/000280.html">Flash-based technique for making cross-domain requests</a>. The main focus was to extend the reach of the technique to a larger audience, by adding support for Flash 7, which is more widely deployed than Flash 8. </p>
 
 <p>Try the new <a href="http://blog.monstuff.com/FlashXMLHttpRequest/demo/">FlashXMLHttpRequest demo</a>.</p>
-
-<a name="more"></a>
 <p> <br />
 Brad Neuberg's awesome <a href="http://codinginparadise.org/weblog/2006_04_25_archive.html">work on DojoExternalInterface</a> gave us a major boost. It emulates the most recent javascript to flash communication API (ExternalInterface, in Flash 8) accross platforms including Flash 7. The library hides differences with browsers and flash versions as much as possible, and works around various performance limitations.</p>
 
@@ -72,93 +31,69 @@ Let me know if FlashXMLHttpRequest is useful to you and if you encounter any bug
 <p><u>Update (2007/01/29):</u> It seems that Yahoo has removed their crossdomain.xml file from <a href="http://api.search.yahoo.com/crossdomain.xml">http://api.search.yahoo.com/crossdomain.xml</a><br />
 I'm not sure when this happened. The new domain is <a href="http://search.yahooapis.com/crossdomain.xml">http://search.yahooapis.com/crossdomain.xml</a>.</p>
 
-<span class="posted">Posted by Julien on June 04, 2006. <a href="http://blog.monstuff.com/archives/000294.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
+______________________________________
 
 
 
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '294';
-        var disqus_url = 'http://blog.monstuff.com/archives/000294.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>Julien, awesome work! You should submit this to the Dojo project. I'm glad that dojo.flash was useful for you, and I look forward to playing with your code some more.</p>
 
 <p>Best,<br />
   Brad</p>
-<span class="comments-post">Posted by: <a href="http://codinginparadise.org">Brad Neuberg</a> at June  5, 2006 02:49 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://codinginparadise.org">Brad Neuberg</a> at June  5, 2006 02:49 PM
+
+
 <p>Julien,</p>
 
 <p>Have you tried if FlashXMLHttpRequest is capable of accessing the partial text as the request is still loading, or when the response is a HTTP keep-alive type? If it is, it might be useful for a chat script. </p>
 
 <p>Roy</p>
-<span class="comments-post">Posted by: <a href="http://www.brilliantconcept.com">Roy</a> at July 11, 2006 12:57 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.brilliantconcept.com">Roy</a> at July 11, 2006 12:57 AM
+
+
 <p>Hi Roy,</p>
 
 <p>No I wasn't able to make the response available as it arrives. Again this is something that Flash 8.5 might improve on, I'd need to look some more, either thru the improved HTTP APIs or thru the socket APIs.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at July 11, 2006 03:40 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at July 11, 2006 03:40 PM
+
+
 <p>It's not working with UTF-8 characters (unicode), that's a bug probaly.</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;ramonklown&#64;pop&#46;com&#46;br">Ramon</a> at August  5, 2006 10:52 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;ramonklown&#64;pop&#46;com&#46;br">Ramon</a> at August  5, 2006 10:52 AM
+
+
 <p>Actually I've been rethiking about it and I think the problem isn't with the utf-8 chars but with the comments within files xml style. ()</p>
 
 <p>best,</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;ramonklown&#64;pop&#46;com&#46;br">Ramon</a> at August  5, 2006 01:06 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;ramonklown&#64;pop&#46;com&#46;br">Ramon</a> at August  5, 2006 01:06 PM
+
+
 <p>Kyle dropped me a note about his project, which is similar to FlashXMLHttpRequest. That may be interesting to some readers since I don't maintain this project anymore.</p>
 
 <p>"I've read about and seen your flash-based cross-domain ajax solution from a few years back. I was wondering if you had checked out flXHR (<a href="http://flxhr.flensed.com)?">http://flxhr.flensed.com)?</a>  It does something very similar, but it does so by implementing an identical API to the native XHR object, which makes it easy to drop flXHR into existing code without any changes. I even have plugins for jQuery and Dojo which make it even easier and more flexible to work with. " -- Kyle</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at April 26, 2009 10:23 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> at April 26, 2009 10:23 PM
+
+
 <p>Boris Reitman has been working on a similar project. In his own words:<br />
 "I was inspired by your article and wrote this:<br />
 <a href="http://code.google.com/p/crossxhr/">http://code.google.com/p/crossxhr/</a><br />
 I'm also providing flash source for the object. I can't remember now why your solution didn't work for me and I had to write my own."</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at May  3, 2009 10:21 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> at May  3, 2009 10:21 AM
+
+
 <p>Escort Services  If we wish to free ourselves from enslavement, we must choose freedom and the responsibility this entails.   coolserg9981</p>
-<span class="comments-post">Posted by: <a href="http://www.hi5.com/friend/group/4303366--Escort+Services+2009--front-html">Mcbott</a> at August  5, 2009 04:53 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.hi5.com/friend/group/4303366--Escort+Services+2009--front-html">Mcbott</a> at August  5, 2009 04:53 AM
+
+
 <p>Sensual massage  I choose not to think of my life as surviving, but coping.   coolserg9981</p>
-<span class="comments-post">Posted by: <a href="http://www.hi5.com/friend/group/4317426--Sensual+massage+2009--front-html">Laface</a> at August  5, 2009 07:00 AM</span>
-</div>
+
+Posted by: <a href="http://www.hi5.com/friend/group/4317426--Sensual+massage+2009--front-html">Laface</a> at August  5, 2009 07:00 AM
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>

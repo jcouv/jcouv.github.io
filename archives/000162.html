@@ -1,48 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: RFC: RSS one-click subscription</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">RFC: RSS one-click subscription</h2>
+---
+title: RFC: RSS one-click subscription
+date: 2004-04-01 13:52:00 +0800
+disqus_identifier: 162
+disqus_url: http://blog.monstuff.com/archives/000162.html
+---
 
 <p>One reason RSS/Atom feeds aren't mainstream is there is no easy one-click subscription and the first feed encounter isn't user-friendly enough. <a href="http://weblog.infoworld.com/udell/2004/01/21.html#a892">Jon Udell</a> and <a href="http://www.davextreme.com/davextreme/2004/02/feed_me.html ">David Ely</a> described the problem.</p>
 
@@ -116,8 +77,6 @@ A parameter should specify the image that the button will display. This way the 
 <p><b>Next steps:</b><br />
 I'm learning how to write a custom component for use as an embedded object. I'll write a sample for bloglines one-click subscription and will convert this blog to support this convention (the same way some blogs are currently using QuickSub).<br />
 I'd like to get feedback on whether bloggers and aggregators would be ready to support such a solution. Thanks for your comments on that and any technical aspects as well.</p>
-
-<a name="more"></a>
 <p><u>Update:</u> I started the prototype and ran into an ActiveX warning issue in IE, when using parameters ("An ActiveX control on this page might be unsafe to interact with other parts of the page. Do you want to allow this interaction?"). I don't know yet how to get ride of it (signing, config, ...?). </p>
 
 <p><u>Update:</u> Removed warning with a registry setting (<a href="http://msdn.microsoft.com/workshop/components/activex/safety.asp">safe for initialization</a>).</p>
@@ -140,67 +99,38 @@ The button will be extensible to support these new/richer subscription models.</
 
 <p><u>Update (2005-01-17):</u> Winer <a href="http://archive.scripting.com/2005/01/14#When:5:44:11AM">brings up the one-click subscription problem</a> again. Same solutions re-hashed in the <a href="http://www.reallysimplesyndication.com/2005/01/12#a254">comment thread</a>, no single best solution stands out...</p>
 
-<span class="posted">Posted by Julien on April 01, 2004. <a href="http://blog.monstuff.com/archives/000162.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
+______________________________________
 
 
 
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '162';
-        var disqus_url = 'http://blog.monstuff.com/archives/000162.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>Good work - looks like you might be onto something.</p>
 
 <p>Couple of thoughts: if possible Mozilla should use the &lt;object&gt; tag too, to keep with the specs (some related material here).<br />
 Also it would probably be desirable to provide the alternatives of View this Feed or Subscribeto this Feed.<br />
 </p>
-<span class="comments-post">Posted by: <a href="http://dannyayers.com">Danny</a> at April  6, 2004 02:09 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://dannyayers.com">Danny</a> at April  6, 2004 02:09 AM
+
+
 <p>related material on object vs. embed:<br />
 <a href="http://www.protocol7.com/svg-wiki/ow.asp?EmbedingSvgInHTML">http://www.protocol7.com/svg-wiki/ow.asp?EmbedingSvgInHTML</a></p>
-<span class="comments-post">Posted by: <a href="http://dannyayers.com">Danny</a> at April  6, 2004 02:10 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://dannyayers.com">Danny</a> at April  6, 2004 02:10 AM
+
+
 <p>Cool, thanks a lot. I'll make sure to read it.<br />
 AListApart also has an object vs. embed article: <a href="http://www.alistapart.com/articles/flashsatay/">http://www.alistapart.com/articles/flashsatay/</a> (Flash Satay: Embedding Flash While Supporting Standards).</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;dumky_ATR&#64;hotmail&#46;com">Dumky</a> at April  6, 2004 09:35 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;dumky_ATR&#64;hotmail&#46;com">Dumky</a> at April  6, 2004 09:35 AM
+
+
 <p>My, what a Rube-Goldbergeque contraption to make up for what is basically an OS deficiency!</p>
 
 <p>All I do, to subscribe to an RSS/Atom feed is drag the link from my Browser's window into my Aggregator's window. _Bing!_ I'm subscribed.</p>
 
 <p>At least on my blog, clicking on an RSS/Atom link brings up a popup window, instructing the reader to ... _ahem!_ ... drag the link from the Browser window into their Aggregator.</p>
-<span class="comments-post">Posted by: <a href="http://golem.ph.utexas.edu/~distler/blog/">Jacques Distler</a> at April  9, 2004 07:21 PM</span>
-</div>
+
+Posted by: <a href="http://golem.ph.utexas.edu/~distler/blog/">Jacques Distler</a> at April  9, 2004 07:21 PM
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>

@@ -1,48 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: "XMLHttpRequest Tracing" for AJAX debugging</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">"XMLHttpRequest Tracing" for AJAX debugging</h2>
+---
+title: "XMLHttpRequest Tracing" for AJAX debugging
+date: 2005-05-10 15:45:53 +0800
+disqus_identifier: 250
+disqus_url: http://blog.monstuff.com/archives/000250.html
+---
 
 <p>Here's a Greasemonkey user script to <a href="http://blog.monstuff.com/archives/images/XMLHttpRequestTracing.user.js" title="right click &#8594; Install User Script...">trace XMLHttpRequest calls</a> in the javascript console. It logs the "open" and "send" calls, as well as the response status code and text.<br />
 Its purpose is to help peek into AJAX applications, to learning or troubleshooting, without having to run a network sniffer.</p>
@@ -53,68 +14,44 @@ Its purpose is to help peek into AJAX applications, to learning or troubleshooti
 It doesn't work on GMail. I'm not sure why yet (any pointers appreciated ;-).</p>
 
 <p>Thanks to the anonymous contributor that posted that idea in the <a href="http://dunck.us/collab/GreaseMonkeyUserScriptRequest">Greasemonkey user script requests</a> page.</p>
-
-<a name="more"></a>
 <p><u>Update (2005/06/02):</u> I just posted a new and re-vamped script for <a href="http://blog.monstuff.com/archives/000252.html">XMLHttpRequest debugging</a>. It implements some debugging features beyond simply tracing, such as editing and replaying requests.</p>
 
 <p><u>Update (2005/07/10):</u> Due to security reasons, the GM_* functions were removed from Greasemonkey 0.3.5 until a more secure design is found. The XMLHttpRequest Tracing script requires the GM_log function and therefore won't work at all on these "neutered" versions of Greasemonkey.</p>
 
 <p><u>Update (2006/01/12):</u> Fixed script to work in Firefox 1.5 with Greasemonkey 0.6.4. It's probably broken for older version thought.</p>
 
-<span class="posted">Posted by Julien on May 10, 2005. <a href="http://blog.monstuff.com/archives/000250.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
+______________________________________
 
 
 
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '250';
-        var disqus_url = 'http://blog.monstuff.com/archives/000250.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>I tried it for www.backpackit.com, and it made it so that Backpack would no longer accept my updates.<br />
 </p>
-<span class="comments-post">Posted by: <a href="http://www.armknecht.com">Sage</a> at May 11, 2005 08:28 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.armknecht.com">Sage</a> at May 11, 2005 08:28 AM
+
+
 <p>Sage, I just tried it on backpackit.com and I didn't have any problem (updates are working).<br />
 What specific operation is not working?<br />
 Thanks,</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at May 11, 2005 08:42 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> at May 11, 2005 08:42 AM
+
+
 <p>I tried adding an item to a list and the little spiraling "pending" circle icon just kept spinning.  Same thing when I tried to add a note.  </p>
 
 <p>I thought maybe it was making a server call to this site and that was slowing it down, but I let it run for a couple of minutes and nothing happened.</p>
 
 <p>I also noticed that when I tried to delete items, they disappear as if it worked correctly, but when I refresh or login with a different browser the items are actually still there.<br />
 </p>
-<span class="comments-post">Posted by: <a href="http://www.armknecht.com">Sage</a> at May 11, 2005 08:54 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.armknecht.com">Sage</a> at May 11, 2005 08:54 AM
+
+
 <p>This is a nice exercise, but why not just use Live HTTP Headers?</p>
-<span class="comments-post">Posted by: <a href="http://www.holovaty.com/">Adrian H.</a> at May 11, 2005 09:48 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.holovaty.com/">Adrian H.</a> at May 11, 2005 09:48 AM
+
+
 <p>Adrian, Live HTTP Headers is most useful. But it only shows the headers, whereas this user script also shows the body of the response, which is quite useful in AJAX applications.</p>
 
 <p>I'm thinking of adding some XMLHttpRequest debugging features that go beyond simply tracing (if an implementation is possible):<br />
@@ -122,46 +59,53 @@ Thanks,</p>
 - in that interface, let users replay callbacks (maybe allowing to modify the response body).<br />
 - let users intercept (breakpoint) and modify requests and responses as they go .<br />
 </p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at May 11, 2005 09:56 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> at May 11, 2005 09:56 AM
+
+
 <p>Ah, that makes sense -- thanks for the clarification!</p>
-<span class="comments-post">Posted by: <a href="http://www.holovaty.com/">Adrian H.</a> at May 11, 2005 10:56 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.holovaty.com/">Adrian H.</a> at May 11, 2005 10:56 AM
+
+
 <p>Sage, I'm still trying to repro this problem.<br />
 What OS and browser versions are you running?<br />
 Do you have any messages in the javascript console that might be related?<br />
 Thanks,</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at May 11, 2005 05:12 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> at May 11, 2005 05:12 PM
+
+
 <p>What is the url that is needed to be added to the greasemonkey script?</p>
 
 <p>I am just starting out with greasemonkey and I tried with the following link <br />
 <a href="http://www.google.com/*">http://www.google.com/*</a></p>
 
 <p>but the JS console shows no output</p>
-<span class="comments-post">Posted by: <a href="http://freepgs.com/akash">makash</a> at May 11, 2005 10:15 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://freepgs.com/akash">makash</a> at May 11, 2005 10:15 PM
+
+
 <p>Julien,</p>
 
 <p>I am using Greasemonkey 0.2.6 on Firefox 1.0.3.  My OS is Windows XP.  The javascript console didn't actually open.</p>
-<span class="comments-post">Posted by: <a href="http://www.armknecht.com">Sage</a> at May 12, 2005 07:20 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.armknecht.com">Sage</a> at May 12, 2005 07:20 AM
+
+
 <p>Hey Sage. Same platform as me.<br />
 Do you mean the javascript console won't open at all? Did you try to open it via the "Tools" menu or some other way?<br />
 </p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at May 12, 2005 09:27 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> at May 12, 2005 09:27 AM
+
+
 <p>Makash, the main Google search page doesn't use XMLHttpRequest. Try Google Suggest instead, at <a href="http://www.google.com/webhp?complete=1">http://www.google.com/webhp?complete=1</a><br />
 </p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at May 12, 2005 09:31 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> at May 12, 2005 09:31 AM
+
+
 <p>Sorry, a little confusion on my end.  Anyway, I opened the JavaScript console, and when I use Backpackit it doesn't log anything when I try to add or delete items.  <br />
 So, I added Feedmarker.com and sproutliner.com to the Greasemonkey script to try those sites.  I get the following errors.  In Sproutliner:<br />
 Error: GM_log is not defined<br />
@@ -170,23 +114,27 @@ Line: 149</p>
 
 <p>And in Feedmarker.com:<br />
 Client_Error:ReferenceError:GM_log is not defined.</p>
-<span class="comments-post">Posted by: <a href="http://www.armknecht.com">Sage</a> at May 12, 2005 11:11 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.armknecht.com">Sage</a> at May 12, 2005 11:11 AM
+
+
 <p>Sage, thanks for taking the time to troubleshoot this with me. I think that pinpoints the problem: you need Greasemonkey 0.3 and up. The GM_log function didn't exist before that.<br />
 I'll update the XMLHttpRequestTracing script to issue a warning when it detects an older version of Greasemonkey.<br />
 Sorry about that.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at May 12, 2005 11:16 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> at May 12, 2005 11:16 AM
+
+
 <p>Glad to help!</p>
-<span class="comments-post">Posted by: <a href="http://www.armknecht.com">Sage</a> at May 12, 2005 11:29 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.armknecht.com">Sage</a> at May 12, 2005 11:29 AM
+
+
 <p>Have you tried Fiddler www.fiddlertool.com</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;sadasd&#64;sdsds&#46;com">asdasd</a> at May 19, 2005 04:23 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;sadasd&#64;sdsds&#46;com">asdasd</a> at May 19, 2005 04:23 AM
+
+
 <p>Re: Fiddler<br />
 I have used Fiddler tool and a number of other HTTP sniffers.</p>
 
@@ -196,9 +144,10 @@ I have used Fiddler tool and a number of other HTTP sniffers.</p>
 Feature suggestions are welcome too :-)</p>
 
 <p>I'm also thinking about integrating it with the javascript shell or the javascript development environment (see <a href="http://www.squarefree.com/bookmarklets/webdevel.html">http://www.squarefree.com/bookmarklets/webdevel.html</a> ).</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at May 19, 2005 10:26 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> at May 19, 2005 10:26 AM
+
+
 <p>im using gm0.3.3 + ff 1.04 and i installed the script, but now whenever i open any webpage, i get the following error message in the js console</p>
 
 <p>Error: illegal character</p>
@@ -206,38 +155,45 @@ Feature suggestions are welcome too :-)</p>
 <p>if i disable your xmlhttp tracer script, i dont get the error.</p>
 
 <p>very weird...</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;steve&#64;Steve&#46;com">steve</a> at June 14, 2005 11:24 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;steve&#64;Steve&#46;com">steve</a> at June 14, 2005 11:24 AM
+
+
 <p>Thank you, Julien. This script has made my life so much easier.</p>
-<span class="comments-post">Posted by: <a href="http://www.yogler.net">Nathaniel</a> at August 10, 2005 12:01 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.yogler.net">Nathaniel</a> at August 10, 2005 12:01 PM
+
+
 <p>Hi, can you explain how to install this?  I'd love to try it but I'm new to Greasemonkey.</p>
 
 <p>Thanks.</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;bethfreeman&#64;gmail&#46;com">Beth</a> at November  8, 2005 09:31 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;bethfreeman&#64;gmail&#46;com">Beth</a> at November  8, 2005 09:31 AM
+
+
 <p>Me again - Okay, I realized the installation instructions were in the script :-).  So it's installed.  Next question: how do you use it?!  When I bring up my javascript console I don't see anything happening... do I have to somehow call the script in my javascript?</p>
 
 <p>Thanks again!</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;bethfreeman&#64;gmail&#46;com">Beth</a> at November  8, 2005 09:59 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;bethfreeman&#64;gmail&#46;com">Beth</a> at November  8, 2005 09:59 AM
+
+
 <p>Beth, you need to configure the list of trigger urls for the script so that the script gets run on the pages you want to analyze. <br />
 Then you navigate to one of these pages and at that point you should see tracing information appear in the console.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at November 15, 2005 12:36 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at November 15, 2005 12:36 PM
+
+
 <p>Beth, you need to configure the list of trigger urls for the script so that the script gets run on the pages you want to analyze.</p>
-<span class="comments-post">Posted by: <a href="http://lucky7.to/die/">acura</a> at December  7, 2005 04:24 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://lucky7.to/die/">acura</a> at December  7, 2005 04:24 PM
+
+
 <p>Just occasionally got here, but thaks for the script. A pretty neat tool.</p>
-<span class="comments-post">Posted by: <a href="[edited]">AJ</a> at December 14, 2005 02:26 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="[edited]">AJ</a> at December 14, 2005 02:26 PM
+
+
 <p>Hi All,<br />
 Actually i have a question related to AJAX technology that I want to ask with all of you.</p>
 
@@ -246,35 +202,33 @@ Actually i have a question related to AJAX technology that I want to ask with al
 <p>I am ASP.NET Developer and looking forward for your suggestion regarding my question.</p>
 
 <p>Thanks in Advance.</p>
-<span class="comments-post">Posted by: <a href="http://www.webmultimediadesigner.com">Anand</a> at January  1, 2006 05:08 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.webmultimediadesigner.com">Anand</a> at January  1, 2006 05:08 AM
+
+
 <p>Anand, nothing prevents you from updating a database using AJAX. <br />
 With ASP.Net, you could use an AJAX framework such as Microsoft Atlas or AJAX.Net as the glue between your client-side javascript and your server-side C#. <br />
 But you still need to write C# code that does the database update, given some parameters passed from the client.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at January  4, 2006 09:24 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at January  4, 2006 09:24 PM
+
+
 <p>I just updated the script to run in Firefox 1.5 and Greasemonkey 0.6.4. Older versions are not supported anymore.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at January 13, 2006 10:51 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at January 13, 2006 10:51 AM
+
+
 <p>Thanks for this great post. You've got some really good info in your blog.<br />
 Adam Butler<br />
 <a href="http://www.tracingimprint.com">http://www.tracingimprint.com</a></p>
-<span class="comments-post">Posted by: <a href="http://www.tracingimprint.com">Adam Butler</a> at February  8, 2006 09:25 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.tracingimprint.com">Adam Butler</a> at February  8, 2006 09:25 AM
+
+
 <p>Great reading, keep up the great posts.<br />
 Peace, JiggaDigga</p>
-<span class="comments-post">Posted by: <a href="http://#">JiggaDigga</a> at April  7, 2006 09:39 AM</span>
-</div>
+
+Posted by: <a href="http://#">JiggaDigga</a> at April  7, 2006 09:39 AM
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>

@@ -1,48 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Reactive programming in javascript and C#</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Reactive programming in javascript and C#</h2>
+---
+title: Reactive programming in javascript and C#
+date: 2009-08-15 14:18:54 +0800
+disqus_identifier: 359
+disqus_url: http://blog.monstuff.com/archives/000359.html
+---
 
 <p><a href="http://www.flickr.com/photos/access/2165374689/"><img src="http://farm3.static.flickr.com/2278/2165374689_0c605b8e92_m.jpg" style="float: right; padding: 10px 0px 0px 20px; width:240; height:180; border: none"  alt="push, Sisyphus" /></a> </p>
 
@@ -62,8 +23,6 @@ This lets you chain operations, LINQ-style, into an event processing pipeline wh
 This brings us to the .Net world. There are already some projects attempting to improve .Net and LINQ for asynchronous programming (CCR, Polyphonic C#/C&#969; <a href="http://bindablelinq.codeplex.com/">Bindable LINQ</a>, PFx/TPL with <a href="http://blogs.msdn.com/pfxteam/archive/2008/07/23/8768673.aspx">ContinueWith on Tasks and Futures<></a>), but most excitingly, this will officially be included in .Net 4.0 under the "Rx" framework. It brings the new IObservable<> type, a sibling to the existing IEnumerable<> type, which powers much of LINQ, with much of the same composability benefits.  </p>
 
 <p><a href="http://www.langnetsymposium.com/2009/talks/23-ErikMeijer-LiveLabsReactiveFramework.html">Erik Meijer's initial presentation on the Rx framework</a> explains the deep similarity between those types and the symmetry between the push and pull flows.</p>
-
-<a name="more"></a>
 <p> <br />
 An early version of the <em>System.Reactive</em> assembly is available in the Silverlight 3 release. Jafar Husain has been toying with those bits and blogging about their experience, starting with an excellent introduction, <a href="http://themechanicalbride.blogspot.com/2009/07/introducing-rx-linq-to-events.html">Introducing Rx, LINQ-to-events</a>.<br />
   <br />
@@ -98,41 +57,8 @@ Now the problem is converging the different asynchronous programming models deve
 
 <p><u>Updated</u> Rx has hopped from .Net back to Javascript, in the form of <a href="http://blogs.msdn.com/rxteam/archive/2010/03/17/reactive-extensions-for-javascript.aspx">RxJS</a>.</p>
 
-<span class="posted">Posted by Julien on August 15, 2009. <a href="http://blog.monstuff.com/archives/000359.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
-
-
-
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '359';
-        var disqus_url = 'http://blog.monstuff.com/archives/000359.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
+______________________________________
 
 
 
 
-
-
-
-</div>
-</div>
-
-
-</body>
-</html>

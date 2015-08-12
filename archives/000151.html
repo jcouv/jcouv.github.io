@@ -1,48 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Decompression bombs vs. RIAA</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Decompression bombs vs. RIAA</h2>
+---
+title: Decompression bombs vs. RIAA
+date: 2004-03-05 15:55:40 +0800
+disqus_identifier: 151
+disqus_url: http://blog.monstuff.com/archives/000151.html
+---
 
 <p>I read recently about how the RIAA could use <a href="http://arstechnica.com/news/posts/1078356967.html">audio fingerprinting to identify copyrighted material</a> on P2P file sharing networks.<br />
 I also heard about <a href="http://www.aerasec.de/security/advisories/decompression-bomb-vulnerability.html">decompression bombs</a> and thought about using that concept to protect P2P networks.</p>
@@ -52,66 +13,34 @@ I also heard about <a href="http://www.aerasec.de/security/advisories/decompress
 <p>This could be done using cryptography, either distributing the key along with the encrypted file or even having it bundled in a self-decrypting executable. But using a standard decompression algorithm like gzip or bzip2 would make distribution easier (only the compression would require a new tool).</p>
 
 <p>This would make it costly for automated content analysis on a large scale, while not being a problem for individual users, the same way that <a href="http://www.cypherspace.org/adam/hashcash/">hashcash</a> and other <a href="http://research.microsoft.com/research/sv/PennyBlack/">proofs of work</a> make it uneconomical for spammers but not casual users.</p>
-
-<a name="more"></a>
 <p><u>Update:</u><br />
 A related article was just posted at the NYTimes: <a href="http://www.nytimes.com/2004/03/08/technology/08music.html">A Software Program Aimed at Taming File-Sharing</a>.</p>
 
-<span class="posted">Posted by Julien on March 05, 2004. <a href="http://blog.monstuff.com/archives/000151.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
+______________________________________
 
 
 
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '151';
-        var disqus_url = 'http://blog.monstuff.com/archives/000151.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>I don't see the point of an honest person in defending against such a scan by the RIAA (or any other copyright holder), unless you're thinking of how to enable the scan to not be bogged down by decompression bombs.</p>
 
 <p>I find it repulsive that people actively seek to steal what doesn't belong to them from other people.  Perhaps worse than that is helping other people to steal.  I see no value in helping theives continue to steal property via p2p networks.</p>
-<span class="comments-post">Posted by: <a href="http://lparky.com/blog/">Louis Parks</a> at March  7, 2004 09:00 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://lparky.com/blog/">Louis Parks</a> at March  7, 2004 09:00 PM
+
+
 <p>Thanks for your challenging feedback.</p>
 
 <p>I am not advocating stealing, which by the way is different than unauthorized copying. <br />
 I do think the music industry currently has a broken model, which is not adapted the digital era. My point is that none of these technological patches is a good enough solution yet. The signature monitoring is only a small step up from the filename/metadata monitoring they already do (which fails to detect pig latin encoded titles).<br />
 As to whether I'm helping other people to steal, it reminds me of whether security experts should publish the flaws their research has uncovered. I believe they should, following a certain etiquette.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/archives/000151.html">Dumky</a> at March  9, 2004 10:48 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com/archives/000151.html">Dumky</a> at March  9, 2004 10:48 AM
+
+
 <p>This "hoo ha" (are women allowed to say hoo hah?)<br />
 about millionaires and billionaires whining because they don't roll in more bling bling for the every combination of do re mi that they press onto a cd is absurd.  It is time to do what is in the Constitution.  You invent something then you get some time to develop it. After that it is fair game. There nothing about music.  They want this music "protection" then create an amendment to the Constitution. <br />
 &lt;/ end rant</p>
-<span class="comments-post">Posted by: <a href="http://xml-build-tell.blogspot.com/">Suzy</a> at June  7, 2004 08:38 PM</span>
-</div>
+
+Posted by: <a href="http://xml-build-tell.blogspot.com/">Suzy</a> at June  7, 2004 08:38 PM
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>

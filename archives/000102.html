@@ -1,56 +1,15 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Capability-based security</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Capability-based security</h2>
+---
+title: Capability-based security
+date: 2003-09-26 23:33:00 +0800
+disqus_identifier: 102
+disqus_url: http://blog.monstuff.com/archives/000102.html
+---
 
 <p>Capability theory is an application of the principle of least authority to languages and operating systems. POLA (principle of least authority) is one of the well known security principles, along with "defense in depth" or "complexity is the enemy of security", amongst others.</p>
 
 <p>There is a lot of capability theory papers online, mostly around the <a href="http://erights.org/">E language</a> and <a href="http://www.eros-os.org/">EROS operating system</a>. But still I couldn't get all the pieces together, so I turned to the <a href="http://www.eros-os.org/mailman/listinfo/e-lang">E language</a> mailing list. My questions were answered very quickly and led to some interesting discussions (most of which won't be covered here).</p>
 
 <p>I'll try to summarize the key to what I learned: what are the criteria for a language to be considered capability secure?</p>
-
-<a name="more"></a>
 <p><u>Summary</u><br />
 Here are at least two criteria that distinguish a capability-oriented language like E:<br />
 - <b>no ambient authority</b> and no ambient API, only objects.<br />
@@ -103,44 +62,19 @@ Because sometimes the insecure component is between the keyboard and the screen,
 <p><br />
 <u>Update:</u> Thinking some more about the differences between "regular" languages and capability-based languages, I found one more major difference. It is very important in capability-based languages that private member variables really be inaccessible from the outside. An object should have strict control over the interface that it exposes and his internals should remain "secret".</p>
 
-<span class="posted">Posted by Julien on September 26, 2003. <a href="http://blog.monstuff.com/archives/000102.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
+______________________________________
 
 
 
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '102';
-        var disqus_url = 'http://blog.monstuff.com/archives/000102.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>Nice summary.  I'd object to a couple of points:</p>
 
 <p>On "No global API": you can have a library globally accessible, it just can't have any authority.  So sqrt() would be okay to have available to anyone by default, while fopen() would not.  fopen(), if we have it, must be in a privileged scope instead.</p>
 
 <p>I'm not sure if you're saying that a capability system must not be vulnerable to buffer overflows.  Disallowing that attack is good security, but not inherent to capabilities: you could have C programs still vulnerable this way, it's just that once you've taken over the process, you've 0wned only that process and the capabilities it holds (as you point out).</p>
-<span class="comments-post">Posted by: <a href="http://accesscom.com/~darius">Darius Bacon</a> at September 27, 2003 12:42 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://accesscom.com/~darius">Darius Bacon</a> at September 27, 2003 12:42 AM
+
+
 <p>Nice summary.</p>
 
 <p>I think you mean "object" rather than "class" in the fourth-to-last paragraph.  E has no classes!</p>
@@ -148,34 +82,32 @@ Because sometimes the insecure component is between the keyboard and the screen,
 <p>Regards,</p>
 
 <p>Zooko</p>
-<span class="comments-post">Posted by: <a href="http://zooko.com/log.html">Zooko</a> at September 27, 2003 05:05 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://zooko.com/log.html">Zooko</a> at September 27, 2003 05:05 AM
+
+
 <p>Thanks for your feedback and corrections.<br />
 Memory safety is defintely a good security enhancement in any language. What I tried to say is that a capability-based language needs memory safety to reach a finner grain compartmentalization (the object).</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/archives/000059.html">Dumky</a> at September 27, 2003 02:24 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com/archives/000059.html">Dumky</a> at September 27, 2003 02:24 PM
+
+
 <p>I am pleased that you find the meaning of "ambient authority" clear. Some on the list didn't. I thought it was clear.<br />
 Regarding Darius Bacon's note: It would also be suitable to provide an fopen that takes a directory capability as parameter. But invoking the directory as an object is even better.</p>
-<span class="comments-post">Posted by: <a href="http://cap-lore.com">Norm Hardy</a> at September 28, 2003 08:40 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://cap-lore.com">Norm Hardy</a> at September 28, 2003 08:40 AM
+
+
 <p>"object" rather than "class" </p>
 
 <p>Aploze.</p>
-<span class="comments-post">Posted by: <a href="http://www.ureach.com/e_icc">Dmitry Ikan</a> at November 14, 2003 11:15 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.ureach.com/e_icc">Dmitry Ikan</a> at November 14, 2003 11:15 PM
+
+
 <p>Thanks for the feedback. I just fixed the occurences of "class" that I had missed.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Dumky</a> at November 18, 2003 04:27 PM</span>
-</div>
+
+Posted by: <a href="http://blog.monstuff.com/">Dumky</a> at November 18, 2003 04:27 PM
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>

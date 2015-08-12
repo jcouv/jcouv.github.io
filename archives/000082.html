@@ -1,54 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: SharpReader wishlist</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">SharpReader wishlist</h2>
+---
+title: SharpReader wishlist
+date: 2003-07-24 22:39:10 +0800
+disqus_identifier: 82
+disqus_url: http://blog.monstuff.com/archives/000082.html
+---
 
 <p>I have been using SharpReader for more than a month now. It is a rather simple app (at least UI-wise), but it does the job well. I wonder if the "backend" RSS work is difficult, given the multiple versions of RSS and the interop problems in RSS (that <a href="http://www.intertwingly.net/wiki/pie/Motivation">motivated necho</a>).</p>
 
 <p>As with all applications you use quite a bit and enjoy, there is always little additions you'd enjoy. So here is my wishlist:</p>
-
-<a name="more"></a>
 <p>- let me modify SharpReader: I'd love to see some of the code and be able to modify some of it to implement some of my wishes myself. Alternatively, a plugin system might be enough to implement the features listed below.</p>
 
 <p>- sync over the web: I use multiple computers, one at work, one at home and one laptop, but I can only use SharpReader on one of them because it doesn't support synchronization. I don't know if there is existing frameworks (maybe Jabber) to make this easier.</p>
@@ -63,78 +22,50 @@
 
 <p>Also, I have noticed that some entries don't display correctly, instead of loading the description from the feed, it loads on of the urls of the entry. I am not sure yet whether this is a bug or just a problem with the feed itself.</p>
 
-<span class="posted">Posted by Julien on July 24, 2003. <a href="http://blog.monstuff.com/archives/000082.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
+______________________________________
 
 
 
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '82';
-        var disqus_url = 'http://blog.monstuff.com/archives/000082.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>Luke actually has a plugin model. I haven't written one yet, though i plan to do this soon to write a ink blogger plugin. </p>
 
 <p>There is no RSS mime type for most things. It's usually text/xml. </p>
 
 <p>As to your second point - agreed. I'm working on something that will help this, but it would be better if it were integrated - and the UI could be decoupled from the backend, specifically subscriptions.</p>
-<span class="comments-post">Posted by: <a href="http://weblogs.asp.net/tmarman">Tim Marman</a> at July 28, 2003 02:37 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://weblogs.asp.net/tmarman">Tim Marman</a> at July 28, 2003 02:37 PM
+
+
 <p>The current plugin system appears to support IBlogThis and IBlogExtension interfaces, which are meant for blogging about an RSS entry listed by the feed reader, but not general purpose extensions.<br />
 I may be missing something though: would you have specific pointers for more information on the interfaces your were considering?</p>
 
 <p>About the second point (having multiple readers synchronize): thinking some more about it, it seems a really general problem (also applies to bookmarks, contacts, notes,...). I have a post in preparation with some reflections/suggestions for a possible framework for handling this.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Dumky</a> at July 28, 2003 06:44 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Dumky</a> at July 28, 2003 06:44 PM
+
+
 <p><a href="http://www.tallent.us/weblogx/PermaLink.aspx/8ae24518-f229-4ef1-ac67-04d6906eef26">http://www.tallent.us/weblogx/PermaLink.aspx/8ae24518-f229-4ef1-ac67-04d6906eef26</a><br />
 Richard listed some SharpReader requests of his own. I'm happy to see I'm not the only one with the multiple machines problem.</p>
 
 <p>I wish we didn't have to use a central server to handle these synchronization problems every time (for bookmarks, notes, email,...), but it still is the easiest solution today even if P2P getting lots of interest.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Dumky</a> at August  3, 2003 11:23 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Dumky</a> at August  3, 2003 11:23 PM
+
+
 <p>There has been some more discussions on one-click feed subscription (check out <a href="http://www.tallent.us/PermaLink.aspx?guid=6d03b762-9867-4786-8c33-b649efe3160d">http://www.tallent.us/PermaLink.aspx?guid=6d03b762-9867-4786-8c33-b649efe3160d</a> ).</p>
 
 <p>Pete Hopkins is proposing a new URI scheme (feed:) for this. He also posted an interesting comment (<a href="http://pirate.typepad.com/blog/2003/09/problems_with_m.html">http://pirate.typepad.com/blog/2003/09/problems_with_m.html</a>  ) on the conceptual problem of using a mime type to do the job: mime types allow the browser to download the content and pass it to another app, while subscribing would actually require the url itself to be handed to the app.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Dumky</a> at September 15, 2003 12:01 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com/">Dumky</a> at September 15, 2003 12:01 PM
+
+
 <p>Re: "integrate in the browser's handling of the RSS mime type: when I open an RSS file in IE or Mozilla, it'd be nice to have it loaded into SharpReader. This would make subscribing to feeds even easier"<br />
 ---</p>
 
 <p>as for mime type handling, i have this problem myself, but then not all feeds are served with the correct type anyway ;)</p>
 
 <p>something i found useful, was the Launchy extension (for firefox at least) you can add your own apps using an XML file (ie sharpreader, add it as type 1 (browser)) then you can "open with sharpreader" :)</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;leecare&#64;hotmail&#46;com">Lee Carre</a> at February 11, 2006 09:31 AM</span>
-</div>
+
+Posted by: <a href="mailto&#58;leecare&#64;hotmail&#46;com">Lee Carre</a> at February 11, 2006 09:31 AM
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>

@@ -1,48 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: "Take It With You" Wiki</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">"Take It With You" Wiki</h2>
+---
+title: "Take It With You" Wiki
+date: 2006-01-17 16:44:50 +0800
+disqus_identifier: 272
+disqus_url: http://blog.monstuff.com/archives/000272.html
+---
 
 <p>Although this blog has been silent for a while, I haven't been idle. I was working on AJAX-based web application with transparent support for disconnected operations. </p>
 
@@ -55,8 +16,6 @@ Here's a demonstration scenario:<br />
 <p>This is just the skeleton of a wiki, but it gives a feeling of the possibilities of web applications that can deal gracefully with being intermittantly disconnected. I'm especially interested in hearing back about whether this approach is valuable to you, in comparison to the traditional web and rich client models. <br />
 What other applications you'd find most appealing and why? <br />
 Here are the ones I brainstormed so far: a personal wiki, various other personal or group GTD tools (such as todo list or calendar), a community wiki, an email reader and/or composer, a blog editor, an RSS reader, an app for driving directions.</p>
-
-<a name="more"></a>
 <p> <br />
 <h4>Some background:</h4> Two problems ran in circles in my head while I was on vacation a couple of weeks ago: how to make cross-domain XMLHttp requests before cross-domain is actually supported by browsers and how to allow web applications to run offline? <br />
 I started by focusing on the first one, probably because I've been toying recently with cross-domain XMLHttp and client-side storage through Greasemonkey. Also, I was thinking that it would help for running local/offline copies of web apps. </p>
@@ -134,36 +93,10 @@ The usual hacks rely on iframes pointing to a blank html page on the server, wit
 
 <p><h4>Update (2009/01/06):</h4> Google Gears has been available for a year and a half now, and has been used in a few Google applications and a <a href="http://googlesystem.blogspot.com/2008/04/list-of-applications-that-use-google.html">couple others</a>. Yet there does not seem to be a good online/offline wiki app yet. Disappointing.</p>
 
-<span class="posted">Posted by Julien on January 17, 2006. <a href="http://blog.monstuff.com/archives/000272.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
+______________________________________
 
 
 
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '272';
-        var disqus_url = 'http://blog.monstuff.com/archives/000272.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>Dude, this is the shit. You. Rock.</p>
 
 <p>I've been trying to crack this nut _forever_; it's why I made AMASS. Very cool that you figured it out!</p>
@@ -171,58 +104,68 @@ The usual hacks rely on iframes pointing to a blank html page on the server, wit
 <p>We're brother in arms; I have a a library named the Really Simple History library that solves the back button issues in IE and Firefox: <a href="http://www.onjava.com/pub/a/onjava/2005/10/26/ajax-handling-bookmarks-and-back-button.html">http://www.onjava.com/pub/a/onjava/2005/10/26/ajax-handling-bookmarks-and-back-button.html</a></p>
 
 <p>I've been bringing my AMASS and Flash work into the Dojo project into the dojo.flash and dojo.storage packages; if you are interested, we could coordinate to create a dojo.offline package that uses both of these to extend the capabilities you've discovered to all apps. Email me at bkn3 [at] columbia -dot- edu if you are interested.</p>
-<span class="comments-post">Posted by: <a href="http://codinginparadise.org">Brad Neuberg</a> at January 17, 2006 10:53 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://codinginparadise.org">Brad Neuberg</a> at January 17, 2006 10:53 PM
+
+
 <p>Oh, just read the issues about the back button stuff when offline and busting the cache. I'm sure we can find something in IE. Need to study the issue some more. One possibility is to use document.write into the hidden iframe, which might not bust the cache but which would go into history (and you write some state info into the iframe using the document.write), rather than loading a blank.html document.</p>
-<span class="comments-post">Posted by: <a href="http://codinginparadise.org">Brad Neuberg</a> at January 17, 2006 10:55 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://codinginparadise.org">Brad Neuberg</a> at January 17, 2006 10:55 PM
+
+
 <p>Hi Brad,<br />
 Thanks for your feedback, I'll definitely follow up with you.<br />
 TiwyWiki isn't actually using AMASS. Instead it uses yet another Flash object, that also support cross-domain XML requests for the Tiwy RSS reader I've been prototyping.<br />
 Some reasons for not using AMASS: I needed something really simple that I would completely understand, I wanted to learn some Flash and also wanted to write the X-domain request feature. Also, as with most Flash framewoks, the HTML inserted by AMASS probably wouldn't let the Flash run offline, as I discovered later.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at January 18, 2006 09:05 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at January 18, 2006 09:05 AM
+
+
 <p>Congrats on the coverage ;)<br />
 Ajaxian is first on my opml, before your blog, and it felt nice to see something about you!</p>
-<span class="comments-post">Posted by: <a href="http://www.dungis.com">Regis</a> at January 20, 2006 06:20 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.dungis.com">Regis</a> at January 20, 2006 06:20 PM
+
+
 <p>on Safari 1.2.4 is just refeshes repeatedly in a freaky sort of way - but in mac FF works fine.</p>
-<span class="comments-post">Posted by: <a href="http://agitprop.allotherplaces.org">redjade</a> at January 25, 2006 02:54 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://agitprop.allotherplaces.org">redjade</a> at January 25, 2006 02:54 PM
+
+
 <p>Julien,</p>
 
 <p>This is very cool. We've looking for something like this for long time. How far have you reached with the framework. I would happy to test for you.</p>
 
 <p>Ram</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;rpuppala&#64;yahoo&#46;com">Ram</a> at February 18, 2006 07:02 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;rpuppala&#64;yahoo&#46;com">Ram</a> at February 18, 2006 07:02 PM
+
+
 <p>Ram, <br />
 Unfortunately, I don't have a good solution for making a framework out of this, especially the synchronization part. </p>
 
 <p>I do have some ideas on improving the storage with an abstraction layer, but I'm actually focusing on the server-side storage and versioning problem right now. </p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at February 20, 2006 10:32 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at February 20, 2006 10:32 AM
+
+
 <p>Great stuff, Julien. Thanks for pinging me on this.</p>
-<span class="comments-post">Posted by: <a href="http://activeweave.dyndns.org/blog/activeweave/">Jean Sini</a> at February 24, 2006 08:15 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://activeweave.dyndns.org/blog/activeweave/">Jean Sini</a> at February 24, 2006 08:15 AM
+
+
 <p>Beware. By depending on Flash 8, you are locking out all Linux users. The newest version of Flash for Linux is still 7.0.63.0, released on Mar 14, 2006.</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;alan&#64;tnc&#46;hk">Alan</a> at April 30, 2006 01:04 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;alan&#64;tnc&#46;hk">Alan</a> at April 30, 2006 01:04 AM
+
+
 <p>Alan,<br />
 I understand this limitation. This was more of a proof of concept than a full fledged application.<br />
 Also, I'm looking into converting the flash object to support Flash 6 or 7. </p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at May  1, 2006 09:00 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at May  1, 2006 09:00 AM
+
+
 <p>Julien,</p>
 
 <p>I'm playing with an javascript/ajax app myself and trying to get it to work offline.  It really seems like it should work, however I'm having some of the problems in the IE caching area that you mentioned.</p>
@@ -232,14 +175,8 @@ Also, I'm looking into converting the flash object to support Flash 6 or 7. </p>
 <p>Could you elaborate on the types of problems you were having?</p>
 
 <p>- Regan</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Regan</a> at June  6, 2006 01:03 PM</span>
-</div>
+
+Posted by: <a href="http://blog.monstuff.com">Regan</a> at June  6, 2006 01:03 PM
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>

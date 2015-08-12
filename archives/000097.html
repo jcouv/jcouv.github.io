@@ -1,48 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Self-referential Google search</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Self-referential Google search</h2>
+---
+title: Self-referential Google search
+date: 2003-08-20 22:20:52 +0800
+disqus_identifier: 97
+disqus_url: http://blog.monstuff.com/archives/000097.html
+---
 
 <p>This is kind of stupid, but if it works it'll be kinda fun (for geeks only): I predict that this <a href="http://www.google.com/search?hl=en&lr=lang_en%7Clang_fr&ie=UTF-8&oe=utf-8&q=self+referential+google+search&btnG=Google+Search">Google search for "Self referential Google search"</a> will find the current page, most likely as the first match.</p>
 
@@ -51,45 +12,10 @@
 <p>Of course, this can only work after the page gets indexed by Google, which I expect to occur within 24 hours.<br />
 <u>Update:</u> it seems although Google crawls this page every day (and updates its cache) it doesn't index it that often. So it'll take some more time for this experiment to succeed.<br />
 <u>Update:</u> Google indexed the page, the self-referential search now works ;-)</p>
-
-<a name="more"></a>
 <p>I noticed a bunch of TinyURLs somewhere on Slashdot recently and the urls looked predictable, so here is a <a href="http://tinyurl.com/kf8r">self-referential TinyURL</a>. The TinyURL server handles this case fine though and avoids the infinite redirect loop ;-)</p>
 
-<span class="posted">Posted by Julien on August 20, 2003. <a href="http://blog.monstuff.com/archives/000097.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
-
-
-
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '97';
-        var disqus_url = 'http://blog.monstuff.com/archives/000097.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
+______________________________________
 
 
 
 
-
-
-
-</div>
-</div>
-
-
-</body>
-</html>

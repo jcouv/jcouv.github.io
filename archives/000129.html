@@ -1,48 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Remote Javascript Scripting</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Remote Javascript Scripting</h2>
+---
+title: Remote Javascript Scripting
+date: 2004-05-04 15:08:12 +0800
+disqus_identifier: 129
+disqus_url: http://blog.monstuff.com/archives/000129.html
+---
 
 <p>Remote scripting is a way to interact with the server, rather that have to refresh the complete page to fetch new data.</p>
 
@@ -64,8 +25,6 @@ For example, the <a href="http://bodytag.org/dchat/">dChat online chat</a> and m
 
 <p><br />
 I've also seen this used in a weird way before: you can have the server output the response javascript slowly while keeping the connection open. <a href="http://www.mod-pubsub.org/">mod_pubsub</a> uses this trick to delivery updates to various types of clients (flash, javascript,...).</p>
-
-<a name="more"></a>
 <p><b>Related:</b><br />
 RSLite's author, Brent Ashley, also wrote the <a href="http://www.ashleyit.com/rs/">JSRS (Javascript Remote Scripting)</a> library.</p>
 
@@ -78,40 +37,15 @@ A server push framework in Java, based on <a href="http://www.javaworld.com/java
 
 <p>A project using <a href="http://www.codeproject.com/aspnet/AlvaroRemoteScripting.asp">client-side JavaScript to remotely invoke methods in ASP.NET pages</a>.</p>
 
-<span class="posted">Posted by Julien on May 04, 2004. <a href="http://blog.monstuff.com/archives/000129.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
+______________________________________
 
 
 
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '129';
-        var disqus_url = 'http://blog.monstuff.com/archives/000129.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>I didn't actually write the page-weight bookmarklet. However, I did recently write a bookmarklet tutorial for SitePoint which describes the external-script include technique in additional detail: <a href="http://www.sitepoint.com/article/bookmarklets">http://www.sitepoint.com/article/bookmarklets</a></p>
-<span class="comments-post">Posted by: <a href="http://simon.incutio.com/">Simon Willison</a> at May  4, 2004 03:42 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://simon.incutio.com/">Simon Willison</a> at May  4, 2004 03:42 PM
+
+
 <p>Hi,</p>
 
 <p>Can't seem to access your RSLite thing - where's it gone?!</p>
@@ -119,22 +53,17 @@ A server push framework in Java, based on <a href="http://www.javaworld.com/java
 <p>Thanks.<br />
 Auf<br />
 </p>
-<span class="comments-post">Posted by: <a href="http://www.yahoo.com">aufladen</a> at October  6, 2004 04:01 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.yahoo.com">aufladen</a> at October  6, 2004 04:01 PM
+
+
 <p>Auf,<br />
 The link had changed. Instead of <a href="http://ashleyit.com/rs/rslite/">http://ashleyit.com/rs/rslite/</a> it's now <a href="http://www.ashleyit.com/rs/rslite/">http://www.ashleyit.com/rs/rslite/</a> <br />
 I fixed the link in my post.</p>
 
 <p>Don't forget Google is your friend ;-)</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at October  6, 2004 07:26 PM</span>
-</div>
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> at October  6, 2004 07:26 PM
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>

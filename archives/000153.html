@@ -1,56 +1,15 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Comment authentication</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Comment authentication</h2>
+---
+title: Comment authentication
+date: 2004-03-12 14:53:42 +0800
+disqus_identifier: 153
+disqus_url: http://blog.monstuff.com/archives/000153.html
+---
 
 <p>How do you authenticate when posting comments? <br />
 How do you follow up on comments you posted?</p>
 
 <p><b>Simon's comment authentication via url ownership</b><br />
 Simon Willison <a href="http://simon.incutio.com/archive/2003/07/22/signingComments">designed</a> and <a href="http://simon.incutio.com/archive/2003/07/24/commentAuthenticationPrototype">prototyped</a>  a nice solution to authenticate yourself by a url (say your blog's address).</p>
-
-<a name="more"></a>
 <p>The bookmarklet and your home server share a secret (a key). This secret is used when posting a comment, which will allow the comment server to verify that the home url you used knows the same secret.<br />
 Something unique to the transaction is signed using that secret key by the bookmarklet. It can be the comment itself, the url for comment form or some random challenge issued by the comment server. The comment server will then find the signature verification url responsible for your home address and submit it the same challenge. If a matching signature is returned, the owner of this home page did in fact post the comment.</p>
 
@@ -124,36 +83,10 @@ The downside is that more complex computation (with libraries that aren't necess
 A comment tracking system proposal called <a href="http://erikbenson.com/entries/2004/02/23/talkrnet_proposal.html">talkr.net</a>, based on the <a href="http://www.flickr.com/services/">flickr authentication service</a>.<br />
 The <a href="http://esigler.2nw.net/blog/2004/03/11/simpleid">description of SimpleID</a> and it's <a href="http://simpleid.2nw.net/">implementation</a>. SimpleID is not really an authentication solution, mostly a de-centralized form pre-filling system.</p>
 
-<span class="posted">Posted by Julien on March 12, 2004. <a href="http://blog.monstuff.com/archives/000153.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
+______________________________________
 
 
 
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '153';
-        var disqus_url = 'http://blog.monstuff.com/archives/000153.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>I would think that with SimpleID it is already true that you ``have write access'' to your URL by virtue of said URL containing a link to the authentication server.</p>
 
 <p>Furthermore, it is such that regardless of your proposed challenge that the owner of the URL can implement as much or as little security as they desire. Concrete and for example, a port of the FOAF identification server ported to your protocol would need only to cache challenges. No security would be gained. For the security-consious URL owner no gains are added either.</p>
@@ -175,9 +108,10 @@ The <a href="http://esigler.2nw.net/blog/2004/03/11/simpleid">description of Sim
 <p>The email challenge message could then contain a message like 'Next time you can choose to use SimpleID by entering as homepage the URL <a href="http://my-server/simpleid/user@foobar.be">http://my-server/simpleid/user@foobar.be</a> and entering the password RandomToken'; in effect automatically creating a user account on some authentication server.</p>
 
 <p>Regards</p>
-<span class="comments-post">Posted by: <a href="http://www.foobar.be/">Belligerent Dove</a> at April  7, 2004 03:52 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.foobar.be/">Belligerent Dove</a> at April  7, 2004 03:52 AM
+
+
 <p>Thanks for your feedback.</p>
 
 <p>With SimpleID, there is no proof that I have write access to the url. To demonstrate that: I went to Eric Sigler's blog (that supports SimpleID) and posted a message authenticating as himself, using his SimpleID url.<br />
@@ -190,9 +124,10 @@ Check out the message posted on March 30th by "Eric Sigler" that says "no securi
 <p>The problem with the email authentication system is that it is asynchronous, also the email be lost or spam-filtered out. And an email-based solution doesn't help you by pre-filling the form ;-)</p>
 
 <p>I wish you would have left your email address so we could pursue this discussion. I hope you'll come back (thus the need for tracking comments that we post on other people's sites ;-)</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Dumky</a> at April  7, 2004 09:46 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com/">Dumky</a> at April  7, 2004 09:46 AM
+
+
 <p>[...  Dove's email removed by Dumky. I didn't think foobar.de was your legit domain ;-) ...]</p>
 
 <p>While you're right that currently SimpleID offers no security with its FOAF example, it is absolutely possible to implement a real authentication solution using only the current SimpleID spec. This is, of course, a crucial difference because the reason that you could fake Eric Sigler's identity is that he explicitly linked to the insecure FOAF script from his blog/homepage. Had he instead linked to a script that asked for a username and password then that would have been no easyer to bypass than the proposal you came up with.</p>
@@ -204,9 +139,10 @@ Check out the message posted on March 30th by "Eric Sigler" that says "no securi
 <p>I had begun explaining why your proposal does not add security but now I think I've noticed some incongruities between your explanation and the drawing. It's 2 AM here so I'll just defer this until tomorrow.</p>
 
 <p>Cya.</p>
-<span class="comments-post">Posted by: <a href="http://www.foobar.be/">Belligerent Dove</a> at April  7, 2004 05:08 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.foobar.be/">Belligerent Dove</a> at April  7, 2004 05:08 PM
+
+
 <p>[Dove and I clarified the issue by email]</p>
 
 <p>Even if the FOAF file is password protected on your auth server, SimpleID is still easily hackable (ie. the comment server shouldn't consider the authentication  secure).<br />
@@ -220,17 +156,19 @@ The comment server challenges you to put a token at the url you claim you own, s
 Willison’s method can be viewed as:<br />
 Your homepage delegates the authentication responsibilities to an auth server. You share a secret with your auth server. The comment challenges you to prove that you know the auth server’s secret (without revealing the secret) and then verifies the answer you provided against the answer the auth server provides.<br />
 </p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Dumky</a> at April  8, 2004 02:39 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Dumky</a> at April  8, 2004 02:39 PM
+
+
 <p>Note that the PGP Comment-Authentication scheme offers something that the others don't.</p>
 
 <p>There are situations (rarer, but still common enough) where you (the reader) know and trust the commenter, but not necessarily the blog owner. If you have any doubts about the comment's authenticity, you can always check the PGP signature "by hand." (The "raw" signed comment is available on the signature-verification page.)</p>
 
 <p>The blog owner can't "edit" the comment, or post a bogus one, and attribute it to your friend, under such a scheme. </p>
-<span class="comments-post">Posted by: <a href="http://golem.ph.utexas.edu/~distler/blog/">Jacques Distler</a> at April  9, 2004 03:28 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://golem.ph.utexas.edu/~distler/blog/">Jacques Distler</a> at April  9, 2004 03:28 PM
+
+
 <p>You didn't like the bookmarklet in Simon's idea: Why has there to be one at all? </p>
 
 <p>My proposition:<br />
@@ -239,9 +177,10 @@ You enter the comment, your name and url manually. Then there is a input-field w
 <p>No more bookmarklet but still secure. Not?</p>
 
 <p>In your solution you write: "they share a secret token [...] which can be used for further trusted notifications." Could you please explain this?</p>
-<span class="comments-post">Posted by: <a href="http://commentstrack.net">Jan</a> at August 27, 2004 01:34 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://commentstrack.net">Jan</a> at August 27, 2004 01:34 PM
+
+
 <p>Bookmarklet or client UI is still better in terms of security, because if I enter my key in a webpage, who knows if that webpage isn't going to send a copy of it to the server?<br />
 Also, the bookmarklet could contain a "larger" secret (more random bits) than a user could memorize, and the user would just need a simple password/passphrase to unlock that secret.</p>
 
@@ -256,30 +195,35 @@ But the comment server didn't reveal the signature, and neither did the sigserve
 <p>So if they can store that signature, it can be used as a shared secret that would allow the comment server to send a secure notification to the sigserver, when a reply is posted on the discussion. Without that shared secret, anyone can ping your sigserver, and in effect spam you.</p>
 
 <p>It's very possible that the "hash of the salted signature of the plain hash" is overkill and there is another simpler way to obtain the same property. Let me know if you have a better idea for that :-)</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/archives/000033.html">Julien</a> at August 27, 2004 02:20 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com/archives/000033.html">Julien</a> at August 27, 2004 02:20 PM
+
+
 <p>Oh, your're right. I forgot that the remote Javascript could paste a copy of the secret into a hidden input-field when pasting the computed signature into the old, viewable input-field. Okay - my idea is shit :)</p>
 
 <p>Sorry, I should have accented the "further trusted notifications" in my comment. I only wanted to know what you meant with this, I understood the rest. And now you typed so much... Thank you anyway.<br />
 Are there other possible "further trusted notifications" a weblog software could do?</p>
 
 <p>On <a href="http://commentstrack.net">http://commentstrack.net</a> we are developing something to keep track of comments, and so I'm reading lots of old ideas about authentication, identification and so on. I discovered that your second solution is quite similar to a specification called SORUA (sorua.net). There, one of the readers discovered a possible scenario to attack the system: <a href="http://www.sorua.net/stories/259605/#287708">http://www.sorua.net/stories/259605/#287708</a> - Perhaps thats also interesting for you.</p>
-<span class="comments-post">Posted by: <a href="http://commentstrack.net">Jan</a> at August 27, 2004 03:20 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://commentstrack.net">Jan</a> at August 27, 2004 03:20 PM
+
+
 <p>Oh I just saw "dumky" posted there already... so you know it.</p>
-<span class="comments-post">Posted by: <a href="http://commentstrack.net">Jan</a> at August 27, 2004 03:20 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://commentstrack.net">Jan</a> at August 27, 2004 03:20 PM
+
+
 <p>You can use an image authentication. I think that would work nice.</p>
-<span class="comments-post">Posted by: <a href="http://www.gatterer.org/mister_baer.php">Mister Bär</a> at October 30, 2004 07:11 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.gatterer.org/mister_baer.php">Mister Bär</a> at October 30, 2004 07:11 AM
+
+
 <p>Yes, a simple image authentication is very useful in fact.</p>
-<span class="comments-post">Posted by: <a href="http://la-logitheque.ifrance.com">Maxime</a> at November  8, 2005 12:24 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://la-logitheque.ifrance.com">Maxime</a> at November  8, 2005 12:24 PM
+
+
 <p>You didn't like the bookmarklet in Simon's idea: Why has there to be one at all?</p>
 
 <p>My proposition:<br />
@@ -288,26 +232,23 @@ You enter the comment, your name and url manually. Then there is a input-field w
 <p>No more bookmarklet but still secure. Not?</p>
 
 <p>In your solution you write: "they share a secret token [...] which can be used for further trusted notifications." Could you please explain this?</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;kin&#64;kin&#46;dza">[Edited]</a> at December  4, 2005 06:30 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;kin&#64;kin&#46;dza">[Edited]</a> at December  4, 2005 06:30 AM
+
+
 <p>[Edited] : This is a generated token used to the authentication. The token is associated with the url's poster.</p>
-<span class="comments-post">Posted by: <a href="http://www.webrecherche.net">David</a> at December 10, 2005 12:52 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.webrecherche.net">David</a> at December 10, 2005 12:52 PM
+
+
 <p>I do not experience big problems with comments, but I agree with previous guys - Image authentication is more simple to use. For sure.</p>
-<span class="comments-post">Posted by: <a href="http://www.frugaldelights.net">Sally</a> at January  4, 2006 10:48 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.frugaldelights.net">Sally</a> at January  4, 2006 10:48 AM
+
+
 <p>Some other ideas were to have a "filter" or sorts to scan the comments for heuristics to see what the content is, and then reject those.</p>
-<span class="comments-post">Posted by: <a href="http://www.xunleashed.com">xunleashed</a> at January 23, 2006 07:47 PM</span>
-</div>
+
+Posted by: <a href="http://www.xunleashed.com">xunleashed</a> at January 23, 2006 07:47 PM
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>

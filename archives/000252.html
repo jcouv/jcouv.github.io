@@ -1,48 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: AJAX Debugging with Greasemonkey</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">AJAX Debugging with Greasemonkey</h2>
+---
+title: AJAX Debugging with Greasemonkey
+date: 2005-05-31 20:55:29 +0800
+disqus_identifier: 252
+disqus_url: http://blog.monstuff.com/archives/000252.html
+---
 
 <p>Following up on my last Greasemonkey user script, <a href="http://blog.monstuff.com/archives/000250.html">"XMLHttpRequest Tracing"</a>, I wrote a new script that goes beyond tracing: <a href="http://blog.monstuff.com/archives/images/XMLHttpRequestDebugging.v1.0.user.js" title="right click &#8594; Install User Script...">"XMLHttpRequest Debugging"</a>.</p>
 
@@ -51,8 +12,6 @@ What it shows is the XMLHttpRequest debugging console, a floating div embedded i
 Each individual XMLHttpRequest invocation will get listed there, with all the details on the request and the response, as well as options to edit and replay the request or replay the response callback.</p>
 
 <p><u>Update:</u> A <a href="http://blog.monstuff.com/archives/000268.html">newer version of the script</a> is available.</p>
-
-<a name="more"></a>
 <p> <br />
 The user script adds a menu command under "Tools" -> "User Script Commands" -> "Show XMLHttpRequest console". It is mostly useful if you click "hide" in the console menu.</p>
 
@@ -67,80 +26,62 @@ The user script adds a menu command under "Tools" -> "User Script Commands" -> "
 
 <p><u>Update (2005/05/12):</u> I just <a href="http://blog.monstuff.com/archives/000291.html">ported this script to IE</a>, using a bookmarklet.</p>
 
-<span class="posted">Posted by Julien on May 31, 2005. <a href="http://blog.monstuff.com/archives/000252.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
+______________________________________
 
 
 
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '252';
-        var disqus_url = 'http://blog.monstuff.com/archives/000252.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>This ain't the most useful comment, but I just wanted to say: This is so freaking cool. :)</p>
-<span class="comments-post">Posted by: <a href="http://www.anildash.com/">Anil</a> at June  1, 2005 12:17 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.anildash.com/">Anil</a> at June  1, 2005 12:17 AM
+
+
 <p>Just trying it out, and this is fantastic. Thank you so much.</p>
 
 <p>A couple things - I hid the form on a page, and now I can't get it back. Second, on a page I've been developing, links update the debugger but don't call my own functions any more. Have you seen anything like this?</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;cwarren&#64;imagetrend&#46;com">Christopher</a> at June  1, 2005 09:42 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;cwarren&#64;imagetrend&#46;com">Christopher</a> at June  1, 2005 09:42 AM
+
+
 <p>LiveHTTPHeaders anyone??</p>
 
 <p>Firefox/Mozilla: <a href="http://livehttpheaders.mozdev.org/">http://livehttpheaders.mozdev.org/</a><br />
 Internet Explorer: <a href="http://www.blunck.info/iehttpheaders.html">http://www.blunck.info/iehttpheaders.html</a></p>
-<span class="comments-post">Posted by: <a href="http://www.stilleye.com">David</a> at June  1, 2005 09:56 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.stilleye.com">David</a> at June  1, 2005 09:56 AM
+
+
 <p>David, LiveHTTPHeaders is awesome and was discussed more in comments of the previous post. <br />
 The "XMLHttpRequest Debugging" user script tries to go beyond just tracing the headers: it traces the whole response body and it has debug capabilities (you to edit&replay requests with their javascript callback).</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at June  1, 2005 10:49 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> at June  1, 2005 10:49 AM
+
+
 <p>Christopher, <br />
 There is a menu to get the console back: "Tools" -> "User Script Commands" -> "Show XMLHttpRequest console".<br />
 I haven't run into the problem that you are describing. Can you check messages in your javascript console? Also, can you give me some more details on how your page uses XHR?<br />
 I'll follow up with you by email.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at June  1, 2005 10:56 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> at June  1, 2005 10:56 AM
+
+
 <p>Anil, no feedback is wasted as far as I'm concerned ;-) Thanks for the kind comment. I'm glad this is useful to you!</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at June  1, 2005 10:57 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> at June  1, 2005 10:57 AM
+
+
 <p>Oh wow, this is going to make the lives of so many AJAX developers so much easier.</p>
-<span class="comments-post">Posted by: <a href="http://patrickhaney.com">Patrick Haney</a> at June  1, 2005 12:46 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://patrickhaney.com">Patrick Haney</a> at June  1, 2005 12:46 PM
+
+
 <p>Great stuff.</p>
 
 <p>I was wondering if you could add a z-index to the XHRDebug_Console to bring it above everything. It just fell behind some of the headers on some pages and then couldn't be dragged away.<br />
 </p>
-<span class="comments-post">Posted by: <a href="mailto&#58;not&#64;giving&#46;com">Josh</a> at June  2, 2005 07:37 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;not&#64;giving&#46;com">Josh</a> at June  2, 2005 07:37 AM
+
+
 <p>Hi Julien,</p>
 
 <p>  Thanks for the tool.</p>
@@ -151,9 +92,10 @@ I'll follow up with you by email.</p>
 
 <p>BR,<br />
 ~A</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;anjan_dev&#64;NoSpamYahoo&#46;com">Anjan Bacchu</a> at June  2, 2005 11:30 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;anjan_dev&#64;NoSpamYahoo&#46;com">Anjan Bacchu</a> at June  2, 2005 11:30 AM
+
+
 <p>Anjan, <br />
 This tool unfortunately doesn't work in IE, because Greasemonkey is Firefox-only. </p>
 
@@ -162,108 +104,126 @@ In order to intercept XHR calls in IE, you would have to modify your page to use
 
 <p>This script is a patch until full-fledged and integrated solutions appear, as this web app development approach becomes more popular.<br />
 I'm hoping that long term, mainstream IDEs and debuggers start supporting debugging javascript in the client and server code at the same time. That would be pretty cool ;-)</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at June  2, 2005 12:04 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> at June  2, 2005 12:04 PM
+
+
 <p>Very Handy. The fade effect makes it more intutive. Thx.</p>
-<span class="comments-post">Posted by: <a href="http://zenhead.org/blog/">Chanchal</a> at June  2, 2005 07:33 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://zenhead.org/blog/">Chanchal</a> at June  2, 2005 07:33 PM
+
+
 <p>This is nifty but I think a local HTTP proxy is better served to fit this need.  There are HTTP proxies designed for the purpose of debugging HTTP invocations.</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;dsmiley&#64;mitre&#46;org">David Smiley</a> at June  3, 2005 05:16 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;dsmiley&#64;mitre&#46;org">David Smiley</a> at June  3, 2005 05:16 AM
+
+
 <p>i can't seem to get the script to work. or your other "tracing" script either. i installed them with Greasemonkey, then added some domains, but when I go to the Tools menu, the User Script Commands menu is greyed out. Any ideas? </p>
-<span class="comments-post">Posted by: <a href="mailto&#58;patrick&#64;shaggydogmedia&#46;com">patrick</a> at June  3, 2005 07:38 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;patrick&#64;shaggydogmedia&#46;com">patrick</a> at June  3, 2005 07:38 AM
+
+
 <p>This script generates a warning over here (Firefox 1.0.4):<br />
 Anonymous function does not always return a value.</p>
 
 <p>It is an easy fix, I added:<br />
         return "";<br />
 To the end of "printReadyState" on line 547.</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;philharnish&#64;gmail&#46;com">Phil Harnish</a> at June  3, 2005 10:38 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;philharnish&#64;gmail&#46;com">Phil Harnish</a> at June  3, 2005 10:38 PM
+
+
 <p>Thanks for the fix, Phil. I updated the script accordingly.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at June  3, 2005 11:24 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at June  3, 2005 11:24 PM
+
+
 <p>Patrick, did you configure some websites to activate this user script? <br />
 When the script is installed, you need to pick a list of "include" url patterns, such as "<a href="http://*.backpackit.com/*">http://*.backpackit.com/*".</a> You need to input the url of the site you want to debug in that configuration panel.<br />
 I'll check with you by email.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at June  6, 2005 11:14 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> at June  6, 2005 11:14 AM
+
+
 <p>Selenium is functional testing tool I developed to test and debug cross-browser and cross-platfrom Javascript (AJAX included). You might want to give it a try if you need to test in IE and Firfox and Safari.</p>
-<span class="comments-post">Posted by: <a href="http://selenium.thoughtworks.com">Jason Huggins</a> at June  6, 2005 12:14 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://selenium.thoughtworks.com">Jason Huggins</a> at June  6, 2005 12:14 PM
+
+
 <p>Josh, I just added a z-index of 100 for the console. That should bring it above everything else.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at June  6, 2005 01:17 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> at June  6, 2005 01:17 PM
+
+
 <p>excellent!  had a hard time getting it working though -- the menu option remained grayed out.  had to remove line 7 (which was just a comment and line break) which was producing a javascript error.  Took out a few similar lines, too, so they may have also been error-producing.)  now it works!</p>
 
 <p>I'm interested in this primarily as a tool for writing a google maps GM script, though, and unfortunately the console doesn't display properly on that site.  I'll look into what the problem could be when I have a chance, but perhaps you could take a quick peak and see if it's an obvious fix.  I couldn't figure out from the UI how to move it, either, but perhaps that's because its top is obscured.</p>
-<span class="comments-post">Posted by: <a href="http://blog.zunta.org">tom</a> at June  9, 2005 12:50 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.zunta.org">tom</a> at June  9, 2005 12:50 PM
+
+
 <p>I'm also having a problem with getting a grayed out User Script Command.  Tom could you possibly post your modifications to the script?</p>
-<span class="comments-post">Posted by: <a href="http://Zestic.com">Richard</a> at June 13, 2005 08:07 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://Zestic.com">Richard</a> at June 13, 2005 08:07 AM
+
+
 <p>Hey Bruno,<br />
 Are you getting any javascript errors from this script in your<br />
 Javascript Console?</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at June 30, 2005 10:34 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> at June 30, 2005 10:34 AM
+
+
 <p>Hi Julien,<br />
 No, I just was getting the greyed out menu item. It seems that when I installed the user script from your page, all I got was gibberish (maybe an encoding problem?). So I cut and pasted the text of the script and everything is working great. Thanks for a really useful tool!</p>
-<span class="comments-post">Posted by: <a href="http://www.feedmarker.com/">Bruno</a> at June 30, 2005 10:37 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.feedmarker.com/">Bruno</a> at June 30, 2005 10:37 AM
+
+
 <p>I tried to use this promising script only to get an error on line: 196 "GM_getValue is not a function"</p>
 
 <p>I'm using gresemonkey 0.3.5 and firefox 1.0.6</p>
 
 <p>Any suggestions?</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;christian&#64;form-studios&#46;com">Christian</a> at July 20, 2005 11:08 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;christian&#64;form-studios&#46;com">Christian</a> at July 20, 2005 11:08 AM
+
+
 <p>Christian, <br />
 Per our emails, I updated the script to handle the security-related changes in Greasemonkey 0.3.5. <br />
 This script doesn't actually have a hard dependency on the GM_* functions, so I adapted it to handle that case and continue running nicely.</p>
 
 <p>Thanks a lot for your help. </p>
-<span class="comments-post">Posted by: <a href="http://www.feedmarker.com/">Julien</a> at July 20, 2005 04:07 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.feedmarker.com/">Julien</a> at July 20, 2005 04:07 PM
+
+
 <p>I've got the same problem as some users here, but with another script!</p>
 
 <p>The menu "user script commands" is greyed out!</p>
 
 <p>what can i do?</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;stijnfeys&#64;hotmail&#46;com">Ramm</a> at July 21, 2005 05:52 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;stijnfeys&#64;hotmail&#46;com">Ramm</a> at July 21, 2005 05:52 AM
+
+
 <p>Ramm, per our discussion by email, the problem is that you are using Greasemonkey 0.3.5.<br />
 That release is a security hotfix, which disabled all the GM_* functions such as GM_log or GM_getValue. That's why you're getting some GM_getValue errors in the Javascript console.</p>
 
 <p>I would recommend that you wait for the next version of Greasemonkey, which should support these functions again, while being safe. Keep an eye on <a href="http://greaseblog.blogspot.com/">http://greaseblog.blogspot.com/</a></p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at July 21, 2005 08:48 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at July 21, 2005 08:48 PM
+
+
 <p>You may also be interested in looking at:</p>
 
 <p><a href="http://tamperdata.mozdev.org">http://tamperdata.mozdev.org</a></p>
 
 <p>A</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;adamsplugins&#64;gmail&#46;com">Adam Judson</a> at July 22, 2005 11:11 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;adamsplugins&#64;gmail&#46;com">Adam Judson</a> at July 22, 2005 11:11 AM
+
+
 <p>In the intrest of more self-promotion, and now that I've read the rest of the other comments...</p>
 
 <p>- using tamperdata you can use the view-source option to see the response from your request.<br />
@@ -271,30 +231,35 @@ That release is a security hotfix, which disabled all the GM_* functions such as
 
 <p>A<br />
 </p>
-<span class="comments-post">Posted by: <a href="mailto&#58;adamsplugins&#64;gmail&#46;com">Adam Judson</a> at July 22, 2005 11:25 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;adamsplugins&#64;gmail&#46;com">Adam Judson</a> at July 22, 2005 11:25 AM
+
+
 <p>This is a cool tool.  Thanks. </p>
-<span class="comments-post">Posted by: <a href="mailto&#58;skriloffn&#64;darden&#46;virginia&#46;edu">Nick Skriloff</a> at August  3, 2005 09:41 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;skriloffn&#64;darden&#46;virginia&#46;edu">Nick Skriloff</a> at August  3, 2005 09:41 AM
+
+
 <p>thanks, good debugging tool</p>
-<span class="comments-post">Posted by: <a href="http://telecharger-logiciels.ifrance.com">emule</a> at August 23, 2005 01:55 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://telecharger-logiciels.ifrance.com">emule</a> at August 23, 2005 01:55 AM
+
+
 <p>Hi Julien,<br />
 No, I just was getting the greyed out menu item. It seems that when I installed the user script from your page, all I got was gibberish (maybe an encoding problem?).  So I cut and pasted the text of the script and everything is working great. Thanks for a really useful tool!</p>
-<span class="comments-post">Posted by: <a href="http://telechargersoftware.ifrance.com">logiciels gratuit</a> at August 28, 2005 11:57 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://telechargersoftware.ifrance.com">logiciels gratuit</a> at August 28, 2005 11:57 PM
+
+
 <p>Very cool scrip!</p>
 
 <p>For some strange reason the first few times I've tried this script on Start.com things worked. I could see and debug the ajax interaction. But after that the script wouldn't pop up anymore :(</p>
 
 <p>Does anyone know why?</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;muzic&#64;shaw&#46;ca">Simon</a> at September 30, 2005 05:28 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;muzic&#64;shaw&#46;ca">Simon</a> at September 30, 2005 05:28 PM
+
+
 <p>Cool,</p>
 
 <p>How does one handle different ports?</p>
@@ -302,34 +267,32 @@ No, I just was getting the greyed out menu item. It seems that when I installed 
 <p>I tried putting some * around like <a href="http://127.0.0.1*/*">http://127.0.0.1*/*</a> but that did not seem to work.</p>
 
 <p>Thanks</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;serge&#64;sozonoff&#46;com">Serge</a> at October 10, 2005 06:28 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;serge&#64;sozonoff&#46;com">Serge</a> at October 10, 2005 06:28 AM
+
+
 <p>is it just me or does this script *NOT* work with FF 1.5b2?</p>
 
 <p>Maybe I'm just a dummy but my DIV appears but no debug data gets populated?</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;vito9&#64;btinternet&#46;com">vito9</a> at October 27, 2005 10:54 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;vito9&#64;btinternet&#46;com">vito9</a> at October 27, 2005 10:54 AM
+
+
 <p>Installed the script but it doesn't seem to work. With Google suggest the tracing window appears but I can't move it around and nothing appears in the window.  The User Script Commands menu item of Greasemonkey is always greyed out so if I hide the window the only way to get it back is to reload a configured page (eg Google Suggest).  FWIW I get a ton of JavaScript errors from Google Suggest.</p>
-<span class="comments-post">Posted by: <a href="http://www.luacheia.com/">Michael Brown</a> at December  8, 2005 09:29 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.luacheia.com/">Michael Brown</a> at December  8, 2005 09:29 AM
+
+
 <p>I have firefox 1.5. Alot of things dont seem to work correctly. I cant drag and drop the box, when I minimize the whole thing disappears and user script command option under tools menu is never available, when I hide it there is no way to bring it back. How can firefox javascript change that much.</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;andynagai&#64;verizon&#46;net">Andy</a> at December 18, 2005 09:41 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;andynagai&#64;verizon&#46;net">Andy</a> at December 18, 2005 09:41 PM
+
+
 <p>Hi Andy,<br />
 The drag and drop problem is known. It doesn't actually come from Firefox, but from Greasemonkey (that changed it's injection model).<br />
 I didn't know about the menu problem thought, I'll check it out. I also suspect it's a problem with the latest version of Greasemonkey.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at December 19, 2005 08:35 AM</span>
-</div>
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at December 19, 2005 08:35 AM
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>

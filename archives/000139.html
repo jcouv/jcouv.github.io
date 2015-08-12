@@ -1,55 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Video streaming over HTTP</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Video streaming over HTTP</h2>
+---
+title: Video streaming over HTTP
+date: 2004-02-04 13:55:54 +0800
+disqus_identifier: 139
+disqus_url: http://blog.monstuff.com/archives/000139.html
+---
 
 <p>My previous roommate and I used to run into this problem a lot: we'd want to watch a movie in one room, but the file would be on another computer.<br />
 This is a general problem that I mentioned before in <a href="/archives/000085.html">"Private Information Network"</a>. </p>
 
 <p>But we now have a partial solution to this video/DivX streaming problem. It uses the <i>super cool&#153;</i> streaming-over-HTTP feature of the <a href="http://www.videolan.org/">VideoLAN client</a> and a custom HTTP proxy.</p>
-
-<a name="more"></a>
 <p><b>VideoLAN:</b><br />
 I had heard about the MPEG-2 (DVD) streaming capabilities of this software before, but only recently found out about the DivX support. To use it, you just need to put the DivX file on an HTTP1.1 web server and use the url in VLC (VideoLAN client).<br />
 It supports jumping to a specific part of the file, but it takes a few seconds (until a keyframe is reached, I guess) for the complete image to be refreshed to the new location in the stream.</p>
@@ -73,36 +32,10 @@ The current implementation isn't online, as I don't have a running CVS server fo
 
 <p>An interesting extension would be to offer a programmatic API to a running StreamAgent (rather than thru HTTP). This could be used to allow applications to replicate/sync data accross the group, like bookmarks for example. It could also be used to provide remote file access with local caching (see Intermezzo).</p>
 
-<span class="posted">Posted by Julien on February 04, 2004. <a href="http://blog.monstuff.com/archives/000139.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
+______________________________________
 
 
 
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '139';
-        var disqus_url = 'http://blog.monstuff.com/archives/000139.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p><br />
 But Clipstream is the best playerless Video Streaming.</p>
 
@@ -111,14 +44,16 @@ But Clipstream is the best playerless Video Streaming.</p>
 <p>Video Streaming at less than a cent per view !</p>
 
 <p>This is http also and it needs no players or plugins so offers universal reachability.</p>
-<span class="comments-post">Posted by: <a href="http://www.VideosOnWeb.com">Abhijit</a> at July 21, 2004 12:16 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.VideosOnWeb.com">Abhijit</a> at July 21, 2004 12:16 PM
+
+
 <p>I also found out about Wimpy (at <a href="http://www.wimpyplayer.com/">http://www.wimpyplayer.com/</a> ), which seems nice with a flash-based player for audio (mp3) and video (not sure what format). The server install seems quite simple. <br />
 No client install, but the product is not free (and the source is obfuscated). I still like VideoLAN better ;-)</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/archives/000033.html">Julien</a> at August 23, 2004 04:46 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com/archives/000033.html">Julien</a> at August 23, 2004 04:46 PM
+
+
 <p>There is a new divx/xvid/3ivx (and more), mpeg4 and Theora player for streaming over HTTP , with Ogg Vorbis audio streams:  Streamplug </p>
 
 <p>It's an advanced mpeg4 browser plugin , with a 200Ko size. <br />
@@ -155,14 +90,8 @@ Speed and quality are impressive !</p>
 <p>Even on small computers, it supports full screen resizing, 16/9, 4/3 and square ratio, and proxy settings... and more<br />
 This plugin is free for non-commercial purposes for audio and video web-streaming, you can use it for your own streams !<br />
 Maybe is it what you need ?</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;gcluber&#64;free&#46;fr">gcluber</a> at March 22, 2005 07:42 AM</span>
-</div>
+
+Posted by: <a href="mailto&#58;gcluber&#64;free&#46;fr">gcluber</a> at March 22, 2005 07:42 AM
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>

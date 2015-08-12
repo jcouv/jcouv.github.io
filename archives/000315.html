@@ -1,54 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Implementing threads in javascript</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Implementing threads in javascript</h2>
+---
+title: Implementing threads in javascript
+date: 2007-02-18 16:58:26 +0800
+disqus_identifier: 315
+disqus_url: http://blog.monstuff.com/archives/000315.html
+---
 
 <p>Neil Mix implemented a cool solution to do <a href="http://www.neilmix.com/2007/02/07/threading-in-javascript-17/">threading in javascript</a>. It achieves a specific kind of multi-threading, with voluntary yielding and interleaved execution, which is different than what C++, Java or C# offer (preemptive multi-threading). </p>
 
 <p>The idea is that the code for each "thread" needs to voluntarily interrupt its processing flow to let another thread execute for a while. When a thread suspends its execution, its state is saved. When the thread is later awoken, it continues its processing from where it stopped.</p>
-
-<a name="more"></a>
 <p>To understand Neil's library, you first need to learn how to use <a href="http://en.wikipedia.org/wiki/Generator_%28computer_science%29">generators</a>. Generators are a new construct in javascript 1.7 (available in Firefox 2.0) which let your write a piece of code returning a sequence of results, pausing its execution for each result and restarting from its paused state to compute the next result. </p>
 
 <p>Normally, a function that receives execution control keeps it until it returns. But with generators, the execution control can be given up in the middle of the routine and later restored.<br />
@@ -96,41 +55,8 @@ This is called trampolining generators. </p>
 <p>It is good to see how the limits of javascript getting challenged with every incremental feature added to the language. And even though I haven't used this approach and I don't know if I'm going to use it any time soon, the technique is fascinating and definitely great mental exercise. <br />
 The <a href="http://www.neilmix.com/demos/js17threading/Thread.js">library code</a> is pretty small, about 150 lines of code, and is worth reading to get a better sense of the trampoline design.</p>
 
-<span class="posted">Posted by Julien on February 18, 2007. <a href="http://blog.monstuff.com/archives/000315.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
-
-
-
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '315';
-        var disqus_url = 'http://blog.monstuff.com/archives/000315.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
+______________________________________
 
 
 
 
-
-
-
-</div>
-</div>
-
-
-</body>
-</html>

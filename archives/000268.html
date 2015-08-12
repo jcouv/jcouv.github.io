@@ -1,48 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: XmlHttpRequest Debugging (update)</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">XmlHttpRequest Debugging (update)</h2>
+---
+title: XmlHttpRequest Debugging (update)
+date: 2005-10-21 17:11:42 +0800
+disqus_identifier: 268
+disqus_url: http://blog.monstuff.com/archives/000268.html
+---
 
 <p>Here's <a href="http://blog.monstuff.com/archives/images/XMLHttpRequestDebugging.v1.1.user.js" title="right click &#8594; Install User Script...">XmlHttpRequest - Debugging (version 1.1)</a>, an update on the <a href="http://blog.monstuff.com/archives/000252.html">original</a>.</p>
 
@@ -50,97 +11,73 @@
 
 <p><u>Update (2006/02/20):</u> A <a href="http://blog.monstuff.com/archives/000274.html">newer version</a> is available, supporting Firefox 1.5 with Greasemonkey 0.6.4.</p>
 
-<a name="more"></a>
 
-
-<span class="posted">Posted by Julien on October 21, 2005. <a href="http://blog.monstuff.com/archives/000268.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
+______________________________________
 
 
 
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '268';
-        var disqus_url = 'http://blog.monstuff.com/archives/000268.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>I've tried to install this script on three different machines, all running the latest version of XP, with Greasemonkey 0.5.3 and Firefox 1.0.7.  In every case, sadly, I get the menu item "User Script Commands" greyed out. There's no javascript error, so I'm really puzzled. Why does this clearly work so well for others, yet on three different Windows machines it won't work for me? </p>
-<span class="comments-post">Posted by: <a href="mailto&#58;errantacademic&#64;gmail&#46;com">Anthony</a> at November 14, 2005 06:54 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;errantacademic&#64;gmail&#46;com">Anthony</a> at November 14, 2005 06:54 PM
+
+
 <p>Anthony, I'll follow up with you by email. Have you tried the older version (v1.0)? </p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at November 15, 2005 12:22 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at November 15, 2005 12:22 PM
+
+
 <p>Hey I cannot get it to work. The window pops up when I call the ajax enabled page. The script does not work, and I get nothing on the window either. The 'User Script Commands' is greyed out too</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;ashish&#64;om-biz&#46;com">ashish</a> at December  5, 2005 11:22 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;ashish&#64;om-biz&#46;com">ashish</a> at December  5, 2005 11:22 PM
+
+
 <p>I cannot get this to work for the life of me, I've tried it locally, on digg, gmail, google maps, etc. The div comes up, I cannot move it and it doesn't record any of the request/responses.</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;jplush76&#64;gmail&#46;com">Jim</a> at December 21, 2005 04:09 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;jplush76&#64;gmail&#46;com">Jim</a> at December 21, 2005 04:09 PM
+
+
 <p>I can't get it to work either.  Same tests as Jim.  Would love to have a fix!</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;kevinold&#64;gmail&#46;com">Kevin</a> at December 28, 2005 03:42 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;kevinold&#64;gmail&#46;com">Kevin</a> at December 28, 2005 03:42 PM
+
+
 <p>I noticed in my javascript console it keeps saying "XMLHttpRequest has no properties", on lines 12 and 48. </p>
 
 <p>I still cannot get this script working or the one you wrote that just writes to the console. Would love to get this puppy workin ;)</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;jplush76&#64;gmail&#46;com">Jim</a> at December 29, 2005 09:53 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;jplush76&#64;gmail&#46;com">Jim</a> at December 29, 2005 09:53 PM
+
+
 <p>Sorry for the problems with Firefox 1.5 and Greasemonkey 0.6.4. I'm still looking into the issue and hope to get a fix ready soon.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at January  4, 2006 09:27 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at January  4, 2006 09:27 PM
+
+
 <p>Excellent script ! But i'm waitin' (avec impatience :) the fix for firefox 1.5. Keep up the good work.</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;none&#64;none&#46;net">cow</a> at January  5, 2006 06:01 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;none&#64;none&#46;net">cow</a> at January  5, 2006 06:01 AM
+
+
 <p>Great tool! I'm using it to debug a site and it seems to duplicate my ajax postings. I have a button that adds another element. with this script activated, it makes two elements, etc.</p>
 
 <p>Is that a me thing?</p>
-<span class="comments-post">Posted by: <a href="http://www.johnwilker.com">John</a> at March 29, 2006 02:20 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.johnwilker.com">John</a> at March 29, 2006 02:20 PM
+
+
 <p>I am also seeing duplicate post problem.</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;prathap_mr&#64;yahoo&#46;com">Pratap</a> at May 23, 2006 06:07 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;prathap_mr&#64;yahoo&#46;com">Pratap</a> at May 23, 2006 06:07 AM
+
+
 <p>I'm getting this to work great on my local machine, but when I publish it to the server, it blows up at dojo.flash.comm.XmlHttp. If I display dojo.flash.comm, it is there with a list of methods, but XmlHttp isn't one of them. Any idea why it would not have this method?</p>
 
 <p>Thanks for any help/ideas.</p>
 
 <p>Ron<br />
 </p>
-<span class="comments-post">Posted by: <a href="mailto&#58;rd_grimes&#64;yahoo&#46;com">Ron</a> at June 22, 2006 02:58 PM</span>
-</div>
+
+Posted by: <a href="mailto&#58;rd_grimes&#64;yahoo&#46;com">Ron</a> at June 22, 2006 02:58 PM
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>

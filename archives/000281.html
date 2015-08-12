@@ -1,104 +1,32 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: "MSDN - Fix titles" Greasemonkey script</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">"MSDN - Fix titles" Greasemonkey script</h2>
+---
+title: "MSDN - Fix titles" Greasemonkey script
+date: 2006-02-27 17:26:07 +0800
+disqus_identifier: 281
+disqus_url: http://blog.monstuff.com/archives/000281.html
+---
 
 <p>Here's another small script, <a href="http://blog.monstuff.com/archives/images/MSDN-FixTitles.user.js" title="right click &#8594; Install User Script...">"MSDN - Fix Titles"</a> which fixes the title on a number of MSDN pages.</p>
 
 <p>Instead of something generic, the script tries to find a more specific title from the content frames.<br />
 In this <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dndotnet/html/versremote.asp?frame=true&hidetoc=true">example</a>, "Welcome to the MSDN Library" gets replaced with a more relevant and usable title: "MSDN: Side-By-Side and Versioning Considerations for .NET Remoting".</p>
 
-<a name="more"></a>
 
-
-<span class="posted">Posted by Julien on February 27, 2006. <a href="http://blog.monstuff.com/archives/000281.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
+______________________________________
 
 
 
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '281';
-        var disqus_url = 'http://blog.monstuff.com/archives/000281.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>at first, I meant to ask why don't you post it in <a href="http://userscripts.org,">http://userscripts.org,</a> but then I saw you already did in <a href="http://userscripts.org/scripts/show/3349">http://userscripts.org/scripts/show/3349</a> so now I wonder why you don't link to this entries in your user scripts posts.</p>
 
 <p>In addition, I htink I found a similar script that does it in an arguably more elegant way - <a href="http://userscripts.org/scripts/show/2587">http://userscripts.org/scripts/show/2587</a></p>
-<span class="comments-post">Posted by: <a href="mailto&#58;splintor&#64;gmail&#46;com">splintor</a> at February 27, 2006 01:50 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;splintor&#64;gmail&#46;com">splintor</a> at February 27, 2006 01:50 PM
+
+
 <p>Thanks for the pointer Splintor, I definitely should have checked the userscript database first :-)</p>
 
 <p>I agree the other script is cleaner. Mine was put together really quickly: I didn't want to worry with the XPCNativeWrapper injection changes (thus the injectMe method) and didn't spend long reverse-engineering the urls for MSDN ;-)</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/"> Julien Couvreur</a> at February 27, 2006 09:48 PM</span>
-</div>
+
+Posted by: <a href="http://blog.monstuff.com/"> Julien Couvreur</a> at February 27, 2006 09:48 PM
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>

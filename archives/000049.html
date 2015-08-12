@@ -1,55 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Add a plugin system to your .NET application</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Add a plugin system to your .NET application</h2>
+---
+title: Add a plugin system to your .NET application
+date: 2003-05-27 23:48:02 +0800
+disqus_identifier: 49
+disqus_url: http://blog.monstuff.com/archives/000049.html
+---
 
 <p>Roy Osherove wrote a cool article (with code) on <a href="http://www.codeproject.com/csharp/Plugins.asp">implementing a plugin system</a> in C#.<br />
 The architecture that is described is simple and clear. It also serves as a nice sample for having custom configuration handlers and loading/instanciating classes at runtime (via the Activator).</p>
 
 <p>Update: Roy posted a <a href="http://weblogs.asp.net/rosherove/story/8048.aspx">second article on the topic of plugins</a>.</p>
-
-<a name="more"></a>
 <p><b>SharpDevelop Add-Ins</b><br />
 Check out this introduction paper from the SharpDevelop team on the <a href="http://www.icsharpcode.net/TechNotes/ProgramArchitecture.pdf">SharpDevelop Open Development Architecture</a>, which is a richer (but harder to understand) add-in system.<br />
 They also published a book (<a href="http://www.icsharpcode.net/OpenSource/SD/InsideSharpDevelop.aspx">Dissecting a C# Application: Inside SharpDevelop</a>) with two very detailled chapters on their add-in management, with annotated code. A couple other chapters are even available online for free (one on the Windows Form designer and one on the Language Bindings).</p>
@@ -74,47 +33,15 @@ I wish I could see the internals of the Visual Studio add-in architecture ;-) Bu
 Here is the entry point on MSDN to <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/vsintro7/html/vxorimanipulatingdevelopmentenvironment.asp">manipulating the development environment</a>.<br />
 They also have samples, like <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dv_vstechart/html/tchVSAddinEnablingHTMLTidy.asp?frame=true">this VS.NET 2003 add-in walkthrough</a>.</p>
 
-<span class="posted">Posted by Julien on May 27, 2003. <a href="http://blog.monstuff.com/archives/000049.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
+______________________________________
 
 
 
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '49';
-        var disqus_url = 'http://blog.monstuff.com/archives/000049.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>Very good...very good material you have here...</p>
 
 <p>Thanks a lot for your help.</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;drcyrus3d&#64;yahoo&#46;com">Cyrus</a> at August 27, 2004 12:22 PM</span>
-</div>
+
+Posted by: <a href="mailto&#58;drcyrus3d&#64;yahoo&#46;com">Cyrus</a> at August 27, 2004 12:22 PM
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>

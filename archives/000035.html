@@ -1,48 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Debugging Backwards in Time</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Debugging Backwards in Time</h2>
+---
+title: Debugging Backwards in Time
+date: 2003-04-16 15:12:17 +0800
+disqus_identifier: 35
+disqus_url: http://blog.monstuff.com/archives/000035.html
+---
 
 <p>I found this <a href="http://www.lambdacs.com/debugger/debugger.html">Omniscient Debugging</a> project a long time ago (via <a href="http://www.oreillynet.com/pub/wlg/2104">this O'Reilly Network blog</a>) and found it very interesting. Basically it is a black box that does an extensive trace of a running application (variable states and function calls). A GUI is provided to scroll back in time and monitor the state of the various objects and threads.</p>
 
@@ -50,8 +11,6 @@
 Update: the code for the Omniscient Debugger is now available. Check out the <i>DebugifyingClassLoader</i> and <i>Debugify</i> classes.</p>
 
 <p><a href="http://www.visicomp.com/">RetroVue</a> is be a commercial Java debugger with similar capabilites. I haven't found a demo version of it, but their video is pretty nice.</p>
-
-<a name="more"></a>
 <p><a href="http://research.microsoft.com/~toddpro/">Todd Proebsting</a> mentioned such a black box recorder as a candidate Disruptive Programming Language technology in <a href="http://research.microsoft.com/~toddpro/papers/disruptive.ppt">this PowerPoint presentation</a>.<br />
 <u>Update:</u> In my recent video lectures frenzy I found the <a href="http://www.stanford.edu/class/ee380/">recording corresponding to this lecture</a> (the page also has numerous other talks available).</p>
 
@@ -69,41 +28,8 @@ Update: the code for the Omniscient Debugger is now available. Check out the <i>
 
 <p><u>Update:</u> It turns out this kind of bytecode manipulation is possible in .Net, using the Profiler APIs. I wrote the result of my investigations in <a href="http://blog.monstuff.com/archives/000058.html">Modifying IL at runtime (Part I)</a> and following episodes.</p>
 
-<span class="posted">Posted by Julien on April 16, 2003. <a href="http://blog.monstuff.com/archives/000035.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
-
-
-
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '35';
-        var disqus_url = 'http://blog.monstuff.com/archives/000035.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
+______________________________________
 
 
 
 
-
-
-
-</div>
-</div>
-
-
-</body>
-</html>

@@ -1,48 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Microsoft and Bittorrent</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Microsoft and Bittorrent</h2>
+---
+title: Microsoft and Bittorrent
+date: 2004-08-12 12:43:42 +0800
+disqus_identifier: 201
+disqus_url: http://blog.monstuff.com/archives/000201.html
+---
 
 <p>Microsoft has to distribute medium/large files to wide audiences. One example is the XP SP2 pack, that was <a href="http://sp2torrent.com/">made available via Bittorrent</a> by third-parties (the Battle Torrent people). <br />
 The question is why hasn't Microsoft adopted a P2P distribution model? Cost would be the driving factor, as the servers and bandwidth to serve 2.5 million service pack copies a day can't be cheap.  <br />
@@ -50,8 +11,6 @@ The question is why hasn't Microsoft adopted a P2P distribution model? Cost woul
 <u>Update:</u> <a href="http://www.boingboing.net/2004/08/12/xp_service_pack_torr.html">Microsoft shut down SP2Torrent.com</a>. </p>
 
 <p><u>Note:</u> This post was originally part of my previous post (<a href="http://blog.monstuff.com/archives/000200.html">Bittorrent HTTP/web seeding</a>). </p>
-
-<a name="more"></a>
 <p>Would Microsoft be satisfied with integrating a swarming protocol in the OS for the sole purpose of downloading files from windows update? In my opinion, that single scenario would surely save enough money to justify the investment. </p>
 
 <p>But assuming a larger business goal, wouldn't be hard for Microsoft to justify a proprietary solution when open solutions are already widely available (and could probably be made to fit the security requirements).  <br />
@@ -74,60 +33,30 @@ Here's the message I get on WindowsUpdate relative to SP2:<br />
 
 <p><u>Update:</u> Don Park advocates that AOL and Mozilla could <a href="http://www.docuverse.com/blog/donpark/EntryViewPage.aspx?guid=566914fb-5a21-4960-a58e-57021eda284f">put BitTorrent to great use</a> (software and multimedia downloads).</p>
 
-<span class="posted">Posted by Julien on August 12, 2004. <a href="http://blog.monstuff.com/archives/000201.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
+______________________________________
 
 
 
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '201';
-        var disqus_url = 'http://blog.monstuff.com/archives/000201.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>P2P may be the biggest threat of software pirate, I bet Microsoft want to eradicate all p2p software.</p>
-<span class="comments-post">Posted by: <a href="http://www.dvd-software.info">kevin</a> at August 13, 2004 08:31 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.dvd-software.info">kevin</a> at August 13, 2004 08:31 AM
+
+
 <p>I doubt it, microsoft is big behind .net development  they just keep quiet about it</p>
 
 <p>(Take a look on your winxp disk to find ms's own p2p api, they also fund serveral research projects as well as groove)</p>
-<span class="comments-post">Posted by: <a href="http://www.bowyakka.sys1.co.uk">Bowyakka</a> at February 21, 2005 07:25 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.bowyakka.sys1.co.uk">Bowyakka</a> at February 21, 2005 07:25 AM
+
+
 <p>Avalanche is an interesting P2P platform developped at MS Research: <a href="http://research.microsoft.com/~pablo/avalanche.htm">http://research.microsoft.com/~pablo/avalanche.htm</a></p>
 
 <p>Instead of distributing the blocks of a file directly, you combine them linearly (XOR) and tag them with the parameters used for that combination.  This is similar to the PAR file encoding used on binary newsgroups, but using a simpler encoding.<br />
 Any peer can generate new unique combinations from the combinations it received. A peer that received enough independent combinations can re-build the original blocks and file.<br />
 This approach solves the problem of ensuring each block "stays alive" within the network, even as peers disconnect. Also, no peer becomes the bottleneck, which can be the case with BitTorrent if only one peer remains holding a copy of a block.<br />
 One interesting problem is protecting against file pollution (accidental) and poisoning (purposeful).   You need to design a signature format that allows for combining signatures together.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at April 15, 2005 10:37 AM</span>
-</div>
+
+Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at April 15, 2005 10:37 AM
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>
