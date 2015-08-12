@@ -17,7 +17,7 @@ I did run into some problems though.</p>
 First, I tried to directly re-use my previous Berkeley DB directory on the new setup, but it wouldn't work. This is probably a problem with the Berkeley DB file version, not MovableType.</p>
 
 <p>Second, when I first imported my exported entries into the new site, the post IDs where completely messed up, which means the permalinks don't match the original ones.<br />
-This is a known problem, encountered by <a href="http://mar.anomy.net/entry/2003/06/22/17.15.00/">Már Örlygsson (Howto: Future-proof URLs in Movable Type)</a> and <a href="http://www.cookcomputing.com/blog/archives/000254.html">Charles Cook (Importing/Exporting Movable Type)</a>.<br />
+This is a known problem, encountered by <a href="http://mar.anomy.net/entry/2003/06/22/17.15.00/">MÃ¡r Ã–rlygsson (Howto: Future-proof URLs in Movable Type)</a> and <a href="http://www.cookcomputing.com/blog/archives/000254.html">Charles Cook (Importing/Exporting Movable Type)</a>.<br />
 I opted for Charles' solution, which is to tweak the backup file by introducing bogus entries/drafts.<br />
 If you plan on moving your MT blog, you should at least do Charles' export script modification ahead of time (adds a blogid line to every post), to keep your options open.<br />
 Also, I thought of using the TypePad service from the MovableType team, but their url format has changed to something like <i>/2004/01/progress_prompt.html</i>, which would break my permalinks as well...</p>
