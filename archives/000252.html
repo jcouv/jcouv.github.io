@@ -10,111 +10,18 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
 
 <link rel="start" href="http://blog.monstuff.com/" title="Home" />
-<link rel="prev" href="http://blog.monstuff.com/archives/000250.html" title="&quot;XMLHttpRequest Tracing&quot; for AJAX debugging" />
 
-<link rel="next" href="http://blog.monstuff.com/archives/000242.html" title="Traffic light versus stop sign" />
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-
-
-<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+    ga('create', '{{ site.ga }}', 'auto');
+    ga('send', 'pageview');
 </script>
-<script type="text/javascript">
-_uacct = "UA-74363-1";
-urchinTracker();
-</script>
-
-<script type="text/javascript" language="javascript">
-<!--
-
-function OpenTrackback (c) {
-    window.open(c,
-                    'trackback',
-                    'width=480,height=480,scrollbars=yes,status=yes');
-}
-
-var HOST = 'blog.monstuff.com';
-
-// Copyright (c) 1996-1997 Athenia Associates.
-// http://www.webreference.com/js/
-// License is granted if and only if this entire
-// copyright notice is included. By Tomer Shiran.
-
-function setCookie (name, value, expires, path, domain, secure) {
-    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
-    document.cookie = curCookie;
-}
-
-function getCookie (name) {
-    var prefix = name + '=';
-    var c = document.cookie;
-    var nullstring = '';
-    var cookieStartIndex = c.indexOf(prefix);
-    if (cookieStartIndex == -1)
-        return nullstring;
-    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
-    if (cookieEndIndex == -1)
-        cookieEndIndex = c.length;
-    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
-}
-
-function deleteCookie (name, path, domain) {
-    if (getCookie(name))
-        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
-}
-
-function fixDate (date) {
-    var base = new Date(0);
-    var skew = base.getTime();
-    if (skew > 0)
-        date.setTime(date.getTime() - skew);
-}
-
-function rememberMe (f) {
-    var now = new Date();
-    fixDate(now);
-    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
-    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
-    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
-    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
-}
-
-function forgetMe (f) {
-    deleteCookie('mtcmtmail', '', HOST);
-    deleteCookie('mtcmthome', '', HOST);
-    deleteCookie('mtcmtauth', '', HOST);
-    f.email.value = '';
-    f.author.value = '';
-    f.url.value = '';
-}
-
-//-->
-</script>
-
-
-
-<!--
-<rdf:RDF xmlns="http://web.resource.org/cc/"
-         xmlns:dc="http://purl.org/dc/elements/1.1/"
-         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-<Work rdf:about="http://blog.monstuff.com/archives/000252.html">
-<dc:title>AJAX Debugging with Greasemonkey</dc:title>
-<dc:description>Following up on my last Greasemonkey user script, &quot;XMLHttpRequest Tracing&quot;, I wrote a new script that goes beyond tracing: &quot;XMLHttpRequest Debugging&quot;. Here is a screenshot of the new UI. What it shows is the XMLHttpRequest debugging console, a floating div embedded in the page being debugged. This replaces the javascript console, which the previous script used for tracing. Each individual XMLHttpRequest invocation will get listed there, with all the details on the request and the response, as well as options to edit and replay the request or replay the response callback. Update: A newer version of the script is available....</dc:description>
-<dc:creator>Julien</dc:creator>
-<dc:date>2005-05-31T20:55:29-08:00</dc:date>
-<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
-</Work>
-<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
-<requires rdf:resource="http://web.resource.org/cc/Attribution" />
-<requires rdf:resource="http://web.resource.org/cc/Notice" />
-<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
-<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
-<permits rdf:resource="http://web.resource.org/cc/Distribution" />
-<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
-</License>
-</rdf:RDF>
--->
-
-
 
 </head>
 
@@ -127,33 +34,13 @@ function forgetMe (f) {
 
 <div id="container">
 
-<div class="blog">
-
-
-
-
-
-
-
-<div id="menu">
-<a href="http://blog.monstuff.com/archives/000250.html">´ "XMLHttpRequest Tracing" for AJAX debugging</a>&nbsp;&nbsp; 
-
-| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
-| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
-
-</div>
-
-</div>
 
 <div class="blog">
-
-<!-- <h2 class="date">May 31, 2005</h2> -->
 
 
 
 
 <div class="blogbody">
-<!-- google_ad_section_start -->
 
 <h2 class="title">AJAX Debugging with Greasemonkey</h2>
 
@@ -180,7 +67,7 @@ The user script adds a menu command under "Tools" -> "User Script Commands" -> "
 
 <p><u>Update (2005/05/12):</u> I just <a href="http://blog.monstuff.com/archives/000291.html">ported this script to IE</a>, using a bookmarklet.</p>
 
-<span class="posted">Posted by Julien on May 31, 2005. <a href="http://blog.monstuff.com/archives/000252.html" rel="bookmark">Permalink</a> <!-- -->
+<span class="posted">Posted by Julien on May 31, 2005. <a href="http://blog.monstuff.com/archives/000252.html" rel="bookmark">Permalink</a> 
 <br /></span>
 
 </div>
@@ -205,7 +92,6 @@ The user script adds a menu command under "Tools" -> "User Script Commands" -> "
     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>    
-
 
 
 
@@ -441,137 +327,9 @@ I didn't know about the menu problem thought, I'll check it out. I also suspect 
 
 
 
-<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
-
-<div class="trackback-body">
-<a name="283"></a>
-<span class="trackback-post"><a href="http://www.7korobi8oki.com/mt/archives/000066.html" target="new">Ajax§ÚGreasemonkey§«•«•–•√•∞</a><br />
-<b>Excerpt:</b> ∫«∂·§‰§√§»ÕÓ§¡√Â§§§∆§≠§øAjax§«§π§¨°¢•—•√§»»Ù§”§ƒ§Ø§À§œ√Ê°π∆Ò§∑§§°£Œ„§®§–•«•–...<br />
-<b>Weblog:</b> 7korobi8oki.com<br />
-<b>Tracked:</b> June  2, 2005 07:57 AM</span>
-</div>
-<div class="trackback-body">
-<a name="284"></a>
-<span class="trackback-post"><a href="http://www.anticlue.net/archives/000565.htm" target="new">AJAX Debugging Tool</a><br />
-<b>Excerpt:</b> Julien Couvreur has released an updated version of his Ajax Debugging Tool. The new script adds debugging features to the tracing greasemonkey script....<br />
-<b>Weblog:</b> Anticlue<br />
-<b>Tracked:</b> June  3, 2005 02:50 AM</span>
-</div>
-<div class="trackback-body">
-<a name="286"></a>
-<span class="trackback-post"><a href="http://www.billkatz.com/greasemonkey" target="new">All Kinds of Greasemonkey Goodness</a><br />
-<b>Excerpt:</b> <p>Short note: Two great developments are available that build on the <a href="http://greasemonkey.mozdev.org/">Greasemonkey</a> tool for the Firefox browser. <a href="http://platypus.mozdev.org/index.html">Platypus</a> allows you to modify a web page fro</p><br />
-<b>Weblog:</b> Bill Katz<br />
-<b>Tracked:</b> June  3, 2005 05:02 PM</span>
-</div>
-<div class="trackback-body">
-<a name="287"></a>
-<span class="trackback-post"><a href="http://www.karlnelson.net/weblog/000935.html" target="new">Link Dump</a><br />
-<b>Excerpt:</b> A small and random collection of nifty things I've seen float past lately: The BBC is offering downloads of all of Beethoven's symphonies. Unfortunately, you need to pay attention to when they broadcast 'em, as the MP3s are only up for a few days after...<br />
-<b>Weblog:</b> Information Management Weblog<br />
-<b>Tracked:</b> June  3, 2005 05:24 PM</span>
-</div>
-<div class="trackback-body">
-<a name="288"></a>
-<span class="trackback-post"><a href="http://emergent.urbanpug.com/?p=30" target="new">More Ajax</a><br />
-<b>Excerpt:</b> A couple things:  Backbase now has a 'community edition,' there's a greasemonkey script that does ajax debugging, Multiple Text Applicator does ajax lists.
-
-Oh, and here's something i wished i had yesterday -- Live Http Headers -- This is a mozilla e...<br />
-<b>Weblog:</b> Emergent Properties<br />
-<b>Tracked:</b> June  7, 2005 08:20 AM</span>
-</div>
-<div class="trackback-body">
-<a name="357"></a>
-<span class="trackback-post"><a href="http://216.112.239.41/eladio/archive/2005/07/27/161.aspx" target="new">re: Ajax is just not for cleaning...</a><br />
-<b>Excerpt:</b> <br />
-<b>Weblog:</b> Eladio<br />
-<b>Tracked:</b> July 27, 2005 08:53 AM</span>
-</div>
-<div class="trackback-body">
-<a name="358"></a>
-<span class="trackback-post"><a href="http://www.eskimoblood.de/index.php?p=62" target="new">XMLHttpRequest entk√§fern</a><br />
-<b>Excerpt:</b> F√ºr alle die sich mit XMLHttpRequest rumschlagen gibts hier ein tolles Greasemonkey Skript, dass einem in einem extra div Daten zu dem jeweiligen XMLHttpRequest-Anfragen anzeigt. Hier eine kurze Liste der Features:
-	Anzeigen des Requestaufrufs
-	Anfr...<br />
-<b>Weblog:</b> eskimoblood<br />
-<b>Tracked:</b> July 28, 2005 05:22 AM</span>
-</div>
-<div class="trackback-body">
-<a name="375"></a>
-<span class="trackback-post"><a href="http://blogs.warwick.ac.uk/sjones/entry/ajax_debugging/" target="new">AJAX debugging</a><br />
-<b>Excerpt:</b> Just found this very cool piece of script, basically it uses the Greasemonkey extension to firefox to replace the XMLHttpRequest object with a debuging version. The script appears as a floating div...<br />
-<b>Weblog:</b> Steven's blog<br />
-<b>Tracked:</b> August 20, 2005 08:51 AM</span>
-</div>
-<div class="trackback-body">
-<a name="381"></a>
-<span class="trackback-post"><a href="http://blogs.warwick.ac.uk/sjones/entry/ajax_debugging/" target="new">AJAX debugging</a><br />
-<b>Excerpt:</b> Just found this very cool piece of script, basically it uses the Greasemonkey extension to firefox to replace the XMLHttpRequest object with a debuging version. The script appears as a floating div...<br />
-<b>Weblog:</b> Steven's blog<br />
-<b>Tracked:</b> August 24, 2005 09:15 AM</span>
-</div>
-<div class="trackback-body">
-<a name="383"></a>
-<span class="trackback-post"><a href="http://blog.dreamprojections.com/archive/2005/08/24/2942.aspx" target="new">Newer script</a><br />
-<b>Excerpt:</b> <br />
-<b>Weblog:</b> blog.dreampro<br />
-<b>Tracked:</b> August 24, 2005 02:37 PM</span>
-</div>
-<div class="trackback-body">
-<a name="515"></a>
-<span class="trackback-post"><a href="http://192.168.0.20/pukiwiki/index.php?JavaScript%2FAjax" target="new">JavaScript/Ajax</a><br />
-<b>Excerpt:</b> Top / JavaScript / Ajax Ajax  &dagger;  &uarr;Online demo application  &dagger; Backbase - Rich Internet Applications Zimbra  &uarr;Related Links  &dagger; Ajax&#58; Web „Ç¢„Éó„É™„Ç±„Éº„Ç∑„Éß„É≥ÈñãÁô∫„ÅÆÊñ∞„Åó„ÅÑ„Ç¢„Éó„É≠„Éº„ÉÅ bricklife.weblog.*&#58; ...<br />
-<b>Weblog:</b> „Å´„Åì„Å´„ÅìÈ¢®Âë≥::Wiki (PukiWiki/TrackBack 0.3)<br />
-<b>Tracked:</b> January  2, 2006 06:23 AM</span>
-</div>
-
-
-<!-- google_ad_section_end -->
-
-<div class="comments-body">
-<!--
-Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
--->
-</div>
-
-
 </div>
 </div>
 
-<!-- google_ad_section_start(weight=ignore) -->
-<div id="links">
-
-<div class="sidetitle">
-Recent Entries
-</div>
-
-<div class="side">
-<a href="/archives.html">All entries (270)</a><br />
-<br />
-
-<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
-<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
-<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
-<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
-<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
-<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
-<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
-<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
-<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
-<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
-<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
-<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
-<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
-<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
-<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
-<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
-<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
-<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
-<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
-<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
-
-</div>
-<!-- google_ad_section_end -->
 
 </body>
 </html>
