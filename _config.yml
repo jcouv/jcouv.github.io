@@ -18,6 +18,12 @@ defaults:
     values:
       layout: "post"
       comments: True
+  -
+    scope:
+      path: "archives" 
+    values:
+      layout: "post"
+      comments: True
 
 prose:
   media: "archives/images"
