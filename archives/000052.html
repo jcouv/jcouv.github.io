@@ -1,12 +1,53 @@
----
-title: Hosting a web browser component in a C# winform
-date: 2003-06-01 10:30:08 +0800
-disqus_identifier: 52
-disqus_url: http://blog.monstuff.com/archives/000052.html
----
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Hosting a web browser component in a C# winform</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '{{ site.ga }}', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+
+<div class="blog">
+
+
+
+
+<div class="blogbody">
+
+<h2 class="title">Hosting a web browser component in a C# winform</h2>
 
 <p>Many winform applications need to render some html: blog aggregators, news/mail readers or any kind of application that wants to use html as their output facility (reporting tools, log analyzers,...).<br />
 We'll go through the details of using the "Microsoft Web Browser" COM component in a C# winform, with and without VS.net. A couple of the most useful APIs will be explained and provided samples for.</p>
+
+<a name="more"></a>
 <p><b>Using VS.net</b><br />
 Let's first get the browser component into the form.<br />
 In the "Customize Toolbox..." context menu (on the Toolbox), pick "Microsoft Web Browser" from the COM components list. This will add an "Explorer" control in the "General" section of the Toolbox.<br />
@@ -118,23 +159,47 @@ One question I still had was about extending the scripting APIs available within
 <p><b>Links:</b><br />
 <a href="http://www.codeproject.com/csharp/mshtml_automation.asp">Browser automation in C#</a>.</p>
 
-______________________________________
+<span class="posted">Posted by Julien on June 01, 2003. <a href="http://blog.monstuff.com/archives/000052.html" rel="bookmark">Permalink</a> 
+<br /></span>
+
+</div>
 
 
 
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '52';
+        var disqus_url = 'http://blog.monstuff.com/archives/000052.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+<div class="comments-body">
 <p>I haven't had time to play with this (it requires a full Mozilla development environment), but it seems promising: a Gecko wrapper in managed C++.</p>
 
 <p>You can find it at:<br />
 <a href="http://lxr.mozilla.org/seamonkey/source/embedding/wrappers/DotNETEmbed/ManagedGecko.html">http://lxr.mozilla.org/seamonkey/source/embedding/wrappers/DotNETEmbed/ManagedGecko.html</a></p>
-
-Posted by: <a href="http://blog.monstuff.com">Dumky</a> at June 20, 2003 12:19 PM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Dumky</a> at June 20, 2003 12:19 PM</span>
+</div>
+<div class="comments-body">
 <p>As a complement you can even host an ASP.Net runtime in your app, check this very detailled article out: <a href="http://www.west-wind.com/presentations/aspnetruntime/aspnetruntime.asp">http://www.west-wind.com/presentations/aspnetruntime/aspnetruntime.asp</a></p>
-
-Posted by: <a href="http://blog.monstuff.com">Dumky</a> at June 29, 2003 12:00 AM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Dumky</a> at June 29, 2003 12:00 AM</span>
+</div>
+<div class="comments-body">
 <p>re: MissingManifestResourceException</p>
 
 <p>Got this today and just couldn't believe it. Didn't even have a resource file (that i knew of). Thanks to Michael Covington (uga) for posting the underlying problem...</p>
@@ -142,59 +207,56 @@ Posted by: <a href="http://blog.monstuff.com">Dumky</a> at June 29, 2003 12:00 A
 <p>I had moved an enum def outside the Form class to the namespace. If you have a class def before the Form class the compiler gets confused (wrong resource file name?) and generates this exception.</p>
 
 <p>details at <a href="http://www.ai.uga.edu/~mc/VisualStudioGotchas.html">http://www.ai.uga.edu/~mc/VisualStudioGotchas.html</a></p>
-
-Posted by: <a href="http://www.ai.uga.edu/~mc/VisualStudioGotchas.html#Unhandled">Dhominator</a> at September  3, 2003 02:42 PM
-
-
+<span class="comments-post">Posted by: <a href="http://www.ai.uga.edu/~mc/VisualStudioGotchas.html#Unhandled">Dhominator</a> at September  3, 2003 02:42 PM</span>
+</div>
+<div class="comments-body">
 <p>re:</p>
 
 <p>ha! lame explanation by MS... functioning as designed. Jah, right :p</p>
 
 <p><a href="http://support.microsoft.com/?kbid=318603">http://support.microsoft.com/?kbid=318603</a></p>
-
-Posted by: <a href="http://support.microsoft.com/?kbid=318603">Dhominator</a> at September  3, 2003 02:45 PM
-
-
+<span class="comments-post">Posted by: <a href="http://support.microsoft.com/?kbid=318603">Dhominator</a> at September  3, 2003 02:45 PM</span>
+</div>
+<div class="comments-body">
 <p>same thing can i do with out using webbrowser control.is there anyway.please let me know the solution if there is</p>
-
-Posted by: <a href="mailto&#58;praveenchand&#46;katragadda&#64;essit&#46;com">praveen</a> at November 24, 2004 02:17 AM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;praveenchand&#46;katragadda&#64;essit&#46;com">praveen</a> at November 24, 2004 02:17 AM</span>
+</div>
+<div class="comments-body">
 <p>I want to do the same thing in asp.net but I don't know the way to access the property of web browser component. Plz Help</p>
 
 <p>Amit Shrivastava </p>
-
-Posted by: <a href="mailto&#58;amitvps_shri&#64;yahoo&#46;com">Amit Shrivastava</a> at June  2, 2005 11:06 PM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;amitvps_shri&#64;yahoo&#46;com">Amit Shrivastava</a> at June  2, 2005 11:06 PM</span>
+</div>
+<div class="comments-body">
 <p>Other events are dead. It's imposible to write or click in html page....</p>
-
-Posted by: <a href="http://-">NeK</a> at August 16, 2005 01:26 AM
-
-
+<span class="comments-post">Posted by: <a href="http://-">NeK</a> at August 16, 2005 01:26 AM</span>
+</div>
+<div class="comments-body">
 <p>With your example I was not able to assign "Hello world" string in NavigateComplete2 event handler because it seems that body object is not initialized yet.</p>
-
-Posted by: <a href="mailto&#58;manovich&#64;gmail&#46;com">manovich</a> at October  1, 2005 04:16 AM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;manovich&#64;gmail&#46;com">manovich</a> at October  1, 2005 04:16 AM</span>
+</div>
+<div class="comments-body">
 <p>If you do at least one call to axWebBrowser1.Navigate() first (even with the url "about:blank") then the body will be initialized properly.</p>
-
-Posted by: <a href="http://blog.monstuff.com/archives/000052.html">Jeff</a> at October 26, 2005 07:37 AM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/archives/000052.html">Jeff</a> at October 26, 2005 07:37 AM</span>
+</div>
+<div class="comments-body">
 <p>How can I save the file to local disk as HTML that was loaded by Web Browser control? Thanks for the help.</p>
-
-Posted by: <a href="mailto&#58;vijayabareddy&#64;gmail&#46;com">Vijay</a> at November  7, 2005 01:10 PM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;vijayabareddy&#64;gmail&#46;com">Vijay</a> at November  7, 2005 01:10 PM</span>
+</div>
+<div class="comments-body">
 <p>don't call .Navigate() in the form's Onload event - this was causing the control to lock up on my system</p>
-
-Posted by: <a href="http://www.freeweb.telco4u.net/lammy/">lammy</a> at December  7, 2005 02:29 AM
-
-
+<span class="comments-post">Posted by: <a href="http://www.freeweb.telco4u.net/lammy/">lammy</a> at December  7, 2005 02:29 AM</span>
+</div>
+<div class="comments-body">
 <p>Just what I was looking for...  Thanks for the awesome explaination.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;a&#64;a&#46;com">a</a> at March  8, 2006 09:28 PM</span>
+</div>
 
-Posted by: <a href="mailto&#58;a&#64;a&#46;com">a</a> at March  8, 2006 09:28 PM
 
 
+</div>
+</div>
 
+
+</body>
+</html>

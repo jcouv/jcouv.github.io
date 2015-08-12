@@ -1,13 +1,54 @@
----
-title: Behind Google
-date: 2003-05-20 17:56:52 +0800
-disqus_identifier: 44
-disqus_url: http://blog.monstuff.com/archives/000044.html
----
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Behind Google</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '{{ site.ga }}', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+
+<div class="blog">
+
+
+
+
+<div class="blogbody">
+
+<h2 class="title">Behind Google</h2>
 
 <p>Here is <a href="http://www.computer.org/micro/mi2003/m2022.pdf">a good paper on Google's architecture</a>.<br />
 I was wondering why Google needed so many servers (apparently more than 10000) to handle "only" 1000 requests/sec.<br />
 It turns out that a single request involves many servers, beside the front-end web server: index servers and document servers, as well as ad servers and spell checking services. In fact, many (apparently around a dozen) index and document servers are involved in handling a query, because of the shear size of the data and the need for it to be replicated (for scalability and reliability): the indexes and web content are split in redundant partitions (that they call shards), and a query is performed in parallel on these shards. Also, boxes are needed for the spidering and indexing itself, but I couldn't find a mention of the number of these.</p>
+
+<a name="more"></a>
 <p>This <a href="http://technetcast.ddj.com/tnc_play_stream.html?stream_id=420">TechNetCast mp3 stream</a> with Jim Reese (Chief Operations Engineer) and the following <a href="http://technetcast.ddj.com/tnc_play_stream.html?stream_id=421">Q&A</a> goes, with humour, over some of the problems that appear when you manage that many servers (networking issues, heat/power/hosting issues, software consistency on all the boxes) and the strategies they employ to mitigate these.</p>
 
 <p>One of the <a href="http://www7.scu.edu.au/programme/fullpapers/1921/com1921.htm">early papers on Google's anatomy</a> by Sergey Brin and Lawrence Page. It gives a lot of interesting details on the design of the search engine.</p>
@@ -17,29 +58,59 @@ It turns out that a single request involves many servers, beside the front-end w
 <p>A <a href="http://www.wired.com/news/infostructure/0,1377,58497,00.html">Wired article on GRUB</a>, a search engine that attempts to offload the indexing by distributing it to volunteers (ala Seti@Home and Folding@Home). This could allow a faster indexing of the whole web, but certainly creates issues around the reliability of the built index, as well as other technical problems.<br />
 </p>
 
-______________________________________
+<span class="posted">Posted by Julien on May 20, 2003. <a href="http://blog.monstuff.com/archives/000044.html" rel="bookmark">Permalink</a> 
+<br /></span>
+
+</div>
 
 
 
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '44';
+        var disqus_url = 'http://blog.monstuff.com/archives/000044.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+<div class="comments-body">
 <p>Via Nauman Leghari's blog ( <a href="http://weblogs.asp.net/nleghari/posts/9569.aspx">http://weblogs.asp.net/nleghari/posts/9569.aspx</a> ), many papers from Google people : <a href="http://labs.google.com/papers.html">http://labs.google.com/papers.html</a></p>
-
-Posted by: <a href="http://blog.monstuff.com/">Dumky</a> at July  1, 2003 04:05 PM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Dumky</a> at July  1, 2003 04:05 PM</span>
+</div>
+<div class="comments-body">
 <p>More info on PageRank at <a href="http://pagerank.stanford.edu/">http://pagerank.stanford.edu/</a><br />
 Sepandar Kamvar ( <a href="http://www.stanford.edu/~sdkamvar/research.html">http://www.stanford.edu/~sdkamvar/research.html</a> ) is doing some excellent research on speeding up the PageRank computation and personalizing the PageRank results.</p>
 
 <p>I haven't heard more from GRUB ( <a href="http://www.grub.org/">http://www.grub.org/</a> ) since last time, but I wonder were it fits in Josh Gray's analysis of Distributed Computing ( <a href="http://www.clustercomputing.org/content/tfcc-5-1-gray.html">http://www.clustercomputing.org/content/tfcc-5-1-gray.html</a> ).</p>
-
-Posted by: <a href="http://blog.monstuff.com/archives/000044.html">Dumky</a> at July 24, 2003 11:19 AM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/archives/000044.html">Dumky</a> at July 24, 2003 11:19 AM</span>
+</div>
+<div class="comments-body">
 <p>A video of a recorded lecture (by Urs Hoelzle) about Google is available: <a href="http://norfolk.cs.washington.edu/htbin-post/unrestricted/mmedia/ondemand_colloq.cgi">http://norfolk.cs.washington.edu/htbin-post/unrestricted/mmedia/ondemand_colloq.cgi</a> (search for Google on that page).<br />
 It goes through both a software and a hardware overview.</p>
 
 <p>The video is mirrored at <a href="http://www.uwtv.org/programs/displayevent.asp?rid=1680">http://www.uwtv.org/programs/displayevent.asp?rid=1680</a> and <a href="http://www.researchchannel.org/program/displayevent.asp?rid=1680">http://www.researchchannel.org/program/displayevent.asp?rid=1680</a></p>
+<span class="comments-post">Posted by: <a href="http://www.cs.washington.edu/info/videos/asx/colloq/UHoelzle_2002_11_05.asx">Dumky</a> at August 28, 2003 06:46 PM</span>
+</div>
 
-Posted by: <a href="http://www.cs.washington.edu/info/videos/asx/colloq/UHoelzle_2002_11_05.asx">Dumky</a> at August 28, 2003 06:46 PM
 
 
+</div>
+</div>
 
+
+</body>
+</html>
