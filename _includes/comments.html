@@ -6,7 +6,9 @@
     var disqus_shortname = '{{ site.disqus_shortname }}'; // required: replace example with your forum shortname
     var disqus_identifier = '{% if post.disqus_identifier  %}{{ post.disqus_identifier }}{% else %}{{ post.url }}{% endif %}';
     //var disqus_url = '{{ site.url }}{{ site.baseurl }}{{ post.url }}';
-
+    post: {{ post.disqus_identifier }}
+    page: {{ page.disqus_identifier }}
+    straight: {{ disqus_identifier }}
     
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
