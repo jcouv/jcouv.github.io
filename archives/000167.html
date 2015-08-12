@@ -1,52 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Microsoft Passport 101</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Microsoft Passport 101</h2>
-
+---
+title: "Microsoft Passport 101"
+date: 2004-04-20 10:38:53 +0800
+disqus_identifier: 167
+disqus_url: http://blog.monstuff.com/archives/000167.html
+---
+{% raw %}
 <p>...a simple explanation of the Passport web authentication protocol...</p>
-
-<a name="more"></a>
 <p><b>Introduction:</b><br />
 Passport is a single sign-on system developed by Microsoft. It allows websites who participate to unload some of the account management burden onto a shared and specialized authentication service hosted by Microsoft.<br />
 It is probably the largest dedicated authentication service on the web, as it is used by millions of Hotmail and MSN Messenger users.</p>
@@ -176,77 +135,56 @@ The upcoming <a href="http://www.typekey.com/">Typekey service</a> from the Mova
 <a href="http://www.flickr.com/services/">Flickr authentication service</a>.<br />
 <a href="http://www.sharedid.com/sharedid/">SharedID authentication service</a>.</p>
 
-<span class="posted">Posted by Julien on April 20, 2004. <a href="http://blog.monstuff.com/archives/000167.html" rel="bookmark">Permalink</a> 
-<br /></span>
+______________________________________
 
-</div>
-
-
-
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '167';
-        var disqus_url = 'http://blog.monstuff.com/archives/000167.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>This is so cool.<br />
 That's what I need for.<br />
 Thanks a lot~ :)</p>
-<span class="comments-post">Posted by: <a href="blank">ayo</a> at April 28, 2004 08:18 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="blank">ayo</a> (April 28, 2004 08:18 AM)
+
+______________________________________
+
 <p>Hi :) Very nice information. I have unfortunately run into a brick wall when programming a passport login script (which is how i found your site) so i thought i was gonna ask you if you perhaps would have got a few minutes to answer a question? Drop me an e-mail and i'll explain the sutation to you :)</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;noct&#64;noccy&#46;com">Christopher</a> at June 10, 2004 07:41 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;noct&#64;noccy&#46;com">Christopher</a> (June 10, 2004 07:41 AM)
+
+______________________________________
+
 <p>ummm r you dsaying how to get someones else's passport password?</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;Evils_Glare&#64;hotmail&#46;com">Tommy</a> at September  4, 2004 09:07 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;Evils_Glare&#64;hotmail&#46;com">Tommy</a> (September  4, 2004 09:07 PM)
+
+______________________________________
+
 <p>Tommy, no :-)<br />
 Passport, as all authentication systems, is a trade-off between security and convenience. So the protocol has some known limitations: for example, cookies could be stolen by sniffing cleartext HTTP requests. But with those risks/choices in mind Passport seems pretty robust. <br />
 I don't know of any exploit/flaw that would allow to steal somebody's password without using a trojan/keylogger or looking over a person's shoulder.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien</a> at September 21, 2004 07:02 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com/">Julien</a> (September 21, 2004 07:02 AM)
+
+______________________________________
+
 <p>Microsoft passport is great idea... But it's not popular now. I think the main problem of such systems is security holes.</p>
-<span class="comments-post">Posted by: <a href="http://www.livejournal.com/users/traveller18/">John C.</a> at June 25, 2005 11:20 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.livejournal.com/users/traveller18/">John C.</a> (June 25, 2005 11:20 AM)
+
+______________________________________
+
 <p>Is there a proxie service or other method for signing on to my Hotmail account without enabling javascript on my computer? I am no able to access my account because I do not enable Java. I will not enable Java just to use MS services. Will I have to abandon my account, or is there another solution to prevent the "marketing_study/social_engineering" invasion of privacy?</p>
 
 <p>Thank you.</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;fteqfkfkyhwb&#64;mailinator&#46;com">Sarah</a> at May  2, 2006 01:54 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;fteqfkfkyhwb&#64;mailinator&#46;com">Sarah</a> (May  2, 2006 01:54 PM)
+
+______________________________________
+
 <p>Sarah, not that I know of. <br />
 If you are concerned about invasion of privacy, I suggest that you read MSN's privacy statement to make your decision to use these services (or not). <br />
 By definition, any form of authenticated service will allow tracking your activity, whether you use a proxy or not.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at May  7, 2006 08:37 PM</span>
-</div>
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> (May  7, 2006 08:37 PM)
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>
+{% endraw %}

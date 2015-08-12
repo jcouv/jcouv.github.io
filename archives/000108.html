@@ -1,55 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Bayesian probability and networks</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Bayesian probability and networks</h2>
-
+---
+title: "Bayesian probability and networks"
+date: 2003-10-25 17:00:24 +0800
+disqus_identifier: 108
+disqus_url: http://blog.monstuff.com/archives/000108.html
+---
+{% raw %}
 <p>One of the most recent strategies to filter spam out is based on statistical text classification. Most of the filters document that they are on Bayesian networks.<br />
 Although I had some memories of Bayes' theorem, I had never heard of Bayesian networks. So I got a refresher on Probabilities and read through a Bayesian networks tutorial.</p>
 
 <p>Some of the aspects in the papers I read really brought some new light on what I remembered from school. I'll detail some keys to understanding Bayes' theorem in a meaningful way and summarize what I learned on Bayesian networks, without going too much into the formal aspects.</p>
-
-<a name="more"></a>
 <p><b>Bayes theorem</b><br />
 A good introduction to the theorem is: <a href="http://www.cogsci.northwestern.edu/Bayes/Sivia_1996.pdf">Data Analysis: A Bayesian Tutorial</a>, by Sivia, D. S. (1996), found via this <a href="http://rover.cs.northwestern.edu/~surana/blog/past/000094.html">Green Hat Journal's entry on Bayesian Learning</a>.<br />
 Although this only contains the first couple chapters of Sivia's book, I really found it interesting, because it gives a meaningful approach to Bayes' theorem. </p>
@@ -135,41 +94,6 @@ Other text classification techniques might also be useful to experiment with, li
 Consider the set of all states, E, as a rectangular box. It then contains two sets, A and B, represented as circles that intersect. The probabilities P(A), P(B), P(A | B) and P(B | A) correspond to the probability of being inside a certain set under certain assumptions. <br />
 For example, P(A) is the probability of being in A given that you are in E. Similarly, P(B | A) is the probability of being in B (or actually inside the intersection of A and B) given that you are within A.</p>
 
-<span class="posted">Posted by Julien on October 25, 2003. <a href="http://blog.monstuff.com/archives/000108.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
 
 
-
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '108';
-        var disqus_url = 'http://blog.monstuff.com/archives/000108.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-
-
-
-</div>
-</div>
-
-
-</body>
-</html>
+{% endraw %}

@@ -1,53 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Storage, Filesystems and Information retrieval</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Storage, Filesystems and Information retrieval</h2>
-
+---
+title: "Storage, Filesystems and Information retrieval"
+date: 2003-09-14 12:08:27 +0800
+disqus_identifier: 101
+disqus_url: http://blog.monstuff.com/archives/000101.html
+---
+{% raw %}
 <p>Recently, I have been reading quite a bit about filesystems and their current and future development. Their seems to be at least three major areas of interest: performance, user interface and distribution. We'll see various projects along these axes and in particular the search engine backed user interface, that might set the trend for some time.<br />
 Being no filesystem or information retrieval expert, all corrections or additions to this storage survey are welcome.</p>
-
-<a name="more"></a>
 <p><b>Performance and core features</b><br />
 Performance is a domain specific measure, as different applications will have very different data access patterns. The resources (HDD, RAM, CPU, network,...) directly relate to the trade-offs and determine the criteria for evaluation: response time/latency, throughput, resource efficiency (space on HDD, CPU utilization),... All these aspects make it difficult to say that a filesystem is "better" in absolute terms, especially in the changing landscape of evolving technologies (larger and faster components). It is even harder if you add to that different data models (what metadata is stored) and feature sets (whether transactions, indexing or replication is supported).</p>
 
@@ -113,36 +72,8 @@ The "Underground Economist" wonders about <a href="http://undergroundeconomist.c
 
 <p><a href="http://www.furl.net">FURL</a> is another stab at this, based on special bookmarking and search through cached pages.</p>
 
-<span class="posted">Posted by Julien on September 14, 2003. <a href="http://blog.monstuff.com/archives/000101.html" rel="bookmark">Permalink</a> 
-<br /></span>
+______________________________________
 
-</div>
-
-
-
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '101';
-        var disqus_url = 'http://blog.monstuff.com/archives/000101.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>Speaking to your comments on information retrieval, my company is about to go beta on an Internet companion application that runs on top of and integrates with a user’s web browser, email software and email address book, enabling users to make saving, organizing and sharing (“SOS”) a fulcrum of Internet productivity.  </p>
 
 <p>The idea is that whereas most search-related activities end up being relegated to the 'get it and forget it' bucket, with SOS baked into the online realm, three productivity leaps can be realized in terms of managing information of interest that's found on the Internet:</p>
@@ -154,21 +85,18 @@ The "Underground Economist" wonders about <a href="http://undergroundeconomist.c
 <p>3. "Share":  Share the personalized lists you create of products, businesses and supporting content easily with a multi-selection list view.  Choose the recipient or recipients using your email address book, and with a click, convert it to an email ready web page and you're done.</p>
 
 <p>The basic product is a free download, although there will be a paid version of the software targeted at corporations and participants in associates programs.  If you want to find out what exactly we are doing and why you would want to use the software, there are whitepapers and overview documents on the site (www.verdada.com).  Or, wait until the start of October when the public beta begins.</p>
-<span class="comments-post">Posted by: <a href="http://www.verdada.com">hypermark</a> at September 23, 2003 11:40 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.verdada.com">hypermark</a> (September 23, 2003 11:40 AM)
+
+______________________________________
+
 <p>The roadmap slides for Mozilla 2.0 (<a href="http://mozilla.org/events/dev-day-feb-2004/mozilla-futures/">http://mozilla.org/events/dev-day-feb-2004/mozilla-futures/</a> ) lists some end-user innvoations related to this:<br />
 -Personal intertwingled data server<br />
 -Shared web page annotations <br />
 </p>
-<span class="comments-post">Posted by: <a href="mailto&#58;dumky_ATR&#64;hotmail&#46;com">Dumky</a> at March  2, 2004 12:53 PM</span>
-</div>
+
+Posted by: <a href="mailto&#58;dumky_ATR&#64;hotmail&#46;com">Dumky</a> (March  2, 2004 12:53 PM)
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>
+{% endraw %}

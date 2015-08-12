@@ -1,49 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: C# port of dChat</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">C# port of dChat</h2>
-
+---
+title: "C# port of dChat"
+date: 2004-05-03 12:51:07 +0800
+disqus_identifier: 172
+disqus_url: http://blog.monstuff.com/archives/000172.html
+---
+{% raw %}
 <p>I ported dChat, an IRC-like web chat , to C#. Try the <a href="http://bodytag.org/dchat/">online demo of the original dChat</a>.</p>
 
 <p>My goal was to make it really easy to use on windows/IIS in a windows domain. So, <b>no compilation</b> is needed, as you can run it by just deploying the source files to an IIS webserver and configuring the "Directory Security" to only use "Integrated Windows authentication".<br />
@@ -55,8 +16,6 @@ You can then load the url for chat.aspx in a browser and start using it.</p>
 Another difference is the use of windows authentication.</p>
 
 <p>Get the <a href="/archives/images/dnChat.v1.zip">zipped source files</a> for dnChat.</p>
-
-<a name="more"></a>
 <p>The files:<br />
 <ul><li>chat.aspx: is a mostly static html file that has includes javascript remoting tricks to communicate to f.ashx.</li><li>f.ashx: a C# HTTPHandler that handles the remote function calls from the browser.</li><li>online.js: some utility javascript functions. Some of the javascript from chat.aspx could be moved in there too...</li></ul></p>
 
@@ -73,36 +32,8 @@ Also, Mesalem posted a variation on dnChat at the Code Project, check out <a hre
 <u>Update (2005/05/11):</u> Fixed an issue with unicode characters not being transmitted properly. Now using <a href="http://blog.hackedbrain.com/archive/2005/04/11/370.aspx">encodeURIComponent instead of escape</a> for unicode characters on the querystring. Updated the zip file above and on Sourceforge.<br />
 Thanks to Vitor Cardoso for pointing the issue out and troubleshooting with me.</p>
 
-<span class="posted">Posted by Julien on May 03, 2004. <a href="http://blog.monstuff.com/archives/000172.html" rel="bookmark">Permalink</a> 
-<br /></span>
+______________________________________
 
-</div>
-
-
-
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '172';
-        var disqus_url = 'http://blog.monstuff.com/archives/000172.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>I am trying to use your app but i dont want to have an account for every<br />
 user.  Is there a way to allow anonymous with different usernames?  Or a<br />
 better way to explain to the users other then trial and error with<br />
@@ -112,17 +43,21 @@ kicked)</p>
 <p><br />
 Thanks,<br />
 Brian</p>
-<span class="comments-post">Posted by: <a href="http://www.brianyelm.com">Brian Yelm</a> at September  1, 2004 03:14 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.brianyelm.com">Brian Yelm</a> (September  1, 2004 03:14 PM)
+
+______________________________________
+
 <p>Brian,<br />
 I had deleted your comment by mistake, so I re-posted it and replied by email.<br />
 When I ported dChat to C# I changed the authentication model to use network authentication as part of a windows domain. This solves the issue of unique usernames, because the domain controller ensures there is no collision.</p>
 
 <p>I wouldn't be too difficult to switch back to the dChat model, where you just pick your own username. But then, like you pointed out, you need to handle the duplicate username case. I would probably list the usernames of the people currently using the system, on the "login" page, so that you can tell which ones are already taken...</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at September  1, 2004 03:22 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> (September  1, 2004 03:22 PM)
+
+______________________________________
+
 <p>Hi Julien,</p>
 
 <p>Could you explain how to use this using Forms authentication instead of Windows authentication. I have my own accounting system so could fill the query string with a username, BUT, based on Forms auth.</p>
@@ -132,29 +67,37 @@ When I ported dChat to C# I changed the authentication model to use network auth
 <p>Thanks,</p>
 
 <p>Danny</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;blogdotmonstuffdotcom&#64;webengineer&#46;nl">Danny</a> at September 11, 2004 08:03 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;blogdotmonstuffdotcom&#64;webengineer&#46;nl">Danny</a> (September 11, 2004 08:03 AM)
+
+______________________________________
+
 <p><br />
 Plz .i want to Know ow to Browse The Directory From  C# windows Button Command .</p>
 
 <p><br />
 </p>
-<span class="comments-post">Posted by: <a href="mailto&#58;gour125&#64;rediffmail&#46;com">Dharmendra Gour</a> at October  4, 2004 07:47 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;gour125&#64;rediffmail&#46;com">Dharmendra Gour</a> (October  4, 2004 07:47 AM)
+
+______________________________________
+
 <p>Oh rad!</p>
-<span class="comments-post">Posted by: <a href="http://bodytag.org/">Glen Murphy</a> at October  6, 2004 09:22 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://bodytag.org/">Glen Murphy</a> (October  6, 2004 09:22 PM)
+
+______________________________________
+
 <p>well i tried  installing net.framwork yet i still cannot get this application to work.  i 've read your docs posted on this page perhaps im missing something. ps im new to this</p>
 
 <p>i've aslot tried executing the file C:\dnChat\chat.aspx  as a url and it didn't work, intead i get text in the aspx that pops up in notepad.</p>
 
 <p>im running windows xp pro with net framework installed, php and perl</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;adawright&#64;hotmail&#46;com">ada</a> at November 20, 2004 07:29 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;adawright&#64;hotmail&#46;com">ada</a> (November 20, 2004 07:29 PM)
+
+______________________________________
+
 <p>Hi Ada,</p>
 
 <p>Could you check that you have the IIS webserver installed? To do this, go in the Start menu, select Run... and type "inetmgr". If you get an error, it means you didn't install IIS as part of your windows components.</p>
@@ -162,9 +105,11 @@ Plz .i want to Know ow to Browse The Directory From  C# windows Button Command .
 <p>If you have it installed, do you know where your document root is? A simple test is to put a file (say "test.txt" with a "hello" string in it) in that directory and try and load it in a browser (<a href="http://yourmachine/test.txt">http://yourmachine/test.txt</a> ). If you are able to get the "hello" in the browser than you are good to go and deploy the dnChat files into that directory.</p>
 
 <p>Let me know how it goes.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at November 23, 2004 11:21 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> (November 23, 2004 11:21 AM)
+
+______________________________________
+
 <p>commnet the code on asp.net C#. </p>
 
 <p>problem:</p>
@@ -173,13 +118,17 @@ Plz .i want to Know ow to Browse The Directory From  C# windows Button Command .
 <a href="http://localhost/chat.aspx?user=user1">http://localhost/chat.aspx?user=user1</a><br />
 so sameone might type it and they might having<br />
 same nick.</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;teoh_lian_tatt&#64;yahoo&#46;com">teoh</a> at February 12, 2005 07:57 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;teoh_lian_tatt&#64;yahoo&#46;com">teoh</a> (February 12, 2005 07:57 AM)
+
+______________________________________
+
 <p>Teoh, you're right. But that code (looking at the "user" querystring parameter) is mostly for debugging, so that a single user can repro a multi-user scenario. </p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at February 17, 2005 10:22 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> (February 17, 2005 10:22 AM)
+
+______________________________________
+
 <p>Hi Julien</p>
 
 <p>This is a very nice and handy piece of code.<br />
@@ -187,32 +136,42 @@ I want to report that it’s not working with accented characters like French or P
 Can you post a version working for these (often) forgotten languages ;) ?</p>
 
 <p>Best regards</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;vcardoso&#64;hotmail&#46;com">vcard</a> at May  9, 2005 10:27 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;vcardoso&#64;hotmail&#46;com">vcard</a> (May  9, 2005 10:27 AM)
+
+______________________________________
+
 <p>Re: accented characters<br />
 I just tried some accented characters like "&#276;&#277;&#279;&#280;&#280;œ&#1510;&#1511;&#1180;&#7845;&#7841;&#7811;&#1095;ÈÉÃ" but it was working fine. I tried both Firefox and IE for the browsers.<br />
 Can you give me some more details on your repro? We can follow up on email.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at May  9, 2005 10:38 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> (May  9, 2005 10:38 AM)
+
+______________________________________
+
 <p>Can we do personal chat?</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;vishwadh&#64;gmail&#46;com">vishal</a> at August 31, 2005 05:28 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;vishwadh&#64;gmail&#46;com">vishal</a> (August 31, 2005 05:28 AM)
+
+______________________________________
+
 <p>i need to know if there's a way to refresh the chat room faster without refreshing the whole page?</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;zouz&#64;hotmail&#46;com">joseph</a> at April 24, 2006 03:51 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;zouz&#64;hotmail&#46;com">joseph</a> (April 24, 2006 03:51 AM)
+
+______________________________________
+
 <p>Vishal,<br />
 There is no support for channels and private conversations. I'm sure that now that some of the javascript techniques have become popular (AJAX trend), you should be able to find more powerful chat applications based on the same model.</p>
 
 <p>Joseph, <br />
 You can change the polling frequency for getting new messages, there should be no need to refresh the whole page. <br />
 Using a different technique to get messages from the server (push), it should be possible to get the new messages instantly, without waiting for the next poll. Search for for "ajax comet" for more info.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at April 24, 2006 04:03 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> (April 24, 2006 04:03 PM)
+
+______________________________________
+
 <p>Hi Julien</p>
 
 <p>Is there a version to use in Sharepoint (wss)?</p>
@@ -220,14 +179,9 @@ Using a different technique to get messages from the server (push), it should be
 <p>Thanks.</p>
 
 <p>V.Cardoso</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;vcardoso&#64;hotmail&#46;com">v.cardoso</a> at June 28, 2006 09:12 AM</span>
-</div>
+
+Posted by: <a href="mailto&#58;vcardoso&#64;hotmail&#46;com">v.cardoso</a> (June 28, 2006 09:12 AM)
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>
+{% endraw %}

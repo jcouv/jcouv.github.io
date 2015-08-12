@@ -1,49 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Upcoming fix for IE url spoofing bug</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Upcoming fix for IE url spoofing bug</h2>
-
+---
+title: "Upcoming fix for IE url spoofing bug"
+date: 2004-01-30 10:20:14 +0800
+disqus_identifier: 138
+disqus_url: http://blog.monstuff.com/archives/000138.html
+---
+{% raw %}
 <p>Over a month back a security bug was discovered in IE that allows the address displayed in IE to be different for the actual address. Here is a <a href="http://www.secunia.com/advisories/10395/">description and demo of the spoof attack</a>.</p>
 
 <p>Apparently, the upcoming fix includes <a href="http://weblogs.asp.net/rmclaws/archive/2004/01/29/64705.aspx">dropping the http://user:pwd@domain/ url format support</a>.<br />
@@ -61,8 +22,6 @@ Here are two other ideas:</p>
 <li><b>Color coding:</b> Help the user understand the format by using syntax highlighting. If the username and password were in red and the domain was in bold, it would always be clear what domain is used.</li>
 
 <p><li><b>Text boxes:</b> Add two text boxes in addition to the address bar, for the username and password. They would only appear when you encounter a url of that type or if you activate them (via the View menu).</li></ul></p>
-
-<a name="more"></a>
 <p><u>Update:</u> <a href="http://simon.incutio.com/archive/2004/01/30/noMoreUsernames">Simon Willison's take on the fix</a>, with interesting pointers to Microsoft's KB article and a related Mozilla bug (which actually already mentions both suggestions above).</p>
 
 <p><u>Update:</u> The fix is now <a href="http://weblogs.asp.net/jeffdav/archive/2004/02/02/66270.aspx">available</a>.</p>
@@ -85,54 +44,25 @@ But RFC 1738 then goes into the specifics of the HTTP URL scheme and it doesn't 
 
 <p>Also, the <a href="http://www.w3.org/Addressing/URL/5_BNF.html">BNF for specific URL schemes</a> clearly allows the use of a username and password in the ftp scheme, but <b>not</b> for http.</p>
 
-<span class="posted">Posted by Julien on January 30, 2004. <a href="http://blog.monstuff.com/archives/000138.html" rel="bookmark">Permalink</a> 
-<br /></span>
+______________________________________
 
-</div>
-
-
-
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '138';
-        var disqus_url = 'http://blog.monstuff.com/archives/000138.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>RFC 1738 may not appear to permit user:passwd in the URL but 2396, which obviates most of 1738 mentions in section 3.2.2 that "URL schemes that involve the direct use of an IP-based protocol to a specified server on the Internet..." [which presumably includes HTTP] "use a common syntax for the server component of the URI's scheme-specific data: @:". So to me, there's no question but that the IE fix violates the standard.</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;ricksplacellc&#64;hotmail&#46;com">Richard Blaine</a> at May 14, 2004 12:29 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;ricksplacellc&#64;hotmail&#46;com">Richard Blaine</a> (May 14, 2004 12:29 PM)
+
+______________________________________
+
 <p>The Mozilla team implemented another fix: <a href="http://weblogs.asp.net/mtrova/archive/2004/05/11/129901.aspx">http://weblogs.asp.net/mtrova/archive/2004/05/11/129901.aspx</a><br />
 The username and password need to be url-escaped, which should succeed in clearing any confusion betwen a username and a hostname.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Dumky</a> at May 14, 2004 03:02 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Dumky</a> (May 14, 2004 03:02 PM)
+
+______________________________________
+
 <p>This is not a "fix" or "solution" at all. Microsoft will break next standard and it will hit the techs and some parts of business as a whole.</p>
-<span class="comments-post">Posted by: <a href="http://www.decent.cz">David Graf</a> at August  1, 2004 09:21 AM</span>
-</div>
+
+Posted by: <a href="http://www.decent.cz">David Graf</a> (August  1, 2004 09:21 AM)
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>
+{% endraw %}

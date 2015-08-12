@@ -1,49 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Bittorrent downloader with web UI...</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Bittorrent downloader with web UI...</h2>
-
+---
+title: "Bittorrent downloader with web UI..."
+date: 2004-07-24 20:00:07 +0800
+disqus_identifier: 194
+disqus_url: http://blog.monstuff.com/archives/000194.html
+---
+{% raw %}
 <p>... and thoughts about the different UI remoting techniques.</p>
 
 <p><b>ABC bittorrent client:</b><br />
@@ -57,8 +18,6 @@ PHP-4-ABC makes use of this control interface to build a web UI that offers most
 <p><br />
 Installing PHP-4-ABC made me think the similarities and differences between the console apps with ssh and GUI apps with web interfaces. <br />
 Both are good ways to access remote applications without burning too much bandwidth. RDP, X and VNC are improving, but still have higher bandwidth usages. </p>
-
-<a name="more"></a>
 <p> <br />
 <b>Console apps:</b><br />
 One advantage of console apps (on Linux for example) is that they are both local and natively "remotable" (no code change), with little difference except for the added latency. <br />
@@ -86,53 +45,31 @@ Maybe in the future we'll see a framework or standard deployment model for such 
 Winamp explores these various models as well, using extensions like <a href="http://www.flippet.org/wawi/">Winamp Web Interface</a> or <a href="http://www.flippet.org/terminalserver.html">Winamp Terminal Server</a>. <br />
 Note that you can also control Winamp from your browser with the nifty <a href="http://www.iosart.com/foxytunes/firefox/">FoxyTunes</a> extension (local control only). It sometimes seems as if the browser is taking over the desktop...</p>
 
-<span class="posted">Posted by Julien on July 24, 2004. <a href="http://blog.monstuff.com/archives/000194.html" rel="bookmark">Permalink</a> 
-<br /></span>
+______________________________________
 
-</div>
-
-
-
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '194';
-        var disqus_url = 'http://blog.monstuff.com/archives/000194.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>what is the best bittorent client to use & where<br />
 do i download it from I use abc with supanova.org<br />
 for torrents but I get problems.</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;aanw35265&#64;blueyonder&#46;co&#46;uk">tony shell</a> at October 15, 2004 07:31 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;aanw35265&#64;blueyonder&#46;co&#46;uk">tony shell</a> (October 15, 2004 07:31 AM)
+
+______________________________________
+
 <p>Hi Tony,</p>
 
 <p>I use ABC, because it can be controlled remotely via a web interface, called PHP-4-ABC.<br />
 ABC used to crash quite a bit, but nowadays, it seems quite stable.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at October 22, 2004 03:28 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> (October 22, 2004 03:28 PM)
+
+______________________________________
+
 <p>I've been looking for a Bittorrent client that I can use remotely on a headless linux server and I hadn't heard of ABC bittorrent client before. The PHP-4-ABC sound like what I have been looking for. Thanks for your Help!</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;snipes420&#64;gmail&#46;com">Snipes</a> at December  9, 2004 02:57 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;snipes420&#64;gmail&#46;com">Snipes</a> (December  9, 2004 02:57 PM)
+
+______________________________________
+
 <p>Hi,</p>
 
 <p>Have any of you guys tried out btmanager... I used it a while back and i worked pretty well for me ... <br />
@@ -141,14 +78,18 @@ You may want to check it out...</p>
 <p><a href="http://sourceforge.net/projects/btmanager/">http://sourceforge.net/projects/btmanager/</a></p>
 
 <p>cheers....</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;boombastic_007&#64;yahoo&#46;com">Boombastic</a> at July 22, 2005 04:33 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;boombastic_007&#64;yahoo&#46;com">Boombastic</a> (July 22, 2005 04:33 AM)
+
+______________________________________
+
 <p>ABC (combined with PHP4ABC) is serving me well.<br />
 I'll check out btmanager though. Thx for the tip.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at July 22, 2005 08:51 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> (July 22, 2005 08:51 AM)
+
+______________________________________
+
 <p>For those who waiting for a ABC web interface.</p>
 
 <p>Nice and small , put that on your web page or your server and that it's no configuration to do.</p>
@@ -165,30 +106,31 @@ type your ip ---- port ----- and passworld</p>
 <a href="http://abcremote.peacesim.com/ABCRemote">http://abcremote.peacesim.com/ABCRemote</a></p>
 
 <p>( clic on exemple )</p>
-<span class="comments-post">Posted by: <a href="http://www.peacesim.com/">nec9716</a> at December  5, 2005 10:15 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.peacesim.com/">nec9716</a> (December  5, 2005 10:15 AM)
+
+______________________________________
+
 <p>I've actually been using TorrentFlux for awhile now. It's really well done and also allows for simple file control so you can manage the downloads.</p>
-<span class="comments-post">Posted by: <a href="http://www.realmprojects.com/blog/">Jason Stapels</a> at January 17, 2006 05:32 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.realmprojects.com/blog/">Jason Stapels</a> (January 17, 2006 05:32 PM)
+
+______________________________________
+
 <p>I'm running Mac OS X 10.4.4, and I've tried doing TorrentFlux, but because of some Mac only apache problem, the process keeps getting shut off after a while and I can't finish downloading the file. I've tried using the Azureus web interface, meh, it sucks to setup, and I never got it done. I'll try BTManager, hope it works!</p>
 
 <p>PS> My real weblog address is blog.takshimada[dot]info, it wouldn't let me post that, saying is "questionable content".</p>
-<span class="comments-post">Posted by: <a href="http://enderstudios.com/">Ender at Eros</a> at January 31, 2006 09:56 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://enderstudios.com/">Ender at Eros</a> (January 31, 2006 09:56 PM)
+
+______________________________________
+
 <p>I erased a comment by mistake while cleaning some spam.<br />
 Apologies to Pradox, the reader who left a comment. I think he was pointing a project of his, a web UI for ABC: <a href="http://sourceforge.net/projects/abcwebclient/">http://sourceforge.net/projects/abcwebclient/</a><br />
 </p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at May 31, 2006 01:33 PM</span>
-</div>
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> (May 31, 2006 01:33 PM)
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>
+{% endraw %}

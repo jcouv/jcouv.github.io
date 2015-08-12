@@ -1,49 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: ASP.Net TypeKey authentication</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">ASP.Net TypeKey authentication</h2>
-
+---
+title: "ASP.Net TypeKey authentication"
+date: 2004-06-15 17:04:17 +0800
+disqus_identifier: 184
+disqus_url: http://blog.monstuff.com/archives/000184.html
+---
+{% raw %}
 <p>TypeKey is an online authentication service that provides a single sign-on (SSO) experience to the websites that support it. <br />
 My goal for this TypeKeySecurity C# library is to allow ASP.Net programmers to easily take advantage of this service. </p>
 
@@ -53,8 +14,6 @@ My goal for this TypeKeySecurity C# library is to allow ASP.Net programmers to e
 But I am convinced that for many personal and community sites using an SSO can make the developer's life easier (no need to re-implement the same code and DBs every time), as well as the user's (no need to register a new account for each site and remember all the passwords). TypeKey happens to be rather simple and open, which makes it a good choice. </p>
 
 <p>Read the <a href="http://www.typekey.com/faq/">TypeKey FAQ</a> for more info. </p>
-
-<a name="more"></a>
 <p> <br />
 <b>Documentation</b><br />
 <u>Build</u><br />
@@ -151,89 +110,70 @@ More on <a href="http://www.devx.com/security/Article/17742/0/page/4">Passport s
 
 <p><u>Update:</u> A CPAN Perl library to interface with TypeKey: <a href="http://search.cpan.org/~btrott/Authen-TypeKey-0.01/">Authen::TypeKey</a>.</p>
 
-<span class="posted">Posted by Julien on June 15, 2004. <a href="http://blog.monstuff.com/archives/000184.html" rel="bookmark">Permalink</a> 
-<br /></span>
+______________________________________
 
-</div>
-
-
-
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '184';
-        var disqus_url = 'http://blog.monstuff.com/archives/000184.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>thx for your effort.</p>
 
 <p>I applied your TypeKeyDotNet for my blog and It's ran very well.</p>
 
 <p>Thankyou very much!</p>
-<span class="comments-post">Posted by: <a href="http://www.likejazz.com/">LikeJAzz</a> at September 14, 2004 02:46 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.likejazz.com/">LikeJAzz</a> (September 14, 2004 02:46 PM)
+
+______________________________________
+
 <p>Thanks for trying it and letting me know ;-)</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien</a> at September 21, 2004 06:54 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com/">Julien</a> (September 21, 2004 06:54 AM)
+
+______________________________________
+
 <p>HI!<br />
 I am a full time graduate student. We are planning to implement an application(basically a novice web service)in .NET where Digital signatures are used for security reasons. Can I apply your Type key in my project?<br />
 Thanks..</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;sumanpingali&#64;yahoo&#46;com">chums</a> at October 15, 2004 11:49 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;sumanpingali&#64;yahoo&#46;com">chums</a> (October 15, 2004 11:49 AM)
+
+______________________________________
+
 <p>Hi  Chums,</p>
 
 <p>Sure go ahead. The code is all GPL and available from sourceforge and/or the zip file posted in the article.<br />
 Do you have any more details on what you're trying to build?<br />
 </p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at October 15, 2004 12:18 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> (October 15, 2004 12:18 PM)
+
+______________________________________
+
 <p>Hi Julien,</p>
 
 <p>Thought you'd like to know: the vulnerability described by Srijith was patched in TypeKey version 1.1 (<a href="http://www.movabletype.org/docs/tk-apps.html">http://www.movabletype.org/docs/tk-apps.html</a> ). Version 1 is still supported for backward compatibility, but version 1.1 is more secure. The app can specify what version it uses, by passing the "v=1.1" parameter. The format of the 1.1 signatures is described in the spec.</p>
 
 <p>Hope that helps!</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;ezra&#64;spammenot&#46;sixapart&#46;com">Ezra</a> at November 16, 2004 01:33 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;ezra&#64;spammenot&#46;sixapart&#46;com">Ezra</a> (November 16, 2004 01:33 PM)
+
+______________________________________
+
 <p>Hi Ezra,<br />
 Sounds good. Thanks a lot pinging me.<br />
 I'll be sure to check it out and update my Asp.Net/TypeKey authentication module ( <a href="http://typekeydotnet.sourceforge.net/">http://typekeydotnet.sourceforge.net/</a> ) to use the improved protocol.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at November 23, 2004 11:03 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> (November 23, 2004 11:03 AM)
+
+______________________________________
+
 <p>I applied your TypeKeyDotNet for my blog and It's ran very well.</p>
-<span class="comments-post">Posted by: <a href="http://zile.gen.tr">fermuar</a> at January 18, 2006 11:48 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://zile.gen.tr">fermuar</a> (January 18, 2006 11:48 AM)
+
+______________________________________
+
 <p>I have seen some TypeKey hacks out there, with any free/opensource projects I guess they will pop up.  Might go with a commercial version instead.</p>
-<span class="comments-post">Posted by: <a href="http://www.tucex.com">tucex</a> at January 23, 2006 07:49 PM</span>
-</div>
+
+Posted by: <a href="http://www.tucex.com">tucex</a> (January 23, 2006 07:49 PM)
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>
+{% endraw %}

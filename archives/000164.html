@@ -1,49 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Object vs. Feed: vs. Mime-type</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Object vs. Feed: vs. Mime-type</h2>
-
+---
+title: "Object vs. Feed: vs. Mime-type"
+date: 2004-04-06 13:10:02 +0800
+disqus_identifier: 164
+disqus_url: http://blog.monstuff.com/archives/000164.html
+---
+{% raw %}
 <p>Follow up on <a href="/archives/000162.html">RFC: RSS one-click subscription</a></p>
 
 <p>As I'm progressing on the prototype I have received some interesting feedback and thought a lot about how this solution compares to the two previous ones (feed: and mime-types).<br />
@@ -65,8 +26,6 @@ This is what the FeedSubscriber control and XSL transformation of the feed tries
 
 <p>Also, the other URI schemes (http:, https:, gopher:, mailto:, irc:, nttp:, ftp:) all correspond to a different transport mechanism. Whereas feed: doesn't care about the transport (most feeds us HTTP today, but there is no reason why this couldn't change). <br />
 On the other hand, the feed: approach is much simpler to deploy on the publishing side, compared to mime-type based solutions (which needs an extra file to be published containing the feed description or advertisement, and served with the correct mime-type).</p>
-
-<a name="more"></a>
 <p><b>FeedSubscriber object</b><br />
 <u>Cross-browser support</u><br />
 As mentioned above it should be completely possible to make the FeedSubscriber be cross-platform and cross-browser.<br />
@@ -140,36 +99,8 @@ A list of <a href="http://www.lights.com/weblogs/rss.html">RSS aggregators</a>.<
 <a href="http://realdev1.realise.com/rossa/rendertest/quicktime.html">Standards Compliant method to add Quicktime movies to pages</a>.<br />
 <a href="http://ln.hixie.ch/?start=1081798064">Embedding flash without &lt;embed></a>.</p>
 
-<span class="posted">Posted by Julien on April 06, 2004. <a href="http://blog.monstuff.com/archives/000164.html" rel="bookmark">Permalink</a> 
-<br /></span>
+______________________________________
 
-</div>
-
-
-
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '164';
-        var disqus_url = 'http://blog.monstuff.com/archives/000164.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>One idea would be to create a community edited site (like a Wiki) with a name like www.syndicatehelp.com. All the content of that site would be free and without commercial ads. That site would be very simple and explain clearly what the advantages of RSS are.</p>
 
 <p>Then, we could provide a standard html block (like Paypal do for example) that provides a beautiful standard image for RSS feeds. Also, that html block would also have a "help" link that goes to syndicatehelp.com.</p>
@@ -178,14 +109,9 @@ A list of <a href="http://www.lights.com/weblogs/rss.html">RSS aggregators</a>.<
 
 <p>Jean-Francois Nadeau<br />
 I have started an easy to use aggregator project: <a href="http://www.clickthenews.com">http://www.clickthenews.com</a></p>
-<span class="comments-post">Posted by: <a href="http://www.jfnadeau.com">Jean-Francois Nadeau</a> at April  7, 2004 07:28 AM</span>
-</div>
+
+Posted by: <a href="http://www.jfnadeau.com">Jean-Francois Nadeau</a> (April  7, 2004 07:28 AM)
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>
+{% endraw %}

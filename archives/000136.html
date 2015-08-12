@@ -1,97 +1,21 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Mailing list integration with mail client</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Mailing list integration with mail client</h2>
-
+---
+title: "Mailing list integration with mail client"
+date: 2004-01-28 10:00:44 +0800
+disqus_identifier: 136
+disqus_url: http://blog.monstuff.com/archives/000136.html
+---
+{% raw %}
 <p>I recently stumbled on a nice feature in PINE (a text-mode mail client): when reading an email sent via a mailing list, PINE offered some commands to manage the subscription to the list. This means you don't need to manually send an email to &lt;mailinglist>-unsubscribe@&lt;domain> to unsubscribe, PINE will do it for you.</p>
 
 <p>I was curious about how this integration worked. It turns out that the <a href="http://www.faqs.org/rfcs/rfc2369.html">RFC 2369 (The Use of URLs as Meta-Syntax for Core Mail List Commands and their Transport through Message Header Fields)</a> defines a set of mail headers that can be used by the client to conveniently expose the most common mailing list management commands.</p>
 
 <p>The actions that are supported are List-Help, <i>List-Unsubscribe</i>, List-Subscribe, List-Post, List-Owner and List-Archive.<br />
 They are just urls (most often mailto: or http: ) and don't support any form of code or replacement tags.</p>
-
-<a name="more"></a>
 <p>I couldn't find an inventory of programs that support these headers, but on the server side mailman (GNU Mailing List Manager) does, as well as PINE, exmh and Eudora on the client side. <br />
 I am not sure about Majordomo. Outlook/Outlook Express for Windows doesn't seem to support this RFC either, but I wonder if it would be difficult to add with a plug-in.</p>
 
 <p>Another related RFC is <a href="http://www.faqs.org/rfcs/rfc2919.html">RFC 2919 (List-Id: A Structured Field and Namespace for the Identification of Mailing Lists)</a>.</p>
 
-<span class="posted">Posted by Julien on January 28, 2004. <a href="http://blog.monstuff.com/archives/000136.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
 
 
-
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '136';
-        var disqus_url = 'http://blog.monstuff.com/archives/000136.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-
-
-
-</div>
-</div>
-
-
-</body>
-</html>
+{% endraw %}
