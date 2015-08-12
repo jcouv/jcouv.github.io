@@ -11,24 +11,24 @@ disqus_url: http://blog.monstuff.com/archives/000354.html
 In the 3 part video below the Android team introduces the key concepts:</p>
 
 <p><b>Intent</b><br />
-A class which encapsulates the intent of the user to go to another Activity. For example ìsend mailî or ìcall numberî.<br />
+A class which encapsulates the intent of the user to go to another Activity. For example ‚Äúsend mail‚Äù or ‚Äúcall number‚Äù.<br />
 When an Intent is emitted, the system will try and find the registered Activity to handle it, and will start it on top of the Activity Stack.</p>
 
 <p><b>Activity</b> <br />
-A class implementing the UI screen to accomplish a task (like an applet). There are some default Activities available (map, mail, Ö). Custom Activities can plug in to replace the default ones, by registering themselves with the Activity Manager. One application can provide multiple Activities (mail app could provide 3 activities: list email, view single email, compose email).</p>
+A class implementing the UI screen to accomplish a task (like an applet). There are some default Activities available (map, mail, ‚Ä¶). Custom Activities can plug in to replace the default ones, by registering themselves with the Activity Manager. One application can provide multiple Activities (mail app could provide 3 activities: list email, view single email, compose email).</p>
 
 <p><b>Service</b> <br />
-For listening to music you need an application to continue running in the background. Services can do that. Activities can connect back to the Service. Some Services come with the system (location manager, XMPP notifications from the server, Ö)</p>
+For listening to music you need an application to continue running in the background. Services can do that. Activities can connect back to the Service. Some Services come with the system (location manager, XMPP notifications from the server, ‚Ä¶)</p>
 
 <p><a href="http://www.flickr.com/photos/tavallai/3125200671/"><img src="http://farm4.static.flickr.com/3076/3125200671_5eb4d4e027_m.jpg" style="float: right; padding: 10px 0px 0px 20px; width:240; height:160; border: none"  alt="Robot statue from Laputa" /></a> <br />
 <b>Views</b> <br />
-Common controls that you can re-use to write your own Activity (a video control, a map control, a toast notification API, Ö)</p>
+Common controls that you can re-use to write your own Activity (a video control, a map control, a toast notification API, ‚Ä¶)</p>
 
 <p><b>Dalvik</b> <br />
 Optimized JVM with good pre-loading, memory sharing across apps, and optimized bytecode and JIT.</p>
 
 <p><b>Activity Stack</b> <br />
-The OS keeps track of all the Activities currently running (and their respective processes). But it can decide to dehydrate an Activity to free-up memory. In that case, some data is serialized out of the process, stored in the Activity stack, and the process can be killed. Later on, this Activity can be recreated (new process, rehydrate saved data, Ö).</p>
+The OS keeps track of all the Activities currently running (and their respective processes). But it can decide to dehydrate an Activity to free-up memory. In that case, some data is serialized out of the process, stored in the Activity stack, and the process can be killed. Later on, this Activity can be recreated (new process, rehydrate saved data, ‚Ä¶).</p>
 
 <p>How about the iPhone? Is it similar?<br />
 Also, a quick pointer to <a href="http://jeffreystedfast.blogspot.com/2009/02/more-exciting-updates-on-monoandroid.html">Mono for Android</a>. It's exciting to see .Net being making progress on new platforms thru Mono (it also <a href="http://www.mono-project.com/Mono:Iphone">runs on the iPhone</a>, but the convenient tools are not free. Too bad, I would run to the Apple store).</p>
