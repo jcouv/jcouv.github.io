@@ -1,48 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Unsolved HTML/CSS layout challenge</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Unsolved HTML/CSS layout challenge</h2>
+---
+title: Unsolved HTML/CSS layout challenge
+date: 2003-03-06 16:31:26 +0800
+disqus_identifier: 19
+disqus_url: http://blog.monstuff.com/archives/000019.html
+---
 
 <p>Here is a layout that I have been struggling with but still haven't found a good HTML/CSS implementation for.</p>
 
@@ -53,8 +14,6 @@
 <p><u>Green bar computer printout paper example:</u></p>
 
 <p><img src="http://www.workplacesupply.com/catalog/pictures/standard/ptop0041.jpg"/></p>
-
-<a name="more"></a>
 <p>So far the evaluated solutions:<br />
 - have a background image with color strips and use a fixed line height.<br />
 This resists to window resizing but isn't great for font resizing (if fonts become big lines will overlap each other). This is the best solution so far.</p>
@@ -64,36 +23,10 @@ This resists to font scaling if each cell of the "color-table" hold a &nbsp; cha
 
 <p><u>Update:</u> Related but no cigar, a <a href="http://www.alistapart.com/articles/zebratables/">javascript trick</a> to alternate background colors for every other row in a table.</p>
 
-<span class="posted">Posted by Julien on March 06, 2003. <a href="http://blog.monstuff.com/archives/000019.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
+______________________________________
 
 
 
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '19';
-        var disqus_url = 'http://blog.monstuff.com/archives/000019.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>As a riff on your best solution above, you can write a simple CGI script to generate a background image based on a parameter value, which you can tie (via alternate style sheets in CSS, or javascript, or whatever else) to the font-size and line-height.</p>
 
 <p>Loosely:</p>
@@ -110,14 +43,8 @@ This resists to font scaling if each cell of the "color-table" hold a &nbsp; cha
 
 <p>--&gt;<br />
 &lt;/Style&gt;</p>
-<span class="comments-post">Posted by: <a href="http://www.photoresearchers.com">PRinc</a> at April 26, 2005 04:00 PM</span>
-</div>
+
+Posted by: <a href="http://www.photoresearchers.com">PRinc</a> at April 26, 2005 04:00 PM
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>
