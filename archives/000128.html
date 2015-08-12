@@ -1,0 +1,332 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: War on spam</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000038.html" title="C# Delegates strike back" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000040.html" title="C# events vs. delegates" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://blog.monstuff.com/archives/000128.html"
+    trackback:ping="http://blog.monstuff.com/movabletype/mt-tb.cgi/84"
+    dc:title="War on spam"
+    dc:identifier="http://blog.monstuff.com/archives/000128.html"
+    dc:subject="Seen on the web"
+    dc:description="Advertising isn&apos;t great, but spam really sucks. http://www.camram.org/ http://www.cypherspace.org/~adam/hashcash/ http://www.captcha.net/ baffletext Jetable http://jetable.org/ http://www.mailblocks.com/login.htm http://www.martiansoftware.com/articles/spammerpain.html Analysis of how spammers find you email http://www.cdt.org/speech/spam/030319spamreport.shtml Analysis of spam techniques http://www.activestate.com/Products/PureMessage/Field_Guide_to_Spam/tricks.plex Why filter bad emails rather than accept good ones? Solution de m4x.org avec les _xxx et +yyy... http://research.microsoft.com/research/sv/PennyBlack/demo/ http://research.microsoft.com/aboutmsr/labs/siliconvalley/pubs/memory-final-ndss.pdf IP dans l&apos;adresse http://yro.slashdot.org/article.pl?sid=03/06/21/2130234&amp;mode=thread&amp;tid=111&amp;tid=126 Spam profits well-known american companies http://www.msnbc.com/news/940490.asp?0ql=c9p ASP.NET webcontrol for anti-spam mailto: links http://www.codeproject.com/useritems/NoSpamEmailHyperlink.asp..."
+    dc:creator="Julien"
+    dc:date="2003-04-25T15:19:19-08:00" />
+</rdf:RDF>
+-->
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000128.html">
+<dc:title>War on spam</dc:title>
+<dc:description>Advertising isn&apos;t great, but spam really sucks. http://www.camram.org/ http://www.cypherspace.org/~adam/hashcash/ http://www.captcha.net/ baffletext Jetable http://jetable.org/ http://www.mailblocks.com/login.htm http://www.martiansoftware.com/articles/spammerpain.html Analysis of how spammers find you email http://www.cdt.org/speech/spam/030319spamreport.shtml Analysis of spam techniques http://www.activestate.com/Products/PureMessage/Field_Guide_to_Spam/tricks.plex Why filter bad emails rather than accept good ones? Solution de m4x.org avec les _xxx et +yyy... http://research.microsoft.com/research/sv/PennyBlack/demo/ http://research.microsoft.com/aboutmsr/labs/siliconvalley/pubs/memory-final-ndss.pdf IP dans l&apos;adresse http://yro.slashdot.org/article.pl?sid=03/06/21/2130234&amp;mode=thread&amp;tid=111&amp;tid=126 Spam profits well-known american companies http://www.msnbc.com/news/940490.asp?0ql=c9p ASP.NET webcontrol for anti-spam mailto: links http://www.codeproject.com/useritems/NoSpamEmailHyperlink.asp...</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2003-04-25T15:19:19-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000038.html">« C# Delegates strike back</a> |
+
+<a href="http://blog.monstuff.com/">Main</a> 
+| <a href="/archives.html">All entries (181)</a>
+| <a href="http://blog.monstuff.com/archives/000040.html">C# events vs. delegates »</a>
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<h2 class="date">April 25, 2003</h2>
+
+
+<div class="adsense" style="float:right;">
+<script type="text/javascript"><!--
+google_ad_client = "pub-0922423824950731";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_channel ="";
+google_ad_type = "text";
+google_color_border = "F6F6F6";
+google_color_bg = "FFFFFF";
+google_color_link = "666666";
+google_color_url = "003366";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+
+<div class="blogbody">
+
+<h3 class="title">War on spam</h3>
+
+<p>Advertising isn't great, but spam really sucks.<br />
+http://www.camram.org/<br />
+http://www.cypherspace.org/~adam/hashcash/<br />
+http://www.captcha.net/<br />
+baffletext</p>
+
+<p>Jetable<br />
+http://jetable.org/</p>
+
+<p>http://www.mailblocks.com/login.htm<br />
+http://www.martiansoftware.com/articles/spammerpain.html</p>
+
+<p>Analysis of how spammers find you email<br />
+http://www.cdt.org/speech/spam/030319spamreport.shtml</p>
+
+<p>Analysis of spam techniques<br />
+http://www.activestate.com/Products/PureMessage/Field_Guide_to_Spam/tricks.plex<br />
+Why filter bad emails rather than accept good ones?</p>
+
+<p><br />
+Solution de m4x.org avec les _xxx et +yyy...</p>
+
+<p>http://research.microsoft.com/research/sv/PennyBlack/demo/<br />
+http://research.microsoft.com/aboutmsr/labs/siliconvalley/pubs/memory-final-ndss.pdf</p>
+
+<p>IP dans l'adresse<br />
+http://yro.slashdot.org/article.pl?sid=03/06/21/2130234&mode=thread&tid=111&tid=126</p>
+
+<p><br />
+Spam profits well-known american companies<br />
+http://www.msnbc.com/news/940490.asp?0ql=c9p</p>
+
+<p>ASP.NET webcontrol for anti-spam mailto: links<br />
+http://www.codeproject.com/useritems/NoSpamEmailHyperlink.asp</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by Julien. <a href="http://blog.monstuff.com/archives/000128.html" rel="bookmark">Permalink</a> | <a href="http://blog.monstuff.com/movabletype/mt-tb.cgi?__mode=view&amp;entry_id=128" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+
+
+
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://blog.monstuff.com/movabletype/mt-lessspam-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="128" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+
+Your email address won't be published on the site if you also input a URL. <br />
+<br />
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+
+
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (181)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000243.html">Closures & Continuations</a><br />
+<a href="http://blog.monstuff.com/archives/000240.html">"MSDN Language Filter" user script</a><br />
+<a href="http://blog.monstuff.com/archives/000239.html">Various Greasemonkey user scripts</a><br />
+<a href="http://blog.monstuff.com/archives/000238.html">Handle mailto: links with Gmail</a><br />
+<a href="http://blog.monstuff.com/archives/000232.html">Open-ended links, link re-writing</a><br />
+<a href="http://blog.monstuff.com/archives/000236.html">Bunny rabbit hacking</a><br />
+<a href="http://blog.monstuff.com/archives/000235.html">BoingBoing Butler</a><br />
+<a href="http://blog.monstuff.com/archives/000234.html">Cooperation in online shooter games</a><br />
+<a href="http://blog.monstuff.com/archives/000233.html">Ten Reasons Why Blogging is Good For Your Career</a><br />
+<a href="http://blog.monstuff.com/archives/000230.html">The brewing war over ad filtering</a><br />
+<a href="http://blog.monstuff.com/archives/000229.html">Comment tracking twist: personalized feeds</a><br />
+<a href="http://blog.monstuff.com/archives/000227.html">Maps.google.com beta</a><br />
+<a href="http://blog.monstuff.com/archives/000222.html">Zoomable flash animations</a><br />
+<a href="http://blog.monstuff.com/archives/000219.html">Laminate floor installation 101</a><br />
+<a href="http://blog.monstuff.com/archives/000223.html">Wiki and tagged bookmarks integration</a><br />
+<a href="http://blog.monstuff.com/archives/000225.html">Google hinting: rel=nofollow</a><br />
+<a href="http://blog.monstuff.com/archives/000224.html">Trying out Google AdSense</a><br />
+<a href="http://blog.monstuff.com/archives/000220.html">Screen recording and publishing</a><br />
+<a href="http://blog.monstuff.com/archives/000221.html">Seattle Comcast DVR experience</a><br />
+<a href="http://blog.monstuff.com/archives/000218.html">Dofus MMORPG in Flash</a><br />
+
+</div>
+
+
+</body>
+</html>

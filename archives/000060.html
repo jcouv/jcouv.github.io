@@ -1,0 +1,383 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Modifying IL at runtime (step II+)</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000059.html" title="Modifying IL at runtime (step II)" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000062.html" title="Web links and usability" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000060.html">
+<dc:title>Modifying IL at runtime (step II+)</dc:title>
+<dc:description>In my previous entry on IL modification we looked at the details for inserting a method call with a known (hardcoded) method token. We also used metadata to list the available methods, as a way to avoid this hardcoding. When listing the methods on a given class, the method signatures were available, but we didn&apos;t use them. In this short entry, we&apos;ll extend our metadata inspection a little bit by using an existing method&apos;s signature to search for another method with a matching signature. Update: I posted the zipped project....</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2003-06-17T22:42:03-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000059.html">« Modifying IL at runtime (step II)</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">June 17, 2003</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">Modifying IL at runtime (step II+)</h2>
+
+<p>In my <a href="/archives/000059.html">previous entry on IL modification</a> we looked at the details for inserting a method call with a known (hardcoded) method token. We also used metadata to list the available methods, as a way to avoid this hardcoding.</p>
+
+<p>When listing the methods on a given class, the method signatures were available, but we didn't use them. In this short entry, we'll extend our metadata inspection a little bit by using an existing method's signature to search for another method with a matching signature.</p>
+
+<p>Update: I posted the <a href="/archives/images/DotNetProfiler.zip">zipped project</a>.</p>
+
+<a name="more"></a>
+<p><b>Using a known signature to find a method</b><br />
+Here is today's Hello.cs. It contains multiple versions of the <i>Log</i> method, with different signatures, and a unique <i>Test</i> with a signature that matches one of the <i>Log</i> methods.</p>
+
+<div class="code">using System;
+
+<p>public class Hello <br />
+{<br />
+&nbsp;	public static void Main(string[] prms) <br />
+&nbsp;	{<br />
+&nbsp;&nbsp;		Console.WriteLine("main!");<br />
+&nbsp;	}</p>
+
+<p>&nbsp;	public static void Log()<br />
+&nbsp;	{<br />
+&nbsp;&nbsp;		Console.WriteLine("log!");<br />
+&nbsp;	}</p>
+
+<p>&nbsp;	public static void Log(string test)<br />
+&nbsp;	{<br />
+&nbsp;&nbsp;		Console.WriteLine("log!");<br />
+&nbsp;	}</p>
+
+<p>&nbsp;	public static void Test() <br />
+&nbsp;	{<br />
+&nbsp;&nbsp;		Console.WriteLine("test!");<br />
+&nbsp;	}<br />
+}</div></p>
+
+<p>Last time, when we enumerated the methods on the current class, we only printed their tokens and names out. Below is the modification to this loop, to have it search for a method called "Test" and use its signature to find the "Log" method with the matching signature.</p>
+
+<p>The code refers to a <i>PrintSignature</i> method that cracks signature blobs open and outputs then in a readable format. I'll write about the details of this method sometime soon (when I understand it better), but if you are impatient, you should check out the "metainfo" sample from the "Tools Developper Guide".</p>
+
+<div class="code">&nbsp;...
+
+<p>&nbsp;ProfilerPrintf("tok:%X\n", rToks[i]);</p>
+
+<p>&nbsp;// Get metadata for this method<br />
+&nbsp;mdTypeDef mdClassTok;<br />
+&nbsp;wchar_t wszFunctionName[512];<br />
+&nbsp;ULONG count = 0;<br />
+&nbsp;DWORD dwAttr;<br />
+&nbsp;PCCOR_SIGNATURE signature;<br />
+&nbsp;ULONG signatureLen;<br />
+&nbsp;ULONG ulCodeRVA; // ignored<br />
+&nbsp;DWORD dwImplFlags; // ignored</p>
+
+<p>&nbsp;// Get the signature for the method with token rToks[i]<br />
+&nbsp;hr = pMetaDataImport->GetMethodProps(rToks[i], &mdClassTok, wszFunctionName, 512, &count, &dwAttr, &signature, &signatureLen, &ulCodeRVA, &dwImplFlags);<br />
+&nbsp;if (FAILED(hr)) { goto exit; }</p>
+
+<p>&nbsp;fwprintf(m_pOutFile, L"function name: %s\n", wszFunctionName);</p>
+
+<p><br />
+&nbsp;// Look at the signature<br />
+&nbsp;PrintSignature(signature, signatureLen, wszFunctionName, pMetaDataImport);</p>
+
+<p>&nbsp;if (wcscmp(wszFunctionName, L"Test") == 0) {<br />
+&nbsp;&nbsp;	ProfilerPrintf("found Test method\n");<br />
+&nbsp;&nbsp;	mdMethodDef mdMatchTok;</p>
+
+<p>&nbsp;&nbsp;	hr = pMetaDataImport-><b>FindMember</b>(tkClass, L"Log", signature, signatureLen, &mdMatchTok);<br />
+&nbsp;&nbsp;	if (FAILED(hr)) { goto exit; }</p>
+
+<p>&nbsp;&nbsp;	ProfilerPrintf("found Log method with matching signature, token: %X\n", mdMatchTok);<br />
+&nbsp;}<br />
+&nbsp;...</div></p>
+
+<p>The <i>IMetaDataImport::FindMember</i> method looks methods up in a class, given a name and a signature blob. We can use the returned method token in the IL method call that we insert at runtime, to avoid hardcoding it. <br />
+Here the token that is found is 60 00 00 02, as we can see from the output of the modified profiler:<br />
+<div class="code">tok:6000001<br />
+function name: Main<br />
+void Main(class System.String[])</p>
+
+<p>tok:<b>6000002</b><br />
+function name: Log<br />
+<b>void Log()</b></p>
+
+<p>tok:6000003<br />
+function name: Log<br />
+void Log(class System.String)</p>
+
+<p>tok:6000004<br />
+function name: Test<br />
+<b>void Test()</b><br />
+found Test method<br />
+found Log method with matching signature, token: <b>6000002</b></p>
+
+<p>tok:6000005<br />
+function name: .ctor<br />
+instance void .ctor()</div></p>
+
+<p>It is probably also possible to use a built signature blob instead of that of an existing method, but I didn't get that far yet.</p>
+
+<p><br />
+<b>Calling another class's method</b><br />
+Once you have the token for a method, even it belong to another class, you can easily use it in the IL modification.<br />
+If you look at the dis-assembly for Hello.exe (code below), you'll notice that the tokens for methods appear unique in the assembly. This means the <i>call</i> operation only needs a method's token, and doesn't care which class this method belongs to, as long as it remains within the current module.</p>
+
+<p>So when modifying the <i>Main</i> method, if you lookup the Logger class token with <i>FindTypeDefByName(L"Logger", 0, &tkLogger)</i>, then find the Log method token with <i>EnumMethodsWithName(..., tkLogger, L"Log", ...)</i> (or other technique of your liking), it is then just a matter of changing ILCode.method_token with the token you found for <i>Log</i>. This way we don't need to hardcode the method token in the generated <i>call</i> IL.</p>
+
+<div class="code">using System;
+
+<p>public class Hello <br />
+{<br />
+&nbsp;	public static void Main(string[] prms) <br />
+&nbsp;	{<br />
+&nbsp;&nbsp;		Console.WriteLine("main!");<br />
+&nbsp;	}<br />
+}</p>
+
+<p>public class Logger<br />
+{<br />
+&nbsp;	public static void Log()<br />
+&nbsp;	{<br />
+&nbsp;&nbsp;		Console.WriteLine("log!");<br />
+&nbsp;	}<br />
+}</div></p>
+
+<p><br />
+Next time, I'll either try to call a method from another assembly or a method that takes some parameters.</p>
+
+<p>Cheers,<br />
+Dumky</p>
+
+<span class="posted">Posted by Julien on June 17, 2003. <a href="http://blog.monstuff.com/archives/000060.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '60';
+        var disqus_url = 'http://blog.monstuff.com/archives/000060.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+<div class="trackback-body">
+<a name="39"></a>
+<span class="trackback-post"><a href="http://www.cnblogs.com/dudu/archive/2004/05/19/10251.aspx" target="new">Modifying IL at runtime</a><br />
+<b>Excerpt:</b> Modifying IL at runtime<br />
+<b>Weblog:</b> dudu<br />
+<b>Tracked:</b> May 18, 2004 10:24 PM</span>
+</div>
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

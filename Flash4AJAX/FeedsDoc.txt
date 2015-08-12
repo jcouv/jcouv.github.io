@@ -1,0 +1,19 @@
+
+==== Data model: ====
+For each subscription, there are some entries in the "feedList" category.
+Under this category, there is <subID> with a blank value.
+There is also _title_<subID> and _lastRefreshed_<subID> with the corresponding values.
+This is used to detect when feeds are removed. We can offer to clear the local cache for these feeds.
+This is also used to tell when a feed was last refreshed.
+
+
+For a given feed, the entries are listed under category "feed_<subID>", with an entry for "<entryID>" with a blank value.
+There is also _description_<entryID>, _title_<entryID> and _link_<entryID>.
+There is an entry called "latest" that is a comma-separated list of entryIDs
+The <entryID> is assumed to be chronological. We'll probably set a limit on the number of entries that can be kept in the cache.
+
+
+We also persist the tree view of the subscription list. In category "subsTree", the key "subsTree" maps to value JSON(tree).
+
+==== Caching trick: ====
+The TiwyFeeds.html file needs to be set to expire correctly to avoir IE warnings during development time

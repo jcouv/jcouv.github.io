@@ -1,0 +1,453 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+
+<title>Curiosity is bliss: Networked audio driver for windows</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000217.html" title="Ink/character recognition" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000218.html" title="Dofus MMORPG in Flash" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000216.html">
+<dc:title>Networked audio driver for windows</dc:title>
+<dc:description>Linux and MacOS X already have network audio support thru esound, polypaudio or nas. There are also ports of the esound or nas server to windows, using cygwin or java. But one piece is still missing to complete the picture: a windows device driver that can channel the sound to a remote esound server. Could such a driver could be used for general-purpose sound channeling? For example, it might not work nicely for the sound in movies, as the synchronization between the audio and the video is critical. Or is there a way to delay the image, to compensate for...</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2004-11-09T12:45:30-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000217.html">« Ink/character recognition</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">November 09, 2004</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">Networked audio driver for windows</h2>
+
+<p>Linux and MacOS X already have network audio support thru esound, <a href="http://0pointer.de/lennart/projects/polypaudio/">polypaudio</a> or <a href="http://radscan.com/nas.html">nas</a>. There are also ports of the esound or nas server to windows, using cygwin or java. <br />
+But one piece is still missing to complete the picture: <i>a windows device driver that can channel the sound to a remote esound server</i>.</p>
+
+<p>Could such a driver could be used for general-purpose sound channeling? <br />
+For example, it might not work nicely for the sound in movies, as the synchronization between the audio and the video is critical. Or is there a way to delay the image, to compensate for the lag on the audio stream?</p>
+
+<p><b>Links:</b><br />
+<a href="http://www.liquid-reality.de/main/projects/esound">Esound server on windows</a> (using cygwin).<br />
+<a href="http://homepage.mac.com/samoconnor/esound/">Network Audio Driver for Darwin (Mac OS X)</a><br />
+<a href="http://www.jcraft.com/jesd/">Esound server implementation in java</a>.<br />
+<a href="http://www.linuxfan.dk/index.php?page=esound">Winamp 3 esound plugin</a>.<br />
+<a href="http://www.microsoft.com/whdc/device/audio/default.mspx">Microsoft page on audio device drivers</a>.</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by Julien on November 09, 2004. <a href="http://blog.monstuff.com/archives/000216.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '216';
+        var disqus_url = 'http://blog.monstuff.com/archives/000216.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+<div class="comments-body">
+<p>Man, are the spiders fast! Found this entry on Google today; but I wished you already had a solution here and not only the idea ;)</p>
+
+<p>I believe it should be easy to write such a Win driver/emu that connects to a remote sound server; though I don't have any interest in doing it. Would like to use this to get one server to play sounds for a dozen other machines in the same room that each lack a soundcard.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;mario&#64;localhost&#46;somehwere&#46;in&#46;de">milky</a> at November 16, 2004 06:20 PM</span>
+</div>
+<div class="comments-body">
+<p>It is a great idea and one that I have also thought about on and off for a while.  I wrote an RPC driven sound distribution system for Unix over ten years ago, great for spaming sound effect sound bites around the office at inopportune moments.  The same for Windows should be easy right?  And just make it appear as a sound driver so that you can then send audio from your laptop to your main sound system, or vis-versa.  Even better would be if Windows let you just network share your audio devices in the normal way.  </p>
+
+<p>The problem is that all this stuff would make obsolete at least half of those multimedia streaming boxes people fork out tons of cash for.   I think Microsoft has an interest in continuing to make audio streaming something special and proprietary instead of easy and ordinary (and most importantly FREE).  They can do it with Windows Desktop connection, why not make it a standalone feature?</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;blogger&#64;longdarktechtime&#46;com">Blog Gently</a> at November 25, 2004 10:54 PM</span>
+</div>
+<div class="comments-body">
+<p>One thing I've done on Windows, and this is far from optimal, is use the Virtual Audio Cable driver.  It lets you reroute sound to another program.  I reroute it to Winamp running a Shoutcast source, and then on the UNIX system have an mp3 player reading that stream</p>
+
+<p>There are definite buffering issues.  I haven't tweaked any of the settings, I don't know if it's possible to decrease the buffer size, to get it more in sync.</p>
+<span class="comments-post">Posted by: <a href="http://www.itsdarkhere.com/~josh/">Joshua Gerrish</a> at December  3, 2004 07:24 PM</span>
+</div>
+<div class="comments-body">
+<p>One thing I've done on Windows, and this is far from optimal, is use the Virtual Audio Cable driver.  It lets you reroute sound to another program.  I reroute it to Winamp running a Shoutcast source, and then on the UNIX system have an mp3 player reading that stream</p>
+
+<p>There are definite buffering issues.  I haven't tweaked any of the settings, I don't know if it's possible to decrease the buffer size, to get it more in sync.</p>
+<span class="comments-post">Posted by: <a href="http://www.itsdarkhere.com/~josh/">Joshua Gerrish</a> at December  3, 2004 07:25 PM</span>
+</div>
+<div class="comments-body">
+<p>Any new finds on this? I've been trying to figure out if there's already software out there to do this too.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;ascetic&#64;technologist&#46;com">Walker</a> at March 18, 2005 10:08 AM</span>
+</div>
+<div class="comments-body">
+<p>Check <a href="http://www.clingman.org/winesd/">http://www.clingman.org/winesd/</a></p>
+<span class="comments-post">Posted by: <a href="mailto&#58;noname&#64;no&#46;name">Tomas</a> at April  9, 2005 03:42 PM</span>
+</div>
+<div class="comments-body">
+<p>Thanks for the pointer Tomas, I'll check it out.</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at April 15, 2005 03:47 PM</span>
+</div>
+<div class="comments-body">
+<p>Has anyone made any progress with this?</p>
+<span class="comments-post">Posted by: <a href="http://www.cytexone.com">Dan</a> at May  9, 2005 10:13 PM</span>
+</div>
+<div class="comments-body">
+<p><a href="http://www.liquid-reality.de/main/projects/esound">http://www.liquid-reality.de/main/projects/esound</a> + <a href="http://www.clingman.org/winesd/">http://www.clingman.org/winesd/</a> == networked sound.</p>
+
+<p>Have not tried this yet, but I don't see why it wouldn't work.  Will report if it works once I reboot.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;litghost&#64;softhome&#46;net">Keith Rothman</a> at August  2, 2005 05:23 PM</span>
+</div>
+<div class="comments-body">
+<p>Thanks Keith. I look forward from hearing back from your experiment.</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at August  3, 2005 11:47 AM</span>
+</div>
+<div class="comments-body">
+<p>Well it works very well for anything that doesn't need timing.  There is a 3-5 second delay before playing.  Also the beeping coming from the driver during a failure is extremely annoying.  Add to that the setup is a pain in the ass, even if it is well documented.</p>
+
+<p>I wanted to pick up the old code and fix some of the problems, but the code is for a very old DDK, and I am not good enough with the DDK to even build it again. Bleh.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;litghost&#64;softhome&#46;net">Keith Rothman</a> at August  3, 2005 01:52 PM</span>
+</div>
+<div class="comments-body">
+<p>I second that, works very well even over a 802.11b connection!  Exactly what I've been looking for even though its a little clunky to setup.</p>
+
+<p>Thanks to everyone above who found what I couldn't!</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;dosfan&#64;gmail&#46;com">Ian Gilmour</a> at October 25, 2005 03:00 AM</span>
+</div>
+<div class="comments-body">
+<p>found ur page while trying to solve the same problem....2 pcs...1set of speakers...surely i can send audio over ethernet...and so the search began. so far the only thing ive managed to get working is called AudioTX Communicator can find it here <a href="http://www.audiotx.com/main.html">http://www.audiotx.com/main.html</a> 30day demo with 20min timeout. the app is extremely ugly..but it works with almost 0 delay. audio/video sync can usually be sorted using a decent player like mpc[media player classic] if need be. hope this helps.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;tardfest&#64;westnet&#46;com&#46;au">cray-</a> at January 12, 2006 08:08 AM</span>
+</div>
+<div class="comments-body">
+<p>I have decided to try and take the task upon myself. I plan to write a virtual audio/server  app and a client app. The server will probably only run on Win 2000, XP, and Server 2003 but I should be able to make the client run on older Win so you can use an old tower as a proxy to a stereo system. That's what I'm working on setting up. I'll probably do an installer also for easy setup. could be several weeks though.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;coder0xff&#64;hotmail&#46;com">coder0xff</a> at February 24, 2006 04:02 PM</span>
+</div>
+<div class="comments-body">
+<p>Sounds awesome.<br />
+Let me know when you make some progress.</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at February 24, 2006 04:40 PM</span>
+</div>
+<div class="comments-body">
+<p>I dont have access to an NT DDK or I'd give a go @ working on the WinESD driver :(</p>
+
+<p>The ESD driver on NT is a Good Thing, anyone who *can* work on this, here's a wishlist: ESD server incorporated as a Line In driver, get rid of the blasted "hello" demo boxes left right & centre, & the beeping.<br />
+Nonetheless, on my Win2K box, it works great to the local ESD server with a minute delay, although chews up a bit of cpu (it's only a 350). Will be interesting to see if I can get the ESD client stuff to compile under Interix now...</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;nbettridge&#64;yahoo&#46;com">Nathanael Bettridge</a> at March  8, 2006 06:01 AM</span>
+</div>
+<div class="comments-body">
+<p>arf, so there aren't any free (opensource) solutions yet. Just had a "lighting strike"-type idea of making an audio server attached to my home gigalan that could mix audio from different machines. But if there isn't even a stable&reliable windows driver yet it's gonna take a while till we get end-user ready 5.1 streaming without delays =) oh well, curiosity is bliss.</p>
+<span class="comments-post">Posted by: <a href="http://deice.daug.net">deice</a> at March 27, 2006 01:15 PM</span>
+</div>
+<div class="comments-body">
+<p>I really have a hard time trying to install the WinESD driver on my XPSP2 box but since it is meant for NT (dated 2000) that does not come as a surprise. I gave up eventually and looked into other solutions.</p>
+
+<p>I have just successfully installed the WinAmp2 Esound output plugin by Lorenzo Keller and depsite it being pretty buggy it kind of 'just works' for me.</p>
+
+<p>I have a  zero-decibel homeserver (<a href="http://www.lex.com.tw:8080/product/LIGHT.htm)">http://www.lex.com.tw:8080/product/LIGHT.htm)</a> connected to my amp and now am happily playing music from my laptop. Only downside (yes first bug here) is that the volume cannot be controlled from some reason...</p>
+<span class="comments-post">Posted by: <a href="http://www.tienhuis.nl">Dick Visser</a> at May  2, 2006 01:08 PM</span>
+</div>
+<div class="comments-body">
+<p>this is a stupid question, but I cannot follow the steps on the windows NT enlightened sound site for XP.  he says:<br />
+# After unzipping the zip file, go to the "Multimedia" control panel.<br />
+# Select the "devices" tab.<br />
+# Click on "Add"<br />
+# choose "Unlisted or Updated driver"</p>
+
+<p>I do not see the "Multimedia" control panel and all subsequent tabs/dialogs.  any ideas?</p>
+<span class="comments-post">Posted by: <a href="http://funling">red</a> at August 30, 2006 05:03 PM</span>
+</div>
+<div class="comments-body">
+<p>Hallo everyone!!</p>
+
+<p>This is for google: send Stream sound audio from windows to linux win esd over net via network lan</p>
+
+<p>I succeed in getting WinESD driver work on my XPSP2 box.<br />
+Let me tell you how to do it.</p>
+
+<p>First of all, I apologise for my English. It is not my native language so it could be some mistakes. Furthermore,  I use russian version of WINXPSP2 and I do not have English one so window names, button names and etc. in your windows version may be name in different way than I mentioned. You should keep this in mind and choose similar things.</p>
+
+<p>So I made a sound stream from my windows box to linux box. They are connected to the one switch and located in one room. Linux box has good speakers connected, that is why I stream windows sound to it.</p>
+
+<p>It is 1-1,5 second gap (delay) between windows sound feed program and sound start playing at linux box. I dont like it. So if you known how to get rid of it please let us know. I think esd daemon buffer(cache) at linux side should be changed to minimum but anyway I dont know how.</p>
+
+<p>Edcast+ogg.codec+Icecast+mplayer(30k buffer) chain gave me 2-2,5 sec delay.</p>
+
+<p><br />
+Steps are:</p>
+
+<p>1.Disable sound hardware you have.<br />
+2.Make registry key.(HKEY_LOCAL_MACHINE\SOFTWARE\Enlightened\WinESD\ESPEAKER=your.host.ip.addr:5001)<br />
+3.Run a esd daemon at linux side.<br />
+4.Setup WinEsd nt driver.</p>
+
+<p>OK and now in detail:</p>
+
+<p>1.Disable sound hardware you have.<br />
+open 	My computer><br />
+	Properties><br />
+	Device manager(should be in some tab)><br />
+	Sound and ... devices><br />
+	right click on each and click disable option(except gameport)<br />
+	If it ask for reboot do it.</p>
+
+<p>2.Make registry key.<br />
+run regedit.(push "START">"run">type in it "regedit" or run regedit in other way.)<br />
+	make this key - HKEY_LOCAL_MACHINE\SOFTWARE\Enlightened\WinESD\ESPEAKER (REG_SZ)<br />
+	set it to "your.host.ip.addr:5001" (my esd daemon works good at 5001 port only)<br />
+	set permissions read and write to "Enlightened" key and "WinESD" key (right click on each.)</p>
+
+<p>3. Run a esd daemon at linux side.<br />
+Check you disro for esd binaries. My slax already had them. If yours doesnt get esd in your favourite way.<br />
+	run in console<br />
+	# esd -port 5001 -public -promiscuous -tcp<br />
+	and esd server begins to wait for clients.</p>
+
+<p>4.Setup WinEsd nt driver<br />
+Thanks to Bryan Clingman for Windows NT Enlightenment Sound Driver he wrote.<br />
+	Download <a href="http://www.clingman.org/winesd/WinESD-0.03.zip">http://www.clingman.org/winesd/WinESD-0.03.zip</a> (I use this version)<br />
+	Unzip it at folder you like<br />
+	Open Explorer><br />
+	Control panel><br />
+	Add new devices (or similar)><br />
+	Device is connected><br />
+	Next><br />
+	(go to buttom of the list and choose "add new device"<br />
+	I have no icon near it)><br />
+	Set path manualy(or similar)><br />
+	Next><br />
+	(choose Sound and ... devices)><br />
+	Next><br />
+	(push "set up from disc(CD)" button)><br />
+	(Push browse button)><br />
+	(Select path to unzipped WinEsd folder and select OEMSETUP.INF)><br />
+	Open><br />
+	OK><br />
+	(select "Enlightment Driver")><br />
+	Next><br />
+	Next><br />
+	(if it ask for esddrv.dll browse to unzipped WinEsd folder and choose it)><br />
+	(Hello mini window will appear with only OK button on it. click it.)<br />
+	(Push Finish button at Device setup manager)><br />
+	(If windows asks for reboot - do it.)</p>
+
+<p>After reboot go to Control panel>Sound ... devices>Audio tab. There should be WinESD selected.</p>
+
+<p>If there is no beep from your speaker everything is ok.</p>
+
+<p>If there are some beeps - check registry key (may be restrict permissions) and your lan(ip addr or windows firewall is enabled).</p>
+
+<p>That is all. Everything should work fine.</p>
+
+<p>P.S. winamp works ugly with Nullsoft Direct Sound Output driver (v2.49(d) [out_ds.dll]) so I changed it to Nullsoft Crossfading Output driver (v0.95 (x86) (experimental) [out_xf.dll]). It works perfect.</p>
+
+<p><br />
+</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;someka&#64;mail&#46;com">Pasha</a> at June 10, 2009 03:18 PM</span>
+</div>
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

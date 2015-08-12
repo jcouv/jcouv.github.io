@@ -1,0 +1,321 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Fitt's law on the Tablet PC?</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000064.html" title="The Tivo of your life: CamWear" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000067.html" title="VS.net debugging tips whitepaper link" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000066.html">
+<dc:title>Fitt&apos;s law on the Tablet PC?</dc:title>
+<dc:description>Fitts&apos;s Law: &quot;The time to acquire a target is a function of the distance to and size of the target.&quot; This is the law that dictates the efficiency of target acquisition in the &quot;point and click&quot; model. This law has been well studied and is considered one of the fundamental GUI design principles. I&apos;ll expose a few reasons why I think Fitt&apos;s law needs to be applied differently on Tablet PCs....</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2003-06-22T13:37:25-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000064.html">« The Tivo of your life: CamWear</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">June 22, 2003</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">Fitt's law on the Tablet PC?</h2>
+
+<p>Fitts's Law: "The time to acquire a target is a function of the distance to and size of the target."</p>
+
+<p>This is the law that dictates the efficiency of target acquisition in the "point and click" model. This law has been well studied and is considered one of the <a href="http://www.asktog.com/basics/firstPrinciples.html#fitts's%20law">fundamental GUI design principles</a>.<br />
+I'll expose a few reasons why I think Fitt's law needs to be applied differently on Tablet PCs.</p>
+
+<a name="more"></a>
+<p>Let me first specify that I own a HP TC1000 Tablet PC. It is possible that some of its characteristics worsen the problems described below, compared to other systems.<br />
+Also, I am right-handed and will assume right-handedness in all examples.</p>
+
+<p>Here are two questions from <a href="http://www.asktog.com/columns/022DesignedToGiveFitts.html">Tog's Fitt's Quiz</a>:</p>
+
+<div class="code">Question 3
+
+<p>      A right-handed user is known to be within 10 pixels of the exact center of a large, 1600 X 1200 screen. You will place a single-pixel target on the screen that the user must stop upon and point to exactly. List the five pixel locations on the screen that the user can access fastest. For extra credit, list them in order from fastest to slowest access.</p>
+
+<p>Question 5</p>
+
+<p>      Explain why a Macintosh pull-down menu can be accessed at least five times faster than a typical Windows pull-down menu. For extra credit, suggest at least two reasons why Microsoft made such an apparently stupid decision.</div></p>
+
+<p><br />
+<b>Answers</b><br />
+The classic answer to question 3 is the current pointer location and the four corners of the screen: no move for the current location and any large movement to the infinite zones extending outside the screen beyond the corners. </p>
+
+<p>The answer to question 5 is the Macintosh menu bar is on the edge of the screen, which is an infinite target in one direction: just push the mouse as far as you can and you reach it (no need for fine aiming).</p>
+
+<p>Both are consequences of Fitt's law, but can't be applied as-is to Tablet PCs.</p>
+
+<p><br />
+<b>Clicking under the cursor</b><br />
+The first difference between a mouse interaction and a stylus: it is harder to click on the current pixel, with a stylus. </p>
+
+<p>A mouse holds essentially still when you click the button and it is possible to click multiple times on the same pixel without difficulty. <br />
+But on a Tablet PC, you may need to bring the pen onto the surface first (if you where hovering) and then press the tip down to trigger the "click" action. Both of these movements cause the cursor to move by a couple pixels. You can try targeting a single pixel and clicking multiple times on it to see that it is harder on a Tablet PC than with a mouse.<br />
+Doing precise a right click (hold a button on the stylus and tap) is even harder, from my experience, because you need to hold a button while aiming.</p>
+
+<p>So my first Tablet-PC-specific adjustment to Fitt's law application would that the easiest target isn't the one pixel under the cursor but a bunch of pixels close to the cursor.</p>
+
+<p><br />
+<b>Clicking in a corner or a screen edge</b><br />
+The second problem is corner targeting. If you own a Tablet PC, I invite you to target one of the four corners of the screen, and compare this experience with that of targeting corners with a mouse, trackball, touchpad or trackpad.<br />
+My experience is that it is really hard if not impossible. There are multiple reasons to this: digitizers don't sense the pen outside of the screen and they are less precise near the edges of the screen because of calibration and parallax effects.</p>
+
+<p>You can also try targeting the scrollbar very quickly using a mouse and compare this with using the stylus of your Tablet PC. Using a mouse is really faster and easier.<br />
+If I do a quick stylus move to reach the scrollar on the right side of the screen, I end up most of the time with my pen pointing outside of the screen and the cursor pointing to the left of the scrollbar. It may be because the digitizer doesn't sense outside of the screen or because the sampling rate isn't high enough, or probably both.</p>
+
+<p>The second adjustment to the Tablet PC input model is that the edges and corners of the screen are no longer infinite targets.</p>
+
+<p><br />
+<b>Other differences</b><br />
+Here are some other subjective differences between a Tablet PC input model and the mouse model.</p>
+
+<p>When using a Tablet PC, the hand movements are much larger than when using a mouse (depending on the mouse acceleration settings). I suspect this makes targeting items on the left side of the screen more difficult. For example, I moved the toolbars in Outlook to the right side of the screen and feel an improved ease of use.</p>
+
+<p>Also, I have the impression that all stylus movements are not equal. Some directions are less natural than other. I believe this is already true with mice, but it seems even stronger on Tablet PCs. For example, moving the pen in the SW-NE direction is easier than in the NW-SE direction.</p>
+
+<p>And last, some experiments on the impact of the hand occluding part of the screen might be interesting. Is it harder to target an item that you can't see at first, in multiple targets acquisitions scenarios?</p>
+
+<p><br />
+<b>Solutions</b><br />
+In terms of edge targeting, the easy solution would be to adapt the hardware so that digitizers can sense the stylus even beyond the edges of the screen. This won't make the edge targets infinite, but it'll make them deeper again.</p>
+
+<p>To avoid large hand movements to reach menus, context menus should be enriched, for Tablet PCs. It is known that circular or pie menus are more efficient than drop down menus. Also, you could imagine having a gesture zone inside a context menu, to allow shortcuts without cluttering the context menu with numerous entries.</p>
+
+<p>The last and most radical change would be to blend in alternate targeting paradigms, like the <a href="http://www.cs.umd.edu/class/spring2003/cmsc838g-0101/StudentSlides/CrossEdMethods.pdf">goal-crossing model</a>. A text editor (<a href="http://www.cs.umd.edu/class/spring2003/cmsc838g-0101/StudentPapers/CrossEd.pdf">CrossEd</a>) was developped using this model, but I didn't get the chance to try it yet (I'm not sure the software is available).</p>
+
+<p><b>Links</b><br />
+More on crossing-based selection: <br />
+<a href="http://www.almaden.ibm.com/u/zhai/papers/AccotZhai2002.pdf">More than dotting the i’s - Foundations for crossing-based interfaces</a> by Accot and Zhai.<br />
+<a href="http://hci.stanford.edu/~winograd/papers/instruments/">A laser pointer interface on a wall</a>.<br />
+<a href="http://www.cosc.canterbury.ac.nz/~andy/papers/smallTargets.pdf">Improving the acquisition of small targets</a>.<br />
+<a href="http://www.cs.umd.edu/class/spring2003/cmsc838g-0101/StudentSlides/CrossEd.pdf">More on CrossEd</a>.</p>
+
+<span class="posted">Posted by Julien on June 22, 2003. <a href="http://blog.monstuff.com/archives/000066.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '66';
+        var disqus_url = 'http://blog.monstuff.com/archives/000066.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+<div class="comments-body">
+<p>great post.</p>
+<span class="comments-post">Posted by: <a href="http://www.markremo.com">markremo</a> at October 29, 2004 12:37 PM</span>
+</div>
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

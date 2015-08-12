@@ -1,0 +1,325 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: C# Delegates strike back</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000037.html" title="The dark side of C# Delegates" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000040.html" title="C# events vs. delegates" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000038.html">
+<dc:title>C# Delegates strike back</dc:title>
+<dc:description>My last article (The dark side of C# Delegates) detailled how delegates are declared, instanciated and invoked. We have seen the role of the compiler, through analysis of dis-assembled code. But we haven&apos;t found the implementation of either the .ctor or the Invoke methods on the compiler-generated delegate classes. In this follow-up we&apos;ll go through new evidence of the inner workings that we analyzed and we&apos;ll look at the missing details....</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2003-04-25T11:53:12-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000037.html">« The dark side of C# Delegates</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">April 25, 2003</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">C# Delegates strike back</h2>
+
+<p>My last article (<a href="http://blog.monstuff.com/archives/000037.html#more">The dark side of C# Delegates</a>) detailled how delegates are declared, instanciated and invoked. We have seen the role of the compiler, through analysis of dis-assembled code. But we haven't found the implementation of either the .ctor or the Invoke methods on the compiler-generated delegate classes.<br />
+In this follow-up we'll go through new evidence of the inner workings that we analyzed and we'll look at the missing details.</p>
+
+<a name="more"></a>
+<p>First, I wanted to confirm the role of the compiler in all the expressions involving delegates.<br />
+I checked out the ECMA specs for C# and the CLI. You can find links to these specs on <a href="http://msdn.microsoft.com/net/ecma/">this MSDN page</a><br />
+Here is a copy of the parts related to delegates:<br />
+<div class="code"><br />
+From the ECMA spec (CLI partition I)<br />
+8.9.3 Delegates<br />
+Delegates are the object-oriented equivalent of function pointers. Unlike function pointers, delegates are object-oriented, type-safe, and secure. Delegates are created by defining a class that derives from the base type System.Delegate (see Partition IV). Each delegate type shall provide a method named Invoke with appropriate parameters, and each instance of a delegate forwards calls to its Invoke method to a compatible static or instance method on a particular object. The object and method to which it delegates are chosen when the delegate instance is created. <br />
+In addition to an instance constructor and an Invoke method, delegates may optionally have two additional methods: BeginInvoke and EndInvoke. These are used for asynchronous calls. While, for the most part, delegates appear to be simply another kind of user defined class, they are tightly controlled. The implementations of the methods are provided by the VES, not user code. The only additional members that may be defined on delegate types are static or instance methods. </p>
+
+<p><br />
+From ECMA CLI specs (partition II)<br />
+13.6 Delegates <br />
+Delegates (see Partition I) are the object-oriented equivalent of function pointers. Unlike function pointers,  delegates are object-oriented, type-safe, and secure.  Delegates are reference types, and are declared in the form  of Classes.  Delegates shall have an immediate base type of System.MulticastDelegate, which in turns  has an immediate base type of System.Delegate (see Partition IV).  <br />
+Delegates shall be declared sealed, and the only members a Delegate shall have are either two or four methods  as specified here. These methods shall be declared runtime and managed (see clause 14.4.3).  They shall not  have a body, since it shall be automatically created by the VES.  Other methods available on delegates are inherited from the classes System.Delegate and System.MulticastDelegate in the Base Class Library (see  Partition IV).  <br />
+Rationale: A better design would be to simply have delegate classes derive directly from <br />
+System.Delegate. Unfortunately, backward compatibility with an existing CLI does not permit this design.  <br />
+The instance constructor (named .ctor and marked specialname and rtspecialname, see clause 9.5.1) shall  take exactly two parameters. The first parameter shall be of type System.Object and the second parameter  shall be of type System.IntPtr.  When actually called (via a newobj instruction, see Partition III), the first  argument shall be an instance of the class (or one of its subclasses) that defines the target method and the  second argument shall be a method pointer to the method to be called.  <br />
+</div></p>
+
+<p><br />
+Looking in the mono:: compiler (mcs), I found the classes that implements the delegate compilation: <a href="http://cvs.hispalinux.es/cgi-bin/cvsweb/mcs/mcs/delegate.cs?cvsroot=mono">Delegate, NewDelegate and DelegateInvocation</a>, in the Mono.CSharp namespace.</p>
+
+<p>You'll notice the <i>Delegate.Define()</i> method which registers some extra methods on the represented delegate class, like the constructor and the <i>Invoke</i> methods (and the asynchronous versions of <i>Invoke</i> as well). This <i>Define</i> method details how these compiler-added methods get the correct signature. But although the methods are registered, no implementation appears to be attached at this point. That's because they are marked with the <i>MethodImplAttributes.Runtime</i> attribute (see the <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfsystemreflectionmethodimplattributesclasstopic.asp">MSDN reference here</a>).</p>
+
+<p>In the <i>NewDelegate.Emit(EmitContext ec)</i>, you can see that the parameters for the instanciation is not a method, like the C# suggests, but in fact an object (that may be null) and a method pointer (via the <i>OpCodes.Ldftn</i> operation code). They are placed on the IL stack before the constructor is called.</p>
+
+<p>In the <i>DelegateInvocation.Emit(EmitContext ec)</i>, IL code generated for the delegate invocation is actually a regular method invocation on the delegate object, on the <i>Invoke</i> method. In the <i>DoResolve</i> method, the <i>method</i> member variable is set to reference the <i>Invoke</i> method on the delegate. Then the <i>Emit</i> simply calls <i>Invocation.EmitCall</i> (implemented in expression.cs) to generate the IL for a call to this <i>method</i> method.</p>
+
+<p><b><i>runtime managed</i> method attributes</b><br />
+The only parts missing in the puzzle is how are the delegate constructor and the Invoke method implemented.</p>
+
+<p>As the ECMA specs and the MSDN references explain, the "runtime managed" methods are supposed to be implemented by the runtime or <i>VES</i> (virtual execution system).<br />
+Searching in the mono:: runtime (called mono), I found the definition of the "runtime" attribute: <i>METHOD_IMPL_ATTRIBUTE_RUNTIME</i>. This attribute is used in a couple locations in the VES implementation and the one that appeared relevant is <i>ves_exec_method</i> in <a href="http://cvs.hispalinux.es/cgi-bin/cvsweb/mono/mono/interpreter/interp.c?cvsroot=mono">mono/interpreter/interpret.c</a>. This function apparently handles these runtime-implemented methods by calling <i>ves_runtime_method</i> in the same file.</p>
+
+<p>In <i>ves_runtime_method</i>, you can see that the method name is used to switch between the various method implementations.  The two first ones are <i>.ctor</i> and <i>Invoke</i>. In the case of <i>.ctor</i>, <i>mono_delegate_ctor</i> is called, and in the case of <i>Invoke</i>, the method pointer helds by the delegate (<i>delegate.method_ptr</i>) is used to do a method call (with <i>ves_exec_method</i>).</p>
+
+<p><b>Conclusion</b><br />
+All the pieces now come together, we have seen how the compiler treats a delegate like a special class (that it generates), which has some compiler-added methods that are implemented by the runtime.<br />
+The delegate declaration causes the compiler to generate a class with specific <i>.ctor</i> and <i>Invoke</i> methods. The instanciation gets mapped by the compiler to a <i>.ctor(object, int)</i> call that is implemented by the runtime. And the invocation gets mapped by the compiler to a <i>Invoke</i> call that is also implemented by the runtime.</p>
+
+<p>The only issues that I am still curious about are:<br />
+- What about the JIT? We have seen the mono:: interpreter's implementation of <i>ves_runtime_method</i>, but how does the JIT-compiled version work?<br />
+- Is is possible to create, instanciate or invoke a delegate a runtime using reflection? In this case how is the type-safety enforced and how is the conversion from MethodInfo to "native int" method pointer (and back) done?<br />
+- What is the "event" type and how much more compiler and runtime support does it need on top of the delegates support?</p>
+
+<p>Some delegate topics we didn't dig into, but I believe can be explained easily using what we have found so far: the asynchronous <i>Invoke</i> methods (<i>BeginInvoke</i> and <i>EndInvoke</i>) and the multicast delegates. Looking through the code that we looked at so far, you will find the details for these features.</p>
+
+<p><b>Links</b><br />
+The three main CodeDom classes references<br />
+<a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfsystemcodedomcodetypedelegateclasstopic.asp"><br />
+MSDN reference for CodeTypeDelegate Class (representing a delegate declaration)</a><br />
+<a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfsystemcodedomcodedelegatecreateexpressionclasstopic.asp">MSDN reference for CodeDelegateCreateExpression Class (representing a delegate instanciation)</a><br />
+<a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfsystemcodedomcodedelegateinvokeexpressionclasstopic.asp">MSDN reference for CodeDelegateInvokeExpression Class (representing a delegate invocation)</a></p>
+
+<p><a href="http://cvs.hispalinux.es/cgi-bin/cvsweb/mcs/class/System/System.CodeDom/?cvsroot=mono">Mono:: implementation of the System.CodeDom namespace</a><br />
+<a href="http://cvs.hispalinux.es/cgi-bin/cvsweb/mcs/class/System/Microsoft.CSharp/?cvsroot=mono">Mono:: implementation of the Microsoft.CSharp namespace (includes CSharpCodeProvider and CSharpCodeGenerator)</a></p>
+
+<p><u>Note:</u> as Miguel nicely <a href="http://www.gotmono.com/cgi-bin/yabb/YaBB.pl?board=PROJECT;action=display;num=1051037077">pointed out</a> to me, the CodeDOM classes aren't used to represent the code tree during compilation, because they aren't powerful enough. It is meant to generate textual source code (that can then be compiled). I just included the reference links above to provide another angle on delegates.<br />
+<u>Update:</u> I just found some more details on the limitations of CodeDOM in the <a href="http://www.codeproject.com/csharp/CodeDOMparser.asp">C# CodeDOM parser</a> article.</p>
+
+<span class="posted">Posted by Julien on April 25, 2003. <a href="http://blog.monstuff.com/archives/000038.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '38';
+        var disqus_url = 'http://blog.monstuff.com/archives/000038.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+<div class="comments-body">
+<p>I still have the nagging feeling that reflection is involved within the invoke method of the delegate, and still seem to feel that delegates and therefore events are late-bound and potentially not performant...<br />
+Thanks,<br />
+dave</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;dave&#46;hiers&#64;mapics&#46;com">Dave Hiers</a> at March 16, 2004 09:36 AM</span>
+</div>
+<div class="comments-body">
+<p>Here is a benchmark:<br />
+<a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dncscol/html/csharp02172004.asp">http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dncscol/html/csharp02172004.asp</a></p>
+
+<p>There is a big difference between direct method invocation and delegates. But apparently this has been optimized for the next release (Whidbey) to bring delegates up to par with interfaces method calls.<br />
+I don't know the explanation for these differences, but delegates are faster than InvokeMember (reflection) calls.</p>
+
+<p>The article also shows how to create delegates at runtime, via Reflection, which I was wondering about when I wrote this post.</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/archives/000038.html">Dumky</a> at March 16, 2004 03:16 PM</span>
+</div>
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\MenuExt\eBookmark This Page]
+@="http://enotes.monstuff.com/ebookmark.html"
+"Contexts"=hex:21,00,00,00
+

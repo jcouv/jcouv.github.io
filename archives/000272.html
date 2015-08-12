@@ -1,0 +1,443 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: "Take It With You" Wiki</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000274.html" title="XmlHttpRequest Debugging (Firefox 1.5 update)" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000276.html" title="Lock bumping (lockpicking technique)" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000272.html">
+<dc:title>&quot;Take It With You&quot; Wiki</dc:title>
+<dc:description>Although this blog has been silent for a while, I haven&apos;t been idle. I was working on AJAX-based web application with transparent support for disconnected operations. TiwyWiki is a prototype wiki that runs both online and offline without any install (besides Flash Player). Here&apos;s a demonstration scenario: load the demo (requires Flash 8) and browse a couple of pages, pull the network plug off your computer and put your browser in Offline mode, re-open the wiki using the same url, while offline, continue reading and editing the cached pages of the wiki, create new pages, go back online and sync...</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2006-01-17T16:44:50-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000274.html">� XmlHttpRequest Debugging (Firefox 1.5 update)</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">January 17, 2006</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">"Take It With You" Wiki</h2>
+
+<p>Although this blog has been silent for a while, I haven't been idle. I was working on AJAX-based web application with transparent support for disconnected operations. </p>
+
+<p>TiwyWiki is a prototype wiki that runs both online and offline without any install (besides Flash Player). <br />
+Here's a demonstration scenario:<br />
+<ol><li>load <a href="http://blog.monstuff.com/Flash4AJAX/static/TiwyWiki.html#TodoPage">the demo</a> (requires Flash 8) and browse a couple of pages,</li> <li>pull the network plug off your computer and put your browser in Offline mode,</li> <li>re-open the wiki using the same url, </li> <li>while offline, continue reading and editing the cached pages of the wiki, create new pages, </li> <li>go back online and sync your updates back to the server. </li></ol></p>
+
+<p>I've only tested TiwyWiki on IE and Firefox on Windows, and heard that it runs properly on Mac (Safari I think), let me know if it runs for you on any other platform.</p>
+
+<p>This is just the skeleton of a wiki, but it gives a feeling of the possibilities of web applications that can deal gracefully with being intermittantly disconnected. I'm especially interested in hearing back about whether this approach is valuable to you, in comparison to the traditional web and rich client models. <br />
+What other applications you'd find most appealing and why? <br />
+Here are the ones I brainstormed so far: a personal wiki, various other personal or group GTD tools (such as todo list or calendar), a community wiki, an email reader and/or composer, a blog editor, an RSS reader, an app for driving directions.</p>
+
+<a name="more"></a>
+<p> <br />
+<h4>Some background:</h4> Two problems ran in circles in my head while I was on vacation a couple of weeks ago: how to make cross-domain XMLHttp requests before cross-domain is actually supported by browsers and how to allow web applications to run offline? <br />
+I started by focusing on the first one, probably because I've been toying recently with cross-domain XMLHttp and client-side storage through Greasemonkey. Also, I was thinking that it would help for running local/offline copies of web apps. </p>
+
+<p>The problem with using Greasemonkey to extend the browser is that it's not widely available and it doesn't offer good control over cross-domain requests. A Flash and Javascript combination, such as the Flash-based <a href="http://www.davidflanagan.com/blog/2005_10.html#000086">Canvas</a> or <a href="http://codinginparadise.org/projects/storage/README.html">AMASS</a> storage, seemed like a better solution.<br />
+As I learnt more about Flash 8 and its security model, my original plan of running a local copy of a web page for offline use didn't seem convenient enough: you would have to explicitly save the app locally and synch it before going offline. </p>
+
+<p>When I found out that Flash Player did cache Flash apps properly, the idea of running both the online and offline scenarios took the lead. This avoided the new security restrictions for local apps in Flash 8, keeping two local caches of the data (one for the online domain and one for the local copy) and no installation problem. <br />
+Instead you would be able to use the app locally as soon as you used it online. First, whatever content you had already accessed would be cached and persisted locally (in the Flash app/storage). You could use pre-fetching to ensure your local cache would have the data that you want. <br />
+Second, the Flash app would act as a buffer for disconnected operations, such as local updates while running offline.</p>
+
+<p><br />
+<h4>Design philosophy:</h4> One interesting thing to realize is how and why the pieces fit together. <br />
+As a starting point, you should understand that the AJAX trend is not simply about rich UI and eye candy, but more generally about providing a more responsive experience by optimizing the bottleneck resource (the network): you cache the data that doesn't change (some HTML, Javascript or CSS), and transfer only the information that is dynamic. <br />
+Once you have a web application that is entirely cacheable, you can support offline operations. You just need to have all the dynamic data go through a smart proxy that can do disconnected reads and updates. <br />
+That's where Flash comes into play, as it offers large persistent local storage and easy interfacing with Javascript.</p>
+
+<p>I don't see Flash as the long term solution, but rather a temporary workaround that allows for some early experimentation. Instead of waiting for new browser infrastructures, I wanted to demonstrate that web apps with offline support and no install were already feasible, relying only on a new combination of existing techniques.</p>
+
+<p>That's why I tried to keep the extensions to the browser as clean and simple as possible, minimizing the amount of Flash and relying more on the common skillset (HTML+Javascript). I think this will motivate other developpers to try this approach.  </p>
+
+<p>In this case, Flash actually turned out to be rather un-obstrusive.<br />
+First, if you don't have it installed, the web app will still work fine, except with no offline support or persistent data caching. <br />
+Second, Flash offers some benefits that I hadn't anticipated. For example, the storage is shared between IE and Firefox. This makes for a nicer experience that I would expect from any native browser API, such as IE's client storage API or the <a href="http://www.whatwg.org/specs/web-apps/current-work/#scs-client-side">drafted storage API from the WHAT working group</a>.</p>
+
+<p>For those who want to avoid Flash, other alternative storage techniques could possibly be used to achieve similar results, such as IE's <a href="http://msdn.microsoft.com/library/default.asp?url=/workshop/author/persistence/overview.asp">storage API</a>, a Java applet, an ActiveX object or some other kind of browser extension. </p>
+
+<p>In the long run, I hope this proof of concept and the following uses of this technique will help identify the right set of APIs to implement natively in browsers. </p>
+
+<p></p>
+
+<p><h4>Caching:</h4> Caching is at the heart of this solution and needs to be configured properly. When the expiration header (<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21">Expires</a>, using <a href="http://httpd.apache.org/docs/1.3/mod/mod_expires.html">mod_expires</a> in Apache or directly in <a href="http://msdn2.microsoft.com/en-us/library/ms752346.aspx#content_expiration">IIS</a>) is correctly set for all the static content, both Firefox and IE let you run the application offline without complaining. <br />
+Overall, IE appears to be more sensitive to mis-configured caching headers and in that case, it would often display some prompts to work offline or return online to continue the current operation.</p>
+
+<p><u>Loading Flash when offline:</u><br />
+During a troubleshooting session, I noticed something unexpected. The common markup for including Flash objects in IE actually causes a request to Macromedia, which usually replies with a 302 (but no caching headers). <br />
+Besides my surprise of discovering that Macromedia's server is hit every time a Flash app is opened in IE, this meant that the Flash object wouldn't load offline. So TiwyWiki uses its own Flash loading technique (yet another) to support running offline.</p>
+
+<p><br />
+<u>Busting the cache:</u><br />
+One downside of forcing the application to be cached is that if a new version of the application becomes available, the browser won't notice it until the current version expires from the cache. </p>
+
+<p>I'm still looking for some ideas on how to let the application deal with this update scenario, so that it could have some logic to check for updates and trick the browser into reloading its cache (force refresh). There may be some solutions by using the XMLHttp API with the right request headers, if the different browser could cache the responses properly.<br />
+As a last resort, one could imagine a new browser API that would allow invalidating the cache for a given domain and path.</p>
+
+<p><u>Locking files in the cache:</u><br />
+The other problem with running the application out of the browser's cache is that the user could "uninstall" the application by accidentally clearing the cache or the application could erased from the cache to make room when the cache gets filled up. <br />
+I'm still looking for ideas on how to achieve proper locking of the files in the cache.</p>
+
+<p>In IE, that should be possible using the <a href="http://msdn.microsoft.com/workshop/delivery/offline/linkrel.asp">"Offline Favorites"</a> feature. Whenever you bookmark a page, IE gives you the option to "Make [the favorite] available offline". If you check that option, IE will use a crawler (MSIECrawler) to pre-fetch and cache the content for offline reading. You can hint the crawler using a <a href="http://msdn.microsoft.com/workshop/delivery/cdf/tutorials/generic.asp">CDF file</a>, linked from a &lt;link rel="offline" href="file.cdf"/> tag. <br />
+But I implemented and ran various experiments with "Offline Favorites", and couldn't get the files to be properly frozen in the cache (they would still get scavenged to make room).</p>
+
+<p><br />
+<h4>Making a framework:</h4> A wiki turned out to be a rather complex application in terms of synchronization and error handling. I originally wanted to write a generic framework for occasionally connected web applications, to deal with these problems. <br />
+But besides the reusable Flash component, most of the code so far is specific to the schema and synchronization model for the application. My work on a second application (an RSS reader) hasn't helped me bubble the right abstractions yet.</p>
+
+<p>Do you know any generic synchronization framework which could be ported or mimicked in Javascript? Something like <a href="http://trimpath.com/project/wiki/TrimQuery">TrimQuery</a> would be great if it supported INSERT and UPDATE.</p>
+
+<p>Also, is there some existing libraries that would offer a rich logical view of a persistent storage that only supports sets of name-value pairs?</p>
+
+<p><h4>Developing with Flash:</h4> This was my first time working with Flash and overall I found it easier than expected. ActionScript is a sibling of Javascript (both follow the ECMAScript specification), which made it easy to pick up. I was happy to interact with Flash authoring tools as little as possible and end up building the Flash component completely using the MTASC compiler.<br />
+I haven't met too many problems with the Flash APIs. ExternalInterface is quite convenient, although I've had to work around a performance issue when passing large data accross. <br />
+I wouldn't expect too much performance of the storage API, SharedObject, which serializes objects into files. But this hasn't been a problem so far.</p>
+
+<p><h4>Open problems:</h4> Besides the problems already mentioned (building a richer storage abstraction, building a generic synchronization framework, getting more control on the caching), I've hit my head on trying to fix the back button behavior in IE. <br />
+The usual hacks rely on iframes pointing to a blank html page on the server, with some unique querystring parameters. Unfortunately, such queries don't work offline, because the unique querystring values essentially keep busting the cache.</p>
+
+<p>I've also encountered some weird issues with Flash in Firefox 1.5, showing "Bad NPObject as private data" in the Javascript console and sometimes popping up warnings that an extension mis-behaved. My guess at this point is that it was some interaction between Flash and some other extension, possibly AdBlock.</p>
+
+<p>And finally, I'm still battling some memory leaks issue. Although the code does use closures quite a bit, I can't see how it would create circular references chains between the DOM and the Javascript engine. </p>
+
+<p><br />
+<h4>Related:</h4><br />
+<ul><li>Adam's Bosworth <a href="http://www.infoworld.com/article/04/06/11/24OPstrategic_1.html">Alchemy project</a> and famous post on <a href="http://www.adambosworth.net/archives/000014.html">modifying information offline</a>, </li><li><a href="http://www.tiddlywiki.com/">TiddlyWiki</a>, a <a href="http://trimpath.com/project/wiki/SinglePageApplications">SPA</a> (Single Page Application) wiki, that runs entirely in the browser (no need for a server) and uses a funky "File->Save Page" persistence model, </li><li>The <a href="http://blog.monstuff.com/Flash4AJAX/WikiTodo.txt">TODO list for TiwyWiki</a> and the <a href="http://blog.monstuff.com/Flash4AJAX/WikiDoc.txt">internal documentation</a> (explains a bit about the storage structure and different tiers in the APIs).</li></ul></p>
+
+<p><h4>Update (2009/01/06):</h4> Google Gears has been available for a year and a half now, and has been used in a few Google applications and a <a href="http://googlesystem.blogspot.com/2008/04/list-of-applications-that-use-google.html">couple others</a>. Yet there does not seem to be a good online/offline wiki app yet. Disappointing.</p>
+
+<span class="posted">Posted by Julien on January 17, 2006. <a href="http://blog.monstuff.com/archives/000272.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '272';
+        var disqus_url = 'http://blog.monstuff.com/archives/000272.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+<div class="comments-body">
+<p>Dude, this is the shit. You. Rock.</p>
+
+<p>I've been trying to crack this nut _forever_; it's why I made AMASS. Very cool that you figured it out!</p>
+
+<p>We're brother in arms; I have a a library named the Really Simple History library that solves the back button issues in IE and Firefox: <a href="http://www.onjava.com/pub/a/onjava/2005/10/26/ajax-handling-bookmarks-and-back-button.html">http://www.onjava.com/pub/a/onjava/2005/10/26/ajax-handling-bookmarks-and-back-button.html</a></p>
+
+<p>I've been bringing my AMASS and Flash work into the Dojo project into the dojo.flash and dojo.storage packages; if you are interested, we could coordinate to create a dojo.offline package that uses both of these to extend the capabilities you've discovered to all apps. Email me at bkn3 [at] columbia -dot- edu if you are interested.</p>
+<span class="comments-post">Posted by: <a href="http://codinginparadise.org">Brad Neuberg</a> at January 17, 2006 10:53 PM</span>
+</div>
+<div class="comments-body">
+<p>Oh, just read the issues about the back button stuff when offline and busting the cache. I'm sure we can find something in IE. Need to study the issue some more. One possibility is to use document.write into the hidden iframe, which might not bust the cache but which would go into history (and you write some state info into the iframe using the document.write), rather than loading a blank.html document.</p>
+<span class="comments-post">Posted by: <a href="http://codinginparadise.org">Brad Neuberg</a> at January 17, 2006 10:55 PM</span>
+</div>
+<div class="comments-body">
+<p>Hi Brad,<br />
+Thanks for your feedback, I'll definitely follow up with you.<br />
+TiwyWiki isn't actually using AMASS. Instead it uses yet another Flash object, that also support cross-domain XML requests for the Tiwy RSS reader I've been prototyping.<br />
+Some reasons for not using AMASS: I needed something really simple that I would completely understand, I wanted to learn some Flash and also wanted to write the X-domain request feature. Also, as with most Flash framewoks, the HTML inserted by AMASS probably wouldn't let the Flash run offline, as I discovered later.</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at January 18, 2006 09:05 AM</span>
+</div>
+<div class="comments-body">
+<p>Congrats on the coverage ;)<br />
+Ajaxian is first on my opml, before your blog, and it felt nice to see something about you!</p>
+<span class="comments-post">Posted by: <a href="http://www.dungis.com">Regis</a> at January 20, 2006 06:20 PM</span>
+</div>
+<div class="comments-body">
+<p>on Safari 1.2.4 is just refeshes repeatedly in a freaky sort of way - but in mac FF works fine.</p>
+<span class="comments-post">Posted by: <a href="http://agitprop.allotherplaces.org">redjade</a> at January 25, 2006 02:54 PM</span>
+</div>
+<div class="comments-body">
+<p>Julien,</p>
+
+<p>This is very cool. We've looking for something like this for long time. How far have you reached with the framework. I would happy to test for you.</p>
+
+<p>Ram</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;rpuppala&#64;yahoo&#46;com">Ram</a> at February 18, 2006 07:02 PM</span>
+</div>
+<div class="comments-body">
+<p>Ram, <br />
+Unfortunately, I don't have a good solution for making a framework out of this, especially the synchronization part. </p>
+
+<p>I do have some ideas on improving the storage with an abstraction layer, but I'm actually focusing on the server-side storage and versioning problem right now. </p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at February 20, 2006 10:32 AM</span>
+</div>
+<div class="comments-body">
+<p>Great stuff, Julien. Thanks for pinging me on this.</p>
+<span class="comments-post">Posted by: <a href="http://activeweave.dyndns.org/blog/activeweave/">Jean Sini</a> at February 24, 2006 08:15 AM</span>
+</div>
+<div class="comments-body">
+<p>Beware. By depending on Flash 8, you are locking out all Linux users. The newest version of Flash for Linux is still 7.0.63.0, released on Mar 14, 2006.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;alan&#64;tnc&#46;hk">Alan</a> at April 30, 2006 01:04 AM</span>
+</div>
+<div class="comments-body">
+<p>Alan,<br />
+I understand this limitation. This was more of a proof of concept than a full fledged application.<br />
+Also, I'm looking into converting the flash object to support Flash 6 or 7. </p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at May  1, 2006 09:00 AM</span>
+</div>
+<div class="comments-body">
+<p>Julien,</p>
+
+<p>I'm playing with an javascript/ajax app myself and trying to get it to work offline.  It really seems like it should work, however I'm having some of the problems in the IE caching area that you mentioned.</p>
+
+<p>It seems that even though I'm not trying to post anything to the sever, it still displays the "connect/work offline" dialoge box.</p>
+
+<p>Could you elaborate on the types of problems you were having?</p>
+
+<p>- Regan</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Regan</a> at June  6, 2006 01:03 PM</span>
+</div>
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+<div class="trackback-body">
+<a name="580"></a>
+<span class="trackback-post"><a href="http://blogs.msdn.com/alexbarn/archive/2006/01/18/514745.aspx" target="new">Occasionally connected Wikis</a><br />
+<b>Excerpt:</b> Julien Couvreur has been working on something that sounds very, very good.
+
+"...I haven't been idle....<br />
+<b>Weblog:</b> Alex Barnett blog<br />
+<b>Tracked:</b> January 18, 2006 11:33 PM</span>
+</div>
+<div class="trackback-body">
+<a name="584"></a>
+<span class="trackback-post"><a href="http://educational.blogs.com/instructional_technology_/2006/01/curiosity_is_bl.html" target="new">Curiosity is bliss: "Take It With You" Wiki</a><br />
+<b>Excerpt:</b> This would be something that I will be checking out. The online prototype gives you the glimpse of what is the possibility of synching your between your desktop wiki and online wiki space. Having both an online version and being to work when off the gr...<br />
+<b>Weblog:</b> Educational Weblogs<br />
+<b>Tracked:</b> January 22, 2006 08:23 AM</span>
+</div>
+<div class="trackback-body">
+<a name="603"></a>
+<span class="trackback-post"><a href="http://blog.donews.com/dengyu/archive/2006/01/30/711576.aspx" target="new">Ajax离线存储技术–初探</a><br />
+<b>Excerpt:</b> 你可曾想过原来不仅可以离线阅读feeds,还可以根本不需要客户端软件也能离线写Blog，上线后自动同步？<br />
+<b>Weblog:</b> Devin<br />
+<b>Tracked:</b> January 29, 2006 11:36 AM</span>
+</div>
+<div class="trackback-body">
+<a name="758"></a>
+<span class="trackback-post"><a href="http://www.redmonk.com/sogrady/archives/001573.html" target="new">Solving the "Offline Problem"</a><br />
+<b>Excerpt:</b> Simon points to Berlind who examines Sun's JavaDB (AKA Apache Derby, AKA IBM Cloudscape) as a potential option for solving what is (un)affectionately known as the "offline problem" amongst thin client advocates such as yours truly. The very same proble...<br />
+<b>Weblog:</b> tecosystems<br />
+<b>Tracked:</b> May  1, 2006 07:44 PM</span>
+</div>
+<div class="trackback-body">
+<a name="775"></a>
+<span class="trackback-post"><a href="http://www.redmonk.com/sogrady/archives/001573.html" target="new">Solving the "Offline Problem"</a><br />
+<b>Excerpt:</b> Simon points to Berlind who examines Sun's JavaDB (AKA Apache Derby, AKA IBM Cloudscape) as a potential option for solving what is (un)affectionately known as the "offline problem" amongst thin client advocates such as yours truly. The very same proble...<br />
+<b>Weblog:</b> tecosystems<br />
+<b>Tracked:</b> May  2, 2006 08:30 AM</span>
+</div>
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

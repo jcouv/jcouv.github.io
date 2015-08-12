@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="3638"
+   name=""
+   committed-date="2006-04-21T23:06:27.030467Z"
+   url="http://svn.dojotoolkit.org/dojo/trunk/src/flash/flash8"
+   last-author="BradNeuberg"
+   kind="dir"
+   uuid="560b804f-0ae3-0310-86f3-f6aa0a117693"
+   repos="http://svn.dojotoolkit.org/dojo"
+   revision="4135"/>
+<entry
+   committed-rev="3626"
+   name="DojoExternalInterface.as"
+   text-time="2006-05-22T23:12:34.242333Z"
+   committed-date="2006-04-20T20:44:30.215909Z"
+   checksum="8f80ca038cc8bef089ab0025c429601a"
+   last-author="BradNeuberg"
+   kind="file"
+   prop-time="2006-05-22T23:12:34.226706Z"/>
+<entry
+   committed-rev="3638"
+   name="ExpressInstall.as"
+   text-time="2006-05-22T23:12:34.257959Z"
+   committed-date="2006-04-21T23:06:27.030467Z"
+   checksum="c0956b32f9168663d11211022d351b39"
+   last-author="BradNeuberg"
+   kind="file"
+   prop-time="2006-05-22T23:12:34.242333Z"/>
+</wc-entries>

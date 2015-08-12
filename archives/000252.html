@@ -1,0 +1,577 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: AJAX Debugging with Greasemonkey</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000250.html" title="&quot;XMLHttpRequest Tracing&quot; for AJAX debugging" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000242.html" title="Traffic light versus stop sign" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000252.html">
+<dc:title>AJAX Debugging with Greasemonkey</dc:title>
+<dc:description>Following up on my last Greasemonkey user script, &quot;XMLHttpRequest Tracing&quot;, I wrote a new script that goes beyond tracing: &quot;XMLHttpRequest Debugging&quot;. Here is a screenshot of the new UI. What it shows is the XMLHttpRequest debugging console, a floating div embedded in the page being debugged. This replaces the javascript console, which the previous script used for tracing. Each individual XMLHttpRequest invocation will get listed there, with all the details on the request and the response, as well as options to edit and replay the request or replay the response callback. Update: A newer version of the script is available....</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2005-05-31T20:55:29-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000250.html">« "XMLHttpRequest Tracing" for AJAX debugging</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">May 31, 2005</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">AJAX Debugging with Greasemonkey</h2>
+
+<p>Following up on my last Greasemonkey user script, <a href="http://blog.monstuff.com/archives/000250.html">"XMLHttpRequest Tracing"</a>, I wrote a new script that goes beyond tracing: <a href="http://blog.monstuff.com/archives/images/XMLHttpRequestDebugging.v1.0.user.js" title="right click &#8594; Install User Script...">"XMLHttpRequest Debugging"</a>.</p>
+
+<p>Here is a <a href="http://blog.monstuff.com/archives/images/XMLHttpRequestDebugging.v1.0.jpg">screenshot</a> of the new UI. <br />
+What it shows is the XMLHttpRequest debugging console, a floating div embedded in the page being debugged. This replaces the javascript console, which the previous script used for tracing.<br />
+Each individual XMLHttpRequest invocation will get listed there, with all the details on the request and the response, as well as options to edit and replay the request or replay the response callback.</p>
+
+<p><u>Update:</u> A <a href="http://blog.monstuff.com/archives/000268.html">newer version of the script</a> is available.</p>
+
+<a name="more"></a>
+<p> <br />
+The user script adds a menu command under "Tools" -> "User Script Commands" -> "Show XMLHttpRequest console". It is mostly useful if you click "hide" in the console menu.</p>
+
+<p>The interface makes use of some cool scripts I've seen around, such as the <a href="http://www.axentric.com/posts/default/7">fade anything technique</a> (a variant of 37signal's yellow fade technique) and Aaron Boodman's <a href="http://youngpup.net/2001/domdrag">DOM-Drag</a>. I hope I didn't go overboard ;-)</p>
+
+<p>Here are some possible future features I have been thinking about:<br />
+<ul><li>integrate with the Javascript Shell or the Javascript Development Environment, for richer debugging, </li><li>allow breakpointing on the response callback, to let the user modify the server response before the callback occurs, </li><li>use a popup window for the console, rather than a floating div, </li><li>ensure the console remains within the borders of the viewport </li><li>allow creating new XHR requests via a form, similar to the current edit&replay of requests. </ul></p>
+
+<p>I've tested it on a couple of AJAX-based sites. Except for Gmail, most seem to be working fine.</p>
+
+<p>As with <a href="http://blog.monstuff.com/archives/cat_greasemonkey.html">my other Greasemonkey scripts</a>, feedback, suggestions and patches are welcome :-)</p>
+
+<p><u>Update (2005/05/12):</u> I just <a href="http://blog.monstuff.com/archives/000291.html">ported this script to IE</a>, using a bookmarklet.</p>
+
+<span class="posted">Posted by Julien on May 31, 2005. <a href="http://blog.monstuff.com/archives/000252.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '252';
+        var disqus_url = 'http://blog.monstuff.com/archives/000252.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+<div class="comments-body">
+<p>This ain't the most useful comment, but I just wanted to say: This is so freaking cool. :)</p>
+<span class="comments-post">Posted by: <a href="http://www.anildash.com/">Anil</a> at June  1, 2005 12:17 AM</span>
+</div>
+<div class="comments-body">
+<p>Just trying it out, and this is fantastic. Thank you so much.</p>
+
+<p>A couple things - I hid the form on a page, and now I can't get it back. Second, on a page I've been developing, links update the debugger but don't call my own functions any more. Have you seen anything like this?</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;cwarren&#64;imagetrend&#46;com">Christopher</a> at June  1, 2005 09:42 AM</span>
+</div>
+<div class="comments-body">
+<p>LiveHTTPHeaders anyone??</p>
+
+<p>Firefox/Mozilla: <a href="http://livehttpheaders.mozdev.org/">http://livehttpheaders.mozdev.org/</a><br />
+Internet Explorer: <a href="http://www.blunck.info/iehttpheaders.html">http://www.blunck.info/iehttpheaders.html</a></p>
+<span class="comments-post">Posted by: <a href="http://www.stilleye.com">David</a> at June  1, 2005 09:56 AM</span>
+</div>
+<div class="comments-body">
+<p>David, LiveHTTPHeaders is awesome and was discussed more in comments of the previous post. <br />
+The "XMLHttpRequest Debugging" user script tries to go beyond just tracing the headers: it traces the whole response body and it has debug capabilities (you to edit&replay requests with their javascript callback).</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at June  1, 2005 10:49 AM</span>
+</div>
+<div class="comments-body">
+<p>Christopher, <br />
+There is a menu to get the console back: "Tools" -> "User Script Commands" -> "Show XMLHttpRequest console".<br />
+I haven't run into the problem that you are describing. Can you check messages in your javascript console? Also, can you give me some more details on how your page uses XHR?<br />
+I'll follow up with you by email.</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at June  1, 2005 10:56 AM</span>
+</div>
+<div class="comments-body">
+<p>Anil, no feedback is wasted as far as I'm concerned ;-) Thanks for the kind comment. I'm glad this is useful to you!</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at June  1, 2005 10:57 AM</span>
+</div>
+<div class="comments-body">
+<p>Oh wow, this is going to make the lives of so many AJAX developers so much easier.</p>
+<span class="comments-post">Posted by: <a href="http://patrickhaney.com">Patrick Haney</a> at June  1, 2005 12:46 PM</span>
+</div>
+<div class="comments-body">
+<p>Great stuff.</p>
+
+<p>I was wondering if you could add a z-index to the XHRDebug_Console to bring it above everything. It just fell behind some of the headers on some pages and then couldn't be dragged away.<br />
+</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;not&#64;giving&#46;com">Josh</a> at June  2, 2005 07:37 AM</span>
+</div>
+<div class="comments-body">
+<p>Hi Julien,</p>
+
+<p>  Thanks for the tool.</p>
+
+<p>  Does this work with IE ? </p>
+
+<p>  We have a IE only AJAX app and we use proxyTrace for debugging the application. Some times, inserting proxyTrace (<a href="http://www.pocketsoap.com/tcptrace/pt.aspx)">http://www.pocketsoap.com/tcptrace/pt.aspx)</a> creates errors while talking to Tomcat. Hopefully, your tool does NOT have such issues.</p>
+
+<p>BR,<br />
+~A</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;anjan_dev&#64;NoSpamYahoo&#46;com">Anjan Bacchu</a> at June  2, 2005 11:30 AM</span>
+</div>
+<div class="comments-body">
+<p>Anjan, <br />
+This tool unfortunately doesn't work in IE, because Greasemonkey is Firefox-only. </p>
+
+<p>Some extensions similar to Greasemonkey are currently being developped for IE (TrixIE, Turnabout). But even then, I'm not sure the same technique can be used to intercept XHR calls in IE. The XHR invocation in IE is different: it uses an ActiveX object, instead of a native javascript object. <br />
+In order to intercept XHR calls in IE, you would have to modify your page to use an XHR wrapper, with some hooks for debugging, rather than the ActiveX object directly.</p>
+
+<p>This script is a patch until full-fledged and integrated solutions appear, as this web app development approach becomes more popular.<br />
+I'm hoping that long term, mainstream IDEs and debuggers start supporting debugging javascript in the client and server code at the same time. That would be pretty cool ;-)</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at June  2, 2005 12:04 PM</span>
+</div>
+<div class="comments-body">
+<p>Very Handy. The fade effect makes it more intutive. Thx.</p>
+<span class="comments-post">Posted by: <a href="http://zenhead.org/blog/">Chanchal</a> at June  2, 2005 07:33 PM</span>
+</div>
+<div class="comments-body">
+<p>This is nifty but I think a local HTTP proxy is better served to fit this need.  There are HTTP proxies designed for the purpose of debugging HTTP invocations.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;dsmiley&#64;mitre&#46;org">David Smiley</a> at June  3, 2005 05:16 AM</span>
+</div>
+<div class="comments-body">
+<p>i can't seem to get the script to work. or your other "tracing" script either. i installed them with Greasemonkey, then added some domains, but when I go to the Tools menu, the User Script Commands menu is greyed out. Any ideas? </p>
+<span class="comments-post">Posted by: <a href="mailto&#58;patrick&#64;shaggydogmedia&#46;com">patrick</a> at June  3, 2005 07:38 AM</span>
+</div>
+<div class="comments-body">
+<p>This script generates a warning over here (Firefox 1.0.4):<br />
+Anonymous function does not always return a value.</p>
+
+<p>It is an easy fix, I added:<br />
+        return "";<br />
+To the end of "printReadyState" on line 547.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;philharnish&#64;gmail&#46;com">Phil Harnish</a> at June  3, 2005 10:38 PM</span>
+</div>
+<div class="comments-body">
+<p>Thanks for the fix, Phil. I updated the script accordingly.</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at June  3, 2005 11:24 PM</span>
+</div>
+<div class="comments-body">
+<p>Patrick, did you configure some websites to activate this user script? <br />
+When the script is installed, you need to pick a list of "include" url patterns, such as "<a href="http://*.backpackit.com/*">http://*.backpackit.com/*".</a> You need to input the url of the site you want to debug in that configuration panel.<br />
+I'll check with you by email.</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at June  6, 2005 11:14 AM</span>
+</div>
+<div class="comments-body">
+<p>Selenium is functional testing tool I developed to test and debug cross-browser and cross-platfrom Javascript (AJAX included). You might want to give it a try if you need to test in IE and Firfox and Safari.</p>
+<span class="comments-post">Posted by: <a href="http://selenium.thoughtworks.com">Jason Huggins</a> at June  6, 2005 12:14 PM</span>
+</div>
+<div class="comments-body">
+<p>Josh, I just added a z-index of 100 for the console. That should bring it above everything else.</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at June  6, 2005 01:17 PM</span>
+</div>
+<div class="comments-body">
+<p>excellent!  had a hard time getting it working though -- the menu option remained grayed out.  had to remove line 7 (which was just a comment and line break) which was producing a javascript error.  Took out a few similar lines, too, so they may have also been error-producing.)  now it works!</p>
+
+<p>I'm interested in this primarily as a tool for writing a google maps GM script, though, and unfortunately the console doesn't display properly on that site.  I'll look into what the problem could be when I have a chance, but perhaps you could take a quick peak and see if it's an obvious fix.  I couldn't figure out from the UI how to move it, either, but perhaps that's because its top is obscured.</p>
+<span class="comments-post">Posted by: <a href="http://blog.zunta.org">tom</a> at June  9, 2005 12:50 PM</span>
+</div>
+<div class="comments-body">
+<p>I'm also having a problem with getting a grayed out User Script Command.  Tom could you possibly post your modifications to the script?</p>
+<span class="comments-post">Posted by: <a href="http://Zestic.com">Richard</a> at June 13, 2005 08:07 AM</span>
+</div>
+<div class="comments-body">
+<p>Hey Bruno,<br />
+Are you getting any javascript errors from this script in your<br />
+Javascript Console?</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at June 30, 2005 10:34 AM</span>
+</div>
+<div class="comments-body">
+<p>Hi Julien,<br />
+No, I just was getting the greyed out menu item. It seems that when I installed the user script from your page, all I got was gibberish (maybe an encoding problem?). So I cut and pasted the text of the script and everything is working great. Thanks for a really useful tool!</p>
+<span class="comments-post">Posted by: <a href="http://www.feedmarker.com/">Bruno</a> at June 30, 2005 10:37 AM</span>
+</div>
+<div class="comments-body">
+<p>I tried to use this promising script only to get an error on line: 196 "GM_getValue is not a function"</p>
+
+<p>I'm using gresemonkey 0.3.5 and firefox 1.0.6</p>
+
+<p>Any suggestions?</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;christian&#64;form-studios&#46;com">Christian</a> at July 20, 2005 11:08 AM</span>
+</div>
+<div class="comments-body">
+<p>Christian, <br />
+Per our emails, I updated the script to handle the security-related changes in Greasemonkey 0.3.5. <br />
+This script doesn't actually have a hard dependency on the GM_* functions, so I adapted it to handle that case and continue running nicely.</p>
+
+<p>Thanks a lot for your help. </p>
+<span class="comments-post">Posted by: <a href="http://www.feedmarker.com/">Julien</a> at July 20, 2005 04:07 PM</span>
+</div>
+<div class="comments-body">
+<p>I've got the same problem as some users here, but with another script!</p>
+
+<p>The menu "user script commands" is greyed out!</p>
+
+<p>what can i do?</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;stijnfeys&#64;hotmail&#46;com">Ramm</a> at July 21, 2005 05:52 AM</span>
+</div>
+<div class="comments-body">
+<p>Ramm, per our discussion by email, the problem is that you are using Greasemonkey 0.3.5.<br />
+That release is a security hotfix, which disabled all the GM_* functions such as GM_log or GM_getValue. That's why you're getting some GM_getValue errors in the Javascript console.</p>
+
+<p>I would recommend that you wait for the next version of Greasemonkey, which should support these functions again, while being safe. Keep an eye on <a href="http://greaseblog.blogspot.com/">http://greaseblog.blogspot.com/</a></p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at July 21, 2005 08:48 PM</span>
+</div>
+<div class="comments-body">
+<p>You may also be interested in looking at:</p>
+
+<p><a href="http://tamperdata.mozdev.org">http://tamperdata.mozdev.org</a></p>
+
+<p>A</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;adamsplugins&#64;gmail&#46;com">Adam Judson</a> at July 22, 2005 11:11 AM</span>
+</div>
+<div class="comments-body">
+<p>In the intrest of more self-promotion, and now that I've read the rest of the other comments...</p>
+
+<p>- using tamperdata you can use the view-source option to see the response from your request.<br />
+- seems to work fine with Gmail, though I haven't tested anything else.</p>
+
+<p>A<br />
+</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;adamsplugins&#64;gmail&#46;com">Adam Judson</a> at July 22, 2005 11:25 AM</span>
+</div>
+<div class="comments-body">
+<p>This is a cool tool.  Thanks. </p>
+<span class="comments-post">Posted by: <a href="mailto&#58;skriloffn&#64;darden&#46;virginia&#46;edu">Nick Skriloff</a> at August  3, 2005 09:41 AM</span>
+</div>
+<div class="comments-body">
+<p>thanks, good debugging tool</p>
+<span class="comments-post">Posted by: <a href="http://telecharger-logiciels.ifrance.com">emule</a> at August 23, 2005 01:55 AM</span>
+</div>
+<div class="comments-body">
+<p>Hi Julien,<br />
+No, I just was getting the greyed out menu item. It seems that when I installed the user script from your page, all I got was gibberish (maybe an encoding problem?).  So I cut and pasted the text of the script and everything is working great. Thanks for a really useful tool!</p>
+<span class="comments-post">Posted by: <a href="http://telechargersoftware.ifrance.com">logiciels gratuit</a> at August 28, 2005 11:57 PM</span>
+</div>
+<div class="comments-body">
+<p>Very cool scrip!</p>
+
+<p>For some strange reason the first few times I've tried this script on Start.com things worked. I could see and debug the ajax interaction. But after that the script wouldn't pop up anymore :(</p>
+
+<p>Does anyone know why?</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;muzic&#64;shaw&#46;ca">Simon</a> at September 30, 2005 05:28 PM</span>
+</div>
+<div class="comments-body">
+<p>Cool,</p>
+
+<p>How does one handle different ports?</p>
+
+<p>I tried putting some * around like <a href="http://127.0.0.1*/*">http://127.0.0.1*/*</a> but that did not seem to work.</p>
+
+<p>Thanks</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;serge&#64;sozonoff&#46;com">Serge</a> at October 10, 2005 06:28 AM</span>
+</div>
+<div class="comments-body">
+<p>is it just me or does this script *NOT* work with FF 1.5b2?</p>
+
+<p>Maybe I'm just a dummy but my DIV appears but no debug data gets populated?</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;vito9&#64;btinternet&#46;com">vito9</a> at October 27, 2005 10:54 AM</span>
+</div>
+<div class="comments-body">
+<p>Installed the script but it doesn't seem to work. With Google suggest the tracing window appears but I can't move it around and nothing appears in the window.  The User Script Commands menu item of Greasemonkey is always greyed out so if I hide the window the only way to get it back is to reload a configured page (eg Google Suggest).  FWIW I get a ton of JavaScript errors from Google Suggest.</p>
+<span class="comments-post">Posted by: <a href="http://www.luacheia.com/">Michael Brown</a> at December  8, 2005 09:29 AM</span>
+</div>
+<div class="comments-body">
+<p>I have firefox 1.5. Alot of things dont seem to work correctly. I cant drag and drop the box, when I minimize the whole thing disappears and user script command option under tools menu is never available, when I hide it there is no way to bring it back. How can firefox javascript change that much.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;andynagai&#64;verizon&#46;net">Andy</a> at December 18, 2005 09:41 PM</span>
+</div>
+<div class="comments-body">
+<p>Hi Andy,<br />
+The drag and drop problem is known. It doesn't actually come from Firefox, but from Greasemonkey (that changed it's injection model).<br />
+I didn't know about the menu problem thought, I'll check it out. I also suspect it's a problem with the latest version of Greasemonkey.</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at December 19, 2005 08:35 AM</span>
+</div>
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+<div class="trackback-body">
+<a name="283"></a>
+<span class="trackback-post"><a href="http://www.7korobi8oki.com/mt/archives/000066.html" target="new">Ajax¤òGreasemonkey¤Ç¥Ç¥Ð¥Ã¥°</a><br />
+<b>Excerpt:</b> ºÇ¶á¤ä¤Ã¤ÈÍî¤ÁÃå¤¤¤Æ¤­¤¿Ajax¤Ç¤¹¤¬¡¢¥Ñ¥Ã¤ÈÈô¤Ó¤Ä¤¯¤Ë¤ÏÃæ¡¹Æñ¤·¤¤¡£Îã¤¨¤Ð¥Ç¥Ð...<br />
+<b>Weblog:</b> 7korobi8oki.com<br />
+<b>Tracked:</b> June  2, 2005 07:57 AM</span>
+</div>
+<div class="trackback-body">
+<a name="284"></a>
+<span class="trackback-post"><a href="http://www.anticlue.net/archives/000565.htm" target="new">AJAX Debugging Tool</a><br />
+<b>Excerpt:</b> Julien Couvreur has released an updated version of his Ajax Debugging Tool. The new script adds debugging features to the tracing greasemonkey script....<br />
+<b>Weblog:</b> Anticlue<br />
+<b>Tracked:</b> June  3, 2005 02:50 AM</span>
+</div>
+<div class="trackback-body">
+<a name="286"></a>
+<span class="trackback-post"><a href="http://www.billkatz.com/greasemonkey" target="new">All Kinds of Greasemonkey Goodness</a><br />
+<b>Excerpt:</b> <p>Short note: Two great developments are available that build on the <a href="http://greasemonkey.mozdev.org/">Greasemonkey</a> tool for the Firefox browser. <a href="http://platypus.mozdev.org/index.html">Platypus</a> allows you to modify a web page fro</p><br />
+<b>Weblog:</b> Bill Katz<br />
+<b>Tracked:</b> June  3, 2005 05:02 PM</span>
+</div>
+<div class="trackback-body">
+<a name="287"></a>
+<span class="trackback-post"><a href="http://www.karlnelson.net/weblog/000935.html" target="new">Link Dump</a><br />
+<b>Excerpt:</b> A small and random collection of nifty things I've seen float past lately: The BBC is offering downloads of all of Beethoven's symphonies. Unfortunately, you need to pay attention to when they broadcast 'em, as the MP3s are only up for a few days after...<br />
+<b>Weblog:</b> Information Management Weblog<br />
+<b>Tracked:</b> June  3, 2005 05:24 PM</span>
+</div>
+<div class="trackback-body">
+<a name="288"></a>
+<span class="trackback-post"><a href="http://emergent.urbanpug.com/?p=30" target="new">More Ajax</a><br />
+<b>Excerpt:</b> A couple things:  Backbase now has a 'community edition,' there's a greasemonkey script that does ajax debugging, Multiple Text Applicator does ajax lists.
+
+Oh, and here's something i wished i had yesterday -- Live Http Headers -- This is a mozilla e...<br />
+<b>Weblog:</b> Emergent Properties<br />
+<b>Tracked:</b> June  7, 2005 08:20 AM</span>
+</div>
+<div class="trackback-body">
+<a name="357"></a>
+<span class="trackback-post"><a href="http://216.112.239.41/eladio/archive/2005/07/27/161.aspx" target="new">re: Ajax is just not for cleaning...</a><br />
+<b>Excerpt:</b> <br />
+<b>Weblog:</b> Eladio<br />
+<b>Tracked:</b> July 27, 2005 08:53 AM</span>
+</div>
+<div class="trackback-body">
+<a name="358"></a>
+<span class="trackback-post"><a href="http://www.eskimoblood.de/index.php?p=62" target="new">XMLHttpRequest entkÃ¤fern</a><br />
+<b>Excerpt:</b> FÃ¼r alle die sich mit XMLHttpRequest rumschlagen gibts hier ein tolles Greasemonkey Skript, dass einem in einem extra div Daten zu dem jeweiligen XMLHttpRequest-Anfragen anzeigt. Hier eine kurze Liste der Features:
+	Anzeigen des Requestaufrufs
+	Anfr...<br />
+<b>Weblog:</b> eskimoblood<br />
+<b>Tracked:</b> July 28, 2005 05:22 AM</span>
+</div>
+<div class="trackback-body">
+<a name="375"></a>
+<span class="trackback-post"><a href="http://blogs.warwick.ac.uk/sjones/entry/ajax_debugging/" target="new">AJAX debugging</a><br />
+<b>Excerpt:</b> Just found this very cool piece of script, basically it uses the Greasemonkey extension to firefox to replace the XMLHttpRequest object with a debuging version. The script appears as a floating div...<br />
+<b>Weblog:</b> Steven's blog<br />
+<b>Tracked:</b> August 20, 2005 08:51 AM</span>
+</div>
+<div class="trackback-body">
+<a name="381"></a>
+<span class="trackback-post"><a href="http://blogs.warwick.ac.uk/sjones/entry/ajax_debugging/" target="new">AJAX debugging</a><br />
+<b>Excerpt:</b> Just found this very cool piece of script, basically it uses the Greasemonkey extension to firefox to replace the XMLHttpRequest object with a debuging version. The script appears as a floating div...<br />
+<b>Weblog:</b> Steven's blog<br />
+<b>Tracked:</b> August 24, 2005 09:15 AM</span>
+</div>
+<div class="trackback-body">
+<a name="383"></a>
+<span class="trackback-post"><a href="http://blog.dreamprojections.com/archive/2005/08/24/2942.aspx" target="new">Newer script</a><br />
+<b>Excerpt:</b> <br />
+<b>Weblog:</b> blog.dreampro<br />
+<b>Tracked:</b> August 24, 2005 02:37 PM</span>
+</div>
+<div class="trackback-body">
+<a name="515"></a>
+<span class="trackback-post"><a href="http://192.168.0.20/pukiwiki/index.php?JavaScript%2FAjax" target="new">JavaScript/Ajax</a><br />
+<b>Excerpt:</b> Top / JavaScript / Ajax Ajax  &dagger;  &uarr;Online demo application  &dagger; Backbase - Rich Internet Applications Zimbra  &uarr;Related Links  &dagger; Ajax&#58; Web ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³é–‹ç™ºã®æ–°ã—ã„ã‚¢ãƒ—ãƒ­ãƒ¼ãƒ bricklife.weblog.*&#58; ...<br />
+<b>Weblog:</b> ã«ã“ã«ã“é¢¨å‘³::Wiki (PukiWiki/TrackBack 0.3)<br />
+<b>Tracked:</b> January  2, 2006 06:23 AM</span>
+</div>
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

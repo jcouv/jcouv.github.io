@@ -1,0 +1,32 @@
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresDefault "access plus 2 days"
+ExpiresByType text/html "access plus 30 days"
+ExpiresByType application/x-javascript "access plus 30 days"
+ExpiresByType image/x-icon "access plus 30 days"
+ExpiresByType image/jpeg "access plus 30 days"
+ExpiresByType image/gif "access plus 30 days"
+ExpiresByType text/css "access plus 30 days"
+</IfModule>
+
+<IfModule mod_gzip.c>
+mod_gzip_item_include         file       \.html$
+mod_gzip_item_include         file       \.xml$
+mod_gzip_item_include         file       \.rdf$
+mod_gzip_item_include         file       \.xslt$
+mod_gzip_item_include         file       \.txt$
+mod_gzip_item_include         file       \.jpg$
+mod_gzip_item_include         file       \.css$
+mod_gzip_item_include         file       \.pdf$
+mod_gzip_item_include         file       \.jpg$
+mod_gzip_item_include         file       \.gif$
+mod_gzip_item_include         mime       ^text/html$
+mod_gzip_item_include         mime       ^text/plain$
+mod_gzip_item_include         mime       ^application/xml$
+mod_gzip_item_include         mime       ^application/pdf$
+mod_gzip_item_include         mime       ^multipart/byteranges
+mod_gzip_item_include         mime       ^image/jpeg$
+mod_gzip_item_include         mime       ^image/gif$
+</IfModule>
+
+Options All

@@ -1,0 +1,376 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Google Wave</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000357.html" title="Reading facial expressions" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000359.html" title="Reactive programming in javascript and C#" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000358.html">
+<dc:title>Google Wave</dc:title>
+<dc:description> A few quick notes on Google Wave, which already seems an interesting system. For some details, watch the developer preview presentation and related whitepapers, linked below. A wave can be seen as a conversation which lives on a server (like forums, rather than emails). It is modeled as a tree of messages, where a reply can be inserted between any two paragraphs. The editor offers rich formatting and spell checking (based on statistical language model). Parts of the conversation can be restricted to a sub-set of participants (private replies). Changes are distributed real-time to other connected participants, as you...</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2009-06-01T22:45:43-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000357.html">« Reading facial expressions</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">June 01, 2009</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">Google Wave</h2>
+
+<p><a href="http://www.flickr.com/photos/clearlyambiguous/46198862/"><img src="http://farm1.static.flickr.com/30/46198862_5590b8a76d_m.jpg" style="float: right; padding: 10px 0px 0px 20px; width:240; height:183; border: none"  alt="waves" /></a> </p>
+
+<p>A few quick notes on <a href="http://wave.google.com/">Google Wave</a>, which already seems an interesting system. For some details, watch the developer preview presentation and related whitepapers, linked below. </p>
+
+<p>A wave can be seen as a conversation which lives on a server (like forums, rather than emails). It is modeled as a tree of messages, where a reply can be inserted between any two paragraphs. The editor offers rich formatting and spell checking (based on statistical language model). Parts of the conversation can be restricted to a sub-set of participants (private replies).</p>
+
+<p>Changes are distributed real-time to other connected participants, as you type. The system keeps track of the history and the read/unread state for each change for each participant. If you join an ongoing conversation, you can replay the history of replies, one step at a time. </p>
+
+<p>In addition to the conversation model, the editor supports the document metaphor (like a wiki), where others can edit your messages (rather than replying to them). Such granular changes are also tracked in the wave history and read/unread state. The editor displays the current carret position of all participants as they edit, with highlights for new changes. </p>
+
+<p>Later on, the document experience could be enriched by allowing changes to be reverted or waves to be branched (and integrate changes across branches). Also, the editor could be extended to support new objects in the document, such as spreadsheets, diagrams, drawings, etc.</p>
+
+<p>Just like for maps, a javascript API lets you embed a live wave in any web page, with some points of integration between the host page and the control.<br />
+Functionality can also be added in a <a href="http://googlewavedev.blogspot.com/2009/05/introducing-google-wave-apis-what-can.html">few different ways</a>: editor extensions and bots. <br />
+The editor can be extended thru gadgets. They act as richer content in messages. This could include an embedded, interactive and collaborative map, video or form editing controls.<br />
+Bots are services which participate in the wave. For example, Spelly monitors the text you type, applies spell check and highlights mistakes with suggestions. Twitty acts as a bi-directional bridge between a wave and twitter. More bots are demonstrated to assist in various tasks, such as linkifying text, making polls, or bridging waves with a bug tracking system.<br />
+Finally, Wave servers can be federated together, allowing different companies to host their own system, but also share/sync waves.</p>
+
+<p>Overall, I am curious to try this product, especially for collaborative document editing such as functional specifications. <br />
+On the technical side, some aspects are noteworthy: the unified design for supporting the broad continuum of conversation and collaboration models, the design supporting the concurrent editing and the protocol for server federation. The collaborative editing feature relies on <a href="http://en.wikipedia.org/wiki/Operational_transformation">operational transformation</a>, which involves distributed version tracking, and change merging. Here is Google's paper on the use and simplifications of <a href="http://www.waveprotocol.org/whitepapers/operational-transform">operational transformation in Wave</a>. Incidentally, the same design can also support undo, disconnected operation (offline mode) or even a general P2P architecture (no dedicated server).</p>
+
+<a name="more"></a>
+<p> <br />
+A <b>snapshot of the editor</b>, illustrating different features (conversation tree, concurrent editing):<br />
+<a href="http://radar.oreilly.com/2009/05/google-wave-what-might-email-l.html"><img src="http://radar.oreilly.com/upload/2009/05/Google_Wave_concurrent_edit.png" style="border: none" alt="Google Wave editor" /></a> <br />
+ <br />
+<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/v_UyVmITiYQ&color1=0xb1b1b1&color2=0xcfcfcf&hl=en&feature=player_embedded&fs=1"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.youtube.com/v/v_UyVmITiYQ&color1=0xb1b1b1&color2=0xcfcfcf&hl=en&feature=player_embedded&fs=1" type="application/x-shockwave-flash" allowfullscreen="true" width="425" height="344"></embed></object><br />
+ </p>
+
+<p><b>Programming With and For Google Wave</b> explains the various APIs, object models and extensibility points:<br />
+<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/O5JT2jBrJX8&rel=0&color1=0xb1b1b1&color2=0xcfcfcf&hl=en&feature=player_embedded&fs=1"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.youtube.com/v/O5JT2jBrJX8&rel=0&color1=0xb1b1b1&color2=0xcfcfcf&hl=en&feature=player_embedded&fs=1" type="application/x-shockwave-flash" allowfullscreen="true" width="425" height="344"></embed></object></p>
+
+<p><br />
+ <br />
+A brief overview of concurrent editing in Wave using operational transformation:<br />
+<object width="560" height="340"><param name="movie" value="http://www.youtube.com/v/3ykZYKCK7AM&hl=en&fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/3ykZYKCK7AM&hl=en&fs=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="560" height="340"></embed></object><br />
+ <br />
+A more comprehensive survey of the operational transformation field:<br />
+<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/84zqbXUQIHc&hl=en&fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/84zqbXUQIHc&hl=en&fs=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object></p>
+
+<span class="posted">Posted by Julien on June 01, 2009. <a href="http://blog.monstuff.com/archives/000358.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '358';
+        var disqus_url = 'http://blog.monstuff.com/archives/000358.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+<div class="comments-body">
+<p>I'm deeply impressed.  Interestingly, today I came up to  EtherPad ( <a href="http://etherpad.com/">http://etherpad.com/</a> ), a collaboration tool that allows simultaneous work, probably based in the same technology you are pointing to.  EtherPad is brought to us by the AppJet team and it is already live.  It seems, however, that Google Wave completely includes EtherPad and it is actually much, much more than this.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;esquifit&#64;googlemail&#46;com">esquifit</a> at June  2, 2009 02:48 AM</span>
+</div>
+<div class="comments-body">
+<p>Thinking of Wave in terms of "replacing" such as GMAIL (or even email, itself) is just silly.  Not every Internet communication needs to be (or even should be) as would be in Wave.  Traditional email, at the very least, should (and likely will) never go away.  Of this, I think there should be little fear or doubt.</p>
+
+<p>Now, that doesn't mean there won't be a place -- and a potent one, indeed -- in our lives for such as Wave and its ineluctable variants.  It, too, will be useful, under the right circumstances.  In fact, from my admittedly only-cursory analysis of it to date, I'm thinking that what actually MAY be "replaced" by Wave, as a practical matter, is traditional "chat," as we now know it (though traditional chat, mark my words, will continue to be around for years and years, too, no matter how good Wave ultimately gets).</p>
+
+<p>Regardless, one thing about which we should all be clear in our minds is that we're not talking about the mere replacing of anything, here.  Wave, for better or worse, seems very nearly of the nature of paradigm shift... and far be it from me to suggest that that's, necessarily, a bad thing, here.</p>
+
+<p>It does, however, come with pitfalls about which we should all be watchful, if not actually downright concerned.  For example, though it's now coming out in articles (and/or rebuttals to such as I am posting here) that it's likely to be user-configurable, initial writings about Wave touted the ability (and represented it as essential to Wave's very way of operating) of all persons in a "wave" (or a thread) to be able to see, in real time, all others' keystrokes, as they type.</p>
+
+<p>Let me repeat the salient words of that, here:  AS. THEY. TYPE.</p>
+
+<p>Think about that, please, for just a moment.  It's a far larger problem than, perhaps, it initially seems.  Like how sausage is made (or, as some joke, like how laws are passed), some things in life may better be left something of a mystery to those who ultimately consume (or are regulated by) them; and, most importantly, solely at the creator's option.</p>
+
+<p>The ultimate impact and meaning to the reader of anything written would be inordinately influenced by said reader's having been a witness to its creation.  If one is a thoughtful writer who doesn't just blurt out every wayward thing which flits through one's brain, then one is going to pause to think while one types, and back-up and delete and re-type, and whatever else behind-the-scenes activity goes into what ends-up being the finished written product.  If the reader were able to witness what the writer merely paused before writing; or actually did write, but then thought better of and either removed or changed to something else, then the bell of what the reader saw along the way cannot be un-rung; and the reader's ultimate interpretation and understanding of the final written result will be indelibly affected in ways (even if not immediately obvious) more likely than not to be inherently bad for all concerned.</p>
+
+<p>Now, if it's true, as some who challenge such as my assertions, here, are now saying, that the ability of others to view one's keystrokes as one makes them is (or at least will be) user-configurable in the version of Wave which is finally released to the end-user wild, then my concern, at least on this particular privacy-related point, is happily ameliorated.  </p>
+
+<p>However, of larger philosophical concern to me is that the creators of Wave apparently believed, even if only briefly, that something as basic as this issue would not be important.  What, then (if anything), does that mean we should also be wary of in the realm of personal privacy protections, just generally, for users of this new and groundbreaking product?  For what else should we be watching which may, ultimately, negatively impact us because of fundamental, and at least initially seemingly harmless, privacy encroachments... </p>
+
+<p>...encroachments which may not even be recognizable as encroachments to Wave's creators because, perhaps, of their nationality and upbringing (nothing negative, mind you, intended by that wording, I assure).</p>
+
+<p>One potentially troubling impact (at least from the standpoint of Americans, in my opinion) of globalization (which, incidentaly, I'm not fundamentally against, despite how what I'm about to write may make it seem) is how the sensibilities of those non-Americans who create things which all others on the planet end-up using can unintentionally contravene that which Americans hold perhaps nearer and dearer to their hearts than do non-American others.  Those who grew up and still live in countries where such things as privacy and freedom of speech are not as absolute and paramount as in the US may or may not necessarily value such rights to the same degree as do Americans; and it sometimes shows in their work.  </p>
+
+<p>It has not escaped my notice that the two brothers -- brilliant though they are -- who created and continue to develop Wave were neither born and raised in, nor now live in, the US... and so I fear (and I may be completely wrong about this, I realize... but absent, at this point, any reason not to, I am nevertheless fearing that they) may not place as much of a premium on the notion of absolute privacy (if desired by the end-user of Wave) as do Americans.  </p>
+
+<p>Or, who knows, maybe they do.  I don't know them, and it's unfair of me to presume, I suppose (or even to suppose, I presume).  One way or the other, though, it should be at least a concern to all that the default behavior of Wave seems so inherently and joltingly privacy-denuding.</p>
+
+<p>So, then, again, begged is the question:  Of what else (if anything), in Wave, should we who hold inviolate our privacy be wary?</p>
+
+<p>To appeal to (at least thinking) Americans, the makers of Wave need to take steps to ensure that if the end-user wants to protect his/her absolute privacy while using this admittedly exciting and paradigm-shifting new product, it can, via easy configuration settings, be satisfactorily and incontrovertibly achieved at all possible levels, and in all possible ways.  Moreover, as it is developed, the makers of Wave might need to realize that they may, because of their nationality and upbringing, not necessarily even recognize what all of those levels and ways might be; and the Americans (or even the non-Americans who at least fully grasp the American viewpoint regarding all this) who work on the development of Wave should ensure that no privacy holes such as I'm discussing here remain anywhere in it when it's finally and fully released into the end-user wild.</p>
+
+<p>Or so it is my opinion... my two cents worth, as it were... </p>
+
+<p>...which my ex, for example, among others, has been known to quickly attest tends to be about all it's usually worth.</p>
+
+<p><br />
+__________________________<br />
+Gregg L. DesElms<br />
+Napa, California<br />
+gregg[at]greggdeselms.com</p>
+<span class="comments-post">Posted by: <a href="http://www.greggdeselms.com">Gregg L. DesElms</a> at June  2, 2009 06:18 PM</span>
+</div>
+<div class="comments-body">
+<p>Hi Gregg,</p>
+
+<p>It seems that the privacy (or lack thereof) of the send-as-you-type nature of Wave is your main concern. The Wave team seems mindful of this issue and mentioned that this behavior could be turned off by the user ("don't show others until I am done").</p>
+
+<p>One privacy and confidentiality aspect which seems more sensitive in my mind is that bots (such as spell correction) see the document and may be run by different companies. Even if you host a Wave server in your firm, the spell-checker may be hosted by a third-party service, which will get access to your documents.</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at June  4, 2009 01:04 PM</span>
+</div>
+<div class="comments-body">
+<p>JUST FYI FOR YOUR LAMINATE FLOOR POST: IMPORTANT!<br />
+Okay, so we finally know why we were having trouble installing our Tundra foor from Ikea: <a href="http://www.ikea.com/us/en/catalog/products/80103018">http://www.ikea.com/us/en/catalog/products/80103018</a><br />
+It seems, according to our friendly local Ikea, that some of the flooring sits in the warehouse, where the plastic wrap gets holes in it, and so the flooring gets warped. It's entirely possible that if you bring home say, 7 packages of flooring, about 175 sq. ft., that all of it could be bad!<br />
+Well, once we knew that, we found the floor went together very quickly, with no trouble at all. That, of course, was because we left the two boxes we had opened alone, and went on with the other boxes, which were fine. Should this happen to you, stop using the box you have open and try another box. If it keeps happening, as unreal as it may seem, abandon that box, and try another.<br />
+Last fall we installed the black/carmel Ikea floor in our LR, and we had the same trouble, but just in a very few places, and we have a huge LR/DR, so we had bought over 20 boxes, and luck would have it that few were warped, maybe one box worth. With the dark colored floor we were able to work with the couple gaps we had, and you cannot tell they're there. With the white floor for Sophie's room you could absolutely see the gaps, and there was no way to fix it and hide it, so we were really frustrated until the local Ikea's phone helper told us the flooring was very likely warped.<br />
+Of course, nowhere on Ikea's website or in the store does it say that.<br />
+Nowhere.<br />
+Anyway, due to our ruined pieces when we were trying every other available option to try to get it to work, the room is almost done. Now we need to go back and get some more to finish. It's about 50 bucks down the drain, unless Ikea will take the floor back sans receipt, because we cannot find the receipt. I'll report back and let you know if they're "stand-up guys" or not. They will take it back, no matter how destroyed it is, with receipt. But, we didn't expect to return it, and we cannot find our receipt, so we will see how good of a co. they are.<br />
+</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;di&#64;dot&#46;com">di</a> at August  1, 2009 10:25 PM</span>
+</div>
+<div class="comments-body">
+<p>I tried to understand what is that Google Wave, but than I put the words in the seach field and found out that it is simple new online communication and collaboration tool.</p>
+<span class="comments-post">Posted by: <a href="http://www.silkgobelin.com">Picasso</a> at August  2, 2009 11:51 PM</span>
+</div>
+<div class="comments-body">
+<p>Google Wave looks very ambitious, maybe too much. It seems that other powerful platforms will have to follow it to make it successful and that's not obvious. We often forget that Google do not succeed in everything, fortunately :)</p>
+<span class="comments-post">Posted by: <a href="http://www.ficgs.com">Liam Baduk</a> at August 13, 2009 06:59 AM</span>
+</div>
+<div class="comments-body">
+<p>the point is that when someone like me posts a response on this blog, you might want to be aware of it. You could recieve an email or an RSS feed update depending on the blog technology.</p>
+
+<p>If it were a wave, you would be able to see in your wave client that it had changed. You could reply privately to me, play back the events, comment or rewrite parts of particular paragraphs that you want more detail on.</p>
+
+<p>And I and everyone else who is on this blog/wave can also see what is going on and contribute</p>
+
+<p>Julien has done a good job but for a different perspective Tim O'Reilly provides a very readable summary at <a href="http://radar.oreilly.com/2009/05/google-wave-what-might-email-l.html">http://radar.oreilly.com/2009/05/google-wave-what-might-email-l.html</a></p>
+
+<p>And why not have every email as a wave, what is the problem with having a more capable and flexible tool at hand?</p>
+
+<p>just because you have a swiss army knife , you don't neet to use every tool at once, it does a good job cutting for when you need to cut but it also does a much better job unscrewing a phillips head.</p>
+
+<p>So when you want to converse linearly - use a wave, when you want full collaboration, wave, when you want real time robot enhanced, secure, transactional, immersive, 3d, voice operated, auto transalted, communication...<br />
+</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;steve&#64;bhyve&#46;com">stevebhyve</a> at August 17, 2009 06:43 PM</span>
+</div>
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

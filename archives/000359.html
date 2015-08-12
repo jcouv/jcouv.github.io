@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Reactive programming in javascript and C#</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000358.html" title="Google Wave" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000361.html" title="Science of human action" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000359.html">
+<dc:title>Reactive programming in javascript and C#</dc:title>
+<dc:description> I stumbled on a cool javascript project: Flapjax. The library part is quite interesting (ie. ignore the language/compiler part). It provides a functional abstraction over push-based event processing, which is useful for asynchronous programming and interactive applications. The two concepts it offers are: time varying values, also called &quot;behaviors&quot;, and discrete sequences of values, also called &quot;events&quot;. Behaviors (noted B in Flapjax) always have a value, but may change at any time, while Events (noted E) are a discreet sequence of values. The library offers a number of functions for creating event streams from common javascript objects (such as...</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2009-08-15T14:18:54-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000358.html">« Google Wave</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">August 15, 2009</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">Reactive programming in javascript and C#</h2>
+
+<p><a href="http://www.flickr.com/photos/access/2165374689/"><img src="http://farm3.static.flickr.com/2278/2165374689_0c605b8e92_m.jpg" style="float: right; padding: 10px 0px 0px 20px; width:240; height:180; border: none"  alt="push, Sisyphus" /></a> </p>
+
+<p>I stumbled on a cool javascript project: <a href="http://www.flapjax-lang.org/">Flapjax</a>. The library part is quite interesting (ie. ignore the language/compiler part). It provides a functional abstraction over push-based event processing, which is useful for asynchronous programming and interactive applications.</p>
+
+<p>The two concepts it offers are: time varying values, also called "behaviors", and discrete sequences of values, also called "events".<br />
+Behaviors (noted B in Flapjax) always have a value, but may change at any time, while Events (noted E) are a discreet sequence of values.<br />
+ <br />
+ <br />
+The library offers a number of functions for creating event streams from common javascript objects (such as DOM elements), transforming/filtering streams, as well as converting between E and B types (see "snapshotE" and "startsWith" functions) and merging/joining streams (see "mergeE" function).<br />
+For example, a useful utility function is "calmE", which returns a throttled event stream. See the <a href="http://www.flapjax-lang.org/docs/">Flapjax API reference</a> for more.</p>
+
+<p>Asynchronous methods (such as calling the server) fit naturally in this design and  are also captured as transforms, which take one event stream of requests as an input and outputs an event stream of response (which you can feed into the next step of local processing).</p>
+
+<p><br />
+This lets you chain operations, LINQ-style, into an event processing pipeline where each stages pushes to the next. <br />
+This brings us to the .Net world. There are already some projects attempting to improve .Net and LINQ for asynchronous programming (CCR, Polyphonic C#/C&#969; <a href="http://bindablelinq.codeplex.com/">Bindable LINQ</a>, PFx/TPL with <a href="http://blogs.msdn.com/pfxteam/archive/2008/07/23/8768673.aspx">ContinueWith on Tasks and Futures<></a>), but most excitingly, this will officially be included in .Net 4.0 under the "Rx" framework. It brings the new IObservable<> type, a sibling to the existing IEnumerable<> type, which powers much of LINQ, with much of the same composability benefits.  </p>
+
+<p><a href="http://www.langnetsymposium.com/2009/talks/23-ErikMeijer-LiveLabsReactiveFramework.html">Erik Meijer's initial presentation on the Rx framework</a> explains the deep similarity between those types and the symmetry between the push and pull flows.</p>
+
+<a name="more"></a>
+<p> <br />
+An early version of the <em>System.Reactive</em> assembly is available in the Silverlight 3 release. Jafar Husain has been toying with those bits and blogging about their experience, starting with an excellent introduction, <a href="http://themechanicalbride.blogspot.com/2009/07/introducing-rx-linq-to-events.html">Introducing Rx, LINQ-to-events</a>.<br />
+  <br />
+  <br />
+One interesting problem is how to clean up the resources in the chain after the data is done flowing, or once a listener is no longer interested. With IEnumerable, the solution is having <a href="http://blogs.msdn.com/dancre/archive/2008/03/14/yield-and-usings-your-dispose-may-not-be-called.aspx">disposable IEnumerators</a>, which constructs like "foreach" take care of (see section 8.8.4 of the C# spec). <br />
+Rx solves this elegantly as well by returning an IDisposable object representing a subscription of a specific listener to an IObservable. Disposing this subscription handle unsubscribes the listener. <br />
+This is a definite improvement compared to native .Net events, which are notoriously tricky to clean, especially if you use anonymous methods as listeners.<br />
+<a href="http://channel9.msdn.com/shows/Going+Deep/Kim-Hamilton-and-Wes-Dyer-Inside-NET-Rx-and-IObservableIObserver-in-the-BCL-VS-2010/">Wes Dyer and Kim Hamilton give a good presentation of the IObservable API</a> as it stabilized to be included in the .Net 4.0 BCL, including the problem of dangling events and interesting other framework design considerations (naming, expectations, etc.).<br />
+ <br />
+The IObservervable API looks something like the following. <br />
+<div class="code"></p>
+
+<p>interface IObservable<T> {<br />
+&nbsp;&nbsp;	IDiposable Attach(IObserver<T> o); &nbsp;&nbsp; // returns an un-subscription handle.<br />
+}</p>
+
+<p>interface IObserver<T> {<br />
+&nbsp;&nbsp;	void Yield(T event);<br />
+&nbsp;&nbsp;	void Break(); &nbsp;&nbsp; // this was the last event from this source.<br />
+&nbsp;&nbsp;	void Throw(Exception ex); &nbsp;&nbsp; // source blew up. no more events.<br />
+}</p>
+
+<p></div></p>
+
+<p> <br />
+PS: As a brain-teaser, I can't help but mention that Flapjax uses trampoline-style programming to handle events, since Javascript is single-threaded. If you are not familiar with that mind-twisting trick, it relies on generators (the javascript equivalent of IEnumerable iterators) to slice functions into smaller units which are invoked/pulled by a controller. Here's my previous write-up on <a href="http://blog.monstuff.com/archives/000315.html">trampoline-style multi-threading in javascript</a>.</p>
+
+<p>PPS: Neat innovations like the Reactive Framework <a href="http://blog.monstuff.com/archives/000152.html">keep reminding me</a> of what a well-designed language C# is, as its support significant programming abstractions to be implemented naturally and efficiently as libraries. <br />
+Now the problem is converging the different asynchronous programming models developed on .Net (events, Parallel FX, Rx framework).</p>
+
+<p><u>Update:</u> The initial version of Rx was <a href="http://msdn.microsoft.com/en-us/devlabs/ee794896.aspx">released</a> for download.</p>
+
+<p><u>Updated</u> Rx has hopped from .Net back to Javascript, in the form of <a href="http://blogs.msdn.com/rxteam/archive/2010/03/17/reactive-extensions-for-javascript.aspx">RxJS</a>.</p>
+
+<span class="posted">Posted by Julien on August 15, 2009. <a href="http://blog.monstuff.com/archives/000359.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '359';
+        var disqus_url = 'http://blog.monstuff.com/archives/000359.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

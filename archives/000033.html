@@ -1,0 +1,359 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Custom context menu entry in IE and Mozilla</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000027.html" title="Nifty tools for windows" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000035.html" title="Debugging Backwards in Time" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000033.html">
+<dc:title>Custom context menu entry in IE and Mozilla</dc:title>
+<dc:description>I use a simple online bookmark manager of mine to keep a stack of all the pages that I want to look at later. My eBookmarks page doesn&apos;t look good or offer a lot of functionality (no categories or grouping), but allows me to have my stack of links available on a single page. It only supports pushing an entry and deleting entries (although you can&apos;t access these features, as some authentication is required). A bookmarklet (a bookmark with a javascript: url) can be used to conveniently add the current page to this online stack (here is the bookmarklet). This...</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2003-04-09T12:36:18-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000027.html">« Nifty tools for windows</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">April 09, 2003</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">Custom context menu entry in IE and Mozilla</h2>
+
+<p>I use a simple online bookmark manager of mine to keep a stack of all the pages that I want to look at later. <a href="http://srv3.purenrg.com/~dumky/bookmarks/bookmarks.php?user=dumky">My eBookmarks page</a> doesn't look good or offer a lot of functionality (no categories or grouping), but allows me to have my stack of links available on a single page. It only supports pushing an entry and deleting entries (although you can't access these features, as some authentication is required).</p>
+
+<p>A bookmarklet (a bookmark with a <i>javascript:</i> url) can be used to conveniently add the current page to this online stack (<a href="javascript:{var x=prompt('Description for the eBookmark', document.title); if(x&&x!='') { void(open('http://srv3.purenrg.com/~dumky/bookmarks/bookmark_add.php?user=dumky&url='+escape(location.href).replace(/\+/g,'%2b')+'&desc='+escape(x).replace(/\+/g,'%2b'),'easyadd','height=10,width=10,left=10,top=10,location=no,scrollbars=yes,menubars=no,toolbars=no,resizable=yes'));}}">here is the bookmarklet</a>). This bookmarklet simply opens a small popup where the querystring contains the URL and DESCRIPTION of the link to be eBookmarked. The popup closes itself if the operation was successful.<br />
+But a context menu entry is even more convenient and efficient, as it saves space in your bookmarks toolbar and requires less mouse movement.</p>
+
+<p>Here are the steps I used to simply customize the context menu in IE and Mozilla, to give it some eBookmark functionality.</p>
+
+<a name="more"></a>
+<p><b>In Mozilla</b></p>
+
+<p>To add a custom context menu entry to the browser component of Mozilla (in my case Phoenix), two things are needed: UI and code. The UI describing the entry goes in browser.jar/content/browser/browser.xul and the additionnal handler function goes in browser.jar/content/browser/browser.js. </p>
+
+<p>The change in browser.xul goes next to the existing "Bookmark This Page" entry:<br />
+<div class="code">&lt;menuitem id="context-ebookmarkpage"<br />
+&nbsp; label="eBookmark This Page"<br />
+&nbsp; accesskey="E"<br />
+&nbsp; oncommand="gContextMenu.eBookmarkPage();"/></div></p>
+
+<p>The change in browser.js (extra linebreaks where added for layout purpose in this article, they are marked with a backslash at the end of the line):<br />
+<div class="code">    eBookmarkPage : function () {<br />
+&nbsp;var x = prompt('Description for the eBookmark', <br />
+&nbsp;&nbsp;&nbsp;this.target.ownerDocument.title);<br />
+&nbsp;if(x && x != '') {<br />
+&nbsp;&nbsp;&nbsp;void(open('http://.../bookmark_add.php?user=dumky&url='+ \<br />
+&nbsp;&nbsp;&nbsp;escape(this.target.ownerDocument.location.href).replace(/\+/g,'%2b')+&nbsp;\<br />
+&nbsp;&nbsp;&nbsp;'&desc='+escape(x).replace(/\+/g,'%2b'), 'easyadd', \<br />
+&nbsp;&nbsp;&nbsp;'height=10,width=10,left=10,top=10,location=no,scrollbars=yes, \<br />
+&nbsp;&nbsp;&nbsp;menubars=no,toolbars=no,resizable=yes'));<br />
+&nbsp; }<br />
+},</div></p>
+
+<p>The problem with doing the change directly in browser.jar is that it needs to be maintained at each release of the browser. Luckily Phoenix hasn't released since I did this change... ;-) There is a way to add the context menu entry without modifying the main distribution, by bundling both the UI and code in a separate addon file and using the <a href="http://www.xulplanet.com/tutorials/xultu/overlay.html">overlay technique</a>. Here is a <a href="http://linky.mozdev.org/">project</a> that uses this technique. I didn't explore this option a lot because I also wanted remove the context menu entries that I don't use, which I don't believe is possible using an overlay.</p>
+
+<p>Here is the result in Phoenix:<br />
+<img alt="ebookmark-context-phoenix.JPG" src="http://blog.monstuff.com/archives/images/ebookmark-context-phoenix.JPG" width="156" height="99" border="0" /></p>
+
+<p><br />
+<b>In Internet Explorer</b></p>
+
+<p>In IE, the simplest way of adding a extra context menu entry is by creating a registry key with the label of the new entry. This registry key will also point to an html file containing script that will be executed when the new context entry is clicked.</p>
+
+<p>To add a context menu labelled "eBookmark This Page", a registry key has to be created with this path: <i>HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\MenuExt\eBookmark This Page</i>.<br />
+<a href="http://blog.monstuff.com/archives/images/ebookmark-IE.reg">Download the sample registry file</a>.</p>
+
+<p>In this key, the <i>(Default)</i> value should point to the html file containing the code, like "file://e:\ebookmark.html". <br />
+A binary value also needs to be added to this key, with <i>Contexts</i> as the name and <i>21 00 00 00</i> as the data. This <i>Contexts</i> value controls when the entry is displayed or not (right-click on text, an image, a link or a selection....). You'll find more details about these registry settings in the references below.</p>
+
+<p>If you have the <a href="http://toolbar.google.com/">googlebar</a> installed, then you'll have similar entries at this location in your registry, except that the html is kept locally, inside a resource file (<i>res://c:\winnt\downloaded program files\GoogleToolbar_en_1.1.70-big.dll/cmcache.html</i> for example).</p>
+
+<p>A nice trick is that you can also host the html file remotely (the registry key may then read <i>http://enotes.monstuff.com/ebookmark.html</i>). That allows you to minimize the installation on the client machine (only a registry key change is needed). The only problem is security, since you now execute code from a remote location. I need to investigate whether in this solution the remote code has any unusuable trust associated with it or if it respects the security and domain restrictions from IE.</p>
+
+<p>Here is the html file I used (ebookmark.html). The parent window is available through a special variable <i>external.menuArguments</i>.<br />
+<div class="code">&lt;html><br />
+&lt;script language="JavaScript" defer><br />
+&nbsp;&nbsp; var parentwin = external.menuArguments;<br />
+&nbsp;&nbsp; var doc = parentwin.document;<br />
+&nbsp;&nbsp; var x = parentwin.prompt('Description for the eBookmark', doc.title);<br />
+&nbsp;&nbsp; if(x&&x!='') {<br />
+&nbsp;&nbsp;&nbsp; // Same code as in previous sample but use<br />
+&nbsp;&nbsp;&nbsp; // <i>parentwin.open()</i> to open the popup, and <br />
+&nbsp;&nbsp;&nbsp; // <i>parentwin.location.href</i> to get the location of the current window<br />
+ }<br />
+&lt;/script><br />
+&lt;/html></div></p>
+
+<p>Here is the result in IE:<br />
+<img src="http://blog.monstuff.com/archives/images/ebookmark-context-IE.JPG" width="171" height="57" border="0" /></p>
+
+<p><br />
+<b>Conclusion</b><br />
+... to be completed ...<br />
+Another feature of Mozilla that I use for my eBookmarks is the bookmark access by keyword. The "Open eBookmarks" bookmark has <i>books</i> as keyword and "Add eBookmark" has <i>book</i>. This way I can view and add eBookmarks using the keyboard only (Type <i>Alt-D</i> or <i>Ctrl-L</i> to edit the location bar and type the keyword). I like to have alternatives and not be stuck with the mouse. But obviously the mouse approach fits better the input model of the Tablet PC, which I use a lot to browse...</p>
+
+<p>One more little trick: if you add an eBookmark while your eBookmark page is opened in another tab in Mozilla (or window in IE), you want your eBookmark list to refresh itself. For this I use a loop in the main page that checks for a time cookie. This time cookie gets updated when you add an entry...</p>
+
+<p><b>More</b><br />
+<a href="http://msdn.microsoft.com/workshop/browser/overview/Overview.asp#Controlling_the_Cont">Controlling the Context Menu</a> on MSDN.<br />
+<a href="http://msdn.microsoft.com/workshop/browser/ext/tutorials/context.asp">Adding Entries to the Standard Context Menu</a> on MSDN.<br />
+<a href="http://www.bookmarklets.com">All you want to know about bookmarklets</a> at bookmarklets.com.<br />
+Simon's article on <a href="http://www.sitepoint.com/article/bookmarklets">bookmarklets</a>.</p>
+
+<span class="posted">Posted by Julien on April 09, 2003. <a href="http://blog.monstuff.com/archives/000033.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '33';
+        var disqus_url = 'http://blog.monstuff.com/archives/000033.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+<div class="comments-body">
+<p>Thanks for the tip!  Saved me added frustration.</p>
+<span class="comments-post">Posted by: <a href="http://millweed.com">lyrical warfare</a> at August 19, 2003 03:02 PM</span>
+</div>
+<div class="comments-body">
+<p>I can't find the browser.jar file in Mozilla 1.7RC2.</p>
+<span class="comments-post">Posted by: <a href="http://www.somacon.com/">Shailesh Humbad</a> at June  5, 2004 08:04 AM</span>
+</div>
+<div class="comments-body">
+<p>Shailesh, I'm using Firefox and some files are not named the same way in Mozilla. It looks like the files you want to check out are "navigator.xul", "navigator.js" and "contentAreaContextOverlay.xul" in comm.jar.</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/archives/000033.html">Julien</a> at August 11, 2004 12:23 PM</span>
+</div>
+<div class="comments-body">
+<p>I think that is is not realizable. Because we need to modify the browser.jar file of Mozilla or Registry entry (IE). This thing cannot complete in Client side...especially in WEb Application.<br />
+Any way to migration the setting to Server side?</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;cptkhoa2003&#64;yahoo&#46;com">Khoa Phuc Thien Cai</a> at September 22, 2004 01:14 AM</span>
+</div>
+<div class="comments-body">
+<p>i'd like to add an entry to the popupu menu in IE so that i can zoom in an image on a web page, or maybe open it in, say, ACDSEE. I'd appreciate your help.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;hmoazzam&#64;tam&#46;co&#46;ir">hadi</a> at July  2, 2005 11:54 PM</span>
+</div>
+<div class="comments-body">
+<p>The IE was support many modules, included <br />
+translators, for example PRMT. I like that!</p>
+<span class="comments-post">Posted by: <a href="http:///  ">Mikel</a> at March 26, 2006 08:02 PM</span>
+</div>
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+<div class="trackback-body">
+<a name="50"></a>
+<span class="trackback-post"><a href="http://weblogs.asp.net/oldnewthing/archive/2004/06/16/157849.aspx" target="new">re: Extending the Internet Explorer context menu</a><br />
+<b>Excerpt:</b> <br />
+<b>Weblog:</b> The Old New Thing<br />
+<b>Tracked:</b> June 16, 2004 10:33 PM</span>
+</div>
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Add a plugin system to your .NET application</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000047.html" title="What is DRM trying to solve?" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000050.html" title="Ink annotations in Acrobat Reader" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000049.html">
+<dc:title>Add a plugin system to your .NET application</dc:title>
+<dc:description>Roy Osherove wrote a cool article (with code) on implementing a plugin system in C#. The architecture that is described is simple and clear. It also serves as a nice sample for having custom configuration handlers and loading/instanciating classes at runtime (via the Activator). Update: Roy posted a second article on the topic of plugins....</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2003-05-27T23:48:02-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000047.html">« What is DRM trying to solve?</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">May 27, 2003</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">Add a plugin system to your .NET application</h2>
+
+<p>Roy Osherove wrote a cool article (with code) on <a href="http://www.codeproject.com/csharp/Plugins.asp">implementing a plugin system</a> in C#.<br />
+The architecture that is described is simple and clear. It also serves as a nice sample for having custom configuration handlers and loading/instanciating classes at runtime (via the Activator).</p>
+
+<p>Update: Roy posted a <a href="http://weblogs.asp.net/rosherove/story/8048.aspx">second article on the topic of plugins</a>.</p>
+
+<a name="more"></a>
+<p><b>SharpDevelop Add-Ins</b><br />
+Check out this introduction paper from the SharpDevelop team on the <a href="http://www.icsharpcode.net/TechNotes/ProgramArchitecture.pdf">SharpDevelop Open Development Architecture</a>, which is a richer (but harder to understand) add-in system.<br />
+They also published a book (<a href="http://www.icsharpcode.net/OpenSource/SD/InsideSharpDevelop.aspx">Dissecting a C# Application: Inside SharpDevelop</a>) with two very detailled chapters on their add-in management, with annotated code. A couple other chapters are even available online for free (one on the Windows Form designer and one on the Language Bindings).</p>
+
+<p><br />
+I read the chapter from their book twice already to understand how all the pieces fit together. Here is my attempt to describe the gist from the architecture, as I understand it (standard disclaimer ;-).</p>
+
+<p>Basically, each add-in is described by an XML file. These XML files are searched in sub-directories and loaded at startup. The XML file can specify for some assemblies to be loaded, which will be scanned for "codon" definitions (a codon is a class describing some extension, like a menu item, a compression strategy, a language binding,...) using Reflection. The XML file then lists the codons (and their configuration) that it needs instanciated. The resulting initialized codon objects are placed in a tree structure.</p>
+
+<p>Once the AddInTree is loaded with all the input from the XML files, the codons classes are "activated" by calling a recursive BuildItem method on them. The BuildItem returns an object (who's type is up to the codon coder) and takes an array of such objects as an input (the result of the BuildItem on all the current node's childs). This allows an add-in to support being extended by sub-add-ins.</p>
+
+<p>The BuildItem method may for example generate menu items (and sub menus) in the IDE with some event handlers. It could also register a service or even do nothing (in which case the codon just sits there in the tree, waiting for somebody to look it up, as it might be the case for a compression strategy).</p>
+
+<p>Codon classes can be re-used with different configurations, like the MenuItem that mainly needs a label and an "action" class (that needs to inherit from IMenuCommand in order to handle the clicks on the menu entry).</p>
+
+<p>This system allows add-ins to be included without registering them in a centralized config file and their respective assemblies to stay isolated. Installing an add-in is then just a matter of copying a directory over and starting the application.<br />
+The core classes for this add-in system are cleanly isolated in the SharpDevelop source tree, so it should be possible to re-use it in other projects.</p>
+
+<p><br />
+<b>Visual Studio.Net  Add-Ins</b><br />
+I wish I could see the internals of the Visual Studio add-in architecture ;-) But in terms of implementation, the set of hooks for add-ins in VS.net is described by the <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/vsintro7/html/vxlrfidtextensibility2interface.asp">Extensibility.IDTExtensibility2</a> interface.<br />
+Here is the entry point on MSDN to <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/vsintro7/html/vxorimanipulatingdevelopmentenvironment.asp">manipulating the development environment</a>.<br />
+They also have samples, like <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dv_vstechart/html/tchVSAddinEnablingHTMLTidy.asp?frame=true">this VS.NET 2003 add-in walkthrough</a>.</p>
+
+<span class="posted">Posted by Julien on May 27, 2003. <a href="http://blog.monstuff.com/archives/000049.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '49';
+        var disqus_url = 'http://blog.monstuff.com/archives/000049.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+<div class="comments-body">
+<p>Very good...very good material you have here...</p>
+
+<p>Thanks a lot for your help.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;drcyrus3d&#64;yahoo&#46;com">Cyrus</a> at August 27, 2004 12:22 PM</span>
+</div>
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

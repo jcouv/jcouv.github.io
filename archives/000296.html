@@ -1,0 +1,352 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Web API authentication for mashups</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000295.html" title="How to expose click fraud?" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000301.html" title="Cross-Site Request Forgery and Capability-based Security" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000296.html">
+<dc:title>Web API authentication for mashups</dc:title>
+<dc:description>Jason Levitt has been teasing me in our discussions on cross-domain requests about Yahoo&apos;s upcoming authentication API. The recurring problem: how to offer web APIs that can be mashed up but involve personal data? You want to allow for a large number of third parties to integrate with your services, but don&apos;t want phishing sites to abuse them. Let me do a quick re-cap of the problem space before analyzing the pieces of Yahoo&apos;s solution....</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2006-06-25T23:14:14-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000295.html">« How to expose click fraud?</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">June 25, 2006</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">Web API authentication for mashups</h2>
+
+<p>Jason Levitt has been teasing me in our discussions on cross-domain requests about Yahoo's upcoming authentication API.<br />
+The recurring problem: how to offer web APIs that can be mashed up but involve personal data?<br />
+You want to allow for a large number of third parties to integrate with your services, but don't want phishing sites to abuse them.</p>
+
+<p>Let me do a quick re-cap of the problem space before analyzing the pieces of Yahoo's solution. </p>
+
+<a name="more"></a>
+<p> <br />
+<h4>Communication techniques:</h4> Here is what is possible today for web browsers and what some people have recommended for the future:<br />
+<ul><li>cross-domain web APIs using script includes, </li><li>accessing web APIs accross domains using a web proxy, </li><li>using a client-based cross-domain solution (see <a href="http://blog.monstuff.com/FlashXMLHttpRequest">FlashXMLHttpRequest</a>), </li><li>neutered XMLHttpRequest with cross-domain support (see Chris Holland's <a href="http://chrisholland.blogspot.com/2005/03/contextagnosticxmlhttprequest-informal.html">ContextAgnosticXMLHttpRequest</a> and Douglas Crockford's <a href="http://json.org/JSONRequest.html">JSONRequest</a>), </li><li>cross-document messaging across domains (see <a href="http://www.whatwg.org/specs/web-apps/current-work/#crossDocumentMessages">CrossDocumentMessageEvent</a> from the WHATWG). </li></ul></p>
+
+<p>In all these cases, there is no good authorization story, that would allow for working with personal data stored in the service in a secured way. </p>
+
+<p><br />
+<h4>Authorization techniques:</h4> A number of techniques for controlling access to web APIs are generally used: user authentication cookies (or HTTP auth), API keys and crossdomain policy files.</p>
+
+<p>The problem is that API keys and crossdomain policy files are too restrictive because the service needs to decide which third-parties to let in.</p>
+
+<p>On the other end, access control based on the user authentication cookies are very open to un-planned integration, but also create a huge phishing risk. <br />
+This is a classic example of the <a href="http://lists.canonical.org/pipermail/kragen-tol/2000-August/000619.html">confused deputy problems</a> that appear in principal-based security models.</p>
+
+<p>As a result, most web APIs today don't involve any user data (search, maps, ...) or non sensitive user data.</p>
+
+<p><br />
+<h4>Yahoo APIs:</h4> Yahoo appears to be tackling the challenge with its <a href="http://blogs.zdnet.com/BTL/?p=2662">announced "browser-based authentication" (bbauth)</a>. From the <a href="http://www.w3.org/2005/Security/usability-ws/presentations/32-dean-auth-for-web-services">little information</a> I could gather so far, from Drew Dean's slides, it seems less of an authentication than an authorization system. Unlike cookie based approaches, which give access to any agent presenting user credentials (principal-based security), it appears to follow a <a href="http://en.wikipedia.org/wiki/Capability-based_security">capability-based security model</a>, which only grants access if the agent uses the proper "secure handle" or "capability" to call the service. Such capabilities are sufficient to gain access to the service and don't need any additional authentication, they are communicable tokens of authority.</p>
+
+<p>Let me re-iterate that I don't think this protocol is about Identity, unlike Passport, TypeKey or CardSpace (aka. InfoCard), but rather simply authority and access. This characteristic is important: we want services to cooperate without being tighly coupled at the identity level. Drew Dean's slides frames the issue as allowing "Pseudonymous delegation of partial rights", which means the names of a user in different services don't have to match and the authority that is granted is granular. </p>
+
+<p>What's great about this model is that the authority carried by a capability can be as granular as the design and scenario require, and are only be given out to third-parties under certain conditions, which again are chosen to fit the desired requirements and user experience.</p>
+
+<p>For example, the authority granted could vary in range in action and scope: a handle could give access to the user's entire data, or maybe only partial access to part of the user's data. <br />
+The design of the capabilities could also comprise additional dimensions, such as a time restriction. For example, a capability could be only valid for 24 hours.<br />
+One of the <a href="http://srl.cs.jhu.edu/pubs/SRL2003-02.pdf">myths of capability systems</a> is that capabilities cannot be revoked. It is actually possible and in Yahoo's design, any granted authority can be revoked by the user at any time.</p>
+
+<p>One common policy for giving out capabilities is to get consent from the user. The screenshots of the <a href="http://acs.barrapunto.org/~acs/flickrSpot/">F-Spot integration with Flickr</a> (<a href="http://mail.gnome.org/archives/f-spot-list/2005-October/msg00036.html">found on this thread</a>) show the Yahoo consent UI. <br />
+Although I don't like the desktop/web integration in this scenario and I have some concerns about repeatedly prompting the user for consent, I believe that this approach has a lot of potential for cross-domain service integrations on the web. <br />
+Cross-domain support in browsers will be the main remaining link missing to unleash some really cool web apps. In the meanwhile, you can use <a href="http://blog.monstuff.com/FlashXMLHttpRequest">FlashXMLHttpRequest</a> or some other cross-domain workaround.</p>
+
+<p>I look forward to reading the documentation when the protocol is released and trying out the resulting user experience in practical scenarios. Let me know if you find any other information.<br />
+Jason mentioned that the protocol is open and can be simply implemented, which means that it could be supported by other services and hopefully used in a wide variety of mashups. </p>
+
+<span class="posted">Posted by Julien on June 25, 2006. <a href="http://blog.monstuff.com/archives/000296.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '296';
+        var disqus_url = 'http://blog.monstuff.com/archives/000296.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+<div class="comments-body">
+<p>The main problem that Yahoo is trying to solve is that not all users can be trusted (that's the old problem that was solved with user-accounts and authentication methods) but now also the applications often can't be trusted. That's why the user is asked for permission to let the application access the data.<br />
+As you already said it is not the perfect solution because we don't want the user to be nagged every time he accesses a certain services, and on the other side, how to tell a serious mashup from a phishing web app?</p>
+
+<p>The question is: how much freedom is usefull for an application and what's too much? Do we really want Software we didn't even have a possibility to take a look at, really mess with our personal data?</p>
+
+<p>I may give it access to my Flickr-Account, but I certainly won't give them my Banking Account information...</p>
+
+<p>Regards,<br />
+Snyke</p>
+<span class="comments-post">Posted by: <a href="http://www.Snyke.net">Christian Decker</a> at July 10, 2006 03:53 PM</span>
+</div>
+<div class="comments-body">
+<p>Hi Christian,<br />
+I agree with you that bank APIs and Flickr APIs are different beast, but I think that allowing Flickr types of scenario is already a good step forward.</p>
+
+<p>It's a common objection to capability systems that the user would get too many security prompts (do you want to grant app X this kind of access to this data?). The solution that some capability systems, such as CapDesk, have adopted is to bundle the granting of authority with the act of designating the data. So instead of two prompts ("pick a file" and "are you sure you want to give access?"), the user would get a single prompt ("pick a file that you want this app to get access to"). <br />
+The problem is how to apply this pattern to the mashup scenario.</p>
+
+<p>Btw, a good presentation on capability systems was just published: <a href="http://video.google.com/videoplay?docid=-7179100659758053865">http://video.google.com/videoplay?docid=-7179100659758053865</a></p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at July 11, 2006 04:00 PM</span>
+</div>
+<div class="comments-body">
+<p>Hi Joseph,</p>
+
+<p>Thanks for your comment. I'm happy to see that this topic interests more people and web companies.</p>
+
+<p>I agree that the redirect approach is not a desirable long-term solution, although the user experience may not be that bad if it doesn't happen too often. <br />
+But I'm hoping it will be a bootstrap for more web APIs with proper access control to be created. When that happens the method for aquiring a token/webkey/capability can evolve, with the core infrastructure remaining unchanged.</p>
+
+<p>In terms of iframe, CrossDocumentMessageEvent (the drafted cross-document API) seems quite promising. It's implemented in Opera and I'm hoping to see it in other browsers soon. It has lots of potential too, although it will have its own usability problems as well.</p>
+
+<p>Btw, Tyler's presentation at Google, on the topic of authority-based access control for the web is really worth the time. It presents the basics of capabilities on the web and some essential patterns. Watch it at <a href="http://video.google.com/videoplay?docid=8799856896828158583">http://video.google.com/videoplay?docid=8799856896828158583</a><br />
+</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at July 26, 2006 07:21 PM</span>
+</div>
+<div class="comments-body">
+<p>Hi Joseph,</p>
+
+<p>I'm sorry. I erased your comment by mistake. I've been doing some pretty aggressive spam cleaning and the signal sometimes gets lost in the sea of noise I get.</p>
+
+<p>To summarize your comment: although you think that Yahoo's approach is technically sound, you were concerned about the user experience of having redirects. Also, you don't like the idea that because this solution is available, it might get adopted, even though the usability is imperfect.<br />
+You are curious about the ideas that people might have to solve this, possibly using iframes or building some support directly into the browser.</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at July 26, 2006 11:19 PM</span>
+</div>
+<div class="comments-body">
+<p>[Reposting my comment from July 23rd, which accidentally got deleted. See responses above.]</p>
+
+<p>Jason-great post--you really nailed the issue! We're grappling with these same challenges at Plaxo (both as a provider of APIs to access our users' personal contact/calendar/etc data, and as a consumer of over mashups and APIs, e.g. auto-import from yahoo/hotmail/etc). </p>
+
+<p>On the one hand, clearly it's bad to just give sites your username/pw any time you want to access your data (no claims, the site has full access to your account and you have to trust that it won't abuse it), but on the other hand, this browser-redirect scheme of Flickr/Yahoo (and now Google, btw), where you get redirected to a 3rd party page, get told what options the app is requesting (usually with a small bit of co-branding to identify your site) and then get redirected back, is very user-UN-friendly, and it's not clear how effective it will be at preventing abuse. It's technically well thought-out (yahoo is the only place you type a yahoo pw, sites can get access to limited rights, etc.) but (a) it's always going to be a poorly integrated UI flow (esp. compared to typing in your username/pw inside the other site's pages), (b) it's scary and jarring for normal users IMO, and (c) it's not clear that casual users will understand what they're being asked or whether it's reasonable to grant access. I think it runs the risk of being another example like the much maligned "This page contains both secure and insecure content" browser warning you get when an SSL page includes a non-SSL resource (usually a perfectly harmless image or JavaScript file). Users say "uh, ok..." and sites get stuck with a lousy user experience (or they do a lot of otherwise unnecessary work to mitigate the appearance of these warnings, essentially trying to defeat the more-harm-than-good security measures in place). </p>
+
+<p>What worries me is that with Yahoo and Google now supporting this style of authentication (admittedly because it's the only viable option at the moment), people may think "ok, that's industry best-practice, let's all do it". Surely we can do better! What if I could embed a little IFrame in my page when I needed the user to log into Yahoo, and they could type their username/pw in right inside my page, but it would go to Yahoo? I'm sure we could do even better with a little browser-level support for entering 3rd-party passwords (the browser could encrypt and send them in a way that my site couldn't see them, but I could still control the UI or something). I think if we don't collectively try to envision a better scenario, we're in danger of getting stuck with this redirect-to-3rd-party-and-authorize-a-confusing-list-of-capabilities solution, And beyond the poor/confusing UI that will leave us with, it will probably also motivate lots of sites to just keep asking for 3rd party usernames/passwords so they can present a more integrated experience. Given how hard it is to stop sites from doing that, it seems like the only solution is to offer a more attractive alternative. There's certainly pain associated with faking a direct user-login (esp. with sites that require multiple requests/responses, change cookies or auth tokens with each page load, etc.) so I think developers would be eager for a more straightforward auth API, just not one that says "you can't have any control over the user experience".</p>
+
+<p>I'd love to here what you (and everyone reading this) has to say about this issue. I think it's really important that we discuss it and come up with better alternatives than what we have now.</p>
+
+<p>Thanks! js</p>
+<span class="comments-post">Posted by: <a href="http://www.plaxo.com">Joseph Smarr</a> at August  6, 2006 08:49 AM</span>
+</div>
+<div class="comments-body">
+<p>This is a bit off-topic, but here is the final Google TechTalk on capability security, which I highly recommend: <br />
+<a href="http://video.google.com/videoplay?docid=-7961423532989255419">http://video.google.com/videoplay?docid=-7961423532989255419</a></p>
+
+<p>It demonstrates how a secure desktop and web browser could work. </p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at August  6, 2006 10:00 PM</span>
+</div>
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

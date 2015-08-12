@@ -1,0 +1,333 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: C# delegates and events drawbacks</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000103.html" title="Digitally signed ID cards" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000102.html" title="Capability-based security" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000104.html">
+<dc:title>C# delegates and events drawbacks</dc:title>
+<dc:description>I am quite fond of events and delegates in C#. They are an interesting construct and have proven useful, especially in the winform and webform worlds. But in my recent uses of delegates in projects I have come to realize some drawbacks or at least limitations of delegates and events. Naming conventions The first one was a problem that I encountered when first learning about delegates, but that still bothers me now that I understand them: they are un-easy to name. It might be stupid, but there is something about delegates and events that makes them hard to name. It...</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2003-09-24T23:34:05-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000103.html">« Digitally signed ID cards</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">September 24, 2003</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">C# delegates and events drawbacks</h2>
+
+<p>I am quite fond of events and delegates in C#. They are an interesting construct and have proven useful, especially in the winform and webform worlds. But in my recent uses of delegates in projects I have come to realize some drawbacks or at least limitations of delegates and events.</p>
+
+<p><u>Naming conventions</u><br />
+The first one was a problem that I encountered when first learning about delegates, but that still bothers me now that I understand them: they are un-easy to name. <br />
+It might be stupid, but there is something about delegates and events that makes them hard to name. It may be because they combine object aspects with functional ones.</p>
+
+<p><br />
+For example, let's say you have a delegate of type "bool foo(HttpRequest)". You could call your delegate RequestHandler, but then you have to choose between "requestHandler" and "handleRequest" for an instance of this delegate. </p>
+
+<p>On one hand, "requestHandler" is closer to the common naming convention, but it feels weird to use it as a function, like "result = requestHandler(request)". <br />
+On the other hand, "handleRequest" feels nice when you invoke it, but seems un-natural when you instanciate it in "RequestHandler handleRequest = new RequestHandler(this.processRequest);".</p>
+
+<p>I tried various naming conventions using suffixes (Event, Listener, Handler, Method and Function), but all created "semantic" friction at some point.<br />
+It may be because I am used to the Java-style, but to me "requestHandler" sounds like an object whereas "handleRequest" sounds like a method.</p>
+
+<p><br />
+Java may add some cognitive load on the developper by requiring classes to implement delegate-like functionality, but it keeps the object and the method clear from each other. You can have an "EventListener" with a "handleEvent(Event)" method, whereas <b>C# tries to merge both object and action semantics</b>.</p>
+
+<p>Delegates are still very useful when you need to handle many different similar events (like Clicks on a webform). I guess even this case could be handled in a Java-style webform, by writing listeners for each event or custom classes that would inherit the widgets and implement the event handling. But in any case you'd end up with tons of classes and the code probably wouldn't be clearer.</p>
+
+<p><br />
+<u>Extensibility</u><br />
+The second limitation is an issue I encountered recenly while implementing a plugin based P2P program. Since a delegate is pretty much an interface that has only one method, you are limited to one method, which limits the extensibility/flexibility of your design.</p>
+
+<p>For example, you could have an "EventHandler" that only supports one method ("handleEvent"). It would make sense to use a delegate. But a couple days later you find out that you need another method for your event handlers, like say "IsEnabled()". If you had used an interface it'd be easy to add it, whereas with a delegate you just can't.</p>
+
+<p>It may come down to good design and I wasn't able to make a good choice when I ran into this scenario. But it still raises the question: <b>when should one use delegates rather than interfaces?</b></p>
+
+<a name="more"></a>
+<p><b>Links:</b><br />
+Ruby can do delegates too, using <a href="http://matt.blogs.it/2004/10/23.html#a1615">an interesting technique</a> (something in between reflection and the prototypal behavior in javascript).</p>
+
+<p>As an additional argument against delegates and in favor of interfaces, a delegate invocation takes 41ns, in comparison to 5.4ns for a virtual call, according to <a href="http://msdn2.microsoft.com/en-us/library/ms973852.aspx">Jan Gray's analysis</a>.</p>
+
+<span class="posted">Posted by Julien on September 24, 2003. <a href="http://blog.monstuff.com/archives/000104.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '104';
+        var disqus_url = 'http://blog.monstuff.com/archives/000104.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+<div class="comments-body">
+<p>I like Microsoft's convention of suffixing attribute objects with "Attribute"... [ISerializable] is actually an instance of ISerializableAttribute.  I adopted that as my naming convention for delegates as well:</p>
+
+<p>bool requestHandlerDelegate(HttpRequest);</p>
+
+<p>requestHandlerDelegate myRequestHandler = new requestHandlerDelegate(this.processRequest);</p>
+<span class="comments-post">Posted by: <a href="http://weblogs.asp.net/asanto">Addy Santo</a> at September 25, 2003 01:56 PM</span>
+</div>
+<div class="comments-body">
+<p>I like the "I" prefix for interfaces and the "Attribute" suffix for attributes too. But am still insatisfied by any suffix for delegates.</p>
+
+<p>In your example, you'd end up writing:</p>
+
+<p>myRequestHandler(myHttpRequest);</p>
+
+<p>and that doesn't feel natural.<br />
+But that's pretty much what I use, because I don't think there is a better naming convention.</p>
+
+<p><br />
+A solution to this naming problem would be to not have this implicit function call occur, but instead make it explicit, with "Invoke", "Call" or something similar:</p>
+
+<p>myRequestHandler.Invoke(myHttpRequest);</p>
+
+<p>This way you don't have objects that can be invoked like methods.</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Dumky</a> at September 25, 2003 03:32 PM</span>
+</div>
+<div class="comments-body">
+<p>I just got into blogging and I absolutely love it, so thanks, I keep track of this blog as well as 5 others so far.</p>
+<span class="comments-post">Posted by: <a href="http://www.fastermedz.net">Bruce Parker</a> at May 23, 2005 04:37 PM</span>
+</div>
+<div class="comments-body">
+<p>In response to your "Naming Conventions" discussion, consider this:</p>
+
+<p>Microsoft's convention for naming delegate types used for event handlers is to use the suffix "Handler", i.e. EventHandler, MouseEventHandler, BindingCompleteEventHandler, and ColumnClickEventHandler.</p>
+
+<p>Generally, delegates used for other purposes seemed to be named as a noun which represents the action to perform. We use a noun because a delegate is a type of action, and a "type of action" is a thing. Action, TypeFilter, AppDomainInitializer, Comparison. They all seem to be nouns. Your http request handling delegate TYPE would be named RequestHandler, because the function it points to is a request handler.</p>
+
+<p>I would not say that it looks funny invoking it, either. When you invoke it, you don't do it through the delegate type. You do it through a variable that is of the type of that delegate. Where the delegate type represents a "type of action," a noun, a delegate INSTANCE represents an action, which would be a verb. You can see this, for example, with events. System.EventHandler is our delegate type, which is the noun. Button.Click is an example of an instance of a delegate. Note that the identifier used here is a verb. Using your RequestHandler example, an instance of a RequestHandler would probably be named handleRequest, so in code you would see:</p>
+
+<p>RequestHandler handleRequest = myRequestingObject.GetRequestHandler();<br />
+object result = handleRequest();</p>
+
+<p>As far as your delegate versus interface issue, the problem seems to be that you aren't quite sure as to what a delegate is for. By far, the biggest use for delegates is event handling. An event always represents one action and only one callback will ever be needed. I don't quite understand your example, but any other time this is how I would decide. Simply put, a delegate is an action and an interface is an object that provides a particular service. Basically it comes down to the question "What is the essence of what your type represents?" Is it a singular simple action (and equally important, does a single function call represent the action from beginning to end)? Or is it a (potentially) more complex, functional object or a process that might endure longer than a function call?</p>
+
+<p>For example, many .Net sort methods take a delegate of type Comprarer. A comparer does one simple, singular thing. It compares two objects. Start to finish with one function call. On the other hand, the foreach loop works via the IEnumerable interface under the hood. Enumeration is not as simple a process as comparison. You must return one object after another until all objects are returned. It is not a singular action, but a list of steps with OTHER LOGIC BETWEEN STEPS. You get an object, process it, then move to the next object and get that, process it, and so on. </p>
+
+<p>The one criteria you DON’T want to use to determine whether to use an interface or a delegate is how many functions the action consists of. Just because the service an object provides consists of a single function doesn't mean that you should use a delegate. IDisposable performs disposal services. IComparable performs comparison services. IClonable performs cloning services. But they all only have one function.</p>
+
+<p>Another thing you should consider is how you pass information in an event handler. Microsoft's event handlers don't have the event data as parameters, but rather objects that contain event data in parameters. If it is extensibility you want, you can extend the object that you pass to the event handler. It should be no problem to add a function to the object returned by an event handler. You want to know if something is enabled when you handle an event? Add an Enabled property to your EventArgs object. Want to be able to cancel the event? Add a cancel function (The winforms TreeView control's BeforeLabelEdit allows you to set a property to cancel the label edit).</p>
+
+<p>I think I need to start my own blog. I have a lot to say. But I hope I helped disambiguate naming conventions and when to use what.<br />
+</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;snarfblam&#64;gmail&#46;com">Tommy Wommy</a> at July 17, 2006 05:50 PM</span>
+</div>
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

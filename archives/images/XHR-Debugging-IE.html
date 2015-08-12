@@ -1,0 +1,79 @@
+<html>
+<head>
+<title>XMLHttpRequest - Debugging for IE</title>
+
+</head>
+<body>
+<a href="javascript:function loadScript(scriptURL) { var scriptElem = document.createElement('SCRIPT'); scriptElem.setAttribute('language', 'JavaScript'); scriptElem.setAttribute('src', scriptURL); document.body.appendChild(scriptElem);} loadScript('XHR-Debugging-IE.js');">XMLHttpRequest Debugging</a> bookmarklet.
+<br />
+<button onclick="clearOutput()">Clear output</button>
+<button onclick="doRequest()">Do XHR Stuff (ActiveX)</button>
+<button onclick="doNewRequest()">Do XHR Stuff (native XHR)</button>
+<button onclick="doXMLDOM()">Do XMLDOM Stuff</button>
+
+</body>
+
+<script type="text/javascript">
+
+var output = document.createElement("div");
+output.innerHTML = "The output shows here";
+document.body.appendChild(output);
+
+function clearOutput() {
+    output.innerHTML = "";
+}
+
+function doNewRequest() {
+    function processReqChange() {
+      if (req.readyState == 4) {
+        if (req.status == 200) {
+            output.innerHTML = req.responseText;
+        }
+      }       
+    }
+
+    if (!XMLHttpRequest) {
+        alert("this version of IE doesn't support the native XMLHttpRequest object");
+        return;
+    }
+
+    var req = new XMLHttpRequest();
+
+    req.onreadystatechange = processReqChange;
+    req.open("GET", "small.txt", true);
+    req.send("");
+}
+
+function doRequest() {
+    function processReqChange() {
+      if (req.readyState == 4) {
+        if (req.status == 200) {
+            output.innerHTML = req.responseText
+        }
+      }       
+    }
+
+    var req = new ActiveXObject("MSXml2.XMLHTTP");
+
+    req.onreadystatechange = processReqChange;
+    req.open("GET", "small.txt", true);
+    req.send("");
+}
+
+function doXMLDOM() {
+    var xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+    
+    var txt="<note>" ;
+        txt=txt+"<to>Correct XMLDOM behavior</to><from>Jani</from>";
+        txt=txt+"<heading>Reminder</heading>";
+        txt=txt+"<body>Don't forget me this weekend!</body>";
+        txt=txt+"</note>";
+        
+    xmlDoc.async="false";
+    xmlDoc.loadXML(txt);
+    
+    output.innerHTML = xmlDoc.documentElement.childNodes(0).text;
+}
+</script>
+
+</html>

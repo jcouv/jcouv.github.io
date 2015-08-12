@@ -1,0 +1,93 @@
+<html>
+<head>
+<title>Cross-domain with Flash 8</title>
+</head>
+<body>
+
+<script type="text/javascript" src="FlashHelper.js"></script>
+
+<script type="text/javascript">
+FlashHelper.onload = startApp;
+
+function mycallback() {
+    alert("callback");
+    var xml = FlashHelper.getFlash().GetVariable("retText");
+    alert("RESULT IS: " + xml);
+}
+
+function startApp(fs) {
+    if (!fs) { alert("Flash not loaded"); return; }
+    fs.Debug();
+    
+    //fs.XmlHttp("http://api.search.yahoo.com/WebSearchService/V1/contextSearch", "mycallback", "POST", "appid=YahooDemo&query=madonna&context=Italian+sculptors+and+painters+of+the+renaissance+favored+the+Virgin+Mary+for+inspiration", "application/x-www-form-urlencoded");
+    //fs.XmlHttp("http://dcct/echo/Default.aspx", "mycallback", "GET", "", "application/x-www-form-urlencoded");
+    $("response").value = "ready";
+}
+
+function displayResponse() {
+    var response = FlashHelper.getFlash().GetVariable("retText");
+    $("response").value = response;
+}
+
+function makeCall() {
+    var url = $("url").value;
+    var method = $("method").value;
+    var body = $("body").value;
+    var contentType = $("contentType").value;
+    
+    var fs = FlashHelper.getFlash();
+    //fs.loadPolicyFile("http://domain/blah/crossdomain.xml");
+    fs.XmlHttp(url, "displayResponse", method, body, contentType);
+
+    $("response").value = "loading...";
+    //$("response").innerHTML = url + " " + method + " " + body + " " + contentType;
+}
+
+function makeCall2() {
+    var url = $("url").value;
+    var method = $("method").value;
+    var body = $("body").value;
+    var contentType = $("contentType").value;
+
+    $("response").value = "loading...";
+
+    var xhr = new FlashXMLHttpRequest();
+    xhr.onload = function() { $("response").value = xhr.responseText; }
+    xhr.open(method, url);
+    
+    // note: Content-Type is a special header
+    xhr.setRequestHeader("Content-Type", contentType);
+    
+    // note: other headers only work with POST, not GET
+    xhr.setRequestHeader("Authorization", "test");
+    xhr.setRequestHeader("x-amz-acl", "public-read");
+    xhr.setRequestHeader("content-md5", "hello");
+    //xhr.setRequestHeader("content-length", 33); 
+    xhr.setRequestHeader("Date", "today");
+
+    xhr.send(body);
+}
+</script>
+
+<form>
+URL: <input type="text" id="url" value="http://search.yahooapis.com/ImageSearchService/V1/imageSearch?appid=YahooDemo&query=Madonna&results=2&output=json" size="100"/><br />
+Verb: <input type="text" id="method" value="POST" /><br />
+Body: <textarea id="body" rows="10" cols="100"></textarea><br />
+Content Type: <input type="text" id="contentType" value="application/x-www-form-urlencoded" size="50"/><br />
+<button onclick="makeCall(); return false;" value="Make HTTP request (raw API)">Make HTTP request (raw API)</button><br />
+
+<button onclick="makeCall2(); return false;" value="Make HTTP request (FlashXMLHttpRequest)">Make HTTP request (FlashXMLHttpRequest)</button><br />
+
+<br />
+<br />
+<textarea id="response" rows="20" cols="100"></textarea><br />
+
+</form>
+
+<script type="text/javascript">
+//FlashHelper.height = 0;
+//FlashHelper.width = 0;
+FlashHelper.writeFlash();
+</script>
+</body>
+</html>

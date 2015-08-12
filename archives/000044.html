@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Behind Google</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000042.html" title="C# and Java convergence?" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000045.html" title="Matrix Reloaded review on Kuro5hin" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000044.html">
+<dc:title>Behind Google</dc:title>
+<dc:description>Here is a good paper on Google&apos;s architecture. I was wondering why Google needed so many servers (apparently more than 10000) to handle &quot;only&quot; 1000 requests/sec. It turns out that a single request involves many servers, beside the front-end web server: index servers and document servers, as well as ad servers and spell checking services. In fact, many (apparently around a dozen) index and document servers are involved in handling a query, because of the shear size of the data and the need for it to be replicated (for scalability and reliability): the indexes and web content are split in...</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2003-05-20T17:56:52-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000042.html">« C# and Java convergence?</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">May 20, 2003</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">Behind Google</h2>
+
+<p>Here is <a href="http://www.computer.org/micro/mi2003/m2022.pdf">a good paper on Google's architecture</a>.<br />
+I was wondering why Google needed so many servers (apparently more than 10000) to handle "only" 1000 requests/sec.<br />
+It turns out that a single request involves many servers, beside the front-end web server: index servers and document servers, as well as ad servers and spell checking services. In fact, many (apparently around a dozen) index and document servers are involved in handling a query, because of the shear size of the data and the need for it to be replicated (for scalability and reliability): the indexes and web content are split in redundant partitions (that they call shards), and a query is performed in parallel on these shards. Also, boxes are needed for the spidering and indexing itself, but I couldn't find a mention of the number of these.</p>
+
+<a name="more"></a>
+<p>This <a href="http://technetcast.ddj.com/tnc_play_stream.html?stream_id=420">TechNetCast mp3 stream</a> with Jim Reese (Chief Operations Engineer) and the following <a href="http://technetcast.ddj.com/tnc_play_stream.html?stream_id=421">Q&A</a> goes, with humour, over some of the problems that appear when you manage that many servers (networking issues, heat/power/hosting issues, software consistency on all the boxes) and the strategies they employ to mitigate these.</p>
+
+<p>One of the <a href="http://www7.scu.edu.au/programme/fullpapers/1921/com1921.htm">early papers on Google's anatomy</a> by Sergey Brin and Lawrence Page. It gives a lot of interesting details on the design of the search engine.</p>
+
+<p>Also good reads, <a href="http://www.fastcompany.com/magazine/69/google.html">an analysis of some of Google's success factors</a> and Wired's summary of Google's attitude: <a href="http://www.wired.com/wired/archive/11.01/google_pr.html">"Don't be evil"</a>.</p>
+
+<p>A <a href="http://www.wired.com/news/infostructure/0,1377,58497,00.html">Wired article on GRUB</a>, a search engine that attempts to offload the indexing by distributing it to volunteers (ala Seti@Home and Folding@Home). This could allow a faster indexing of the whole web, but certainly creates issues around the reliability of the built index, as well as other technical problems.<br />
+</p>
+
+<span class="posted">Posted by Julien on May 20, 2003. <a href="http://blog.monstuff.com/archives/000044.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '44';
+        var disqus_url = 'http://blog.monstuff.com/archives/000044.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+<div class="comments-body">
+<p>Via Nauman Leghari's blog ( <a href="http://weblogs.asp.net/nleghari/posts/9569.aspx">http://weblogs.asp.net/nleghari/posts/9569.aspx</a> ), many papers from Google people : <a href="http://labs.google.com/papers.html">http://labs.google.com/papers.html</a></p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Dumky</a> at July  1, 2003 04:05 PM</span>
+</div>
+<div class="comments-body">
+<p>More info on PageRank at <a href="http://pagerank.stanford.edu/">http://pagerank.stanford.edu/</a><br />
+Sepandar Kamvar ( <a href="http://www.stanford.edu/~sdkamvar/research.html">http://www.stanford.edu/~sdkamvar/research.html</a> ) is doing some excellent research on speeding up the PageRank computation and personalizing the PageRank results.</p>
+
+<p>I haven't heard more from GRUB ( <a href="http://www.grub.org/">http://www.grub.org/</a> ) since last time, but I wonder were it fits in Josh Gray's analysis of Distributed Computing ( <a href="http://www.clustercomputing.org/content/tfcc-5-1-gray.html">http://www.clustercomputing.org/content/tfcc-5-1-gray.html</a> ).</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/archives/000044.html">Dumky</a> at July 24, 2003 11:19 AM</span>
+</div>
+<div class="comments-body">
+<p>A video of a recorded lecture (by Urs Hoelzle) about Google is available: <a href="http://norfolk.cs.washington.edu/htbin-post/unrestricted/mmedia/ondemand_colloq.cgi">http://norfolk.cs.washington.edu/htbin-post/unrestricted/mmedia/ondemand_colloq.cgi</a> (search for Google on that page).<br />
+It goes through both a software and a hardware overview.</p>
+
+<p>The video is mirrored at <a href="http://www.uwtv.org/programs/displayevent.asp?rid=1680">http://www.uwtv.org/programs/displayevent.asp?rid=1680</a> and <a href="http://www.researchchannel.org/program/displayevent.asp?rid=1680">http://www.researchchannel.org/program/displayevent.asp?rid=1680</a></p>
+<span class="comments-post">Posted by: <a href="http://www.cs.washington.edu/info/videos/asx/colloq/UHoelzle_2002_11_05.asx">Dumky</a> at August 28, 2003 06:46 PM</span>
+</div>
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+<div class="trackback-body">
+<a name="2"></a>
+<span class="trackback-post"><a href="http://www.roell.net/weblog/newsfeed/2003/06/19.shtml#002392" target="new">Tehnische Hintergründe zu Google</a><br />
+<b>Excerpt:</b> Eine interessante Linksammlung zu Googles technischen HIntergründen steht in Curiosity is bliss: Behind Google....<br />
+<b>Weblog:</b> E-Business Weblog/Newsfeed<br />
+<b>Tracked:</b> June 19, 2003 11:13 AM</span>
+</div>
+<div class="trackback-body">
+<a name="11"></a>
+<span class="trackback-post"><a href="http://weblogs.asp.net/astopford/archive/2004/02/10/70317.aspx" target="new">More information</a><br />
+<b>Excerpt:</b> <br />
+<b>Weblog:</b> Andrew Stopford's Weblog<br />
+<b>Tracked:</b> February  9, 2004 05:34 PM</span>
+</div>
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

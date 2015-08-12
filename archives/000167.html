@@ -1,0 +1,413 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Microsoft Passport 101</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000169.html" title="Nifty javascript + DOM tricks" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000170.html" title="TypeKey is live (beta)" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000167.html">
+<dc:title>Microsoft Passport 101</dc:title>
+<dc:description>...a simple explanation of the Passport web authentication protocol......</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2004-04-20T10:38:53-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000169.html">« Nifty javascript + DOM tricks</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">April 20, 2004</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">Microsoft Passport 101</h2>
+
+<p>...a simple explanation of the Passport web authentication protocol...</p>
+
+<a name="more"></a>
+<p><b>Introduction:</b><br />
+Passport is a single sign-on system developed by Microsoft. It allows websites who participate to unload some of the account management burden onto a shared and specialized authentication service hosted by Microsoft.<br />
+It is probably the largest dedicated authentication service on the web, as it is used by millions of Hotmail and MSN Messenger users.</p>
+
+<p>It maintains a centralized list of accounts (usernames and passwords). When a Passport-enabled website needs to authenticate a user, it delegates this task to Passport, which in return provides an assertion about the identity of the user that is signed in. <br />
+The website only needs to understand these assertions or authentication proofs, but doesn't need to handle the authentication itself.<br />
+For the user, only one password is needed for a group of sites, which simplifies managing his account and improves his authentication experience.</p>
+
+<p>We'll go into the details of how this is achieved.</p>
+
+<p><br />
+<b>Assumptions:</b><br />
+Some prior knowledge is required to understand this description of the protocol.<br />
+<ul><li>HTTP redirect: a server can reply to a browser request that it should make another request to different location.</li><li>HTTP cookies: they are domain specific, can either expire at a given time or last for the duration of the browsing session, and may be restricted to https connections.</li><li>Cryptography: a message can be exchanged by two parties securely (can't be modified, tampered, peeked into,..) if they both know what algorithm to use and if they share a secret (symmetric) key, that is required for the encryption and the decryption.</li></ul></p>
+
+<p><br />
+<b>Ticket and cookies:</b><br />
+Passport authentication is centered around an account identifier, the Passport Unique ID (PUID). This number is guaranteed to be unique amongst accounts and remain the same  throughout the life of a given account.</p>
+
+<p>Whenever a user logs into his account, Passport needs to provide a proof back to the site that requested the authentication. This proof is called a ticket. It most importantly contains the PUID and the timestamp of the last sign-in. <br />
+In order for this proof to have any value, some cryptography is used (to ensure only Passport can issue such tickets). When a site (say Site1) becomes part of the Passport network, it gets a crypto key that only it and Passport know. So a ticket for Site1 can be encrypted with that key, in order to ensure nobody else could have generated it.<br />
+Using a signature instead of encryption would be possible to proove a ticket (or other) was generated by Passport, but if any information considered private is included, then encryption is needed.</p>
+
+<p>Whenever a site receives a ticket, it can decrypt it with its key, check that the authentication occurred within a certain time and then read the PUID.<br />
+But a new ticket shouldn't be issued for each page that the site wants to display. So it can be cached using a cookie on the user's browser. This way, only when the site needed a fresher ticket, does it request one from Passport.</p>
+
+<p>Cookies are domain specific, so a user can have tickets saved as cookies for Site1 and Site2 at the same time. But we'll see that also brings a constraint, because Passport can't issue tickets directly as cookies in Site1 domain.<br />
+Passport also keeps cookies in its own domain, to allow a user to authenticate silently into Site2 if he logged into Site1 already (single sign-on).</p>
+
+<p><br />
+For example, here are three of the cookies that get set in the Passport domain when a user logs in:<br />
+<ul><li><b>Ticket (MSPAuth)</b>: Encrypted with .NET Passport key. Contains the .NET Passport timestamps (last refresh and last manual sign-in), saved-password flag, key version verification, and any flags set by network servers.</li><li><b>Ticket-Granting (MSPSec)</b>: Sent using HTTPS protocol for all browsers that allow HTTPS cookie writes. Contains the SSL-encoded .NET Passport Unique ID (PUID) and password, used for silent sign-in.</li><li><b>Visited Sites (MSPVis)</b>: Used by the Login server to compile the list of sites that must be signed out from when the user clicks any sign-out link. Each new .NET Passport participating site visited has its Site ID written to this cookie. No encryption.</li></ul></p>
+
+<p><br />
+<b>Flows and options:</b><br />
+We'll start by looking at the flows for three core scenarios, starting with a simplified model. But we'll progressively enrich the description by mentioning more information that is stored in the cookies, as well as additional cookies and querystring parameters.</p>
+
+<p><br />
+<u>First login:</u><br />
+Here is the flow for the initial authentication to Site1:</p>
+
+<p><img src="/archives/images/PassportSignin1.jpg" border="0" /></p>
+
+<p><br />
+Here is how you can read this diagram:</p>
+
+<p>The user navigates to Site1, but now needs to get authenticated. <br />
+He is sent or redirected to the authentication servers. Because the user wasn't logged in, no cookies are present in the Passport domain. So the user is presented with a login prompt.</p>
+
+<p>The form is submitted after the user types his username and password. These are checked against the account information that Passport stores. If they are successfully verified, two tickets are generated, containing the PUID for this account and the time of the authentication. <br />
+One is saved as a cookie (MSPAuth) in the Passport domain and is encrypted with Passport's key. <br />
+The other is encrypted with Site1's key. It has to be initially transferred to Site1 via the querystring, because Passport servers don't have access to the Site1 domain. Site1 servers can then save it as a cookie (also MSPAuth) in the Site1 domain so that the user stays authenticated in subsequent requests. The server code can choose whether to trust this ticket based on the freshness of the timestamp.</p>
+
+<p><br />
+<u>Single sign-on:</u><br />
+Now that the user is logged into Site1, Passport's single sign-on feature allows him to get authenticated with Site2 without having to re-type his password.</p>
+
+<p><img src="/archives/images/PassportSignin2.jpg" border="0" /></p>
+
+<p><br />
+When the user navigates to Site2, no ticket is stored in the Site2 domain, so he is not logged in. <br />
+The site can require the user to be authenticated, in which case it will redirect him to Passport. Or if logging in is optional, it will just display a sign-in image with a link and letting the user click on it.<br />
+When he is sent to Passport to get authenticated, the cookies in the Passport domain are used to generate a ticket for Site2. A redirect transfers it to Site2 via the querystring.</p>
+
+<p><br />
+<u>Passport Manager:</u><br />
+The Passport Manager COM object makes it easier for participating sites to implement their side of the Passport authentication. It helps manage crypto keys, read encrypted tickets, store them as cookies, generate login requests and display the sign-in image.<br />
+Its SDK documents additional parameters, like the return url or the time window during which a user is asked to have last authenticated. </p>
+
+<p><br />
+<u>Return URL:</u><br />
+Whenever an authentication is requested from Passport, the initiating site can choose where the user should be sent back, using the Return URL parameter (RU). When the site registers into the Passport network, it specifies his Root URL, against which any Return URLs will be validated to control were tickets are sent.<br />
+If no Return URL is specified, a Default Return URL configured for that site will be used instead. </p>
+
+<p><br />
+<u>Time window:</u><br />
+When Site2 sends the user to get authenticated, the sign-in request contains a TimeWindow querystring attribute. <br />
+If the cookies in the Passport domain state that the user hasn't authenticated within this time window, the user will be shown a login prompt instead of getting silently logged in.</p>
+
+<p><br />
+<u>Force login:</u><br />
+A ticket doesn't just contain the time that the user last was authenticated by typing his password. It also contains the time it was last refreshed. <br />
+Whenever a ticket for Site2 is generated using the Passport ticket, this timestamp gets updated.</p>
+
+<p>As part of the authentication request, Site2 can request that the time window constraint be applied to either timestamp (last refresh and last manual sign-in), using the ForceLogin parameter.</p>
+
+<p><br />
+<u>Secure sign-in:</u><br />
+For additional security, a site can request that the authentication and tickets should occur over a secure channel, to limit the packet-sniffing risk. <br />
+In that case, the Return URL is required to be an SSL URL. </p>
+
+<p>Also, a secure cookie (MSPSec) is set in both the Passport and the site domain. The browser makes sure this cookie is never exchanged over a non-secure link. Passport Manager can then check the presence and content of this cookie to confirm that the ticket wasn't stolen by sniffing the network.</p>
+
+<p><br />
+<u>Automatic sign-in:</u><br />
+We've seen that a site ticket can be re-generated as long as you have a Passport ticket within the time window that the site is requesting. There is another ticket in this chain of trust, the ticket-granting ticket (MSPSec). </p>
+
+<p>It is stored as a secure cookie in the Passport domain and contains the information needed to silently log the user in over a long period of time. <br />
+This cookie is set permanently, when the user opts to automatically get logged-in on a specific machine, until the user signs out.</p>
+
+<p><br />
+<u>Visited sites and sign-out:</u><br />
+As the user logs into multiple sites, Passport keeps track of the list of visited sites in a cookie, MSPVis.<br />
+Each site participating in the network needs to declare a url for signing users out. </p>
+
+<p>Whenever a user needs to be logged out of Passport, a page is built, referencing the logout url for each site that was visited by the user. This allows Passport to clear the cookies in all those domains.<br />
+If all logout urls loaded properly, the logout page refreshes itself to the Return URL.</p>
+
+<p><img src="/archives/images/PassportSignout.jpg" border="0" /></p>
+
+<p><br />
+<b>SDK:</b><br />
+All of the information provided above can be found in publicly available documents (mostly the Passport SDK) or easily inferred from a network trace of an authentication exchange.<br />
+<a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=79430a63-c425-46a3-b4db-45f118986246&DisplayLang=en">.NET Passport 2.5 Software Development Kit: Software and Documentation</a>. The SDK documentation explains Passport in greater details (be sure to check out the VBScript part, which has the richest description, for some reason).<br />
+My description of the current Passport web protocol is provided with no warranties (about its accuracy or other) and definitely isn't meant to replace the SDK ;-)</p>
+
+<p><br />
+<b>Links:</b><br />
+The great Kerberos introduction text: <a href="http://web.mit.edu/kerberos/www/dialogue.html">"Designing an Authentication System: a Dialogue in Four Scenes"</a>.</p>
+
+<p>Andre Durand (PingID) <a href="http://discuss.andredurand.com/2004/04/17#a421">points to a survey on identity</a> being hot amongst the 15 top-rated technologies.</p>
+
+<p>My previous posts on <a href="http://blog.monstuff.com/archives/000149.html">introducing HTTP</a> and <a href="http://blog.monstuff.com/archives/000153.html">thinking about authentication by URL</a>.</p>
+
+<p><br />
+The upcoming <a href="http://www.typekey.com/">Typekey service</a> from the MovableType team. (I'm curious to find out what their protocol looks like and will post more details when they become available)<br />
+<a href="http://www.flickr.com/services/">Flickr authentication service</a>.<br />
+<a href="http://www.sharedid.com/sharedid/">SharedID authentication service</a>.</p>
+
+<span class="posted">Posted by Julien on April 20, 2004. <a href="http://blog.monstuff.com/archives/000167.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '167';
+        var disqus_url = 'http://blog.monstuff.com/archives/000167.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+<div class="comments-body">
+<p>This is so cool.<br />
+That's what I need for.<br />
+Thanks a lot~ :)</p>
+<span class="comments-post">Posted by: <a href="blank">ayo</a> at April 28, 2004 08:18 AM</span>
+</div>
+<div class="comments-body">
+<p>Hi :) Very nice information. I have unfortunately run into a brick wall when programming a passport login script (which is how i found your site) so i thought i was gonna ask you if you perhaps would have got a few minutes to answer a question? Drop me an e-mail and i'll explain the sutation to you :)</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;noct&#64;noccy&#46;com">Christopher</a> at June 10, 2004 07:41 AM</span>
+</div>
+<div class="comments-body">
+<p>ummm r you dsaying how to get someones else's passport password?</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;Evils_Glare&#64;hotmail&#46;com">Tommy</a> at September  4, 2004 09:07 PM</span>
+</div>
+<div class="comments-body">
+<p>Tommy, no :-)<br />
+Passport, as all authentication systems, is a trade-off between security and convenience. So the protocol has some known limitations: for example, cookies could be stolen by sniffing cleartext HTTP requests. But with those risks/choices in mind Passport seems pretty robust. <br />
+I don't know of any exploit/flaw that would allow to steal somebody's password without using a trojan/keylogger or looking over a person's shoulder.</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien</a> at September 21, 2004 07:02 AM</span>
+</div>
+<div class="comments-body">
+<p>Microsoft passport is great idea... But it's not popular now. I think the main problem of such systems is security holes.</p>
+<span class="comments-post">Posted by: <a href="http://www.livejournal.com/users/traveller18/">John C.</a> at June 25, 2005 11:20 AM</span>
+</div>
+<div class="comments-body">
+<p>Is there a proxie service or other method for signing on to my Hotmail account without enabling javascript on my computer? I am no able to access my account because I do not enable Java. I will not enable Java just to use MS services. Will I have to abandon my account, or is there another solution to prevent the "marketing_study/social_engineering" invasion of privacy?</p>
+
+<p>Thank you.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;fteqfkfkyhwb&#64;mailinator&#46;com">Sarah</a> at May  2, 2006 01:54 PM</span>
+</div>
+<div class="comments-body">
+<p>Sarah, not that I know of. <br />
+If you are concerned about invasion of privacy, I suggest that you read MSN's privacy statement to make your decision to use these services (or not). <br />
+By definition, any form of authenticated service will allow tracking your activity, whether you use a proxy or not.</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at May  7, 2006 08:37 PM</span>
+</div>
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

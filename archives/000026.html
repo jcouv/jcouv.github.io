@@ -1,0 +1,289 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Trees in SQL</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000025.html" title="Type-safe collections in C#" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000027.html" title="Nifty tools for windows" />
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-74363-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000026.html">
+<dc:title>Trees in SQL</dc:title>
+<dc:description>Here is a cool DB trick that a friend of mine showed me a while back. The problem is basically how to efficiently access a tree stored in a relational/SQL database. The solution where you store the parent of a node in the node/row itself works, but can&apos;t be retrieved in-depth without using some kind of a loop or reccursion. Joe Celko seems to one of the most mentioned DB experts on this matter. Here is an intro he wrote on reprensenting trees as &quot;nested sets&quot;....</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2003-03-31T20:12:22-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000025.html">« Type-safe collections in C#</a>&nbsp;&nbsp; 
+
+| &nbsp;&nbsp;<a href="/archives.html">Archive list</a>&nbsp;&nbsp;
+| &nbsp;&nbsp;<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a> (latest)
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<!-- <h2 class="date">March 31, 2003</h2> -->
+
+
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h2 class="title">Trees in SQL</h2>
+
+<p>Here is a cool DB trick that a friend of mine showed me a while back. The problem is basically how to efficiently access a tree stored in a relational/SQL database.<br />
+The solution where you store the parent of a node in the node/row itself works, but can't be retrieved in-depth without using some kind of a loop or reccursion.</p>
+
+<p>Joe Celko seems to one of the most mentioned DB experts on this matter. Here is an <a href="http://www.intelligententerprise.com/001020/celko.shtml">intro he wrote on reprensenting trees as "nested sets"</a>.</p>
+
+<a name="more"></a>
+<p><b>Introduction</b><br />
+A double numbering or indexing is done globally on the tree, by giving each node/row a left index and right index. These indexes are set sequentially starting with left=1 on the root, and walking through the tree in-depth. The left index is the value of the sequence when you first reach a node (on the left side, if you do a drawing) and the right index is the value of the counter when you reach the node the second time.<br />
+Below is an illustration of this numbering:</p>
+
+<p><img src="/archives/images/celko-trees-in-sql.gif" width="259" height="196" /><br />
+(from http://i.cmpnet.com/intelligententerprise/gifs/Celko.10.19.Fig1s.gif)</p>
+
+<p>Some of the nice properties of this schema are that non-reccursive queries can be used to retrieve some meaningful parts of the tree:<br />
+- a leaf has <i>(right=left+1)</i>,<br />
+- a subbranch (under a node with leftbase and rightbase as indexes) verifies <i>(leftbase &lt; left AND right &lt; rightbase)</i>,<br />
+- the path back to the root starting at a node (with leftnode, rightnode as indexes) can be found similarly with <i>(left &lt; leftnode AND rightnode &lt; right)</i>.</p>
+
+<p>One of the problem is that each time a new node is inserted, approximately half of the existing nodes/rows need to be updated, to maintain the consistency of this indexing. This could be a problem for trees that are updated frequently.</p>
+
+<p>If you know of any large scale implementation of trees in SQL using this system or any other, please let me know.</p>
+
+<p><b>Links</b><br />
+Here is another bunch of links on the topic:<br />
+<a href="http://www.dbmsmag.com/9603d06.html">First</a>, <a href="http://www.dbmsmag.com/9604d06.html">second</a> and <a href="http://www.dbmsmag.com/9605d06.html">third</a> articles by Celko on dbmsmag.com.<br />
+<a href="http://users.starpower.net/rjhalljr/Serve/MySQL/traer.html">Another tutorial</a>.<br />
+<a href="http://www.dbazine.com/tropashko4.html">A comparison with other methods</a>.</p>
+
+<p><u>Update:</u><br />
+Celko wrote an article for O'Reilly Networks: <a href="http://www.onlamp.com/pub/a/onlamp/2004/08/05/hierarchical_sql.html">Hierarchical SQL</a>.</p>
+
+<span class="posted">Posted by Julien on March 31, 2003. <a href="http://blog.monstuff.com/archives/000026.html" rel="bookmark">Permalink</a> <!-- -->
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '26';
+        var disqus_url = 'http://blog.monstuff.com/archives/000026.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+
+<div class="comments-body">
+<p>Found another article that explains this technique, in PHP:  <a href="http://www.sitepoint.com/article/1105">http://www.sitepoint.com/article/1105</a></p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Dumky</a> at June 19, 2003 04:11 PM</span>
+</div>
+<div class="comments-body">
+<p><a href="http://www.codeproject.com/cs/database/Trees_in_SQL_databases.asp">http://www.codeproject.com/cs/database/Trees_in_SQL_databases.asp</a></p>
+<span class="comments-post">Posted by: <a href="mailto&#58;dev&#64;mailinator&#46;com">dev@</a> at October 26, 2004 02:47 PM</span>
+</div>
+<div class="comments-body">
+<p>Also see Teodor Sigaev and Oleg Bartunov's use of GiST indexes at <a href="http://www.sai.msu.su/~megera/postgres/gist/">http://www.sai.msu.su/~megera/postgres/gist/</a><br />
+</p>
+<span class="comments-post">Posted by: <a href="http://www.photoresearchers.com">PRinc</a> at April 26, 2005 03:35 PM</span>
+</div>
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+
+
+<!-- google_ad_section_end -->
+
+<div class="comments-body">
+<!--
+Comments are closed. You can <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#108;&#105;&#101;&#110;&#46;&#99;&#111;&#117;&#118;&#114;&#101;&#117;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">contact me by email</a>. 
+-->
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (270)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000380.html">Thick displays</a><br />
+<a href="http://blog.monstuff.com/archives/000377.html">Hans Rosling on the facts about population</a><br />
+<a href="http://blog.monstuff.com/archives/000376.html">Bill Nye and Ken Ham debating on creationism</a><br />
+<a href="http://blog.monstuff.com/archives/000375.html">Prediction vs Explanation</a><br />
+<a href="http://blog.monstuff.com/archives/000374.html">Protectionism == Luddism</a><br />
+<a href="http://blog.monstuff.com/archives/000373.html">Moderated off Boing Boing</a><br />
+<a href="http://blog.monstuff.com/archives/000372.html">I &#9829; Patent Trolls</a><br />
+<a href="http://blog.monstuff.com/archives/000371.html">Head Mounted Displays</a><br />
+<a href="http://blog.monstuff.com/archives/000370.html">Better async programming in .Net</a><br />
+<a href="http://blog.monstuff.com/archives/000369.html">Action, preferences, value</a><br />
+<a href="http://blog.monstuff.com/archives/000368.html">Fresh breeze on climate debate</a><br />
+<a href="http://blog.monstuff.com/archives/000367.html">On-the-fly book scanning</a><br />
+<a href="http://blog.monstuff.com/archives/000366.html">State and education</a><br />
+<a href="http://blog.monstuff.com/archives/000365.html">Live Geometry screencast</a><br />
+<a href="http://blog.monstuff.com/archives/000364.html">Wired Science TV show</a><br />
+<a href="http://blog.monstuff.com/archives/000362.html">Expectations and accountability in Economics</a><br />
+<a href="http://blog.monstuff.com/archives/000361.html">Science of human action</a><br />
+<a href="http://blog.monstuff.com/archives/000359.html">Reactive programming in javascript and C#</a><br />
+<a href="http://blog.monstuff.com/archives/000358.html">Google Wave</a><br />
+<a href="http://blog.monstuff.com/archives/000357.html">Reading facial expressions</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

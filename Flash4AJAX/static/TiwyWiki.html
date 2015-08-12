@@ -1,0 +1,71 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!--
+/*
+ * Copyright 2005 Julien Couvreur
+ *
+ * This file is part of TiwyWiki.
+ */
+-->
+    <title>"Take It With You" Wiki</title>
+    <link rel="stylesheet" href="wiki.css" type="text/css" version="1" />
+    <link rel="offline" href="TiwyWiki.cdf" />
+    
+    <!-- <script type="text/javascript" src="dhtmlHistory.js"></script> -->
+    <script type="text/javascript" src="json.js"></script>
+    <!-- <script type="text/javascript" src="prototype.js"></script> -->
+    <script type="text/javascript" src="Wiki.js" id="Wiki" version="1"></script>
+    <script type="text/javascript" src="FlashHelper.js" id="FlashHelper" version="1"></script>
+    <script type="text/javascript" src="WikiUI.js" id="WikiUI" version="1"></script>
+
+</head>
+
+
+<body id="body" style="display:none">
+<div id="offlineIcon"><div id="online"><img src="onlineicon.png" alt="online" onclick="offlineIconInfo()"/></div><div id="offline"><img src="offlineicon.png" alt="offline" onclick="offlineIconInfo()"/></div></div> 
+<div id="browsing"><input type="text" id="wikiword" value="loading..." accesskey="w" onkeypress="loadEntryIfReturn(event)" />
+<button id="LoadButton" onclick="loadClick()">Open</button> <span id="onlineStatus"></span> <span id="wikiSpinner"><img src="spinner.gif" alt="Please wait..."/> Please wait...</span>
+
+
+<div id="information"></div>
+
+<hr />
+
+<div id="wikiEntry">
+<h1 id="wikiTitle"></h1>
+<div id="wikiEdit">
+<input type="hidden" id="wikiIsNew" value="" />
+<button onclick="wikiSaveHandler()">Save</button><button onclick="wikiCancelHandler()">Cancel</button>
+<br />
+<textarea id="entryTextarea" rows="10" cols="100"></textarea>
+</div>
+
+<div id="wikiView"><button onclick="wikiEditHandler()">Edit</button><div id="entryDiv"></div></div>
+</div>
+
+</div>
+
+<div id="syncing">
+<div id="syncStatus"></div>
+<div id="syncList"></div>
+</div>
+
+
+
+
+
+<!-- todo: make this floating so it doesn't take any room position:absolute -->
+
+<br />
+<br />
+<hr />
+
+<div id="wikiLog">
+Logs:<br />
+<textarea id="log" cols="100" rows="20"></textarea>
+</div>
+
+<a href="http://blog.monstuff.com/archives/000272.html">TiwyWiki project page</a> <br />
+<script type="text/javascript"> FlashHelper.writeFlash(); </script>
+
+</body></html>
