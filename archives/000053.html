@@ -1,49 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Tablet PC's Ink interoperability...</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Tablet PC's Ink interoperability...</h2>
-
+---
+title: "Tablet PC's Ink interoperability..."
+date: 2003-06-01 21:52:24 +0800
+disqus_identifier: 53
+disqus_url: http://blog.monstuff.com/archives/000053.html
+---
+{% raw %}
 <p>... or its lack thereof.</p>
 
 <p>The Tablet PC SDK offers a wide range of APIs to capture and manipulate ink. Ink can be exchanged using various persistence formats, via the <i>Ink.Save</i> and <i>Ink.Load</i> methods.<br />
@@ -56,8 +17,6 @@ Maybe the <a href="http://hwr.nici.kun.nl/unipen/jot.html">Jot</a> standard (a s
 I thought Microsoft had made the turn and was now facing competitors on better grounds: having the best product, with the most productive and secure experience. Locking people and competitors out of their own ink certainly shows that the mentality change hasn't completely taken place yet.</p>
 
 <p>I wish Microsoft would rely on its great ink technologies and research to win markets and mindshare,  rather than persisting to include the exchange formats in their arsenal against the competition.</p>
-
-<a name="more"></a>
 <p><b>Ink persistence formats</b><br />
 <u>InkSerializedFormat</u>: The <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/tpcsdk10/html/whitepapers/designguide/tbconinkinteroperability.asp">MSDN references pages for Ink persistence</a> unfortunately have broken links for the "Ink Serialized Format" (ISF) format, but it is basically yet another undocumented proprietary binary format to store the ink.</p>
 
@@ -68,58 +27,29 @@ Although it uses a smart fallback strategy, I don't consider this format to be i
 
 <p><u>Base64Gif</u>: The gif format can also be base64-encoded for storing the extended image in text streams like XML or HTML.</p>
 
-<span class="posted">Posted by Julien on June 01, 2003. <a href="http://blog.monstuff.com/archives/000053.html" rel="bookmark">Permalink</a> 
-<br /></span>
+______________________________________
 
-</div>
-
-
-
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '53';
-        var disqus_url = 'http://blog.monstuff.com/archives/000053.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>The ISF 'link' (mentioned above) on MSDN got fixed over the week-end. It turns out it isn't a real link, it just triggers a little tooltip that explain that ISF is an optimized binary format... so no new information.</p>
 
 <p>Unrelated, a piece of research on ink beautifying for chinese calligraphy on Tablet PC:<br />
 <a href="http://www.cs.washington.edu/homes/kzheng/calligraphy.shtml">http://www.cs.washington.edu/homes/kzheng/calligraphy.shtml</a><br />
 I just wish the program and/or source were distributed along with the article :-(</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Dumky</a> at June 24, 2003 11:35 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Dumky</a> (June 24, 2003 11:35 PM)
+
+______________________________________
+
 <p>I am looking for a way to capture ink in an applet and would like it to match the ISF format on my tablet.  Any more insights into the ISF format?</p>
-<span class="comments-post">Posted by: <a href="http://www.ericstephens.com">Eric Stephens</a> at July 11, 2003 07:36 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.ericstephens.com">Eric Stephens</a> (July 11, 2003 07:36 AM)
+
+______________________________________
+
 <p>Unfortunately, I still haven't found information on the ISF format, even after trying some internal channels.<br />
 You can find an example of C# applet to capture ink here ( <a href="http://www.tabletpcdeveloper.com/userarea/filedetails.aspx?FileName=tabletInkComp.zip">http://www.tabletpcdeveloper.com/userarea/filedetails.aspx?FileName=tabletInkComp.zip</a> ). It will only work on a Tablet PC or possibly Windows box with the Tablet PC SDK installed. Also, you'll need to tweak the security permissions to get it to work, but other than that it works fine.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/archives/000013.html">Dumky</a> at July 11, 2003 10:58 AM</span>
-</div>
+
+Posted by: <a href="http://blog.monstuff.com/archives/000013.html">Dumky</a> (July 11, 2003 10:58 AM)
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>
+{% endraw %}
