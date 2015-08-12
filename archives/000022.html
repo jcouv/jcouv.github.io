@@ -1,48 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Sub-Pixel Font Rendering (ClearType)</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Sub-Pixel Font Rendering (ClearType)</h2>
+---
+title: Sub-Pixel Font Rendering (ClearType)
+date: 2003-03-12 10:40:43 +0800
+disqus_identifier: 22
+disqus_url: http://blog.monstuff.com/archives/000022.html
+---
 
 <p>Sub-Pixel Font Rendering is the technical name for the technology used in Windows XP, known as ClearType. If you use Windows XP, I definitely recommend that you <a href="http://www.microsoft.com/typography/links/news.asp?NID=2241">turn it on</a> (it's off by default). You'll see the greatest improvement if you use a laptop or other LCD screen, but even CRT screens will look a bit better.</p>
 
@@ -52,8 +13,6 @@ What is interesting is how color artifacts are avoided/minimized, by splitting t
 <p><img src="http://www.grc.com/image/cttech9.gif"/></p>
 
 <p><a href="http://www.bluecadaver.com/ClearType/">A Java implementation</a> is  available with source code (<a href="http://blog.monstuff.com/archives/images/ClearType.java">mirrored here</a>).</p>
-
-<a name="more"></a>
 <p>What I am not sure about yet is why this resolution improvement trick works best for horizontal text. A Tablet PC developper told me that improvements for this technology is on its way, for LCD screens used in portait mode. But he didn't tell me more about why it doesn't work as well vertically or how it's going to get fixed.</p>
 
 <p>Also, I have seen mentions of how the font needs to be created so that it gets "cleartyped" properly. I think they call this "hints", but I didn't get in the details yet.</p>
@@ -62,36 +21,10 @@ What is interesting is how color artifacts are avoided/minimized, by splitting t
 
 <p>Update: a little tool (<a href="http://www.offroadsearch.com/software/cleartweak/">ClearTweak</a>) that demonstrates ClearType and tweak your ClearType settings.</p>
 
-<span class="posted">Posted by Julien on March 12, 2003. <a href="http://blog.monstuff.com/archives/000022.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
+______________________________________
 
 
 
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '22';
-        var disqus_url = 'http://blog.monstuff.com/archives/000022.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>Hi,</p>
 
 <p>I came across your blog and I had some comments on a couple of questions you've raised there:</p>
@@ -122,31 +55,27 @@ What is interesting is how color artifacts are avoided/minimized, by splitting t
 <p>Cheers!</p>
 
 <p>Kaushik</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;skaushik&#64;hotmail&#46;com">Kaushik</a> at March 29, 2003 10:29 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;skaushik&#64;hotmail&#46;com">Kaushik</a> at March 29, 2003 10:29 PM
+
+
 <p>I find your text here very informative. But I have a doubt and I don't know if you could help me. You say that ClearType is not the default, but what about the Standard anti-alias text effect? </p>
 
 <p>Thanks for your answer,</p>
 
 <p>Robson.</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;robson&#64;irion&#46;com&#46;br">Robson</a> at October 21, 2004 02:40 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;robson&#64;irion&#46;com&#46;br">Robson</a> at October 21, 2004 02:40 PM
+
+
 <p>Hi Robson,</p>
 
 <p>I'm not sure what's the default configuration comes on XP (I've already switched all my boxes to use ClearType). If I remember correctly, I would say it's the "Standard" smoothing option that was selected.<br />
 I just tried the "Standard" smoothing effect setting again (in the same drop-down where ClearType is available), but it doesn't seem to make much difference with no smoothing at all, even when looking at the fonts with the magnifier tool. So I'm not sure that "Standard" is anti-aliasing.</p>
 
 <p>Does that answer your question?</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at October 22, 2004 03:23 PM</span>
-</div>
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> at October 22, 2004 03:23 PM
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>

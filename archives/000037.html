@@ -1,48 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: The dark side of C# Delegates</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">The dark side of C# Delegates</h2>
+---
+title: The dark side of C# Delegates
+date: 2003-04-18 15:23:36 +0800
+disqus_identifier: 37
+disqus_url: http://blog.monstuff.com/archives/000037.html
+---
 
 <p>This article assumes basic programming experience with delegates.</p>
 
@@ -54,8 +15,6 @@ Note: We won't consider the singlecast vs. multicast aspect of delegates.</p>
 
 <p><u>Update:</u> a follow-up on this article can be found on this <a href="http://blog.monstuff.com/archives/000038.html#more">C# Delegates strike back</a> entry.<br />
 <u>Update:</u> I wrote another follow-up on this article, about <a href="http://blog.monstuff.com/archives/000040.html">C# events vs. delegates</a></p>
-
-<a name="more"></a>
 <p><b>Syntax reminder</b><br />
 Here is a little sample of code using delegates:<br />
 <div class="code">// Declare<br />
@@ -173,49 +132,25 @@ Dumky</p>
 
 <p><a href="http://www.jelovic.com/weblog/e133.htm">Interface-style vs. delegate-style performance</a></p>
 
-<span class="posted">Posted by Julien on April 18, 2003. <a href="http://blog.monstuff.com/archives/000037.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
+______________________________________
 
 
 
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '37';
-        var disqus_url = 'http://blog.monstuff.com/archives/000037.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>O'Reilly Network just added an article related to delegates, and how they compare to similar Java patterns.<br />
 	<br />
 A Java Programmer Looks at C# Delegates: <a href="http://www.onjava.com/pub/a/onjava/2003/05/21/delegates.html">http://www.onjava.com/pub/a/onjava/2003/05/21/delegates.html</a></p>
-<span class="comments-post">Posted by: <a href="mailto&#58;dumky&#64;privateemail&#46;email">Dumky</a> at May 23, 2003 11:18 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;dumky&#64;privateemail&#46;email">Dumky</a> at May 23, 2003 11:18 AM
+
+
 <p>Hi,</p>
 
 <p>Your article is really great.<br />
 There is need of research.</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;rashid425&#64;hotmail&#46;com">Rashid Mahmood</a> at May 28, 2003 11:39 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;rashid425&#64;hotmail&#46;com">Rashid Mahmood</a> at May 28, 2003 11:39 PM
+
+
 <p>Hi,</p>
 
 <p>I would have a question concerning the method pointer that is used by the Invoke method of a delegate.</p>
@@ -226,24 +161,28 @@ There is need of research.</p>
 
 <p>Many thanks!<br />
 George </p>
-<span class="comments-post">Posted by: <a href="http://www.inf.ethz.ch/~fruja">George</a> at October  6, 2004 02:51 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.inf.ethz.ch/~fruja">George</a> at October  6, 2004 02:51 AM
+
+
 <p>is there any property to inform to the user in online ,that the product he is going to order is finished ,</p>
 
 <p>if there plz mail me </p>
-<span class="comments-post">Posted by: <a href="mailto&#58;textindia&#64;yahoo&#46;com">senthil</a> at April  1, 2005 03:53 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;textindia&#64;yahoo&#46;com">senthil</a> at April  1, 2005 03:53 AM
+
+
 <p>Very nice. I knew, when MSDN said that delegates are "not advised" and the similiarity of the reflection classes, that they are using reflection. It's cheating! anyone can do the same in java. Thanx 4 the article.</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;ajifocus&#64;yahoo&#46;com">Ajith</a> at February  8, 2006 11:23 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;ajifocus&#64;yahoo&#46;com">Ajith</a> at February  8, 2006 11:23 AM
+
+
 <p>Ajith, I don't actually think that delegates use reflection, although both technique do rely on MethodInfo. My understanding is that MethodInfo is the representation of a method pointer in the runtime.<br />
 Delegates do have lesser performance than direct function calls, but from the benchmark I've seen they where not that bad.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at February  8, 2006 03:09 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at February  8, 2006 03:09 PM
+
+
 <p>Here is an even darker side to delegates. They are sensitive to the block in which they are declared. Changing the block can change delegate implementation! Here is a stupefying sample, if you change the struct to a class the behaviour reverses (because of stack vs heap):</p>
 
 <p>class ScopeTest<br />
@@ -279,18 +218,13 @@ Delegates do have lesser performance than direct function calls, but from the be
   testStruct t = new testStruct("nada");<br />
  }<br />
 }</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;test&#64;yahoo&#46;com">Brian</a> at February 14, 2006 05:18 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;test&#64;yahoo&#46;com">Brian</a> at February 14, 2006 05:18 AM
+
+
 <p>It's "Instantiate" not "Instanciate"!</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;davidcarm&#64;hotmail&#46;com">The Spelling Police</a> at June 23, 2006 02:44 AM</span>
-</div>
+
+Posted by: <a href="mailto&#58;davidcarm&#64;hotmail&#46;com">The Spelling Police</a> at June 23, 2006 02:44 AM
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>

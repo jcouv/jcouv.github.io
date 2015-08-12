@@ -1,53 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: C# Delegates strike back</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">C# Delegates strike back</h2>
+---
+title: C# Delegates strike back
+date: 2003-04-25 11:53:12 +0800
+disqus_identifier: 38
+disqus_url: http://blog.monstuff.com/archives/000038.html
+---
 
 <p>My last article (<a href="http://blog.monstuff.com/archives/000037.html#more">The dark side of C# Delegates</a>) detailled how delegates are declared, instanciated and invoked. We have seen the role of the compiler, through analysis of dis-assembled code. But we haven't found the implementation of either the .ctor or the Invoke methods on the compiler-generated delegate classes.<br />
 In this follow-up we'll go through new evidence of the inner workings that we analyzed and we'll look at the missing details.</p>
-
-<a name="more"></a>
 <p>First, I wanted to confirm the role of the compiler in all the expressions involving delegates.<br />
 I checked out the ECMA specs for C# and the CLI. You can find links to these specs on <a href="http://msdn.microsoft.com/net/ecma/">this MSDN page</a><br />
 Here is a copy of the parts related to delegates:<br />
@@ -108,42 +67,17 @@ MSDN reference for CodeTypeDelegate Class (representing a delegate declaration)<
 <p><u>Note:</u> as Miguel nicely <a href="http://www.gotmono.com/cgi-bin/yabb/YaBB.pl?board=PROJECT;action=display;num=1051037077">pointed out</a> to me, the CodeDOM classes aren't used to represent the code tree during compilation, because they aren't powerful enough. It is meant to generate textual source code (that can then be compiled). I just included the reference links above to provide another angle on delegates.<br />
 <u>Update:</u> I just found some more details on the limitations of CodeDOM in the <a href="http://www.codeproject.com/csharp/CodeDOMparser.asp">C# CodeDOM parser</a> article.</p>
 
-<span class="posted">Posted by Julien on April 25, 2003. <a href="http://blog.monstuff.com/archives/000038.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
+______________________________________
 
 
 
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '38';
-        var disqus_url = 'http://blog.monstuff.com/archives/000038.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>I still have the nagging feeling that reflection is involved within the invoke method of the delegate, and still seem to feel that delegates and therefore events are late-bound and potentially not performant...<br />
 Thanks,<br />
 dave</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;dave&#46;hiers&#64;mapics&#46;com">Dave Hiers</a> at March 16, 2004 09:36 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;dave&#46;hiers&#64;mapics&#46;com">Dave Hiers</a> at March 16, 2004 09:36 AM
+
+
 <p>Here is a benchmark:<br />
 <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dncscol/html/csharp02172004.asp">http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dncscol/html/csharp02172004.asp</a></p>
 
@@ -151,14 +85,8 @@ dave</p>
 I don't know the explanation for these differences, but delegates are faster than InvokeMember (reflection) calls.</p>
 
 <p>The article also shows how to create delegates at runtime, via Reflection, which I was wondering about when I wrote this post.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/archives/000038.html">Dumky</a> at March 16, 2004 03:16 PM</span>
-</div>
+
+Posted by: <a href="http://blog.monstuff.com/archives/000038.html">Dumky</a> at March 16, 2004 03:16 PM
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>
