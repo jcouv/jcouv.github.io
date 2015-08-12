@@ -20,7 +20,7 @@ defaults:
       comments: True
 
 prose:
-  media: "assets"
+  media: "archives/images"
   rooturl: '_posts'
   relativeLinks: 'http://blog2.monstuff.com/links.jsonp'
   siteurl: 'http://blog2.monstuff.com/'
