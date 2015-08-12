@@ -1,0 +1,179 @@
+---
+title: "ASP.Net TypeKey authentication"
+date: 2004-06-15 17:04:17 +0800
+disqus_identifier: 184
+disqus_url: http://blog.monstuff.com/archives/000184.html
+---
+{% raw %}
+<p>TypeKey is an online authentication service that provides a single sign-on (SSO) experience to the websites that support it. <br />
+My goal for this TypeKeySecurity C# library is to allow ASP.Net programmers to easily take advantage of this service. </p>
+
+<p><a href="/archives/images/TypekeySecurity.zip">Download the code</a> (includes source, binaries, documentation and a demo).</p>
+
+<p>Merits of SSO solutions can be argued (there is trade off between security and convenience) and those of TypeKey can be argued as well (in comparison to similar systems like Passport). <br />
+But I am convinced that for many personal and community sites using an SSO can make the developer's life easier (no need to re-implement the same code and DBs every time), as well as the user's (no need to register a new account for each site and remember all the passwords). TypeKey happens to be rather simple and open, which makes it a good choice. </p>
+
+<p>Read the <a href="http://www.typekey.com/faq/">TypeKey FAQ</a> for more info. </p>
+<p> <br />
+<b>Documentation</b><br />
+<u>Build</u><br />
+The source file includes build files for NAnt and VS.net 2003.<br />
+Three tasks are available for NAnt, "build", "doc" and "clean". Re-building the documentation ("doc") requires <a href="http://ndoc.sourceforge.net/">NDoc</a> to be installed. </p>
+
+<p><u>Deployment</u><br />
+Four simple steps ;-) <ol><li>Register a TypeKey account at <a href="https://www.typekey.com/t/typekey">https://www.typekey.com/t/typekey</a> and get a site token. </li><li>Copy the TypeKeySecurity.dll file into the <i>/bin</i> directory of your ASP.Net project. </li><li>Modify your web.config to disable any other kind of built-in authentication (Windows, Passport, ...), activate the TypeKeyAuthenticationModule and configure your site key. See the example of web.config configuration below and in the documentation. </li><li>Use the TypeKeyIdentity object in your code, by declaring "using TypeKeySecurity;" and then "TypeKeyIdentity id = (TypeKeyIdentity)Context.User.Identity;"</i>. </li></ol></p>
+
+<p><u>Sample web.config</u><br />
+<div class="code">&lt;?xml version="1.0" encoding="utf-8" ?><br />
+&lt;configuration><br />
+&nbsp;&nbsp;&lt;system.web><br />
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;authentication mode="None" /><br />
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;httpModules><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;add name="TypeKeyAuthenticationModule" <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; type="TypeKeySecurity.TypeKeyAuthenticationModule, TypeKeySecurity" /><br />
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;/httpModules><br />
+&nbsp;&nbsp; &lt;/system.web><br />
+&nbsp;&nbsp; &lt;appSettings><br />
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;add key="TypeKeySecurity.Token.Value" value="0123456789ABCDEF0123" /><br />
+&nbsp;&nbsp; &lt;/appSettings><br />
+&lt;/configuration></div></p>
+
+<p><a href="/archives/images/TypeKeySecurity%20doc.chm">Read the documentation online</a> (CHM format).</p>
+
+<p><u>Demo site</u><br />
+The demo site consists of four files:<br />
+<ul><li><i>/default.aspx</i>: Demo UI.</li><li><i>/default.aspx.cs</i>: Code-behind for default.aspx. Doesn't need to be compiled (it gets compiled when default.aspx is first served). </li><li><i>/web.config</i>: Simple config file. You need to modify it to use your own site token, provided when registering with TypeKey. </li> <li><i>/bin/TypeKeySecurity.dll</i>: The library wrapping the TypeKey authentication service. </li></ul></p>
+
+<p>Configure your web server to point to this directory and load <i>/default.aspx</i> page into your browser, using your server's url. You should see a page with a link to log in. <br />
+Click it and sign in with a TypeKey account. You should be sent back to that page, which should now show the information for the user you logged in with.<br />
+The page sets a cookie so that the authentication persists throughout the session.</p>
+
+<p><u>TypeKeyIdentity class overview</u><br />
+When the TypeKeyAuthenticationModule is hooked into with your ASP.Net site, you can find out about the current user through the TypeKeyIdentity object, available using "(TypeKeyIdentity)Context.User.Identity;".</p>
+
+<p>This identity object will tell you whether the user is currently authenticated, how long it has been since he was authenticated by TypeKey, his login name (the TypeKey unique identifier), his email address and his display name (nick).</p>
+
+<p>For privacy protection, unless you specifically need the user's email, TypeKey will only provide you with a SHA-1 hash of the email. If you do need that information, the login prompt shows that the user's email address will be shared with your site.</p>
+
+<p>TypeKey uses your login name as the unique identifier. But in the case where you need to key your database using the user's ID, using a string may seem weird. So the TypeKeyIdentity also exposes the MD5 hash of the login name for this purpose. It is a 128 bits integer. That can be used in MS SQL using the <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/acdata/ac_8_con_03_2uox.asp">uniqueidentifier datatype</a>.<br />
+Let me know if you know of a better way to derive a (smaller) numerical identifier from the login name :-)</p>
+
+<p><br />
+<b>Development story</b><br />
+I had taken a <a href="http://blog.monstuff.com/archives/000170.html">stab at the TypeKey protocol</a> while it was in Beta. I just found out the <a href="http://www.movabletype.org/docs/tk-apps.html">official TypeKey protocol documentation</a> was published (via <a href="http://www.srijith.net/trinetre/archives/2004/05/26.shtml#000692">Srijith's post</a>).<br />
+The format for the signature was the main missing element. It uses <a href="http://en.wikipedia.org/wiki/DSA">DSA (Digital Signature Algorithm)</a>.</p>
+
+<p><u>Signature format:</u><br />
+TypeKey returns the DSA signature in the format "&lt;base64R>:&lt;base64S>".  But the <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfsystemsecuritycryptographydsaclasstopic.asp">DSA class</a> in the .Net framework expects one byte array.<br />
+Looking at <a href="http://cvs.hispalinux.es/cgi-bin/cvsweb/mcs/class/corlib/Mono.Security.Cryptography/DSAManaged.cs?rev=1.6&content-type=text/x-cvsweb-markup&cvsroot=mono">Mono's code for DSA</a> showed that .Net expect the byte array to contain R followed by S. <br />
+Since both R and S have a fixed sized the internal of the DSA implementation can easily split them apart when needed.</p>
+
+<p><u>Reading the DSA public key:</u><br />
+The other problem with implementing the DSA signature check is that TypeKey provides its public key online using the format "P=&lt;decimalP> Q=&lt;decimalQ> G=&lt;decimalG> pub_key=&lt;decimalY>". But the crypto classes in the .Net framework need all these as byte arrays. </p>
+
+<p>Mono solves this problem by implementing a <a href="http://cvs.hispalinux.es/cgi-bin/cvsweb/mcs/class/corlib/Mono.Math/?cvsroot=mono">BigIntegers class</a> in the Mono.Math namespace, which doesn't exist in the MS .Net framework.<br />
+I used their implementation for a while, but ran into signature problems that required me to declare the Mono.Security.dll in the <i>machine.config</i> (using &lt;add assembly="Mono.Security, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756"/>). But I don't want people who use the TypeKey authentication provider to have to do that...</p>
+
+<p>I chose to use Chew Keong TAN's <a href="http://www.codeproject.com/csharp/BigInteger.asp">implementation of BigIntegers</a> at the CodeProject .<br />
+Things would have been much easier if the public key (P,Q,G,Y) had been stored as binary with base64 encoding instead of decimal.</p>
+
+<p><br />
+<b>Security</b><br />
+<u>Replay</u><br />
+The main security improvement that should be included in the protocol is having the signature be site specific. Srijith discussed <a href="http://www.srijith.net/trinetre/archives/2004/05/26.shtml#000692">this risk</a>, which allows authentication assertions to be replayed from one site to another. A trivial way to mitigate this is to have the signature apply to  "&lt;email>::&lt;name>::&lt;nick>::&lt;ts><b>::&lt;t></b>" where <b>t</b> is the site token.</p>
+
+<p><u>Single sign-out</u><br />
+I also think TypeKey should offer a single sign-out solution. Currently, if you log into two blogs, you get logged into those two sites and also the TypeKey site. But when you log out from one of the blogs, you get logged out of the TypeKey site, but not the other blog. This is a problem if you are using a public computer (say in a library or internet cafe).<br />
+Writing the code for the sign-out in this library was kind of a pain. The Passport sign-out seems more elegant and keeps urls cleaner. For TypeKey to implement a similar model is they would need to keep track of the sites you logged in within a session and store a "logout gif" url for each registered site.</p>
+
+<p><u>Time skews</u><br />
+One more issue is pointed out in the TypeKey: there should be minimal time skew between the TypeKey server and the site requesting the authentication. NTP can be used for that purpose. For example, I noticed that my own box has a 5 minute time difference with TypeKey. This can be used to enhance a cross-site replay (see first security threat) and can also be a problem if you need a very tight control over the time window you want to apply to users authenticating (which most TypeKey-enabled sites should not).</p>
+
+<p><u>TypeKey service dies</u><br />
+This is an undeniable risk. Either the uptime for TypeKey service is not good enough for your needs, or a terms of use change doesn't fit you, or the service disappears entirely...<br />
+The best mitigation I can think of is that you should store the email of the user (cleartext or SHA-1, it doesn't matter) along with the rest of the profile data you persist. This would allow you to migrate away from TypeKey by using the ownership of an email address as an authentication mechanism.</p>
+
+<p>Also, Stuart Parmenter is working on <a href="http://www.pavlov.net/blog/archives/2004/06/inside_typekey.html">re-implementing a TypeKey authentication server</a> (via <a href="http://www.sauria.com/blog/computers/internet/weblogs/975">Ted Leung</a>).</p>
+
+<p><br />
+<b>Conclusion</b><br />
+I included a webcontrol to display a "sign-in/sign-out" logo, but I want to make it easier to tweak (CSS based), as well as provide nicer logos. I also want to provide some hooks and events in the authentication lifecycle for customization.<br />
+Since I don't run my own CVS server anymore, I started a project on SourceForge. It's called <a href="http://typekeydotnet.sourceforge.net/">TypeKeyDotNet</a>.</p>
+
+<p>I hope you'll find this component useful. Let me know if you have questions or comments.<br />
+All feedback is welcome :-)</p>
+
+<p><br />
+<b>Links</b><br />
+My overview of the <a href="http://blog.monstuff.com/archives/000167.html">Passport web authentication protocol</a>.<br />
+More on <a href="http://www.devx.com/security/Article/17742/0/page/4">Passport sign-out</a>.</p>
+
+<p><u>Update:</u> A CPAN Perl library to interface with TypeKey: <a href="http://search.cpan.org/~btrott/Authen-TypeKey-0.01/">Authen::TypeKey</a>.</p>
+
+______________________________________
+
+<p>thx for your effort.</p>
+
+<p>I applied your TypeKeyDotNet for my blog and It's ran very well.</p>
+
+<p>Thankyou very much!</p>
+
+Posted by: <a href="http://www.likejazz.com/">LikeJAzz</a> (September 14, 2004 02:46 PM)
+
+______________________________________
+
+<p>Thanks for trying it and letting me know ;-)</p>
+
+Posted by: <a href="http://blog.monstuff.com/">Julien</a> (September 21, 2004 06:54 AM)
+
+______________________________________
+
+<p>HI!<br />
+I am a full time graduate student. We are planning to implement an application(basically a novice web service)in .NET where Digital signatures are used for security reasons. Can I apply your Type key in my project?<br />
+Thanks..</p>
+
+Posted by: <a href="mailto&#58;sumanpingali&#64;yahoo&#46;com">chums</a> (October 15, 2004 11:49 AM)
+
+______________________________________
+
+<p>Hi  Chums,</p>
+
+<p>Sure go ahead. The code is all GPL and available from sourceforge and/or the zip file posted in the article.<br />
+Do you have any more details on what you're trying to build?<br />
+</p>
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> (October 15, 2004 12:18 PM)
+
+______________________________________
+
+<p>Hi Julien,</p>
+
+<p>Thought you'd like to know: the vulnerability described by Srijith was patched in TypeKey version 1.1 (<a href="http://www.movabletype.org/docs/tk-apps.html">http://www.movabletype.org/docs/tk-apps.html</a> ). Version 1 is still supported for backward compatibility, but version 1.1 is more secure. The app can specify what version it uses, by passing the "v=1.1" parameter. The format of the 1.1 signatures is described in the spec.</p>
+
+<p>Hope that helps!</p>
+
+Posted by: <a href="mailto&#58;ezra&#64;spammenot&#46;sixapart&#46;com">Ezra</a> (November 16, 2004 01:33 PM)
+
+______________________________________
+
+<p>Hi Ezra,<br />
+Sounds good. Thanks a lot pinging me.<br />
+I'll be sure to check it out and update my Asp.Net/TypeKey authentication module ( <a href="http://typekeydotnet.sourceforge.net/">http://typekeydotnet.sourceforge.net/</a> ) to use the improved protocol.</p>
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> (November 23, 2004 11:03 AM)
+
+______________________________________
+
+<p>I applied your TypeKeyDotNet for my blog and It's ran very well.</p>
+
+Posted by: <a href="http://zile.gen.tr">fermuar</a> (January 18, 2006 11:48 AM)
+
+______________________________________
+
+<p>I have seen some TypeKey hacks out there, with any free/opensource projects I guess they will pop up.  Might go with a commercial version instead.</p>
+
+Posted by: <a href="http://www.tucex.com">tucex</a> (January 23, 2006 07:49 PM)
+
+
+
+{% endraw %}

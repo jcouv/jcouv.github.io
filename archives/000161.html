@@ -1,0 +1,60 @@
+---
+title: "Tablet PC ideas"
+date: 2004-03-30 17:06:00 +0800
+disqus_identifier: 161
+disqus_url: http://blog.monstuff.com/archives/000161.html
+---
+{% raw %}
+<p>Three ideas: <br />
+- using the Tablet as a terminal over a USB link,<br />
+- a BIOS level note taking application,<br />
+- hibernate to Flash RAM for faster wake-up.</p>
+
+<p><br />
+<b>USB Terminal:</b><br />
+Allow to use a Tablet (or laptops) as a screen or terminal (screen + input, ie. keyboard & mouse) for headless machines. Also, a Tablet could be used as an input peripheral for graphic designers.</p>
+
+<p>The headless machine should have a special USB driver installed for "terminal" devices. You would then run a client software on the Tablet so that the USB port appears as one of these terminal devices. <br />
+Whenever you plug the USB cable in, a data link is established between the driver and the client, and the Tablet display a login prompt, like the RDP client does. </p>
+
+<p>I originally thought about suggesting a VGA input on Tablets, but that means separate cables are needed for the keyboard and mouse connection. USB won't support video streaming, but should be enough for RDP, VNC or X.</p>
+
+<p><u>Update:</u><br />
+Just found a related <a href="http://www.halfbakery.com/idea/USB_20Monitor">USB Monitor</a> idea over at Halfbakery.<br />
+Someone pointed me to <a href="http://www.maxivista.com/how.htm">MaxiVista</a>, which is kinda related, but definitely cool. It is a way to make a machine multi-monitor by using the network and another machine as the secondary display. Be sure to check out the <a href="http://maxivista.com/videos/mv_performance.wmv">awsome demo video</a>. Gizmodo just posted a <a href="http://www.gizmodo.com/archives/maxivista-laptop-as-monitor-impressions-016121.php">review of MaxiVista</a>.</p>
+
+<p><br />
+<b>BIOS-level Journal:</b><br />
+Allow Tablet PC owners to take quick notes without booting windows.</p>
+
+<p>This would be similar to the BIOSes that contain email client, browser or DVD player software. There would be no ink recognition at the BIOS level, but when starting the Tablet PC OS, these quick notes could be accessed and converted to Journal or OneNote format.</p>
+
+<p><br />
+<b>Hibernate to Flash RAM:</b><br />
+There are two sleep modes: Standby and Hibernate.<br />
+Standby minimizes the electric load while maintaining the computer turned on: the hard-drive spins down, the CPU goes in a power saving mode, but the "live" data stays in the RAM. Hibernate stores all the data from the RAM onto the hard-drive and the computer is then turned off completely.</p>
+
+<p>This means the Standby still uses some battery, but is quicker to wake-up than the Hibernate, since it doesn't need to wait for the hard-drive to spin up during start-up.</p>
+
+<p>The Hibernate mode could probably be improved by adding a Flash RAM component to the computer, matching the size of the RAM. The question is whether a 150$ addition (for 500MB of Flash) is worth the speed-up, because the devices (network, sound card,...) still need to be re-initialized.</p>
+
+<p>When starting up, not all the data stored in the Flash RAM would have to be copied over to the RAM. Some could be left on the Flash, but flagged in the memory controller as "copy from Flash on Read" so that it gets lazy-loaded.</p>
+
+<p><br />
+<b>Games?</b><br />
+The Dots! powertoy has a nice pen-enabled interface, but the game in itself is pretty lame... :-(<br />
+I've tried to come up with some game ideas for Tablet last week and over the week-end, but no killer game yet ;-) Any ideas?</p>
+
+<p><br />
+<u>Update:</u> Added the Hibernate to Flash idea.</p>
+
+
+______________________________________
+
+<p>How about Hangman? :)</p>
+
+Posted by: <a href="http://inkabletype.kunal.org">Kunal</a> (March 31, 2004 07:44 AM)
+
+
+
+{% endraw %}

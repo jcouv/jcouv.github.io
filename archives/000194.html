@@ -1,0 +1,136 @@
+---
+title: "Bittorrent downloader with web UI..."
+date: 2004-07-24 20:00:07 +0800
+disqus_identifier: 194
+disqus_url: http://blog.monstuff.com/archives/000194.html
+---
+{% raw %}
+<p>... and thoughts about the different UI remoting techniques.</p>
+
+<p><b>ABC bittorrent client:</b><br />
+I've been using the <a href="http://pingpong-abc.sourceforge.net/">ABC bittorrent client</a> for a while, but I just got around to installing its web "extension", <a href="http://php4abc.winkonz.com">PHP-4-ABC</a>. </p>
+
+<p>ABC doesn't seem a very original bittorrent client, although it does allow for incremental allocation of files (which is nice). But the exposed web service interface is what really caught my attention. <br />
+PHP-4-ABC makes use of this control interface to build a web UI that offers most of the functionality of the desktop application. </p>
+
+<p>The setup was pretty easy (some configuration and a little bit of PHP tweaking), with <a href="http://www.appservnetwork.com/">AppServ</a> (a windows package offering Apache+PHP+MySQL+more, in less than 8MB). </p>
+
+<p><br />
+Installing PHP-4-ABC made me think the similarities and differences between the console apps with ssh and GUI apps with web interfaces. <br />
+Both are good ways to access remote applications without burning too much bandwidth. RDP, X and VNC are improving, but still have higher bandwidth usages. </p>
+<p> <br />
+<b>Console apps:</b><br />
+One advantage of console apps (on Linux for example) is that they are both local and natively "remotable" (no code change), with little difference except for the added latency. <br />
+They also benefit from a uniform security mechanism (local permissions and ssh).</p>
+
+<p><b>GUI+web interface:</b><br />
+Few GUI applications have integrated or add-on web interfaces like the ABC client or <a href="http://emule-project.net/home/perl/help.cgi?l=1&rm=show_topic&topic_id=144">eMule</a>. The ones that do come up with ad hoc security/authentication solutions. </p>
+
+<p>If they can be controlled reasonably well via a web interface, chances are they would also fit in a console-based approach. For example, it's easy to imagine a bittorrent scheduler implementated using <a href="http://www.gnu.org/software/ncurses/">ncurses</a>.</p>
+
+<p>On the other hand, having a web interface allows many integration tricks with other web applications. For example, you could have bookmarklets to start bittorrent downloads on your remote machine directly from the bittorrent search page or your RSS aggregator.</p>
+
+<p><b>Web-only apps:</b><br />
+The web-only approach for desktop applications (like Radio Userland or Amphetadesk) is interesting, but they don't share much infrastructure. They come with their own security model (local access only, web form and cookie, ...). <br />
+They also each have their own web server. That's because it's easier to deploy rather than try and configure any web server that the user might already be running. Also, many of these applications need to continue running in the background, which the web server doesn't really offer a solution for.</p>
+
+<p><b>Future:</b><br />
+Maybe in the future we'll see a framework or standard deployment model for such apps, that would allow re-using the web server component, sharing the security model and offer support for background threads.</p>
+
+<p>Another approach would be a GUI framework that would simplify exposing local GUIs as web interfaces.</p>
+
+<p>Also it is possible that with GUI frameworks built with an efficient remote display protocol in mind and faster networks, this problem might just disappear on it's own ;-)</p>
+
+<p><b>Links:</b><br />
+Winamp explores these various models as well, using extensions like <a href="http://www.flippet.org/wawi/">Winamp Web Interface</a> or <a href="http://www.flippet.org/terminalserver.html">Winamp Terminal Server</a>. <br />
+Note that you can also control Winamp from your browser with the nifty <a href="http://www.iosart.com/foxytunes/firefox/">FoxyTunes</a> extension (local control only). It sometimes seems as if the browser is taking over the desktop...</p>
+
+______________________________________
+
+<p>what is the best bittorent client to use & where<br />
+do i download it from I use abc with supanova.org<br />
+for torrents but I get problems.</p>
+
+Posted by: <a href="mailto&#58;aanw35265&#64;blueyonder&#46;co&#46;uk">tony shell</a> (October 15, 2004 07:31 AM)
+
+______________________________________
+
+<p>Hi Tony,</p>
+
+<p>I use ABC, because it can be controlled remotely via a web interface, called PHP-4-ABC.<br />
+ABC used to crash quite a bit, but nowadays, it seems quite stable.</p>
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> (October 22, 2004 03:28 PM)
+
+______________________________________
+
+<p>I've been looking for a Bittorrent client that I can use remotely on a headless linux server and I hadn't heard of ABC bittorrent client before. The PHP-4-ABC sound like what I have been looking for. Thanks for your Help!</p>
+
+Posted by: <a href="mailto&#58;snipes420&#64;gmail&#46;com">Snipes</a> (December  9, 2004 02:57 PM)
+
+______________________________________
+
+<p>Hi,</p>
+
+<p>Have any of you guys tried out btmanager... I used it a while back and i worked pretty well for me ... <br />
+You may want to check it out...</p>
+
+<p><a href="http://sourceforge.net/projects/btmanager/">http://sourceforge.net/projects/btmanager/</a></p>
+
+<p>cheers....</p>
+
+Posted by: <a href="mailto&#58;boombastic_007&#64;yahoo&#46;com">Boombastic</a> (July 22, 2005 04:33 AM)
+
+______________________________________
+
+<p>ABC (combined with PHP4ABC) is serving me well.<br />
+I'll check out btmanager though. Thx for the tip.</p>
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> (July 22, 2005 08:51 AM)
+
+______________________________________
+
+<p>For those who waiting for a ABC web interface.</p>
+
+<p>Nice and small , put that on your web page or your server and that it's no configuration to do.</p>
+
+<p>what you will need is :<br />
+start your webinterface in ABC ---- set your port ---- put your password</p>
+
+<p>go on your web page:<br />
+type your ip ---- port ----- and passworld</p>
+
+<p>that all</p>
+
+<p>want to try it go there:<br />
+<a href="http://abcremote.peacesim.com/ABCRemote">http://abcremote.peacesim.com/ABCRemote</a></p>
+
+<p>( clic on exemple )</p>
+
+Posted by: <a href="http://www.peacesim.com/">nec9716</a> (December  5, 2005 10:15 AM)
+
+______________________________________
+
+<p>I've actually been using TorrentFlux for awhile now. It's really well done and also allows for simple file control so you can manage the downloads.</p>
+
+Posted by: <a href="http://www.realmprojects.com/blog/">Jason Stapels</a> (January 17, 2006 05:32 PM)
+
+______________________________________
+
+<p>I'm running Mac OS X 10.4.4, and I've tried doing TorrentFlux, but because of some Mac only apache problem, the process keeps getting shut off after a while and I can't finish downloading the file. I've tried using the Azureus web interface, meh, it sucks to setup, and I never got it done. I'll try BTManager, hope it works!</p>
+
+<p>PS> My real weblog address is blog.takshimada[dot]info, it wouldn't let me post that, saying is "questionable content".</p>
+
+Posted by: <a href="http://enderstudios.com/">Ender at Eros</a> (January 31, 2006 09:56 PM)
+
+______________________________________
+
+<p>I erased a comment by mistake while cleaning some spam.<br />
+Apologies to Pradox, the reader who left a comment. I think he was pointing a project of his, a web UI for ABC: <a href="http://sourceforge.net/projects/abcwebclient/">http://sourceforge.net/projects/abcwebclient/</a><br />
+</p>
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> (May 31, 2006 01:33 PM)
+
+
+
+{% endraw %}

@@ -1,0 +1,39 @@
+---
+title: "Bittorrent HTTP/web seeding"
+date: 2004-08-12 10:47:08 +0800
+disqus_identifier: 200
+disqus_url: http://blog.monstuff.com/archives/000200.html
+---
+{% raw %}
+<p>After reading about <a href="http://www.downhillbattle.org/labs/battletorrent/">Battle Torrent</a>, an attempt to make torrents trivial to use and create, I wondered about the possibility of creating torrents without running a BT client (seeder) in addition to the tracker. <br />
+One case where that would be useful is when your hosting solution doesn't support running arbitrary code. Also, in terms of setup, since a webserver is already needed to run the tracker, why not use it as the seeder as well? </p>
+
+<p>It turned out that this is already available, although it's not supported by all clients.<br />
+Here's the <a href="http://bittornado.com/docs/webseed-spec.txt">web seeding spec (unofficial)</a>, as implemented in <a href="http://bittornado.com/">BitTornado</a>.<br />
+DeHackEd's PHP script is also available from the BitTornado website. Here's some <a href="http://bittorrent.radlight.com/webseeding.htm">explanations on how to set it up</a> (requires MySQL).</p>
+<p> <br />
+<b>More bittorrent pointers and thoughts</b><br />
+<u>Embedded web server</u><br />
+The reverse approach (embedding the tracker in the BT client) was also implemented, for example in <a href="http://azureus.sourceforge.net/faq.php#17">Azureus</a> (which also has a plugin architecture).</p>
+
+<p><u>HTTP-based client</u><br />
+Like I mentioned in a previous post, there is a desktop BT client that can be controlled via a web interface (ABC client with <a href="http://php4abc.winkonz.com/">PHP-4-ABC web interface</a>). <br />
+There is also an complete client implemented in PHP, <a href="http://www.torrentflux.com/">TorrentFlux</a> (requires MySQL). I'm not sure how it works. </p>
+
+<p><u>Other integrations ideas</u><br />
+Miguel mentioned the idea of a <a href="http://lists.ximian.com/archives/public/mono-devel-list/2004-July/007032.html">Bittorrent library in .Net</a>.</p>
+
+<p>I think it would also be cool to have a Bittorrent XPCOM component for integration in Mozilla (I know I'm <a href="http://www.voidstar.com/node.php?id=1812">not the only one</a> to <a href="http://finance.groups.yahoo.com/group/decentralization/message/6806">want that</a>). It would allow integration with the regular download manager and make it easy to try different UIs and schedulers by hacking XUL and javascript. <br />
+And no, I don't want to hear any complaints about the browser (or specifically Mozilla/Firefox) becoming the new desktop ;-)</p>
+
+<p>The two ideas (.Net and Mozilla) could be combined by allowing XPCOM components to be written in .Net languages, the same way that PyXPCOM allows Python components ;-)</p>
+
+<p><u>Update:</u> Downhill Battle just released <a href="http://blogtorrent.com">Blog Torrent v0.8</a> (<a href="http://slashdot.org/article.pl?sid=04/11/25/2157249">via</a>), that simplifies torrent publishing and downloading.</p>
+
+<p><u>Update (2005/07/06):</u> <a href="http://it.slashdot.org/article.pl?sid=05/07/06/1537201">Opera is integrating a bittorrent client</a> first. <a href="http://www.mozillazine.org/talkback.html?article=6874">One is coming for Firefox too</a>, as part of the Summer of Code initiative.</p>
+
+<p><u>Update (2005/09/27):</u> The bittorrent implementation for Firefox, part of the Summer of Code, is making progress (currently alpha): <a href="http://firepuddle.mozdev.org/">FirePuddle</a>.</p>
+
+
+
+{% endraw %}

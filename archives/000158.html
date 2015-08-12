@@ -1,0 +1,18 @@
+---
+title: "Running Java on top of .Net"
+date: 2004-03-22 09:30:46 +0800
+disqus_identifier: 158
+disqus_url: http://blog.monstuff.com/archives/000158.html
+---
+{% raw %}
+<p>Miguel demonstrates how to <a href="http://primates.ximian.com/~miguel/archive/2004/Mar-18.html">run a simple Java application using the Gtk# libraries and the .Net runtime</a>. Complete apps like Eclipse can be run too, impressive!<br />
+You can either pre-compile Java bytecode to .Net IL, or have this done on the fly by a JITter.<br />
+You need to export (netexp.exe) the .Net assemblies you want to use from the Java code. I curious how IKVM exports some .Net types like events and delegates, but haven't looked much at it yet. <u>Update:</u> The <a href="http://weblog.ikvm.net/CommentView.aspx?guid=941954d7-d265-44c6-b326-027a22efcd12">IKVM weblog</a> just posted an answer to these.<br />
+Also, I wonder if debugging works well through the whole stack.</p>
+
+<p>This brings more water to the debate on the <a href="http://weblogs.java.net/pub/wlg/1136">future of the open source desktop platform</a>. Java bytecode, .Net IL, wrappers,...?</p>
+
+
+
+
+{% endraw %}

@@ -1,0 +1,33 @@
+---
+title: "Privacy invasion for fun or profit"
+date: 2004-06-16 16:18:47 +0800
+disqus_identifier: 182
+disqus_url: http://blog.monstuff.com/archives/000182.html
+---
+{% raw %}
+<p>Two different problems related to this topic were mentioned recently: Edward Felten about <a href="http://www.freedom-to-tinker.com/archives/000607.html">tracking emails with web bugs</a> and a CSS "exploit" to <a href="http://bugzilla.mozilla.org/show_bug.cgi?id=57351">leak information about the sites you visit</a>.</p>
+<p> <br />
+<b>Tracking email with a bug:</b><br />
+I had implemented a simple web bug for email two years back (a "InvisibleMailReceipt" plugin for Outlook). I didn't think this idea could support a buisness, but apparently two companies are using this concept (beside spammers).<br />
+The problems I ran into were that it would track my own IP as well (when I check the email in my Sent folder) and the IP would not give you enough information when the receipient shares the same corporate proxy as you. Also, Outlook now doesn't display the images, by default. But in a more recent post Felten discusses the <a href="http://www.freedom-to-tinker.com/archives/000610.html">use of iframe to implement bugs</a> and bypass this filtering in Outlook. There is a good chance a stylesheet or a script link could also do the trick.</p>
+
+<p><b>Leaking the visited site information:</b><br />
+Two links via HotLinks came by, describing a way to use the :visited CSS pseudo-class to find out what other sites you visited. It looks like <i>a:visited { background-image: url(http://webbugurl); }</i>, as explained in the <a href="http://bugzilla.mozilla.org/show_bug.cgi?id=57351">Mozilla bug</a>.<br />
+Although it seems the exploit isn't new, it got some attention again. <br />
+Milo explains how to <a href="http://milov.nl/2520">exploit this in IE</a> and <br />
+Gemal has a <a href="http://www.gemal.dk/browserspy/css.html">running demo</a>.<br />
+This <a href="http://www.literarymoose.info/=/synopsis/evil-slideshow.xhtml">"evil" slideshow website</a> even relies on the exploit for it's functionality ;-)</p>
+
+<p><u>Update:</u> DidTheyReadThis was declared illegal in France. Read <a href="http://www.edri.org/cgi-bin/index?id=000100000156">bullet 6 "French privacy authority forbids mail-service"</a> (via <a href="http://www.bucheron.net/weblogs/index.php?2004/07/02/501-didtheyreadit-interdit-en-france">this french blog</a>).</p>
+
+______________________________________
+
+<p>I wouldn't say that my demo relies on the exploit you mention. I did the demo months before the 'exploit' was discovered. And no, there is no functionality to be detected. it is just a demonstration of a technique.</p>
+
+<p>M.</p>
+
+Posted by: <a href="http://www.literarymoose.info/-/">Moose</a> (August 24, 2004 07:53 PM)
+
+
+
+{% endraw %}

@@ -1,0 +1,366 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: C# Generics tricks</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+<link rel="prev" href="http://blog.monstuff.com/archives/000185.html" title="Display technology" />
+
+<link rel="next" href="http://blog.monstuff.com/archives/000191.html" title="Tool: image directory to PDF" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'blog.monstuff.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://blog.monstuff.com/archives/000174.html"
+    trackback:ping="http://blog.monstuff.com/movabletype/mt-tb.cgi/129"
+    dc:title="C# Generics tricks"
+    dc:identifier="http://blog.monstuff.com/archives/000174.html"
+    dc:subject="Programming tricks"
+    dc:description="LazyLoader v0 http://scott.wisniewski-online.com/blog/archive/2004/04/29/158.aspx LazyLoader v1 http://weblogs.asp.net/jaybaz_ms/archive/2004/04/30/124229.aspx LazyLoader v2 (+delegate and cleanups+ILock) http://weblogs.asp.net/jaybaz_MS/archive/2004/05/06/127489.aspx LazyLoader v3 (+IWeakReference+IOptional) http://weblogs.asp.net/jaybaz_ms/archive/2004/05/07/128185.aspx Generic Singleton Singleton mixin?..."
+    dc:creator="Julien"
+    dc:date="2004-07-07T08:36:11-08:00" />
+</rdf:RDF>
+-->
+
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.monstuff.com/archives/000174.html">
+<dc:title>C# Generics tricks</dc:title>
+<dc:description>LazyLoader v0 http://scott.wisniewski-online.com/blog/archive/2004/04/29/158.aspx LazyLoader v1 http://weblogs.asp.net/jaybaz_ms/archive/2004/04/30/124229.aspx LazyLoader v2 (+delegate and cleanups+ILock) http://weblogs.asp.net/jaybaz_MS/archive/2004/05/06/127489.aspx LazyLoader v3 (+IWeakReference+IOptional) http://weblogs.asp.net/jaybaz_ms/archive/2004/05/07/128185.aspx Generic Singleton Singleton mixin?...</dc:description>
+<dc:creator>Julien</dc:creator>
+<dc:date>2004-07-07T08:36:11-08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-sa/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-sa/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+</rdf:RDF>
+-->
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+
+
+
+
+
+
+<div id="menu">
+<a href="http://blog.monstuff.com/archives/000185.html">« Display technology</a> |
+
+<a href="http://blog.monstuff.com/">Main</a> 
+| <a href="/archives.html">All entries (197)</a>
+| <a href="http://blog.monstuff.com/archives/000191.html">Tool: image directory to PDF »</a>
+
+</div>
+
+</div>
+
+<div class="blog">
+
+<h2 class="date">July 07, 2004</h2>
+
+
+<div class="adsense" style="float:right;">
+<script type="text/javascript"><!--
+google_ad_client = "pub-0922423824950731";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_channel ="";
+google_ad_type = "text";
+google_color_border = "F6F6F6";
+google_color_bg = "FFFFFF";
+google_color_link = "666666";
+google_color_url = "003366";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+
+<div class="blogbody">
+<!-- google_ad_section_start -->
+
+<h3 class="title">C# Generics tricks</h3>
+
+<p>LazyLoader v0<br />
+http://scott.wisniewski-online.com/blog/archive/2004/04/29/158.aspx</p>
+
+<p>LazyLoader v1<br />
+http://weblogs.asp.net/jaybaz_ms/archive/2004/04/30/124229.aspx</p>
+
+<p>LazyLoader v2 (+delegate and cleanups+ILock)<br />
+http://weblogs.asp.net/jaybaz_MS/archive/2004/05/06/127489.aspx</p>
+
+<p>LazyLoader v3 (+IWeakReference+IOptional)<br />
+http://weblogs.asp.net/jaybaz_ms/archive/2004/05/07/128185.aspx</p>
+
+<p>Generic Singleton<br />
+Singleton mixin?<br />
+</p>
+
+<a name="more"></a>
+<p>http://www.codeproject.com/useritems/objectguard.asp<br />
+The Code Project - Simplifying Exception-Safe Code, Generics Style </p>
+
+<p>C5 library for .Net<br />
+http://www.itu.dk/research/c5/</p>
+
+<p>Cyrus blog http://weblogs.asp.net/cyrusn/</p>
+
+<p>http://weblogs.asp.net/scottdensmore/archive/2004/05/25/140827.aspx Why Singletons are Evil</p>
+
+<p>Generics + anonymous delegates in Collection classes<br />
+http://blogs.msdn.com/kcwalina/archive/2004/06/22/162533.aspx</p>
+
+<p>// Impossible approach<br />
+Public ISingleton<class T> {<br />
+	Private static T instance = null;<br />
+	Private constructor…<br />
+	<br />
+	Public T GetInstance() {… new T(); … }<br />
+}</p>
+
+<p><br />
+// basic approach<br />
+// problem is the actual class T doesn't need to have a protected constructor, which means<br />
+// <br />
+	there is a risk anybody can instanciate it...<br />
+Public Singleton<T> {<br />
+	Private static T instance = null;<br />
+	Private Singleton(); // constructor<br />
+	Public T GetInstance() {… new T(); …}<br />
+}</p>
+
+<p><br />
+// No constructor approach<br />
+// Interfaces can't specify constructors<br />
+// Let's use another method to do the construction<br />
+Public ISelfBuilder<T> {<br />
+	// Is pretty weird because makeNew is just a renamed constructor….<br />
+	Private static T makeNew(); <br />
+}</p>
+
+<p>Public singleton<T: ISelfBuilder<T>> {<br />
+	Private static T instance = null;<br />
+	Public T GetInstance() {… T.makeNew();…}<br />
+}<br />
+</p>
+
+<span class="posted">Posted by Julien. <a href="http://blog.monstuff.com/archives/000174.html" rel="bookmark">Permalink</a> | <a href="http://blog.monstuff.com/movabletype/mt-tb.cgi?__mode=view&amp;entry_id=174" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+
+
+
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+<div class="comments-head"><a name="trackbacks"></a>Trackbacks</div>
+
+
+
+<!-- google_ad_section_end -->
+
+
+<div class="comments-head">Post a comment</div>
+
+
+
+<div class="comments-body">
+<!-- <b>I'm away for a week, comments closed til the 19th. Thanks for your patience.</b> -->
+
+
+<form method="post" action="http://blog.monstuff.com/movabletype/mt-lessspam-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="174" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+
+Your email address won't be published on the site if you also input a URL. <br />
+<br />
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="links">
+
+<div class="sidetitle">
+Recent Entries
+</div>
+
+<div class="side">
+<a href="/archives.html">All entries (197)</a><br />
+<br />
+
+<a href="http://blog.monstuff.com/archives/000265.html">New e-book devices announced (with e-ink)</a><br />
+<a href="http://blog.monstuff.com/archives/000263.html">Javascript pen recognition</a><br />
+<a href="http://blog.monstuff.com/archives/000264.html">XmlHttpRequest - Add Latency</a><br />
+<a href="http://blog.monstuff.com/archives/000261.html">New breeds of malware</a><br />
+<a href="http://blog.monstuff.com/archives/000262.html">XMLHttpRequest - Security Bypass</a><br />
+<a href="http://blog.monstuff.com/archives/000259.html">RealSimple - Printer Friendly Redirect</a><br />
+<a href="http://blog.monstuff.com/archives/000258.html">Slashdot - Single Page View</a><br />
+<a href="http://blog.monstuff.com/archives/000257.html">IGN - Single Page View</a><br />
+<a href="http://blog.monstuff.com/archives/000255.html">ACM Queue - Single Page View</a><br />
+<a href="http://blog.monstuff.com/archives/000242.html">Traffic light versus stop sign</a><br />
+<a href="http://blog.monstuff.com/archives/000252.html">AJAX Debugging with Greasemonkey</a><br />
+<a href="http://blog.monstuff.com/archives/000250.html">"XMLHttpRequest Tracing" for AJAX debugging</a><br />
+<a href="http://blog.monstuff.com/archives/000249.html">"Identify Password Fields" Greasemonkey script</a><br />
+<a href="http://blog.monstuff.com/archives/000248.html">Self-referring ads</a><br />
+<a href="http://blog.monstuff.com/archives/000247.html">Detecting AdBlock: conflicts and collaboration</a><br />
+<a href="http://blog.monstuff.com/archives/000246.html">Textarea resize user script</a><br />
+<a href="http://blog.monstuff.com/archives/000243.html">Closures & Continuations</a><br />
+<a href="http://blog.monstuff.com/archives/000240.html">"MSDN Language Filter" user script</a><br />
+<a href="http://blog.monstuff.com/archives/000239.html">Various Greasemonkey user scripts</a><br />
+<a href="http://blog.monstuff.com/archives/000238.html">Handle mailto: links with Gmail</a><br />
+
+</div>
+<!-- google_ad_section_end -->
+
+</body>
+</html>

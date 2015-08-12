@@ -1,0 +1,46 @@
+---
+title: "Are libraries the new languages?"
+date: 2004-03-11 12:32:33 +0800
+disqus_identifier: 152
+disqus_url: http://blog.monstuff.com/archives/000152.html
+---
+{% raw %}
+<p>I was re-reading a chapter in "Gödel, Escher, Bach" last night, where Hofstadter introduces notions of programming (machine language, assembly, higher level languages). It made me wonder: What is the next step in the evolutionary tree of programming languages? What will make the coder's life easier?</p>
+
+<p>Assembly definitely simplifies coding compared to machine language. Similarly, modern languages like C, C++, Lisp, Caml, Perl, Prolog, Java and C# all aimed at making hard problems even easier to solve, using various typing, objects, memory management, interpretation/compilation/imperative/declarative/functional... approaches.<br />
+(Note that high-level languages don't make it easier to write the "same" program, they are only "equivalent", with differences in the low-level details because of the abstraction. As Hoftstadter puts it, "... in using chunked high-level models, we sacrifice the determinism for simplicity".)</p>
+
+<p>All the new languages I have heard of seemed to fall in the existing classifications: it integrates such feature from language A, such other from language B and so on. Of course, Java and C# Generics aren't exactly C++ templates, but the concept isn't that different either.<br />
+At the same time, object oriented languages can be enriched a lot just by creating new libraries. For example, declarative UI markup like XAML is a nice domain specific language, but it can be added to .Net as a set of assemblies, using code generation. In the same way, rich/simplified peer to peer connectivity is available in Java via a framework like JXTA. Does that mean we don't need new language features? Will frameworks overcome Joel Spolsky's <a href="http://www.joelonsoftware.com/articles/LeakyAbstractions.html">law of leaky abstractions</a>?</p>
+
+<p>In <a href="http://www.paulgraham.com/hundred.html">"The Hundred-Year Language"</a>, Paul Graham describes an interesting evolution path: data structures could become optimizations from the compiler.<br />
+It may also be that some OS concepts need to evolve as well for the languages to start mutating again. For example, capability secure languages take their full power on an OS that supports the same model.</p>
+
+<p>Are new languages just a combination of previous ones? Are we just adding syntactic sugar? Are libraries and tools (annotation, verification, unit testing, instrumentation, profiling, ...) the main areas of improvement these days?</p>
+<p>Some current problems with languages I can think of:<br />
+- string building and parsing: lots of SQL queries and HTTP urls are still built by hand, which is subject to errors when special characters occur (maybe the code editor could help by smartly displaying escaped strings),<br />
+- data access: DB access still requires a lot of domain specific knowledge to be done properly,<br />
+- security: can languages help limit complexity and thus the security problems?</p>
+
+<p><u>Update (2006/03/16):</u> Re-watched Todd Proebsting's great talk on <a href="http://blogs.msdn.com/rmbyers/archive/2005/02/06/368216.aspx">disrupting programming languages technologies</a> (<a href="http://web.mit.edu/webcast/ailab/mit-ll2-s2-09nov02-80k.ram">video</a> + <a href="http://research.microsoft.com/~toddpro/papers/disruptive.ppt">slides</a>). <br />
+In short, for a disruptive language to be successful, it needs to be worst than existing languages (performance is a good first casualty) but better at solving the concrete problems of a minority of the audience. The areas where he sees such opportunities are: support for concurrency and distributed programming, recording/debugging capabilities,  support for checkpoint/undo/redo, database integration, integrated XML support, rich parsing and constraint solving.<br />
+Incidentally, the first question from the audience at the end of his talk is, when should a feature be integrated into the language rather than added as a library?</p>
+
+<p><u>Update (2008/04/12):</u> I have noticed a few recent libraries which make it appear as if they stretch the language: Parallel FX, PLINQ and DryadLINQ. On the other hand, the language improvements in C# greatly contributed to making such extensions seamless. <br />
+From extension methods, anonymous types, lambda expressions and type inference, to dynamic code generation, C# is really maturing and enabling new problems to be experimented with and solved in "application space". This is inviting a new kind of thinking for library writers.</p>
+
+______________________________________
+
+<p>Wound up here via link from Kuro5hin. Good post, and IMO we are indeed doing little more then "adding synatic sugar"</p>
+
+Posted by: <a href="http://phrontist.org">Bjorn</a> (March 11, 2004 06:52 PM)
+
+______________________________________
+
+<p>I found this article extremely interesting. I stumbled across it while researching the history of programming languages, and it was a concretized version of what I have been thinking for quite a while. I have posted this just to thank you.</p>
+
+Posted by: <a href="mailto&#58;SilverStoneV&#64;aol&#46;com">Kenneth Stone</a> (June 17, 2004 12:21 AM)
+
+
+
+{% endraw %}
