@@ -1,6 +1,4 @@
 ---
-layout: null
-redirect_from: index.rdf
 ---
 <?xml version="1.0" encoding="iso-8859-1"?>
 <?xml-stylesheet type="text/xsl" href="/rss2.0-to-html.xslt" media="screen" version="1.0"?>
