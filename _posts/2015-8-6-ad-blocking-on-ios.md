@@ -1,6 +1,5 @@
 ---
 title: Ad blocking on iOS
-published: false
 ---
 
 Mobile browsers don't support extensions like their desktop counterparts and most don't have an ad blocker built-in. But it turns out that iOS (and probably Android and Windows Phone) supports good old "proxy auto-configuration" (PAC).  

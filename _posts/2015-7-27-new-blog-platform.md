@@ -1,7 +1,5 @@
 ---
-layout: post
 title: New blog platform
-published: false
 ---
 
 I came back from vacation with a few topics to blog about (in particular, I will start a series on the fundamentals of computing). Being an efficient procrastinator, I naturally decided this would involve moving away from MovableType first ;-)
