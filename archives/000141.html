@@ -1,0 +1,20 @@
+---
+title: "Essential utility: "screen""
+date: 2004-02-12 15:05:15 +0800
+disqus_identifier: 141
+disqus_url: http://blog.monstuff.com/archives/000141.html
+---
+{% raw %}
+<p><a href="http://info2html.sourceforge.net/cgi-bin/info2html-demo/info2html?(screen)Top">Screen</a> is a command line utility that comes with lots of Unix variants (including Linux). It is a bit hard to describe and to discover. It provides two main features: multiplexing a terminal and detaching/re-attaching sessions.</p>
+
+<p>I originally got shown this by my "System programming" TA, when I asked him if I could disconnect X11 application from one terminal and have them re-open (in the same state) onto another terminal. It turns out this is possible for X11 applications (see <a href="http://citeseer.nj.nec.com/solomita94xmove.html">xmove</a> or <a href="http://www.cs.brown.edu/software/xmx/tutorial/">xmx</a>, proxy-based redirections, or <a href="http://www.cs.wisc.edu/~zandy/guievict/">guiEvict</a> &lt;via <a href="http://sweetcode.org">sweetcode</a>>, described in <a href="http://www.paradyn.org/papers/#gui">this paper</a>). But "screen" although limited to text applications is so useful that I dropped my search for its X11 equivalent.</p>
+
+<p><b>Multiplexing:</b> If you start a remote shell (say SSH) but want to do more than one thing at a time, you may want to open more sessions, but you can also use screen. It allows you to switch between multiple shells on the same connection.<br />
+You need to first run "screen", then use "C-A C-C" (control A, control C) to create a new shell, and you now can switch between shells with "C-A C-*" where * is the number for you shell (for ex, use "C-A C-1" to switch to shell 1).</p>
+
+<p><b>Session migration:</b> Let's say you need to disconnect from that session, but you want to continue it from another computer. You can use "C-A C-D" to detach screen. All the shells will be maintained, and you can reconnect to the remote machine again and type "screen -R" to re-attach to the original session. This is also very useful in can the connection is lost by accident.</p>
+<p><u>Update:</u> a <a href="http://www.kuro5hin.org/story/2004/3/9/16838/14935">similar story</a> (with more details) was just posted on kuro5hin.</p>
+
+
+
+{% endraw %}
