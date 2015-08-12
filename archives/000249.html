@@ -12,7 +12,7 @@ disqus_url: http://blog.monstuff.com/archives/000249.html
 <p>My first approach used an XPath query to find all the password fields and add a special CSS class to their className. Then I discovered one of many <a href="http://www.xml.com/lpt/a/2003/06/18/css3-selectors.html">CSS selector tricks</a>, which turns this script into a one-line CSS rule: <em>input[type='password'] { background-image: url(data:xxx) }</em>. <br />
 The data: url simply is a small gif with a transparent background, that can be tiled nicely.</p>
 <p><b>Password Composer:</b><br />
-You should also give Johannes la Poutré's <a href="http://www.xs4all.nl/%7Ejlpoutre/BoT/Javascript/PasswordComposer/#gmky">Password Composer</a> user script a try. It's the Greasemonkey reincarnation of Nick Wolff's "Generate Password" bookmarklet, with an improved interface too (no popup, the generation occurs inline in the page). <br />
+You should also give Johannes la PoutrÃ©'s <a href="http://www.xs4all.nl/%7Ejlpoutre/BoT/Javascript/PasswordComposer/#gmky">Password Composer</a> user script a try. It's the Greasemonkey reincarnation of Nick Wolff's "Generate Password" bookmarklet, with an improved interface too (no popup, the generation occurs inline in the page). <br />
 The concept is that each site's password gets generated using some hash function, based on a master password (only password you need to remember and type when you want to log in somewhere) and the domain name of the site. </p>
 
 <p>The main problem I see with this approach is it doesn't allow you to generate new passwords if you need to deprecate the old one. It seems the hashing should take a "password version" as an additional input, but then you have the problem of remembering which version you used for each site...<br />
