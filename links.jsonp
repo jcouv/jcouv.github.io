@@ -1,7 +1,4 @@
 ---
 ---
-callback([
-{% for post in site.posts %}
 
-{% endfor %}
-])
+Hello
