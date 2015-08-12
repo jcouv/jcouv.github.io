@@ -34,3 +34,6 @@ pages_list:       { 'Archive':'/archives.html', 'Feed':'/index.xml', 'About':'/a
 exclude:
   - .gitignore
   - README.md
+
+gems:
+  - jekyll-redirect-from
