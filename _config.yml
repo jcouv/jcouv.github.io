@@ -18,6 +18,7 @@ defaults:
     values:
       layout: "post"
       comments: True
+	  disqus_identifier: post.url
   -
     scope:
       path: "archives" 
