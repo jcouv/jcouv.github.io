@@ -3,6 +3,7 @@ title: Curiosity is bliss
 description:         Julien Couvreur's programming blog and more
 tagline:             Julien Couvreur's programming blog and more
 url:                 http://blog2.monstuff.com
+baseurl:             http://blog2.monstuff.com
 paginate:            3
 author_name:         Julien Couvreur
 ga:                  UA-74363-1
