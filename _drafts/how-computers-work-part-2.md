@@ -6,11 +6,10 @@ published: false
 
 
 
+
 The building block of a modern computer is the transistor. But it takes many. Your phone has a few billions of them (I'll discuss fabrication later).    
 The solution to this complexity is abstraction. We'll take a couple of transistors to make a simple component. Those components will be combined to achieve more complex components and so on. It is like Russian dolls.  
 For today, we'll consider a single transistor and then put two together to achieve something useful. 
-
-![venice.jpg]({{site.baseurl}}/assets/venice.jpg)
 
 
 TODO: Two views of a transistor. 
