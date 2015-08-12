@@ -45,3 +45,5 @@ gems:
   - jekyll-redirect-from
 
 encoding: UTF-8
+
+timezone: America/Los_Angeles
