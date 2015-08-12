@@ -1,6 +1,8 @@
 ---
 title: New blog platform
+published: true
 ---
+
 
 I came back from vacation with a few topics to blog about (in particular, I will start a series on the fundamentals of computing). Being an efficient procrastinator, I naturally decided this would involve moving away from MovableType first ;-)
 
@@ -25,3 +27,5 @@ It is structured as follows:
       *.cs
 
 Update (2015/08/11): I found out that Jekyll is platform built on those same ideas (static files, liquid templates, yaml configuration) and it happens to be supported by GitHub Pages. I'll be switching over shortly.
+
+Update (2015/08/12): The switch is done. The site is now generated out of [https://github.com/dumky/dumky.github.io](https://github.com/dumky/dumky.github.io). I'm using [prose.io](http://prose.io) for content editing. It's a GitHub web editor which handles Markdown and Jekyll conventions (YAML frontmatter, _drafts and _posts, image uploading).
