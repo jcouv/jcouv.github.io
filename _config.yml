@@ -37,3 +37,5 @@ exclude:
 
 gems:
   - jekyll-redirect-from
+
+encoding: UTF-8
