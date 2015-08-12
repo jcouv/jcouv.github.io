@@ -44,7 +44,11 @@
 					out links and style information. It can be used to subscribe to the new posts, 
 					using an aggregator like <a href="http://bloglines.com">bloglines</a> (a free online service).
 					If you want to read the blog, use the <a href='http://blog.monstuff.com'>main blog</a> page.
-			</p>
+
+          For instance, you can follow this feed <a href='http://cloud.feedly.com/#subscription%2Ffeed%2F{{index.RssUrl | UrlEncode}}'  target='blank'><!--<img id='feedlyFollow' src='http://s3.feedly.com/img/follows/feedly-follow-logo-green_2x.png' alt='follow us in feedly' width='28' height='28'>--> via Feedly</a>.
+        
+
+      </p>
 
 			<xsl:apply-templates select='channel/item' />
 
