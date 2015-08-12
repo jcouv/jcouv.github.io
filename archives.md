@@ -5,7 +5,7 @@ title: Archive
 
 ## Blog Posts
 
-{% for post in site.posts %}
+{% for post in site.posts -%}
 [ {{ post.title }} ]({{ post.url }})
-{% endfor %}
+{% endfor -%}
 {% include legacy_archives.html %}
