@@ -1,5 +1,7 @@
 ---
 layout: null
+redirect_from: 
+  - index.rdf
 ---
 
 <?xml version="1.0" encoding="iso-8859-1"?>
