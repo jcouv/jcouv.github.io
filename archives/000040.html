@@ -451,19 +451,19 @@ Posted by: <a href="http://dummyurl.url">Mr. Raybell</a> at March 10, 2006 04:28
 
 <p>Does the code you suggest (well, actually, other people suggest) really fix the race condition problem?</p>
 
-<p>It seems to me that the race condition has not been fixed by this adjustment.  Arenít you just ensuring you "win the race" by copying out the event to temporary variable?  You are only guaranteeing that collection you have is not empty when you invoke it, but you have not guaranteed that the subscriber is still valid.  Let me give you an example.</p>
+<p>It seems to me that the race condition has not been fixed by this adjustment.  Aren‚Äôt you just ensuring you "win the race" by copying out the event to temporary variable?  You are only guaranteeing that collection you have is not empty when you invoke it, but you have not guaranteed that the subscriber is still valid.  Let me give you an example.</p>
 
-<p>Suppose I create a new dialog box and in that dialog box I subscribe to your event.  In my dialog box, I choose to subscribe to your event.  The user clicks OK on my dialog box, and your thread, at that moment, decides to fire.  It copies the event list, and checks to see if it is null.  Now my thread continues to run.  In my main form, I destroy the dialog box, removing my hander from the real event (not the copy), and get ready to call gc.collect(), but just before I do, your thread keeps running.  My object is ìgoneî enough to not work properly, but not ìgoneî enough to be recognized as non-existent by the gc.  It has destroyed all of its internal variables, and will crash if called because the code will throw exceptions due to the variables being no longer initialized.  I am not expecting a call any more.  But your thread is just now invoking the event with its saved copy.</p>
+<p>Suppose I create a new dialog box and in that dialog box I subscribe to your event.  In my dialog box, I choose to subscribe to your event.  The user clicks OK on my dialog box, and your thread, at that moment, decides to fire.  It copies the event list, and checks to see if it is null.  Now my thread continues to run.  In my main form, I destroy the dialog box, removing my hander from the real event (not the copy), and get ready to call gc.collect(), but just before I do, your thread keeps running.  My object is ‚Äúgone‚Äù enough to not work properly, but not ‚Äúgone‚Äù enough to be recognized as non-existent by the gc.  It has destroyed all of its internal variables, and will crash if called because the code will throw exceptions due to the variables being no longer initialized.  I am not expecting a call any more.  But your thread is just now invoking the event with its saved copy.</p>
 
-<p>What happens?  Does the event just not get invoked for some reason?  I canít see why that would beÖ  If it does get invoked, bad stuff for sure will happen.</p>
+<p>What happens?  Does the event just not get invoked for some reason?  I can‚Äôt see why that would be‚Ä¶  If it does get invoked, bad stuff for sure will happen.</p>
 
-<p>Unless there is some behind-the-scene reason why the handler will not actually be called -- how can it know this if it doesnít know the object has been gcíed? ñ bad stuff will happen.  All the copy has done is make the race condition more complicated, more difficult to catch, it hasnít eliminated it.</p>
+<p>Unless there is some behind-the-scene reason why the handler will not actually be called -- how can it know this if it doesn‚Äôt know the object has been gc‚Äôed? ‚Äì bad stuff will happen.  All the copy has done is make the race condition more complicated, more difficult to catch, it hasn‚Äôt eliminated it.</p>
 
-<p>It seems the only way to eliminate the problem is either 1) to put some kind of lock on the event variable and get that lock before triggering the event (the event handler can still remove itself, just ignore the lock.  If youíve already been activated, thereís no worry that youíll mess stuff up, assuming the code behind events is properly writtenÖ)  or 2) to never let more than one thread deal with any given event/handler group.</p>
+<p>It seems the only way to eliminate the problem is either 1) to put some kind of lock on the event variable and get that lock before triggering the event (the event handler can still remove itself, just ignore the lock.  If you‚Äôve already been activated, there‚Äôs no worry that you‚Äôll mess stuff up, assuming the code behind events is properly written‚Ä¶)  or 2) to never let more than one thread deal with any given event/handler group.</p>
 
 <p>I suspect the authors intentionally assumed you would not attempt to use events with multiple threads in this way.</p>
 
-<p>Iím not certain Iím right, but this certainly bothers me!<br />
+<p>I‚Äôm not certain I‚Äôm right, but this certainly bothers me!<br />
 </p>
 
 Posted by: <a href="mailto&#58;monstuff&#64;thoughtyard&#46;com">Chiem</a> at April 11, 2006 10:59 AM
