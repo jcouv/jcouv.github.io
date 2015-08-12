@@ -1,11 +1,52 @@
----
-title: Javascript pen recognition
-date: 2005-09-26 08:30:11 +0800
-disqus_identifier: 263
-disqus_url: http://blog.monstuff.com/archives/000263.html
----
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Javascript pen recognition</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '{{ site.ga }}', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+
+<div class="blog">
+
+
+
+
+<div class="blogbody">
+
+<h2 class="title">Javascript pen recognition</h2>
 
 <p>Here is a demonstration of a <a href="http://blog.monstuff.com/archives/images/JS-graffiti.html">Graffiti-style block recognizer in javascript</a>. It's based on the same algorithm as my <a href="http://blog.monstuff.com/archives/000012.html">previous C# implementation</a>, and uses the firefox for the new &lt;canvas> element in Firefox 1.5 (codename DeerPark).</p>
+
+<a name="more"></a>
 <p> <br />
 The canvas is one of the <a href="http://developer.mozilla.org/en/docs/Firefox_1.5_Beta_for_Developers">many new features in Firefox 1.5</a>. Its a screen area that can be painted programmatically. Apple first introduced it in Safari and the recent Firefox 1.5 (currently in beta) implements it as <a href="http://www.whatwg.org/specs/web-apps/current-work/#dynamic">specified (Web Applications 1.0 spec from the WHATWG group)</a>.</p>
 
@@ -18,29 +59,53 @@ Also, I was suprised at how much CPU is consumed by just tracking the mouse and 
 
 <p>The canvas element in general opens lots of possibilities for games and my graffiti script could be used for some too (sudoku, crosswords?). Besides that, I've been thinking about a canvas-based graphical interpreter such as <a href="http://en.wikipedia.org/wiki/Logo_programming_language">Logo</a> (great for teaching programming to kids and reminds me of some good old APPLE II days).</p>
 
-______________________________________
+<span class="posted">Posted by Julien on September 26, 2005. <a href="http://blog.monstuff.com/archives/000263.html" rel="bookmark">Permalink</a> 
+<br /></span>
+
+</div>
 
 
 
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '263';
+        var disqus_url = 'http://blog.monstuff.com/archives/000263.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+<div class="comments-body">
 <p>Julien, great demo.</p>
 
 <p>I've been thinking for a while about a mouse gesture lib. With all the drag-and-drop going on, i think it would be nice to be able to delete something by striking it out, for example. With canvas, you could easily show the strokes like the FF gestures extension. (I don't think there's a conflict with that extension as ajax mouse gestures would use left mouse button.)</p>
 
 <p>BTW On the pen demo, any chance of swapping the alerts for a "pad" showing the history of letter guesses?</p>
-
-Posted by: <a href="http://ajaxpatterns.org">Michael Mahemoff</a> at September 29, 2005 11:37 AM
-
-
+<span class="comments-post">Posted by: <a href="http://ajaxpatterns.org">Michael Mahemoff</a> at September 29, 2005 11:37 AM</span>
+</div>
+<div class="comments-body">
 <p>Hey Micheal,</p>
 
 <p>What kind of gesture are you thinking for scratching? A single line (left to right or vice versa) or a more complex scratching gesture?<br />
 The latter wouldn't work with my current implementation, as the number of back and forth would vary.</p>
 
 <p>I removed the alert box. I actually had de-activated the "pad" code before putting it online ;-)</p>
-
-Posted by: <a href="http://blog.monstuff.com">Julien</a> at September 29, 2005 12:23 PM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at September 29, 2005 12:23 PM</span>
+</div>
+<div class="comments-body">
 <p>In the case of deletion, probably a single diagonal stroke is good enough provided it did the usual gesture-like things - "You appear to be using a mouse gesture for the first time. ..." - and a visual indication of what will happen before the button is actually released.</p>
 
 <p>More generally though, I had in mind an engine like the FF extension, which transforms gestures into a sequence of numbers, so can easily be used generically. (I don't have the extension right now, I think it uses a number 1-8 for each possible direction.) You could then say:</p>
@@ -50,10 +115,9 @@ Posted by: <a href="http://blog.monstuff.com">Julien</a> at September 29, 2005 1
      // User went left-up then right-down<br />
   }<br />
 }</p>
-
-Posted by: <a href="http://ajaxpatterns.org">Michael Mahemoff</a> at September 29, 2005 03:11 PM
-
-
+<span class="comments-post">Posted by: <a href="http://ajaxpatterns.org">Michael Mahemoff</a> at September 29, 2005 03:11 PM</span>
+</div>
+<div class="comments-body">
 <p>I have just converted this over to work with dojo (dojotoolkit.org) and this trick so that it works with IE too:<br />
 <a href="http://me.eae.net/archive/2005/12/29/canvas-in-ie/">http://me.eae.net/archive/2005/12/29/canvas-in-ie/</a></p>
 
@@ -62,17 +126,22 @@ Posted by: <a href="http://ajaxpatterns.org">Michael Mahemoff</a> at September 2
 <p>I haven't made it public though because you are using GPL.</p>
 
 <p>Morris</p>
-
-Posted by: <a href="http://morrisjohns.com">Morris Johns</a> at February 14, 2006 05:44 AM
-
-
+<span class="comments-post">Posted by: <a href="http://morrisjohns.com">Morris Johns</a> at February 14, 2006 05:44 AM</span>
+</div>
+<div class="comments-body">
 <p>Morris,<br />
 Nice work. I'd be happy to see it.<br />
 GPL doesn't prevent you from making it public, on the contrary. What it means is that you have to provide the source of any modifications that you make. It basically "prevents" someone from taking from the community without giving back too.</p>
 
 <p>Let me know when you post it.</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at February 20, 2006 11:11 AM</span>
+</div>
 
-Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at February 20, 2006 11:11 AM
 
 
+</div>
+</div>
 
+
+</body>
+</html>

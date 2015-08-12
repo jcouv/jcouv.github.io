@@ -1,9 +1,48 @@
----
-title: "Identify Password Fields" Greasemonkey script
-date: 2005-05-05 09:51:02 +0800
-disqus_identifier: 249
-disqus_url: http://blog.monstuff.com/archives/000249.html
----
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: "Identify Password Fields" Greasemonkey script</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '{{ site.ga }}', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+
+<div class="blog">
+
+
+
+
+<div class="blogbody">
+
+<h2 class="title">"Identify Password Fields" Greasemonkey script</h2>
 
 <p>Here's a simple user script to <a title="right click &#8594; Install User Script..." href="http://blog.monstuff.com/archives/images/IdentifyPasswordFields.user.js">identify password fields</a> .</p>
 
@@ -11,6 +50,8 @@ disqus_url: http://blog.monstuff.com/archives/000249.html
 
 <p>My first approach used an XPath query to find all the password fields and add a special CSS class to their className. Then I discovered one of many <a href="http://www.xml.com/lpt/a/2003/06/18/css3-selectors.html">CSS selector tricks</a>, which turns this script into a one-line CSS rule: <em>input[type='password'] { background-image: url(data:xxx) }</em>. <br />
 The data: url simply is a small gif with a transparent background, that can be tiled nicely.</p>
+
+<a name="more"></a>
 <p><b>Password Composer:</b><br />
 You should also give Johannes la Poutré's <a href="http://www.xs4all.nl/%7Ejlpoutre/BoT/Javascript/PasswordComposer/#gmky">Password Composer</a> user script a try. It's the Greasemonkey reincarnation of Nick Wolff's "Generate Password" bookmarklet, with an improved interface too (no popup, the generation occurs inline in the page). <br />
 The concept is that each site's password gets generated using some hash function, based on a master password (only password you need to remember and type when you want to log in somewhere) and the domain name of the site. </p>
@@ -18,18 +59,49 @@ The concept is that each site's password gets generated using some hash function
 <p>The main problem I see with this approach is it doesn't allow you to generate new passwords if you need to deprecate the old one. It seems the hashing should take a "password version" as an additional input, but then you have the problem of remembering which version you used for each site...<br />
 Anyways, I'm too lazy to change my passwords at so many sites ;-)</p>
 
-______________________________________
+<span class="posted">Posted by Julien on May 05, 2005. <a href="http://blog.monstuff.com/archives/000249.html" rel="bookmark">Permalink</a> 
+<br /></span>
+
+</div>
 
 
 
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '249';
+        var disqus_url = 'http://blog.monstuff.com/archives/000249.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+<div class="comments-body">
 <p>It'd be cool if the script could also find out the contrast color and choose the image accordingly. You can make 2-4 images with different color stripes. Or you could also maybe set the border around .</p>
-
-Posted by: <a href="http://www.hunox.ca">Hunox</a> at May 11, 2005 03:55 PM
-
-
+<span class="comments-post">Posted by: <a href="http://www.hunox.ca">Hunox</a> at May 11, 2005 03:55 PM</span>
+</div>
+<div class="comments-body">
 <p>That attribute selector is actually part of CSS2: <a href="http://www.w3.org/TR/REC-CSS2/selector.html">http://www.w3.org/TR/REC-CSS2/selector.html</a> .  It's one of the many nice things you can use when you don't have to worry about building lots of crutches to support explorer (a category which greasemonkey development easily falls under).</p>
+<span class="comments-post">Posted by: <a href="http://doorstop.net/">Vineet Kumar</a> at November 14, 2005 01:24 PM</span>
+</div>
 
-Posted by: <a href="http://doorstop.net/">Vineet Kumar</a> at November 14, 2005 01:24 PM
 
 
+</div>
+</div>
 
+
+</body>
+</html>

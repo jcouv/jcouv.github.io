@@ -1,9 +1,48 @@
----
-title: Custom context menu entry in IE and Mozilla
-date: 2003-04-09 12:36:18 +0800
-disqus_identifier: 33
-disqus_url: http://blog.monstuff.com/archives/000033.html
----
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Custom context menu entry in IE and Mozilla</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '{{ site.ga }}', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+
+<div class="blog">
+
+
+
+
+<div class="blogbody">
+
+<h2 class="title">Custom context menu entry in IE and Mozilla</h2>
 
 <p>I use a simple online bookmark manager of mine to keep a stack of all the pages that I want to look at later. <a href="http://srv3.purenrg.com/~dumky/bookmarks/bookmarks.php?user=dumky">My eBookmarks page</a> doesn't look good or offer a lot of functionality (no categories or grouping), but allows me to have my stack of links available on a single page. It only supports pushing an entry and deleting entries (although you can't access these features, as some authentication is required).</p>
 
@@ -11,6 +50,8 @@ disqus_url: http://blog.monstuff.com/archives/000033.html
 But a context menu entry is even more convenient and efficient, as it saves space in your bookmarks toolbar and requires less mouse movement.</p>
 
 <p>Here are the steps I used to simply customize the context menu in IE and Mozilla, to give it some eBookmark functionality.</p>
+
+<a name="more"></a>
 <p><b>In Mozilla</b></p>
 
 <p>To add a custom context menu entry to the browser component of Mozilla (in my case Phoenix), two things are needed: UI and code. The UI describing the entry goes in browser.jar/content/browser/browser.xul and the additionnal handler function goes in browser.jar/content/browser/browser.js. </p>
@@ -84,40 +125,67 @@ Another feature of Mozilla that I use for my eBookmarks is the bookmark access b
 <a href="http://www.bookmarklets.com">All you want to know about bookmarklets</a> at bookmarklets.com.<br />
 Simon's article on <a href="http://www.sitepoint.com/article/bookmarklets">bookmarklets</a>.</p>
 
-______________________________________
+<span class="posted">Posted by Julien on April 09, 2003. <a href="http://blog.monstuff.com/archives/000033.html" rel="bookmark">Permalink</a> 
+<br /></span>
+
+</div>
 
 
 
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '33';
+        var disqus_url = 'http://blog.monstuff.com/archives/000033.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+<div class="comments-body">
 <p>Thanks for the tip!  Saved me added frustration.</p>
-
-Posted by: <a href="http://millweed.com">lyrical warfare</a> at August 19, 2003 03:02 PM
-
-
+<span class="comments-post">Posted by: <a href="http://millweed.com">lyrical warfare</a> at August 19, 2003 03:02 PM</span>
+</div>
+<div class="comments-body">
 <p>I can't find the browser.jar file in Mozilla 1.7RC2.</p>
-
-Posted by: <a href="http://www.somacon.com/">Shailesh Humbad</a> at June  5, 2004 08:04 AM
-
-
+<span class="comments-post">Posted by: <a href="http://www.somacon.com/">Shailesh Humbad</a> at June  5, 2004 08:04 AM</span>
+</div>
+<div class="comments-body">
 <p>Shailesh, I'm using Firefox and some files are not named the same way in Mozilla. It looks like the files you want to check out are "navigator.xul", "navigator.js" and "contentAreaContextOverlay.xul" in comm.jar.</p>
-
-Posted by: <a href="http://blog.monstuff.com/archives/000033.html">Julien</a> at August 11, 2004 12:23 PM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/archives/000033.html">Julien</a> at August 11, 2004 12:23 PM</span>
+</div>
+<div class="comments-body">
 <p>I think that is is not realizable. Because we need to modify the browser.jar file of Mozilla or Registry entry (IE). This thing cannot complete in Client side...especially in WEb Application.<br />
 Any way to migration the setting to Server side?</p>
-
-Posted by: <a href="mailto&#58;cptkhoa2003&#64;yahoo&#46;com">Khoa Phuc Thien Cai</a> at September 22, 2004 01:14 AM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;cptkhoa2003&#64;yahoo&#46;com">Khoa Phuc Thien Cai</a> at September 22, 2004 01:14 AM</span>
+</div>
+<div class="comments-body">
 <p>i'd like to add an entry to the popupu menu in IE so that i can zoom in an image on a web page, or maybe open it in, say, ACDSEE. I'd appreciate your help.</p>
-
-Posted by: <a href="mailto&#58;hmoazzam&#64;tam&#46;co&#46;ir">hadi</a> at July  2, 2005 11:54 PM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;hmoazzam&#64;tam&#46;co&#46;ir">hadi</a> at July  2, 2005 11:54 PM</span>
+</div>
+<div class="comments-body">
 <p>The IE was support many modules, included <br />
 translators, for example PRMT. I like that!</p>
+<span class="comments-post">Posted by: <a href="http:///  ">Mikel</a> at March 26, 2006 08:02 PM</span>
+</div>
 
-Posted by: <a href="http:///  ">Mikel</a> at March 26, 2006 08:02 PM
 
 
+</div>
+</div>
 
+
+</body>
+</html>

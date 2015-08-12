@@ -1,9 +1,48 @@
----
-title: Are libraries the new languages?
-date: 2004-03-11 12:32:33 +0800
-disqus_identifier: 152
-disqus_url: http://blog.monstuff.com/archives/000152.html
----
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Are libraries the new languages?</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '{{ site.ga }}', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+
+<div class="blog">
+
+
+
+
+<div class="blogbody">
+
+<h2 class="title">Are libraries the new languages?</h2>
 
 <p>I was re-reading a chapter in "Gödel, Escher, Bach" last night, where Hofstadter introduces notions of programming (machine language, assembly, higher level languages). It made me wonder: What is the next step in the evolutionary tree of programming languages? What will make the coder's life easier?</p>
 
@@ -17,6 +56,8 @@ At the same time, object oriented languages can be enriched a lot just by creati
 It may also be that some OS concepts need to evolve as well for the languages to start mutating again. For example, capability secure languages take their full power on an OS that supports the same model.</p>
 
 <p>Are new languages just a combination of previous ones? Are we just adding syntactic sugar? Are libraries and tools (annotation, verification, unit testing, instrumentation, profiling, ...) the main areas of improvement these days?</p>
+
+<a name="more"></a>
 <p>Some current problems with languages I can think of:<br />
 - string building and parsing: lots of SQL queries and HTTP urls are still built by hand, which is subject to errors when special characters occur (maybe the code editor could help by smartly displaying escaped strings),<br />
 - data access: DB access still requires a lot of domain specific knowledge to be done properly,<br />
@@ -29,18 +70,49 @@ Incidentally, the first question from the audience at the end of his talk is, wh
 <p><u>Update (2008/04/12):</u> I have noticed a few recent libraries which make it appear as if they stretch the language: Parallel FX, PLINQ and DryadLINQ. On the other hand, the language improvements in C# greatly contributed to making such extensions seamless. <br />
 From extension methods, anonymous types, lambda expressions and type inference, to dynamic code generation, C# is really maturing and enabling new problems to be experimented with and solved in "application space". This is inviting a new kind of thinking for library writers.</p>
 
-______________________________________
+<span class="posted">Posted by Julien on March 11, 2004. <a href="http://blog.monstuff.com/archives/000152.html" rel="bookmark">Permalink</a> 
+<br /></span>
+
+</div>
 
 
 
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '152';
+        var disqus_url = 'http://blog.monstuff.com/archives/000152.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+<div class="comments-body">
 <p>Wound up here via link from Kuro5hin. Good post, and IMO we are indeed doing little more then "adding synatic sugar"</p>
-
-Posted by: <a href="http://phrontist.org">Bjorn</a> at March 11, 2004 06:52 PM
-
-
+<span class="comments-post">Posted by: <a href="http://phrontist.org">Bjorn</a> at March 11, 2004 06:52 PM</span>
+</div>
+<div class="comments-body">
 <p>I found this article extremely interesting. I stumbled across it while researching the history of programming languages, and it was a concretized version of what I have been thinking for quite a while. I have posted this just to thank you.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;SilverStoneV&#64;aol&#46;com">Kenneth Stone</a> at June 17, 2004 12:21 AM</span>
+</div>
 
-Posted by: <a href="mailto&#58;SilverStoneV&#64;aol&#46;com">Kenneth Stone</a> at June 17, 2004 12:21 AM
 
 
+</div>
+</div>
 
+
+</body>
+</html>

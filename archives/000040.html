@@ -1,12 +1,53 @@
----
-title: C# events vs. delegates
-date: 2003-04-29 22:24:19 +0800
-disqus_identifier: 40
-disqus_url: http://blog.monstuff.com/archives/000040.html
----
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: C# events vs. delegates</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '{{ site.ga }}', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+
+<div class="blog">
+
+
+
+
+<div class="blogbody">
+
+<h2 class="title">C# events vs. delegates</h2>
 
 <p>We have looked at delegates and their implementation in two previous articles. But if you searched some more information about delegates on the web, you surely noticed they are almost always associated with the "event" construct.<br />
 Online event tutorials make it look like events are something pretty different from regular delegates instance, although related. Events are usually explained as if they were a special type or construct. But we will see they really are a modifier on the delegate type, which adds some restrictions that the compiler enforces and also adds two accessors (similar to the <i>get</i> and <i>set</i> for properties).</p>
+
+<a name="more"></a>
 <p><b>A first look at <i>event</i> vs. regular delegate</b><br />
 As I was finishing my previous posts on delegates, another C# construct started baking my noodle: events. Events definitely seem related to delegates, but I couldn't figure out how they differ.</p>
 
@@ -216,92 +257,106 @@ As any other object, an event object needs to be treated with care in multi-thre
 </div><br />
 Note that all the MSDN samples I have seen use the dangerous pattern.</p>
 
-______________________________________
+<span class="posted">Posted by Julien on April 29, 2003. <a href="http://blog.monstuff.com/archives/000040.html" rel="bookmark">Permalink</a> 
+<br /></span>
+
+</div>
 
 
 
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '40';
+        var disqus_url = 'http://blog.monstuff.com/archives/000040.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+<div class="comments-body">
 <p>Great material.  Exactly what I needed to understand.  The Visual Studio documentation didn't make this clear at all.</p>
 
 <p>Notes:<br />
 - Your use of the phrase "delegate declaration" is ambiguous: do you mean the declaration of a delegate *type* [e.g.: public delegate MyDelegate(int i)] or the declaration of a delegate *object* [e.g.: MyDelegate a] ?</p>
 
 <p>- I would like to know the rationale behind why the event's invocation is restricted to the declaring class</p>
-
-Posted by: <a href="http://www.juliob.com/me/">JulioB</a> at October  2, 2003 10:57 PM
-
-
+<span class="comments-post">Posted by: <a href="http://www.juliob.com/me/">JulioB</a> at October  2, 2003 10:57 PM</span>
+</div>
+<div class="comments-body">
 <p>Glad this was useful to you.</p>
 
 <p>You're right, from the ECMA C# language specification, "delegate declaration" is the term for the declaration of the delegate type (using the "delegate" keyword). Whereas "event" is used in the context of declaring a member variable, not declaring a type.</p>
 
 <p>I don't know why events can only be fired by class that declare the event. In most cases you end up adding a method (usually with the On* prefix) to get around this restriction. I'll try to find more about the reason for this design.<br />
 Let me know if you find that information before I do.</p>
-
-Posted by: <a href="http://blog.monstuff.com/archives/000059.html">Dumky</a> at October  3, 2003 11:30 PM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/archives/000059.html">Dumky</a> at October  3, 2003 11:30 PM</span>
+</div>
+<div class="comments-body">
 <p>Thanks for the article - it was very useful.</p>
 
 <p>An example of the relevance of the add/remove accessors on events is when you use them on remoted objects.  (eg. Client connects to remoted object on a server and subscribes to state change events).  If a remoted object exposes an event, but no delegates have been registered to the event, then there is no need to source the information needed to raise the event (or raise the event for that matter).  There may be a high cost in starting/running the process that sources the event information.  Adding event accessors allows you to hook the introduction/removal of the delegate.  </p>
 
 <p>This is also true of non-remoted objects.</p>
-
-Posted by: <a href="mailto&#58;paul&#64;tingeys&#46;com">tingeyp</a> at October 15, 2003 03:26 AM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;paul&#64;tingeys&#46;com">tingeyp</a> at October 15, 2003 03:26 AM</span>
+</div>
+<div class="comments-body">
 <p>Useful article, much appreciated!</p>
 
 <p>I have a quick question about derived classes raising parent class events. What is the rationale for not allowing a subclass to raise a parent class's events. I can obviously understand classes outside the hierarchy not being able to, but subclasses? It just isn't clear.</p>
-
-Posted by: <a href="http://www.skarab.com/">skarab</a> at November 10, 2003 01:29 PM
-
-
+<span class="comments-post">Posted by: <a href="http://www.skarab.com/">skarab</a> at November 10, 2003 01:29 PM</span>
+</div>
+<div class="comments-body">
 <p>Ignore my last comment. I didn't read others' comments before posting. Shame on me!</p>
-
-Posted by: <a href="http://www.skarab.com/">skarab</a> at November 10, 2003 01:46 PM
-
-
+<span class="comments-post">Posted by: <a href="http://www.skarab.com/">skarab</a> at November 10, 2003 01:46 PM</span>
+</div>
+<div class="comments-body">
 <p>No problem. I just updated the post with the rationale that makes the most sense so far.<br />
 I'm also trying to get an explanation from somebody on the CLR or C# team.</p>
-
-Posted by: Dumky at November 10, 2003 07:54 PM
-
-
+<span class="comments-post">Posted by: Dumky at November 10, 2003 07:54 PM</span>
+</div>
+<div class="comments-body">
 <p>Great Efforts..I really appriciate the examples and explanation.</p>
-
-Posted by: <a href="mailto&#58;rafi&#64;nu&#46;edu&#46;pk">Rafi</a> at February 15, 2004 08:20 PM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;rafi&#64;nu&#46;edu&#46;pk">Rafi</a> at February 15, 2004 08:20 PM</span>
+</div>
+<div class="comments-body">
 <p>Excellent article. Thanks much.</p>
-
-Posted by: <a href="mailto&#58;foo&#64;bar&#46;com">Rocky</a> at March 25, 2004 12:31 PM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;foo&#64;bar&#46;com">Rocky</a> at March 25, 2004 12:31 PM</span>
+</div>
+<div class="comments-body">
 <p>Nice article. I did not find this information anywhere else. Thanks..</p>
-
-Posted by: <a href="mailto&#58;RajAyy&#64;hotmail&#46;com">Rajeev</a> at May  1, 2004 03:53 PM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;RajAyy&#64;hotmail&#46;com">Rajeev</a> at May  1, 2004 03:53 PM</span>
+</div>
+<div class="comments-body">
 <p>A cleaner solution now at <a href="http://blogs.msdn.com/jaybaz_ms/archive/2004/06/17/158636.aspx">http://blogs.msdn.com/jaybaz_ms/archive/2004/06/17/158636.aspx</a><br />
 </p>
-
-Posted by: <a href="http://blogs.msdn.com/jaybaz_MS">jaybaz [MS]</a> at June 17, 2004 02:28 PM
-
-
+<span class="comments-post">Posted by: <a href="http://blogs.msdn.com/jaybaz_MS">jaybaz [MS]</a> at June 17, 2004 02:28 PM</span>
+</div>
+<div class="comments-body">
 <p>very good and drilled down.</p>
-
-Posted by: <a href="mailto&#58;aliasghar&#46;ahmed&#64;capgemini&#46;com">Ali Asghar Ahmed</a> at July  4, 2004 01:12 AM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;aliasghar&#46;ahmed&#64;capgemini&#46;com">Ali Asghar Ahmed</a> at July  4, 2004 01:12 AM</span>
+</div>
+<div class="comments-body">
 <p>Thanks a lot! </p>
 
 <p>I never was exactly sure what "event" did, even after reading all about it in "Inside C#". The only purpose I thought it served was to let the VS.NET IDE list it as an available "Event" for the class! (Which is also an important side-effect.)</p>
 
 <p>Your explanation was well appreciated</p>
-
-Posted by: <a href="http://www.robert.to/">Robert</a> at August 19, 2004 03:06 PM
-
-
+<span class="comments-post">Posted by: <a href="http://www.robert.to/">Robert</a> at August 19, 2004 03:06 PM</span>
+</div>
+<div class="comments-body">
 <p>I have a basic question and i am new to C#.<br />
 Is there anyway, i can shadow/hide a Parent Controls event.</p>
 
@@ -311,10 +366,9 @@ Is there anyway, i can shadow/hide a Parent Controls event.</p>
 
 <p>Is this a right approach?<br />
 I like to hide the regular event and write my own ? Thanks </p>
-
-Posted by: <a href="mailto&#58;rk_1972&#64;hotmail&#46;com">Bob</a> at September  2, 2004 01:00 PM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;rk_1972&#64;hotmail&#46;com">Bob</a> at September  2, 2004 01:00 PM</span>
+</div>
+<div class="comments-body">
 <p>Hi,</p>
 
 <p>Great post, The restriction on the events that  "Invoking an event can only be done from within the class that declared the event" is not easily understood, may it is to place more emphasis on the class which defines the event, for it to decide and fire the event.</p>
@@ -323,31 +377,26 @@ Posted by: <a href="mailto&#58;rk_1972&#64;hotmail&#46;com">Bob</a> at September
 
 <p>Regards<br />
 Narasimha G. M.</p>
-
-Posted by: <a href="http://narasimhagm.blogspot.com/">Narasimha G. M.</a> at January  1, 2005 01:46 AM
-
-
+<span class="comments-post">Posted by: <a href="http://narasimhagm.blogspot.com/">Narasimha G. M.</a> at January  1, 2005 01:46 AM</span>
+</div>
+<div class="comments-body">
 <p>This is a great article . Thanks</p>
-
-Posted by: <a href="mailto&#58;brvijaya_kumar&#64;yahoo&#46;com">Vijaya</a> at January  6, 2005 10:08 PM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;brvijaya_kumar&#64;yahoo&#46;com">Vijaya</a> at January  6, 2005 10:08 PM</span>
+</div>
+<div class="comments-body">
 <p>Great Article. Exactly what i needed.</p>
-
-Posted by: <a href="mailto&#58;vipganesh&#64;yahoo&#46;co&#46;in">Ganesh</a> at January  7, 2005 01:13 AM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;vipganesh&#64;yahoo&#46;co&#46;in">Ganesh</a> at January  7, 2005 01:13 AM</span>
+</div>
+<div class="comments-body">
 <p>Great Work - Found it very Useful.</p>
-
-Posted by: <a href="mailto&#58;gautham_chuliyill&#64;yahoo&#46;com">Gautham Chuliyill</a> at January 17, 2005 11:58 PM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;gautham_chuliyill&#64;yahoo&#46;com">Gautham Chuliyill</a> at January 17, 2005 11:58 PM</span>
+</div>
+<div class="comments-body">
 <p>Thanks a lot.<br />
 You helped me a lot.</p>
-
-Posted by: <a href="mailto&#58;fmarcos&#46;rj&#64;ig&#46;com&#46;br">Fernando Miranda</a> at January 19, 2005 10:52 AM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;fmarcos&#46;rj&#64;ig&#46;com&#46;br">Fernando Miranda</a> at January 19, 2005 10:52 AM</span>
+</div>
+<div class="comments-body">
 <p>Above, you mention a race condition</p>
 
 <p>if (Click != null)<br />
@@ -356,31 +405,27 @@ Posted by: <a href="mailto&#58;fmarcos&#46;rj&#64;ig&#46;com&#46;br">Fernando Mi
 <p>This is interesting.  You never had this problem in Java.  You could follow the example here....<a href="http://java.sun.com/j2se/1.5.0/docs/api/index.html">http://java.sun.com/j2se/1.5.0/docs/api/index.html</a> </p>
 
 <p>and did not need to do any synchronization.  Being able to do stuff without synchronization sometimes helps performance problems that were caused by contention.  I guess I could always fall back to the way Java does listeners in C#.</p>
-
-Posted by: <a href="mailto&#58;dean&#46;hiller&#64;boldtech&#46;com">Dean Hiller</a> at March 31, 2005 11:33 AM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;dean&#46;hiller&#64;boldtech&#46;com">Dean Hiller</a> at March 31, 2005 11:33 AM</span>
+</div>
+<div class="comments-body">
 <p>Dean, the problem is that events in C# are not simply listeners, they are listener collections. <br />
 What if the collection is modified as it gets iterated over for sending the events?</p>
 
 <p>In Java you would still have a problem if somebody (ie another thread) removed the listener object between the null check and the actual call.</p>
-
-Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at March 31, 2005 11:37 AM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at March 31, 2005 11:37 AM</span>
+</div>
+<div class="comments-body">
 <p>Very useful - thanks much.<br />
 </p>
-
-Posted by: <a href="http://www.brainrazor.com">netshade</a> at April 21, 2005 11:23 AM
-
-
+<span class="comments-post">Posted by: <a href="http://www.brainrazor.com">netshade</a> at April 21, 2005 11:23 AM</span>
+</div>
+<div class="comments-body">
 <p>What a post. Beauty !<br />
 But I am somewhat puzzled by you remark on the restriction of the delegate's signature you can apply the events keyword upon. Testing it I did not find any problems in using different signatures. And when it comes to COM events, where you really need the event keyword, the System.EventHandler 's signature does not make any sense.<br />
 What am I missing ?</p>
-
-Posted by: <a href="http://codebetter.com/blogs/peter.van.ooijen/">Peter van Ooijen</a> at August 31, 2005 12:40 PM
-
-
+<span class="comments-post">Posted by: <a href="http://codebetter.com/blogs/peter.van.ooijen/">Peter van Ooijen</a> at August 31, 2005 12:40 PM</span>
+</div>
+<div class="comments-body">
 <p>Hey Peter,</p>
 
 <p>Thanks.<br />
@@ -408,47 +453,41 @@ already defined an appropriate delegate type: EventHandler."<br />
 
 <p><br />
 Let me know if you find any clear explanation.</p>
-
-Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at September  2, 2005 06:07 PM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at September  2, 2005 06:07 PM</span>
+</div>
+<div class="comments-body">
 <p>I read some post comment on events & delegates but Still I don't clear the concept of events & delegates.Please help me.</p>
-
-Posted by: <a href="mailto&#58;prashant_gumal&#64;rediffmail&#46;com">PRASHANT</a> at September 22, 2005 10:23 PM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;prashant_gumal&#64;rediffmail&#46;com">PRASHANT</a> at September 22, 2005 10:23 PM</span>
+</div>
+<div class="comments-body">
 <p>Hey Prashant,</p>
 
 <p>You should be able to find a lot of info online. Events are just some restrictions on top of delegates, so you should focus on understanding delegates first.<br />
 Delegates are essentially method pointers. Very useful for callback scenarios, ie. I call a component asynchronously passing in a callback method, the call returns and, later, the callback gets called back. <br />
 It's also used a lot in winforms code, for notifications: this button was clicked, this window was closed,...</p>
-
-Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at September 23, 2005 07:31 PM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at September 23, 2005 07:31 PM</span>
+</div>
+<div class="comments-body">
 <p>Hey, <br />
 thanks a lot for this article. It was of a great help for me.<br />
 </p>
-
-Posted by: <a href="http://bchoubey.blogspot.com">Brijesh Choubey</a> at September 29, 2005 03:06 AM
-
-
+<span class="comments-post">Posted by: <a href="http://bchoubey.blogspot.com">Brijesh Choubey</a> at September 29, 2005 03:06 AM</span>
+</div>
+<div class="comments-body">
 <p>I was searching for exactly this.<br />
 One more difference wrt VisualStudio (although doesnt have anything to do with language but makes difference while desiging applications),<br />
 When you mark something "event", the designer displays it in event-property window.</p>
-
-Posted by: <a href="mailto&#58;sandeepgiri&#64;gmail&#46;com">Sandeep </a> at October 27, 2005 05:37 PM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;sandeepgiri&#64;gmail&#46;com">Sandeep </a> at October 27, 2005 05:37 PM</span>
+</div>
+<div class="comments-body">
 <p>Okay, so this is quite a few months later, but:</p>
 
 <p>if you use a delegate directly, an outside object can invoke it when really, you just want the owning object to do the invoking.  With the event keyword modifier, you can no longer call invoke on it.  </p>
 
 <p>Hope that helps anyone who stumbles upon this.</p>
-
-Posted by: <a href="http://dummyurl.url">Mr. Raybell</a> at March 10, 2006 04:28 PM
-
-
+<span class="comments-post">Posted by: <a href="http://dummyurl.url">Mr. Raybell</a> at March 10, 2006 04:28 PM</span>
+</div>
+<div class="comments-body">
 <p>Does the code you suggest (well, actually, other people suggest) really fix the race condition problem?</p>
 
 <p>It seems to me that the race condition has not been fixed by this adjustment.  Aren’t you just ensuring you "win the race" by copying out the event to temporary variable?  You are only guaranteeing that collection you have is not empty when you invoke it, but you have not guaranteed that the subscriber is still valid.  Let me give you an example.</p>
@@ -465,36 +504,38 @@ Posted by: <a href="http://dummyurl.url">Mr. Raybell</a> at March 10, 2006 04:28
 
 <p>I’m not certain I’m right, but this certainly bothers me!<br />
 </p>
-
-Posted by: <a href="mailto&#58;monstuff&#64;thoughtyard&#46;com">Chiem</a> at April 11, 2006 10:59 AM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;monstuff&#64;thoughtyard&#46;com">Chiem</a> at April 11, 2006 10:59 AM</span>
+</div>
+<div class="comments-body">
 <p>Perfect! I've been reading up on delegates and events and couldn't figure out why we needed events at all. This answered my question exactly!</p>
 
 <p>Thanks!</p>
-
-Posted by: <a href="mailto&#58;ianbowler&#64;hotmail&#46;com">ian</a> at July 24, 2006 03:41 PM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;ianbowler&#64;hotmail&#46;com">ian</a> at July 24, 2006 03:41 PM</span>
+</div>
+<div class="comments-body">
 <p>It really helped me in finding some differences.</p>
-
-Posted by: <a href="mailto&#58;arifpak&#64;hotmail&#46;com">Arif Sarwar</a> at August  7, 2006 12:55 PM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;arifpak&#64;hotmail&#46;com">Arif Sarwar</a> at August  7, 2006 12:55 PM</span>
+</div>
+<div class="comments-body">
 <p>Great article!</p>
 
 <p>You write very well on a difficult\tricky subject.</p>
 
 <p>Thank you!</p>
-
-Posted by: <a href="mailto&#58;kalanm&#64;gmail&#46;com">Kalan</a> at August 14, 2006 03:39 PM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;kalanm&#64;gmail&#46;com">Kalan</a> at August 14, 2006 03:39 PM</span>
+</div>
+<div class="comments-body">
 <p>figure3 in the following article explains why the Event invocation restriction</p>
 
 <p><a href="http://msdn.microsoft.com/msdnmag/issues/01/08/net/">http://msdn.microsoft.com/msdnmag/issues/01/08/net/</a></p>
+<span class="comments-post">Posted by: <a href="mailto&#58;d&#64;c&#46;com">Dean</a> at August 23, 2006 11:37 AM</span>
+</div>
 
-Posted by: <a href="mailto&#58;d&#64;c&#46;com">Dean</a> at August 23, 2006 11:37 AM
 
 
+</div>
+</div>
 
+
+</body>
+</html>

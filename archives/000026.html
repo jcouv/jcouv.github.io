@@ -1,14 +1,55 @@
----
-title: Trees in SQL
-date: 2003-03-31 20:12:22 +0800
-disqus_identifier: 26
-disqus_url: http://blog.monstuff.com/archives/000026.html
----
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Trees in SQL</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '{{ site.ga }}', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+
+<div class="blog">
+
+
+
+
+<div class="blogbody">
+
+<h2 class="title">Trees in SQL</h2>
 
 <p>Here is a cool DB trick that a friend of mine showed me a while back. The problem is basically how to efficiently access a tree stored in a relational/SQL database.<br />
 The solution where you store the parent of a node in the node/row itself works, but can't be retrieved in-depth without using some kind of a loop or reccursion.</p>
 
 <p>Joe Celko seems to one of the most mentioned DB experts on this matter. Here is an <a href="http://www.intelligententerprise.com/001020/celko.shtml">intro he wrote on reprensenting trees as "nested sets"</a>.</p>
+
+<a name="more"></a>
 <p><b>Introduction</b><br />
 A double numbering or indexing is done globally on the tree, by giving each node/row a left index and right index. These indexes are set sequentially starting with left=1 on the root, and walking through the tree in-depth. The left index is the value of the sequence when you first reach a node (on the left side, if you do a drawing) and the right index is the value of the counter when you reach the node the second time.<br />
 Below is an illustration of this numbering:</p>
@@ -34,24 +75,54 @@ Here is another bunch of links on the topic:<br />
 <p><u>Update:</u><br />
 Celko wrote an article for O'Reilly Networks: <a href="http://www.onlamp.com/pub/a/onlamp/2004/08/05/hierarchical_sql.html">Hierarchical SQL</a>.</p>
 
-______________________________________
+<span class="posted">Posted by Julien on March 31, 2003. <a href="http://blog.monstuff.com/archives/000026.html" rel="bookmark">Permalink</a> 
+<br /></span>
+
+</div>
 
 
 
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '26';
+        var disqus_url = 'http://blog.monstuff.com/archives/000026.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+<div class="comments-body">
 <p>Found another article that explains this technique, in PHP:  <a href="http://www.sitepoint.com/article/1105">http://www.sitepoint.com/article/1105</a></p>
-
-Posted by: <a href="http://blog.monstuff.com/">Dumky</a> at June 19, 2003 04:11 PM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Dumky</a> at June 19, 2003 04:11 PM</span>
+</div>
+<div class="comments-body">
 <p><a href="http://www.codeproject.com/cs/database/Trees_in_SQL_databases.asp">http://www.codeproject.com/cs/database/Trees_in_SQL_databases.asp</a></p>
-
-Posted by: <a href="mailto&#58;dev&#64;mailinator&#46;com">dev@</a> at October 26, 2004 02:47 PM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;dev&#64;mailinator&#46;com">dev@</a> at October 26, 2004 02:47 PM</span>
+</div>
+<div class="comments-body">
 <p>Also see Teodor Sigaev and Oleg Bartunov's use of GiST indexes at <a href="http://www.sai.msu.su/~megera/postgres/gist/">http://www.sai.msu.su/~megera/postgres/gist/</a><br />
 </p>
+<span class="comments-post">Posted by: <a href="http://www.photoresearchers.com">PRinc</a> at April 26, 2005 03:35 PM</span>
+</div>
 
-Posted by: <a href="http://www.photoresearchers.com">PRinc</a> at April 26, 2005 03:35 PM
 
 
+</div>
+</div>
 
+
+</body>
+</html>

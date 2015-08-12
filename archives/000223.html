@@ -1,9 +1,48 @@
----
-title: Wiki and tagged bookmarks integration
-date: 2005-01-20 15:17:03 +0800
-disqus_identifier: 223
-disqus_url: http://blog.monstuff.com/archives/000223.html
----
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Wiki and tagged bookmarks integration</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '{{ site.ga }}', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+
+<div class="blog">
+
+
+
+
+<div class="blogbody">
+
+<h2 class="title">Wiki and tagged bookmarks integration</h2>
 
 <p>Here's a quick idea: allow a wiki to pull a list of links from a bookmark store using the WikiWord as the requested tag. <br />
 The links could be broken down into multiple buckets depending on other specific tags like "read" or "unread" for example. The tags on these imported links could be updated directly from the wiki, using some javascript and DHTML. This would be quite useful for organizing information during the research phase.</p>
@@ -13,12 +52,40 @@ The links could be broken down into multiple buckets depending on other specific
 <p>Another problem with del.icio.us is that it doesn't offer any private "space". But the wiki and tagged bookmark integration makes more sense with a private wiki and private bookmarks ("read" or "unread" tags should be personal, not shared, and wikiwords need to be scoped to a single wiki, not global). Unfortunately, I couldn't find any project for private bookmark+tag store, on freshmeat or sourceforge.</p>
 
 <p>Trying to think about other integration scenarios, another case seemed to have potential: using urls as wikiwords. This would turn a private wiki into a personal annotation store. </p>
+
+<a name="more"></a>
 <p><u>Update (2005/02/01):</u> Matt Biddulph posted an related hack: <a href="http://www.hackdiary.com/archives/000067.html">integrating del.icio.us tagging into a website</a> (<a href="http://www.corante.com/many/archives/2005/01/31/embedded_delicious_taggings_future_illustrated.php">via Boing Boing</a>). He's using DHTML and javascript for adding tags to the current page and fetching and displaying other urls with the same tags.</p>
 
-______________________________________
+<span class="posted">Posted by Julien on January 20, 2005. <a href="http://blog.monstuff.com/archives/000223.html" rel="bookmark">Permalink</a> 
+<br /></span>
+
+</div>
 
 
 
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '223';
+        var disqus_url = 'http://blog.monstuff.com/archives/000223.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+<div class="comments-body">
 <p>I think you're mistaken about the API.  I think it's  perfectly valid to use /api/posts/add to re-post an existing URL with a different set of tags, so you can add or subtract tags with this technique.  </p>
 
 <p>There are still several operations which are missing, like fetch a post by URL, and fetch "all users posts" on a URL.</p>
@@ -35,32 +102,35 @@ ______________________________________
 
 <p>PS I found your post via pubsub: <br />
 <a href="http://atom.pubsub.com/fe/1b/fb6e656feb86ed3753127c84e2.xml">http://atom.pubsub.com/fe/1b/fb6e656feb86ed3753127c84e2.xml</a></p>
-
-Posted by: <a href="http://www.hybernaut.com/bdv/">Brian Del Vecchio</a> at February  1, 2005 05:53 PM
-
-
+<span class="comments-post">Posted by: <a href="http://www.hybernaut.com/bdv/">Brian Del Vecchio</a> at February  1, 2005 05:53 PM</span>
+</div>
+<div class="comments-body">
 <p>What I meant was:</p>
 
 <p>It could work easily enough with a local copy of your own del.icio.us information, but it would be [difficult to make] cacheing of the "all users" data scalable.</p>
-
-Posted by: <a href="http://hybernaut.com/bdv/">Brian Del Vecchio</a> at February  2, 2005 12:27 PM
-
-
+<span class="comments-post">Posted by: <a href="http://hybernaut.com/bdv/">Brian Del Vecchio</a> at February  2, 2005 12:27 PM</span>
+</div>
+<div class="comments-body">
 <p>Thanks Brian. I see what you mean about being to update a tag list using the API. <br />
 I also just realized that the "recent" API only returns results from my bookmarks (not from other users).<br />
 Cool! It seems like these APIs are sufficient for scenario I described. The only problem is the scenario is not very community friendly, as it tags items with wikiwords from my private wiki...<br />
 Since the APIs return xml, it seems like javascript+XmlHttpRequest is a good candidate :-)<br />
 </p>
-
-Posted by: <a href="http://blog.monstuff.com/">Julien</a> at February 27, 2005 09:48 AM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien</a> at February 27, 2005 09:48 AM</span>
+</div>
+<div class="comments-body">
 <p>Actually, remote del.icio.us integration using javascript doesn't work, XmlHttpRequest only lets you load a url in the same domain as the current page :-(<br />
 See the "permission denied" comment at <a href="http://xulplanet.com/references/objref/XMLHttpRequest.html">http://xulplanet.com/references/objref/XMLHttpRequest.html</a></p>
 
 <p>I tried the iframe approach as well, but the "same domain" security policy in javascript also prevents access to any data returned by del.icio.us within the iframe... :-(</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien</a> at February 27, 2005 03:20 PM</span>
+</div>
 
-Posted by: <a href="http://blog.monstuff.com/">Julien</a> at February 27, 2005 03:20 PM
 
 
+</div>
+</div>
 
+
+</body>
+</html>

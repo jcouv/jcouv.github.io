@@ -1,9 +1,48 @@
----
-title: Modifying IL at runtime (step II)
-date: 2003-06-13 22:56:27 +0800
-disqus_identifier: 59
-disqus_url: http://blog.monstuff.com/archives/000059.html
----
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Modifying IL at runtime (step II)</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '{{ site.ga }}', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+
+<div class="blog">
+
+
+
+
+<div class="blogbody">
+
+<h2 class="title">Modifying IL at runtime (step II)</h2>
 
 <p>A couple of days back, we tweaked the running IL a little bit. Today, let's modify it some more!</p>
 
@@ -12,6 +51,8 @@ disqus_url: http://blog.monstuff.com/archives/000059.html
 <p>The IL used during the modification is still hardcoded. But we'll try to start moving away from that by exploring the metadata, to try and find the method token at runtime. The first step of this is to list all the methods on the current class and print out their names, which we'll see how to do.</p>
 
 <p>You'll need a running copy of the <a href="http://msdn.microsoft.com/msdnmag/issues/01/12/hood/default.aspx">DNProfiler tool</a> to try the code provided and I recommend that you read <a href="/archives/000058.html">my previous blog on the subject</a> if you haven't used the Profiler APIs before.</p>
+
+<a name="more"></a>
 <p>First, let's look at the class we'll play with:<br />
 <div class="code">using System;</p>
 
@@ -342,10 +383,36 @@ In the next iteration, I'll try to analyze the signatures of the methods that ar
 
 <p>All comments and suggestions are kindly welcome.</p>
 
-______________________________________
+<span class="posted">Posted by Julien on June 13, 2003. <a href="http://blog.monstuff.com/archives/000059.html" rel="bookmark">Permalink</a> 
+<br /></span>
+
+</div>
 
 
 
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '59';
+        var disqus_url = 'http://blog.monstuff.com/archives/000059.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+<div class="comments-body">
 <p>If you just need to get the name for a given token, you don't necessarly need to use the Get*Props call.<br />
 You can use IMetaDataImport::GetNameFromToken(token, name_pointer), as below:</p>
 
@@ -354,23 +421,27 @@ hr = pMetaDataImport->GetNameFromToken(tkMethod, &name);<br />
 ProfilerPrintf("function name: %s\n", name);</p>
 
 <p>But you'll notice that instead of filling an array of wide characters (like GetMethodProps did), this call gives you a reference to the UTF8 representation of the name inside the runtime.</p>
-
-Posted by: <a href="http://blog.monstuff.com">Dumky</a> at June 19, 2003 08:26 AM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Dumky</a> at June 19, 2003 08:26 AM</span>
+</div>
+<div class="comments-body">
 <p>"No source code is available for this location"</p>
 
 <p>You can get around this by bringing up the dissasembly window.  That's what I do here...<br />
 <a href="http://weblogs.asp.net/nunitaddin/posts/8580.aspx">http://weblogs.asp.net/nunitaddin/posts/8580.aspx</a></p>
-
-Posted by: <a href="http://weblogs.asp.net/nunitaddin">Jamie Cansdale</a> at July 27, 2003 05:08 AM
-
-
+<span class="comments-post">Posted by: <a href="http://weblogs.asp.net/nunitaddin">Jamie Cansdale</a> at July 27, 2003 05:08 AM</span>
+</div>
+<div class="comments-body">
 <p>Actually, in my case, the error occurs while debugging the C++ dll in native mode.</p>
 
 <p>The Reflector is cool stuff though ;-)</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/archives/000059.html">Dumky</a> at July 27, 2003 11:58 AM</span>
+</div>
 
-Posted by: <a href="http://blog.monstuff.com/archives/000059.html">Dumky</a> at July 27, 2003 11:58 AM
 
 
+</div>
+</div>
 
+
+</body>
+</html>

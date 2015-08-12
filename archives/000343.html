@@ -1,14 +1,55 @@
----
-title: Ubiquity command: insert-link
-date: 2008-08-31 22:54:59 +0800
-disqus_identifier: 343
-disqus_url: http://blog.monstuff.com/archives/000343.html
----
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Ubiquity command: insert-link</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '{{ site.ga }}', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+
+<div class="blog">
+
+
+
+
+<div class="blogbody">
+
+<h2 class="title">Ubiquity command: insert-link</h2>
 
 <p>The 'insert-link' command let's you find and insert a url from your history.<br />
 Finding the url works just like the AwesomeBar. As you type characters, matches from your history get displayed. Then you can select which one you want to insert.</p>
 
 <p><a href="http://blog.monstuff.com/archives/000343.html">Read on</a> for more details and to install.</p>
+
+<a name="more"></a>
 <p><link rel="commands" href="http://jcouv.googlecode.com/svn/trunk/Ubiquity/insert-link.js" name="Insert link" /><br />
 Here's a screenshot of this command in action:<br />
 <img alt='screenshot of the insert-link Ubiquity command' src='http://img301.imageshack.us/img301/7845/insertlinkscreenshotsv1.jpg' width="526" height="420" ' border='0'/><br />
@@ -28,50 +69,76 @@ This command is based off the <a href="http://developer.mozilla.org/en/nsIAutoCo
 On the other hand, the debugging experience could be improved. I have not found how to debug commands or inspect the styling of the previews. <br />
 Also, this level of access poses a clear security risk, which will be an interesting challenge to address moving forward.</p>
 
-______________________________________
+<span class="posted">Posted by Julien on August 31, 2008. <a href="http://blog.monstuff.com/archives/000343.html" rel="bookmark">Permalink</a> 
+<br /></span>
+
+</div>
 
 
 
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '343';
+        var disqus_url = 'http://blog.monstuff.com/archives/000343.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+<div class="comments-body">
 <p>I can't believe someone *actually* made this. Totally awesome! I'm going to use this all the time when typing emails.</p>
-
-Posted by: <a href="http://abcdefu.wordpress.com">Abi</a> at August 31, 2008 11:46 PM
-
-
+<span class="comments-post">Posted by: <a href="http://abcdefu.wordpress.com">Abi</a> at August 31, 2008 11:46 PM</span>
+</div>
+<div class="comments-body">
 <p>The subscribe field for insert-list is not showing in the top of your page <br />
 <a href="http://blog.monstuff.com/archives/000343.html">http://blog.monstuff.com/archives/000343.html</a></p>
-
-Posted by: <a href="mailto&#58;hmarstra&#64;yahoo&#46;no">Henrik Marstrander</a> at September  3, 2008 02:55 AM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;hmarstra&#64;yahoo&#46;no">Henrik Marstrander</a> at September  3, 2008 02:55 AM</span>
+</div>
+<div class="comments-body">
 <p>This is great! I've been desiring this command for a while now.</p>
 
 <p>We really need to figure out how to do keyboard access in the preview area (or you should implement the links as a noun type).</p>
-
-Posted by: <a href="http://azarask.in/blog">Aza Raskin</a> at September  5, 2008 08:16 PM
-
-
+<span class="comments-post">Posted by: <a href="http://azarask.in/blog">Aza Raskin</a> at September  5, 2008 08:16 PM</span>
+</div>
+<div class="comments-body">
 <p>Hi Aza, <br />
 I tried implementing the links as noun type, but there are two problems doing it that way:<br />
 -suggestions have to be provided synchronously. The suggestions from the Places engine come back asynchronously.<br />
 -suggestions do not allow rich content (yet) . I need to display some text, a link and a favicon in the suggestions for this verb.</p>
-
-Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at September  6, 2008 07:48 AM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at September  6, 2008 07:48 AM</span>
+</div>
+<div class="comments-body">
 <p>WoW - cool feature, this realy let you speed up your workflow...nice! ;-)</p>
-
-Posted by: <a href="http://www.eu-neuwagen.in/">Josef</a> at September  6, 2008 10:48 AM
-
-
+<span class="comments-post">Posted by: <a href="http://www.eu-neuwagen.in/">Josef</a> at September  6, 2008 10:48 AM</span>
+</div>
+<div class="comments-body">
 <p>Can we get more than 6 entries in preview pane?</p>
-
-Posted by: <a href="mailto&#58;hmk1980&#64;mintemail&#46;com">dualsighter</a> at September 13, 2008 06:28 PM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;hmk1980&#64;mintemail&#46;com">dualsighter</a> at September 13, 2008 06:28 PM</span>
+</div>
+<div class="comments-body">
 <p>@DualSighter: you can easily modify the script to display more than 6 entries. <br />
 Another option would be to add a "show more" link at the bottom of the preview to expand the list as needed.</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at September 17, 2008 01:28 PM</span>
+</div>
 
-Posted by: <a href="http://blog.monstuff.com">Julien</a> at September 17, 2008 01:28 PM
 
 
+</div>
+</div>
 
+
+</body>
+</html>

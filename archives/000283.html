@@ -1,9 +1,48 @@
----
-title: LiveClipboard: Wiring web and desktop apps together
-date: 2006-03-08 19:16:57 +0800
-disqus_identifier: 283
-disqus_url: http://blog.monstuff.com/archives/000283.html
----
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: LiveClipboard: Wiring web and desktop apps together</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '{{ site.ga }}', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+
+<div class="blog">
+
+
+
+
+<div class="blogbody">
+
+<h2 class="title">LiveClipboard: Wiring web and desktop apps together</h2>
 
 <p>Ray Ozzie is doing some thinking on how to <a href="http://spaces.msn.com/rayozzie/blog/cns!FB3017FBB9B2E142!285.entry">wire services together on the web</a>. His post has a bunch of screencasts (beware of the boring pace and marketing babble ;-) and an online prototype. He also talked about it in his presentation at ETech: <a href="http://radar.oreilly.com/archives/2006/03/etech_ray_ozzie.html">"Simple Bridge Building" (transcript)</a>.</p>
 
@@ -11,6 +50,8 @@ disqus_url: http://blog.monstuff.com/archives/000283.html
 
 <p>The key insight of his approach is to let the users themselves do the wiring between services, thru the copy&paste operation. <em>He uses the clipboard as an intermediary and standard microformats as a shared language.</em><br />
 He calls it the "Live Clipboard".</p>
+
+<a name="more"></a>
 <p> <br />
 In comparison, the "open-ended links" concept also relied on sending a structured piece of data between services, but it required the browser to handle and route the data to the right service.</p>
 
@@ -36,8 +77,41 @@ Like <a href="http://blog.davidjanes.com/mtarchives/2006_03.html#003555">David J
 
 <p>In any case, I'm curious to see where this goes. And I certainly hope that a microformat is created to identify locations of a page that support this functionality, so that we can hook and extend these easily with Greasemonkey scripts ;-)</p>
 
-______________________________________
+<span class="posted">Posted by Julien on March 08, 2006. <a href="http://blog.monstuff.com/archives/000283.html" rel="bookmark">Permalink</a> 
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '283';
+        var disqus_url = 'http://blog.monstuff.com/archives/000283.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
 
 
 
 
+
+
+
+</div>
+</div>
+
+
+</body>
+</html>

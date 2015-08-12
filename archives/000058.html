@@ -1,9 +1,48 @@
----
-title: Modifying IL at runtime
-date: 2003-06-11 21:20:17 +0800
-disqus_identifier: 58
-disqus_url: http://blog.monstuff.com/archives/000058.html
----
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Modifying IL at runtime</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '{{ site.ga }}', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+
+<div class="blog">
+
+
+
+
+<div class="blogbody">
+
+<h2 class="title">Modifying IL at runtime</h2>
 
 <p>If you remember the <a href="http://blog.monstuff.com/archives/000035.html">Omniscient Debugger</a>, it was a Java debugger that instrumented the bytecode at runtime to trace calls and monitor variables. It did so by using a custom ClassLoader.<br />
 Unfortunately the .NET classes that seemed somewhat equivalent to the Java ClassLoader are sealed, so they can't be extended. So, for a while I thought runtime instrumentation of the code wasn't possible in .NET...</p>
@@ -15,6 +54,8 @@ Unfortunately the .NET classes that seemed somewhat equivalent to the Java Class
 <p>In this article, we'll go through the steps to build this simple runtime IL transformation program, to give you a better feel of what <i>Get/SetILFunctionBody</i> allows you to do.</p>
 
 <p><u>Update:</u> Follow-up articles are available (<a href="http://blog.monstuff.com/archives/000059.html">step II</a>, <a href="http://blog.monstuff.com/archives/000060.html">step II+</a>, <a href="http://blog.monstuff.com/archives/000077.html">step III</a>).</p>
+
+<a name="more"></a>
 <p><b>Background information on the Profiling APIs</b><br />
 First you should have a little background on the Profiling APIs of the framework.</p>
 
@@ -338,19 +379,44 @@ Dumky</p>
 <a href="http://www.mail-archive.com/dotnet-rotor@discuss.develop.com/msg00510.html">Another Get/SetILFunctionBody sample</a>.<br />
 A set of slides on <a href="http://www.iunknown.com/Files/CLAW_Implementation.ppt">CLAW and the Profiler APIs</a>.</p>
 
-______________________________________
+<span class="posted">Posted by Julien on June 11, 2003. <a href="http://blog.monstuff.com/archives/000058.html" rel="bookmark">Permalink</a> 
+<br /></span>
+
+</div>
 
 
 
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '58';
+        var disqus_url = 'http://blog.monstuff.com/archives/000058.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+<div class="comments-body">
 <p>Good to see another profiling adventurer out there!  I haven't written up anything more in my blog due to lack of time, but I got to the stage where I was inserting/replacing bytecode to call other methods.  I started using the debugger API to get at local values on the stack, but then I got a job :-)</p>
 
 <p>Keep it up though, I'd be interested in how you get on.</p>
 
 <p>Jim</p>
-
-Posted by: <a href="http://weblogs.asp.net/jarnold">Jim Arnold</a> at June 13, 2003 06:42 AM
-
-
+<span class="comments-post">Posted by: <a href="http://weblogs.asp.net/jarnold">Jim Arnold</a> at June 13, 2003 06:42 AM</span>
+</div>
+<div class="comments-body">
 <p>Thanks for your comment. It really is an adventure. I'm hoping to make it a bit easier for the future adventurers though ;-)</p>
 
 <p>Yesterday night, I managed to insert an extra function call in the Main method. The function that is called is a static method from the same class, and I still have the method's token hardcoded.</p>
@@ -362,28 +428,31 @@ I'll post this code soon (after the week-end).</p>
 
 <p>Cheers<br />
 Dumky</p>
-
-Posted by: <a href="http://blog.monstuff.com">Dumky</a> at June 13, 2003 02:31 PM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Dumky</a> at June 13, 2003 02:31 PM</span>
+</div>
+<div class="comments-body">
 <p><a href="http://www.clrinternals.com/TraceHook.htm">http://www.clrinternals.com/TraceHook.htm</a> is a tracing solution based on ContextBoundObject. It has some important limitations, but still is quite interesting.</p>
-
-Posted by: <a href="http://blog.monstuff.com">Dumky</a> at July 17, 2003 10:31 PM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Dumky</a> at July 17, 2003 10:31 PM</span>
+</div>
+<div class="comments-body">
 <p>Hi,<br />
   your articles about this thema are very interesting. I found them, when I was looking for some information about lazy collection initialization. I created some library for object persistence in database. When I load objects with child collections, I want to initialize them at the time when the collections are needed (not when loading).<br />
   Problem is that I am not able to catch the moment when the object is needed. So I want to rename the variable of the collection and create some getter/setter in runtime. The property will have the name that the collection had before renaming and will ensure the collection initialization (via some branching and my library). And all this should be done in runtime.<br />
   I know that this is something different from profiling, but I think there are some similarities and I thank for every information.<br />
   Thanks <br />
               Karel Frajtak</p>
-
-Posted by: <a href="mailto&#58;kfrajtak&#64;lekis&#46;cz">Karel Frajtak</a> at August  8, 2003 12:12 AM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;kfrajtak&#64;lekis&#46;cz">Karel Frajtak</a> at August  8, 2003 12:12 AM</span>
+</div>
+<div class="comments-body">
 <p>I forgot: I am implementing it in C#.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;kfrajtak&#64;lekis&#46;cz">Karel Frajtak</a> at August  8, 2003 12:33 AM</span>
+</div>
 
-Posted by: <a href="mailto&#58;kfrajtak&#64;lekis&#46;cz">Karel Frajtak</a> at August  8, 2003 12:33 AM
 
 
+</div>
+</div>
 
+
+</body>
+</html>

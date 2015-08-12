@@ -1,9 +1,48 @@
----
-title: IL modification at runtime (step III)
-date: 2003-07-26 12:20:25 +0800
-disqus_identifier: 77
-disqus_url: http://blog.monstuff.com/archives/000077.html
----
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: IL modification at runtime (step III)</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '{{ site.ga }}', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+
+<div class="blog">
+
+
+
+
+<div class="blogbody">
+
+<h2 class="title">IL modification at runtime (step III)</h2>
 
 <p>Here is one more incremental step in instrumenting IL at runtime. This time, the method call that will be inserted will be implemented in a separate dll and will take an int as an input.<br />
 If you missed the previous episodes you can find them here: <a href="http://blog.monstuff.com/archives/000058.html">Step I</a>, <a href="http://blog.monstuff.com/archives/000059.html">Step II</a> and <a href="http://blog.monstuff.com/archives/000060.html">Step II+</a>.</p>
@@ -15,6 +54,8 @@ When we have the token for the Logger::Log method we can insert a call to it, wi
 <p>When you are ready to call the Log(int) method, you need to decide what integer you want to pass it. You can either load a constant on the stack (with the <i>ldc.i4</i> IL opcode to load the integer 4, for example) or pass it a copy of an int from the current method context. In our case, we'll see this second technique, were the method getting instrumented takes some integers as input parameters, and one of these inputs gets logged.</p>
 
 <p>Now to the code:</p>
+
+<a name="more"></a>
 <div class="code">HRESULT CProfilerCallback::JITCompilationStarted(UINT functionId,
 &nbsp;&nbsp;&nbsp;&nbsp;												 BOOL fIsSafeToBlock)
 {
@@ -253,45 +294,66 @@ blah!<br />
 4<br />
 5</div></p>
 
-______________________________________
+<span class="posted">Posted by Julien on July 26, 2003. <a href="http://blog.monstuff.com/archives/000077.html" rel="bookmark">Permalink</a> 
+<br /></span>
+
+</div>
 
 
 
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '77';
+        var disqus_url = 'http://blog.monstuff.com/archives/000077.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+<div class="comments-body">
 <p>MSDN Mag has a good article on IL modification at runtime at <a href="http://msdn.microsoft.com/msdnmag/issues/03/09/NETProfilingAPI/default.aspx">http://msdn.microsoft.com/msdnmag/issues/03/09/NETProfilingAPI/default.aspx</a> (Rewrite MSIL Code on the Fly with the .NET Framework Profiling API -- MSDN Magazine, September 2003).</p>
 
 <p>Also, I generated a new VS.Net ATL/COM project for this, to use the "standard" COM template. Matt's DNProfiler codebase was causing me some problems when trying to use some ATL includes. The VS.Net 2002 project is available via anonymous CVS access (see AnonCVS blog entry).</p>
-
-Posted by: <a href="http://blog.monstuff.com">Dumky</a> at September  7, 2003 08:43 PM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Dumky</a> at September  7, 2003 08:43 PM</span>
+</div>
+<div class="comments-body">
 <p>I wonder what happen when the dll is GACed or strongly named. I wonder if CLR will verify the byte code before calling the JITCompilationStart? if verification is performed prior to the execution of the acutal IL code, the dynamica injection of IL may fail.  Do you think this is the case?  if so what work around can you think of?  Thanks</p>
-
-Posted by: <a href="mailto&#58;xin&#46;chen&#64;ubs&#46;com">xin</a> at March 27, 2004 02:49 PM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;xin&#46;chen&#64;ubs&#46;com">xin</a> at March 27, 2004 02:49 PM</span>
+</div>
+<div class="comments-body">
 <p>Hi,</p>
 
 <p>Do you know if there exists an unmanaged component that can pass the original IL to a C# application to be instrumented?<br />
 </p>
-
-Posted by: <a href="mailto&#58;exchange&#64;ok&#46;kz">AlexB</a> at May  8, 2004 03:05 PM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;exchange&#64;ok&#46;kz">AlexB</a> at May  8, 2004 03:05 PM</span>
+</div>
+<div class="comments-body">
 <p>I can't seem to get this working.  I've modified the existing DNProfiler with the code suggested here and it wouldn't work, so I downloaded the project provided in part II and it wouldn't work.  I'm getting a System.InvalidProgramException.  All I can seem to find about the error is that it means that the MSIL is corrupt, which kind of makes sense considering I am modifying the MSIL, however the changes made here should work.  Any suggestions?</p>
 
 <p>Thanks.</p>
-
-Posted by: <a href="http://www.cs.unb.ca/research-groups/rcg/">JoshD</a> at May 13, 2004 04:24 PM
-
-
+<span class="comments-post">Posted by: <a href="http://www.cs.unb.ca/research-groups/rcg/">JoshD</a> at May 13, 2004 04:24 PM</span>
+</div>
+<div class="comments-body">
 <p>Josh, I'd recommend that you look closely at the IL that you generate. Maybe a bytecode you introduced is wrong. Also, you may need to modify the MaxStack.<br />
 What kind of modification are you doing? Start with no modification and then include them in little by little.<br />
 Does the exception contain any more information?<br />
 </p>
-
-Posted by: <a href="http://blog.monstuff.com">Dumky</a> at May 14, 2004 11:11 AM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Dumky</a> at May 14, 2004 11:11 AM</span>
+</div>
+<div class="comments-body">
 <p>Hi,</p>
 
 <p>An excellent series of articles.</p>
@@ -309,8 +371,14 @@ Posted by: <a href="http://blog.monstuff.com">Dumky</a> at May 14, 2004 11:11 AM
 <p>Rgds</p>
 
 <p>Nilesh</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;nilux&#64;vsnl&#46;com">Nilesh Malpekar</a> at June 26, 2005 06:26 PM</span>
+</div>
 
-Posted by: <a href="mailto&#58;nilux&#64;vsnl&#46;com">Nilesh Malpekar</a> at June 26, 2005 06:26 PM
 
 
+</div>
+</div>
 
+
+</body>
+</html>

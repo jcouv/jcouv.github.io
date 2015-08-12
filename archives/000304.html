@@ -1,9 +1,48 @@
----
-title: Cross-document messaging hack
-date: 2006-09-18 21:33:05 +0800
-disqus_identifier: 304
-disqus_url: http://blog.monstuff.com/archives/000304.html
----
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Cross-document messaging hack</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '{{ site.ga }}', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+
+<div class="blog">
+
+
+
+
+<div class="blogbody">
+
+<h2 class="title">Cross-document messaging hack</h2>
 
 <p>The Dojo and Windows Live Platform teams have both recently released DHTML hacks that allow two iframes in different domains to communicate, bypassing the notorious same-domain policy implemented in browsers. I'm surprised by the relative lack of response in the AJAX blogosphere, as this opens lots of possibilities for mashups.</p>
 
@@ -11,6 +50,8 @@ disqus_url: http://blog.monstuff.com/archives/000304.html
 
 <p>For example, if you have page A containing an iframe B in a different domain, then B can create a new iframe and load it with a url in the same domain as A.<br />
 The url that is loaded doesn't generate a request to the server if it is properly cached and only the fragment identifier is used to pass changing information. Page A can now get the DOM handle on the new iframe and successfully retrieve the information transmitted in the url by B.</p>
+
+<a name="more"></a>
 <p> <br />
 Although the hack goes around the same domain policy, you should realize that it does not constitute a significant security threat, as it requires both frames to cooperate. Additionally, this mechanism allows for control of which domains can work together.</p>
 
@@ -32,13 +73,45 @@ Now, the question is what cool applications will you build with this new cross-d
 
 <p><u>Update (2008/02/18):</u> The cross-messaging API, postMessage, is now <a href="http://ejohn.org/blog/cross-window-messaging/">available in Firefox 3 as of beta 3</a>.</p>
 
-______________________________________
+<span class="posted">Posted by Julien on September 18, 2006. <a href="http://blog.monstuff.com/archives/000304.html" rel="bookmark">Permalink</a> 
+<br /></span>
+
+</div>
 
 
 
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '304';
+        var disqus_url = 'http://blog.monstuff.com/archives/000304.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+<div class="comments-body">
 <p>I think this is the same as Atlas' IFrameExecutor.</p>
+<span class="comments-post">Posted by: <a href="http://weblogs.asp.net/bleroy">Bertrand Le Roy</a> at September 19, 2006 01:34 PM</span>
+</div>
 
-Posted by: <a href="http://weblogs.asp.net/bleroy">Bertrand Le Roy</a> at September 19, 2006 01:34 PM
 
 
+</div>
+</div>
 
+
+</body>
+</html>

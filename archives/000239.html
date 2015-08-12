@@ -1,9 +1,48 @@
----
-title: Various Greasemonkey user scripts
-date: 2005-04-10 10:10:54 +0800
-disqus_identifier: 239
-disqus_url: http://blog.monstuff.com/archives/000239.html
----
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Various Greasemonkey user scripts</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '{{ site.ga }}', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+
+<div class="blog">
+
+
+
+
+<div class="blogbody">
+
+<h2 class="title">Various Greasemonkey user scripts</h2>
 
 <p>Wrote a couple more more Greasemonkey user scripts last week:<br />
 <ul><li><a title="right click &#8594; Install User Script..." href="http://blog.monstuff.com/archives/images/AllowPasswordRemembering.user.js">Allow Password Remembering</a> removes the autocomplete="off" attributes that dictate the browser to never remember the tagged fields (usually for security or privacy reasons). </li><li><a title="right click &#8594; Install User Script..." href="http://blog.monstuff.com/archives/images/AutoReload.user.js">Auto Reload</a> reloads the configured urls every minute. It's useful for staying logged into some sites that have their sessions expire after a certain time (again, usually for security reasons). It's a bit different than the ability of the tabbrowser extension to reload tabs, as this script can cause frames to reload (not the whole document). I'll probably look into a way to configure this one to choose how often the url should be refreshed. </li><li><a title="right click &#8594; Install User Script..." href="http://blog.monstuff.com/archives/images/OReillyNet-PrinterFriendlyRedirect.user.js">O'Reilly Network Printer Friendly Redirect</a> redirects to the printer friendly version of the O'Reilly Network pages, when they are loaded. </li><li><a title="right click &#8594; Install User Script..." href="http://blog.monstuff.com/archives/images/Business2.0PrinterFriendly.user.js">Business 2.0 Printer Friendly Links and Redirect</a> re-writes article links directly to their printer-friendly version, rather than the article summary page. If you happen to land on one of these interstital pages, it'll also redirect you to the printer-friendly version. This user script is mostly useful if you have access to the Business 2.0 online articles, which requires an issue access code (found in the printed magazine) or a subscription code (printed on the address label of the magazine for those who subscribe). </li></ul></p>
@@ -12,11 +51,39 @@ disqus_url: http://blog.monstuff.com/archives/000239.html
 
 <p><u>Update (2005/04/18):</u> Thanks to Logan for the various improvements and suggestions. I updated <a title="right click &#8594; Install User Script..." href="http://blog.monstuff.com/archives/images/IGNButler.user.js">IGN Butler</a> to be cleaner and also skip ads on a number of other sites (see comments below). It seems that IGN, GameSpy, RottenTomatoes, PlanetDoom, PlanetHalfLife,... are all part of the same network. I never noticed that RottenTomates has links and ads from IGN.</p>
 
-
-______________________________________
-
+<a name="more"></a>
 
 
+<span class="posted">Posted by Julien on April 10, 2005. <a href="http://blog.monstuff.com/archives/000239.html" rel="bookmark">Permalink</a> 
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '239';
+        var disqus_url = 'http://blog.monstuff.com/archives/000239.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+<div class="comments-body">
 <p>Hi Julien, I like your two scripts, love the idea of rewriting links directly to the print-friendly pages. Strangely, even if you re-direct as opposed to rewrite, the "back" button in firefox refuses to recognize that you've visited the non-friendly page.</p>
 
 <p>Besides, with a broadband connection, the redirect is neglegible.</p>
@@ -30,31 +97,27 @@ ______________________________________
 <p>Can I add your two scripts to mine at some later stage?</p>
 
 <p>Regards</p>
-
-Posted by: <a href="http://wiki.samuelooi.com/wikka.php?wakka=FriendofPrintFriendly">Samuel Ooi</a> at April 13, 2005 03:23 PM
-
-
+<span class="comments-post">Posted by: <a href="http://wiki.samuelooi.com/wikka.php?wakka=FriendofPrintFriendly">Samuel Ooi</a> at April 13, 2005 03:23 PM</span>
+</div>
+<div class="comments-body">
 <p>Sure, feel free to include my scripts.<br />
 I noticed that Firefox "swallows" the page that causes the redirect. I kind of like it actually, otherwise pressing the back button would be a pain (you'd need to click twice...).</p>
-
-Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at April 13, 2005 04:13 PM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at April 13, 2005 04:13 PM</span>
+</div>
+<div class="comments-body">
 <p>The IGNButler script works great. This could be easily modified to include gamespy.com and planet*.com (planetdoom, halflife, etc), they use the exact same stuff. Also, I'm not sure why the location is checked before skipInterstial() is run, it seems greasemonkey doesn't run the script unless it matches on the @include lines at the top, maybe that changed with recent versions?</p>
 
 <p>Here's a patch:<br />
 <a href="http://www.gozer.org/test/IGNButler.user.js.diff">http://www.gozer.org/test/IGNButler.user.js.diff</a></p>
-
-Posted by: <a href="http://www.gozer.org/">logan</a> at April 14, 2005 10:08 PM
-
-
+<span class="comments-post">Posted by: <a href="http://www.gozer.org/">logan</a> at April 14, 2005 10:08 PM</span>
+</div>
+<div class="comments-body">
 <p>Thanks Logan. I updated IGNButler with your patch.</p>
 
 <p>The script does have some un-necessary stuff, as it was one of my first scripts and I followed the pattern from another script that had that problem ;-)</p>
-
-Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at April 15, 2005 04:25 PM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at April 15, 2005 04:25 PM</span>
+</div>
+<div class="comments-body">
 <p>Hello again. :)</p>
 
 <p>When browsing the script requests, I came across one written for rottentomatoes.com, which also uses the fromint=1 thinger, but this one is just a two-liner, figured you'd be interested...</p>
@@ -64,29 +127,25 @@ Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at April 15, 
 <p>All you'd have to do is update the @include list and you've got something that'll work on ign.com, gamespy.com, planet*.com, etc..</p>
 
 <p>It seems like this type of fullpage ad is pretty common, at least I don't think rottentomatoes.com has any relation to ign or gamespy.</p>
-
-Posted by: <a href="http://www.gozer.org/">logan</a> at April 15, 2005 06:34 PM
-
-
+<span class="comments-post">Posted by: <a href="http://www.gozer.org/">logan</a> at April 15, 2005 06:34 PM</span>
+</div>
+<div class="comments-body">
 <p>Thanks again for the tips logan. Mark's script is much simpler (mine also had an un-used function that I had not cleaned up...).<br />
 I updated the script to include IGN, GameSpy, RottenTomatoes and the various Planet* sites. </p>
 
 <p>Found more info at <a href="http://corp.ign.com/corporate.html">http://corp.ign.com/corporate.html</a> and a complete list at <a href="http://corp.ign.com/properties.html">http://corp.ign.com/properties.html</a></p>
-
-Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at April 18, 2005 10:55 AM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at April 18, 2005 10:55 AM</span>
+</div>
+<div class="comments-body">
 <p>Auto Reload is great, but needs a timer.</p>
-
-Posted by: <a href="http://www.hunox.ca">Ottawa</a> at May 11, 2005 03:43 PM
-
-
+<span class="comments-post">Posted by: <a href="http://www.hunox.ca">Ottawa</a> at May 11, 2005 03:43 PM</span>
+</div>
+<div class="comments-body">
 <p>Hello Julien,<br />
 Thanks for the scripts. I am trying to write a userscript for www.Devshed.com so that all the articles are redirected to their printable version as you have done for O'Reilly Network pages. But i am not able to find the URL pattern and moreover the  printer friendly page opens in a new window. It would be really nice if you could guide me in this.</p>
-
-Posted by: <a href="http://www.sudarmuthu.blogspot.com">Sudar</a> at June  7, 2005 11:20 PM
-
-
+<span class="comments-post">Posted by: <a href="http://www.sudarmuthu.blogspot.com">Sudar</a> at June  7, 2005 11:20 PM</span>
+</div>
+<div class="comments-body">
 <p>Hey Sudar,</p>
 
 <p>Sorry for super late response.<br />
@@ -98,13 +157,18 @@ var res = document.evaluate(xpath, document, null, XPathResult.UNORDERED_NODE_SN
 <p>"res.snapshotLength" should be 1. <br />
 "res.snapshotItem(0).parentNode.href" will have the value you care for.<br />
 Apply a regex to it to extract the print-friendly url.</p>
-
-Posted by: <a href="http://blog.monstuff.com">Julien</a> at September  9, 2005 01:38 PM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at September  9, 2005 01:38 PM</span>
+</div>
+<div class="comments-body">
 <p>This is Rolls-Royce of Cricket website. But I have found it unusable due to some programming problem of the site, or something on userend. I have never been able to stop auto reload of the page of the main web page. I do not have an iota of idea what is causing. Is it the Perl script, or something else? You -- the expert-- can help several million users who want to eliminate annoying reload of the main web page. Thanks a lot in advance.</p>
+<span class="comments-post">Posted by: <a href="http://www.cricinfo.com/">Go</a> at January 29, 2006 04:02 AM</span>
+</div>
 
-Posted by: <a href="http://www.cricinfo.com/">Go</a> at January 29, 2006 04:02 AM
 
 
+</div>
+</div>
 
+
+</body>
+</html>

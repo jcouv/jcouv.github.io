@@ -1,9 +1,48 @@
----
-title: AnonCVS access to cvs.monstuff.com
-date: 2003-08-06 22:22:42 +0800
-disqus_identifier: 94
-disqus_url: http://blog.monstuff.com/archives/000094.html
----
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: AnonCVS access to cvs.monstuff.com</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '{{ site.ga }}', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+
+<div class="blog">
+
+
+
+
+<div class="blogbody">
+
+<h2 class="title">AnonCVS access to cvs.monstuff.com</h2>
 
 <p>After going through my access and activity logs and noticed some people search for a cvs access to my repository. It definitely is more convenient than cvsweb when downloading a whole project.</p>
 
@@ -13,6 +52,8 @@ disqus_url: http://blog.monstuff.com/archives/000094.html
 
 <p>You can find the list of projects <a href="http://cvs.monstuff.com">here</a>.<br />
 Let me know if you have any trouble accessing it, by leaving a comment below.</p>
+
+<a name="more"></a>
 <p>I must say setting up pserver was a bit of a pain. The "passwd" configuration was easy, but then I ran into a problem with some environment variables, which was hard to debug because the service runs in its own context.<br />
 Also, I didn't figure out how to restrict the anonymous user's access right away. It turns out the "readers" file in the CVSROOT directory allows that.<br />
 Also, since the anonymous user isn't a system user, the "passwd" file in CVSROOT is used to have the process impersonate a real system user.</p>
@@ -25,10 +66,36 @@ An <a href="http://software.ericsink.com/Beyond_CheckOut_and_CheckIn.html">expla
 
 <p>A rather mysterious repository <a href="http://freshmeat.net/projects/archrevctl/?topic_id=45%2C52">arch / larch</a> that appears to be quite feature-rich, but I didn't get the time to play with yet. It used to be implemented with shell script, but a C version was more recently developed.</p>
 
-______________________________________
+<span class="posted">Posted by Julien on August 06, 2003. <a href="http://blog.monstuff.com/archives/000094.html" rel="bookmark">Permalink</a> 
+<br /></span>
+
+</div>
 
 
 
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '94';
+        var disqus_url = 'http://blog.monstuff.com/archives/000094.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+<div class="comments-body">
 <p>Hello!</p>
 
 <p>I'd love to check out your code via cvs... however I appear to be receiving:</p>
@@ -38,10 +105,9 @@ ______________________________________
 <p>I guess you have closed access?</p>
 
 <p>P.S. I agree, pserver is a pain.</p>
-
-Posted by: <a href="http://www.realthought.net/">Benjamin Lee</a> at September 18, 2003 04:01 PM
-
-
+<span class="comments-post">Posted by: <a href="http://www.realthought.net/">Benjamin Lee</a> at September 18, 2003 04:01 PM</span>
+</div>
+<div class="comments-body">
 <p>Just fixed it, after a forced reboot last week (power loss) I didn't restart xinetd manually and it was not set up to restart automatically.</p>
 
 <p>I just verified that the checkout works, but there is a problem with updating:<br />
@@ -50,8 +116,14 @@ cvs login: authorization failed: server cvs.monstuff.com rejected access to /hom
 <p>This seems to be related to having a / (slash) after /home/cvs or not.</p>
 
 <p>Always specifying "-d :pserver:anonymous@cvs.monstuff.com:/home/cvs/" is the temporary workaround.</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Dumky</a> at September 19, 2003 11:24 AM</span>
+</div>
 
-Posted by: <a href="http://blog.monstuff.com/">Dumky</a> at September 19, 2003 11:24 AM
 
 
+</div>
+</div>
 
+
+</body>
+</html>

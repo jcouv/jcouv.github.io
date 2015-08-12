@@ -1,15 +1,56 @@
----
-title: Javascript Shell bookmarklet for IE
-date: 2006-04-19 15:28:08 +0800
-disqus_identifier: 287
-disqus_url: http://blog.monstuff.com/archives/000287.html
----
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Javascript Shell bookmarklet for IE</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '{{ site.ga }}', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+
+<div class="blog">
+
+
+
+
+<div class="blogbody">
+
+<h2 class="title">Javascript Shell bookmarklet for IE</h2>
 
 <p>The <a href="http://www.squarefree.com/shell/">Javascript Shell</a> is an awesome utility for javascript development. It was written by Jesse Ruderman and some other contributors. <br />
 The bookmarklet version is the most useful, but it unfortunately only works in Firefox.</p>
 
 <p>Here is an updated version which brings some love to IE developers: <a href="javascript:function loadScript(scriptURL) { var scriptElem = document.createElement('SCRIPT'); scriptElem.setAttribute('language', 'JavaScript'); scriptElem.setAttribute('src', scriptURL); document.body.appendChild(scriptElem);} loadScript('http://blog.monstuff.com/archives/images/jsshell.js');" onclick="{alert('Don\'t click on this link, bookmark it instead');return false;}">Javascript Shell for IE</a> bookmarklet.<br />
 You might run into issues with pop-up blockers, in which case you can simply allow pop-ups from the site you're working with.</p>
+
+<a name="more"></a>
 <p> <br />
 <h4>Remote loading:</h4> The first problem with supporting IE is IE's limitation in bookmarklet size. Since version 5.5, IE only allows 512 characters in bookmarklets. <br />
 The simple workaround is to use a small bookmarklet which acts as a bootstrap but doesn't contain the actual code. Instead it inserts a &lt;script> element to load the large script content remotely.<br />
@@ -52,28 +93,58 @@ IE7 Beta 2 (5346.5) crashes when you try to launch the javascript shell from the
 <p><u>Update (2006/06/07):</u> I haven't identified the crashing issue yet, it didn't crash for me on all the versions of IE7 that I tried.<br />
 I did a fix for IE7 though: you can now complete with Ctrl-Space, in addition to Tab. Tab doesn't work well, because it actually moves the focus to the new url bar in pop-up windows... Use Ctrl-Space instead.</p>
 
-______________________________________
+<span class="posted">Posted by Julien on April 19, 2006. <a href="http://blog.monstuff.com/archives/000287.html" rel="bookmark">Permalink</a> 
+<br /></span>
+
+</div>
 
 
 
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '287';
+        var disqus_url = 'http://blog.monstuff.com/archives/000287.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+<div class="comments-body">
 <p>Nice job - this is badly needed in IE.</p>
-
-Posted by: <a href="http://www.barelyfitz.com/">Patrick Fitzgerald</a> at April 28, 2006 02:38 PM
-
-
+<span class="comments-post">Posted by: <a href="http://www.barelyfitz.com/">Patrick Fitzgerald</a> at April 28, 2006 02:38 PM</span>
+</div>
+<div class="comments-body">
 <p>This script causes IE7 to crash?</p>
 
 <p>This is badly needed for IE, it has been a great<br />
 tool in Firefox and I hope to use it in IE.</p>
 
 <p> </p>
-
-Posted by: <a href="mailto&#58;oksurf&#64;yahoo&#46;com">Oliver</a> at May 16, 2006 04:40 PM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;oksurf&#64;yahoo&#46;com">Oliver</a> at May 16, 2006 04:40 PM</span>
+</div>
+<div class="comments-body">
 <p>What's about Opera?</p>
+<span class="comments-post">Posted by: <a href="http://womensclothing.world-of-love.ru">Antonio</a> at June 25, 2006 01:47 PM</span>
+</div>
 
-Posted by: <a href="http://womensclothing.world-of-love.ru">Antonio</a> at June 25, 2006 01:47 PM
 
 
+</div>
+</div>
 
+
+</body>
+</html>

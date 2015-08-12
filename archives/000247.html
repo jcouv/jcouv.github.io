@@ -1,13 +1,54 @@
----
-title: Detecting AdBlock: conflicts and collaboration
-date: 2005-05-01 11:58:56 +0800
-disqus_identifier: 247
-disqus_url: http://blog.monstuff.com/archives/000247.html
----
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Detecting AdBlock: conflicts and collaboration</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '{{ site.ga }}', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+
+<div class="blog">
+
+
+
+
+<div class="blogbody">
+
+<h2 class="title">Detecting AdBlock: conflicts and collaboration</h2>
 
 <p>A long discussion started a couple of days back on the Greasemonkey mailinglist: <a href="http://www.mozdev.org/pipermail/greasemonkey/2005-April/001739.html">should Greasemonkey let websites know that it is running</a> (using some kind of special header)?</p>
 
 <p>I was just exploring the DOM to try and write a script (<a href="/archives/images/FitSizeToTablet.user.js">FitSizeToTablet</a>, more info at the end of the post). To my surprise, the javascript shell listed an <em>_AdblockFiltered</em> property on the <em>window</em> object. It not only makes AdBlock detectable to script running in the page, it actually lists all the urls that where blocked for this page.</p>
+
+<a name="more"></a>
 <p>I couldn't find any info about this on Google, but after asking on the AdBlock forums, it looks like <a href="http://aasted.org/adblock/viewtopic.php?t=1919&sid=87a0a1d8a373ba493647b1865f2e6c6d">it's not there on purpose</a>. This property isn't the only way to detect adblocking, but the fact that this property is set shows that publishers haven't reacted to AdBlock yet. It's probably because AdBlock is only a percentage of Firefox users, which is only a small percentage of all users...</p>
 
 <p>Anyways, the discussion on whether Greasemonkey should try to stay as invisible as possible is still going on. <br />
@@ -25,8 +66,41 @@ Publishers embracing advertising seemed like a rather unilateral move. AdBlock a
 
 <p><b>PS:</b> The <a href="/archives/images/FitSizeToTablet.user.js">FitSizeToTablet</a> Greasemonkey user script attempts to fix pages that hardcode their width, so that they can display on a Tablet PC's screen (in slate mode: 768x1024) without overflowing horizontally.</p>
 
-______________________________________
+<span class="posted">Posted by Julien on May 01, 2005. <a href="http://blog.monstuff.com/archives/000247.html" rel="bookmark">Permalink</a> 
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '247';
+        var disqus_url = 'http://blog.monstuff.com/archives/000247.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
 
 
 
 
+
+
+
+</div>
+</div>
+
+
+</body>
+</html>

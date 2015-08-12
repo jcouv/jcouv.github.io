@@ -1,9 +1,48 @@
----
-title: Textarea resize user script
-date: 2005-04-29 09:50:29 +0800
-disqus_identifier: 246
-disqus_url: http://blog.monstuff.com/archives/000246.html
----
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Textarea resize user script</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '{{ site.ga }}', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+
+<div class="blog">
+
+
+
+
+<div class="blogbody">
+
+<h2 class="title">Textarea resize user script</h2>
 
 <p>Typing a lot of text, such as blogging or commenting, into small text boxes on a web page is uncomfortable. The following script makes it more comfortable. After you install it, you can enlarge any text box by typing Ctrl-Enter.</p>
 
@@ -14,52 +53,73 @@ It allows you to grow the size of textareas on most websites using the keyboard:
 
 <p><u>Update (2005/05/19):</u> Updated the script with the code Matt Sherwood suggested in a comment: Shift-Ctrl-Enter and Shift-Ctrl-Space to shrink the size. I also improved the way the textarea gets centered, using ScrollIntoView.</p>
 
-
-______________________________________
-
+<a name="more"></a>
 
 
+<span class="posted">Posted by Julien on April 29, 2005. <a href="http://blog.monstuff.com/archives/000246.html" rel="bookmark">Permalink</a> 
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '246';
+        var disqus_url = 'http://blog.monstuff.com/archives/000246.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+<div class="comments-body">
 <p>Checkout Textarea extension:</p>
 
 <p><a href="http://www.extensionsmirror.nl/index.php?showtopic=2796">http://www.extensionsmirror.nl/index.php?showtopic=2796</a></p>
-
-Posted by: <a href="mailto&#58;kaicarver&#64;hotmail&#46;com">Kai Carver</a> at May 15, 2005 08:34 AM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;kaicarver&#64;hotmail&#46;com">Kai Carver</a> at May 15, 2005 08:34 AM</span>
+</div>
+<div class="comments-body">
 <p>Great script! Here's a suggested minor enhancement to allow making the TextAreas smaller too (using Shift-Ctrl-Enter, Shift-Ctrl-Space):</p>
 
 <p>(I updated the script with your suggestion, and removed the code from the comment -- Julien)</p>
-
-Posted by: <a href="mailto&#58;MattSherwood&#64;email&#46;com">Matt Sherwood</a> at May 18, 2005 04:35 PM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;MattSherwood&#64;email&#46;com">Matt Sherwood</a> at May 18, 2005 04:35 PM</span>
+</div>
+<div class="comments-body">
 <p>Kai, that extension is pretty cool. I especially like that way it manages to resize some textareas that my script still can't, that are contained in a fixed size element/div.</p>
 
 <p>But I still like that ability to resize via the keyboard, rather than the mouse ;-)</p>
-
-Posted by: <a href="http://blog.monstuff.com">Julien</a> at May 19, 2005 09:30 AM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at May 19, 2005 09:30 AM</span>
+</div>
+<div class="comments-body">
 <p>Yeah, it's pretty good.  I wrote the author (but got no response) to suggest an improvement that would help me out: to be able to switch the wrap attribute between hard and soft and off (also known as virtual/physical or something).  It's a non standard attribute but I've got at least one app I use all the time in which the textarea doesn't wrap right, and it's very annoying :-)  I haven't tried yours, but I'd switch if it had that ability, since using the keyboard is nice too.</p>
-
-Posted by: <a href="http://kaicarver.com">Kai Carver</a> at June  6, 2005 08:58 AM
-
-
+<span class="comments-post">Posted by: <a href="http://kaicarver.com">Kai Carver</a> at June  6, 2005 08:58 AM</span>
+</div>
+<div class="comments-body">
 <p>This script doesn't seem to work for Firefox on OS X. I really want a script like this, so I'm hoping you or someone can/will get it to work there!</p>
-
-Posted by: <a href="http://www.garyrobinson.net">Gary Robinson</a> at October 28, 2005 07:26 AM
-
-
+<span class="comments-post">Posted by: <a href="http://www.garyrobinson.net">Gary Robinson</a> at October 28, 2005 07:26 AM</span>
+</div>
+<div class="comments-body">
 <p>does not work with Firefox 1.5rc2 and GM 0.6.3</p>
-
-Posted by: <a href="mailto&#58;stef&#64;payrard&#46;net">cognominal</a> at November 15, 2005 11:21 AM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;stef&#64;payrard&#46;net">cognominal</a> at November 15, 2005 11:21 AM</span>
+</div>
+<div class="comments-body">
 <p>Yes, there is a number of scripts that broke with the latest version of Firefox. I'm going to be on vacation for the next couple of weeks, but I'll fix them when I return.</p>
-
-Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at November 15, 2005 12:20 PM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at November 15, 2005 12:20 PM</span>
+</div>
+<div class="comments-body">
 <p>HI Julian <br />
 Your code proved to be very useful but it does not solve my problem.If u can please help.<br />
 Description of the problem :<br />
@@ -76,8 +136,14 @@ I want to have all 10 Rows Printed on the paper.<br />
 Can someone help me.<br />
 I am sorry if my problem confused u ..cause it is very difficult to explain it sans an actuall application.<br />
 Thanks</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;tintin_in_india&#64;indiatimes&#46;com">Tintin</a> at June 20, 2006 11:24 PM</span>
+</div>
 
-Posted by: <a href="mailto&#58;tintin_in_india&#64;indiatimes&#46;com">Tintin</a> at June 20, 2006 11:24 PM
 
 
+</div>
+</div>
 
+
+</body>
+</html>

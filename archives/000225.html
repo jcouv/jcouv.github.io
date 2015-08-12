@@ -1,9 +1,48 @@
----
-title: Google hinting: rel=nofollow
-date: 2005-01-17 08:39:46 +0800
-disqus_identifier: 225
-disqus_url: http://blog.monstuff.com/archives/000225.html
----
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: Google hinting: rel=nofollow</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '{{ site.ga }}', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+
+<div class="blog">
+
+
+
+
+<div class="blogbody">
+
+<h2 class="title">Google hinting: rel=nofollow</h2>
 
 <p>A follow-up on <a href="/archives/000204.html">Google hinting</a>: some indications that Google will announce support for a <a href="http://simon.incutio.com/archive/2005/01/17/relNoFollow">rel=nofollow attribute</a>. <br />
 Links tagged with it would not count in the PageRank calculation. So, it could be used in wikis and blog comments, to discourage spammers. It will also affect many legitimate links, from non spam contributions to these wikis and blogs, but that seems to have become a necessary trade-off. Will we see a degradation in search quality, as a result of this (if it becomes successful)?<br />
@@ -11,10 +50,45 @@ Sam Ruby points out that spammers won't care, and I think it will be true at fir
 
 <p>I'm impatient to see the official announcement. To me it's a great sign of leadership and community participation that Google introduces their first contribution to the design of the web. Let's see if other search engines and the major blog and wiki software providers will decide to support it. <br />
 Please, bloggers, don't get disappointed if spam doesn't improve in the next year. It'll take time for 90% of blogs to get updated to this solution, if ever, and only then will spammers really start to suffer from it.</p>
+
+<a name="more"></a>
 <p><u>Update (2005/01/19):</u> <a href="http://www.google.com/googleblog/2005/01/preventing-comment-spam.html">Google</a>, <a href="http://blogs.msdn.com/msnsearch/archive/2005/01/18/nofollow_tags.aspx">MSN Search</a>, <a href="http://www.ysearchblog.com/archives/000069.html">Yahoo</a>, <a href="http://www.sixapart.com/log/2005/01/support_for_nof.shtml">SixApart</a> and some more have made the official announcement. A <a href="http://www.movabletype.org/news/2005/01/movable_type_nofollow_p.shtml">MT plugin is available</a> (via <a href="http://gemal.dk/blog/2005/01/19/movable_type_nofollow_plugin/">gemal</a>), so I'll be adding support here shortly. It looks like most other blog tools decided to support it too.</p>
 
-______________________________________
+<span class="posted">Posted by Julien on January 17, 2005. <a href="http://blog.monstuff.com/archives/000225.html" rel="bookmark">Permalink</a> 
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '225';
+        var disqus_url = 'http://blog.monstuff.com/archives/000225.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
 
 
 
 
+
+
+
+</div>
+</div>
+
+
+</body>
+</html>

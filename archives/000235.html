@@ -1,9 +1,48 @@
----
-title: BoingBoing Ad Remover
-date: 2005-03-15 14:23:44 +0800
-disqus_identifier: 235
-disqus_url: http://blog.monstuff.com/archives/000235.html
----
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: BoingBoing Ad Remover</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '{{ site.ga }}', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+
+<div class="blog">
+
+
+
+
+<div class="blogbody">
+
+<h2 class="title">BoingBoing Ad Remover</h2>
 
 <p>BoingBoing was <a href="http://www.boingboing.net/2005/03/14/butler_rewrites_goog.html">just pointing</a> at Mark Pilgrim's <a href="http://diveintomark.org/projects/butler/">Google Butler</a>, which strips Google ads and adds a number of useful features.<br />
 Since I was just posting about the <a href="/archives/000230.html">coming conflicts around ad-filtering</a>, I wanted to have some fun throwing oil onto the fire, as well as experiment with the <a href="http://greasemonkey.mozdev.org/">Greasemonkey</a> extension for Firefox. So here is <a title="right click &#8594; Install User Script..." href="http://blog.monstuff.com/archives/images/BoingBoingButler.user.js">"BoingBoing Butler"</a> (requires Greasemonkey), which hides all non-content from BoingBoing. </p>
@@ -13,34 +52,59 @@ Since I was just posting about the <a href="/archives/000230.html">coming confli
 
 <p>And also some questions: <br />
 <ul><li>How to avoid the blinking effect, as the sidebars are loaded and then hidden? Is it cleaner to completely remove the elements from the DOM, rather than using CSS to hide them? </li><li>Those user scripts are completely unsecure, aren't they? Any of them could include some spyware/adware script to phone home (log the websites that I visit) or display ads, is that right? </li></ul></p>
+
+<a name="more"></a>
 <p><u>Update (2005/03/15):</u> There is already a user script to do <a href="http://www.hackdiary.com/src/pips.user.js">cross-site integration with del.icio.us</a> (for the BBC 3 Radio website). It uses XMLHttpRequest, but requires bypassing some security restrictions using Firefox's prefs.js. Here's <a href="http://www.hackdiary.com/archives/000067.html">more info</a>.</p>
 
 <p>Alf Eaton wrote a little demo <a href="http://hublog.hubmed.org/archives/001088.html">spyware user script</a>. It steals the users cookies. It could as well snoop the user's password...<br />
 Like <a href="http://youngpup.net/2005/0312020356">Aaron</a> I don't see any trivial fix to this problem.</p>
 
-______________________________________
+<span class="posted">Posted by Julien on March 15, 2005. <a href="http://blog.monstuff.com/archives/000235.html" rel="bookmark">Permalink</a> 
+<br /></span>
+
+</div>
 
 
 
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '235';
+        var disqus_url = 'http://blog.monstuff.com/archives/000235.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+<div class="comments-body">
 <p>if you add:<br />
 this.addGlobalStyle('#content { width: 800px }');</p>
 
 <p>below the others, it makes it look much better.</p>
-
-Posted by: <a href="http://www.backstab.net">Sam</a> at March 15, 2005 03:01 PM
-
-
+<span class="comments-post">Posted by: <a href="http://www.backstab.net">Sam</a> at March 15, 2005 03:01 PM</span>
+</div>
+<div class="comments-body">
 <p>Thanks for the tip Sam. Included the change.</p>
-
-Posted by: <a href="http://blog.monstuff.com/archives/images/MiniMediaPlayer.wmp10.src.zip">Julien Couvreur</a> at March 15, 2005 03:15 PM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/archives/images/MiniMediaPlayer.wmp10.src.zip">Julien Couvreur</a> at March 15, 2005 03:15 PM</span>
+</div>
+<div class="comments-body">
 <p>no prob.<br />
 i just got greasemonkey and i'm hooked.</p>
-
-Posted by: <a href="http://backstab.net">Sam</a> at March 15, 2005 03:18 PM
-
-
+<span class="comments-post">Posted by: <a href="http://backstab.net">Sam</a> at March 15, 2005 03:18 PM</span>
+</div>
+<div class="comments-body">
 <p>are you able to get rid of the ad on the top?</p>
 
 <p>and </p>
@@ -48,30 +112,26 @@ Posted by: <a href="http://backstab.net">Sam</a> at March 15, 2005 03:18 PM
 <p>this.addGlobalStyle('#sidebar-a { display: none ! important }'); <br />
 why doesn't this work on the archives:<br />
 <a href="http://boingboing.net/2003_01_01_archive.html">http://boingboing.net/2003_01_01_archive.html</a></p>
-
-Posted by: <a href="http://backstab.net">sam</a> at March 15, 2005 03:25 PM
-
-
+<span class="comments-post">Posted by: <a href="http://backstab.net">sam</a> at March 15, 2005 03:25 PM</span>
+</div>
+<div class="comments-body">
 <p>Good catch, I never went to the archives. And I couldn't see the top banner, because it was already AdBlocked.</p>
 
 <p>Both of these seem tricky to target and hide. The banner  don't have any specific ID, CLASS or NAME attribute. Same thing with the sidebar on the right, for the archives page.<br />
 I'll try some more tricks.<br />
 </p>
-
-Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at March 15, 2005 03:34 PM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at March 15, 2005 03:34 PM</span>
+</div>
+<div class="comments-body">
 <p>am i allowed to edit your code to work with other sites and release it? (giving you credit and such)</p>
-
-Posted by: <a href="http://www.backstab.net">Sam</a> at March 15, 2005 03:41 PM
-
-
+<span class="comments-post">Posted by: <a href="http://www.backstab.net">Sam</a> at March 15, 2005 03:41 PM</span>
+</div>
+<div class="comments-body">
 <p>Of course, it's GPL. Plus you have the source anyways (and it's not much code too...).<br />
 </p>
-
-Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at March 15, 2005 03:53 PM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at March 15, 2005 03:53 PM</span>
+</div>
+<div class="comments-body">
 <p>"Could we use this to bring Google auto-completion to the main Google search page? or add more integration between the various Google services (search, mail, maps,...)?"</p>
 
 <p>yes, quite easily. should be as simple as grabbing the existing script, throwing it into a .user.js file, and making a few dom-edits.</p>
@@ -88,107 +148,91 @@ Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at March 15, 
 <p>Jeremy dunck, who created the Greasemonkey archive wiki, wants to extend it so that people can thumb-up or thumb-down scripts. This could help head-off possible XSS security problems.</p>
 
 <p>We'll have to do something like this at some point, I'd imagine.</p>
-
-Posted by: <a href="http://youngpup.net/">boogs</a> at March 15, 2005 04:21 PM
-
-
+<span class="comments-post">Posted by: <a href="http://youngpup.net/">boogs</a> at March 15, 2005 04:21 PM</span>
+</div>
+<div class="comments-body">
 <p>"Create an easy way to find GreaseMonkey scripts for a site that you're at. It would search, list and describe all the useful customizations that you could apply to the site. Can this be done by re-using the existing search engines, using a distributed approach (FOAF, a file type or a standard url format?), instead of creating a dedicated directory site with a "search by site" functionality?"</p>
 
 <p>I think you'd need to have a dedicated directory site *somewhere*, but it could be something as simple as <a href="http://del.icio.us/tag/greasemonkey+[sitename],">http://del.icio.us/tag/greasemonkey+[sitename],</a> if that were an agreeable convention.</p>
-
-Posted by: <a href="http://mike.teczno.com">Michal Migurski</a> at March 16, 2005 01:09 PM
-
-
+<span class="comments-post">Posted by: <a href="http://mike.teczno.com">Michal Migurski</a> at March 16, 2005 01:09 PM</span>
+</div>
+<div class="comments-body">
 <p>Please take this discussion to the mailing list, where I've just sent a message on the topic. <br />
 <a href="http://greasemonkey.mozdev.org/list.html">http://greasemonkey.mozdev.org/list.html</a></p>
 
 <p>Subject is "Directory service".</p>
-
-Posted by: <a href="mailto&#58;jdunck&#64;gmail&#46;com">Jeremy Dunck</a> at March 16, 2005 04:02 PM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;jdunck&#64;gmail&#46;com">Jeremy Dunck</a> at March 16, 2005 04:02 PM</span>
+</div>
+<div class="comments-body">
 <p>Thanks Jeremy. Just subscribed ;-)</p>
-
-Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at March 16, 2005 05:19 PM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at March 16, 2005 05:19 PM</span>
+</div>
+<div class="comments-body">
 <p>Can you make it get rid of all of Xeni's posts?</p>
-
-Posted by: <a href="http://none.com">Pedro</a> at March 16, 2005 05:28 PM
-
-
+<span class="comments-post">Posted by: <a href="http://none.com">Pedro</a> at March 16, 2005 05:28 PM</span>
+</div>
+<div class="comments-body">
 <p>I've been thinking about doing something similar with a proxy.  I love it.  Way to give Cory a taste of his own medicine.  The content wants to be free!<br />
 </p>
-
-Posted by: <a href="http://www.baus.net/">Christopher Baus</a> at March 16, 2005 08:51 PM
-
-
+<span class="comments-post">Posted by: <a href="http://www.baus.net/">Christopher Baus</a> at March 16, 2005 08:51 PM</span>
+</div>
+<div class="comments-body">
 <p>Contrary to Pedro's rather *rude* comments -- I think Xeni's posts are quite excellent. I believe an apology is in order.</p>
 
 <p>However, with regards to content, perhaps it might be more resource-optimal to parse and strip adds from the RSS feed, and then rebuild the content, instead of stripping stuff directly from the HTML page.</p>
 
 <p>At the *very* least, you'd be saving the authors a bunch of bandwidth, which is the real reason for the ads in the first place...I mean, removing ads are fine as a technical tour-de-force, but you must realize that you are effectively preventing Cory from recieving advertising revenue and effectively styming him from keeping the site alive -- I mean, consider what Cory would have to do if every single BB reader decided to do this?</p>
-
-Posted by: <a href="mailto&#58;aurelius&#64;gmail&#46;com">Aurelius</a> at March 17, 2005 07:28 AM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;aurelius&#64;gmail&#46;com">Aurelius</a> at March 17, 2005 07:28 AM</span>
+</div>
+<div class="comments-body">
 <p>Aurelius, that's the point. <br />
 Do you think that Mark's "Google Butler", that BoingBoing was advertising and which removes the Ads and inserts links to its competitors, makes Google any money?</p>
-
-Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at March 17, 2005 03:51 PM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at March 17, 2005 03:51 PM</span>
+</div>
+<div class="comments-body">
 <p>I personally think that many of Xeni's posts are excellent, but some are to much for work.  So I wrote a script to remove hers...  </p>
 
 <p>I like Xeni and hope she takes no offence, this just allows me to view BoingBoing at work...  </p>
 
 <p><a href="http://sweb.uky.edu/~jdandr2/greasemonkey/de-Xeni.user.js">http://sweb.uky.edu/~jdandr2/greasemonkey/de-Xeni.user.js</a></p>
-
-Posted by: <a href="http://sweb.uky.edu/~jdandr2/greasemonkey/de-Xeni.user.js">Jesse Andrews</a> at March 17, 2005 08:12 PM
-
-
+<span class="comments-post">Posted by: <a href="http://sweb.uky.edu/~jdandr2/greasemonkey/de-Xeni.user.js">Jesse Andrews</a> at March 17, 2005 08:12 PM</span>
+</div>
+<div class="comments-body">
 <p>Jesse, I was going to try and implement a similar approach, for some fun, but you beat me to it ;-)<br />
 On the other hand, I added a user script for skipping IGN's annoying interstitial ad pages (see GreaseMonkey wiki for the url).</p>
-
-Posted by: <a href="http://blog.monstuff.com">Julien</a> at March 17, 2005 10:00 PM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at March 17, 2005 10:00 PM</span>
+</div>
+<div class="comments-body">
 <p>Thank you, Jesse.</p>
-
-Posted by: <a href="http://none@none.com">Pedro</a> at March 18, 2005 06:23 AM
-
-
+<span class="comments-post">Posted by: <a href="http://none@none.com">Pedro</a> at March 18, 2005 06:23 AM</span>
+</div>
+<div class="comments-body">
 <p>Or just use this page and filter boingboing to your heart's content</p>
-
-Posted by: <a href="http://dialedin.us/boing/">Stephen A</a> at March 18, 2005 12:24 PM
-
-
+<span class="comments-post">Posted by: <a href="http://dialedin.us/boing/">Stephen A</a> at March 18, 2005 12:24 PM</span>
+</div>
+<div class="comments-body">
 <p>here's the page:</p>
 
 <p><a href="http://dialedin.us/boing/">http://dialedin.us/boing/</a></p>
-
-Posted by: <a href="mailto&#58;stephen&#64;mochamail&#46;com">Stephen A</a> at March 18, 2005 12:25 PM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;stephen&#64;mochamail&#46;com">Stephen A</a> at March 18, 2005 12:25 PM</span>
+</div>
+<div class="comments-body">
 <p>Julien,<br />
   In case you didn't notice, my site (69.90.152.144 which you commented on before) now has a domain name.  It's <a href="http://dunck.us/anabasis/">http://dunck.us/anabasis/</a>  ;-)</p>
-
-Posted by: <a href="mailto&#58;jdunck&#64;gmail&#46;com">Jeremy Dunck</a> at March 18, 2005 04:35 PM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;jdunck&#64;gmail&#46;com">Jeremy Dunck</a> at March 18, 2005 04:35 PM</span>
+</div>
+<div class="comments-body">
 <p>Google Suggest greasemonkey extention from Adrian Holovaty here:<br />
 <a href="http://www.holovaty.com/blog/archive/2005/03/19/1826">http://www.holovaty.com/blog/archive/2005/03/19/1826</a></p>
-
-Posted by: <a href="mailto&#58;craig&#64;saila&#46;example&#46;com">Craig</a> at March 21, 2005 08:17 AM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;craig&#64;saila&#46;example&#46;com">Craig</a> at March 21, 2005 08:17 AM</span>
+</div>
+<div class="comments-body">
 <p>WELL i hate xeni and i use Jesse's script and love it.  Add the BoingBoing Butler and BoingBoing is now almost 100% readable.</p>
 
 <p>Can someone make a script that removes all Cory's posts with the word "Cory" in it?  I know Cory is blogs about himself because nobody else will, but that doesn't mean i have to read it.  "DRM" would be a good keyword too.</p>
-
-Posted by: <a href="mailto&#58;MR_SMASH&#64;GRAFFITI&#46;NET">MRSMASHY</a> at April  1, 2005 11:45 AM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;MR_SMASH&#64;GRAFFITI&#46;NET">MRSMASHY</a> at April  1, 2005 11:45 AM</span>
+</div>
+<div class="comments-body">
 <p>When using BoingBoing butler and clicking the back button the whole browser closes.</p>
 
 <p>Example:<br />
@@ -197,10 +241,9 @@ Posted by: <a href="mailto&#58;MR_SMASH&#64;GRAFFITI&#46;NET">MRSMASHY</a> at Ap
 <p>Click on the image, and then try to return to the original page by clicking the back button.</p>
 
 <p>I am using Firefox 1.0.4</p>
-
-Posted by: <a href="http://www.srijith.net/trinetre/">Srijith</a> at May 13, 2005 07:39 AM
-
-
+<span class="comments-post">Posted by: <a href="http://www.srijith.net/trinetre/">Srijith</a> at May 13, 2005 07:39 AM</span>
+</div>
+<div class="comments-body">
 <p>The BoingButler script is amazing.  It also raises the question, "what good is a creative commons license if your content is so layered with advertising that it gets unreadable?"</p>
 
 <p>All the marxists become New Economists when the cash registers start ringing.  And I would too.  And so would you.</p>
@@ -208,29 +251,31 @@ Posted by: <a href="http://www.srijith.net/trinetre/">Srijith</a> at May 13, 200
 <p>Also, this post originally had the word social*st, but the spam filter didn't like the word c-i-a-l-i-s</p>
 
 <p>Priapic Marxists, unite!</p>
-
-Posted by: <a href="mailto&#58;craniac&#64;gmail&#46;com">craniac</a> at June  2, 2005 11:59 AM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;craniac&#64;gmail&#46;com">craniac</a> at June  2, 2005 11:59 AM</span>
+</div>
+<div class="comments-body">
 <p>How about a GM script to remove Cory's posts about Disneyland?</p>
-
-Posted by: <a href="mailto&#58;wesc&#64;technosis&#46;com">Eightway</a> at July 14, 2005 08:16 AM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;wesc&#64;technosis&#46;com">Eightway</a> at July 14, 2005 08:16 AM</span>
+</div>
+<div class="comments-body">
 <p>Am I the only one for whom this script stopped working today? :(</p>
-
-Posted by: <a href="mailto&#58;spam&#64;spam&#46;spam">Mr. Flibble</a> at August 18, 2005 12:47 PM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;spam&#64;spam&#46;spam">Mr. Flibble</a> at August 18, 2005 12:47 PM</span>
+</div>
+<div class="comments-body">
 <p>It's still working for me. <br />
 </p>
-
-Posted by: <a href="http://blog.monstuff.com">Julien</a> at August 18, 2005 03:26 PM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at August 18, 2005 03:26 PM</span>
+</div>
+<div class="comments-body">
 <p><a href="http://gutterfish.com/wwwboard/messages/42.htm">http://gutterfish.com/wwwboard/messages/42.htm</a> higherloosertaste</p>
+<span class="comments-post">Posted by: <a href="http://www.mayottescope.com/wwwboard-vf/messages/1017.html">answered</a> at September  9, 2005 02:22 AM</span>
+</div>
 
-Posted by: <a href="http://www.mayottescope.com/wwwboard-vf/messages/1017.html">answered</a> at September  9, 2005 02:22 AM
 
 
+</div>
+</div>
 
+
+</body>
+</html>

@@ -1,9 +1,48 @@
----
-title: HalfKeyboard software emulation
-date: 2003-03-07 23:17:26 +0800
-disqus_identifier: 21
-disqus_url: http://blog.monstuff.com/archives/000021.html
----
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: HalfKeyboard software emulation</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '{{ site.ga }}', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+
+<div class="blog">
+
+
+
+
+<div class="blogbody">
+
+<h2 class="title">HalfKeyboard software emulation</h2>
 
 <p>The HalfKeyboard is a one-handed keyboard, made and sold by <a href="http://www.halfkeyboard.com/">Matias Corporation</a>. Basically you can access a key from the "missing" half, by combining the corresponding mirrored key in the left half with the space bar.<br />
 I wrote a windows software emulator for the HalfKeyboard, that gives you a similar functionality on a regular keyboard.</p>
@@ -11,6 +50,8 @@ I wrote a windows software emulator for the HalfKeyboard, that gives you a simil
 <p><u>Update (April 22nd, 2003):</u> having received a legal notice from Matias Corporation, I have removed my program from my site (http://cvs.monstuff.com) until I get the issue sorted out.</p>
 
 <p><u>Update (April 23rd, 2003):</u> the <a href="http://blog.monstuff.com/archives/images/MatiasPublicLicenceVersion1.1.doc">license offered by Matias Corporation</a> doesn't seem to fit my program as it is restricted to non-system-wide applications. I am therefore removing all HalfKeyboard related functionality from my program and putting it back online (KeyCombo project). It's educational purpose remains as it shows the use of global system hooks in windows, but it's functionality is now limited to launching IE when the "space-1" keyboard combination is pressed and exit when "space-esc" is pressed, which I believe isn't covered by the <a href="http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&d=PALL&p=1&u=/netahtml/srchnum.htm&r=1&f=G&l=50&s1=5,288,158.WKU.&OS=PN/5,288,158&RS=PN/5,288,158">HalfKeyboard patent</a>. Other "space-&lt;key>" combinations are now let through as &lt;key> (instead of &lt;mirrored-key>) so that it doesn't mimic the HalfKeyboard functionality. Adding that mapping or more sophisticated ones is easy.</p>
+
+<a name="more"></a>
 <p>Here is the <a href="http://cvs.monstuff.com/cgi-bin/cvsweb.cgi/KeyCombo/">new project source location</a>. You can build it with VS.net.</p>
 
 <p>The code and the UI are not very advanced but the part that does the job (the Hook) uses some pretty interesting APIs from windows.</p>
@@ -35,28 +76,58 @@ A similar event catching and event emitting can be done for the mouse events. I 
 <p><u>Update (2006-02-20):</u> After receiving a couple of requests by email, I dug up the source code for KeyCombo and got it to compile again. Here is the <a href="http://blog.monstuff.com/archives/images/KeyCombo.zip">new zip file of the project</a>.<br />
 Furthermore, Daniel Ra pointed out to another solution to achieve similar results using the AutoHotkey utility, as described on <a href="http://www.autohotkey.com/forum/viewtopic.php?t=1326&postdays=0&postorder=asc&start=0&sid=37e877fbc829edfad61bb6f0dd0a21ab">this forum</a>. Thanks for the tip.</p>
 
-______________________________________
+<span class="posted">Posted by Julien on March 07, 2003. <a href="http://blog.monstuff.com/archives/000021.html" rel="bookmark">Permalink</a> 
+<br /></span>
+
+</div>
 
 
 
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '21';
+        var disqus_url = 'http://blog.monstuff.com/archives/000021.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+<div class="comments-body">
 <p>Another one-handed keyboard (for cellphones):<br />
 <a href="http://www.chicagologic.com/overview.htm">http://www.chicagologic.com/overview.htm</a></p>
-
-Posted by: <a href="http://blog.monstuff.com/">Dumky</a> at August  4, 2003 04:11 PM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Dumky</a> at August  4, 2003 04:11 PM</span>
+</div>
+<div class="comments-body">
 <p>Nice example hook code. I tried it as it is but the space bar was not working. I can see there are / will be some tricks involved to keep the space bar responsive for normal typing while avoiding false key translations for faster typists. I find I have a tendancy to start pressing the next key before the spacebar is completly release.</p>
 
 <p>John</p>
-
-Posted by: <a href="mailto&#58;johnmarshall4&#64;hotmail&#46;com">John Marshall</a> at September  7, 2003 04:34 PM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;johnmarshall4&#64;hotmail&#46;com">John Marshall</a> at September  7, 2003 04:34 PM</span>
+</div>
+<div class="comments-body">
 <p>The code project just published an article on using windows hooks from C#.<br />
 Check it out at <a href="http://www.codeproject.com/csharp/NetWin32Hooks.asp">http://www.codeproject.com/csharp/NetWin32Hooks.asp</a><br />
 The MSDNMag article that it is based on goes into more details of the interop part. Unfortunately they don't do system-wide hooks, only local ones.</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/archives/000059.html">Dumky</a> at October  3, 2003 09:49 PM</span>
+</div>
 
-Posted by: <a href="http://blog.monstuff.com/archives/000059.html">Dumky</a> at October  3, 2003 09:49 PM
 
 
+</div>
+</div>
 
+
+</body>
+</html>

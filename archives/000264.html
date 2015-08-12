@@ -1,9 +1,48 @@
----
-title: XmlHttpRequest - Add Latency
-date: 2005-09-21 15:08:42 +0800
-disqus_identifier: 264
-disqus_url: http://blog.monstuff.com/archives/000264.html
----
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: XmlHttpRequest - Add Latency</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '{{ site.ga }}', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+
+<div class="blog">
+
+
+
+
+<div class="blogbody">
+
+<h2 class="title">XmlHttpRequest - Add Latency</h2>
 
 <p>I found about Harry Fuecks' <a href="http://ajaxblog.com/archives/2005/08/08/ajax-proxy-02">AJAX Proxy</a> thru this <a href="http://richui.blogspot.com/2005/09/ajax-latency-problems-myth-or-reality.html">post on AJAX apps and latency</a>. <br />
 Network latency is indeed very important to take in account when building a responsive web application, and its easy for developpers using their local webserver to overlook. Although AJAX web apps do optimize the network traffic better than traditional web sites, they still face the issue of latency.</p>
@@ -11,14 +50,48 @@ Network latency is indeed very important to take in account when building a resp
 <p>Harry's proxy is a tool to help developers test their AJAX apps under more realistic network conditions, by adding some latency to the calls to the server. But it seemed overkill compared to a Greasemonkey-based solution, so I put together a really short user script that mirrors the behavior of the proxy (and should work for https pages): <a href="http://blog.monstuff.com/archives/images/XMLHttpRequest-AddLatency.user.js" title="right click &#8594; Install User Script...">XmlHttpRequest - Add Latency</a>. <br />
 It should be much easier to install than the python based proxy server; just install the script and configure the sites that you want it to run on. You can also edit the script to modify the amount of delay that is injected.</p>
 
-
-______________________________________
-
+<a name="more"></a>
 
 
+<span class="posted">Posted by Julien on September 21, 2005. <a href="http://blog.monstuff.com/archives/000264.html" rel="bookmark">Permalink</a> 
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '264';
+        var disqus_url = 'http://blog.monstuff.com/archives/000264.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+<div class="comments-body">
 <p>I just updated the script to run in Firefox 1.5 and Greasemonkey 0.6.4. Older versions are not supported anymore.</p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at January 13, 2006 10:50 AM</span>
+</div>
 
-Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at January 13, 2006 10:50 AM
 
 
+</div>
+</div>
 
+
+</body>
+</html>

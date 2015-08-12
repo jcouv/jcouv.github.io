@@ -1,9 +1,48 @@
----
-title: C# to SWF (Flash) compiler
-date: 2004-10-08 13:49:33 +0800
-disqus_identifier: 205
-disqus_url: http://blog.monstuff.com/archives/000205.html
----
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: C# to SWF (Flash) compiler</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '{{ site.ga }}', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+
+<div class="blog">
+
+
+
+
+<div class="blogbody">
+
+<h2 class="title">C# to SWF (Flash) compiler</h2>
 
 <p>Robin Debreuil is coding a <a href="http://blog.debreuil.com/posts/376.aspx">C# to SWF (Flash) compiler</a>. <br />
 I've always been curious about Flash, but never found a standalone compiler. Having it based on C# syntax makes it even better, no need to learn a new language! </p>
@@ -17,22 +56,48 @@ It has a .Net assembly (SwfNative.dll) with dummy/empty methods matching the nat
 
 <p>It seems a shame that he had to re-implement a C# parser/lexer though. I wonder if the Mono compiler libraries could be re-used. In the future, will compilers be broken down into re-usable piped utilities with object-based shells like Monad/MSH?</p>
 
-
-______________________________________
-
+<a name="more"></a>
 
 
+<span class="posted">Posted by Julien on October 08, 2004. <a href="http://blog.monstuff.com/archives/000205.html" rel="bookmark">Permalink</a> 
+<br /></span>
+
+</div>
+
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '205';
+        var disqus_url = 'http://blog.monstuff.com/archives/000205.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+<div class="comments-body">
 <p>monad links<br />
 <a href="http://dotnetjunkies.com/WebLog/stefandemetz/archive/2004/04/20/11794.aspx">http://dotnetjunkies.com/WebLog/stefandemetz/archive/2004/04/20/11794.aspx</a></p>
-
-Posted by: <a href="http://dotnetjunkies.com/WebLog/stefandemetz/archive/2004/04/20/11794.aspx">stefan demetz</a> at October 12, 2004 01:51 PM
-
-
+<span class="comments-post">Posted by: <a href="http://dotnetjunkies.com/WebLog/stefandemetz/archive/2004/04/20/11794.aspx">stefan demetz</a> at October 12, 2004 01:51 PM</span>
+</div>
+<div class="comments-body">
 <p>I like using MacroMedia.  Okay, so it probably doesn't give me the same degree of fine control, but it works well for my purposes.</p>
-
-Posted by: <a href="http://lymphocytes.741.com">elisa</a> at October 12, 2004 10:11 PM
-
-
+<span class="comments-post">Posted by: <a href="http://lymphocytes.741.com">elisa</a> at October 12, 2004 10:11 PM</span>
+</div>
+<div class="comments-body">
 <p>Hi there,</p>
 
 <p>there's a standalone compiler called MTASC out there. I've been using it only in personal projects, as it is still in beta stage, but it works pretty well, and it seems to be updated regulary.</p>
@@ -41,50 +106,50 @@ Posted by: <a href="http://lymphocytes.741.com">elisa</a> at October 12, 2004 10
 
 <p>Hope you find it useful.<br />
 Byez</p>
-
-Posted by: <a href="http://www.protozoo.com">Daniel</a> at November 28, 2004 09:20 AM
-
-
+<span class="comments-post">Posted by: <a href="http://www.protozoo.com">Daniel</a> at November 28, 2004 09:20 AM</span>
+</div>
+<div class="comments-body">
 <p>That C# to SWF compiler is no longer available.  I guess he is working at Xamlon now on a commercial product.  Is there another option? </p>
-
-Posted by: <a href="mailto&#58;a&#64;c&#46;com">DH</a> at February  6, 2005 04:52 PM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;a&#64;c&#46;com">DH</a> at February  6, 2005 04:52 PM</span>
+</div>
+<div class="comments-body">
 <p>DH, I unfortunately don't know of another free implementation. <br />
 Robin is still working on CSWF at Xamlon though. A beta was released for download at <a href="http://www.xamlon.com/software/xamlonpro/flash/">http://www.xamlon.com/software/xamlonpro/flash/</a> <br />
 </p>
-
-Posted by: <a href="http://blog.monstuff.com/">Julien</a> at February  6, 2005 09:57 PM
-
-
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien</a> at February  6, 2005 09:57 PM</span>
+</div>
+<div class="comments-body">
 <p>I highly recommend you check out NeoSwiff as well.</p>
 
 <p><a href="http://www.globfx.com/products/neoswiff">http://www.globfx.com/products/neoswiff</a></p>
-
-Posted by: <a href="http://www.darronschall.com">darron</a> at April 21, 2005 03:00 PM
-
-
+<span class="comments-post">Posted by: <a href="http://www.darronschall.com">darron</a> at April 21, 2005 03:00 PM</span>
+</div>
+<div class="comments-body">
 <p>Hi Everyone : <br />
   Here also has a .net component to create the swf file.<br />
  Your can free download it.<br />
  <a href="http://www.e-iceblue.com">http://www.e-iceblue.com</a></p>
-
-Posted by: <a href="mailto&#58;MickLee&#64;163&#46;com">MickLee</a> at August 28, 2005 01:34 AM
-
-
+<span class="comments-post">Posted by: <a href="mailto&#58;MickLee&#64;163&#46;com">MickLee</a> at August 28, 2005 01:34 AM</span>
+</div>
+<div class="comments-body">
 <p>Hi :<br />
  There is a .net flash component , your can free download it.<br />
  ASP.NET and Win Form Supporting<br />
  <a href="http://www.e-iceblue.com">http://www.e-iceblue.com</a><br />
 NickMichel</p>
-
-Posted by: <a href="http://www.e-iceblue.com">NickMichel</a> at October 24, 2005 09:30 PM
-
-
+<span class="comments-post">Posted by: <a href="http://www.e-iceblue.com">NickMichel</a> at October 24, 2005 09:30 PM</span>
+</div>
+<div class="comments-body">
 <p>Do you know how to convert .fla to .swf in C#?<br />
 thanks</p>
+<span class="comments-post">Posted by: <a href="http://vnexpress.net">Steven</a> at April  1, 2006 05:53 AM</span>
+</div>
 
-Posted by: <a href="http://vnexpress.net">Steven</a> at April  1, 2006 05:53 AM
 
 
+</div>
+</div>
 
+
+</body>
+</html>
