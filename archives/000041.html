@@ -1,9 +1,48 @@
----
-title: ASP.NET: Automatic field persistence
-date: 2003-05-09 17:21:19 +0800
-disqus_identifier: 41
-disqus_url: http://blog.monstuff.com/archives/000041.html
----
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Curiosity is bliss: ASP.NET: Automatic field persistence</title>
+
+<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
+
+<link rel="start" href="http://blog.monstuff.com/" title="Home" />
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '{{ site.ga }}', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
+<span class="description">Julien Couvreur's programming blog and more</span>
+</div>
+
+<div id="container">
+
+
+<div class="blog">
+
+
+
+
+<div class="blogbody">
+
+<h2 class="title">ASP.NET: Automatic field persistence</h2>
 
 <p>Found on <a href="http://dotnetweblogs.com/jsymons/posts/6773.aspx">Juye's Blog</a>, a custom attribute that is used to automatically persist fields from the codebehind class to the ViewState or the Session.<br />
 It is unclear to me that it makes the code really much shorter or clearer, or that it is efficient in any way, but it still is a cool trick. ;-)</p>
@@ -25,19 +64,53 @@ public string Name;</div></p>
       get{ return (string)ViewState["Name"]; }<br />
       set { ViewState["Name"] = value; }<br />
 }</div></p>
+
+<a name="more"></a>
 <p>A custom control, the Persister, needs to be added in the page (see aspx sample above). It gets called via the <i>Control.LoadViewState</i> and <i>Control.OnInit</i> hooks, which gives it a chance to inspect all fields from the page (using the <i>Page.GetType().GetFields()</i> reflection call) to find those marked with the custom <i>Persist</i> attribute.<br />
 It supports persisting to the ViewState with <i>[Persist(PersistMode.ViewState)]</i> and to the Session with <i>[Persist(PersistMode.Session)]</i>.</p>
 
 <p>Here is the <a href="http://www.juye.net/drop/Field%20Persistence.zip">zip containing the code</a>, with a sample.</p>
 
-______________________________________
+<span class="posted">Posted by Julien on May 09, 2003. <a href="http://blog.monstuff.com/archives/000041.html" rel="bookmark">Permalink</a> 
+<br /></span>
+
+</div>
 
 
 
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'curiosityisbliss'; 
+        var disqus_identifier = '41';
+        var disqus_url = 'http://blog.monstuff.com/archives/000041.html';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>    
+
+
+
+
+<div class="comments-body">
 <p>The CodeProject has an article on automatic persistence in ASP.NET forms, that persists to the DB (not just the Session or ViewState):<br />
 <a href="http://www.codeproject.com/useritems/TransparentForms.asp">http://www.codeproject.com/useritems/TransparentForms.asp</a></p>
+<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Dumky</a> at June 18, 2003 11:27 AM</span>
+</div>
 
-Posted by: <a href="http://blog.monstuff.com/">Dumky</a> at June 18, 2003 11:27 AM
 
 
+</div>
+</div>
 
+
+</body>
+</html>
