@@ -1,49 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: "Take It With You" Feed Reader</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">"Take It With You" Feed Reader</h2>
-
+---
+title: ""Take It With You" Feed Reader"
+date: 2006-01-27 17:37:35 +0800
+disqus_identifier: 277
+disqus_url: http://blog.monstuff.com/archives/000277.html
+---
+{% raw %}
 <p>As I mentioned in my post on <a href="http://blog.monstuff.com/archives/000272.html">TiwyWiki</a>, Flash can offer some cross-domain communication capabilities in addition to persistent client storage.<br />
 TiwyFeeds is an AJAX-based Bloglines reader with offline support and using cross-domain requests. It makes use of the <a href="http://www.bloglines.com/services/api/sync">Bloglines Web Services</a> to load your subscription list and the corresponding feed data.</p>
 
@@ -53,8 +14,6 @@ TiwyFeeds is an AJAX-based Bloglines reader with offline support and using cross
 You can also set your browser in Offline mode and open feeds, in which case the locally cached entries will load. I haven't implemented a way of loading the cached entries corresponding to a time period though. </p>
 
 <p>Some other possible features are expiration policy for the local cache, bookmarking ("My starred items") or full-text search.</p>
-
-<a name="more"></a>
 <p> <br />
 <h4>Flash restrictions (local sandbox):</h4> When I first started looking at Flash for making cross-domain requests, I knew that Flash did have such capabilities, but also that they were restricted. In particular, I read this document, <a href="http://www.macromedia.com/devnet/flash/articles/fplayer8_security_print.html">"Security Changes in Flash Player 8"</a>, that explains how the Flash 8 Player local sandbox works. </p>
 
@@ -82,41 +41,6 @@ A more flexible API would make sense though, and the ExternalInterface API could
 <p><br />
 <u>Update (2005-02-06): </u> Posted a bit of <a href="http://blog.monstuff.com/Flash4AJAX/FeedsDoc.txt">documentation for the client-side storage</a> used for the Feed Reader, as well as the <a href="http://blog.monstuff.com/Flash4AJAX/static/Flash4AJAX.as">source code for the Flash component</a>.</p>
 
-<span class="posted">Posted by Julien on January 27, 2006. <a href="http://blog.monstuff.com/archives/000277.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
 
 
-
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '277';
-        var disqus_url = 'http://blog.monstuff.com/archives/000277.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-
-
-
-</div>
-</div>
-
-
-</body>
-</html>
+{% endraw %}

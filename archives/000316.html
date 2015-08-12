@@ -1,49 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Secure cooperation in javascript</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Secure cooperation in javascript</h2>
-
+---
+title: "Secure cooperation in javascript"
+date: 2007-04-04 09:26:57 +0800
+disqus_identifier: 316
+disqus_url: http://blog.monstuff.com/archives/000316.html
+---
+{% raw %}
 <p>Today's web programming environment suffers from a cooperation problem. One illustration is that if you include a foreign script into your page, you are compromising the security of your page. In other words, it difficult to compose functionality while remaining confident that the different components will not abuse each other.</p>
 
 <p>A solution found in the desktop world is to build a complicated set of restrictions around your code: ACLs, permissions, sandbox rules, checks and policies. I would argue that it is not working great for the desktop and is definitely not practical for the web.<br />
@@ -51,8 +12,6 @@
 Alternatively, the proponents of <a href="http://erights.org/">capability-based security</a> advocate an approach based on a simpler set of primitives: encapsulating all authority into objects, ensuring that components can keep data and references private, and the ability to start executing some code with a controlled set of references to pre-existing objects (the default being none, by principle of least authority).</p>
 
 <p>Javascript already has a way of keeping private variables (local variables using "var") and doesn't allow references to be forged. One missing element is a mechanism to invoke a function or evaluate a string in a controlled environment. This could include ways to sandbox function calls (including the <i>eval</i> method) and the &lt;script&gt; element.</p>
-
-<a name="more"></a>
 <p> <br />
 Function calls could be made in a controlled environment, by introducing a new keyword, similar to the <i>with</i> primitive except that it would hide the rest of the scope chain. The code would look like this:</p>
 
@@ -93,47 +52,14 @@ The "with_cleanstate" works for isolation, but is not great for fine-grained con
 
 <p>Also worth keeping an eye on is the <a href="http://code.google.com/p/google-caja/">Google Caja</a> project. More to come on this soon (I have a post queued up on the topic).</p>
 
-<span class="posted">Posted by Julien on April 04, 2007. <a href="http://blog.monstuff.com/archives/000316.html" rel="bookmark">Permalink</a> 
-<br /></span>
+______________________________________
 
-</div>
-
-
-
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '316';
-        var disqus_url = 'http://blog.monstuff.com/archives/000316.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>Nice thinking! One way to remedy the DOM issue is by converting all references to DOM nodes into DocumentFragments. At least that would minimize the DOM tree available.</p>
 
 <p>That only leaves us with expando properties :)</p>
-<span class="comments-post">Posted by: <a href="http://novemberborn.net/">Mark Wubben</a> at April  5, 2007 03:31 AM</span>
-</div>
+
+Posted by: <a href="http://novemberborn.net/">Mark Wubben</a> (April  5, 2007 03:31 AM)
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>
+{% endraw %}

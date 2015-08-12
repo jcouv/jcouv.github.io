@@ -1,89 +1,20 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: "MSDN Language Filter" user script</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">"MSDN Language Filter" user script</h2>
-
+---
+title: ""MSDN Language Filter" user script"
+date: 2005-04-12 14:54:45 +0800
+disqus_identifier: 240
+disqus_url: http://blog.monstuff.com/archives/000240.html
+---
+{% raw %}
 <p>Just finished my <a title="right click &#8594; Install User Script..." href="http://blog.monstuff.com/archives/images/MSDNLanguageFilter.user.js">MSDN Language Filter</a> Greasemonkey user script. It removes the code samples for the languages you don't care about (say VB or JScript), on MSDN. <br />
 It lets you choose which language you want to filter out (see screenshot below) and remembers your preferences (using the new <a href="http://www.mozdev.org/pipermail/greasemonkey/2005-April/000999.html">GreaseMonkey 0.3 data persistence APIs</a>).</p>
 
 <p>Here's a <a href="http://blog.monstuff.com/archives/images/MSDNLanguageFilterScreenshot.jpg">screenshot</a>.</p>
-
-<a name="more"></a>
 <p> <br />
 <u>Update (2006-01-30):</u> Updated the script to run in Greasmonkey 0.6.4 and Firefox 1.5. <br />
 Also included <a href="http://www.sharepointblogs.com/benc/default.aspx">Ben Cartwright</a>'s fix for the SharePoint SDK (see comments below). Thanks Ben!</p>
 
-<span class="posted">Posted by Julien on April 12, 2005. <a href="http://blog.monstuff.com/archives/000240.html" rel="bookmark">Permalink</a> 
-<br /></span>
+______________________________________
 
-</div>
-
-
-
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '240';
-        var disqus_url = 'http://blog.monstuff.com/archives/000240.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>Hi Julien - Just installed this script and I'm not having much luck with it unfortunately. When I click on the language filter link, it just makes the bottom two frames completely disappear. For example when I go to the String class page:<br />
 <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfSystemStringClassTopic.asp">http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfSystemStringClassTopic.asp</a></p>
 
@@ -94,9 +25,11 @@ Also included <a href="http://www.sharepointblogs.com/benc/default.aspx">Ben Car
 
 <p>Cheers<br />
 Nick</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;nick&#64;headsphere&#46;net">Nick Head</a> at April 23, 2005 09:28 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;nick&#64;headsphere&#46;net">Nick Head</a> (April 23, 2005 09:28 PM)
+
+______________________________________
+
 <p>Hey Nick,</p>
 
 <p>Couldn't repro the problem so far.<br />
@@ -105,9 +38,11 @@ reference page?<br />
 If not, what platform (Firefox version, GM version and OS) are you using?</p>
 
 <p>Thanks,</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at April 26, 2005 03:44 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> (April 26, 2005 03:44 PM)
+
+______________________________________
+
 <p>Hi Julien</p>
 
 <p>My version no's are:<br />
@@ -132,13 +67,17 @@ and..... Ha haaaa - It works! :)</p>
 
 <p>Thanks for your help<br />
 Nick</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;nick&#64;headsphere&#46;net">Nick Head</a> at April 26, 2005 03:46 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;nick&#64;headsphere&#46;net">Nick Head</a> (April 26, 2005 03:46 PM)
+
+______________________________________
+
 <p>Cool. I just fixed the script so that it alerts if you run it on an older version of GM.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at April 26, 2005 03:47 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> (April 26, 2005 03:47 PM)
+
+______________________________________
+
 <p>Nice user script, Julien.  Thanks for sharing it!</p>
 
 <p>For some reason, though, the SharePoint SDK on MSDN uses a different set of tags for its code samples that the xpath "//span[@class = 'lang']" won't match.</p>
@@ -173,14 +112,9 @@ if (!keepLang)<br />
     }<br />
 }<br />
 </p>
-<span class="comments-post">Posted by: <a href="http://www.sharepointblogs.com/benc/default.aspx">Ben Cartwright</a> at November 10, 2005 08:37 PM</span>
-</div>
+
+Posted by: <a href="http://www.sharepointblogs.com/benc/default.aspx">Ben Cartwright</a> (November 10, 2005 08:37 PM)
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>
+{% endraw %}

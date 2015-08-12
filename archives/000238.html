@@ -1,49 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Handle mailto: links with Gmail</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Handle mailto: links with Gmail</h2>
-
+---
+title: "Handle mailto: links with Gmail"
+date: 2005-04-04 15:08:32 +0800
+disqus_identifier: 238
+disqus_url: http://blog.monstuff.com/archives/000238.html
+---
+{% raw %}
 <p>I was just writing about the problem of having the browser send specialized blobs of data to a user selected service (<a href="/archives/000232.html">"open-ended links"</a>). One example is how to handle special URI schemes such as <em>mailto:</em> with a web-based service. There is a number of ways to do this, including registry hacks and browser extensions. I wish there was a more lightweight architecture supported by the browser...</p>
 
 <p>Anyways, I experimented with Greasemonkey to get <em>mailto:</em> links to open in Gmail. The result is <a title="right click &#8594; Install User Script..." href="http://blog.monstuff.com/archives/images/MailtoComposeInGMail.user.js">MailtoComposeInGMail.user.js</a>.  <br />
@@ -51,8 +12,6 @@ It looks for <em>mailto:</em> links and re-writes them to go to the Gmail compos
 
 <p>It has a minor inconvenience, in that you cannot do "Copy email address" in the browser's context menu anymore (since it's not a <em>mailto:</em> link anymore). On the other hand, it allows you to open that link either in the current window or a separate tab the same way you would do any regular link. <br />
 I couldn't get both behaviors to work at the same time...</p>
-
-<a name="more"></a>
 <p><b>Other scripts:</b><br />
 I also wrote a quickie to <a title="right click &#8594; Install User Script..." href="http://blog.monstuff.com/archives/images/IGNButler.user.js">remove the annoying interstitial ad pages on IGN</a>.</p>
 
@@ -66,36 +25,8 @@ Either of these is a step towards the kind of architecture that I was hoping for
 
 <p><u>Update (2009/06/17):</u> Firefox 3.5 comes with a built-in way to <a href="http://googlesystem.blogspot.com/2009/06/set-gmail-as-default-email-client-in.html">associate mailto: links to GMail</a>. This renders my Greasemonkey script obsolete.</p>
 
-<span class="posted">Posted by Julien on April 04, 2005. <a href="http://blog.monstuff.com/archives/000238.html" rel="bookmark">Permalink</a> 
-<br /></span>
+______________________________________
 
-</div>
-
-
-
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '238';
-        var disqus_url = 'http://blog.monstuff.com/archives/000238.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>Hi, do you write in french ?</p>
 
 <p>I'm searching a script to make "Display external images" automatically, do you know where i can find one?</p>
@@ -105,9 +36,11 @@ Either of these is a step towards the kind of architecture that I was hoping for
 <p>Bye, thanks</p>
 
 <p>Merci!</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;vincent&#46;stephane&#64;gmail&#46;com">Stephane Vincent</a> at April 23, 2005 06:34 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;vincent&#46;stephane&#64;gmail&#46;com">Stephane Vincent</a> (April 23, 2005 06:34 PM)
+
+______________________________________
+
 <p>Hi Stephane.<br />
 No, I don't currently blog in french at all. Why?<br />
 A friend of mine (Julien Ellie) has a mixed english-french blog though, which I found an interesting concept (you can filter posts by language if you want): <a href="http://3deurope.com/blog">http://3deurope.com/blog</a><br />
@@ -117,13 +50,17 @@ I have too much trouble with french IT words now, so I'm sticking to english for
 Mark Pigrim's "Offsite blank" script sounds related: it differentiates offsites urls. You might be able to re-use it: <a href="http://diveintomark.org/projects/greasemonkey/offsiteblank.user.js">http://diveintomark.org/projects/greasemonkey/offsiteblank.user.js</a></p>
 
 <p>A bientot,</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at April 23, 2005 11:52 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> (April 23, 2005 11:52 PM)
+
+______________________________________
+
 <p>For "Display External Images", I think he's referring to when you receive HTML email in GMail.  When they include images referenced on external servers, you have to click the "Display External Images" link to make them display, and he wants a script that will automagically do it.</p>
-<span class="comments-post">Posted by: <a href="http://asdf">ShimmyShimmyYa</a> at May  5, 2005 06:38 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://asdf">ShimmyShimmyYa</a> (May  5, 2005 06:38 PM)
+
+______________________________________
+
 <p>Nice, however the inability to copy e-mail addresses is the show blocker for me.</p>
 
 <p>I once attempted this as a greasemonkey script as well, but failed (ended up hardcoding it like you). </p>
@@ -132,36 +69,46 @@ Mark Pigrim's "Offsite blank" script sounds related: it differentiates offsites 
 A while ago (years) I wrote the "Webmailcompose" extension for firefox, which does this and makes firefox's 'send this page' and 'send link' to work as well. I still maintain it, but the code is horrible, and I need to rewrite it one of these days.</p>
 
 <p>Anyhow, if you ever do find a better way, that would be great as it would be a much lighter solution than what WMC does right now.</p>
-<span class="comments-post">Posted by: <a href="http://jedbrown.net/content/">Jed</a> at May 21, 2005 09:16 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://jedbrown.net/content/">Jed</a> (May 21, 2005 09:16 PM)
+
+______________________________________
+
 <p>Re: "Display External Images"<br />
 Thanks for the clarification ShimmyShimmyYa. There is a user script request in the wiki that seems to correspond to what you describe: "always show images in message" on GMail. It's not been implemented yet though. I'll try to take a stab at it.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at May 23, 2005 04:56 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> (May 23, 2005 04:56 PM)
+
+______________________________________
+
 <p>Jed, I just installed your "Webmailcompose" extension ( <a href="http://jedbrown.net/1.0/mozilla/extensions/">http://jedbrown.net/1.0/mozilla/extensions/</a> ). <br />
 It handles both scenario nicely: compose in new tab and copy email address. </p>
 
 <p>I think I'm going to use it instead of my user script. <br />
 Thanks ;-)</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at May 23, 2005 05:03 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> (May 23, 2005 05:03 PM)
+
+______________________________________
+
 <p>Okay, if the creator of MailtoComposeInGMail.user.js is going to use WMC, then I'll follow suit Actually, I was using WMC, until I read of Julien's script. Then I deleted WMC and installed MailtoComposeInGMail.user.js. But after reading the comments of the 2 authors, and the comment previous this one, I'm back on WMC.</p>
 
 <p>Anyway, I'd be happy to know if there are any updates to MailtoComposeInGMail.user.js in the future!</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;hanzjordan&#64;NOSPAMgmail&#46;com">jeff</a> at May 31, 2005 03:45 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;hanzjordan&#64;NOSPAMgmail&#46;com">jeff</a> (May 31, 2005 03:45 AM)
+
+______________________________________
+
 <p>Hi,</p>
 
 <p>Could you modify the Gmail mailto: script so that it opens the compose screen in a new tab instead of overwriting the page from where the mailto: link was clicked?</p>
 
 <p>Thanks</p>
-<span class="comments-post">Posted by: <a href="http://www.konetidy.com">Korm</a> at June  4, 2005 06:59 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.konetidy.com">Korm</a> (June  4, 2005 06:59 AM)
+
+______________________________________
+
 <p>Here's how to modify the script to open mailto: links into a new tab, using GM 0.4 when it becomes available (with the GM_openInTab function):</p>
 
 <p>var newUrl = "https://mail.google.com/mail?view=cm&tf=0" + <br />
@@ -174,9 +121,11 @@ Thanks ;-)</p>
 
 <p><br />
 Note that GM 0.4 is postponed for now due to security concerns (fixed in hotfix release 0.3.5).</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at July 25, 2005 02:06 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> (July 25, 2005 02:06 PM)
+
+______________________________________
+
 <p>I appreciated very much your script!!! But after the new release of greasemonkey (0.5) i made an unauthorized change on your script. My need was to have a choice to send an email with or without gmail (i'm at work ;-)). <br />
 So i modified your script to add before "mailto:" link an icon to send via gmail launching the composer in new tab.<br />
 To be correct, follow my changes:</p>
@@ -216,9 +165,11 @@ mailtoLink.parentNode.insertBefore(gmailIcon, mailtoLink);</p>
 
 <p>i hope this is appreciated!!!<br />
 and i'm sorry again for unauthorized code (and my bad english!)</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;digilight&#64;freemail&#46;it">netinjection</a> at August  3, 2005 02:21 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;digilight&#64;freemail&#46;it">netinjection</a> (August  3, 2005 02:21 AM)
+
+______________________________________
+
 <p>WELL, here's my take on your script, for what it's worth.</p>
 
 <p>(function() {</p>
@@ -230,9 +181,11 @@ and i'm sorry again for unauthorized code (and my bad english!)</p>
                                     <br />
         var linkIndex, mailtoLink;<br />
         for (linkIndex = 0; linkIndex </p>
-<span class="comments-post">Posted by: <a href="http://benjol.blogspot.com">ben</a> at October  6, 2005 07:00 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://benjol.blogspot.com">ben</a> (October  6, 2005 07:00 AM)
+
+______________________________________
+
 <p>Sorry, (text got truncated on repost after bad email)</p>
 
 <p>(function() {</p>
@@ -297,9 +250,11 @@ and i'm sorry again for unauthorized code (and my bad english!)</p>
     window.addEventListener("load", processMailtoLinks, false);<br />
     <br />
 })();</p>
-<span class="comments-post">Posted by: <a href="http://benjol.blogspot.com">ben</a> at October  6, 2005 07:03 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://benjol.blogspot.com">ben</a> (October  6, 2005 07:03 AM)
+
+______________________________________
+
 <p>Hello, I've incorporated your script into a similar project I've been working on - my school's webmail interface is pretty terrible, so I've been trying to improve it (the project I've written is also licensed under the GPL).</p>
 
 <p>I wanted to point out that there appears to be a bug in the code - if the variables aren't blanked out, subsequent mailto: links will carry over the values that were assigned in the previous run if the values aren't overwritten, so for instance</p>
@@ -310,18 +265,15 @@ mailto:jim@gmx.tld?cc=toby@yahoo.com</p>
 <p>will generate an incorrect link for jim@gmx.tld.</p>
 
 <p>Thank you so much for releasing this code under the GPL!</p>
-<span class="comments-post">Posted by: <a href="http://www.kurtmckee.org/">Kurt McKee</a> at November  8, 2005 01:31 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.kurtmckee.org/">Kurt McKee</a> (November  8, 2005 01:31 AM)
+
+______________________________________
+
 <p>Kurt, thanks a lot for the bug report. I'll get a fix done when I come back from vacation in two weeks or so.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at November 15, 2005 12:33 PM</span>
-</div>
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> (November 15, 2005 12:33 PM)
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>
+{% endraw %}

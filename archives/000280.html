@@ -1,49 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Cross-domain AJAX using Flash</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Cross-domain AJAX using Flash</h2>
-
+---
+title: "Cross-domain AJAX using Flash"
+date: 2006-03-03 17:39:54 +0800
+disqus_identifier: 280
+disqus_url: http://blog.monstuff.com/archives/000280.html
+---
+{% raw %}
 <p><a href="http://blog.monstuff.com/archives/000277.html">TiwyFeeds</a>, a recent AJAX project of mine, uses a Flash object for storing data on the client and also to make cross-domain requests to the Bloglines API. As I explained in that post, the Flash API that it uses set some pretty heavy constraints: only XML could be sent and received.</p>
 
 <p>After Jason Levitt started experimenting with this component, he quickly ran against its limitations. Mainly, he needed to exchange arbitrarily formatted text, such as a POST sending form encoded parameters in the body and receiving JSON encoded data. </p>
@@ -55,8 +16,6 @@ For now, the Flash object provides a custom interface, that I used directly in a
 
 <p>You can look at the source of the page for the detailled APIs exposed by the Flash object, the main ones being "fs.XmlHttp(urlString, callbackNameString, verbString, bodyString, contentTypeString)" to start the request and "GetVariable('retText')" to get the content from the response.<br />
 Note that this API is not re-entrant at this time: you can only make a single remote call at a given time. I'll probably fix this soon, when I write a nice javascript wrapper.</p>
-
-<a name="more"></a>
 <p> <br />
 <h4>sendAndLoad hack details:</h4> The technique, explained by <a href="http://www.zwetan.com/">Zwetan</a>, steals the sendAndLoad method off of the LoadVars or the XML prototype and sticks it on a custom object. There are a couple of supporting methods and fields that need to be added for the implanted method to function properly (contentType, toString()). <br />
 I made my own small contribution to the approach by also implanting the addRequestHeader function.</p>
@@ -97,36 +56,8 @@ The code snippet shows pretty much all of what's supported:<br />
 No more un-necessary visible Flash object. <br />
 Well, actually, the object is trully invisible in Firefox, but there is still 1 pixel left in IE. You can see the change in the demo page.</p>
 
-<span class="posted">Posted by Julien on March 03, 2006. <a href="http://blog.monstuff.com/archives/000280.html" rel="bookmark">Permalink</a> 
-<br /></span>
+______________________________________
 
-</div>
-
-
-
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '280';
-        var disqus_url = 'http://blog.monstuff.com/archives/000280.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>nice post.</p>
 
 <p>fyi, one minor correction:</p>
@@ -153,13 +84,17 @@ The last restriction not to forget is that Flash will only allow requests to dom
 
 <p>mesh@adobe.com<br />
 </p>
-<span class="comments-post">Posted by: <a href="mailto&#58;mesh&#64;adobe&#46;com">mike chambers</a> at March  6, 2006 12:56 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;mesh&#64;adobe&#46;com">mike chambers</a> (March  6, 2006 12:56 PM)
+
+______________________________________
+
 <p>Julien, good work. You made the impossible work! Nice.</p>
-<span class="comments-post">Posted by: <a href="http://codinginparadise.org">Brad Neuberg</a> at March  7, 2006 12:13 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://codinginparadise.org">Brad Neuberg</a> (March  7, 2006 12:13 PM)
+
+______________________________________
+
 <p>I tested the demo in my local server<br />
 but It does not work in my server.<br />
 I'm very newbee for the flash<br />
@@ -168,9 +103,11 @@ Is it make the reason?<br />
 I run the apache web server and accessed via http protocol.<br />
 also store the crossdomain.xml in the target server with "...allow-access-from domain="*"..." tag.<br />
 Flash4AJAX is the best solution for overcome the cross-domain restriction ever I searched.</p>
-<span class="comments-post">Posted by: <a href="http://docs.paygate.net/Members/mountie/">Mountie Lee</a> at April 24, 2006 07:55 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://docs.paygate.net/Members/mountie/">Mountie Lee</a> (April 24, 2006 07:55 AM)
+
+______________________________________
+
 <p>Julien,</p>
 
 <p>Do you think that it is possible to make the Flash communication a little more discreet (no status bar flickers)?</p>
@@ -178,44 +115,58 @@ Flash4AJAX is the best solution for overcome the cross-domain restriction ever I
 <p>I am using the IMG tag now instead of the SCRIPT tag to do cross-domain scripting. The reason being that the status bar doesn't flicker whenever I do an IMG poll to remote server in IE, but still does in FireFox, whereas the SCRIPT tag flickers in both IE and Firefox.</p>
 
 <p>Now the reason I was so interested in Flash cross-site scripting is that it has the potential to do cross-domain silent polls, or so I thought. But from your demo page, it seems like the Flash method is still not as discreet as I hoped, in other words the status bar still flickers.</p>
-<span class="comments-post">Posted by: <a href="http://www.brilliantconcept.com">Roy</a> at April 30, 2006 02:52 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.brilliantconcept.com">Roy</a> (April 30, 2006 02:52 PM)
+
+______________________________________
+
 <p>Roy,<br />
 I hadn't looked at that so far, but I'll certainly keep an eye on this issue in my future Flash experiments. <br />
 I'm open to tips and advice from any Flash guru reading this, please email me.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at May  1, 2006 09:08 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> (May  1, 2006 09:08 AM)
+
+______________________________________
+
 <p>Because embedding Flash into web scripts proved to slower page loading, Flash is moving toward non-web applications, or so I think.</p>
-<span class="comments-post">Posted by: <a href="http://www.serioussoft.com">Mag</a> at May 15, 2006 03:37 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.serioussoft.com">Mag</a> (May 15, 2006 03:37 AM)
+
+______________________________________
+
 <p>For some reason the responseText and FlashHelper.getFlash().GetVariable("retText")  returne Undefined.  Why is that?  This is only within my code.  Im using it within my class method and have it calling back my class method.</p>
 
 <p>Is there a way to get this library to handle multiple requests at once? Im going to have multiple windows request from it.</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;bs9999&#64;gmail&#46;com">Abe</a> at May 23, 2006 01:58 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;bs9999&#64;gmail&#46;com">Abe</a> (May 23, 2006 01:58 PM)
+
+______________________________________
+
 <p>Abe, <br />
 You should check that the server actually returned some content and not some error (404, 500, ...). If the server returns an error, then probably retText would be undefined.</p>
 
 <p>Could you clarify what you mean by "multiple windows"? </p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at May 23, 2006 04:34 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> (May 23, 2006 04:34 PM)
+
+______________________________________
+
 <p>Hi.  By multiple window i mean multiple window.open().  Im getting JS to open up a window to show googlemaps in each window.  I first need to perform a geocode of the provided addresses which the rpc call will handle for me.  Since there are multi windows open each making a request to the flah object and so re-entrants, Im pretty much screwed.  From what I can see in the procided .JS file this multiple calling will simply cancel the previous request?!</p>
 
 <p>Do you provide the .fla source file?  I dont know action script right now but Im desperate enough to learn to add what i need.</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;bs9999&#64;gmail&#46;com">Abe</a> at May 23, 2006 05:31 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;bs9999&#64;gmail&#46;com">Abe</a> (May 23, 2006 05:31 PM)
+
+______________________________________
+
 <p>BTW my javascript code makes multiple requests to Yahoo's geociding service and also to another XML webservice for other data.  It eventually display Google Maps either within the same browser window or within individual popup browser windows.  The way things are set up, the user can click a link to have multiple window popup at once and so multiple requests to the same flash object at once.  </p>
 
 <p>Im new to Javascript so feel free to provide a solution</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;bs9999&#64;gmail&#46;com">Abe</a> at May 23, 2006 05:40 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;bs9999&#64;gmail&#46;com">Abe</a> (May 23, 2006 05:40 PM)
+
+______________________________________
+
 <p>I seem to be getting the javascript error message: "Object doesn't support this property or method" from this line in the Flash4AjaxHelper.js file:</p>
 
 <p>fs.XmlHttp(_url, CallbackManager.registerCallback(callback), _method, body, _contentType, _headers);</p>
@@ -226,13 +177,17 @@ _method="GET"<br />
 body=""<br />
 _contentType = null<br />
 _headers = ?   (i didnt provide any and debugger isnt revealing anything to me)</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;bs9999&#64;gmail&#46;com">Abe</a> at May 23, 2006 07:58 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;bs9999&#64;gmail&#46;com">Abe</a> (May 23, 2006 07:58 PM)
+
+______________________________________
+
 <p>For some reason the responseText and FlashHelper.getFlash().GetVariable("retText") returne Undefined. Why is that? This is only within my code. Im using it within my class method and have it calling back my class method.</p>
-<span class="comments-post">Posted by: <a href="http://author.removed.com">latino</a> at June  1, 2006 08:24 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://author.removed.com">latino</a> (June  1, 2006 08:24 AM)
+
+______________________________________
+
 <p>flXHR (http:flxhr.flensed.com) is a project that was inspired by this earlier work by Julien. It goes a few steps further and implements an identical API to the native XHR object which means it can easily be dropped into any page or existing code that does regular Ajax and immediately get cross-domain Ajax very easily.</p>
 
 <p>Also, because of flXHR's API compliance, it was super simple to make plugins for the various major frameworks, such as jQuery, Dojo, and Prototype. So if you're doing cross-domain Ajax with any of those tools, you should check out flXHR.</p>
@@ -240,13 +195,17 @@ _headers = ?   (i didnt provide any and debugger isnt revealing anything to me)<
 <p>Disclaimer: this was also mentioned in a comment (thanks to Julien) over on this later post:  <a href="http://blog.monstuff.com/archives/000294.html">http://blog.monstuff.com/archives/000294.html</a></p>
 
 <p>I just wanted to post here also, since there wasn't an obvious link between the two posts, and this is the primary one that comes up in google search.  :)</p>
-<span class="comments-post">Posted by: <a href="http://flxhr.flensed.com">Kyle Simpson</a> at June  1, 2009 09:40 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://flxhr.flensed.com">Kyle Simpson</a> (June  1, 2009 09:40 AM)
+
+______________________________________
+
 <p>tks for the effort you put in here I appreciate it!</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;vapysunny&#64;gmail&#46;com">MichaellaS</a> at July 21, 2009 02:32 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;vapysunny&#64;gmail&#46;com">MichaellaS</a> (July 21, 2009 02:32 AM)
+
+______________________________________
+
 <p>The Loan Consultants</p>
 
 <p>Does   anyone attired in b be committed to any experience with ripoffreport.com? It's basically a non-edited database of consumer </p>
@@ -778,24 +737,23 @@ _headers = ?   (i didnt provide any and debugger isnt revealing anything to me)<
 
 <p><br />
 </p>
-<span class="comments-post">Posted by: <a href="mailto&#58;lynn&#46;henderson18&#64;gmail&#46;com">ChristopherWodja</a> at September 20, 2009 05:46 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;lynn&#46;henderson18&#64;gmail&#46;com">ChristopherWodja</a> (September 20, 2009 05:46 PM)
+
+______________________________________
+
 <p>I don't know If I said it already but ...Great site...keep up the good work. :) I read a lot of blogs on a daily basis and for the most part, people lack substance but, I just wanted to make a quick comment to say I'm glad I found your blog.  Thanks, :)</p>
 
 <p>A definite great read..Jim Bean</p>
-<span class="comments-post">Posted by: <a href="http://forums.ugo.com/member.php?u=65261">JimmyBean</a> at October  1, 2009 04:37 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://forums.ugo.com/member.php?u=65261">JimmyBean</a> (October  1, 2009 04:37 AM)
+
+______________________________________
+
 <p>I just tried the demo page. FlashHelper.getFlash().GetVariable("retText") returns undefined for any URL I give, even the default one. Does this thing still work?</p>
-<span class="comments-post">Posted by: <a href="http://gordon-myers.com/">Gordon Myers</a> at October 26, 2009 02:43 PM</span>
-</div>
+
+Posted by: <a href="http://gordon-myers.com/">Gordon Myers</a> (October 26, 2009 02:43 PM)
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>
+{% endraw %}

@@ -1,56 +1,15 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Open-ended links, link re-writing</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Open-ended links, link re-writing</h2>
-
+---
+title: "Open-ended links, link re-writing"
+date: 2005-03-31 10:30:09 +0800
+disqus_identifier: 232
+disqus_url: http://blog.monstuff.com/archives/000232.html
+---
+{% raw %}
 <p>... and rich but loose service integration.</p>
 
 <p>A couple of weeks back, I was thinking about an architecture for modularized/loose integration between services. Open-ended links is an idea to help scenarios where you go from one website to another, which today involves a lot of hard coupling. <br />
 In essence, these links would be simple but structured data, that the browser could interpret and pass on the the relevant service provider. This would work for RSS subscription, sending email, and a bunch of other scenarios. <br />
 I'll also discuss how Open-ended links relate to the recent Greasemonkey developments, with more structure and focus on cross-site linking (rather than mixing the functionality of two sites into one page).</p>
-
-<a name="more"></a>
 <p> <br />
 <b>Open ended links:</b><br />
 Loosely binding two services is one of the core design issues of one click subscription. One service is the news/update provider and the other is the user's aggregator (be it a web or a desktop-based solution).</p>
@@ -111,47 +70,14 @@ But I would think that privacy-wise, it would be better if the browser kept the 
 It's useful for shortening urls and adding some semantic value to links, but also for controlling how these references are resolved (you could resolve ISBNs at Amazon or alternatively at B&N). <br />
 In his solution, the resolving (converting a CURIE to an actual URI) is not necessarily done by the browser, but could also be performed by the server (such as a wiki software).</p>
 
-<span class="posted">Posted by Julien on March 31, 2005. <a href="http://blog.monstuff.com/archives/000232.html" rel="bookmark">Permalink</a> 
-<br /></span>
+______________________________________
 
-</div>
-
-
-
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '232';
-        var disqus_url = 'http://blog.monstuff.com/archives/000232.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>I'm lost I keep seeing references to relevant user scripts for trixie. What are they where do I get 'em?<br />
 All I want to do is use trixie to bypass the Microsoft validation tool.<br />
 Can you help me?</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;felixq78&#64;gmail&#46;com">Felix</a> at May 12, 2006 06:31 AM</span>
-</div>
+
+Posted by: <a href="mailto&#58;felixq78&#64;gmail&#46;com">Felix</a> (May 12, 2006 06:31 AM)
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>
+{% endraw %}

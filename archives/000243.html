@@ -1,57 +1,16 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Closures & Continuations</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Closures & Continuations</h2>
-
+---
+title: "Closures & Continuations"
+date: 2005-04-15 16:00:19 +0800
+disqus_identifier: 243
+disqus_url: http://blog.monstuff.com/archives/000243.html
+---
+{% raw %}
 <p>For some reason, closures and continuations are a topic that I regularly look into, and every time think I got it. Yet every time I dig into it again, I realize my understanding is still somewhat superficial and discover more.<br />
 Sam Ruby just wrote <a href="http://www.intertwingly.net/blog/2005/04/13/Continuations-for-Curmudgeons">an intro article to continuations</a>. I found it a bit too hand-wavy to be really satisfying, but it made me want to completely get it this time ;-)</p>
 
 <p>I've been re-reading my bookmarks and new pages on the topic, especially in the context of Scheme and Javascript. <br />
 Today's post will stay rather general, summarizing what closures and continuations are. <br />
 I intend to write a more detailed post some time next week with more specifics of Javascript: closures, data and execution models (but not continuations, as they don't seem to exist in Javascript).</p>
-
-<a name="more"></a>
 <p><b>Closures:</b><br />
 When you enter a new function, a new lexical scope is created. Each scope is something like an association table containing the local variables (name and value) and links back to its containing/outer/parent scope. When code needs to lookup an identifier, it will search that lexical environment, by iterating up that chain until it finds it.</p>
 
@@ -82,47 +41,14 @@ There is a second such chain which represents the chain of control (tracking whi
 <p><b>Links:</b><br />
 <ul><li>Based on Dan's post on <a href="http://www.sidhe.org/~dan/blog/archives/000156.html">closures and continuations</a>. </li><li>The <a href="http://www.squarefree.com/shell/">javascript shell</a> is really useful for trying out snippets of Javascript, and Edward Lee just improved it to better support multi-line input: <a href="http://ed.agadak.net/jsshell.php">multi-line shell</a>. </li></p>
 
-<span class="posted">Posted by Julien on April 15, 2005. <a href="http://blog.monstuff.com/archives/000243.html" rel="bookmark">Permalink</a> 
-<br /></span>
+______________________________________
 
-</div>
-
-
-
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '243';
-        var disqus_url = 'http://blog.monstuff.com/archives/000243.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>Hi, I wrote a tortured entry about JavaScript continuations or continuations-passing-style in mozilla...</p>
 
 <p><a href="http://levelplusplus.blogspot.com/2004/07/continuations-in-mozilla.html">http://levelplusplus.blogspot.com/2004/07/continuations-in-mozilla.html</a></p>
-<span class="comments-post">Posted by: <a href="http://levelplusplus.blogspot.com/2004/07/continuations-in-mozilla.html">Steve Yen</a> at May  8, 2005 12:05 AM</span>
-</div>
+
+Posted by: <a href="http://levelplusplus.blogspot.com/2004/07/continuations-in-mozilla.html">Steve Yen</a> (May  8, 2005 12:05 AM)
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>
+{% endraw %}

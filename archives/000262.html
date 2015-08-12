@@ -1,56 +1,15 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: XMLHttpRequest - Security Bypass</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">XMLHttpRequest - Security Bypass</h2>
-
+---
+title: "XMLHttpRequest - Security Bypass"
+date: 2005-09-02 18:48:17 +0800
+disqus_identifier: 262
+disqus_url: http://blog.monstuff.com/archives/000262.html
+---
+{% raw %}
 <p>While trying to help Dare make his <a href="http://www.25hoursaday.com/weblog/CommentView.aspx?guid=97f6a49e-6725-4360-820a-ca0338744d94">MovieFinder  page run in Firefox</a>, I ran into an issue that can make developing AJAX applications a pain: when testing your pages, you need to host them in the same domain as your services. </p>
 
 <p>I explain the details of the problem and how the <a href="http://blog.monstuff.com/archives/images/XmlHttpRequest-BypassSecurity.user.js" title="right click &#8594; Install User Script... (requires Greasemonkey extension)">"XMLHttpRequest - Bypass Security"</a> Greasemonkey user script solves it.</p>
 
 <p>Note: this script is meant for development only, as it gives the page access to a potentially dangerous API. The default @include is "file:///*", but feel free to restrict it even further to the path for the pages you're trying to tweak. You should never have to @include an http url.</p>
-
-<a name="more"></a>
 <p> <br />
 <h4>Scenario:</h4> Dare wrote a Virtual Earth hack, <a href="http://www.25hoursaday.com/moviefinder/">MovieFinder</a>, that makes it easy to find movies in the Seattle area. Unfortunately, he only got it to work on IE and he requested help with fixing the javascript to make it work in Firefox as well. <br />
 The first thing I did was to copy <a href="http://25hoursaday.com/moviefinder/index.htm">index.htm</a> and <a href="http://25hoursaday.com/moviefinder/main.js">main.js</a> locally, so I could tweak them. But when I tried to run it, Firefox wouldn't be able to make the calls back to Dare's server.<br />
@@ -88,36 +47,8 @@ I'll dig some more, but consider this script back in a "alpha" stage at this poi
 <p>Here's a bunch tiny scripts to clean the titles on various other sites:<br />
 <ul><li><a href="http://blog.monstuff.com/archives/images/Engadget-FixTitle.user.js" title="right click &#8594; Install User Script...">remove "www.engadget.com" from Engadget</a>, </li><li><a href="http://blog.monstuff.com/archives/images/SignalVsNoise-FixTitle.user.js" title="right click &#8594; Install User Script...">remove "(by 37signal)" on Signal vs. Noise</a>, </li><li><a href="http://blog.monstuff.com/archives/images/BenHyde-FixTitle.user.js" title="right click &#8594; Install User Script...">remove "&gt;&gt; Blog Archives" from Ben Hyde's blog, "Ascription is an Anathema to any Enthusiasm"</a>, </li><li><a href="http://blog.monstuff.com/archives/images/Channel9-FixTitle.user.js" title="right click &#8594; Install User Script...">remove "(Logged in as: username)" on Channel 9</a>, </li><li><a href="http://blog.monstuff.com/archives/images/DareObasanjo-FixTitle.user.js" title="right click &#8594; Install User Script...">remove "aka Karnage4Life" on Dare Obasanjo's blog</a>, </li><li><a href="http://blog.monstuff.com/archives/images/BobCringley-FixTitles.user.js" title="right click &#8594; Install User Script...">set a meaningful title on Cringley's "The Pulpit" column</a>, </li><li><a href="http://blog.monstuff.com/archives/images/Hackaday-FixTitles.user.js" title="right click &#8594; Install User Script...">remove "www.hackaday.com" on Hackaday</a>. </li></ul></p>
 
-<span class="posted">Posted by Julien on September 02, 2005. <a href="http://blog.monstuff.com/archives/000262.html" rel="bookmark">Permalink</a> 
-<br /></span>
+______________________________________
 
-</div>
-
-
-
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '262';
-        var disqus_url = 'http://blog.monstuff.com/archives/000262.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>I get the following error when using this script.</p>
 
 <p>'GM_xmlhttpRequest is not a function'</p>
@@ -125,23 +56,29 @@ I'll dig some more, but consider this script back in a "alpha" stage at this poi
 <p>What am I doing wrong?</p>
 
 <p>A.</p>
-<span class="comments-post">Posted by: <a href="http://thedredge.org">Andy Hume</a> at October 11, 2005 05:43 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://thedredge.org">Andy Hume</a> (October 11, 2005 05:43 AM)
+
+______________________________________
+
 <p>Maybe you might indicate than greasemonkey is a plugin for mozilla. And it has to be installed before you run the script.<br />
 With this point of view your solution is equivalent to tell to the end user than he has to change his browser to view the page he has requested ...</p>
 
 <p>There is no magic solution to pass thru the mozilla security restrictions.<br />
 </p>
-<span class="comments-post">Posted by: <a href="http://www.chezwam.net">Matthieu Peschaud</a> at December 13, 2005 02:51 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.chezwam.net">Matthieu Peschaud</a> (December 13, 2005 02:51 AM)
+
+______________________________________
+
 <p>Matthieu,</p>
 
 <p>You're right, but you seem to forget one thing: this is not meant for end users, but for developers.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at December 13, 2005 08:19 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> (December 13, 2005 08:19 AM)
+
+______________________________________
+
 <p>mmm... ok ok</p>
 
 <p>when you develop something, it is supposed to be for somebody. By "end user", i mean this person who will use your script.</p>
@@ -155,9 +92,11 @@ Look at Andy Hume's comment ... it is exactly the problem that I am talking abou
 <p>Here was my point of view :)</p>
 
 <p>Matthieu.</p>
-<span class="comments-post">Posted by: <a href="http://www.chezwam.net">Matthieu Peschaud</a> at December 13, 2005 08:50 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.chezwam.net">Matthieu Peschaud</a> (December 13, 2005 08:50 AM)
+
+______________________________________
+
 <p>mmm... ok ok</p>
 
 <p>when you develop something, it is supposed to be for somebody. By "end user", i mean this person who will use your script.</p>
@@ -171,27 +110,37 @@ Look at Andy Hume's comment ... it is exactly the problem that I am talking abou
 <p>Here was my point of view :)</p>
 
 <p>Matthieu.</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;whatthefuck&#64;hotmail&#46;com">Peschaud Matthieu</a> at December 13, 2005 08:52 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;whatthefuck&#64;hotmail&#46;com">Peschaud Matthieu</a> (December 13, 2005 08:52 AM)
+
+______________________________________
+
 <p>Andy, you need to use a newer version of Greasemonkey.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at December 18, 2005 11:14 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> (December 18, 2005 11:14 AM)
+
+______________________________________
+
 <p>I just updated the script to run in Firefox 1.5 and Greasemonkey 0.6.4. Older versions are not supported anymore.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at January 13, 2006 10:51 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> (January 13, 2006 10:51 AM)
+
+______________________________________
+
 <p>Andy, you need to use a newer version of Greasemonkey.</p>
-<span class="comments-post">Posted by: <a href="http://www.yasaklinkler.com">resimler</a> at February  2, 2006 08:32 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.yasaklinkler.com">resimler</a> (February  2, 2006 08:32 AM)
+
+______________________________________
+
 <p>This is a great greasemonkey script.  I'm trying to write a Mac OS X Dashboard Widget and needed to have my XMLHttpRequest access an external URL.  Is there anyway I can get this user script with setRequestHeaders and the ability to send data for posting?</p>
 
 <p>Thanks.</p>
-<span class="comments-post">Posted by: <a href="http://techniq.dndlabs.net">techniq</a> at May 14, 2006 09:46 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://techniq.dndlabs.net">techniq</a> (May 14, 2006 09:46 PM)
+
+______________________________________
+
 <p>@Matthieu: I think what Julien means is that the script is intended to allow you to run your xmlhttprequest .js files locally, and still be able to connect to your (non-local) server-side code.  Hence it is a useful tool during development.</p>
 
 <p>However, once you upload the scripts, you can use the regular Mozilla request to access your server code, since it will be on the same site.</p>
@@ -199,9 +148,11 @@ Look at Andy Hume's comment ... it is exactly the problem that I am talking abou
 <p>So, the end user most definitely doesn't need to use Greasemonkey, or even know what it is.</p>
 
 <p>One thing I'm curious about though (I'm just starting to teach myself AJAX): does the Mozilla security problem also affect a script that's trying to access server code from another site, or is it just a problem for local (i.e. C: drive) testing?</p>
-<span class="comments-post">Posted by: <a href="http://www.louissimoneau.com">Louis</a> at May 18, 2006 07:55 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.louissimoneau.com">Louis</a> (May 18, 2006 07:55 AM)
+
+______________________________________
+
 <p>Hey!</p>
 
 <p>I am not able to digest the sample code give by you!</p>
@@ -216,9 +167,11 @@ Look at Andy Hume's comment ... it is exactly the problem that I am talking abou
 
 <p>Kind Regards<br />
 Yoshita </p>
-<span class="comments-post">Posted by: <a href="mailto&#58;yoshita&#46;nanda&#64;vinove&#46;com">yoshita</a> at June 18, 2006 11:31 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;yoshita&#46;nanda&#64;vinove&#46;com">yoshita</a> (June 18, 2006 11:31 PM)
+
+______________________________________
+
 <p>If thought that was a magic solution too, but if it's for developers only, i think it's way too complicated to set up; here is a lighter solution:</p>
 
 <p>in mozilla based web browser just type 'about:config' in the adress, and then turn the field 'signed.applets.codebase_principal_support' to true</p>
@@ -229,15 +182,19 @@ Yoshita </p>
 <p>it works, i use it</p>
 
 <p>If think the only magic solution for end-user is to sign our web-api</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;shaftouille&#64;hotmail&#46;com">Shaft</a> at June 28, 2006 03:05 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;shaftouille&#64;hotmail&#46;com">Shaft</a> (June 28, 2006 03:05 AM)
+
+______________________________________
+
 <p>Shaft, if you need cross-domain XMLHttpRequest for end-users, you can use Flash. <br />
 See my FlashXMLHttpRequest project at <br />
 <a href="http://blog.monstuff.com/FlashXMLHttpRequest">http://blog.monstuff.com/FlashXMLHttpRequest</a></p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at July  2, 2006 05:31 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> (July  2, 2006 05:31 PM)
+
+______________________________________
+
 <p>I originally started out with "remote scripting" and "cross-domain requests" and "single page applications" long before I knew what they were... </p>
 
 <p>Originally programmed in ASP (IIS) using a free API called ASPTear, I wrote some pages for personal use that pulled information from different websites, did a text-extract, and just dumped it back out as PRE formatted text.  In those days, we didn't HAVE CSS -- and we wrote webpages on the sides of caves with sticks.</p>
@@ -253,14 +210,9 @@ See my FlashXMLHttpRequest project at <br />
 <p>Well, today it's a start page with random Photo Of The Day pictures, weather, quotes from the Andy Griffith Show, various pundits, DHS Threat Advisory Status, Moon Phase, personal links and search feeders for Half and Amazon... and that's just the start page... the rest are... 8 pages of comics pulled from multiple sites.  It was fun to write, and sure makes my comic reading easier and faster, but IE is too limiting.  Time to expand the horizons.</p>
 
 <p>Thanks for the page.</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;mvisconte&#64;yahoo&#46;com">Marc</a> at July 30, 2006 07:10 PM</span>
-</div>
+
+Posted by: <a href="mailto&#58;mvisconte&#64;yahoo&#46;com">Marc</a> (July 30, 2006 07:10 PM)
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>
+{% endraw %}

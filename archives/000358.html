@@ -1,49 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Google Wave</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Google Wave</h2>
-
+---
+title: "Google Wave"
+date: 2009-06-01 22:45:43 +0800
+disqus_identifier: 358
+disqus_url: http://blog.monstuff.com/archives/000358.html
+---
+{% raw %}
 <p><a href="http://www.flickr.com/photos/clearlyambiguous/46198862/"><img src="http://farm1.static.flickr.com/30/46198862_5590b8a76d_m.jpg" style="float: right; padding: 10px 0px 0px 20px; width:240; height:183; border: none"  alt="waves" /></a> </p>
 
 <p>A few quick notes on <a href="http://wave.google.com/">Google Wave</a>, which already seems an interesting system. For some details, watch the developer preview presentation and related whitepapers, linked below. </p>
@@ -64,8 +25,6 @@ Finally, Wave servers can be federated together, allowing different companies to
 
 <p>Overall, I am curious to try this product, especially for collaborative document editing such as functional specifications. <br />
 On the technical side, some aspects are noteworthy: the unified design for supporting the broad continuum of conversation and collaboration models, the design supporting the concurrent editing and the protocol for server federation. The collaborative editing feature relies on <a href="http://en.wikipedia.org/wiki/Operational_transformation">operational transformation</a>, which involves distributed version tracking, and change merging. Here is Google's paper on the use and simplifications of <a href="http://www.waveprotocol.org/whitepapers/operational-transform">operational transformation in Wave</a>. Incidentally, the same design can also support undo, disconnected operation (offline mode) or even a general P2P architecture (no dedicated server).</p>
-
-<a name="more"></a>
 <p> <br />
 A <b>snapshot of the editor</b>, illustrating different features (conversation tree, concurrent editing):<br />
 <a href="http://radar.oreilly.com/2009/05/google-wave-what-might-email-l.html"><img src="http://radar.oreilly.com/upload/2009/05/Google_Wave_concurrent_edit.png" style="border: none" alt="Google Wave editor" /></a> <br />
@@ -84,40 +43,14 @@ A brief overview of concurrent editing in Wave using operational transformation:
 A more comprehensive survey of the operational transformation field:<br />
 <object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/84zqbXUQIHc&hl=en&fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/84zqbXUQIHc&hl=en&fs=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object></p>
 
-<span class="posted">Posted by Julien on June 01, 2009. <a href="http://blog.monstuff.com/archives/000358.html" rel="bookmark">Permalink</a> 
-<br /></span>
+______________________________________
 
-</div>
-
-
-
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '358';
-        var disqus_url = 'http://blog.monstuff.com/archives/000358.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>I'm deeply impressed.  Interestingly, today I came up to  EtherPad ( <a href="http://etherpad.com/">http://etherpad.com/</a> ), a collaboration tool that allows simultaneous work, probably based in the same technology you are pointing to.  EtherPad is brought to us by the AppJet team and it is already live.  It seems, however, that Google Wave completely includes EtherPad and it is actually much, much more than this.</p>
-<span class="comments-post">Posted by: <a href="mailto&#58;esquifit&#64;googlemail&#46;com">esquifit</a> at June  2, 2009 02:48 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;esquifit&#64;googlemail&#46;com">esquifit</a> (June  2, 2009 02:48 AM)
+
+______________________________________
+
 <p>Thinking of Wave in terms of "replacing" such as GMAIL (or even email, itself) is just silly.  Not every Internet communication needs to be (or even should be) as would be in Wave.  Traditional email, at the very least, should (and likely will) never go away.  Of this, I think there should be little fear or doubt.</p>
 
 <p>Now, that doesn't mean there won't be a place -- and a potent one, indeed -- in our lives for such as Wave and its ineluctable variants.  It, too, will be useful, under the right circumstances.  In fact, from my admittedly only-cursory analysis of it to date, I'm thinking that what actually MAY be "replaced" by Wave, as a practical matter, is traditional "chat," as we now know it (though traditional chat, mark my words, will continue to be around for years and years, too, no matter how good Wave ultimately gets).</p>
@@ -157,17 +90,21 @@ __________________________<br />
 Gregg L. DesElms<br />
 Napa, California<br />
 gregg[at]greggdeselms.com</p>
-<span class="comments-post">Posted by: <a href="http://www.greggdeselms.com">Gregg L. DesElms</a> at June  2, 2009 06:18 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.greggdeselms.com">Gregg L. DesElms</a> (June  2, 2009 06:18 PM)
+
+______________________________________
+
 <p>Hi Gregg,</p>
 
 <p>It seems that the privacy (or lack thereof) of the send-as-you-type nature of Wave is your main concern. The Wave team seems mindful of this issue and mentioned that this behavior could be turned off by the user ("don't show others until I am done").</p>
 
 <p>One privacy and confidentiality aspect which seems more sensitive in my mind is that bots (such as spell correction) see the document and may be run by different companies. Even if you host a Wave server in your firm, the spell-checker may be hosted by a third-party service, which will get access to your documents.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at June  4, 2009 01:04 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> (June  4, 2009 01:04 PM)
+
+______________________________________
+
 <p>JUST FYI FOR YOUR LAMINATE FLOOR POST: IMPORTANT!<br />
 Okay, so we finally know why we were having trouble installing our Tundra foor from Ikea: <a href="http://www.ikea.com/us/en/catalog/products/80103018">http://www.ikea.com/us/en/catalog/products/80103018</a><br />
 It seems, according to our friendly local Ikea, that some of the flooring sits in the warehouse, where the plastic wrap gets holes in it, and so the flooring gets warped. It's entirely possible that if you bring home say, 7 packages of flooring, about 175 sq. ft., that all of it could be bad!<br />
@@ -177,17 +114,23 @@ Of course, nowhere on Ikea's website or in the store does it say that.<br />
 Nowhere.<br />
 Anyway, due to our ruined pieces when we were trying every other available option to try to get it to work, the room is almost done. Now we need to go back and get some more to finish. It's about 50 bucks down the drain, unless Ikea will take the floor back sans receipt, because we cannot find the receipt. I'll report back and let you know if they're "stand-up guys" or not. They will take it back, no matter how destroyed it is, with receipt. But, we didn't expect to return it, and we cannot find our receipt, so we will see how good of a co. they are.<br />
 </p>
-<span class="comments-post">Posted by: <a href="mailto&#58;di&#64;dot&#46;com">di</a> at August  1, 2009 10:25 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="mailto&#58;di&#64;dot&#46;com">di</a> (August  1, 2009 10:25 PM)
+
+______________________________________
+
 <p>I tried to understand what is that Google Wave, but than I put the words in the seach field and found out that it is simple new online communication and collaboration tool.</p>
-<span class="comments-post">Posted by: <a href="http://www.silkgobelin.com">Picasso</a> at August  2, 2009 11:51 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.silkgobelin.com">Picasso</a> (August  2, 2009 11:51 PM)
+
+______________________________________
+
 <p>Google Wave looks very ambitious, maybe too much. It seems that other powerful platforms will have to follow it to make it successful and that's not obvious. We often forget that Google do not succeed in everything, fortunately :)</p>
-<span class="comments-post">Posted by: <a href="http://www.ficgs.com">Liam Baduk</a> at August 13, 2009 06:59 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.ficgs.com">Liam Baduk</a> (August 13, 2009 06:59 AM)
+
+______________________________________
+
 <p>the point is that when someone like me posts a response on this blog, you might want to be aware of it. You could recieve an email or an RSS feed update depending on the blog technology.</p>
 
 <p>If it were a wave, you would be able to see in your wave client that it had changed. You could reply privately to me, play back the events, comment or rewrite parts of particular paragraphs that you want more detail on.</p>
@@ -202,14 +145,9 @@ Anyway, due to our ruined pieces when we were trying every other available optio
 
 <p>So when you want to converse linearly - use a wave, when you want full collaboration, wave, when you want real time robot enhanced, secure, transactional, immersive, 3d, voice operated, auto transalted, communication...<br />
 </p>
-<span class="comments-post">Posted by: <a href="mailto&#58;steve&#64;bhyve&#46;com">stevebhyve</a> at August 17, 2009 06:43 PM</span>
-</div>
+
+Posted by: <a href="mailto&#58;steve&#64;bhyve&#46;com">stevebhyve</a> (August 17, 2009 06:43 PM)
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>
+{% endraw %}

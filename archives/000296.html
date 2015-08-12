@@ -1,56 +1,15 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Web API authentication for mashups</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Web API authentication for mashups</h2>
-
+---
+title: "Web API authentication for mashups"
+date: 2006-06-25 23:14:14 +0800
+disqus_identifier: 296
+disqus_url: http://blog.monstuff.com/archives/000296.html
+---
+{% raw %}
 <p>Jason Levitt has been teasing me in our discussions on cross-domain requests about Yahoo's upcoming authentication API.<br />
 The recurring problem: how to offer web APIs that can be mashed up but involve personal data?<br />
 You want to allow for a large number of third parties to integrate with your services, but don't want phishing sites to abuse them.</p>
 
 <p>Let me do a quick re-cap of the problem space before analyzing the pieces of Yahoo's solution. </p>
-
-<a name="more"></a>
 <p> <br />
 <h4>Communication techniques:</h4> Here is what is possible today for web browsers and what some people have recommended for the future:<br />
 <ul><li>cross-domain web APIs using script includes, </li><li>accessing web APIs accross domains using a web proxy, </li><li>using a client-based cross-domain solution (see <a href="http://blog.monstuff.com/FlashXMLHttpRequest">FlashXMLHttpRequest</a>), </li><li>neutered XMLHttpRequest with cross-domain support (see Chris Holland's <a href="http://chrisholland.blogspot.com/2005/03/contextagnosticxmlhttprequest-informal.html">ContextAgnosticXMLHttpRequest</a> and Douglas Crockford's <a href="http://json.org/JSONRequest.html">JSONRequest</a>), </li><li>cross-document messaging across domains (see <a href="http://www.whatwg.org/specs/web-apps/current-work/#crossDocumentMessages">CrossDocumentMessageEvent</a> from the WHATWG). </li></ul></p>
@@ -85,36 +44,8 @@ Cross-domain support in browsers will be the main remaining link missing to unle
 <p>I look forward to reading the documentation when the protocol is released and trying out the resulting user experience in practical scenarios. Let me know if you find any other information.<br />
 Jason mentioned that the protocol is open and can be simply implemented, which means that it could be supported by other services and hopefully used in a wide variety of mashups. </p>
 
-<span class="posted">Posted by Julien on June 25, 2006. <a href="http://blog.monstuff.com/archives/000296.html" rel="bookmark">Permalink</a> 
-<br /></span>
+______________________________________
 
-</div>
-
-
-
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '296';
-        var disqus_url = 'http://blog.monstuff.com/archives/000296.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>The main problem that Yahoo is trying to solve is that not all users can be trusted (that's the old problem that was solved with user-accounts and authentication methods) but now also the applications often can't be trusted. That's why the user is asked for permission to let the application access the data.<br />
 As you already said it is not the perfect solution because we don't want the user to be nagged every time he accesses a certain services, and on the other side, how to tell a serious mashup from a phishing web app?</p>
 
@@ -124,9 +55,11 @@ As you already said it is not the perfect solution because we don't want the use
 
 <p>Regards,<br />
 Snyke</p>
-<span class="comments-post">Posted by: <a href="http://www.Snyke.net">Christian Decker</a> at July 10, 2006 03:53 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.Snyke.net">Christian Decker</a> (July 10, 2006 03:53 PM)
+
+______________________________________
+
 <p>Hi Christian,<br />
 I agree with you that bank APIs and Flickr APIs are different beast, but I think that allowing Flickr types of scenario is already a good step forward.</p>
 
@@ -134,9 +67,11 @@ I agree with you that bank APIs and Flickr APIs are different beast, but I think
 The problem is how to apply this pattern to the mashup scenario.</p>
 
 <p>Btw, a good presentation on capability systems was just published: <a href="http://video.google.com/videoplay?docid=-7179100659758053865">http://video.google.com/videoplay?docid=-7179100659758053865</a></p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at July 11, 2006 04:00 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> (July 11, 2006 04:00 PM)
+
+______________________________________
+
 <p>Hi Joseph,</p>
 
 <p>Thanks for your comment. I'm happy to see that this topic interests more people and web companies.</p>
@@ -148,18 +83,22 @@ But I'm hoping it will be a bootstrap for more web APIs with proper access contr
 
 <p>Btw, Tyler's presentation at Google, on the topic of authority-based access control for the web is really worth the time. It presents the basics of capabilities on the web and some essential patterns. Watch it at <a href="http://video.google.com/videoplay?docid=8799856896828158583">http://video.google.com/videoplay?docid=8799856896828158583</a><br />
 </p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at July 26, 2006 07:21 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> (July 26, 2006 07:21 PM)
+
+______________________________________
+
 <p>Hi Joseph,</p>
 
 <p>I'm sorry. I erased your comment by mistake. I've been doing some pretty aggressive spam cleaning and the signal sometimes gets lost in the sea of noise I get.</p>
 
 <p>To summarize your comment: although you think that Yahoo's approach is technically sound, you were concerned about the user experience of having redirects. Also, you don't like the idea that because this solution is available, it might get adopted, even though the usability is imperfect.<br />
 You are curious about the ideas that people might have to solve this, possibly using iframes or building some support directly into the browser.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at July 26, 2006 11:19 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> (July 26, 2006 11:19 PM)
+
+______________________________________
+
 <p>[Reposting my comment from July 23rd, which accidentally got deleted. See responses above.]</p>
 
 <p>Jason-great post--you really nailed the issue! We're grappling with these same challenges at Plaxo (both as a provider of APIs to access our users' personal contact/calendar/etc data, and as a consumer of over mashups and APIs, e.g. auto-import from yahoo/hotmail/etc). </p>
@@ -171,21 +110,18 @@ You are curious about the ideas that people might have to solve this, possibly u
 <p>I'd love to here what you (and everyone reading this) has to say about this issue. I think it's really important that we discuss it and come up with better alternatives than what we have now.</p>
 
 <p>Thanks! js</p>
-<span class="comments-post">Posted by: <a href="http://www.plaxo.com">Joseph Smarr</a> at August  6, 2006 08:49 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.plaxo.com">Joseph Smarr</a> (August  6, 2006 08:49 AM)
+
+______________________________________
+
 <p>This is a bit off-topic, but here is the final Google TechTalk on capability security, which I highly recommend: <br />
 <a href="http://video.google.com/videoplay?docid=-7961423532989255419">http://video.google.com/videoplay?docid=-7961423532989255419</a></p>
 
 <p>It demonstrates how a secure desktop and web browser could work. </p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> at August  6, 2006 10:00 PM</span>
-</div>
+
+Posted by: <a href="http://blog.monstuff.com/">Julien Couvreur</a> (August  6, 2006 10:00 PM)
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>
+{% endraw %}

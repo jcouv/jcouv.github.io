@@ -1,49 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Slashdot - Single Page View</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Slashdot - Single Page View</h2>
-
+---
+title: "Slashdot - Single Page View"
+date: 2005-07-26 13:31:11 +0800
+disqus_identifier: 258
+disqus_url: http://blog.monstuff.com/archives/000258.html
+---
+{% raw %}
 <p>Here's the latest addition to my "single page view" series, this time for slashdot. <a href="http://blog.monstuff.com/archives/images/SlashdotSinglePageView.user.js" title="right click &#8594; Install User Script...">Slashdot - Single Page View</a> allows you to expand comments without reloading the page. <br />
 Clicking a "x replies beneath your current threshold" link will fetch the relevant comments in the background and merge them into the current view. <br />
 If you click the same link again will collapse it back to the original view.</p>
@@ -55,39 +16,9 @@ Note that the yellow hightlights were added to the screen capture and are not pa
 
 <p>This script also combines nicely with Matt's <a href="http://www.allpeers.com/blog/2005/05/18/slashdot-live-comment-tree-new-and-improved/">Slashdot Live Comment Tree</a> script, which allows you to expand and collapse threads that are visible in a given page.</p>
 
-<a name="more"></a>
 
+______________________________________
 
-<span class="posted">Posted by Julien on July 26, 2005. <a href="http://blog.monstuff.com/archives/000258.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
-
-
-
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '258';
-        var disqus_url = 'http://blog.monstuff.com/archives/000258.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p>This script needs to do a lot more. There are many other ways in which Slashdot "hides" comments. One of those, for example, is the link "Read the rest of the comment" for long posts. Other one is simply the link to the comment, without the comment's body. You can see many of those here:<br />
 <a href="http://science.slashdot.org/article.pl?sid=05/07/26/185212&threshold=1&tid=126&tid=103&tid=14">http://science.slashdot.org/article.pl?sid=05/07/26/185212&threshold=1&tid=126&tid=103&tid=14</a></p>
 
@@ -98,9 +29,11 @@ Note that the yellow hightlights were added to the screen capture and are not pa
 
 <p><br />
 All of them could benefit greatly from this script.</p>
-<span class="comments-post">Posted by: <a href="http://paulgoscicki.com">Paul Goscicki</a> at July 27, 2005 05:32 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://paulgoscicki.com">Paul Goscicki</a> (July 27, 2005 05:32 AM)
+
+______________________________________
+
 <p>Hi Paul,</p>
 
 <p>Thanks for your feedback.<br />
@@ -109,17 +42,21 @@ In the meanwhile, I recommend you change your moderation filter to 5 (which is w
 
 <p>Cheers,<br />
 Julien </p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at July 27, 2005 08:57 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> (July 27, 2005 08:57 AM)
+
+______________________________________
+
 <p>Funny thing, at threshold 5 the script broke down. Show/hide urls doesnt expand anything. Here's the url: <a href="http://developers.slashdot.org/comments.pl?sid=157124&threshold=5&mode=thread&commentsort=0&op=Change">http://developers.slashdot.org/comments.pl?sid=157124&threshold=5&mode=thread&commentsort=0&op=Change</a></p>
 
 <p>Btw: I also use Slashdot recolor and Slashdot logo replacer scripts.</p>
 
 <p>Btw2: Slashdot is generally super ugly, not only when it comes to markup.</p>
-<span class="comments-post">Posted by: <a href="http://paulgoscicki.com">Paul Goscicki</a> at July 27, 2005 12:33 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://paulgoscicki.com">Paul Goscicki</a> (July 27, 2005 12:33 PM)
+
+______________________________________
+
 <p>Hi Julien</p>
 
 <p>Thanks for taking pains to let me know of this. Unfortunately, Greasemonkey doesn't work on my PPC Linux machine. </p>
@@ -127,37 +64,40 @@ Julien </p>
 <p>Will try out the plugin on my Windows box and let you know! </p>
 
 <p>BTW, a user script to view only funny comments, or insightful one might be interesting.</p>
-<span class="comments-post">Posted by: <a href="http://robotgeek.freefronthost.com/blog">robotgeek</a> at July 27, 2005 08:25 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://robotgeek.freefronthost.com/blog">robotgeek</a> (July 27, 2005 08:25 PM)
+
+______________________________________
+
 <p>Hi Paul,<br />
 It actually looks like it's a scraping issue on the different slashdot sub-domains.<br />
 The same article/comments using apple.slashdot.org as the domain appears to work:<br />
 <a href="http://apple.slashdot.org/comments.pl?sid=157124&threshold=5&mode=thread&commentsort=0&op=Change">http://apple.slashdot.org/comments.pl?sid=157124&threshold=5&mode=thread&commentsort=0&op=Change</a></p>
 
 <p>I'll probably modify the script to force that domain for all article, as a workaround.</p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> at July 28, 2005 08:50 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien Couvreur</a> (July 28, 2005 08:50 AM)
+
+______________________________________
+
 <p>It looks like Slashdot is getting ready for a CSS-based facelift: <a href="http://www.newsgoat.com/2005/07/27/slashdot-css-for-nerds-markup-that-matters/">http://www.newsgoat.com/2005/07/27/slashdot-css-for-nerds-markup-that-matters/</a><br />
 When that happens, I'll try to fix this user script to work with the new (and hopefully cleaner) markup. </p>
-<span class="comments-post">Posted by: <a href="http://blog.monstuff.com">Julien</a> at July 28, 2005 02:14 PM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://blog.monstuff.com">Julien</a> (July 28, 2005 02:14 PM)
+
+______________________________________
+
 <p>Yeah, the CSS version should help alot.  Tables can get ugly real quick for things like comments scripts.</p>
-<span class="comments-post">Posted by: <a href="http://www.chillinois.net/">dusty</a> at August  2, 2005 10:27 AM</span>
-</div>
-<div class="comments-body">
+
+Posted by: <a href="http://www.chillinois.net/">dusty</a> (August  2, 2005 10:27 AM)
+
+______________________________________
+
 <p>The CSS version is helpful. It contribute a lot to the appearence of the blog.<br />
 </p>
-<span class="comments-post">Posted by: <a href="http://www.esinglemingle.com">Stewart</a> at January  6, 2006 10:52 AM</span>
-</div>
+
+Posted by: <a href="http://www.esinglemingle.com">Stewart</a> (January  6, 2006 10:52 AM)
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>
+{% endraw %}

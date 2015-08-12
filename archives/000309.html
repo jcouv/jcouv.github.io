@@ -1,49 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Xbox 360 + Windows Media Connect = video streaming</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Xbox 360 + Windows Media Connect = video streaming</h2>
-
+---
+title: "Xbox 360 + Windows Media Connect = video streaming"
+date: 2006-11-29 11:06:15 +0800
+disqus_identifier: 309
+disqus_url: http://blog.monstuff.com/archives/000309.html
+---
+{% raw %}
 <p>Until now, the Xbox 360 software would allow reading pictures and music shared from a PC (running Windows Media Connect), but not video. For video streaming, you had to run Windows Media Center on the PC.<br />
 A recent update of the Xbox 360 now allows video streaming from <a href="http://www.microsoft.com/windows/windowsmedia/devices/wmconnect/">Windows Media Connect</a> or <a href="http://www.microsoft.com/windows/windowsmedia/player/11/default.aspx">Windows Media Player 11</a>, although for WMV files only. Luckily, VLC can convert most video formats (DivX, Xvid, etc.) to WMV.</p>
 
@@ -54,46 +15,9 @@ Then, you can get some sample WMV HD files from the <a href="http://www.microsof
 Finally, use VLC thru this <a href="http://happybeggar.com/index.php?option=com_content&task=view&id=60&Itemid=2">convenient one-click conversion batch script</a> to transcode videos to WMV format for streaming playback on the 360.</p>
 
 <p>The re-encoding approach using VLC is not as smooth as an on-the-fly transcoding (which <a href="http://digg.com/gaming_news/Xbox_360_DivX_Playback_Guide">TVersity apparently now supports</a>), since you have to wait until the conversion is complete before you can watch the video. On the other hand, it doesn't require a super powerful PC, provided that you are not in a rush.</p>
-
-<a name="more"></a>
 <p><b>Update (2007/12/06):</b> A new version of the Xbox 360 dashboard was just released. The update <a href="http://gizmodo.com/gadgets/xbox-360-divx%5Cxvid-test/xbox-360-divxxvid-tested-it-plays-almost-everything-329769.php">includes support for DivX/Xvid codecs</a>. Yay!<br />
 </p>
 
-<span class="posted">Posted by Julien on November 29, 2006. <a href="http://blog.monstuff.com/archives/000309.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
 
 
-
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '309';
-        var disqus_url = 'http://blog.monstuff.com/archives/000309.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-
-
-
-</div>
-</div>
-
-
-</body>
-</html>
+{% endraw %}

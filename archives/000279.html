@@ -1,49 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Comment Tracking with coComment</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Comment Tracking with coComment</h2>
-
+---
+title: "Comment Tracking with coComment"
+date: 2006-02-22 18:16:58 +0800
+disqus_identifier: 279
+disqus_url: http://blog.monstuff.com/archives/000279.html
+---
+{% raw %}
 <p>Tracking the comments I leave at other people's blogs have been a <a href="http://blog.monstuff.com/archives/000206.html">long time problem for me</a>. And it looks like many bloggers have the same problem.</p>
 
 <p>One item on my todo list (that I didn't get to) has been to write a Greasemonkey script that would log my comments using Gmail (building on top of my <a href="http://blog.monstuff.com/archives/000238.html">"Mailto Compose In GMail" userscript</a>). But proper comment form detection was an obvious difficulty. </p>
@@ -51,53 +12,18 @@
 <p>A new service has appeared, <a href="http://www.cocomment.com/">coComment</a>, which solved that issue, allowing you to effectively track your comments. <br />
 It works by injecting some javascript into any page with a comment form, so that your submission gets logged onto their server in the background. This modification of the form can be done using a bookmarklet (don't forget to click it before submitting your comment) or a <a href="http://www.solutionwatch.com/313/comment-tracking-with-cocomment/">Greasemonkey scripts</a>. <br />
 It is able to recognize comment forms from various blogging tools, by having some specific code for each platform it <a href="http://www.cocomment.com/supported">supports</a> (Blogger, MovableType, ...). I wonder if a microformat could get any traction in standardizing comment forms a bit more.</p>
-
-<a name="more"></a>
 <p> <br />
 The Greasemonkey script is much more convenient than the bookmarklet, since it removes the manual step. For non-Greasemonkey and IE/Safari/... users, I'm sure that equivalent functionality will soon appear in the form of browser extensions. </p>
 
 <p>Kudos to the coComment team. I'm sure we'll hear more from their product as it  makes the rounds.</p>
 
-<span class="posted">Posted by Julien on February 22, 2006. <a href="http://blog.monstuff.com/archives/000279.html" rel="bookmark">Permalink</a> 
-<br /></span>
+______________________________________
 
-</div>
-
-
-
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '279';
-        var disqus_url = 'http://blog.monstuff.com/archives/000279.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-<div class="comments-body">
 <p><br />
 There is not problem with tracking scripts but it is also open to abuse by others if any of these scripts have a flaw, as there always are. It brings up privacy/security issues again if not secure.</p>
-<span class="comments-post">Posted by: <a href="http://www.meltingfilm.com">Andre</a> at March 23, 2006 08:57 AM</span>
-</div>
+
+Posted by: <a href="http://www.meltingfilm.com">Andre</a> (March 23, 2006 08:57 AM)
 
 
 
-</div>
-</div>
-
-
-</body>
-</html>
+{% endraw %}

@@ -1,49 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<title>Curiosity is bliss: Google hinting</title>
-
-<link rel="stylesheet" href="http://blog.monstuff.com/styles-site.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.monstuff.com/index.rdf" />
-
-<link rel="start" href="http://blog.monstuff.com/" title="Home" />
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga }}', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</head>
-
-<body>
-
-<div id="banner">
-<h1><a href="http://blog.monstuff.com/" accesskey="1">Curiosity is bliss</a></h1>
-<span class="description">Julien Couvreur's programming blog and more</span>
-</div>
-
-<div id="container">
-
-
-<div class="blog">
-
-
-
-
-<div class="blogbody">
-
-<h2 class="title">Google hinting</h2>
-
+---
+title: "Google hinting"
+date: 2004-08-25 12:34:48 +0800
+disqus_identifier: 204
+disqus_url: http://blog.monstuff.com/archives/000204.html
+---
+{% raw %}
 <p>Phil Ringnalda and Ian Hickson are thinking about <a href="http://philringnalda.com/blog/2004/08/time_for_an_untrusted_content_element.php">extending HTML with search engine hinting tags</a>.<br />
 I totally agree with this, as I <a href="http://blog.monstuff.com/archives/000109.html#htmlhinting">mentioned before</a>. The questions are whether the attribute should be on a block or on individual links, whether we should have more general link typing or simply "vote abstain" ("vote against" is a bad idea), and whether Google could handle it.</p>
 
@@ -51,45 +12,8 @@ I totally agree with this, as I <a href="http://blog.monstuff.com/archives/00010
 For Google, I would expect that a tag on the link would be easier to handle, parsing-wise. I really wish the Google people would chime in on this.</p>
 
 <p>I was also glad to hear that <a href="http://blog.monstuff.com/archives/000109.html#htmlhinting">finer level indexing hints</a> actually <a href="http://www.michaelhanscom.com/eclecticism/2004/08/untrusted_conte.html">exist and implemented in some search engines (FDSE)</a>, but again Google doesn't not seem to have responded to these suggestions.</p>
-
-<a name="more"></a>
 <p><u>Update:</u> Some indications that Google is <a href="/archives/000225.html">making a move</a>.</p>
 
-<span class="posted">Posted by Julien on August 25, 2004. <a href="http://blog.monstuff.com/archives/000204.html" rel="bookmark">Permalink</a> 
-<br /></span>
-
-</div>
 
 
-
-<div class="comments-head"><a name="comments"></a>Comments</div>
-
-<div class="comments-body">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'curiosityisbliss'; 
-        var disqus_identifier = '204';
-        var disqus_url = 'http://blog.monstuff.com/archives/000204.html';
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>    
-
-
-
-
-
-
-
-</div>
-</div>
-
-
-</body>
-</html>
+{% endraw %}
