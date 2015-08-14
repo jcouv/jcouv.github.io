@@ -27,6 +27,14 @@ annotate tag
 
 Each object type has a specific serialization to file. For instance a blob is "blob <space> <content length> \0 <content>".
 
+As you commit multiple versions of a file, the object folder grows and contains a lot of duplication. A git command allows to pack the object. This creates an index file and a pack data file.
+The index is a list of SHA-1 object identifiers that got packed, and some information for finding the object in the pack data file. Because the data can be stored in different ways in the data file (either a snapshot or a delta), there are two types of index rows.
+Simple or snapshot index entries have an identifier, object type, object size, and offsets.
+Delta index entries have an identifier, object type, some offsets and the SHA-1 identifier of the baseline object.
+When git packs the objects, it decides which objects to keep as snapshot and which to keep as delta.
+
+
+
 ## references folder 
 refs/heads
 refs/tags
