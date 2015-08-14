@@ -7,6 +7,7 @@ I started to use Git more regularly and was curious about its design. [Pro Git](
 ## Object model
 
 The Git object model has a few types, mainly: blobs (for files), trees (for folder) and commits. Objects are immutable (they are added but not changed or removed) and every object is identified by its unique SHA-1 hash.
+A blob is just the contents of a file. By default, every new version of a file gets a new blob, which is a snapshot of the file (not a delta like many other versioning systems).
 A tree is a list of references to blobs and trees.
 A commit is a reference to a tree, a reference to parent commit(s) and some decoration (message, author).
 
@@ -15,8 +16,10 @@ Then there are branches and tags, which are typically just references to commits
 The illustration (borrowed from Pro Git) shows branches, commits, trees and blobs and their relationship:
 ![git-data-model-4.png]({{site.baseurl}}/archives/images/git-data-model-4.png)
 
+High-level Git commands (init, add, commit) are the most common way of manipulating the object model (and its underlying stored representation), but Git also offers a number of low-level commands (for instance to create a blob object).
+
 ## Storage format
-All those objects get stored inside the `.git` folder, which has the following structure:
+Let's move on to the physical storage of those objects. All the repository data is stored in the `.git` folder, which has the following structure:
 
     objects/
     refs/
@@ -26,7 +29,7 @@ All those objects get stored inside the `.git` folder, which has the following s
     hooks/
     info/
 
-We'll cover the first three.
+We'll cover `objects`, `refs` and `HEAD`.
 
 ### objects folder
 All objects are store in this folder, using their SHA-1 identifier as filename (the first two characters of the identifier are used as sub-folder). The objects can optionally be packed, in which case they get moved into a pack file, which comes with an index file.
