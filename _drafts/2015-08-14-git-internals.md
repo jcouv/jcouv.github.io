@@ -25,7 +25,18 @@ tree (list of filenames with SHA-1 references, object type and mode, where mode 
 commit (reference to toplevel tree, author information and commit message)
 annotate tag
 
-Each object type has a specific serialization to file. For instance a blob is "blob \<space\> \<content length\> \0 \<content\>"
+Each object type has a specific serialization to file. For instance a blob is "blob <space> <content length> \0 <content>".
+
+## references folder 
+refs/heads
+refs/tags
+
+
+heads contains files named after branches. Each contains the SHA-1 reference of a commit object.
+`tags`contains files named after tags. Each contains the SHA-1 reference of either a commit object (for simple tags), or an annotated tag object. 
+.git/HEAD contains the pathname to a head file (for instance `refs/heads/master`).
+
+
 
 
 
