@@ -30,10 +30,10 @@ Each object type has a specific serialization to file. For instance a blob is "b
 ## references folder 
 refs/heads
 refs/tags
-
+refs/remotes
 
 heads contains files named after branches. Each contains the SHA-1 reference of a commit object.
-`tags`contains files named after tags. Each contains the SHA-1 reference of either a commit object (for simple tags), or an annotated tag object. 
+`tags`contains files named after tags. Each typically contains the SHA-1 reference of a commit object (for simple tags), but it can reference any git object (such as an annotated tag object, or a blob object). 
 .git/HEAD contains the pathname to a head file (for instance `refs/heads/master`).
 
 
