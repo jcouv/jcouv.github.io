@@ -36,7 +36,7 @@ We'll cover `objects`, `refs` and `HEAD`.
 
 ### Objects folder
 The `.git/objects` folder looks like this: 
-    <SHA-1 named files>
+    &lt;SHA-1 named files>
     pack file and index file
     
 All objects are store in this folder, using their SHA-1 identifier as filename (the first two characters of the identifier are used as sub-folder). The objects can optionally be packed, in which case they get moved into a pack file, which comes with an index file.
