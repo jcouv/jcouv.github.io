@@ -4,6 +4,7 @@ published: true
 ---
 
 
+
 I started to use Git more regularly and was curious about its design. [Pro Git](http://www.git-scm.com/book/en/v2) is an excellent and free book on using and understanding Git. I'll share some minimalist notes I took on Git's internal design.
 
 ## Object model
@@ -36,14 +37,14 @@ We'll cover `objects`, `refs` and `HEAD`.
 ### objects folder
 All objects are store in this folder, using their SHA-1 identifier as filename (the first two characters of the identifier are used as sub-folder). The objects can optionally be packed, in which case they get moved into a pack file, which comes with an index file.
 
+So the folder looks like this:  
     <SHA-1 named files>
     pack file and index file
 
-Each type of object holds different kind of information:
+As we've seen, each type of object holds different kind of information:
 * blob (contents of a file)
 * tree (list of filenames, each with a SHA-1 reference and an object type, which can be normal, executable, symbolic link or directory) 
 * commit (reference to toplevel tree, author information and commit message)
-* annotated tag
 
 Each object type has a specific serialization to file. For instance blob objects are serialized as "blob <space> <content length> \0 <content> <linefeed>" which is then compressed with zlib.
 
