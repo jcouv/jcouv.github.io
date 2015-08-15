@@ -36,6 +36,7 @@ We'll cover `objects`, `refs` and `HEAD`.
 
 ### Objects folder
 The `.git/objects` folder looks like this: 
+
     &lt;SHA-1 named files>
     pack file and index file
     
