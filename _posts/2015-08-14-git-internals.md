@@ -66,7 +66,4 @@ All the objects we have stored so far can only be accessed if you know their ide
 
 `heads` contains files named after branches. Each holds the SHA-1 reference of a commit object.  
 `tags` contains files named after tags. Each contains the SHA-1 reference of a commit object (for simple tags, without annotations).  
-Finally, `.git/HEAD` contains the pathname to the head file (for instance `refs/heads/master`) which you currently have checked out.  
-
-
-http://www-cs-students.stanford.edu/~blynn/gitmagic/ch08.html
+Finally, the file `.git/HEAD` contains the pathname to the head file (for instance `refs/heads/master`) which you currently have checked out.  
