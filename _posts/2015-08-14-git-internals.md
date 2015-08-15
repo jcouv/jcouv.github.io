@@ -5,6 +5,7 @@ published: true
 
 
 
+
 I started to use Git more regularly and was curious about its design. [Pro Git](http://www.git-scm.com/book/en/v2) is an excellent and free book on using and understanding Git. I'll share some minimalist notes I took on Git's internal design. The design is simple and elegant. It's been very enjoyable to learn about.
 
 ## Object model
@@ -45,7 +46,7 @@ As we've seen, each type of object holds different kind of information:
 * tree (list of filenames, each with a SHA-1 reference and an object type, which can be normal, executable, symbolic link or directory) 
 * commit (reference to toplevel tree, author information and commit message)
 
-Each object type has a specific serialization to file. For instance blob objects are serialized as "blob <space> <content length> \0 <content> <linefeed>" which is then compressed with zlib.
+Each object type has a specific serialization to file. For instance blob objects are serialized as "blob &lt;space> &lt;content length> \0 &lt;content> &lt;linefeed>" which is then compressed with zlib.
 
 ### Pack file
 As you commit multiple versions of a file, the objects folder grows and contains a lot of duplication. A git command allows to pack the objects. This creates an index file and a pack data file.  
@@ -68,4 +69,4 @@ All the objects we have stored so far can only be accessed if you know their ide
 
 `heads` contains files named after branches. Each holds the SHA-1 reference of a commit object.  
 `tags` contains files named after tags. Each contains the SHA-1 reference of a commit object (for simple tags, without annotations).  
-Finally, the file `.git/HEAD` contains the pathname to the head file (for instance `refs/heads/master`) which you currently have checked out.  
+Finally, the file `.git/HEAD` contains the pathname to the head file (for instance `refs/heads/master`) which you currently have checked out.
