@@ -34,12 +34,12 @@ Let's move on to the physical storage of those objects. All the repository data 
 
 We'll cover `objects`, `refs` and `HEAD`.
 
-### objects folder
-All objects are store in this folder, using their SHA-1 identifier as filename (the first two characters of the identifier are used as sub-folder). The objects can optionally be packed, in which case they get moved into a pack file, which comes with an index file.
-
-So the folder looks like this:  
+### Objects folder
+The `.git/objects` folder looks like this: 
     <SHA-1 named files>
     pack file and index file
+    
+All objects are store in this folder, using their SHA-1 identifier as filename (the first two characters of the identifier are used as sub-folder). The objects can optionally be packed, in which case they get moved into a pack file, which comes with an index file.
 
 As we've seen, each type of object holds different kind of information:
 * blob (contents of a file)
@@ -48,7 +48,7 @@ As we've seen, each type of object holds different kind of information:
 
 Each object type has a specific serialization to file. For instance blob objects are serialized as "blob <space> <content length> \0 <content> <linefeed>" which is then compressed with zlib.
 
-### pack file
+### Pack file
 As you commit multiple versions of a file, the object folder grows and contains a lot of duplication. A git command allows to pack the object. This creates an index file and a pack data file.  
 The index is a list of SHA-1 object identifiers that got packed, and some information for finding the object in the pack data file. Because the data can be stored in different ways in the data file (either a snapshot or a delta), there are two types of index rows.  
 Simple or snapshot index entries have an identifier, object type, object size, and start/end offsets for finding the blob in the pack data file.  
@@ -57,11 +57,12 @@ When git packs the objects, it decides which objects to keep as snapshot and whi
 
 
 ### references folder
-All the objects we have stored so far can only be accessed if you know their identifier. The branches and tags are ways to keep a handle on a few of those identifiers, by giving them a friendlier name and allowing to enumerate them.
-
+The `.git/refs` folder looks like this:
     refs/heads
     refs/tags
     refs/remotes
+
+All the objects we have stored so far can only be accessed if you know their identifier. The branches and tags are ways to keep a handle on a few of those identifiers, by giving them a friendlier name and allowing to enumerate them.
 
 `heads` contains files named after branches. Each holds the SHA-1 reference of a commit object.  
 `tags` contains files named after tags. Each contains the SHA-1 reference of a commit object (for simple tags, without annotations).  
