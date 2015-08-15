@@ -1,4 +1,5 @@
 ---
+title: Git Internals
 published: true
 ---
 
