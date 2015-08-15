@@ -5,10 +5,9 @@ published: true
 
 
 
-I started to use Git more regularly and was curious about its design. [Pro Git](http://www.git-scm.com/book/en/v2) is an excellent and free book on using and understanding Git. I'll share some minimalist notes I took on Git's internal design.
+I started to use Git more regularly and was curious about its design. [Pro Git](http://www.git-scm.com/book/en/v2) is an excellent and free book on using and understanding Git. I'll share some minimalist notes I took on Git's internal design. The design is simple and elegant. It's been very enjoyable to learn about.
 
 ## Object model
-
 The Git object model has three types: blobs (for files), trees (for folder) and commits. Objects are immutable (they are added but not changed or removed) and every object is identified by its unique SHA-1 hash.  
 A blob is just the contents of a file. By default, every new version of a file gets a new blob, which is a snapshot of the file (not a delta like many other versioning systems).  
 A tree is a list of references to blobs and trees.  
