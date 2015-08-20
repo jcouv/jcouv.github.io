@@ -12,8 +12,8 @@ For instance:
 * What kind of volcanic activity could achieve the odd shape of the mounts?
 * If the trenches are collapsed lava tubes, where are the tubes' exits, and where are the collapsed debris?
 * How to explain the remarkable fields of spherical debris observed by the rovers?
-* How did Martian rocks end up on Earth, without the necessary impact having left a massive crater?
-* If Phobos was formed by accretion of Martian matter and satellites, how did it hold together after the collision that left the apparent crater?
+* How did Martian rocks end up on Earth, without the necessary collision having left a massive crater?
+* If Phobos was formed by accretion of matter blasted off the Martian surface, as is now believed, how did it hold together after the deep impact apparent on its surface?
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/tRV1e5_tB6Y" frameborder="0" allowfullscreen></iframe>
 
