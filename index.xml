@@ -29,7 +29,7 @@
     <item>
       <title>{{ post.title | xml_escape }}</title>
       <link>{{ site.url }}{{ site.baseurl }}{{ post.url }}</link>
-      <description>{{ post.content | xml_escape }}</description>
+      <description><![CDATA[{{ post.content}}]]></description>
       <guid isPermaLink="true">{{ site.url }}{{ site.baseurl }}{{ post.url }}</guid>
       <pubDate>{{ post.date | date_to_xmlschema }}</pubDate>
     </item>
