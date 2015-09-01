@@ -3,7 +3,6 @@ published: false
 ---
 
 
-
 A piece of acrylic is irradiated with electrons by a 5 million volt accelerator. The trapped electrons are then discharged, using a metal point as a trigger. In an instant, the escaping charges crack the material, leaving behind a permanent "lightning fossil". 
 
 ![Captured lightning 1.png]({{site.baseurl}}/archives/images/Captured lightning 1.png)
