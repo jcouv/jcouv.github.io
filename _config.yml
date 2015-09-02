@@ -35,7 +35,7 @@ sass:
   sass_dir:          _sass
   style:            :compressed
 
-pages_list:       { 'Archive':'/archives.html', 'Feed':'/index.xml', 'About':'/about.html' }
+pages_list:       { 'Archive':'/archives.html', 'Feed':'/index.xml', 'About':'/about.html', 'Search':'https://cse.google.com/cse/publicurl?cx=005101733046013339255:zbcros0nd_0' }
 
 exclude:
   - .gitignore
