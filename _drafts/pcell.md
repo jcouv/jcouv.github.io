@@ -24,6 +24,6 @@ Whether or how such a design can be compatible with Shannon's channel limit was 
 But, judging from the latest demos, the approach seems to hold to its promise. Their first product is apparently released to select partners for trial, so I can't wait to see the real-world results and reviews.  
 
 
-
+https://www.youtube.com/channel/UCgDns8O1TwKMoSuG0JTaVQA/videos
 
 http://www.rearden.com/artemis/An-Introduction-to-pCell-White-Paper-150224.pdf
