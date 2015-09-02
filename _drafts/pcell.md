@@ -5,9 +5,7 @@ published: false
 ---
 
 
-# Personal cell
-
-I've been keeping an eye on the pCell technology since the original annoucement. It's a new wireless technology which, if it works, could offer significantly increased and more uniform bandwidth to mobile devices. 
+I've been keeping an eye on the pCell technology since Steve Perlman's original annoucement. It's a wireless technology which, if it works, could offer significantly increased and more uniform bandwidth to mobile devices. 
 
 There are problems with traditional cellular and wireless networks: (1) devices within a cell share bandwidth to the antenna, (2) devices further away from the antenna get a weaker signal, and (3) devices between two antennas suffer interferences.  
 The standard solution is create more and smaller cells (each covering a smaller area). But this is tricky as different cells interfere, which results in uneven coverage and data rates.  
