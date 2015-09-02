@@ -7,18 +7,18 @@ published: false
 
 # Personal cell
 
-I've been keeping an eye on the pCell technology since the original annoucement. I'll share an overview of the problem and solution. It should become obvious why I find technology exciting.   
+I've been keeping an eye on the pCell technology since the original annoucement. It's a new wireless technology which, if it works, could offer significantly increased and more uniform bandwidth to mobile devices. 
 
-There are multiple problems with traditional cellular and wireless networks: devices within a cell share bandwidth to the antenna, devices further away from the antenna get a weaker signal, and devices between two antennas suffer interferences.  
+There are problems with traditional cellular and wireless networks: (1) devices within a cell share bandwidth to the antenna, (2) devices further away from the antenna get a weaker signal, and (3) devices between two antennas suffer interferences.  
 The standard solution is create more and smaller cells (each covering a smaller area). But this is tricky as different cells interfere, which results in uneven coverage and data rates.  
 
-I've collected clues on the pCell solution from various videos (some of which I can't seem to find anymore), and here's what I pieced:  
-A server controls a number of antennas and keeps track of the distance (latency) between each device and each antenna. When it wants to send a message a specific device, it adds that message to the signal of each antenna with compensating delay. The result is that that message will constructively interfere at the location of the target device, while those not meant for this device will destructively interfere.  
+I've collected clues on the pCell solution from various videos (some of which I linked below and some which I can't seem to find anymore), and here's what I pieced:  
+A server controls a number of antennas and keeps track of the distance (latency) between each device and each antenna. When the server wants to send a message a specific device, it adds that message/waveform to the signal of each antenna with compensating delay. The result is that that message will constructively interfere at the location of the target device, while those not meant for this device will destructively interfere.  
 The message can use whatever protocol the device expects and understands (this works with your existing phone). This "personal cell" (pCell) is apparently smaller than a cubic centimeter, allowing for great proximity/density of devices.  
 
 For outgoing messages from the device, the server applies compensating delay to the signals received by each antenna and adds them up. This reconstructs the message sent by that particular device. The same process is applied for each tracked device.  
 
-When devices move, their distance (latency) to each antenna changes and the server needs to keep track of that. This is key and probably the most difficult part of the problem. Sadly I don't remember this being explained in any details, except maybe for a mention of the Doppler effect.  
+When a device move, its distance (latency) to each antenna changes and the server needs to keep track of that. This is key and probably the most difficult part of the problem. Sadly I don't remember this being explained in any details, except maybe for a mention of the Doppler effect.  
 
 
 This diagram (with added annotation) shows the simulated impact of pCell on users in a San Francisco model:  
@@ -33,11 +33,11 @@ I still don't know how the pCell design can be reconciled with Shannon's channel
 
 
 
+https://www.youtube.com/watch?v=Lv-vkBNzZwE (demonstrates the size of a pCell)
 
-
-https://www.youtube.com/watch?v=1QxrQnJCXKo
-https://www.youtube.com/watch?v=wGAnDQEQJ_s
-https://youtu.be/NKFyCOoo5Y4?t=26m16s
+https://www.youtube.com/watch?v=1QxrQnJCXKo (Columbia 2011)
+https://www.youtube.com/watch?v=wGAnDQEQJ_s (Stanford 2014) 
+https://youtu.be/NKFyCOoo5Y4?t=26m16s (Columbia 2011)
 http://venturebeat.com/2014/02/20/steve-perlman-pcell-is-real-and-it-will-change-the-world-interview/view-all/
 
 
