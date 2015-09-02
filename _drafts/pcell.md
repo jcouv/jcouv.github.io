@@ -20,11 +20,11 @@ For outgoing messages from the device, the server applies compensating delay to 
 When devices move, their distance (latency) to each antenna changes and the server needs to keep track of that. I don't have a good understand of how they solved that, but apparently their approach relies on the Doppler effect.  
 
 
-This diagram (with added annotation) summarizes the impact of pCell on users in a simulated deployment in San Francisco:  
+This diagram (with added annotation) summarizes the impact of pCell on users in a San Francisco simulation:  
 
 ![pCell.PNG]({{site.baseurl}}/archives/images/pCell.PNG)
 
-There are two topologies simulated (one based on 32 Sprint towers, and the other based on 220 random locations). The top row shows pCell in two frequency ranges and the bottom row shows LTE with 4x4 and 8x8 MIMO. The take-away is that the distribution of bandwidth per user is expected to shift closer to the peak. 
+There are two topologies modeled (one based on 32 Sprint towers, and the other based on 220 random locations). The top row shows pCell in two frequency ranges and the bottom row shows LTE with 4x4 and 8x8 MIMO. The take-away is that the distribution of bandwidth per user is expected to shift closer to the peak. 
 
 
 I still don't know how the pCell design can be reconciled with Shannon's channel limit, or how the issue is sidestepped. Some folks doubt this could even work at all, despite the [demos](https://www.youtube.com/channel/UCgDns8O1TwKMoSuG0JTaVQA/videos).
@@ -36,6 +36,7 @@ I'm pretty excited about the potential benefits detailed in their [whitepaper](h
 
 https://www.youtube.com/watch?v=1QxrQnJCXKo
 https://www.youtube.com/watch?v=wGAnDQEQJ_s
+https://youtu.be/NKFyCOoo5Y4?t=26m16s
 
 
 
