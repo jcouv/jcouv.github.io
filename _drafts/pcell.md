@@ -23,6 +23,7 @@ When devices move, their distance (latency) to each antenna changes and the serv
 Whether or how such a design can be compatible with Shannon's channel limit was a major concern. I'm not sure how it was resolved or sidestepped.
 But, judging from the latest demos, the approach seems to hold to its promise. Their first product is apparently released to select partners for trial, so I can't wait to see the real-world results and reviews.  
 
+https://www.youtube.com/watch?v=wGAnDQEQJ_s
 
 https://www.youtube.com/channel/UCgDns8O1TwKMoSuG0JTaVQA/videos
 
