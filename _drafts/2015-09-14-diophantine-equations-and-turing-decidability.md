@@ -14,4 +14,6 @@ The union and intersection of Diophantine sets is also Diophantine.
 FirstPolynomial^2 + SecondPolynomial^2 = 0
 FirstPolynomial * SecondPolynomial = 0
 
+Step by step, you can show that more complex sets are Diophantine, such as the set of exponentials (for any a and n, {a, a^n}) or the set of prime numbers.
+
 
