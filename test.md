@@ -6,16 +6,17 @@ layout: page
 <script type="text/javascript"
         src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 
+
+
+</script>
+
     MathJax.Hub.Config({ styles: {
         ".MathJax": {
             color: "#000000"
         }
     }
-    })
-
-</script>
-
-
+    });
+    
 MathJax.Hub.Config({
       tex2jax: {
         skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
