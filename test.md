@@ -5,6 +5,7 @@ layout: page
 
 
 
+
 Diophantine equations and Turing decidability
 
 
@@ -22,14 +23,15 @@ The union and intersection of Diophantine sets is also Diophantine, if you consi
 
 So, the set of non-negative even numbers can be represented by combining the above. More generally, there is an equivalence between determining if a Diophantine equation has integer solutions or non-negative solutions. So the default is to focus on non-negative solutions.
 
-The notion of Diophantine sets can naturally be extended to properties, relations and functions. I'll just illustrate those with examples:
-- We already saw that the set of even numbers is Diophantine, therefore so is the corresponding property: `IsEven(a) -> bool`.
-- We could show that the set of pairs `{a, b}` where `a` is not equal to `b` is Diophantine, therefore so is the corresponding relation: `NotEqual(a, b) -> bool`.
-- We could show that the set of triplets `{a, b, c}` where `a` is the remainder of `b` divided by `c` is Diophantine, therefore so is the corresponding function: `a = rem(b, c)`.
+The notion of Diophantine sets can naturally be extended to properties, relations and functions. I'll just illustrate those with examples:  
+
+- We already saw that the set of even numbers is Diophantine, therefore so is the corresponding property: `IsEven(a) -> bool`.  
+- We could show that the set of pairs `{a, b}` where `a` is not equal to `b` is Diophantine, therefore so is the corresponding relation: `NotEqual(a, b) -> bool`.  
+- We could show that the set of triplets `{a, b, c}` where `a` is the remainder of `b` divided by `c` is Diophantine, therefore so is the corresponding function: `a = rem(b, c)`.  
 
 In this fashion, step by step, you can show that more complex sets and relations are Diophantine, such as divisibility, non-divisibility, remainder, greatest common divisor, and exponentiation.  
 The exponentiation is quite tricky and corresponds to the set of triplets `{a, b, c}` such that <code>a = b<sup>c</sup></code>. This allows to introduce exponential Diophantine equations (where exponentiation can appear in the expression along with additions and multiplications) and provides a method find them equivalent polynomial representations.
-One further result which is quite amazing is that the IsPrime relationship is Diophantine. This means there exists a polynomial that generates exactly the set of primes when its parameters are allowed to take any and all natural numbers! (p. 55)
+One further result which is quite amazing is that the `IsPrime` relationship is Diophantine. This means there exists a polynomial that generates exactly the set of primes when its parameters are allowed to take any and all natural numbers! (p. 55)
 
 Cantor numbering, Gödel coding and positional coding
 There are multiple ways of coding tuples into lower dimensional spaces. Cantor allows to represent a tuple of length `n` as an integer, but `n` has to be fixed.
@@ -44,9 +46,9 @@ The positional coding also represents a tuple as a triplet `{a, b, n}`, where `a
 It gets trippy when Universal Diophantine Equations are introduced and constructed. Those are polynomials where the variables are grouped into code parameters, element parameters and unknowns. It is universal if it can code (by choosing the code parameters) for any Diophantine equation, which means it will define the same set. Chapter 4 demonstrates that such a universal Diophantine equations can be constructed. This relies heavily on the codings introduced above. 
 
 Chapter 5 provides a very nice introduction to Turing machines. 
-The alphabet is { *, 0, 1, 2, 3, null } and two states are reserved as final states for Yes and No. The tape encodes a stack of integers by using 0 to separate sequences of 1's. During the functioning of the machines, the 1's will typically be marked as 2's or 3's temporarily, then reverted to 1's. 
-This includes how to compose machines into sequences, conditionals and loops. 
-A number of increasingly complex machines are introduced by composition: `Left`, `Right`, `Write(x)`, `Read(x)` (goes to state Yes or No depending on the value read), `Stop`, `NeverStop`, `ReadNot(x)`, `Star` (jumping to head of the tape), `Vacant` (jumping to the first empty spot down the tape), `Find(k)` (which jumpts to the k'th integer on the tape), `Increase` (adds a 1 to the last integer), `Decrease`, `Delete` (deletes the last integer), `Mark(x)` (replace 1's with x's in the current integer), `IsThere(x)` (which tries to find an x on the tape), `ThereWas(x)` (which finds an x and writes it back to 1), `Restore` (set all the 2's and 3's back to 1), `Append(k)` (increment the head of the stack by the value of the k-th integer), `Copy(k)` (adds an entry on the stack, copied from the k-th integer), `Add(k, l)` (adds an entry on the stack with the sum of the k-th and l-th integers), `Mult(k, l)`, `NotGreater(k, l)`, `Equal(k, l)`, `NotEqual(k, l)`, `Next` (updates the two entries on top of the stack according to Cantor's numbering), and `Decode` (gets the Cantor pair represented by the entry on top of the stack and adds two entries storing that pair). 
+The alphabet is `{ *, 0, 1, 2, 3, null }` and two states are reserved as final states for `Yes` and `No`. The tape encodes a stack of integers by using 0 to separate sequences of 1's. During the functioning of the machines, the 1's will typically be marked as 2's or 3's temporarily, then reverted to 1's. 
+After explaining how to compose machines into sequences, conditionals and loops, a number of increasingly complex machines are introduced by composition:  
+`Left`, `Right`, `Write(x)`, `Read(x)` (goes to state Yes or No depending on the value read), `Stop`, `NeverStop`, `ReadNot(x)`, `Star` (jumping to head of the tape), `Vacant` (jumping to the first empty spot down the tape), `Find(k)` (which jumpts to the k'th integer on the tape), `Increase` (adds a 1 to the last integer), `Decrease`, `Delete` (deletes the last integer), `Mark(x)` (replace 1's with x's in the current integer), `IsThere(x)` (which tries to find an x on the tape), `ThereWas(x)` (which finds an x and writes it back to 1), `Restore` (set all the 2's and 3's back to 1), `Append(k)` (increment the head of the stack by the value of the k-th integer), `Copy(k)` (adds an entry on the stack, copied from the k-th integer), `Add(k, l)` (adds an entry on the stack with the sum of the k-th and l-th integers), `Mult(k, l)`, `NotGreater(k, l)`, `Equal(k, l)`, `NotEqual(k, l)`, `Next` (updates the two entries on top of the stack according to Cantor's numbering), and `Decode` (gets the Cantor pair represented by the entry on top of the stack and adds two entries storing that pair). 
 
 All these primitive machines can be used to construct a machine that recognizes a given Diophantine set (the machine will halt if and only if initialized with tuples from the set). The machine starts with the parameters on tape and then enumerates all the possible values for the unknowns, one tuple at a time. For each, it checks whether those values solve the parameterized Diophantine equation.
 
@@ -69,60 +71,3 @@ Inline example: \\( 1/x^{2} \\) (Good)
 Block example: \\[ \frac{1}{n^{2}} \\] (Good)
 
 
-
-
-
-
-----------------------------------------------------
-    MathJax.Hub.Config({ styles: {
-        ".MathJax": {
-            color: "#000000"
-        }
-    }
-    });
-    
-MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-      }
-    });
-    
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-    
-http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
-
-Testing [Google](http://google.com)
-
-x^2
-
-
-Inline example: \\( 1/x^{2} \\) (Good)
-
-Block example: \\[ \frac{1}{n^{2}} \\] (Good)
-
-$$
-\\( 1/x^{2} \\)
-$$
-
-(Weird)
-
-$$
-\\[ \frac{1}{n^{2}} \\]
-$$
-
-(Broken)
-
-$$\mathbf{Y}$$
-
-(Good)
-
-$$ 
-P(\mathbf{Y} = \mathbf{y}|\mathbf{X}) = exp[{\theta } ^{T} g(\mathbf{y},\mathbf{X})]/k(\theta ) 
-$$
-
-(Good)
