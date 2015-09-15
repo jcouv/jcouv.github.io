@@ -21,7 +21,8 @@ The union and intersection of Diophantine sets is also Diophantine, if you consi
 <code>FirstPolynomial<sup>2</sup> + SecondPolynomial<sup>2</sup> = 0</code> (with the unknowns in SecondPolynomial renamed)  
 <code>FirstPolynomial * SecondPolynomial = 0</code>
 
-So, the set of non-negative even numbers can be represented by combining the above. More generally, there is an equivalence between determining if a Diophantine equation has integer solutions or non-negative solutions. So the default is to focus on non-negative solutions.
+By using the above, you can make a polynomial representing the set of non-negative even numbers.  
+More generally, there is an equivalence between determining if a Diophantine equation has integer solutions or non-negative solutions. So the default is to focus on non-negative solutions.
 
 The notion of Diophantine sets can naturally be extended to properties, relations and functions. I'll just illustrate those with examples:  
 
