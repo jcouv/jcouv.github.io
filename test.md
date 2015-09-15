@@ -16,9 +16,9 @@ FirstPolynomial^2 + SecondPolynomial^2 = 0
 FirstPolynomial * SecondPolynomial = 0
 
 
-a = b^c
+`a = b^c`
 
-a = b<sup>c</sup>
+`a = b<sup>c</sup>`
 
 
 
