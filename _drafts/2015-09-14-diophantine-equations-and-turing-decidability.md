@@ -8,7 +8,7 @@ published: false
 Diophantine equations and Turing decidability
 
 
-
+## Diophantine equations, sets and relations
 Diophantine equations are polynomials with integer coefficients and variables. 
 They can be used to define Diophantine sets. To do so, you separate the variables of the polynomial into parameters and unknowns. Then the set of parameter values such that the polynomial's unknowns can be solved is called a Diophantine set.  
 And any set for which you can find such a polynomial is a Diophantine set. 
@@ -32,7 +32,7 @@ In this fashion, step by step, you can show that more complex sets and relations
 The exponentiation is quite tricky and corresponds to the set of triplets `{a, b, c}` such that <code>a = b<sup>c</sup></code>. This allows to introduce exponential Diophantine equations (where exponentiation can appear in the expression along with additions and multiplications) and provides a method find them equivalent polynomial representations.
 One further result which is quite amazing is that the `IsPrime` relationship is Diophantine. This means there exists a polynomial that generates exactly the set of primes when its parameters are allowed to take any and all natural numbers! (p. 55)
 
-Cantor numbering, Gödel coding and positional coding
+## Codings: Cantor, Gödel and positional
 There are multiple ways of coding tuples into lower dimensional spaces. Cantor allows to represent a tuple of length `n` as an integer, but `n` has to be fixed.
 <code>Cantor<sub>n</sub>(a<sub>1</sub>, ..., a<sub>n</sub>) -> c</code> is a Diophantine function, and so is the converse <code>CantorElement<sub>n,m</sub>(c)</code>.
 The function `CantorElement(n, m, c)` which treats `n` and `m` as parameters cannot easily be shown to be Diophantine. So other representations are considered.
@@ -41,9 +41,10 @@ The Gödel coding is introduced, which allows to encode tuples <code>{a<sub>1</s
 
 The positional coding also represents a tuple as a triplet `{a, b, n}`, where `a` is the representation in base `b` of the tuple. That means <code>a = a<sub>n</sub>.b<sup>n-1</sup> + ... + a<sub>1</sub>.b<sup>0</sup></code>. Not every tuple is a positional code, but the property `IsPositionalCode(a, b, n)` can tell which ones are. That property is Diophantine, and so are the relations for comparing such encoded tuples, <code>PositionalEqual(a<sub>1</sub>, b<sub>1</sub>, c<sub>1</sub>, a<sub>2</sub>, b<sub>2</sub>, c<sub>2</sub>)</code>.
 
-
+## Universal Diophantine equations
 It gets trippy when Universal Diophantine Equations are introduced and constructed. Those are polynomials where the variables are grouped into code parameters, element parameters and unknowns. It is universal if it can code (by choosing the code parameters) for any Diophantine equation, which means it will define the same set. Chapter 4 demonstrates that such a universal Diophantine equations can be constructed. This relies heavily on the codings introduced above. 
 
+## Turing machines
 Chapter 5 provides a very nice introduction to Turing machines. 
 The alphabet is `{ *, 0, 1, 2, 3, null }` and two states are reserved as final states for `Yes` and `No`. The tape encodes a stack of integers by using 0 to separate sequences of 1's. During the functioning of the machines, the 1's will typically be marked as 2's or 3's temporarily, then reverted to 1's. 
 After explaining how to compose machines into sequences, conditionals and loops, a number of increasingly complex machines are introduced by composition:  
@@ -65,8 +66,5 @@ In this context, Hilbert Tenth Problem asks whether the set of codes of all solv
 Misc
 Max number of variables and degrees.
 
-Inline example: \\( 1/x^{2} \\) (Good)
-
-Block example: \\[ \frac{1}{n^{2}} \\] (Good)
 
 
