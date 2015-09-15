@@ -20,10 +20,10 @@ So, the set of non-negative even numbers can be represented by combining the abo
 
 The notion of Diophantine sets can naturally be extended to properties, relations and functions. I'll just illustrate those with examples:
 - We already saw that the set of even numbers is Diophantine, therefore so is the corresponding property: Even(a) -> bool.
-- We could show that the set of pairs {a, b} where a is not equal to b, therefore so is the corresponding relation: NotEqual(a, b) -> bool.
-- Similarly, it can be extended to functions. *TODO*
+- We could show that the set of pairs {a, b} where a is not equal to b is Diophantine, therefore so is the corresponding relation: NotEqual(a, b) -> bool.
+- We could show that the set of triplets {a, b, c} where a is the remainder of b divided by c is Diophantine, therefore so is the corresponding function: a = rem(b, c).
 
-In this fashion, step by step, you can show that more complex sets and relations are Diophantine, such as divisibility, non-divisibility, remainder, greatest common divisor, and exponentiation. The exponentiation is quite tricky and corresponds to the set of triplets {a, b, c} such that a = b^c. This allows to introduce exponential Diophantine equations (where variables appear as exponents) and find them equivalent polynomial representation.
+In this fashion, step by step, you can show that more complex sets and relations are Diophantine, such as divisibility, non-divisibility, remainder, greatest common divisor, and exponentiation. The exponentiation is quite tricky and corresponds to the set of triplets {a, b, c} such that a = b^c. This allows to introduce exponential Diophantine equations (where exponentiation can appear in the expression along with additions and multiplications) and provides a method find them equivalent polynomial representations.
 or the set of primes (!).
 
 Cantor numbering  
@@ -31,3 +31,6 @@ Cantor numbering
 It gets trippy when Universal Diophantine Equations are introduced and constructed. Those are polynomials where the variables are grouped into code parameters, element parameters and unknowns. It is universal if it can code (by choosing the code parameters) for any Diophantine equation, which means it will define the same set.
 
 Chapter 5 provides a very nice introduction to Turing machines. This is followed by a method which given a Diophantine polynomial constructs a program to verifies whether a tuple is in that Diophantine set. It then proceeds to do the converse, by constructing from a given Turing program a Diophantine equation, such that the input tuples for which the program will terminate and the Diophantine set are identical.
+
+Misc
+Max number of variables and degrees.
