@@ -26,10 +26,10 @@ The notion of Diophantine sets can naturally be extended to properties, relation
 In this fashion, step by step, you can show that more complex sets and relations are Diophantine, such as divisibility, non-divisibility, remainder, greatest common divisor, and exponentiation. The exponentiation is quite tricky and corresponds to the set of triplets {a, b, c} such that a = b^c. This allows to introduce exponential Diophantine equations (where exponentiation can appear in the expression along with additions and multiplications) and provides a method find them equivalent polynomial representations.
 or the set of primes (!).
 
-Cantor numbering  
+Cantor numbering and Gödel coding
 CantorN(a1, ..., aN) is a Diophantine function, and so is the converse CantorElementNM(c)
 Although the Cantor numbering gets used heavily in the book, there is no easy way of proving that CantorElement(n, m, c), treating n and m as parameters instead of constants, is Diophantine.
-So the Gödel coding is introduced, which allows to encode tuples {a1, ..., aN} of arbitrary dimension. It's based on the Chinese Remainder Theorem and is defined as the triples {a, b, n} such that aI = rem(a, bi+1). There is more than one such triple, so the coding is not unique (unlike Cantor's). Also, that coding proves to be Diophantine. 
+So the Gödel coding is introduced, which allows to encode tuples {a1, ..., aN} of arbitrary dimension. It's based on the Chinese Remainder Theorem and is defined as the triples {a, b, n} such that aI = rem(a, bi+1) = GodelElement(a, b, i). There is more than one such triple, so the coding is not unique (unlike Cantor's). Also, that coding is Diophantine as the remainder function is. There is no converse Godel(a1, ..., aN, n) function as that function would have a variable number of parameters.
 
 
 
