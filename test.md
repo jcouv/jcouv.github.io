@@ -18,7 +18,7 @@ FirstPolynomial * SecondPolynomial = 0
 
 `a = b^c`
 
-`a = b<sup>c</sup>`
+`a = b<sup>c</sup>` 
 
 
 
