@@ -27,6 +27,11 @@ In this fashion, step by step, you can show that more complex sets and relations
 or the set of primes (!).
 
 Cantor numbering  
+CantorN(a1, ..., aN) is a Diophantine function, and so is the converse CantorElementNM(c)
+Although the Cantor numbering gets used heavily in the book, there is no easy way of proving that CantorElement(n, m, c), treating n and m as parameters instead of constants, is Diophantine.
+So the Gödel coding is introduced, which allows to encode tuples {a1, ..., aN} of arbitrary dimension. It's based on the Chinese Remainder Theorem and is defined as the triples {a, b, n} such that aI = rem(a, bi+1). There is more than one such triple, so the coding is not unique (unlike Cantor's). Also, that coding proves to be Diophantine. 
+
+
 
 It gets trippy when Universal Diophantine Equations are introduced and constructed. Those are polynomials where the variables are grouped into code parameters, element parameters and unknowns. It is universal if it can code (by choosing the code parameters) for any Diophantine equation, which means it will define the same set.
 
