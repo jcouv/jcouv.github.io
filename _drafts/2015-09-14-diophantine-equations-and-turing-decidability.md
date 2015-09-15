@@ -22,10 +22,11 @@ The union and intersection of Diophantine sets is also Diophantine, if you consi
 
 So, the set of non-negative even numbers can be represented by combining the above. More generally, there is an equivalence between determining if a Diophantine equation has integer solutions or non-negative solutions. So the default is to focus on non-negative solutions.
 
-The notion of Diophantine sets can naturally be extended to properties, relations and functions. I'll just illustrate those with examples:
-- We already saw that the set of even numbers is Diophantine, therefore so is the corresponding property: `IsEven(a) -> bool`.
-- We could show that the set of pairs `{a, b}` where `a` is not equal to `b` is Diophantine, therefore so is the corresponding relation: `NotEqual(a, b) -> bool`.
-- We could show that the set of triplets `{a, b, c}` where `a` is the remainder of `b` divided by `c` is Diophantine, therefore so is the corresponding function: `a = rem(b, c)`.
+The notion of Diophantine sets can naturally be extended to properties, relations and functions. I'll just illustrate those with examples:  
+
+- We already saw that the set of even numbers is Diophantine, therefore so is the corresponding property: `IsEven(a) -> bool`.  
+- We could show that the set of pairs `{a, b}` where `a` is not equal to `b` is Diophantine, therefore so is the corresponding relation: `NotEqual(a, b) -> bool`.  
+- We could show that the set of triplets `{a, b, c}` where `a` is the remainder of `b` divided by `c` is Diophantine, therefore so is the corresponding function: `a = rem(b, c)`.  
 
 In this fashion, step by step, you can show that more complex sets and relations are Diophantine, such as divisibility, non-divisibility, remainder, greatest common divisor, and exponentiation.  
 The exponentiation is quite tricky and corresponds to the set of triplets `{a, b, c}` such that <code>a = b<sup>c</sup></code>. This allows to introduce exponential Diophantine equations (where exponentiation can appear in the expression along with additions and multiplications) and provides a method find them equivalent polynomial representations.
