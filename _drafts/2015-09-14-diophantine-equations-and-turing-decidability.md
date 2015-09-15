@@ -39,10 +39,11 @@ The function `CantorElement(n, m, c)` which treats `n` and `m` as parameters can
 
 The Gödel coding is introduced, which allows to encode tuples <code>{a<sub>1</sub>, ..., a<sub>n</sub>}</code> of arbitrary dimension into a triplet (and you could even go further and encode that triplet with Cantor if you wanted). It's based on the Chinese Remainder Theorem and is defined as the triples `{a, b, n}` such that <code>a<sub>i</sub> = rem(a, b.i + 1) = GodelElement(a, b, i)</code>. There is more than one such triple, so the coding is not unique (unlike Cantor's). Also, that coding is Diophantine as the remainder function is. There can be no converse function, <code>Godel(a<sub>1</sub>, ..., a<sub>n</sub>, n)</code>, as it would have a variable number of parameters.
 
-The positional coding also represents a tuple as a triplet `{a, b, n}`, where `a` is the representation in base `b` of the tuple. That means <code>a = a<sub>n</sub>.b<sup>n-1</sup> + ... + a<sub>1</sub>.b<sup>0</sup></code>. Not every tuple is a positional code, but the property `IsPositionalCode(a, b, n)` can tell which ones are. That property is Diophantine, and so are the relations for comparing such encoded tuples, <code>PositionalEqual(a<sub>1</sub>, b<sub>1</sub>, c<sub>1</sub>, a<sub>2</sub>, b<sub>2</sub>, c<sub>2</sub>)</code>.
+The positional coding also represents a tuple as a triplet `{a, b, n}`, but where `a` is the representation in base `b` of the tuple. That means <code>a = a<sub>n</sub>.b<sup>n-1</sup> + ... + a<sub>1</sub>.b<sup>0</sup></code>. Not every tuple is a positional code, but the property `IsPositionalCode(a, b, n)` can tell which ones are. That property is Diophantine, and so are the relations for comparing such encoded tuples, <code>PositionalEqual(a<sub>1</sub>, b<sub>1</sub>, c<sub>1</sub>, a<sub>2</sub>, b<sub>2</sub>, c<sub>2</sub>)</code>.
 
 ## Universal Diophantine equations
-It gets trippy when Universal Diophantine Equations are introduced and constructed. Those are polynomials where the variables are grouped into code parameters, element parameters and unknowns. It is universal if it can code (by choosing the code parameters) for any Diophantine equation, which means it will define the same set. Chapter 4 demonstrates that such a universal Diophantine equations can be constructed. This relies heavily on the codings introduced above. 
+It gets trippy when Universal Diophantine Equations are introduced and constructed. Those are polynomials where the variables are grouped into code parameters, element parameters and unknowns. It is universal if it can code (by choosing the code parameters) for any Diophantine equation, which means it will define the same set.  
+Chapter 4 demonstrates that such a universal Diophantine equations can be constructed. This relies heavily on the codings introduced above. 
 
 ## Turing machines
 Chapter 5 provides a very nice introduction to Turing machines. 
@@ -52,12 +53,13 @@ After explaining how to compose machines into sequences, conditionals and loops,
 
 All these primitive machines can be used to construct a machine that recognizes a given Diophantine set (the machine will halt if and only if initialized with tuples from the set). The machine starts with the parameters on tape and then enumerates all the possible values for the unknowns, one tuple at a time. For each, it checks whether those values solve the parameterized Diophantine equation.
 
+## Turing decidability and Hilbert's Tenth Problem 
 A set is called Turing semidecidable if such a Turing machine exists (that will halt when and only when the machine is initialized with an n-tuple from the set). 
 As mentioned above, from every Diophantine set we can construct a Turing machine that will recognize n-tuples from that set. But the converse turns out to be possible to, and every Turing semidecidable set is Diophantine.
 
-A set is called Turing decidable if a Turing machine exists that will halt on state Yes for n-tuples in the set and halt on state No otherwise.
-From a decidable machine, you can easily make a semideciable one. 
-Conversely, if a set and it's complement are both semidecidable, then they are decidable. You could construct a schizophrenic machine that runs one step of each machine, and therefore would be guaranteed to halt with a Yes or No.
+A set is called Turing decidable if a Turing machine exists that will halt on state `Yes` for n-tuples in the set and halt on state `No` otherwise.
+From a decidable machine, you can easily make a semidecidable one. 
+Conversely, if a set and it's complement are both semidecidable, then they are decidable. You could construct a "schizophrenic" machine that runs one step of each machine, and therefore would be guaranteed to halt with a `Yes` or `No`.
 
 In this context, Hilbert Tenth Problem asks whether the set of codes of all solvable Diophantine equations (without parameters) is Turing decidable. It turns out it isn't. There is no way of determining if a Diophantine equation is solvable in a way that is guaranteed to halt. Moreover, based on Church's Thesis, this conclusion is not contingent on the specific Turing machine introduced above but holds in general.
 
