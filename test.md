@@ -37,9 +37,9 @@ Testing [Google](http://google.com)
 x^2
 
 
-\\( 1/x^{2} \\) (Good)
+Inline example: \\( 1/x^{2} \\) (Good)
 
-\\[ \frac{1}{n^{2}} \\] (Good)
+Block example: \\[ \frac{1}{n^{2}} \\] (Good)
 
 $$
 \\( 1/x^{2} \\)
