@@ -45,10 +45,16 @@ A number of increasingly complex machines are introduced by composition: Left, R
 
 All these primitive machines can be used to construct a machine that recognizes a given Diophantine set (the machine will halt if and only if initialized with tuples from the set). The machine starts with the parameters on tape and then enumerates all the possible values for the unknowns, one tuple at a time. For each, it checks whether those values solve the parameterized Diophantine equation.
 
-A set is called Turing semidecidable if such a Turing machine exists (that will halt when and only when the machine is initialized with a tuple from the set). 
-As mentioned above, from every Diophantine set we can construct a Turing machine that will recognize tuples from that set. But the converse turns out to be possible to, and every Turing semidecidable set is Diophantine.
+A set is called Turing semidecidable if such a Turing machine exists (that will halt when and only when the machine is initialized with an n-tuple from the set). 
+As mentioned above, from every Diophantine set we can construct a Turing machine that will recognize n-tuples from that set. But the converse turns out to be possible to, and every Turing semidecidable set is Diophantine.
 
-This is followed by a method which given a Diophantine polynomial constructs a program to verifies whether a tuple is in that Diophantine set. It then proceeds to do the converse, by constructing from a given Turing program a Diophantine equation, such that the input tuples for which the program will terminate and the Diophantine set are identical.
+A set is called Turing decidable if a Turing machine exists that will halt on state Yes for n-tuples in the set and halt on state No otherwise.
+From a decidable machine, you can easily make a semideciable one. 
+Conversely, if a set and it's complement are both semidecidable, then they are decidable. You could construct a schizophrenic machine that runs one step of each machine, and therefore would be guaranteed to halt with a Yes or No.
+
+In this context, Hilbert Tenth Problem asks whether the set of codes of all solvable Diophantine equations (without parameters) is Turing decidable.
+
+
 
 Misc
 Max number of variables and degrees.
