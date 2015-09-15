@@ -9,7 +9,6 @@ author_name:         Julien Couvreur
 ga:                  UA-74363-1
 permalink:           /archives/:year/:month/:title.html
 disqus_shortname:    curiosityisbliss
-markdown:            kramdown
 
 defaults:
   -
