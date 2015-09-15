@@ -13,10 +13,10 @@ Diophantine equations are polynomials with integer coefficients and variables.
 They can be used to define Diophantine sets. To do so, you separate the variables of the polynomial into parameters and unknowns. Then the set of parameter values such that the polynomial's unknowns can be solved is called a Diophantine set.  
 And any set for which you can find such a polynomial is a Diophantine set. 
 
-For instance, the set of even numbers is Diophantine because it is represented by polynomial `a - 2x = 0` (where a is a parameter and x an unknown).
+For instance, the set of even numbers is Diophantine because it is represented by polynomial `a - 2x = 0` (where `a` is a parameter and `x` an unknown).
 Similarly, because of Lagrange's four-square theorem, the set of non-negative numbers is represented by <code>a - (x<sup>2</sup> + y<sup>2</sup> + w<sup>2</sup> + z<sup>2</sup>) = 0</code>.
 
-The union and intersection of Diophantine sets is also Diophantine, if you consider the following polynomials:  
+The union and intersection of Diophantine sets is also Diophantine, if you consider the following polynomials respectively:  
 <code>FirstPolynomial<sup>2</sup> + SecondPolynomial<sup>2</sup> = 0</code> (with the unknowns in SecondPolynomial renamed)  
 <code>FirstPolynomial * SecondPolynomial = 0</code>
 
