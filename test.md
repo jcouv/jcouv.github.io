@@ -19,6 +19,8 @@ http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
 Testing [Google](http://google.com)
 
+x^2
+
 
 \\( 1/x^{2} \\)
 
