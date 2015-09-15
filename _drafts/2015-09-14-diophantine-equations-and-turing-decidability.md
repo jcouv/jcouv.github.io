@@ -10,7 +10,7 @@ They can be used to define Diophantine sets. To do so, you separate the variable
 And any set for which you can find such a polynomial is a Diophantine set. 
 
 For instance, the set of even numbers is Diophantine because it is represented by polynomial a - 2x = 0 (where a is a parameter and x an unknown).
-The set of non-negative numbers is represented by a - (x^2 + y^2 + w^2 + z^2) = 0.
+Similarly, because of Lagrange's four-square theorem, the set of non-negative numbers is represented by a - (x^2 + y^2 + w^2 + z^2) = 0.
 
 The union and intersection of Diophantine sets is also Diophantine.
 FirstPolynomial^2 + SecondPolynomial^2 = 0 (with the unknowns in SecondPolynomial renamed)
