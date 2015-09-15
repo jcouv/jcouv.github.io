@@ -17,10 +17,10 @@ They can be used to define Diophantine sets. To do so, you separate the variable
 And any set for which you can find such a polynomial is a Diophantine set. 
 
 For instance, the set of even numbers is Diophantine because it is represented by polynomial `a - 2x = 0` (where a is a parameter and x an unknown).
-Similarly, because of Lagrange's four-square theorem, the set of non-negative numbers is represented by `a - (x<sup>2</sup> + y<sup>2</sup> + w<sup>2</sup> + z<sup>2</sup>) = 0`.
+Similarly, because of Lagrange's four-square theorem, the set of non-negative numbers is represented by <code>a - (x<sup>2</sup> + y<sup>2</sup> + w<sup>2</sup> + z<sup>2</sup>) = 0</code>.
 
 The union and intersection of Diophantine sets is also Diophantine.
-FirstPolynomial^2 + SecondPolynomial^2 = 0 (with the unknowns in SecondPolynomial renamed)
+FirstPolynomial<sup>2</sup> + SecondPolynomial<sup>2</sup> = 0 (with the unknowns in SecondPolynomial renamed)
 FirstPolynomial * SecondPolynomial = 0
 
 So, the set of non-negative even numbers can be represented by combining the above. More generally, there is an equivalence between determining if a Diophantine equation has integer solutions or non-negative solutions. So the default is to focus on non-negative solutions.
@@ -35,10 +35,10 @@ One further result which is quite amazing is that the IsPrime relationship is Di
 
 Cantor numbering, Gödel coding and positional coding
 There are multiple ways of coding tuples into lower dimensional spaces. Cantor allows to represent a tuple of length N as an integer, but N has to be fixed.
-CantorN(a1, ..., aN) is a Diophantine function, and so is the converse CantorElementNM(c)
+Cantor<sub>n</sub>(a<sub>1</sub>, ..., a<sub>n</sub>) is a Diophantine function, and so is the converse CantorElementNM(c)
 The function CantorElement(n, m, c) which treats n and m as parameters cannot easily be shown to be Diophantine. So other representations are considered.
 
-The Gödel coding is introduced, which allows to encode tuples {a1, ..., aN} of arbitrary dimension into a triplet (and you could even go further and encode that triplet with Cantor if you wanted). It's based on the Chinese Remainder Theorem and is defined as the triples {a, b, n} such that aI = rem(a, bi+1) = GodelElement(a, b, i). There is more than one such triple, so the coding is not unique (unlike Cantor's). Also, that coding is Diophantine as the remainder function is. There is no converse Godel(a1, ..., aN, n) function as that function would have a variable number of parameters.
+The Gödel coding is introduced, which allows to encode tuples {a1, ..., aN} of arbitrary dimension into a triplet (and you could even go further and encode that triplet with Cantor if you wanted). It's based on the Chinese Remainder Theorem and is defined as the triples {a, b, n} such that a<sub>i</sub> = rem(a, bi+1) = GodelElement(a, b, i). There is more than one such triple, so the coding is not unique (unlike Cantor's). Also, that coding is Diophantine as the remainder function is. There is no converse Godel(a1, ..., aN, n) function as that function would have a variable number of parameters.
 
 The positional coding also represents a tuple as a triplet {a, b, n}, where a in the representation in base-b of the tuple. That means a = aN b^n-1 + ... + a1 b^0. Not every tuple is a positional code, but the property IsPositionalCode(a, b, n) can tell which ones are. That property is Diophantine, and so are the relations for comparing such encoded tuples, PositionalEqual(a1, b1, c1, a2, b2, c2).
 
