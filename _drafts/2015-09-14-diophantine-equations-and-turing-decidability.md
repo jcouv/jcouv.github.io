@@ -32,11 +32,11 @@ The exponentiation is quite tricky and corresponds to the set of triplets `{a, b
 One further result which is quite amazing is that the IsPrime relationship is Diophantine. This means there exists a polynomial that generates exactly the set of primes when its parameters are allowed to take any and all natural numbers! (p. 55)
 
 Cantor numbering, Gödel coding and positional coding
-There are multiple ways of coding tuples into lower dimensional spaces. Cantor allows to represent a tuple of length N as an integer, but N has to be fixed.
-Cantor<sub>n</sub>(a<sub>1</sub>, ..., a<sub>n</sub>) is a Diophantine function, and so is the converse CantorElementNM(c)
-The function CantorElement(n, m, c) which treats n and m as parameters cannot easily be shown to be Diophantine. So other representations are considered.
+There are multiple ways of coding tuples into lower dimensional spaces. Cantor allows to represent a tuple of length `n` as an integer, but `n` has to be fixed.
+<code>Cantor<sub>n</sub>(a<sub>1</sub>, ..., a<sub>n</sub>) -> c</code> is a Diophantine function, and so is the converse <code>CantorElement<sub>n,m</sub>(c)</code>.
+The function `CantorElement(n, m, c)` which treats `n` and `m` as parameters cannot easily be shown to be Diophantine. So other representations are considered.
 
-The Gödel coding is introduced, which allows to encode tuples {a1, ..., aN} of arbitrary dimension into a triplet (and you could even go further and encode that triplet with Cantor if you wanted). It's based on the Chinese Remainder Theorem and is defined as the triples {a, b, n} such that a<sub>i</sub> = rem(a, bi+1) = GodelElement(a, b, i). There is more than one such triple, so the coding is not unique (unlike Cantor's). Also, that coding is Diophantine as the remainder function is. There is no converse Godel(a1, ..., aN, n) function as that function would have a variable number of parameters.
+The Gödel coding is introduced, which allows to encode tuples <code>{a<sub>1</sub>, ..., a<sub>n</sub>}</code> of arbitrary dimension into a triplet (and you could even go further and encode that triplet with Cantor if you wanted). It's based on the Chinese Remainder Theorem and is defined as the triples {a, b, n} such that a<sub>i</sub> = rem(a, bi+1) = GodelElement(a, b, i). There is more than one such triple, so the coding is not unique (unlike Cantor's). Also, that coding is Diophantine as the remainder function is. There is no converse Godel(a1, ..., aN, n) function as that function would have a variable number of parameters.
 
 The positional coding also represents a tuple as a triplet {a, b, n}, where a in the representation in base-b of the tuple. That means a = aN b^n-1 + ... + a1 b^0. Not every tuple is a positional code, but the property IsPositionalCode(a, b, n) can tell which ones are. That property is Diophantine, and so are the relations for comparing such encoded tuples, PositionalEqual(a1, b1, c1, a2, b2, c2).
 
