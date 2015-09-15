@@ -5,7 +5,7 @@ published: false
 
 Diophantine equations and Turing decidability
 
-Diophantine equations are polynomials with integer coefficients and solutions. 
+Diophantine equations are polynomials with integer coefficients and variables. 
 They can be used to define Diophantine sets. To do so, you separate the variables of the polynomial into parameters and unknowns. Then the set of parameter values such that the polynomial's unknowns can be solved is called a Diophantine set.  
 And any set for which you can find such a polynomial is a Diophantine set. 
 
@@ -38,7 +38,15 @@ The positional coding also represents a tuple as a triplet {a, b, n}, where a in
 
 It gets trippy when Universal Diophantine Equations are introduced and constructed. Those are polynomials where the variables are grouped into code parameters, element parameters and unknowns. It is universal if it can code (by choosing the code parameters) for any Diophantine equation, which means it will define the same set. Chapter 4 demonstrates that such a universal Diophantine equations can be constructed. This relies heavily on the codings introduced above. 
 
-Chapter 5 provides a very nice introduction to Turing machines. This is followed by a method which given a Diophantine polynomial constructs a program to verifies whether a tuple is in that Diophantine set. It then proceeds to do the converse, by constructing from a given Turing program a Diophantine equation, such that the input tuples for which the program will terminate and the Diophantine set are identical.
+Chapter 5 provides a very nice introduction to Turing machines. 
+The alphabet is { *, 0, 1, 2, 3, null } and two states are reserved as final states for Yes and No. The tape encodes a stack of integers by using 0 to separate sequences of 1's. During the functioning of the machines, the 1's will typically be marked as 2's or 3's temporarily, then reverted to 1's. 
+This includes how to compose machines into sequences, conditionals and loops. 
+A number of increasingly complex machines are introduced by composition: Left, Right, Write(x), Read(x) (goes to state Yes or No depending on the value read), Stop, NeverStop, ReadNot(x), Star (jumping to head of the tape), Vacant (jumping to the first empty spot down the tape), Find(k) (which jumpts to the k'th integer on the tape), Increase (adds a 1 to the last integer), Decrease, Delete (deletes the last integer), Mark(x) (replace 1's with x's in the current integer), IsThere(x) (which tries to find an x on the tape), ThereWas(x) (which finds an x and writes it back to 1), Restore (set all the 2's and 3's back to 1), Append(k) (increment the head of the stack by the value of the k-th integer), Copy(k) (adds an entry on the stack, copied from the k-th integer), Add(k, l) (adds an entry on the stack with the sum of the k-th and l-th integers), Mult(k, l), NotGreater(k, l), Equal(k, l), NotEqual(k, l), Next (updates the two entries on top of the stack according to Cantor's numbering), Decode (gets the Cantor pair represented by the entry on top of the stack and adds two entries storing that pair). 
+
+All these primitive machines will be used to construct a machine that recognizes a given Diophantine set (the machine will halt if and only if initialized with tuples from the set). Basically the machine just enumerates all the possible values for the unknowns, one tuple at a time, and checks whether those values solve the equation.
+
+
+This is followed by a method which given a Diophantine polynomial constructs a program to verifies whether a tuple is in that Diophantine set. It then proceeds to do the converse, by constructing from a given Turing program a Diophantine equation, such that the input tuples for which the program will terminate and the Diophantine set are identical.
 
 Misc
 Max number of variables and degrees.
