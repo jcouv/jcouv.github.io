@@ -3,9 +3,19 @@ title: Test
 layout: "post"
 ---
 
-    <script type="text/javascript"
-            src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+
+    MathJax.Hub.Config({ styles: {
+        ".MathJax": {
+            color: "#FFCC00"
+        }
+    }
+    })
+
+</script>
+
+http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
 Testing [Google](http://google.com)
 
@@ -21,4 +31,11 @@ $$
 $$
 \\[ \frac{1}{n^{2}} \\]
 $$
+
+$$\mathbf{Y}$$
+
+$$ 
+P(\mathbf{Y} = \mathbf{y}|\mathbf{X}) = exp[{\theta } ^{T} g(\mathbf{y},\mathbf{X})]/k(\theta ) 
+$$
+
 
