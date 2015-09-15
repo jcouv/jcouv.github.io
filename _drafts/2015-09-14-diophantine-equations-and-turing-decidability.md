@@ -5,7 +5,7 @@ published: false
 
 Diophantine equations and Turing decidability
 
-Diophantine equations are polynomials with integer constants and solutions.
+Diophantine equations are polynomials with integer coefficients and solutions. 
 They can be used to define Diophantine sets. To do so, you separate the variables of the polynomial into parameters and unknowns. Then the set of parameter values such that the polynomial's unknowns can be solved is called a Diophantine set.  
 And any set for which you can find such a polynomial is a Diophantine set. 
 
@@ -16,10 +16,12 @@ The union and intersection of Diophantine sets is also Diophantine.
 FirstPolynomial^2 + SecondPolynomial^2 = 0 (with the unknowns in SecondPolynomial renamed)
 FirstPolynomial * SecondPolynomial = 0
 
-So, the set of non-negative even numbers can be represented by combining the above. More generally, *TBD*
-The notion of Diophantine sets can naturally be extended to Diophantine relations. For instance the relation NotEqual(a, b) is equivalent to the set of {a, b} pairs where a is not equal to b.
+So, the set of non-negative even numbers can be represented by combining the above. More generally, there is an equivalence between determining if a Diophantine equation has integer solutions or non-negative solutions. So the default is to focus on non-negative solutions.
 
-In this fashion, step by step, you can show that more complex sets and relations are Diophantine, such as the exponential or the set of primes.
+The notion of Diophantine sets can naturally be extended to Diophantine relations. For instance the relation NotEqual(a, b) is equivalent to the set of {a, b} pairs where a is not equal to b. We already saw that And (conjunction of two relations) and Or (disjunction) also yield Diophantine relations.
+
+In this fashion, step by step, you can show that more complex sets and relations are Diophantine, such as divisibility, non-divisibility, remainder, greatest common divisor, and exponentiation. The exponentiation is quite tricky and corresponds to the set of triplets {a, b, c} such that a = b^c. This allows to introduce exponential Diophantine equations (where variables appear as exponents) and find them equivalent polynomial representation.
+or the set of primes (!).
 
 It gets trippy when Universal Diophantine Equations are introduced and constructed. Those are polynomials where the variables are grouped into code parameters, element parameters and unknowns. It is universal if it can code (by choosing the code parameters) for any Diophantine equation, which means it will define the same set.
 
