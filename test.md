@@ -35,22 +35,28 @@ Testing [Google](http://google.com)
 x^2
 
 
+\\( 1/x^{2} \\) (Good)
+
+\\[ \frac{1}{n^{2}} \\] (Good)
+
+$$
 \\( 1/x^{2} \\)
-
-\\[ \frac{1}{n^{2}} \\]
-
 $$
-\\( 1/x^{2} \\)
-$$
+
+(Weird)
 
 $$
 \\[ \frac{1}{n^{2}} \\]
 $$
+
+(Broken)
 
 $$\mathbf{Y}$$
+
+(Good)
 
 $$ 
 P(\mathbf{Y} = \mathbf{y}|\mathbf{X}) = exp[{\theta } ^{T} g(\mathbf{y},\mathbf{X})]/k(\theta ) 
 $$
 
-
+(Good)
