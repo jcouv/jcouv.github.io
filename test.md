@@ -8,7 +8,7 @@ layout: page
 
     MathJax.Hub.Config({ styles: {
         ".MathJax": {
-            color: "#FFCC00"
+            color: "#000000"
         }
     }
     })
