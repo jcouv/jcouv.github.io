@@ -7,6 +7,25 @@ layout: page
         src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
+`a - 2x = 0`
+
+`a - (x^2 + y^2 + w^2 + z^2) = 0`
+
+FirstPolynomial^2 + SecondPolynomial^2 = 0 
+
+FirstPolynomial * SecondPolynomial = 0
+
+
+a = b^c
+
+a = b<sup>c</sup>
+
+
+
+
+
+
+----------------------------------------------------
     MathJax.Hub.Config({ styles: {
         ".MathJax": {
             color: "#000000"
