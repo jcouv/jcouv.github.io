@@ -3,7 +3,14 @@ published: false
 ---
 
 
+
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
 Diophantine equations and Turing decidability
+
+
 
 Diophantine equations are polynomials with integer coefficients and variables. 
 They can be used to define Diophantine sets. To do so, you separate the variables of the polynomial into parameters and unknowns. Then the set of parameter values such that the polynomial's unknowns can be solved is called a Diophantine set.  
@@ -58,3 +65,9 @@ In this context, Hilbert Tenth Problem asks whether the set of codes of all solv
 
 Misc
 Max number of variables and degrees.
+
+Inline example: \\( 1/x^{2} \\) (Good)
+
+Block example: \\[ \frac{1}{n^{2}} \\] (Good)
+
+
