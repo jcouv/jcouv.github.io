@@ -1,6 +1,6 @@
 ---
 title: Test
-layout: "post"
+layout: post
 ---
 
 <script type="text/javascript"
