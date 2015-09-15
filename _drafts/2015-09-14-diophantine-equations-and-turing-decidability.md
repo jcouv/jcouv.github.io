@@ -24,7 +24,7 @@ The notion of Diophantine sets can naturally be extended to properties, relation
 - We could show that the set of triplets {a, b, c} where a is the remainder of b divided by c is Diophantine, therefore so is the corresponding function: a = rem(b, c).
 
 In this fashion, step by step, you can show that more complex sets and relations are Diophantine, such as divisibility, non-divisibility, remainder, greatest common divisor, and exponentiation. The exponentiation is quite tricky and corresponds to the set of triplets {a, b, c} such that a = b^c. This allows to introduce exponential Diophantine equations (where exponentiation can appear in the expression along with additions and multiplications) and provides a method find them equivalent polynomial representations.
-One further result which is quite amazing is that the IsPrime relationship is Diophantine. This means there exists a polynomial that generates all the possible primes when its parameters are allowed to take any and all natural numbers!
+One further result which is quite amazing is that the IsPrime relationship is Diophantine. This means there exists a polynomial that generates exactly the set of primes when its parameters are allowed to take any and all natural numbers! (p. 55)
 
 Cantor numbering, Gödel coding and positional coding
 There are multiple ways of coding tuples into lower dimensional spaces. Cantor allows to represent a tuple of length N as an integer, but N has to be fixed.
@@ -36,7 +36,7 @@ The Gödel coding is introduced, which allows to encode tuples {a1, ..., aN} of 
 The positional coding also represents a tuple as a triplet {a, b, n}, where a in the representation in base-b of the tuple. That means a = aN b^n-1 + ... + a1 b^0. Not every tuple is a positional code, but the property IsPositionalCode(a, b, n) can tell which ones are. That property is Diophantine, and so are the relations for comparing such encoded tuples, PositionalEqual(a1, b1, c1, a2, b2, c2).
 
 
-It gets trippy when Universal Diophantine Equations are introduced and constructed. Those are polynomials where the variables are grouped into code parameters, element parameters and unknowns. It is universal if it can code (by choosing the code parameters) for any Diophantine equation, which means it will define the same set.
+It gets trippy when Universal Diophantine Equations are introduced and constructed. Those are polynomials where the variables are grouped into code parameters, element parameters and unknowns. It is universal if it can code (by choosing the code parameters) for any Diophantine equation, which means it will define the same set. Chapter 4 demonstrates that such a universal Diophantine equations can be constructed. This relies heavily on the codings introduced above. 
 
 Chapter 5 provides a very nice introduction to Turing machines. This is followed by a method which given a Diophantine polynomial constructs a program to verifies whether a tuple is in that Diophantine set. It then proceeds to do the converse, by constructing from a given Turing program a Diophantine equation, such that the input tuples for which the program will terminate and the Diophantine set are identical.
 
