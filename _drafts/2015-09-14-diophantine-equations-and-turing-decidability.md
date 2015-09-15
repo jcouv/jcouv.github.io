@@ -18,10 +18,15 @@ FirstPolynomial * SecondPolynomial = 0
 
 So, the set of non-negative even numbers can be represented by combining the above. More generally, there is an equivalence between determining if a Diophantine equation has integer solutions or non-negative solutions. So the default is to focus on non-negative solutions.
 
-The notion of Diophantine sets can naturally be extended to Diophantine relations. For instance the relation NotEqual(a, b) is equivalent to the set of {a, b} pairs where a is not equal to b. We already saw that And (conjunction of two relations) and Or (disjunction) also yield Diophantine relations.
+The notion of Diophantine sets can naturally be extended to properties, relations and functions. I'll just illustrate those with examples:
+- We already saw that the set of even numbers is Diophantine, therefore so is the corresponding property: Even(a) -> bool.
+- We could show that the set of pairs {a, b} where a is not equal to b, therefore so is the corresponding relation: NotEqual(a, b) -> bool.
+- Similarly, it can be extended to functions. *TODO*
 
 In this fashion, step by step, you can show that more complex sets and relations are Diophantine, such as divisibility, non-divisibility, remainder, greatest common divisor, and exponentiation. The exponentiation is quite tricky and corresponds to the set of triplets {a, b, c} such that a = b^c. This allows to introduce exponential Diophantine equations (where variables appear as exponents) and find them equivalent polynomial representation.
 or the set of primes (!).
+
+Cantor numbering  
 
 It gets trippy when Universal Diophantine Equations are introduced and constructed. Those are polynomials where the variables are grouped into code parameters, element parameters and unknowns. It is universal if it can code (by choosing the code parameters) for any Diophantine equation, which means it will define the same set.
 
