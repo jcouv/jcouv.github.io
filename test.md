@@ -3,7 +3,8 @@ title: Diophantine equations and Turing decidability
 layout: page
 ---
 
-I enjoyed reading Yuri Matiyasevich's [Hilbert 10th Problem](http://smile.amazon.com/Hilberts-10th-Problem-Foundations-Computing/dp/0262132958/). It is rather accessible, although some demonstrations do get quite mind-bending. Below are my notes on the key topics (mostly covered by the first 5 chapters).
+I enjoyed reading Yuri Matiyasevich's [Hilbert 10th Problem](http://smile.amazon.com/Hilberts-10th-Problem-Foundations-Computing/dp/0262132958/) (Thanks Stéphane for the recommendation).  
+It is rather accessible overall, but some demonstrations do get quite mind-bending. Below are my notes on the key topics (mostly covered by the first 5 chapters).
 
 ![H10 cover.jpg]({{site.baseurl}}/archives/images/H10 cover.jpg)
 
@@ -68,16 +69,16 @@ That coding is Diophantine as the remainder function is.
 The positional coding also represents a tuple as a triplet `{a, b, n}`, but where `a` is the representation in base `b` of the tuple. That means <code>a = a<sub>n</sub>.b<sup>n-1</sup> + ... + a<sub>1</sub>.b<sup>0</sup></code>. Not every tuple is a positional code, but the property `IsPositionalCode(a, b, n)` can tell which ones are. That property is Diophantine, and so are the relations for comparing such encoded tuples, <code>PositionalEqual(a<sub>1</sub>, b<sub>1</sub>, c<sub>1</sub>, a<sub>2</sub>, b<sub>2</sub>, c<sub>2</sub>)</code>.
 
 ## Universal Diophantine equations
-It gets trippy when Universal Diophantine Equations are introduced and constructed. Those are polynomials where the variables are grouped into code parameters, element parameters and unknowns. It is universal if it can code (by choosing the code parameters) for any Diophantine equation, which means it will define the same set.  
+It gets trippy when Universal Diophantine Equations are introduced. Those are polynomials where the variables are broken into 3 groups: code parameters, element parameters and unknowns. Such an equation is universal if it can code (by choosing the code parameters) for any Diophantine equation (which means it will represent the same set).  
 Chapter 4 demonstrates that such a universal Diophantine equations can be constructed. This relies heavily on the codings introduced above. 
 
 ## Turing machines
 Chapter 5 provides a very nice introduction to Turing machines. 
-The alphabet is `{ *, 0, 1, 2, 3, null }` and two states are reserved as final states for `Yes` and `No`. The tape encodes a stack of integers by using 0 to separate sequences of 1's.  
-During the functioning of the machines, the 1's will typically be marked as 2's or 3's temporarily, then reverted to 1's.  
+The specific design introduced uses `{ *, 0, 1, 2, 3, null }` as its alphabet and reserves two states as final states for `Yes` and `No`.  
+The tape encodes a stack of integers by using 0 to separate sequences of 1's. During the functioning of the machines, the 1's will typically be marked as 2's or 3's temporarily, then reverted to 1's.  
 
 After explaining how to compose machines into sequences, conditionals and loops, a number of increasingly complex machines are introduced by composition:  
-`Left`, `Right`, `Write(x)`, `Read(x)` (goes to state Yes or No depending on the value read), `Stop`, `NeverStop`, `ReadNot(x)`, `Star` (jumping to head of the tape), `Vacant` (jumping to the first empty spot down the tape), `Find(k)` (which jumpts to the k'th integer on the tape), `Increase` (adds a 1 to the last integer), `Decrease`, `Delete` (deletes the last integer), `Mark(x)` (replace 1's with x's in the current integer), `IsThere(x)` (which tries to find an x on the tape), `ThereWas(x)` (which finds an x and writes it back to 1), `Restore` (set all the 2's and 3's back to 1), `Append(k)` (increment the head of the stack by the value of the k-th integer), `Copy(k)` (adds an entry on the stack, copied from the k-th integer), `Add(k, l)` (adds an entry on the stack with the sum of the k-th and l-th integers), `Mult(k, l)`, `NotGreater(k, l)`, `Equal(k, l)`, `NotEqual(k, l)`, `Next` (updates the two entries on top of the stack according to Cantor's numbering), and `Decode` (gets the Cantor pair represented by the entry on top of the stack and adds two entries storing that pair). 
+`Left`, `Right`, `Write(x)`, `Read(x)` (goes to state Yes or No depending on the value read at the cursor position), `Stop`, `NeverStop`, `ReadNot(x)`, `Star` (jumping to head of the tape), `Vacant` (jumping to the first empty spot down the tape), `Find(k)` (which jumpts to the k'th integer on the tape), `Increase` (adds a 1 to the last integer), `Decrease`, `Delete` (deletes the last integer), `Mark(x)` (replace 1's with x's in the current integer), `IsThere(x)` (which tries to find an x on the tape), `ThereWas(x)` (which finds an x and writes it back to 1), `Restore` (set all the 2's and 3's back to 1), `Append(k)` (increment the head of the stack by the value of the k-th integer), `Copy(k)` (adds an entry on the stack, copied from the k-th integer), `Add(k, l)` (adds an entry on the stack with the sum of the k-th and l-th integers), `Mult(k, l)`, `NotGreater(k, l)`, `Equal(k, l)`, `NotEqual(k, l)`, `Next` (updates the two entries on top of the stack according to Cantor's numbering), and `Decode` (gets the Cantor pair represented by the entry on top of the stack and adds two entries storing that pair). 
 
 ## Turing decidability and Hilbert's Tenth Problem 
 All these primitive machines can be used to construct a machine that recognizes a given Diophantine set (the machine will halt if and only if initialized with tuples from the set). The machine starts with the parameters on tape and then enumerates all the possible values for the unknowns, one tuple at a time. For each, it checks whether those values solve the parameterized Diophantine equation.  
@@ -89,7 +90,8 @@ A set is called Turing decidable if a Turing machine exists that will halt on st
 From a decidable machine, you can easily make a semidecidable one. 
 Conversely, if a set and it's complement are both semidecidable, then they are decidable. You could construct a "schizophrenic" machine that runs one step of each machine, and therefore would be guaranteed to halt with a `Yes` or `No`.
 
-In this context, Hilbert Tenth Problem asks whether the set of codes of all solvable Diophantine equations (without parameters) is Turing decidable. It turns out it isn't. There is no way of determining if a Diophantine equation is solvable in a way that is guaranteed to halt. Moreover, based on Church's Thesis, this conclusion is not contingent on the specific Turing machine introduced above but holds in general.
+In this context, Hilbert Tenth Problem asks whether the set of codes of all solvable Diophantine equations (without parameters) is Turing decidable. But Matiyasevich proves the negative: there is no way of determining if a Diophantine equation is solvable in a way that is guaranteed to halt.  
+Moreover, based on Church's Thesis, this conclusion holds in general; it is not contingent on the specific Turing machine introduced above.
 
 
 
