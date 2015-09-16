@@ -28,18 +28,31 @@ The notion of Diophantine sets can naturally be extended to properties, relation
 
 In this fashion, step by step, you can show that more complex sets and relations are Diophantine, such as divisibility, non-divisibility, remainder, greatest common divisor, and exponentiation.  
 
-The exponentiation is quite tricky and corresponds to the set of triplets `{a, b, c}` such that <code>a = b<sup>c</sup></code>.  
-This provides a method to represent exponential Diophantine equations (where exponentiation can appear in the expression along with additions, substractions and multiplications) with equivalent polynomials. 
-An example to illustrate the method: create a new variable such a <code>z = x<sup>y</sup></code> to substitute to exponential, and use this variable definition as `SecondPolynomial` for the intersection formula above.  
+The exponentiation, which corresponds to the set of triplets `{a, b, c}` such that <code>a = b<sup>c</sup></code>, can also be shown Diophantine.  
+This provides a method to reduce exponential Diophantine equations (where exponentiation can appear in the expression along with additions, substractions and multiplications) to equivalent polynomials. 
+A simple example to illustrate the method: create a new variable `z` to substitute to an exponential, <code>x<sup>y</sup></code>, and use this variable definition as `SecondPolynomial` (<code>z - x<sup>y</sup> = 0</code>) for the intersection formula above.  
+By the way, this method of introducing more variables can be used to refactor any Diophantine equation into an equivalent equation of degree 4 at most.
 
-One further result which is quite amazing is that the `IsPrime` relationship is Diophantine. This means there exists a polynomial that generates exactly the set of primes when its parameters are allowed to take any and all natural numbers! (p. 55)
+The `IsPrime(a) -> bool` property is Diophantine too, which is quite an amazing result too. This means there exists a polynomial that generates exactly the set of primes when its parameters are allowed to take any and all natural numbers! (p. 55)
 
 ## Codings: Cantor, Gödel and positional
-There are multiple ways of coding tuples into lower dimensional spaces. This is useful to iterate through all possible tuples and refactor equations to fewer parameters and unknowns.  
+There are multiple ways of coding tuples into lower dimensional spaces. This is useful to iterate through all possible tuples, refactor equations to fewer parameters and unknowns, and give each polynomial a number or code.  
 
-Cantor allows to represent a tuple of length `n` as an integer, but `n` has to be fixed.
+The Cantor numbering allows to represent a tuple of length `n` as an integer (with `n` fixed).  
+For n=2, it sequences pairs following the diagonals: {0, 0}, the {1, 0}, {0, 1}, then {2, 0}, {1, 1}, {0, 2}, then {3, 0} and so on.  
+
+<table style="width:100%">
+  <tr> <td> </td>  <td><b>0</b></td><td><b>1</b></td><td><b>2</b></td><td><b>3</b></td><td><b>...</b></td> </tr>
+  <tr> <td><b>0</b></td>  <td>0</td><td>1</td><td>3</td><td>6</td><td></td> </tr>
+  <tr> <td><b>1</b></td>  <td>2</td><td>4</td><td>7</td><td>11</td><td>16</td> </tr>
+  <tr> <td><b>2</b></td>  <td>5</td><td>8</td><td>12</td><td>17</td><td>23</td> </tr>
+  <tr> <td><b>...</b></td><td>9</td><td>13</td><td>18</td><td>24</td><td>31</td> </tr>
+</table>
+
+
+For higher dimensions, the same method can be applied recursively to reduce the dimension one at a time.  
 <code>Cantor<sub>n</sub>(a<sub>1</sub>, ..., a<sub>n</sub>) -> c</code> is a Diophantine function, and so is the converse <code>CantorElement<sub>n,m</sub>(c)</code>.
-The function `CantorElement(n, m, c)` which treats `n` and `m` as parameters cannot easily be shown to be Diophantine. So other representations are considered.
+But the function `CantorElement(n, m, c)` which treats `n` and `m` as parameters cannot easily be shown to be Diophantine. So other representations are considered.
 
 The Gödel coding is introduced, which allows to encode tuples <code>{a<sub>1</sub>, ..., a<sub>n</sub>}</code> of arbitrary dimension into a triplet (and you could even go further and encode that triplet with Cantor if you wanted). It's based on the Chinese Remainder Theorem and is defined as the triples `{a, b, n}` such that <code>a<sub>i</sub> = rem(a, b.i + 1) = GodelElement(a, b, i)</code>. There is more than one such triple, so the coding is not unique (unlike Cantor's). Also, that coding is Diophantine as the remainder function is. There can be no converse function, <code>Godel(a<sub>1</sub>, ..., a<sub>n</sub>, n)</code>, as it would have a variable number of parameters.
 
@@ -67,10 +80,6 @@ Conversely, if a set and it's complement are both semidecidable, then they are d
 
 In this context, Hilbert Tenth Problem asks whether the set of codes of all solvable Diophantine equations (without parameters) is Turing decidable. It turns out it isn't. There is no way of determining if a Diophantine equation is solvable in a way that is guaranteed to halt. Moreover, based on Church's Thesis, this conclusion is not contingent on the specific Turing machine introduced above but holds in general.
 
-
-
-Misc
-Max number of variables and degrees.
 
 
 
