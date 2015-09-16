@@ -25,7 +25,7 @@ The intersection and union of Diophantine sets is also Diophantine, if you consi
 
 
 By combining the above, you can make a polynomial representing the set of numbers that are both even and non-negative.  
-More generally, there is an equivalence between determining if a Diophantine equation has integer solutions or non-negative solutions. So the default is to focus on non-negative solutions.
+More generally, there is an equivalence between determining if a Diophantine equation has integer solutions or non-negative solutions. So the default is to focus on non-negative solutions.  
 
 The notion of Diophantine sets can naturally be extended to properties, relations and functions. I'll just illustrate those with examples:  
 
@@ -33,7 +33,7 @@ The notion of Diophantine sets can naturally be extended to properties, relation
 - We could show that the set of pairs `{a, b}` where `a` is not equal to `b` is Diophantine, therefore so is the corresponding relation: `NotEqual(a, b) -> bool`.  
 - We could show that the set of triplets `{a, b, c}` where `a` is the remainder of `b` divided by `c` is Diophantine, therefore so is the corresponding function: `a = rem(b, c)`.  
 
-In this fashion, step by step, you can show that more complex sets and relations are Diophantine, such as divisibility, non-divisibility, greatest common divisor, exponentiation and primeness.  
+In this fashion, step by step, you can show that more complex sets and relations are Diophantine, such as divisibility, non-divisibility, greatest common divisor, exponentiation (!) and primeness (!!!).  
 
 The exponentiation, which corresponds to the set of triplets `{a, b, c}` such that <code>a = b<sup>c</sup></code>, can also be shown Diophantine.  
 This provides a method to reduce exponential Diophantine equations (where exponentiation can appear in the expression along with additions, substractions and multiplications) to equivalent polynomials. 
