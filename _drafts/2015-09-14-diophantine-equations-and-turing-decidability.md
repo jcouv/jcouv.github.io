@@ -1,4 +1,5 @@
 ---
+title: Diophantine equations and Turing decidability
 published: false
 ---
 
