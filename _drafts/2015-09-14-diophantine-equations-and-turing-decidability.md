@@ -2,7 +2,6 @@
 published: false
 ---
 
-
 ---
 title: Diophantine equations and Turing decidability
 layout: page
@@ -15,14 +14,17 @@ Diophantine equations are polynomials with integer coefficients and variables.
 They can be used to define Diophantine sets. To do so, you separate the variables of the polynomial into parameters and unknowns. Then the set of parameter values such that the polynomial's unknowns can be solved is called a Diophantine set.  
 Any set for which you can find such a polynomial is a Diophantine set. 
 
-For instance, the set of even numbers is Diophantine because it can be represented by polynomial `a - 2x = 0` (where `a` is a parameter and `x` an unknown).
-Similarly, because of Lagrange's four-square theorem, the set of non-negative numbers can be represented by <code>a - (x<sup>2</sup> + y<sup>2</sup> + w<sup>2</sup> + z<sup>2</sup>) = 0</code>.
+For instance, the set of even numbers is Diophantine because it is represented by polynomial `a - 2x = 0` (where `a` is a parameter and `x` an unknown).
+Similarly, because of Lagrange's four-square theorem, the set of non-negative numbers is represented by <code>a - (x<sup>2</sup> + y<sup>2</sup> + w<sup>2</sup> + z<sup>2</sup>) = 0</code>.
 
-The union and intersection of Diophantine sets is also Diophantine, if you consider the following polynomials respectively:  
-<code>FirstPolynomial<sup>2</sup> + SecondPolynomial<sup>2</sup> = 0</code> (with the unknowns in SecondPolynomial renamed)  
-<code>FirstPolynomial * SecondPolynomial = 0</code>
+The intersection and union of Diophantine sets is also Diophantine, if you consider the following polynomials respectively:   
 
-By using the above, you can make a polynomial representing the set of non-negative even numbers.  
+1. <code>FirstPolynomial<sup>2</sup> + SecondPolynomial<sup>2</sup> = 0</code> (with the unknowns in SecondPolynomial renamed to avoid conflicts)  
+2. <code>FirstPolynomial * SecondPolynomial = 0</code>
+
+
+
+By combining the above, you can make a polynomial representing the set of numbers that are both even and non-negative.  
 More generally, there is an equivalence between determining if a Diophantine equation has integer solutions or non-negative solutions. So the default is to focus on non-negative solutions.
 
 The notion of Diophantine sets can naturally be extended to properties, relations and functions. I'll just illustrate those with examples:  
@@ -32,15 +34,37 @@ The notion of Diophantine sets can naturally be extended to properties, relation
 - We could show that the set of triplets `{a, b, c}` where `a` is the remainder of `b` divided by `c` is Diophantine, therefore so is the corresponding function: `a = rem(b, c)`.  
 
 In this fashion, step by step, you can show that more complex sets and relations are Diophantine, such as divisibility, non-divisibility, remainder, greatest common divisor, and exponentiation.  
-The exponentiation is quite tricky and corresponds to the set of triplets `{a, b, c}` such that <code>a = b<sup>c</sup></code>. This allows to introduce exponential Diophantine equations (where exponentiation can appear in the expression along with additions and multiplications) and provides a method find them equivalent polynomial representations.  
-One further result which is quite amazing is that the `IsPrime` relationship is Diophantine. This means there exists a polynomial that generates exactly the set of primes when its parameters are allowed to take any and all natural numbers! (p. 55)
+
+The exponentiation, which corresponds to the set of triplets `{a, b, c}` such that <code>a = b<sup>c</sup></code>, can also be shown Diophantine.  
+This provides a method to reduce exponential Diophantine equations (where exponentiation can appear in the expression along with additions, substractions and multiplications) to equivalent polynomials. 
+A simple example to illustrate the method: create a new variable `z` to substitute to an exponential, <code>x<sup>y</sup></code>, and use this variable definition as `SecondPolynomial` (<code>z - x<sup>y</sup> = 0</code>) for the intersection formula above.  
+By the way, this method of introducing more variables can be used to refactor any Diophantine equation into an equivalent equation of degree 4 at most.
+
+The `IsPrime(a) -> bool` property is Diophantine too, which is quite an amazing result too. This means there exists a polynomial that generates exactly the set of primes when its parameters are allowed to take any and all natural numbers! (p. 55)  
+
 
 ## Codings: Cantor, Gödel and positional
-There are multiple ways of coding tuples into lower dimensional spaces. Cantor allows to represent a tuple of length `n` as an integer, but `n` has to be fixed.
-<code>Cantor<sub>n</sub>(a<sub>1</sub>, ..., a<sub>n</sub>) -> c</code> is a Diophantine function, and so is the converse <code>CantorElement<sub>n,m</sub>(c)</code>.
-The function `CantorElement(n, m, c)` which treats `n` and `m` as parameters cannot easily be shown to be Diophantine. So other representations are considered.
+There are multiple ways of coding tuples into lower dimensional spaces. This is useful to iterate through all possible tuples, refactor equations to fewer parameters and unknowns, and give each polynomial a number or code.  
 
-The Gödel coding is introduced, which allows to encode tuples <code>{a<sub>1</sub>, ..., a<sub>n</sub>}</code> of arbitrary dimension into a triplet (and you could even go further and encode that triplet with Cantor if you wanted). It's based on the Chinese Remainder Theorem and is defined as the triples `{a, b, n}` such that <code>a<sub>i</sub> = rem(a, b.i + 1) = GodelElement(a, b, i)</code>. There is more than one such triple, so the coding is not unique (unlike Cantor's). Also, that coding is Diophantine as the remainder function is. There can be no converse function, <code>Godel(a<sub>1</sub>, ..., a<sub>n</sub>, n)</code>, as it would have a variable number of parameters.
+The Cantor numbering allows to represent a tuple of length `n` as an integer (with `n` fixed).  
+For n=2, it sequences pairs following the diagonals: {0, 0}, the {1, 0}, {0, 1}, then {2, 0}, {1, 1}, {0, 2}, then {3, 0} and so on as shown in the following table.  
+
+<table style="width:100%">
+  <tr> <td> </td>  <th>0</th><th>1</th><th>2</th><th>3</th><th>...</th> </tr>
+  <tr> <th>0</th>  <td>0</td><td>1</td><td>3</td><td>6</td><td>10</td> </tr>
+  <tr> <th>1</th>  <td>2</td><td>4</td><td>7</td><td>11</td><td>16</td> </tr>
+  <tr> <th>2</th>  <td>5</td><td>8</td><td>12</td><td>17</td><td>23</td> </tr>
+  <tr> <th>...</th><td>9</td><td>13</td><td>18</td><td>24</td><td>31</td> </tr>
+</table>
+
+
+For higher dimensions, the same method can be applied recursively to reduce the dimension one at a time.  
+<code>Cantor<sub>n</sub>(a<sub>1</sub>, ..., a<sub>n</sub>) -> c</code> is a Diophantine function, and so is the converse <code>CantorElement<sub>n,i</sub>(c)</code>.
+But the function `CantorElement(n, i, c)` which treats `n` and `i` as parameters cannot easily be shown to be Diophantine. So other codings are considered.
+
+The Gödel coding allows encoding tuples <code>{a<sub>1</sub>, ..., a<sub>n</sub>}</code> of arbitrary dimension into a triplet (and you could even go further and encode that triplet with Cantor if you wanted). It's based on the Chinese Remainder Theorem and is defined as the triples `{a, b, n}` such that <code>a<sub>i</sub> = rem(a, b.i + 1) = GodelElement(a, b, i)</code>. There is more than one such triple for a given tuple, so the coding is not unique (unlike Cantor's). 
+There can be no converse function, <code>Godel(a<sub>1</sub>, ..., a<sub>n</sub>, n)</code>, as it would have a variable number of parameters.
+That coding is Diophantine as the remainder function is.  
 
 The positional coding also represents a tuple as a triplet `{a, b, n}`, but where `a` is the representation in base `b` of the tuple. That means <code>a = a<sub>n</sub>.b<sup>n-1</sup> + ... + a<sub>1</sub>.b<sup>0</sup></code>. Not every tuple is a positional code, but the property `IsPositionalCode(a, b, n)` can tell which ones are. That property is Diophantine, and so are the relations for comparing such encoded tuples, <code>PositionalEqual(a<sub>1</sub>, b<sub>1</sub>, c<sub>1</sub>, a<sub>2</sub>, b<sub>2</sub>, c<sub>2</sub>)</code>.
 
@@ -68,5 +92,3 @@ In this context, Hilbert Tenth Problem asks whether the set of codes of all solv
 
 
 
-Misc
-Max number of variables and degrees.
