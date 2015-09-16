@@ -3,14 +3,8 @@ title: Diophantine equations and Turing decidability
 published: false
 ---
 
-
----
-title: Diophantine equations and Turing decidability
-layout: page
----
-
 I enjoyed reading Yuri Matiyasevich's [Hilbert 10th Problem](http://smile.amazon.com/Hilberts-10th-Problem-Foundations-Computing/dp/0262132958/) (Thanks Stéphane for the recommendation).  
-It is rather accessible overall, but some demonstrations do get quite mind-bending. Below are my notes on the key topics (mostly covered by the first 5 chapters).
+It is rather accessible overall, but some results and demonstrations do get quite mind-bending. Below are my notes on the key topics (mostly covering the first 5 chapters).
 
 ![H10 cover.jpg]({{site.baseurl}}/archives/images/H10 cover.jpg)
 
