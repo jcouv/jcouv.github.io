@@ -42,8 +42,8 @@ The Cantor numbering allows to represent a tuple of length `n` as an integer (wi
 For n=2, it sequences pairs following the diagonals: {0, 0}, the {1, 0}, {0, 1}, then {2, 0}, {1, 1}, {0, 2}, then {3, 0} and so on.  
 
 <table style="width:100%">
-  <tr> <td> </td>  <td><b>0</b></td><td><b>1</b></td><td><b>2</b></td><td><b>3</b></td><td><b>...</b></td> </tr>
-  <tr> <td><b>0</b></td>  <td>0</td><td>1</td><td>3</td><td>6</td><td></td> </tr>
+  <tr> <td> </td>  <th>0</th><td><b>1</b></td><td><b>2</b></td><td><b>3</b></td><td><b>...</b></td> </tr>
+  <tr> <th>0</th>  <td>0</td><td>1</td><td>3</td><td>6</td><td></td> </tr>
   <tr> <td><b>1</b></td>  <td>2</td><td>4</td><td>7</td><td>11</td><td>16</td> </tr>
   <tr> <td><b>2</b></td>  <td>5</td><td>8</td><td>12</td><td>17</td><td>23</td> </tr>
   <tr> <td><b>...</b></td><td>9</td><td>13</td><td>18</td><td>24</td><td>31</td> </tr>
