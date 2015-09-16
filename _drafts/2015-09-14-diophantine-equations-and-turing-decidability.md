@@ -7,7 +7,8 @@ title: Diophantine equations and Turing decidability
 layout: page
 ---
 
-I enjoyed reading Yuri Matiyasevich's [Hilbert 10th Problem](http://smile.amazon.com/Hilberts-10th-Problem-Foundations-Computing/dp/0262132958/). It is rather accessible, although some demonstrations do get quite mind-bending. Below are my notes on the key topics (mostly covered by the first 5 chapters).
+I enjoyed reading Yuri Matiyasevich's [Hilbert 10th Problem](http://smile.amazon.com/Hilberts-10th-Problem-Foundations-Computing/dp/0262132958/) (Thanks Stéphane for the recommendation).  
+It is rather accessible overall, but some demonstrations do get quite mind-bending. Below are my notes on the key topics (mostly covered by the first 5 chapters).
 
 ![H10 cover.jpg]({{site.baseurl}}/archives/images/H10 cover.jpg)
 
@@ -93,7 +94,8 @@ A set is called Turing decidable if a Turing machine exists that will halt on st
 From a decidable machine, you can easily make a semidecidable one. 
 Conversely, if a set and it's complement are both semidecidable, then they are decidable. You could construct a "schizophrenic" machine that runs one step of each machine, and therefore would be guaranteed to halt with a `Yes` or `No`.
 
-In this context, Hilbert Tenth Problem asks whether the set of codes of all solvable Diophantine equations (without parameters) is Turing decidable. It turns out it isn't. There is no way of determining if a Diophantine equation is solvable in a way that is guaranteed to halt. Moreover, based on Church's Thesis, this conclusion is not contingent on the specific Turing machine introduced above but holds in general.
+In this context, Hilbert Tenth Problem asks whether the set of codes of all solvable Diophantine equations (without parameters) is Turing decidable. But Matiyasevich proves the negative: there is no way of determining if a Diophantine equation is solvable in a way that is guaranteed to halt.  
+Moreover, based on Church's Thesis, this conclusion holds in general; it is not contingent on the specific Turing machine introduced above.
 
 
 
