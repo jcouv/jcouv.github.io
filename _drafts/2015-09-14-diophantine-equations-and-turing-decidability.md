@@ -74,15 +74,17 @@ Chapter 4 demonstrates that such a universal Diophantine equations can be constr
 
 ## Turing machines
 Chapter 5 provides a very nice introduction to Turing machines. 
-The alphabet is `{ *, 0, 1, 2, 3, null }` and two states are reserved as final states for `Yes` and `No`. The tape encodes a stack of integers by using 0 to separate sequences of 1's. During the functioning of the machines, the 1's will typically be marked as 2's or 3's temporarily, then reverted to 1's. 
+The alphabet is `{ *, 0, 1, 2, 3, null }` and two states are reserved as final states for `Yes` and `No`. The tape encodes a stack of integers by using 0 to separate sequences of 1's.  
+During the functioning of the machines, the 1's will typically be marked as 2's or 3's temporarily, then reverted to 1's.  
+
 After explaining how to compose machines into sequences, conditionals and loops, a number of increasingly complex machines are introduced by composition:  
 `Left`, `Right`, `Write(x)`, `Read(x)` (goes to state Yes or No depending on the value read), `Stop`, `NeverStop`, `ReadNot(x)`, `Star` (jumping to head of the tape), `Vacant` (jumping to the first empty spot down the tape), `Find(k)` (which jumpts to the k'th integer on the tape), `Increase` (adds a 1 to the last integer), `Decrease`, `Delete` (deletes the last integer), `Mark(x)` (replace 1's with x's in the current integer), `IsThere(x)` (which tries to find an x on the tape), `ThereWas(x)` (which finds an x and writes it back to 1), `Restore` (set all the 2's and 3's back to 1), `Append(k)` (increment the head of the stack by the value of the k-th integer), `Copy(k)` (adds an entry on the stack, copied from the k-th integer), `Add(k, l)` (adds an entry on the stack with the sum of the k-th and l-th integers), `Mult(k, l)`, `NotGreater(k, l)`, `Equal(k, l)`, `NotEqual(k, l)`, `Next` (updates the two entries on top of the stack according to Cantor's numbering), and `Decode` (gets the Cantor pair represented by the entry on top of the stack and adds two entries storing that pair). 
 
-All these primitive machines can be used to construct a machine that recognizes a given Diophantine set (the machine will halt if and only if initialized with tuples from the set). The machine starts with the parameters on tape and then enumerates all the possible values for the unknowns, one tuple at a time. For each, it checks whether those values solve the parameterized Diophantine equation.
-
 ## Turing decidability and Hilbert's Tenth Problem 
+All these primitive machines can be used to construct a machine that recognizes a given Diophantine set (the machine will halt if and only if initialized with tuples from the set). The machine starts with the parameters on tape and then enumerates all the possible values for the unknowns, one tuple at a time. For each, it checks whether those values solve the parameterized Diophantine equation.  
+
 A set is called Turing semidecidable if such a Turing machine exists (that will halt when and only when the machine is initialized with an n-tuple from the set). 
-As mentioned above, from every Diophantine set we can construct a Turing machine that will recognize n-tuples from that set. But the converse turns out to be possible to, and every Turing semidecidable set is Diophantine.
+As mentioned above, from every Diophantine set we can construct a Turing machine that will recognize n-tuples from that set. But the converse turns out to be possible to, and every Turing semidecidable set is Diophantine.  
 
 A set is called Turing decidable if a Turing machine exists that will halt on state `Yes` for n-tuples in the set and halt on state `No` otherwise.
 From a decidable machine, you can easily make a semidecidable one. 
