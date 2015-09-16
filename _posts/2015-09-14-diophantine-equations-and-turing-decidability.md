@@ -1,6 +1,6 @@
 ---
 title: Diophantine equations and Turing decidability
-published: false
+published: true
 ---
 
 I enjoyed reading Yuri Matiyasevich's [Hilbert 10th Problem](http://smile.amazon.com/Hilberts-10th-Problem-Foundations-Computing/dp/0262132958/) (Thanks Stéphane for the recommendation).  
