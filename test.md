@@ -55,10 +55,12 @@ For n=2, it sequences pairs following the diagonals: {0, 0}, the {1, 0}, {0, 1},
 
 
 For higher dimensions, the same method can be applied recursively to reduce the dimension one at a time.  
-<code>Cantor<sub>n</sub>(a<sub>1</sub>, ..., a<sub>n</sub>) -> c</code> is a Diophantine function, and so is the converse <code>CantorElement<sub>n,m</sub>(c)</code>.
-But the function `CantorElement(n, m, c)` which treats `n` and `m` as parameters cannot easily be shown to be Diophantine. So other representations are considered.
+<code>Cantor<sub>n</sub>(a<sub>1</sub>, ..., a<sub>n</sub>) -> c</code> is a Diophantine function, and so is the converse <code>CantorElement<sub>n,i</sub>(c)</code>.
+But the function `CantorElement(n, i, c)` which treats `n` and `i` as parameters cannot easily be shown to be Diophantine. So other codings are considered.
 
-The Gödel coding is introduced, which allows to encode tuples <code>{a<sub>1</sub>, ..., a<sub>n</sub>}</code> of arbitrary dimension into a triplet (and you could even go further and encode that triplet with Cantor if you wanted). It's based on the Chinese Remainder Theorem and is defined as the triples `{a, b, n}` such that <code>a<sub>i</sub> = rem(a, b.i + 1) = GodelElement(a, b, i)</code>. There is more than one such triple, so the coding is not unique (unlike Cantor's). Also, that coding is Diophantine as the remainder function is. There can be no converse function, <code>Godel(a<sub>1</sub>, ..., a<sub>n</sub>, n)</code>, as it would have a variable number of parameters.
+The Gödel coding allows encoding tuples <code>{a<sub>1</sub>, ..., a<sub>n</sub>}</code> of arbitrary dimension into a triplet (and you could even go further and encode that triplet with Cantor if you wanted). It's based on the Chinese Remainder Theorem and is defined as the triples `{a, b, n}` such that <code>a<sub>i</sub> = rem(a, b.i + 1) = GodelElement(a, b, i)</code>. There is more than one such triple for a given tuple, so the coding is not unique (unlike Cantor's). 
+There can be no converse function, <code>Godel(a<sub>1</sub>, ..., a<sub>n</sub>, n)</code>, as it would have a variable number of parameters.
+That coding is Diophantine as the remainder function is.  
 
 The positional coding also represents a tuple as a triplet `{a, b, n}`, but where `a` is the representation in base `b` of the tuple. That means <code>a = a<sub>n</sub>.b<sup>n-1</sup> + ... + a<sub>1</sub>.b<sup>0</sup></code>. Not every tuple is a positional code, but the property `IsPositionalCode(a, b, n)` can tell which ones are. That property is Diophantine, and so are the relations for comparing such encoded tuples, <code>PositionalEqual(a<sub>1</sub>, b<sub>1</sub>, c<sub>1</sub>, a<sub>2</sub>, b<sub>2</sub>, c<sub>2</sub>)</code>.
 
