@@ -8,16 +8,17 @@ layout: page
 ## Diophantine equations, sets and relations
 Diophantine equations are polynomials with integer coefficients and variables. 
 They can be used to define Diophantine sets. To do so, you separate the variables of the polynomial into parameters and unknowns. Then the set of parameter values such that the polynomial's unknowns can be solved is called a Diophantine set.  
-And any set for which you can find such a polynomial is a Diophantine set. 
+Any set for which you can find such a polynomial is a Diophantine set. 
 
 For instance, the set of even numbers is Diophantine because it is represented by polynomial `a - 2x = 0` (where `a` is a parameter and `x` an unknown).
 Similarly, because of Lagrange's four-square theorem, the set of non-negative numbers is represented by <code>a - (x<sup>2</sup> + y<sup>2</sup> + w<sup>2</sup> + z<sup>2</sup>) = 0</code>.
 
-The union and intersection of Diophantine sets is also Diophantine, if you consider the following polynomials respectively:  
+The intersection and union of Diophantine sets is also Diophantine, if you consider the following polynomials respectively:  
 <code>FirstPolynomial<sup>2</sup> + SecondPolynomial<sup>2</sup> = 0</code> (with the unknowns in SecondPolynomial renamed)  
 <code>FirstPolynomial * SecondPolynomial = 0</code>
 
-So, the set of non-negative even numbers can be represented by combining the above. More generally, there is an equivalence between determining if a Diophantine equation has integer solutions or non-negative solutions. So the default is to focus on non-negative solutions.
+By using the above, you can make a polynomial representing the set of non-negative even numbers.  
+More generally, there is an equivalence between determining if a Diophantine equation has integer solutions or non-negative solutions. So the default is to focus on non-negative solutions.
 
 The notion of Diophantine sets can naturally be extended to properties, relations and functions. I'll just illustrate those with examples:  
 
@@ -26,11 +27,17 @@ The notion of Diophantine sets can naturally be extended to properties, relation
 - We could show that the set of triplets `{a, b, c}` where `a` is the remainder of `b` divided by `c` is Diophantine, therefore so is the corresponding function: `a = rem(b, c)`.  
 
 In this fashion, step by step, you can show that more complex sets and relations are Diophantine, such as divisibility, non-divisibility, remainder, greatest common divisor, and exponentiation.  
-The exponentiation is quite tricky and corresponds to the set of triplets `{a, b, c}` such that <code>a = b<sup>c</sup></code>. This allows to introduce exponential Diophantine equations (where exponentiation can appear in the expression along with additions and multiplications) and provides a method find them equivalent polynomial representations.  
+
+The exponentiation is quite tricky and corresponds to the set of triplets `{a, b, c}` such that <code>a = b<sup>c</sup></code>.  
+This provides a method to represent exponential Diophantine equations (where exponentiation can appear in the expression along with additions, substractions and multiplications) with equivalent polynomials. 
+An example to illustrate the method: create a new variable such a <code>z = x<sup>y</sup></code> to substitute to exponential, and use this variable definition as `SecondPolynomial` for the intersection formula above.  
+
 One further result which is quite amazing is that the `IsPrime` relationship is Diophantine. This means there exists a polynomial that generates exactly the set of primes when its parameters are allowed to take any and all natural numbers! (p. 55)
 
 ## Codings: Cantor, Gödel and positional
-There are multiple ways of coding tuples into lower dimensional spaces. Cantor allows to represent a tuple of length `n` as an integer, but `n` has to be fixed.
+There are multiple ways of coding tuples into lower dimensional spaces. This is useful to iterate through all possible tuples and refactor equations to fewer parameters and unknowns.  
+
+Cantor allows to represent a tuple of length `n` as an integer, but `n` has to be fixed.
 <code>Cantor<sub>n</sub>(a<sub>1</sub>, ..., a<sub>n</sub>) -> c</code> is a Diophantine function, and so is the converse <code>CantorElement<sub>n,m</sub>(c)</code>.
 The function `CantorElement(n, m, c)` which treats `n` and `m` as parameters cannot easily be shown to be Diophantine. So other representations are considered.
 
