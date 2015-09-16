@@ -43,8 +43,8 @@ For n=2, it sequences pairs following the diagonals: {0, 0}, the {1, 0}, {0, 1},
 
 <table style="width:100%">
   <tr> <td> </td>  <th>0</th><th>1</th><th>2</th><th>3</th><th>...</th> </tr>
-  <tr> <th>0</th>  <td>0</td><td>1</td><td>3</td><td>6</td><td></td> </tr>
-  <tr> <th>1</th>  <td>2</td><td>4</td><td>7</td><td>11</td><td>16</td> </tr>
+  <tr> <th>0</th>  <td>0</td><td><i>1</i></td><td>3</td><td>6</td><td>10</td> </tr>
+  <tr> <th>1</th>  <td><i>2</i></td><td>4</td><td>7</td><td>11</td><td>16</td> </tr>
   <tr> <th>2</th>  <td>5</td><td>8</td><td>12</td><td>17</td><td>23</td> </tr>
   <tr> <th>...</th><td>9</td><td>13</td><td>18</td><td>24</td><td>31</td> </tr>
 </table>
