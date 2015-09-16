@@ -33,18 +33,18 @@ The notion of Diophantine sets can naturally be extended to properties, relation
 - We could show that the set of pairs `{a, b}` where `a` is not equal to `b` is Diophantine, therefore so is the corresponding relation: `NotEqual(a, b) -> bool`.  
 - We could show that the set of triplets `{a, b, c}` where `a` is the remainder of `b` divided by `c` is Diophantine, therefore so is the corresponding function: `a = rem(b, c)`.  
 
-In this fashion, step by step, you can show that more complex sets and relations are Diophantine, such as divisibility, non-divisibility, remainder, greatest common divisor, and exponentiation.  
+In this fashion, step by step, you can show that more complex sets and relations are Diophantine, such as divisibility, non-divisibility, greatest common divisor, exponentiation and primeness.  
 
 The exponentiation, which corresponds to the set of triplets `{a, b, c}` such that <code>a = b<sup>c</sup></code>, can also be shown Diophantine.  
 This provides a method to reduce exponential Diophantine equations (where exponentiation can appear in the expression along with additions, substractions and multiplications) to equivalent polynomials. 
 A simple example to illustrate the method: create a new variable `z` to substitute to an exponential, <code>x<sup>y</sup></code>, and use this variable definition as `SecondPolynomial` (<code>z - x<sup>y</sup> = 0</code>) for the intersection formula above.  
-By the way, this method of introducing more variables can be used to refactor any Diophantine equation into an equivalent equation of degree 4 at most.
+By the way, this method of introducing more variables can also be used to refactor any Diophantine equation into an equivalent equation of degree 4 at most.
 
 The `IsPrime(a) -> bool` property is Diophantine too, which is quite an amazing result too. This means there exists a polynomial that generates exactly the set of primes when its parameters are allowed to take any and all natural numbers! (p. 55)  
 
 
 ## Codings: Cantor, Gödel and positional
-There are multiple ways of coding tuples into lower dimensional spaces. This is useful to iterate through all possible tuples, refactor equations to fewer parameters and unknowns, and give each polynomial a number or code.  
+There are multiple ways of coding tuples into lower dimensional spaces. This is useful to iterate through all possible tuples, refactor equations to fewer parameters and unknowns, and give each polynomial a unique identifier or code.  
 
 The Cantor numbering allows to represent a tuple of length `n` as an integer (with `n` fixed).  
 For n=2, it sequences pairs following the diagonals: {0, 0}, the {1, 0}, {0, 1}, then {2, 0}, {1, 1}, {0, 2}, then {3, 0} and so on as shown in the following table.  
@@ -60,7 +60,7 @@ For n=2, it sequences pairs following the diagonals: {0, 0}, the {1, 0}, {0, 1},
 
 For higher dimensions, the same method can be applied recursively to reduce the dimension one at a time.  
 <code>Cantor<sub>n</sub>(a<sub>1</sub>, ..., a<sub>n</sub>) -> c</code> is a Diophantine function, and so is the converse <code>CantorElement<sub>n,i</sub>(c)</code>.
-But the function `CantorElement(n, i, c)` which treats `n` and `i` as parameters cannot easily be shown to be Diophantine. So other codings are considered.
+But the function `CantorElement(n, i, c)` which treats `n` and `i` as variables cannot easily be shown to be Diophantine. So other codings are considered.
 
 The Gödel coding allows encoding tuples <code>{a<sub>1</sub>, ..., a<sub>n</sub>}</code> of arbitrary dimension into a triplet (and you could even go further and encode that triplet with Cantor if you wanted). It's based on the Chinese Remainder Theorem and is defined as the triples `{a, b, n}` such that <code>a<sub>i</sub> = rem(a, b.i + 1) = GodelElement(a, b, i)</code>. There is more than one such triple for a given tuple, so the coding is not unique (unlike Cantor's). 
 There can be no converse function, <code>Godel(a<sub>1</sub>, ..., a<sub>n</sub>, n)</code>, as it would have a variable number of parameters.
