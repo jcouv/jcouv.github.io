@@ -3,6 +3,7 @@ title: Diophantine equations and Turing decidability
 published: false
 ---
 
+
 ---
 title: Diophantine equations and Turing decidability
 layout: page
@@ -95,8 +96,5 @@ A set is called Turing decidable if a Turing machine exists that will halt on st
 From a decidable machine, you can easily make a semidecidable one. 
 Conversely, if a set and it's complement are both semidecidable, then they are decidable. You could construct a "schizophrenic" machine that runs one step of each machine, and therefore would be guaranteed to halt with a `Yes` or `No`.
 
-In this context, Hilbert Tenth Problem asks whether the set of codes of all solvable Diophantine equations (without parameters) is Turing decidable. But Matiyasevich proves the negative: there is no way of determining if a Diophantine equation is solvable in a way that is guaranteed to halt.  
+In this context, Hilbert Tenth Problem asks whether the set of codes of all solvable Diophantine equations (without parameters) is Turing decidable. But Matiyasevich proves the negative: there is no way that is guaranteed to halt for determining if a Diophantine equation is solvable.  
 Moreover, based on Church's Thesis, this conclusion holds in general; it is not contingent on the specific Turing machine introduced above.
-
-
-
