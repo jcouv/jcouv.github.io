@@ -73,7 +73,7 @@ That coding is Diophantine as the remainder function is.
 The positional coding also represents a tuple as a triplet `{a, b, n}`, but where `a` is the representation in base `b` of the tuple. That means <code>a = a<sub>n</sub>.b<sup>n-1</sup> + ... + a<sub>1</sub>.b<sup>0</sup></code>. Not every tuple is a positional code, but the property `IsPositionalCode(a, b, n)` can tell which ones are. That property is Diophantine, and so are the relations for comparing such encoded tuples, <code>PositionalEqual(a<sub>1</sub>, b<sub>1</sub>, c<sub>1</sub>, a<sub>2</sub>, b<sub>2</sub>, c<sub>2</sub>)</code>.
 
 ## Universal Diophantine equations
-It gets trippy when Universal Diophantine Equations are introduced and constructed. Those are polynomials where the variables are grouped into code parameters, element parameters and unknowns. It is universal if it can code (by choosing the code parameters) for any Diophantine equation, which means it will define the same set.  
+It gets trippy when Universal Diophantine Equations are introduced. Those are polynomials where the variables are broken into 3 groups: code parameters, element parameters and unknowns. Such an equation is universal if it can code (by choosing the code parameters) for any Diophantine equation (which means it will represent the same set).  
 Chapter 4 demonstrates that such a universal Diophantine equations can be constructed. This relies heavily on the codings introduced above. 
 
 ## Turing machines
