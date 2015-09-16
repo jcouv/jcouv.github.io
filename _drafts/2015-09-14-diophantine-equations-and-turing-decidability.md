@@ -7,6 +7,7 @@ title: Diophantine equations and Turing decidability
 layout: page
 ---
 
+![H10 cover.jpg]({{site.baseurl}}/archives/images/H10 cover.jpg)
 
 
 ## Diophantine equations, sets and relations
