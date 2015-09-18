@@ -3,7 +3,6 @@ title: Free-market search
 layout: page
 ---
 
-
 <script>
   (function() {
     var cx = '005101733046013339255:stdkk25n2es';
