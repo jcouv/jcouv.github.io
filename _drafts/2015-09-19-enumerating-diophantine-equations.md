@@ -8,7 +8,7 @@ title: Enumerating Diophantine equations
 
 I mentioned this problem in passing in my last post, but it's really not obvious. Here's the method exposed in Matiyasevich's Hilbert's Tenth Problem. The method originates from [Julia Robison](https://en.wikipedia.org/wiki/Julia_Robinson), in Diophantine Decision Problems.
 
-Here are the rules she offers to generate all 
+Here are the rules she offers to generate all integer polynomials P<sub>m</sub> and all positive integer polynomials T<sub>n</sub>:
 - T<sub>4n</sub> = n
 - T<sub>4n+1</sub> = x<sub>n</sub>
 - T<sub>4n+2</sub> = T<sub>CantorLeft(n)</sub> + T<sub>CantorRight(n)</sub>
