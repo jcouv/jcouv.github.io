@@ -17,6 +17,8 @@ Here are the rules she offers to generate all
 
 As you can see, T<sub>n</sub> will includes all possible constants and unknowns, as well as any sums or products. Then P<sub>m</sub> will be the difference of any two T<sub>n</sub>'s.
 
+An example: P<sub>7,297,614,550</sub> = 2.x<sub>0<sub><sup>2</sup> - (1 + x<sub>1</sub><sup>2</sup>)
+
 One thing to notice is that T<sub>n</sub> will generate duplicates. For instance, T<sub>4n+2</sub> = T<sub>4m+2</sub> when CantorLeft(n) = CantorRight(m) and CantorRight(n) = CantorLeft(m). I don't know if there is a numbering that avoids this problem.
 
 
