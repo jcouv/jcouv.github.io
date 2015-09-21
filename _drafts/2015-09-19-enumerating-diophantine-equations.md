@@ -15,7 +15,7 @@ Here are the rules she offers to generate all integer polynomials P<sub>m</sub> 
 - T<sub>4n+3</sub> = T<sub>CantorLeft(n)</sub> * T<sub>CantorRight(n)</sub>
 - P<sub>m</sub> = T<sub>CantorLeft(m)</sub> - T<sub>CantorRight(m)</sub>
 
-As you can see, T<sub>n</sub> will includes all possible constants and unknowns, as well as any sums or products. Then P<sub>m</sub> will be the difference of any two T<sub>n</sub>'s.
+As you can see, T<sub>n</sub> will includes all possible constants and unknowns, as well as any sums or products of other T<sub>n</sub> elements. Then P<sub>m</sub> will be the difference of any two T<sub>n</sub> elements.
 
 An example: P<sub>7,297,614,550</sub> = 2.x<sub>0<sub><sup>2</sup> - (1 + x<sub>1</sub><sup>2</sup>)
 
