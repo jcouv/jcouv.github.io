@@ -1,5 +1,5 @@
 ---
-published: false
+layout: page
 title: Enumerating Diophantine equations
 ---
 
