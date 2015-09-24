@@ -1,5 +1,6 @@
 ---
 published: false
+title: Enumerating Diophantine equations
 ---
 
 ---
