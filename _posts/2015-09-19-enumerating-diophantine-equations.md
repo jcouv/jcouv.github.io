@@ -2,7 +2,7 @@
 published: true
 title: Enumerating Diophantine equations
 ---
-
+ 
 I mentioned this problem in passing in my last post, but it's really not trivial. Here's the method exposed in Matiyasevich's Hilbert's Tenth Problem. The method originates from [Julia Robinson](https://en.wikipedia.org/wiki/Julia_Robinson), in Diophantine Decision Problems (in [Studies in Number Theory](http://smile.amazon.com/Studies-Number-Theory-William-Leveque/dp/0883851067/)).
 
 Here are the rules she offers to generate all integer polynomials P<sub>m</sub> and all positive integer polynomials T<sub>n</sub>:  
