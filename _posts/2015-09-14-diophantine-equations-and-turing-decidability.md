@@ -3,6 +3,7 @@ title: Diophantine equations and Turing decidability
 published: true
 ---
 
+
 I enjoyed reading Yuri Matiyasevich's [Hilbert 10th Problem](http://smile.amazon.com/Hilberts-10th-Problem-Foundations-Computing/dp/0262132958/) (Thanks Stéphane for the recommendation).  
 It is rather accessible overall, but some results and demonstrations do get quite mind-bending. Below are my notes on the key topics (mostly covering the first 5 chapters).
 
@@ -44,7 +45,7 @@ The `IsPrime(a) -> bool` property is Diophantine too, which is quite an amazing 
 
 
 ## Codings: Cantor, Gödel and positional
-There are multiple ways of coding tuples into lower dimensional spaces. This is useful to iterate through all possible tuples, refactor equations to fewer parameters and unknowns, and give each polynomial a unique identifier or code.  
+There are multiple ways of coding tuples into lower dimensional spaces. This is useful to iterate through all possible tuples, refactor equations to fewer parameters and unknowns, and [enumerate all polynomials](http://blog.monstuff.com/archives/2015/09/enumerating-diophantine-equations.html).  
 
 The Cantor numbering allows to represent a tuple of length `n` as an integer (with `n` fixed).  
 For n=2, it sequences pairs following the diagonals: {0, 0}, the {1, 0}, {0, 1}, then {2, 0}, {1, 1}, {0, 2}, then {3, 0} and so on as shown in the following table.  
