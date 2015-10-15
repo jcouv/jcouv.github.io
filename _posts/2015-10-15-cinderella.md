@@ -4,7 +4,6 @@ title: Cinderella
 ---
 
 
-## A New Post
 
 I watched Branagh's Cinderella (2015) last weekend and am curious to get the perspective of some parents.  
 I would definitely advise adult supervision and discussion for kids to watch this movie (as with previous versions of this tale and many other supposed kids movies).  
