@@ -1,10 +1,9 @@
 ---
-published: false
+published: true
 title: Cinderella review
 ---
 
-
-I watched Branagh's Cinderella (Disney, 2015) last weekend and am curious to get the perspective of some parents.  
+I watched Kenneth Branagh's Cinderella (Disney, 2015) last weekend and am curious to get the perspective of some parents.  
 I would definitely advise adult supervision and discussion for kids to watch this movie (as with previous versions of this tale and probably most other supposed kids movies).  
 
 Without going into the savior prince cliché, three observations of the kinds of poor choices and values uncritically displayed:  
