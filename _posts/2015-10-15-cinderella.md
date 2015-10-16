@@ -17,6 +17,4 @@ Without going into the savior prince cliché, three observations of the kinds of
 
 It's important to recognize when the two virtues promoted in the story (courage and kindness) are being manipulated and distorted to allow for abuse to continue. Such confusion is what allows abuse in the first place.
 
-Let me know what you think.
-
 ![Cinderella movie poster]({{site.baseurl}}/archives/images/Cinderella.jpg)
