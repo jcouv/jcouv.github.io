@@ -9,7 +9,7 @@ I would definitely advise adult supervision and discussion for kids to watch thi
 
 Without going into the savior prince cliché, three observations of the kinds of poor choices and values displayed:  
 
-1. The dad seems sensitive and reasonably smart, yet he brings very poor quality people (stepmother and two daughters) into his and his daughter's life. That's very poor judgement. Strangely, Ella  doesn't seem to hold him responsible in any way.  
+1. The dad seems sensitive and reasonably smart, yet he brings very low quality people (stepmother and two stepsisters) into his and his daughter's life. That's very poor judgement. Strangely, Ella  doesn't seem to hold him responsible in any way.  
 
 2. Ella decides to stay in an abusive situation, rather than find another job and home. That's not courage. She obviously has many skills and is hard-working. Yet when a former maid offers to help find a better place, Ella argues that she loves the house and needs to look after it after her parents passed away. Clearly, her parents did not communicate proper priorities (daughter's well-being first, house distant second).  
 
