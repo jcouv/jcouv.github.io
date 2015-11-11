@@ -4,7 +4,8 @@ title: Posture tips
 ---
 
 
-Working on some posture tips I like:
+
+Working on some simple and practical posture tips:
 
 1. Simply spreading your arms (as shown in the lotus zen pose) helps open your shoulders, reset your shoulder blades, and stack your head and spine. You can then bring your arms back to normal, but keep your shoulders open. You can do this any time during the day.
 ![Lotus zen pose](http://blog.yogiseeker.com/wp-content/uploads/2013/10/lotus-pose.jpg)
@@ -15,9 +16,3 @@ Working on some posture tips I like:
 
 I remember first seeing this in a TED talk or some other video, but I can't find the link anymore. Here are some more posture [tips](http://vitals.lifehacker.com/a-better-way-to-text-that-doesn-t-kill-your-neck-1741388092).
 Let me know how that works for you.
-
-
-
-
-
-
