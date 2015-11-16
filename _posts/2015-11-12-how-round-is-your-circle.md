@@ -5,8 +5,9 @@ title: "How round is your circle?"
 
 
 
+
 I found [How round is your circle?](http://smile.amazon.com/How-Round-Your-Circle-Engineering/dp/0691149925/) a delightful blend of geometrical and engineering problems.  
-What I most appreciated is the historical perspective. It shows how problems arose from practical needs and curiosity, that their solutions were incremental, competed against one another, and were in many cases quite recent (less than a few centuries), and finally how those solutions enabled further discoveries and innovations. As a result of the specialization of knowledge and the accumulation of advanced tools, we can easily forget how simple things are actually not trivial at all.
+What I most appreciated is the historical perspective. It shows how problems arose from practical needs and curiosity, that their solutions were incremental, competed against one another, and were in many cases quite recent (less than a few centuries), and finally how those solutions enabled further discoveries and innovations. As a result of the specialization of knowledge and the accumulation of advanced tools, we can easily forget how simple things are actually not trivial at all.  
 Some highlights of the topics covered:
 
 * How to build a linkage that will draw a straight line? 
@@ -17,4 +18,3 @@ Some highlights of the topics covered:
 * How to make shapes and volumes of constant width, and conversely how to measure departure from roundness (a hard problem)? 
 
 ![How round is your circle.jpg]({{site.baseurl}}/archives/images/How round is your circle.jpg)
-
