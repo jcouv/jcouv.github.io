@@ -38,7 +38,7 @@ async Task&lt;SomeResult> MyMethodAsync() {
 
 <p>Under the covers, the method above get compiled with tricks similar to iterators: capturing the local variables of the method into an object to maintain state when the method yields control away, and using a state machine to model the structure of the method and it's various interruption/continuation points. </p>
 
-<p>When the first "await" keyword is reached, the method returns a Task object, holding the promise of a future result. <br />
+<p>When the first "await" keyword is reached, the method returns a Task object, holding the promise of a future result. One way to think about it is that await takes a 'Task&lt;T&gt;' and returns a 'T'.</b><br />
 In the case of iterators, the method would resume after the "yield" statement the next time the GetNext() method would be called again. <br />
 But in the case of async methods, the code after "await" executes as a callback of the inner asynchronous operation (SomeAsyncMethod in the example above). Subsequent await statements are also translated into callbacks.<br />
 When a "return" statement is reached, as the end of this chain of callbacks, the Task which was handed to the caller completes and finally delivers its result.</p>
