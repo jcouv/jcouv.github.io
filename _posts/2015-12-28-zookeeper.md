@@ -2,12 +2,12 @@
 published: false
 ---
 
-http://smile.amazon.com/ZooKeeper-Distributed-Coordination-Flavio-Junqueira/dp/1449361307/
 
+I just read [ZooKeeper: Distributed Process Coordination](http://smile.amazon.com/ZooKeeper-Distributed-Coordination-Flavio-Junqueira/dp/1449361307/). Here are some notes.
 
-Notes on ZooKeeper:
-Presents the abstraction of a tree of nodes (called znodes), and a number of operations with useful guarantees.
-Nodes can be persistent or ephemeral (they get deleted when the session of the client who created the node expires or explicitly terminates). The path of a node is set by the client, but ZooKeeper can optionally generate a sequence number (/tasks/task-***).
+There are two ways to look at any software framework: what abstractions/interface it provides and how it works internally.
+The abstraction presented by Zookeeper is a tree of nodes (called znodes), and a number of operations with useful guarantees.
+Nodes can be persistent or ephemeral (they get deleted when the session of the client who created the node expires or explicitly terminates). The path of a node is set by the client, but ZooKeeper can optionally generate a sequence number (/tasks/task-123).
 So a node has a path, some (small) data, a mode (persistent or ephemeral), a version and some ACLs.
 The operations are to create a node, delete a node, check for existence of a path, read a node, replace the data with newer data, and enumerate the children of a path. There is also the multi-operation (a combo of operations which only succeed atomically).
 Changes to a node are versioned (but the version get lost/reset whenever the node is deleted) and some operations can be executed conditionally on an expected version.
@@ -23,4 +23,3 @@ Behind the scene, ZooKeeper can be run as a standalone instance or as an ensembl
 Internally, the ensemble picks a leader which acts as sequencer and proposer to followers.
 
 ![Zookeeper Oreilly book]({{site.baseurl}}/archives/images/zookeeper.jpg)
-
