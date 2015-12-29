@@ -33,5 +33,6 @@ The Leader acts as sequencer for all write requests, passing them on as transact
 All servers can handle read requests locally, as each server keeps a transaction log and a snapshot of the latest tree (that it knows about).
 I'm still working my way down the rabbit hole of distributed consensus protocols, which are notoriously subtle. Here are some [pointers and summaries for important consensus papers](http://blog.acolyer.org/2015/03/01/cant-we-all-just-agree/).
 
+TODO: can a core server be dyanmically replaced?
 
 ![Zookeeper Oreilly book]({{site.baseurl}}/archives/images/zookeeper.jpg)
