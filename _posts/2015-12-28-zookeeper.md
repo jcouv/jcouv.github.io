@@ -22,3 +22,5 @@ There are many tricky scenarios, which the ZooKeeper design tries to handle as b
 Behind the scene, ZooKeeper can be run as a standalone instance or as an ensemble (making decisions by quorum). It is accessed with a client library which handles the connections and re-connections. The client will connect to any of the instance, with an order of priority. There is also a CLI client and higher-level libraries (Curator) to encapsulate common recipes and usage patterns.
 Internally, the ensemble picks a leader which acts as sequencer and proposer to followers.
 
+![Zookeeper Oreilly book]({{site.baseurl}}/archives/images/zookeeper.jpg)
+
