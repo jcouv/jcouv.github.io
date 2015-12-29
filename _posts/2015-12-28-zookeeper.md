@@ -20,7 +20,12 @@ This includes notifications. A watch notification is guaranteed to be delievered
 
 In terms of deployment, ZooKeeper can be run as a standalone instance or as an ensemble (making decisions by quorum). It is accessed with a client library which handles the connections and re-connections. The client will connect to any of the instance, with an order of priority. There is also a CLI client and higher-level libraries (Curator) to encapsulate common recipes and usage patterns. The book illustrates various primitives with a practical master-worker example.
 
-Although the abstraction seems powerful, distributed systems necessarily have tricky cases. The book does a good job at warning ZooKeeper users of such cases. For instance, classes of recoverable and non-recoverable errors. Or how a client should check the freshness of a server (last version seen) upon re-connection. Or the danger of watching for the creation of an ephemeral node (you might miss it in case of disconnects). Or the difficulty of knowing whether a sequential node was successfully created in the event of a disconnection.
+Although the abstraction seems powerful, distributed systems necessarily have tricky cases. The book does a good job at warning ZooKeeper users of such cases. For instance:
+* classes of recoverable and non-recoverable errors,
+* how a client should check the freshness of a server (last version seen) upon re-connection,
+* the danger of watching for the creation of an ephemeral node (you might miss it in case of disconnects),
+* the difficulty of knowing whether a sequential node was successfully created in the event of a disconnection,
+* the danger of backchannel communication between ZooKeeper clients (two clients may be connected to two servers of different freshness).
 
 Going into the internal design and ZooKeeper's consensus protocol, I felt the book didn't explain the success scenario clearly enough before jumping to various error cases.
 At a very high level, there are two types of ZooKeeper servers: core servers (which can be in one of multiple states: Looking, Leading or Following) and observers (used for scalability). The core servers in Looking state (after startup or after losing heartbeat from the previous Leader) will elect a Leader. Each time a new Leader is elected, a new epoch starts and the epoch number is incremented (it figures in transaction identifiers).  
