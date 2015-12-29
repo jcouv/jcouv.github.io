@@ -5,8 +5,10 @@ published: false
 
 Some notes on my weekend reading: [ZooKeeper: Distributed Process Coordination](http://smile.amazon.com/ZooKeeper-Distributed-Coordination-Flavio-Junqueira/dp/1449361307/). 
 
+http://zookeeper.apache.org/doc/trunk/zookeeperOver.html
+
 There are two ways to look at any software framework: what abstractions/interface it provides and how it works internally.  
-The abstraction presented by ZooKeeper is a durable tree of nodes (called znodes), and a number of operations with useful guarantees.  
+The abstraction presented by ZooKeeper is a tree of nodes (called znodes), which is similar to files and directories, and a number of operations with useful guarantees (durability, ordering).  
 Nodes can be persistent or ephemeral (they get deleted when the session of the client who created the node is terminated or expires). The path of a node is set by the client, but ZooKeeper can optionally generate a sequence number (for example: /tasks/task-<increment>).  
 So a node has a path, some typically small data, a mode (persistent or ephemeral), a version (increasing number) and some ACLs.  
 
