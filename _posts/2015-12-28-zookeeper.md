@@ -10,7 +10,7 @@ The abstraction presented by ZooKeeper is a durable tree of nodes (called znodes
 Nodes can be persistent or ephemeral (they get deleted when the session of the client who created the node is terminated or expires). The path of a node is set by the client, but ZooKeeper can optionally generate a sequence number (for example: /tasks/task-<increment>).  
 So a node has a path, some typically small data, a mode (persistent or ephemeral), a version (increasing number) and some ACLs.  
 
-The operations are to create a node, delete a node, check for existence of a path, read a node, replace the data with newer data, and enumerate the children of a path. There is also the multi-operation which is a combo of operations that only succeed atomically.  
+The operations are to create a node, delete a node, check for existence of a path, read a node, replace the data with newer data, and enumerate the children of a path. There is also the multi-operation which is a combo of operations that only succeed atomically. Although the book doesn't cover it, ZooKeeper also supports [dynamic reconfiguration](http://zookeeper.apache.org/doc/trunk/zookeeperReconfig.html).
 Changes to a node are versioned (but the version get lost/reset whenever the node is deleted) and some operations can be executed conditionally on an expected version.  
 Rather than polling to watch for changes, a client can set 'watches'. Those will provide a one-time notification (the watch needs to be reset every time it fires) when the monitor node is created, changes, or is deleted. The watch is an option on other operations. 
 
