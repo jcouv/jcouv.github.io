@@ -5,8 +5,6 @@ published: false
 
 Some notes on my weekend reading: [ZooKeeper: Distributed Process Coordination](http://smile.amazon.com/ZooKeeper-Distributed-Coordination-Flavio-Junqueira/dp/1449361307/). 
 
-http://zookeeper.apache.org/doc/trunk/zookeeperOver.html
-
 There are two ways to look at any software framework: what abstractions/interface it provides and how it works internally.  
 The abstraction presented by ZooKeeper is a tree of nodes (called znodes), which is similar to files and directories, and a number of operations with useful guarantees (durability, ordering).  
 Nodes can be persistent or ephemeral (they get deleted when the session of the client who created the node is terminated or expires). The path of a node is set by the client, but ZooKeeper can optionally generate a sequence number (for example: /tasks/task-<increment>).  
@@ -19,6 +17,8 @@ Rather than polling to watch for changes, a client can set 'watches'. Those will
 Ordering guarantees (TODO reflow):
 Write operations are globally ordered, and they will be observed in that order by any one client. 
 This includes notifications. A watch notification is guaranteed to be delievered to its watchers before any other changes are allowed.
+
+ZooKeeper's official documentation offers a great [overview](http://zookeeper.apache.org/doc/trunk/zookeeperOver.html).
 
 In terms of deployment, ZooKeeper can be run as a standalone instance or as an ensemble (making decisions by quorum). It is accessed with a client library which handles the connections and re-connections. The client will connect to any of the instance, with an order of priority. There is also a CLI client and higher-level libraries (Curator) to encapsulate common recipes and usage patterns. The book illustrates various primitives with a practical master-worker example.
 
