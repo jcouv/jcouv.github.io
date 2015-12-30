@@ -22,7 +22,8 @@ ZooKeeper's official documentation offers a great [overview](http://zookeeper.ap
 
 In terms of deployment, ZooKeeper can be run as a standalone instance or as an ensemble (making decisions by quorum). It is accessed with a client library which handles the connections and re-connections. The client will connect to any of the configured instances, with an order of priority. There is also a CLI client and higher-level libraries (such as Curator) to encapsulate common recipes and usage patterns. The book illustrates various primitives with a practical master-worker example.
 
-Although the abstraction seems powerful, distributed systems necessarily have tricky cases. The book does a good job at warning ZooKeeper users of such cases. For instance:
+Although the abstraction seems powerful, distributed systems necessarily have tricky cases. The book does a good job at warning ZooKeeper users of such cases. For instance:  
+
 * what are the classes of recoverable and non-recoverable errors,
 * how a client should check the freshness of a server (last version seen) upon re-connection,
 * the danger of watching for the creation of an ephemeral node (you might miss it in case of disconnects),
