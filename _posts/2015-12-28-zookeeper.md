@@ -3,24 +3,23 @@ published: false
 ---
 
 
+
 Some notes on my weekend reading: [ZooKeeper: Distributed Process Coordination](http://smile.amazon.com/ZooKeeper-Distributed-Coordination-Flavio-Junqueira/dp/1449361307/). 
 
 There are two ways to look at any software framework: what abstractions/interface it provides and how it works internally.  
 The abstraction presented by ZooKeeper is a tree of nodes (called znodes), which is similar to files and directories, and a number of operations with useful guarantees (durability, ordering).  
 Nodes can be persistent or ephemeral (they get deleted when the session of the client who created the node is terminated or expires). The path of a node is set by the client, but ZooKeeper can optionally generate a sequence number (for example: /tasks/task-<increment>).  
-So a node has a path, some typically small data, a mode (persistent or ephemeral), a version (increasing number) and some ACLs.  
+So a node has a path, some typically small data (less than 1MB), a mode (persistent or ephemeral), a version (increasing number) and some ACLs.  
 
-The operations are to create a node, delete a node, check for existence of a path, read a node, replace the data with newer data, and enumerate the children of a path. There is also the multi-operation which is a combo of operations that only succeed atomically. Although the book doesn't cover it, ZooKeeper also supports [dynamic reconfiguration](http://zookeeper.apache.org/doc/trunk/zookeeperReconfig.html).
+The operations are to create a node, delete a node, check for existence of a path, read a node, replace the data with newer data, and enumerate the children of a path. There is also the multi-operation which is a combo of operations that only succeed atomically. Although the book doesn't cover it, ZooKeeper now supports [dynamic reconfiguration](http://zookeeper.apache.org/doc/trunk/zookeeperReconfig.html).
 Changes to a node are versioned (but the version get lost/reset whenever the node is deleted) and some operations can be executed conditionally on an expected version.  
 Rather than polling to watch for changes, a client can set 'watches'. Those will provide a one-time notification (the watch needs to be reset every time it fires) when the monitor node is created, changes, or is deleted. The watch is an option on other operations. 
 
-Ordering guarantees (TODO reflow):
-Write operations are globally ordered, and they will be observed in that order by any one client. 
-This includes notifications. A watch notification is guaranteed to be delievered to its watchers before any other changes are allowed.
+ZooKeeper offers some important ordering guarantees. Write operations are globally ordered, and they will be observed in that order by any one client. This includes notifications. A watch notification is guaranteed to be delievered to its watchers before any other changes are allowed.
 
 ZooKeeper's official documentation offers a great [overview](http://zookeeper.apache.org/doc/trunk/zookeeperOver.html).
 
-In terms of deployment, ZooKeeper can be run as a standalone instance or as an ensemble (making decisions by quorum). It is accessed with a client library which handles the connections and re-connections. The client will connect to any of the instance, with an order of priority. There is also a CLI client and higher-level libraries (Curator) to encapsulate common recipes and usage patterns. The book illustrates various primitives with a practical master-worker example.
+In terms of deployment, ZooKeeper can be run as a standalone instance or as an ensemble (making decisions by quorum). It is accessed with a client library which handles the connections and re-connections. The client will connect to any of the configured instances, with an order of priority. There is also a CLI client and higher-level libraries (such as Curator) to encapsulate common recipes and usage patterns. The book illustrates various primitives with a practical master-worker example.
 
 Although the abstraction seems powerful, distributed systems necessarily have tricky cases. The book does a good job at warning ZooKeeper users of such cases. For instance:
 * what are the classes of recoverable and non-recoverable errors,
@@ -34,7 +33,5 @@ At a very high level, there are two types of ZooKeeper servers: core servers (wh
 The Leader acts as sequencer for all write requests, passing them on as transaction proposals to Followers. A quorum of Followers (three out of five, for instance) is required for a proposal to get accepted and committed.  
 All servers can handle read requests locally, as each server keeps a transaction log and a snapshot of the latest tree (that it knows about).
 I'm still working my way down the rabbit hole of distributed consensus protocols, which are notoriously subtle. Here are some [pointers and summaries for important consensus papers](http://blog.acolyer.org/2015/03/01/cant-we-all-just-agree/).
-
-TODO: can a core server be dyanmically replaced?
 
 ![Zookeeper Oreilly book]({{site.baseurl}}/archives/images/zookeeper.jpg)
