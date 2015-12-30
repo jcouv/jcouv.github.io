@@ -30,10 +30,10 @@ Although the abstraction seems powerful, distributed systems necessarily have tr
 * the difficulty of knowing whether a sequential node was successfully created in the event of a disconnection,
 * the danger of backchannel communication between ZooKeeper clients (two clients may be connected to two servers of different freshness).
 
-Going into the internal design and ZooKeeper's consensus protocol, I felt the book didn't explain the success scenario clearly enough before jumping to various error cases.
-At a very high level, there are two types of ZooKeeper servers: core servers (which form a quorum and record transactions) and observers (used for scalability). Core servers can be in one of the following states: Looking, Leading or Following. Those in Looking state (at startup or after losing heartbeat from the previous Leader) will elect a Leader. Each time a new Leader is elected, a new epoch starts and the epoch number is incremented (it figures in transaction identifiers).  
-The Leader acts as sequencer for all write requests, passing them on as transaction proposals to Followers. A quorum of Followers (three out of five, for instance) is required for a proposal to get accepted and committed.  
-All servers can handle read requests locally, as each server keeps a transaction log and a snapshot of the latest tree (that it knows about).
-I'm still working my way down the rabbit hole of distributed consensus protocols, which are notoriously subtle. Here are some [pointers and summaries for important consensus papers](http://blog.acolyer.org/2015/03/01/cant-we-all-just-agree/).
+Going into the internal design and ZooKeeper's consensus protocol, I felt the book didn't explain the success scenario clearly enough before jumping to various error cases.  
+At a very high level, there are two types of ZooKeeper servers: core servers (which form a quorum and record transactions) and observers (used for scalability). Core servers can be in one of the following states: Looking, Leading or Following. Those in Looking state (at startup or after losing heartbeat from the previous Leader) will elect a Leader. Each time a new Leader is elected, a new epoch starts and the epoch number is incremented (it figures in transaction identifiers).   
+The Leader acts as sequencer for all write requests, passing them on as transaction proposals to Followers. A quorum of Followers (three out of five, for instance) is required for a proposal to get accepted and committed.    
+All servers can handle read requests locally, as each server keeps a transaction log and a snapshot of the latest tree (that it knows about).  
+I'm still working my way down the rabbit hole of distributed consensus protocols, which are notoriously subtle. Here are some [pointers and summaries for important consensus papers](http://blog.acolyer.org/2015/03/01/cant-we-all-just-agree/).  
 
 ![Zookeeper Oreilly book]({{site.baseurl}}/archives/images/zookeeper.jpg)
