@@ -9,7 +9,7 @@ Some notes on my weekend reading: [ZooKeeper: Distributed Process Coordination](
 
 There are two ways to look at any software framework: what abstractions/interface it provides and how it works internally.  
 The abstraction presented by ZooKeeper is a tree of nodes (called znodes), which is similar to files and directories, and a number of operations with useful guarantees (durability, ordering).  
-Nodes can be persistent or ephemeral (they get deleted when the session of the client who created the node is terminated or expires). The path of a node is set by the client, but ZooKeeper can optionally generate a sequence number (for example: /tasks/task-<increment>).  
+Nodes can be persistent or ephemeral (they get deleted when the session of the client who created the node is terminated or expires). The path of a node is set by the client, but ZooKeeper can optionally generate a sequence number (for example: /tasks/task-&lt;increment&gt;).  
 So a node has a path, some typically small data (less than 1MB), a mode (persistent or ephemeral), a version (increasing number) and some ACLs.  
 
 The operations are to create a node, delete a node, check for existence of a path, read a node, replace the data with newer data, and enumerate the children of a path. There is also the multi-operation which is a combo of operations that only succeed atomically. Although the book doesn't cover it, ZooKeeper now supports [dynamic reconfiguration](http://zookeeper.apache.org/doc/trunk/zookeeperReconfig.html).
