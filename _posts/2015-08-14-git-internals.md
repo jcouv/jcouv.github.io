@@ -43,7 +43,8 @@ The `.git/objects` folder looks like this:
     
 All objects are store in this folder, using their SHA-1 identifier as filename (the first two characters of the identifier are used as sub-folder). The objects can optionally be packed, in which case they get moved into a pack file, which comes with an index file.
 
-As we've seen, each type of object holds different kind of information:
+As we've seen, each type of object holds different kind of information:  
+
 * blob (contents of a file)
 * tree (list of filenames, each with a SHA-1 reference and an object type, which can be normal, executable, symbolic link or directory) 
 * commit (reference to toplevel tree, author information and commit message)
