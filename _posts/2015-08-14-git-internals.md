@@ -6,6 +6,7 @@ published: true
 
 
 
+
 I started to use Git more regularly and was curious about its design. [Pro Git](http://www.git-scm.com/book/en/v2) is an excellent and free book on using and understanding Git. I'll share some minimalist notes I took on Git's internal design. The design is simple and elegant. It's been very enjoyable to learn about.
 
 ## Object model
@@ -61,12 +62,13 @@ When git packs the objects, it decides which objects to keep as snapshot and whi
 
 
 ### references folder
-The `.git/refs` folder looks like this:
+The `.git/refs` folder looks like this:  
+
     refs/heads
     refs/tags
     refs/remotes
 
-All the objects we have stored so far can only be accessed if you know their identifier. The branches and tags are ways to keep a handle on a few of those identifiers, by giving them a friendlier name and allowing to enumerate them.
+All the objects we have stored so far can only be accessed if you know their identifier. The branches and tags are ways to keep a handle on a few of those identifiers, by giving them a friendlier name and allowing to enumerate them.  
 
 `heads` contains files named after branches. Each holds the SHA-1 reference of a commit object.  
 `tags` contains files named after tags. Each contains the SHA-1 reference of a commit object (for simple tags, without annotations).  
