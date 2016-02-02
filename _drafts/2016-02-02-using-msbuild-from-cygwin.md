@@ -7,10 +7,10 @@ I was happy to discover that MSBuild [works fine](https://generally.wordpress.co
 Here's the [updated bash script](https://github.com/jcouv/dotfiles/blob/master/vs2015.bash).  
 It sets a few environment variables and also an `msbuild` alias. 
 
-With this I was able to build and run the tests on Roslyn. I'm using [Babun](http://babun.github.io/), a pre-customized variant of Cygwin.
-
-Also, here's one way you can invoke it from your `.bash_profile`:  
+Here's one way you can invoke it from your `.bash_profile`:  
 
     for DOTFILE in `find ~/.dotfiles/*.bash`; do
       [ -f "$DOTFILE" ] && source "$DOTFILE"
     done
+
+With this I was able to build and run the tests on Roslyn. I'm using [Babun](http://babun.github.io/), a pre-customized variant of Cygwin.
