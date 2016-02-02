@@ -9,7 +9,7 @@ But this needs a little refresh for Visual Studio 2015.
 
 https://github.com/jcouv/dotfiles/blob/master/vs2015.bash
 
-It sets a few environment variables and also an 'msbuild' alias. With this I was able to build and run the tests on Roslyn. I'm using [http://babun.github.io/ Babun], a pre-customized variant of Cygwin.
+It sets a few environment variables and also an 'msbuild' alias. With this I was able to build and run the tests on Roslyn. I'm using [Babun](http://babun.github.io/), a pre-customized variant of Cygwin.
 
 I'm including it into my .bash_profile with
 for DOTFILE in `find ~/.dotfiles/*.bash`; do
