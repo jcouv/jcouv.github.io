@@ -2,16 +2,15 @@
 published: false
 title: Using MSBuild from Cygwin
 ---
-I was happy to see that MSBuild works fine from a Cygwin bash shell.
-https://generally.wordpress.com/2006/11/28/building-visual-studio-solutions-using-msbuild-in-cygwin/
+I was happy to discover that MSBuild [works fine](https://generally.wordpress.com/2006/11/28/building-visual-studio-solutions-using-msbuild-in-cygwin/) from a Cygwin bash shell. But the solution shared by Mangesh needed a little refresh for Visual Studio 2015. 
 
-But this needs a little refresh for Visual Studio 2015. 
+Here's the [updated bash script](https://github.com/jcouv/dotfiles/blob/master/vs2015.bash).  
+It sets a few environment variables and also an `msbuild` alias. 
 
-https://github.com/jcouv/dotfiles/blob/master/vs2015.bash
+With this I was able to build and run the tests on Roslyn. I'm using [Babun](http://babun.github.io/), a pre-customized variant of Cygwin.
 
-It sets a few environment variables and also an 'msbuild' alias. With this I was able to build and run the tests on Roslyn. I'm using [Babun](http://babun.github.io/), a pre-customized variant of Cygwin.
+Also, here's one way you can invoke it from your `.bash_profile`:  
 
-I'm including it into my .bash_profile with
-for DOTFILE in `find ~/.dotfiles/*.bash`; do
-  [ -f "$DOTFILE" ] && source "$DOTFILE"
-done
+    for DOTFILE in `find ~/.dotfiles/*.bash`; do
+      [ -f "$DOTFILE" ] && source "$DOTFILE"
+    done
