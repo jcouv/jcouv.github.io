@@ -5,7 +5,7 @@ title: Authority
 
 
 A few movies recently came out which tackle the theme of obedience to authority and the corruption to power. All three are quite chilling if not outright disturbing. They show how far many people go where guided by "authority" or granted authority themselves.
-
+Ethical constraints have limited progress. One open question is what factors shield individuals from such influence. As much as we each think we are immune, the statistical evidence points to the contrary.
 
 Experimenter (2015)
 Stanley Milgram
@@ -17,6 +17,8 @@ Unknowing participants are set up in a fake teacher-learner experiment where the
 The Stanford Prison Experiment (2015)
 Philip Zimbardo
 http://www.imdb.com/title/tt0420293/
+The Lucifer Effect: Understanding How Good People Turn Evil 
+http://smile.amazon.com/The-Lucifer-Effect-Understanding-People/dp/0812974441/
 Interrupted early.
 "Twenty-four male students out of seventy-five were selected to take on randomly assigned roles of prisoners and guards in a mock prison situated in the basement of the Stanford psychology building."
 
