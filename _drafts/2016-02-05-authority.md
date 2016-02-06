@@ -12,7 +12,7 @@ http://www.imdb.com/title/tt0420293/
 
 Experimenter (2015)
 Milgram
-http://www.imdb.com/title/tt3726704/?ref_=nv_sr_1
+http://www.imdb.com/title/tt3726704/
 
 Compliance (2012) 
 http://www.imdb.com/title/tt1971352/
