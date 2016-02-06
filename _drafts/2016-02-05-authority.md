@@ -28,3 +28,8 @@ https://en.wikipedia.org/wiki/Strip_search_phone_call_scam
 The conditions for creating this situation were the most sketchy (and unscientific and unethical), as this was a scam perpetrated on some fast food joints.
 "When a prank caller claiming to be a police officer convinces a fast food restaurant manager to interrogate an innocent young employee, no one is left unharmed."
 
+![Experimenter.jpg]({{site.baseurl}}/archives/images/Experimenter.jpg)
+![Stanforde-Prison-Experiment.jpg]({{site.baseurl}}/archives/images/Stanforde-Prison-Experiment.jpg)
+![Compliance.jpg]({{site.baseurl}}/archives/images/Compliance.jpg)
+
+
