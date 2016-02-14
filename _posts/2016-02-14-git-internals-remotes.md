@@ -1,6 +1,6 @@
 ---
 published: false
-title: "Git Internals - Remotes"
+title: "Git Internals - branches and remotes"
 ---
 
 My previous article on [Git Internals](http://blog.monstuff.com/archives/2015/08/git-internals.html) described the object model for a single repository. But how do distributed repositories work together?  
