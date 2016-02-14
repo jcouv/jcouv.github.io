@@ -16,6 +16,8 @@ They key to avoiding distributed conflicts is clear ownership: a repository can 
 Branches are namespaced, so you can tell which ones each remote repository owns and which ones your local instance owns. If your repository is linked to "remote1" and "remote2", their branches will be named "remote1/blah" and "remote2/foo", while your local branches will simply be named "bar". 
  
 ## Fetch, merge, rebase and push
+We'll now look at some operations and how they affect the commit graph and the branch references.  
+
 Fetch transfers branches from the remote repository and all the objects necessary to complete their history.  
 This does not update your own repository's branches, and therefore is conflict-free.  
   
