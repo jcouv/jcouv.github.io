@@ -60,4 +60,4 @@ To recap, there are a few keys that illuminate Git's design:
 2. Commits and objects are referenced by globally unique identifiers.
 3. Branches are mutable references to commits, but are namespaced by Git instance and have clear ownership rules.
 
-Although a couple of people have identified immutability in particular to be a key in Git's design (for instance, [Philip Nilsson](http://www.jayway.com/2013/03/03/git-is-a-purely-functional-data-structure/)), I'm surprised that this is not commonly emphasized. With those keys, Git becomes much easier to understand in its simplicity and elegance.
+Although a couple of people have identified immutability in particular to be a key in Git's design (for instance, [Philip Nilsson](http://www.jayway.com/2013/03/03/git-is-a-purely-functional-data-structure/)), I'm surprised that this is not more commonly emphasized. With those keys, Git becomes much easier to understand in its simplicity and elegance.
