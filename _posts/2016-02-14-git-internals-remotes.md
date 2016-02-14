@@ -45,9 +45,9 @@ The first one shows two branches that diverged, by adding one commit each.
 Merging is one way to handle this divergence. It adds a new commit which has two parents and updates one of the branch references (`master` in this instance).
 ![git-merged-divergence.png]({{site.baseurl}}/archives/images/git-merged-divergence.png)
 
-Another way to handle this same situation is to use rebase. It adds a new chain of commits (only one in this example) to one side. Those new commit replay the changes on the other side of the divergence since the common ancestor. Then it updates the other branch reference (`experiment` in this example).
+Another way to handle this same situation is to use rebase. It adds a new chain of commits (only one in this example, `C4'`) to one side. Those new commits replay the changes on the other side of the divergence (`C4`) since the common ancestor (`C2`). Then it updates the other branch reference (`experiment` in this example).
 ![git-rebased-divergence.png]({{site.baseurl}}/archives/images/git-rebased-divergence.png)
 
-After this rebase, if we try to update the `master` branch with a merge of the `experiment` branch, this will be a fast-forward merge (which simply updates `master` and does not require creating a two-parent commit).  
+After this rebase, if we try to update the `master` branch with a merge of the `experiment` branch, this will be a fast-forward merge. It simply updates the `master` reference and does not require creating a two-parent commit.  
 ![git-fast-forward.png]({{site.baseurl}}/archives/images/git-fast-forward.png)
 
