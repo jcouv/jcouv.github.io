@@ -55,9 +55,9 @@ After this rebase, if we try to update the `master` branch with a merge of the `
 This example used two local branch names, but the operations work exactly the same with one remote branch, which is read-only to you, and one local branch, which will be updated.
 
 ## Summary
-To recap, there are a few principles that illuminate Git's design:
-1) The commit graph and the object trees are immutable
-2) Commits and objects are referenced by globally unique identifiers
-3) Branches are mutable but are namespaced and have clear ownership rules
+To recap, there are a few keys that illuminate Git's design:  
+1. The commit graph and the object trees are immutable.
+2. Commits and objects are referenced by globally unique identifiers.
+3. Branches are mutable references to commits, but are namespaced and have clear ownership rules.
 
-Although a couple of people have identified immutability in particular to be a key in Git's design, I'm surprised that this is not commonly emphasized. Let me know if I'm mistaken.
+Although a couple of people have identified immutability in particular to be a key in Git's design (for instance, [Philip Nilsson](http://www.jayway.com/2013/03/03/git-is-a-purely-functional-data-structure/)), I'm surprised that this is not commonly emphasized. With those keys, Git becomes much easier to understand in its simplicity and elegance.
