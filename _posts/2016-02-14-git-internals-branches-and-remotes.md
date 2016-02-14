@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: "Git Internals - branches and remotes"
 ---
 
