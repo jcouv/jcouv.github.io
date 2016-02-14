@@ -53,3 +53,11 @@ After this rebase, if we try to update the `master` branch with a merge of the `
 ![git-fast-forward.png]({{site.baseurl}}/archives/images/git-fast-forward.png)
 
 This example used two local branch names, but the operations work exactly the same with one remote branch, which is read-only to you, and one local branch, which will be updated.
+
+## Summary
+To recap, there are a few principles that illuminate Git's design:
+1) The commit graph and the object trees are immutable
+2) Commits and objects are referenced by globally unique identifiers
+3) Branches are mutable but are namespaced and have clear ownership rules
+
+PS: 
