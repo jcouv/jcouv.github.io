@@ -7,7 +7,7 @@ My previous article on [Git Internals](http://blog.monstuff.com/archives/2015/08
 As I'll try to explain, I think the key is immutability.  
  
 ## Graph of commits
-The core design of Git revolves around building a graph of commits where each commit points to parent commits and to a tree of objects (representing files and folders). Commits and tree objects are immutable; they are only added, never modified.  
+The core design of Git revolves around building a graph of commits where each commit points to its parent(s) commit(s) and to a tree of objects (representing files and folders). Commits and tree objects are immutable; they are only added, never modified.  
 This immutability (and the fact that all those objects have globally unique content-based identifiers) make it safe for people to party on this graph across the world. Each contributor is just adding new commits to the graph, each with a new object tree. The new commits can reference existing commits and the new object trees can reference existing tree objects. All those new objects could then be safely shared to others without conflicts. At the same time, no single Git instance necessarily has the complete view of the graph that is getting built. 
 
 ## References
