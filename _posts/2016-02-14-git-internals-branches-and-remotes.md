@@ -40,7 +40,7 @@ Both merge and rebase will leave one of the branch references intact and only up
 
 ## Example
 Lets look at an example using illustrations borrowed from [Pro Git](http://git-scm.com/book/en/v2).
-The first one shows two branches that diverged, by adding one commit each.
+The first one shows two branches (`master` and `experiment`) that diverged, by adding one commit each (`C3` and `C4`).
 ![git-divergence.png]({{site.baseurl}}/archives/images/git-divergence.png)
 
 Merging is one way to handle this divergence. It adds a new commit (`C5`) which has two parents and updates one of the branch references (`master` in this instance).
