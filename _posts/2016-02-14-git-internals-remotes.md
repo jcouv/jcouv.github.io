@@ -37,6 +37,7 @@ Both merge and rebase will leave one of the branch references intact and only up
   
 Push is just a remote merge. You tell the remote repository about some new commits of yours and you asking it to update one of its own branch references.  
 
+## Example
 Lets look at an example using illustrations borrowed from [Pro Git](http://git-scm.com/book/en/v2).
 The first one shows two branches that diverged, by adding one commit each.
 ![git-divergence.png]({{site.baseurl}}/archives/images/git-divergence.png)
