@@ -51,3 +51,4 @@ Another way to handle this same situation is to use rebase. It adds a new chain 
 After this rebase, if we try to update the `master` branch with a merge of the `experiment` branch, this will be a fast-forward merge. It simply updates the `master` reference and does not require creating a two-parent commit.  
 ![git-fast-forward.png]({{site.baseurl}}/archives/images/git-fast-forward.png)
 
+This example used two local branch names, but the operations work exactly the same with one remote branch, which is read-only, and one local branch, which will be updated.
