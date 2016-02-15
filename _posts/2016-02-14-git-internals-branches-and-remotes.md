@@ -34,7 +34,7 @@ Those new commits replay the changes you had in your local branch (since the com
 
 Both merge and rebase will only update one of the branches (the working branch) and leave the other(s) unchanged.  
   
-**Push** is just a remote merge. You tell the remote repository about some new commits of yours and ask it to update one of its own branch references.  
+**Push** sends some new commits of yours to the remote repository and ask it to update one of its own branch references. The normal case (no forcing) is restricted to a fast-forward. 
 
 ## Example
 Let's look at an example of divergence, merging and rebasing, using illustrations borrowed from [Pro Git](http://git-scm.com/book/en/v2).
