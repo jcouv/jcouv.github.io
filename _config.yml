@@ -43,6 +43,7 @@ exclude:
 
 gems:
   - jekyll-redirect-from
+  - jekyll-feed
 
 encoding: UTF-8
 
