@@ -4,8 +4,9 @@ title: Authority
 ---
 
 
+
 A few movies recently came out which tackle the theme of obedience to authority and the corruption to power. All three are quite chilling if not outright disturbing. They show how far many people go where guided by "authority" or granted authority themselves.
-Ethical constraints have limited progress. One open question is what factors shield individuals from such influence. As much as we each think we are immune, the statistical evidence points to the contrary.
+Ethical constraints have limited progress. One open question is what factors (if any) shield individuals from such influence. As much as we each think we are immune, the statistical evidence points to the contrary.
 
 Experimenter (2015)
 Stanley Milgram
@@ -31,5 +32,3 @@ The conditions for creating this situation were the most sketchy (and unscientif
 ![Experimenter.jpg]({{site.baseurl}}/archives/images/Experimenter.jpg)
 ![Stanforde-Prison-Experiment.jpg]({{site.baseurl}}/archives/images/Stanforde-Prison-Experiment.jpg)
 ![Compliance.jpg]({{site.baseurl}}/archives/images/Compliance.jpg)
-
-
