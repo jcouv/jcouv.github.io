@@ -6,6 +6,7 @@ title: Authority
 
 
 
+
 I watched some relatively recent movies which tackle the theme of obedience to authority and the corruption to power. All three are quite chilling if not outright disturbing (not recommended for children). They show how far people can go when guided by "authority" or granted authority themselves.  
 
 The most obvious question is what factors (if any) shield individuals from such influence. But we know little about that, as ethical considerations have limited the pursuit of such studies.  
@@ -20,19 +21,22 @@ It is probably the better established result of the experiments I'll cover, due 
 Read more in Milgram's [Obedience to Authority](http://smile.amazon.com/Obedience-Authority-Experimental-Perennial-Classics/dp/006176521X).
   
   
+![Experimenter.jpg]({{site.baseurl}}/archives/images/Experimenter.jpg)
+  
+   
 ## The Stanford Prison Experiment (2015)
 [The Standord Prison Experiment](http://www.imdb.com/title/tt0420293/) tells the story of Philip Zimbardo's experiment at Stanford. The synopsis: "Twenty-four male students out of seventy-five were selected to take on randomly assigned roles of prisoners and guards in a mock prison situated in the basement of the Stanford psychology building".  
 The original experiment was interrupted early, as things turned bad very fast. I don't know that this experiment was repeated. The movie was very disturbing.  
 Find out more in Zimbardo's [The Lucifer Effect: Understanding How Good People Turn Evil](http://smile.amazon.com/The-Lucifer-Effect-Understanding-People/dp/0812974441/).
   
   
+![Stanforde-Prison-Experiment.jpg]({{site.baseurl}}/archives/images/Stanforde-Prison-Experiment.jpg)
+  
+  
 ## Compliance (2012)
 I won't go into much details to spoilers, but [Compliance](http://www.imdb.com/title/tt1971352/) describes a scam that was perpertrated on multiple fast food joints [over 70 times](https://en.wikipedia.org/wiki/Strip_search_phone_call_scam).  
 In short: "When a prank caller claiming to be a police officer convinces a fast food restaurant manager to interrogate an innocent young employee, no one is left unharmed".  
 Obviously, this is the most sketchy and unethical, as far as scientific rigor, but it was conducted in real-world conditions as opposed to a lab with volunteers.
-
-![Experimenter.jpg]({{site.baseurl}}/archives/images/Experimenter.jpg)
-
-![Stanforde-Prison-Experiment.jpg]({{site.baseurl}}/archives/images/Stanforde-Prison-Experiment.jpg)
-
+  
+  
 ![Compliance.jpg]({{site.baseurl}}/archives/images/Compliance.jpg)
