@@ -10,8 +10,8 @@ I watched some relatively recent movies which tackle the theme of obedience to a
 
 The most obvious question is what factors (if any) shield individuals from such influence. But ethical considerations have limited the pursuit of such studies.  
 
-How will you respond to such knowledge? The statistical evidence shows we are mistaken to think ourselves and people around us immune, even after learning of those results.  
-Rigorous statistical studies have little effect on the worldviews of people who learn about them, whereas people tend to integrate anecdotes better (as Veritasium's Derek Muller recently discussed in [Why Anecdotes Trump Data](https://www.youtube.com/watch?v=s7MTM4BKZ_E)). Hopefully, seeing those experiments come to life as movies will have more effect.  
+How will you respond to such knowledge? Such studies and others show we are mistaken to think ourselves and people around us immune, even after learning of those results.  
+Rigorous statistical studies have little effect on the worldviews of people who learn about them, whereas people tend to integrate anecdotes better (as Veritasium's Derek Muller recently discussed in [Why Anecdotes Trump Data](https://www.youtube.com/watch?v=s7MTM4BKZ_E)). Hopefully, seeing those experiments come to life as movies will be impactful in that way.  
   
   
 ## Experimenter (2015)
