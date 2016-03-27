@@ -5,17 +5,18 @@ title: Authority
 
 
 
-A few movies recently came out which tackle the theme of obedience to authority and the corruption to power. All three are quite chilling if not outright disturbing. They show how far many people go where guided by "authority" or granted authority themselves.
+
+I watched some relatively recent movies which tackle the theme of obedience to authority and the corruption to power. All three are quite chilling if not outright disturbing. They show how far many people go where guided by "authority" or granted authority themselves.
 Ethical constraints have limited progress. One open question is what factors (if any) shield individuals from such influence. As much as we each think we are immune, the statistical evidence points to the contrary.
 
-Experimenter (2015)
-Stanley Milgram
+## Experimenter (2015)
+
 http://www.imdb.com/title/tt3726704/
 http://smile.amazon.com/Obedience-Authority-Experimental-Perennial-Classics/dp/006176521X
-Most scientific, with multiple variants producing similar results.
-Unknowing participants are set up in a fake teacher-learner experiment where they are asked to shock the failing learner (a conferedate) with increasing voltage. The question is whether they will go all the way to the apparently fatal shocks.
+This depicts the famous Stanley Milgram experiments: unknowing participants are set up in a fake teacher-learner experiment where they are asked to shock the learner (a conferedate with a recorded performance who fails to learn on purpose) with increasing voltage. The question is whether the participants in their roles as "teachers/zappers" will go all the way to the apparently fatal shocks.
+It is probably the better established result of the experiments I'll cover, due to its robustness (multiple variants producing similar results) and reproducibility (although very few have been attempted due to ethical concerns of the possible psychological effects on participants).
 
-The Stanford Prison Experiment (2015)
+## The Stanford Prison Experiment (2015)
 Philip Zimbardo
 http://www.imdb.com/title/tt0420293/
 The Lucifer Effect: Understanding How Good People Turn Evil 
