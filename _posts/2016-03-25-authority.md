@@ -7,7 +7,8 @@ title: Authority
 
 
 
-I watched some relatively recent movies which tackle the theme of obedience to authority and the corruption to power. All three are quite chilling if not outright disturbing (not recommended for children). They show how far people can go when guided by "authority" or granted authority themselves.  
+
+I watched some relatively recent movies about obedience to authority and the corruption to power. All three are quite chilling if not outright disturbing (not recommended for children). They show how far people can go when guided by "authority" or granted authority themselves.  
 
 The most obvious question is what factors (if any) shield individuals from such influence. But we know little about that, as ethical considerations have limited the pursuit of such studies.  
 
