@@ -1,5 +1,6 @@
 ---
-published: false
+published: true
+title: Dscrimination in jury selection
 ---
 ## Discrimination in jury selection
 
