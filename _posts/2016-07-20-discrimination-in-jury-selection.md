@@ -4,9 +4,8 @@ published: false
 ## Discrimination in jury selection
 
 Radiolab spun off a series of podcast on interesting Supreme Court cases. The [most recent one](http://www.wnyc.org/story/object-anyway) was on racial discrimination in jury selection. It's excellent, have a listen. 
-It raises many other interesting problems which I won't explore, such as how to define and prove discrimination in a specific instance (rather than in the aggregate), and how people adjust their behavior to specific anti-discrimination rules.
 
-When this explained some relevant statistics, I thought "yep, in the aggregate, this is clear evidence of bigotry and prejudice".
+When it highlighted some relevant statistics, I thought "yep, in the aggregate, this is clear evidence of bigotry and prejudice".
 But upon reflection, I'm less sure.
 
 Jury selection requires attorneys to be selective and discriminate: they want to choose the juries that will increase their chances of winning.
@@ -26,3 +25,5 @@ Although those may not be conclusive data points either (given how hard it is to
 - Do black attorneys tend to reject black juries less, on average?
 - Do attorneys that keep blacks on their juries win their cases more, on average?
 - In an experiment, if you train some attorneys with this knowledge, do their win-rate improve?
+
+I want to mention some related problems which the episode illustrates: how to define and prove discrimination in a specific instance (rather than in the aggregate), and how people adjust their behavior to specific anti-discrimination rules (it's not clear that you can control/reduce discrimination in a monopoly service).
