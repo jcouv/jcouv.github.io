@@ -1,6 +1,6 @@
 ---
 published: true
-title: Dscrimination in jury selection
+title: Discrimination in jury selection
 ---
 Radiolab spun off a podcast series on Supreme Court cases. The [most recent one](http://www.wnyc.org/story/object-anyway) was on racial discrimination in jury selection. It's excellent, have a listen. 
 
