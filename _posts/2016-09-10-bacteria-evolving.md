@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 ---
 The evolution of a bacteria, illustrated with an 11 days time-lapse. The bands have increasingly concentrated antibiotics toward the middle.
 
