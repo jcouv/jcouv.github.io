@@ -9,5 +9,7 @@ On the other end of the spectrum, there are analog computation machines, such as
 Some are an interesting blend, like the CURTA pocket calculator ([demo](https://www.youtube.com/watch?v=P0cGjC62XRQ), [how it works](https://www.youtube.com/watch?v=loI1Kwed8Pk)).
 
 DNA programming: https://www.youtube.com/watch?v=42FCzoJt8Pg
+Quantum computer
 Brain
+
 
