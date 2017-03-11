@@ -3,7 +3,7 @@ published: false
 title: ValueTuple availability on various platforms
 ---
 
-As part of VS2017, we have just released C# and VB support for tuples, which Mads describes in the [C# 7.0 annoucement post](https://blogs.msdn.microsoft.com/dotnet/2017/03/09/new-features-in-c-7-0/). 
+As part of VS2017, we have just released C# and VB support for tuples, which Mads describes in the [C# 7.0 announcement post](https://blogs.msdn.microsoft.com/dotnet/2017/03/09/new-features-in-c-7-0/). 
 
 Under the covers, C#/VB tuples and corresponding [F# 4.1 "struct tuples"](https://blogs.msdn.microsoft.com/dotnet/2016/07/25/a-peek-into-f-4-1/) are lowered into `ValueTuple` types of various arities and nesting, and tuple element names are stored in `TupleElementNamesAttribute`. Vlad describes both in some details in ["How tuples relate to ValueTuple"](http://mustoverride.com/tuples_valuetuple/) and ["More about tuple element names"](http://mustoverride.com/tuples_names/).
 
