@@ -31,3 +31,4 @@ Known issue with debugger scenario with 4.7, mitigated in first quarterly releas
 
 Other types: serializability, ITuple
 
+I keep track of all the library work related to `ValueTuple` types in this [work items list](https://github.com/dotnet/roslyn/issues/13177), but if you have a specific question, it is probably easier to ask me directly.
