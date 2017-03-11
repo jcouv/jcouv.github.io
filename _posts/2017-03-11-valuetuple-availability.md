@@ -27,7 +27,7 @@ Here is the latest status on migrating `ValueTuple` types into frameworks (as of
 | Mono | Cycle 10 |
 | .Net Standard | `ValueTuple` types will be standardized on in some version (TBD) following .Net Standard 2.0. I will update as details are figured out. | 
 
-For older frameworks, the ValueTuple package should help fill the gap. I will keep the package updated as the migration into core libraries progresses, to provide as smooth and transparent an experience as possible.
+For older frameworks, the ValueTuple package should help fill the gap, including targets for `netstandard1.0` and `portable-net40+sl4+win8+wp8` (for Portable Class Libraries). I will keep the package updated as the migration into core libraries progresses, to provide as smooth and transparent an experience as possible.
 
 This picture is further complicated as the `ValueTuple` types receive some minor updates (such as binary serializability). Such improvements will not be available to users of the ValueTuple package; they will only be implemented in frameworks themselves.
 
