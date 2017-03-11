@@ -1,7 +1,7 @@
 ---
 published: false
+title: ValueTuple availability on various platforms
 ---
-## ValueTuple availability on various platforms
 
 As part of VS2017, we have just released C# and VB support for tuples, which Mads describes in the [C# 7.0 annoucement post](https://blogs.msdn.microsoft.com/dotnet/2017/03/09/new-features-in-c-7-0/). 
 
