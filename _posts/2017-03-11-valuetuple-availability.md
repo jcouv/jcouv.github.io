@@ -9,7 +9,7 @@ Under the covers, C#/VB tuples and corresponding [F# 4.1 "struct tuples"](https:
 
 Since the early prototyping work for tuples, we not only focused on language questions, but more generally the end-to-end experience of tuples. Central to that experience is how to make the `ValueTuple` types available. 
 
-Without those types, the compilation will fail and reports `error CS8179: Predefined type 'System.ValueTuple 2' is not defined or imported`.
+Without those types, the compilation will fail and reports ``error CS8179: Predefined type 'System.ValueTuple`2' is not defined or imported``.
 
 In order to maximize scenarios were you can use tuples, we took a two-pronged approach:
 
@@ -25,7 +25,7 @@ Here is the latest status on migrating `ValueTuple` types into frameworks (as of
 | Full/desktop framework | 4.7 (availability limited to win10), 4.7.1 (full availability, late 2017) |
 | Core | 2.0 (with planned preview in Q2 2017, release in Q3, see [roadmap](https://github.com/dotnet/core/blob/master/roadmap.md)) |
 | Mono | Cycle 10 |
-| .Net Standard | Some version (TBD) after .Net Standard 2.0. Details not finalized yet (I will update as possible) | 
+| .Net Standard | `ValueTuple` types will be standardized on in some version (TBD) following .Net Standard 2.0. I will update as details are figured out. | 
 
 For older frameworks, the ValueTuple package should help fill the gap. I will keep the package updated as the migration into core libraries progresses, to provide as smooth and transparent an experience as possible.
 
