@@ -14,7 +14,7 @@ Without those types, the compilation will fail and reports ``error CS8179: Prede
 In order to maximize scenarios were you can use tuples, we took a two-pronged approach:
 
 1. provide [System.ValueTuple nuget package](https://www.nuget.org/packages/System.ValueTuple) with support with existing frameworks,
-2. migrate ValueTuple and other types into core libraries as new frameworks ship.
+2. migrate ValueTuple and other types into core libraries as updated frameworks ship.
 
 Naturally, a common question is: how soon can I use tuples without referencing this additional ValueTuple package?
 
