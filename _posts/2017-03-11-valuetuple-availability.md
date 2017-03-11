@@ -20,13 +20,14 @@ Here is the latest status on migrating ValueTuple into frameworks (as of March 2
 
 | Framework | Version that includes ValueTuple |
 |-----------|----------------------------------|
-| .Net framework | 4.7 (availability limited to win10), 4.7.1 (full availability) |
+| .Net framework | 4.7 (availability limited to win10), 4.7.1 (full availability, late 2017) |
 | Core | 2.0 (preview in Q2 2017, release in Q3, see [roadmap](https://github.com/dotnet/core/blob/master/roadmap.md)) |
 | Mono | Cycle 10 (date TBD) |
-| .Net Standard | Details not finalized yet (I will update as possible) | 
+| .Net Standard | Some version (TBD) after .Net Standard 2.0. Details not finalized yet (I will update as possible) | 
 
-For older frameworks, the ValueTuple package should help fill the gap. I will keep the package updated to make  the migration into core libraries as smooth and transparent as possible.
+For older frameworks, the ValueTuple package should help fill the gap. I will keep the package updated to make the migration into core libraries as smooth and transparent as possible.
 
+https://github.com/dotnet/corefx/issues/16195
 Known issue with debugger scenario with 4.7, mitigated in first quarterly release of VS2017 and expected to be fixed in 4.7.1.
 
 Other types: serializability, ITuple
