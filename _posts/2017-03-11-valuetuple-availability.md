@@ -31,7 +31,7 @@ For older frameworks, the ValueTuple package should help fill the gap, including
 
 This picture is further complicated as the `ValueTuple` types receive some minor updates (such as binary serializability). Such improvements will not be available to users of the ValueTuple package; they will only be implemented in frameworks themselves.
 
-I keep track of all the library work related to `ValueTuple` types in this [work items list](https://github.com/dotnet/roslyn/issues/13177). But if you have a specific question, it is probably easier to ask me directly in the comments section.
+I keep track of all the library work related to `ValueTuple` types in this [work items list](https://github.com/dotnet/roslyn/issues/13177). But if you have a specific question, it is probably easier to ask me directly in the comments section. Bug reports should go in the [corefx](https://github.com/dotnet/corefx/issues/new) github repo.
 
 Known issues:
 - Degraded QuickWatch experience when debugging an application compiled on the full framework 4.6 or earlier on a machine with 4.7 installed. See issue [details](https://github.com/dotnet/corefx/issues/16195). This will be mitigated in first quarterly release of VS2017 and expected to be fully fixed in 4.7.1.
