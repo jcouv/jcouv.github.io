@@ -20,7 +20,7 @@ Naturally, a common question is: how soon can I use tuples without referencing t
 
 Here is the latest status on migrating `ValueTuple` types into frameworks (as of March 2017) and the planned shipping vehicles (to the best of my knowledge):
 
-| Framework | Version that includes ValueTuple |
+|  | Version that includes ValueTuple |
 |-----------|----------------------------------|
 | Full/desktop framework | [Windows 10 Creators Edition Update (RS2)](https://answers.microsoft.com/en-us/windows/wiki/windows_10-windows_install/windows-10-creators-edition-update-how-to-get-it/729be3d2-0d9f-4ac5-8a77-66beef65c55d) |
 | Core | 2.0 (with planned preview in Q2 2017, release in Q3, see [roadmap](https://github.com/dotnet/core/blob/master/roadmap.md)) |
