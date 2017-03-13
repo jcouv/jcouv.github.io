@@ -22,9 +22,9 @@ Here is the latest status on migrating `ValueTuple` types into frameworks (as of
 
 | Framework | Version that includes ValueTuple |
 |-----------|----------------------------------|
-| Full/desktop framework | 4.7 (availability limited to win10), 4.7.1 (full availability, late 2017) |
 | Core | 2.0 (with planned preview in Q2 2017, release in Q3, see [roadmap](https://github.com/dotnet/core/blob/master/roadmap.md)) |
 | Mono | Mono 5.0, VS "15.2" release |
+| Full/desktop framework | TBD |
 | .Net Standard | `ValueTuple` types will be standardized on in some version (TBD) following .Net Standard 2.0. I will update as details are figured out. | 
 
 For older frameworks, the ValueTuple package should help fill the gap, including targets for `netstandard1.0` and `portable-net40+sl4+win8+wp8` (for Portable Class Libraries). I will keep the package updated as the migration into core libraries progresses, to provide as smooth and transparent an experience as possible.
