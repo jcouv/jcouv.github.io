@@ -18,7 +18,7 @@ In order to maximize scenarios were you can use tuples, we took a two-pronged ap
 
 Naturally, a common question is: how soon can I use tuples without referencing this additional ValueTuple package?
 
-Here is the latest status on migrating `ValueTuple` types into frameworks (as of March 2017) and the planned shipping vehicles (to the best of my knowledge):
+Here is the latest status on migrating `ValueTuple` types into frameworks (as of April 2017) and the planned shipping vehicles (to the best of my knowledge):
 
 |  | Version that includes ValueTuple |
 |-----------|----------------------------------|
