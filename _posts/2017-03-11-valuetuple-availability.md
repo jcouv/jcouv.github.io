@@ -22,7 +22,7 @@ Here is the latest status on migrating `ValueTuple` types into frameworks (as of
 
 |  | Version that includes ValueTuple |
 |-----------|----------------------------------|
-| Full/desktop framework | [Windows 10 Creators Edition Update (RS2)](https://answers.microsoft.com/en-us/windows/wiki/windows_10-windows_install/windows-10-creators-edition-update-how-to-get-it/729be3d2-0d9f-4ac5-8a77-66beef65c55d) |
+| Full/desktop framework | [.NET Framework 4.7](https://blogs.msdn.microsoft.com/dotnet/2017/04/05/announcing-the-net-framework-4-7/) and [Windows 10 Creators Edition Update (RS2)](https://answers.microsoft.com/en-us/windows/wiki/windows_10-windows_install/windows-10-creators-edition-update-how-to-get-it/729be3d2-0d9f-4ac5-8a77-66beef65c55d) |
 | Core | 2.0 (with planned preview in Q2 2017, release in Q3, see [roadmap](https://github.com/dotnet/core/blob/master/roadmap.md)) |
 | Mono | Mono 5.0 |
 | .Net Standard | .Net Standard 2.0 | 
