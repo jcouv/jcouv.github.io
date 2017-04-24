@@ -61,4 +61,6 @@ To recap, there are a few keys that illuminate Git's design:
 
 Although a couple of people have identified immutability in particular to be a key in Git's design (Scott Chacon in his excellent [Getting Git](https://vimeo.com/14629850) talk or [Philip Nilsson](http://www.jayway.com/2013/03/03/git-is-a-purely-functional-data-structure/)), I'm surprised that this is not more commonly emphasized. With those keys, its design becomes much easier to understand in its simplicity and elegance.
 
-PS: the GitHub team put together a kind of [git simulation/visualization tool](http://git-school.github.io/visualizing-git/). Type git commands and see the commit tree get updated. ([via](https://saraford.net/2017/03/22/how-to-demystify-git-commands-using-visualizing-git/))
+PS: The GitHub team put together a kind of [git simulation/visualization tool](http://git-school.github.io/visualizing-git/) ([more details](https://github.com/git-school/visualizing-git)). Type git commands and see the commit tree get updated. ([via](https://saraford.net/2017/03/22/how-to-demystify-git-commands-using-visualizing-git/)). 
+
+Along those lines, there is also an [interactive git tutorial](http://learngitbranching.js.org/) which not only has a visualization but is structured into mini-games of different levels.
