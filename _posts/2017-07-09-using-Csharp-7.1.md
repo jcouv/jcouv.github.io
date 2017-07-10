@@ -5,7 +5,7 @@ title: 'Using C# 7.1'
 
 C# 7.0 was released as part of Visual Studio 2017 (version 15.0). While we work on C# 8.0, we will also ship features that are ready earlier as point releases.
 
-C# 7.1 is the first such release. It will ship along with Visual Studio 2017 version 15.3. To try it out today, you can [install the Visual Studio Preview](https://www.visualstudio.com/vs/preview/) side-by-side, quickly and safely.
+C# 7.1 is the first such release. It will ship along with Visual Studio 2017 version 15.3. To try it out today, you can [install Visual Studio Preview](https://www.visualstudio.com/vs/preview/) side-by-side, quickly and safely.
 
 As you start using new C# 7.1 features in your code, a lightbulb will offer you to upgrade your project, either to "C# 7.1" or "latest". If you leave your project's language version set to "default", you can only use C# 7.0 features ("default" means the latest major version, so does not include point releases).
 
