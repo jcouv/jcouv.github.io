@@ -3,9 +3,9 @@ published: true
 title: 'Using C# 7.1'
 ---
 
-C# 7.0 was released as part of Visual Studio 2017 (version 15.0). While we started working on C# 8.0, we will also ship features that are ready earlier as point releases.
+C# 7.0 was released as part of Visual Studio 2017 (version 15.0). While we work on C# 8.0, we will also ship features that are ready earlier as point releases.
 
-C# 7.1 is the first such release. It will ship along with Visual Studio 2017 version 15.3. To get started today, you can [install the Visual Studio Preview](https://www.visualstudio.com/vs/preview/) side-by-side, quickly and safely.
+C# 7.1 is the first such release. It will ship along with Visual Studio 2017 version 15.3. To try it out today, you can [install the Visual Studio Preview](https://www.visualstudio.com/vs/preview/) side-by-side, quickly and safely.
 
 As you start using new C# 7.1 features in your code, a lightbulb will offer you to upgrade your project, either to "C# 7.1" or "latest". If you leave your project's language version set to "default", you can only use C# 7.0 features ("default" means the latest major version, so does not include point releases).
 
@@ -20,13 +20,13 @@ In addition to [numerous issues](https://github.com/dotnet/roslyn/issues?q=is%3A
 
 You can find more details about C# 7.1 and our progress on C# 7.2 and 8.0 in the [language feature status page](https://github.com/dotnet/roslyn/blob/master/docs/Language%20Feature%20Status.md).
 
-## async Main
+## Async Main
 This makes it easier to get started with async code, by recognizing `static async Task Main() {...await some asynchronous code...}` as a valid entry-point to your program.
 
 ## Pattern-matching with generics
 This allows using open types in type patterns. For example, `case T t:`.
 
-## "default" literals
+## "default" literal
 This lets you omit the type in the default operator (`default(T)`) when the type can be inferred from the context. For instance, you can invoke `void M(ImmutableArray<int> x)` with `M(default)`, or specify a default parameter value when declaring `void M(CancellationToken x = default)`. 
 
 ![DefaultError.png]({{site.baseurl}}/archives/images/DefaultError.png)
