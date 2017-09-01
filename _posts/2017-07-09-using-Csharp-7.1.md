@@ -38,3 +38,8 @@ This is a refinement on tuple literals (introduced in 7.0) which makes tuple ele
 Instead of writing `var tuple = (a: this.a, b: X.Y.b)`, you can simply write `var tuple = (this.a, X.Y.b);`. The elements `tuple.a` and `tuple.b` will still be recognized.
 
 ![InferredTupleNameLightbulb.png]({{site.baseurl}}/archives/images/InferredTupleNameLightbulb.png)
+
+## Error version pragma
+This is a small undocumented feature to assist with troubleshooting language version issues. Type `#error version` and you will see the version of the compiler that you're using, as well as your current language version setting.
+![ErrorVersion.png]({{site.baseurl}}/archives/images/ErrorVersion.png)
+
