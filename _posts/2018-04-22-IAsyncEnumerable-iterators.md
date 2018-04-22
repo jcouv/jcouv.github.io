@@ -4,6 +4,7 @@ published: false
 ## Designing IAsyncEnumerable iterator methods
 Before starting, see this [blog post](https://blogs.msdn.microsoft.com/seteplia/2017/11/30/dissecting-the-async-methods-in-c/) for some background.
 
+The way I think about enumerators or async methods, is that user code is segmented, and segment is finished by a little block to pause the method and the following segment starts with a little block to resume.  
 My intuition as a starting point is that we should be able to re-use much of the code generated for a regular async method.
 Most of the work happens in a state machine method (`MoveNext`).  It has a special handshake to hand-off the awaited work. In comparison the handshake for the `MoveNext` for enumerables is much simpler, so it seems easier to extend the `async` machinery to handle `yield` than the reverse.
 
