@@ -34,7 +34,6 @@ Those half-states didn't work out well, and I realized the decision for `TryGetN
 
 I realized that (1) we would need a second `Task`
 
-So I [hand-crafted](https://github.com/jcouv/async-iterators/blob/master/src/Program.cs) a simple state machine to validate my design.
+At this point, I had pseudocode that worked on paper (ie. in my mind). The next step was to [hand-craft](https://github.com/jcouv/async-iterators/blob/master/src/Program.cs) a simple state machine to validate that design.
 
-I also realized that (2) 
-
+It took a few iterations to tune the expectations/contracts/handshake.
