@@ -9,6 +9,8 @@ C# 7.1 is the first such release. It will ship along with Visual Studio 2017 ver
 
 As you start using new C# 7.1 features in your code, a lightbulb will offer you to upgrade your project, either to "C# 7.1" or "latest". If you leave your project's language version set to "default", you can only use C# 7.0 features ("default" means the latest major version, so does not include point releases).
 
+Note: make sure you select **Configuration** `All Configuration`, as `Debug` is the configuration selected by default when editting a project.
+
 ![LangVer7_1.png]({{site.baseurl}}/archives/images/LangVer7_1.png)
 
 Here are more specific instructions for using C# 7.1 in [ASP.NET and ASP.NET Core](https://github.com/dotnet/roslyn/issues/18783#issuecomment-308510444) and [.NET CLI](https://github.com/dotnet/roslyn/issues/18783#issuecomment-308516907). The NuGet compiler packages for this release are [versioned](https://github.com/dotnet/roslyn/wiki/NuGet-packages#versioning) 2.3.
