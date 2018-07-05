@@ -29,7 +29,7 @@ Read more in Milgram's [Obedience to Authority](http://smile.amazon.com/Obedienc
 [The Standord Prison Experiment](http://www.imdb.com/title/tt0420293/) tells the story of Philip Zimbardo's experiment at Stanford. The synopsis: "Twenty-four male students out of seventy-five were selected to take on randomly assigned roles of prisoners and guards in a mock prison situated in the basement of the Stanford psychology building".  
 The original experiment was interrupted early, as things turned bad very fast. I don't know that this experiment was repeated. The movie was very disturbing.  
 Find out more in Zimbardo's [The Lucifer Effect: Understanding How Good People Turn Evil](http://smile.amazon.com/The-Lucifer-Effect-Understanding-People/dp/0812974441/).
-  
+[Update 2018-07-15:] It turns out much of [the experiment was manipulated](https://medium.com/s/trustissues/the-lifespan-of-a-lie-d869212b1f62), so should not be relied on.  
   
 ![Stanforde-Prison-Experiment.jpg]({{site.baseurl}}/archives/images/Stanforde-Prison-Experiment.jpg)
   
