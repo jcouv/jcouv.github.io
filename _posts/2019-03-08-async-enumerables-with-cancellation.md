@@ -5,7 +5,7 @@ published: true
 
 In this post, I'll explain how to produce and consume async enumerables with support for cancellation.
 
-### Context
+### Some context
 
 Visual Studio 2019 (currently in preview) includes a preview of C# 8.0 and the async-streams feature.
 
