@@ -69,6 +69,13 @@ We recognize this involves some boilerplate, so we are considering some language
 
 ### Consuming an async enumerable with cancellation
 
+With the above implementation, if you wrote `await foreach (var item in GetItemsAsync(maxItems: 10)) ...`, a `default` cancellation token would be passed to the cancellable method.
+
+To help with this, we provide a `WithCancellation<T>(this IAsyncEnumerable<T> source, CancellationToken cancellationToken)` [extension method](https://github.com/dotnet/coreclr/pull/21939). It allows you to pass your `token` in with:
+
+`await foreach (var item in GetItemsAsync(maxItems: 10).WithCancellation(token)) ...`.
+
+This helper method simply wraps the enumerable from `GetItemsAsync` along with the given cancellation token. When `GetAsyncEnumerator()` is invoked on this wrapper, it calls `GetAsyncEnumerator(token)` on the underlying enumerable.
 
 ### Appendix: relevant interfaces
 
@@ -115,9 +122,6 @@ namespace System.Collections.Generic
 }
 ```
 
+Original code for [IAsyncEnumerable](https://github.com/dotnet/corefx/blob/master/src/Common/src/CoreLib/System/Collections/Generic/IAsyncEnumerable.cs), [IAsyncEnumerator](https://github.com/dotnet/corefx/blob/master/src/Common/src/CoreLib/System/Collections/Generic/IAsyncEnumerator.cs) and [IAsyncDisposable](https://github.com/dotnet/corefx/blob/master/src/Common/src/CoreLib/System/IAsyncDisposable.cs).
 
-https://github.com/dotnet/corefx/blob/master/src/Common/src/CoreLib/System/Collections/Generic/IAsyncEnumerable.cs
-https://github.com/dotnet/corefx/blob/master/src/Common/src/CoreLib/System/Collections/Generic/IAsyncEnumerator.cs
-https://github.com/dotnet/corefx/blob/master/src/Common/src/CoreLib/System/IAsyncDisposable.cs
-
-https://github.com/dotnet/roslyn/blob/master/docs/features/async-streams.md
+For further details, see the [async-streams design doc](https://github.com/dotnet/roslyn/blob/master/docs/features/async-streams.md).
