@@ -14,9 +14,10 @@ Three parts compose this feature:
 2. `await foreach`: you can asynchronously enumerate collections that implement `IAsyncEnumerable` (or implement equivalent APIs).
 3. `await using`: you can asynchronously dispose resources that implement `IAsyncDisposable`.
 
-Following a similar execution pattern as its synchronous sibling `foreach`, the `await foreach` first gets an enumerator from the enumerable (by calling `GetAsyncEnumerator()`, then repeatedly does `await MoveNextAsync()` on the enumerator and gets the item with `Current` until the enumerator is exhausted.
+`await foreach` follows a similar execution pattern as its synchronous sibling `foreach`: it first gets an enumerator from the enumerable (by calling `GetAsyncEnumerator()`, then repeatedly does `await MoveNextAsync()` on the enumerator and gets the item with `Current` until the enumerator is exhausted.
 
 Here's the code generated for an `await foreach`:
+
 ```C#
     E e = ((C)(x)).GetAsyncEnumerator();
     try
