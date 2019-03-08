@@ -62,7 +62,7 @@ Here's what that looks like:
         internal MyCancellableCollection(int maxItems)
             => _maxItems = maxItems;
         
-        public async IAsyncEnumerator<int> GetAsyncEnumerable(CancellationToken cancellationToken)
+        public async IAsyncEnumerator<int> GetAsyncEnumerator(CancellationToken cancellationToken)
         {
             // Your method body using:
             // - `_maxItems`
