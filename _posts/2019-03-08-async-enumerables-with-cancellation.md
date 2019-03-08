@@ -34,7 +34,7 @@ Here's the code generated for an `await foreach`:
     }
 ```
 
-But if you look at the relevant APIs, `IAsyncEnumerable` and `IAsyncEnumerator` (copied below), you may notice that `GetAsyncEnumerator` accepts a `CancellationToken` parameter. `await foreach` doesn't make use of this parameter (it uses `default`).
+You may notice in the relevant APIs (copied below) that `GetAsyncEnumerator` accepts a `CancellationToken` parameter. But `await foreach` doesn't make use of this parameter (it passes a `default` value).
 
 This raises two questions: 1) how do you write an async enumerable with support for cancellation? and 2) how do you consume one?
 
