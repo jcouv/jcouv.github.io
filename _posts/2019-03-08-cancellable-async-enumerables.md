@@ -6,10 +6,12 @@ published: false
 
 Visual Studio 2019 (currently in preview) includes a preview of C# 8.0 and the async-streams feature.
 
-Very briefly, three parts compose this feature:
+Three parts compose this feature:
 1. async iterator methods: you can write methods with `async` that return `IAsyncEnumerable` or `IAsyncEnumerator` and using both `yield` and `await` syntax.
 2. `await foreach`: you can asynchronously enumerate collections that implement `IAsyncEnumerable` (or implement equivalent APIs).
 3. `await using`: you can asynchronously dispose resources that implement `IAsyncDisposable`.
+
+### `await foreach` overview
 
 Following a similar execution pattern as its synchronous sibling `foreach`, the `await foreach` first gets an enumerator for the enumerable (by calling `GetAsyncEnumerator()`, then repeatedly calls `await MoveNextAsync()` on the enumerator and gets the item with `Current` until the enumerator is exhausted.
 
@@ -40,7 +42,11 @@ Let's say that you intend to write `IAsyncEnumerable<int> GetItemsAsync(int maxI
 
 You cannot just write an async iterator method `async IAsyncEnumerable<int> GetItemsAsync(int maxItems)` because that does not give you access to any cancellation token. 
 
-Instead, you need to implement the enumerable yourself and put your business logic in `async IAsyncEnumerator<int> GetAsyncEnumerable(CancellationToken cancellationToken)` (an async iterator method).
+You also cannot write an async iterator method `async IAsyncEnumerable<int> GetItemsAsync(int maxItems, CancellationToken token)` because:
+1. the same cancellation token would be used in each enumerator (when the collection is enumerated multiple times),
+2. if a method has its own cancellation token and wants to enumerate an async enumerable it received, it could not use that token with that enumerable (the cancellation token would be built into your enumerable).
+
+So instead, you need to implement the enumerable yourself and put your business logic in `async IAsyncEnumerator<int> GetAsyncEnumerable(CancellationToken cancellationToken)` (an async iterator method).
 
 Here's what that looks like:
 
@@ -65,13 +71,13 @@ Here's what that looks like:
     }
 ```
 
-We recognize this involves some boilerplate, so we are considering some language design options to simplify this further.
+We recognize that this involves boilerplate, so we are considering some language design options to simplify this further.
 
 ### Consuming an async enumerable with cancellation
 
-With the above implementation, if you wrote `await foreach (var item in GetItemsAsync(maxItems: 10)) ...`, a `default` cancellation token would be passed to the cancellable method.
+With the above implementation, if you wrote `await foreach (var item in GetItemsAsync(maxItems: 10)) ...`, a `default` cancellation token would be passed to the cancellable method. And we don't want consumers of enumerables to have to expand the low-level code for an `await foreach`.
 
-To help with this, we provide a `WithCancellation<T>(this IAsyncEnumerable<T> source, CancellationToken cancellationToken)` [extension method](https://github.com/dotnet/coreclr/pull/21939). It allows you to pass your `token` in with:
+To help with this, we provide a `WithCancellation<T>(this IAsyncEnumerable<T> source, CancellationToken cancellationToken)` [extension method](https://github.com/dotnet/coreclr/pull/21939). It allows you to pass your `token` in simply: 
 
 `await foreach (var item in GetItemsAsync(maxItems: 10).WithCancellation(token)) ...`.
 
