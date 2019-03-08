@@ -16,27 +16,37 @@ Following a similar execution pattern as its synchronous sibling `foreach`, the 
 
 If you look at the relevant APIs, `IAsyncEnumerable` and `IAsyncEnumerator` (copied below), you may have noticed that `GetAsyncEnumerator` accepts a `CancellationToken` parameter. We'll look at two things: how do you write a cancellable async iterator, and how do you consume one.
 
-### Writing a cancellable async iterator
+### Writing a cancellable async enumerable
 
-Let's say that you intend to write `IAsyncEnumerable<int> GetItemsAsync(int maxItems)` supporting cancellation.
+Let's say that you intend to write `IAsyncEnumerable<int> GetItemsAsync(int maxItems)` supporting cancellation. 
 
-At this point, the recommended way of writing an async iterator with cancellation involves a little bit of boilerplate.
+You cannot just write an async iterator method `async IAsyncEnumerable<int> GetItemsAsync(int maxItems)` because that does not give you access to any cancellation token. Instead you need to implement a type for the enumerable and use an async iterator method returning `IAsyncEnumerator<int>` with your logic.
 
- we're still consider some language design options to simplify this further.
+We recognize this involves some boilerplate and are considering some language design options to simplify this further.
 
 ```C#
-class MyCancellableCollection : IAsyncEnumerable<int>
-{
     public static IAsyncEnumerable<int> GetItemsAsync(int maxItems)
-    {
+        => new MyCancellableCollection(maxItems);
     
-    }
-    public async IAsyncEnumerator<int> GetAsyncEnumerable(CancellationToken cancellationToken)
+    class MyCancellableCollection : IAsyncEnumerable<int>
     {
-        // use `await`, `yield` and `cancellationToken`
+        private int _maxItems;
+        internal MyCancellableCollection(int maxItems)
+        {
+            _maxItems = maxItems;
+        }
+        
+        public async IAsyncEnumerator<int> GetAsyncEnumerable(CancellationToken cancellationToken)
+        {
+            // Your method body using:
+            // - `_maxItems`
+            // - `cancellationToken.ThrowIfCancelled();`
+            // - `await`
+            // - `yield` constructs
+        }
     }
-}
 ```
+
 
 
 ### Appendix: relevant interfaces
