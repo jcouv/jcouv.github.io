@@ -4,16 +4,18 @@ published: false
 
 ## Async enumerables with cancellation
 
+In this post, I'll explain how to write an async enumerable with support for cancellation and how to consume one.
+
+### Context
+
 Visual Studio 2019 (currently in preview) includes a preview of C# 8.0 and the async-streams feature.
 
 Three parts compose this feature:
-1. async iterator methods: you can write methods with `async` that return `IAsyncEnumerable` or `IAsyncEnumerator` and using both `yield` and `await` syntax.
+1. async-iterator methods: you can write methods with the `async` modifier, returning either `IAsyncEnumerable` or `IAsyncEnumerator`, and  using both `yield` and `await` syntax.
 2. `await foreach`: you can asynchronously enumerate collections that implement `IAsyncEnumerable` (or implement equivalent APIs).
 3. `await using`: you can asynchronously dispose resources that implement `IAsyncDisposable`.
 
-### `await foreach` overview
-
-Following a similar execution pattern as its synchronous sibling `foreach`, the `await foreach` first gets an enumerator for the enumerable (by calling `GetAsyncEnumerator()`, then repeatedly calls `await MoveNextAsync()` on the enumerator and gets the item with `Current` until the enumerator is exhausted.
+Following a similar execution pattern as its synchronous sibling `foreach`, the `await foreach` first gets an enumerator from the enumerable (by calling `GetAsyncEnumerator()`, then repeatedly does `await MoveNextAsync()` on the enumerator and gets the item with `Current` until the enumerator is exhausted.
 
 Here's the code generated for an `await foreach`:
 ```C#
