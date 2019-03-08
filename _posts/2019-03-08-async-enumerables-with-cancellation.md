@@ -1,5 +1,5 @@
 ---
-title: Async enumerables with cancellation
+title: Async Enumerables with Cancellation
 published: true
 ---
 
@@ -18,20 +18,20 @@ Three parts compose this feature:
 
 Here's the code generated for an `await foreach`:
 
-```C#
-E e = ((C)(x)).GetAsyncEnumerator();
-try
-{
-    while (await e.MoveNextAsync())
+```csharp
+    E e = ((C)(x)).GetAsyncEnumerator();
+    try
     {
-        V v = (V)(T)e.Current;
-        // body
+        while (await e.MoveNextAsync())
+        {
+            V v = (V)(T)e.Current;
+            // body
+        }
     }
-}
-finally
-{
-    await e.DisposeAsync();
-}
+    finally
+    {
+        await e.DisposeAsync();
+    }
 ```
 
 You may notice in the relevant APIs (copied below) that `GetAsyncEnumerator` accepts a `CancellationToken` parameter. But `await foreach` doesn't make use of this parameter (it passes a `default` value).
@@ -52,7 +52,7 @@ So instead, you need to implement the enumerable yourself and put your business 
 
 Here's what that looks like:
 
-```C#
+```csharp
     public static IAsyncEnumerable<int> GetItemsAsync(int maxItems)
         => new MyCancellableCollection(maxItems);
     
