@@ -48,7 +48,7 @@ You also cannot write an async iterator method `async IAsyncEnumerable<int> GetI
 1. if a method has its own cancellation token and wants to enumerate an async enumerable it received, it could not use the token it wants with that enumerable (the cancellation token would be already built into the enumerable),
 2. the same cancellation token would be used in every enumerator when the collection is enumerated multiple times,
 
-So instead, you need to implement the enumerable yourself and put your business logic in `async IAsyncEnumerator<int> GetAsyncEnumerable(CancellationToken cancellationToken)` (an async iterator method).
+So instead, you need to implement the enumerable yourself and put your business logic in `async IAsyncEnumerator<int> GetAsyncEnumerable(CancellationToken cancellationToken)`.
 
 Here's what that looks like:
 
@@ -79,11 +79,13 @@ We recognize that this involves boilerplate, so we are considering some language
 
 With the above implementation, if you wrote `await foreach (var item in GetItemsAsync(maxItems: 10)) ...`, a `default` cancellation token would be passed to the cancellable method. And we don't want consumers of enumerables to have to expand the low-level code for an `await foreach`.
 
-To help with this, we provide a `WithCancellation<T>(this IAsyncEnumerable<T> source, CancellationToken cancellationToken)` [extension method](https://github.com/dotnet/coreclr/pull/21939). It allows you to pass your `token` in simply: 
+To help with this, we provide a `WithCancellation<T>(this IAsyncEnumerable<T> source, CancellationToken cancellationToken)` [extension method](https://github.com/dotnet/coreclr/pull/21939). It allows you to pass your `token` in: 
 
-`await foreach (var item in GetItemsAsync(maxItems: 10).WithCancellation(token)) ...`.
+```csharp
+await foreach (var item in GetItemsAsync(maxItems: 10).WithCancellation(token)) ...
+```
 
-This helper method simply wraps the enumerable from `GetItemsAsync` along with the given cancellation token. When `GetAsyncEnumerator()` is invoked on this wrapper, it calls `GetAsyncEnumerator(token)` on the underlying enumerable.
+This helper method wraps the enumerable from `GetItemsAsync` along with the given cancellation token. When `GetAsyncEnumerator()` is invoked on this wrapper, it calls `GetAsyncEnumerator(token)` on the underlying enumerable.
 
 ### Appendix: relevant interfaces
 
