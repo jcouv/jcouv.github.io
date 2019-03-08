@@ -19,7 +19,7 @@ Three parts compose this feature:
 Here's the code generated for an `await foreach`:
 
 ```csharp
-    E e = ((C)(x)).GetAsyncEnumerator();
+E e = ((C)(x)).GetAsyncEnumerator();
     try
     {
         while (await e.MoveNextAsync())
