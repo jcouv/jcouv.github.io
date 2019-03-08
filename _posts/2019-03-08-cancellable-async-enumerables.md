@@ -2,8 +2,7 @@
 published: false
 ---
 
-
-## Cancellable async enumerables
+## Async enumerables with cancellation
 
 Visual Studio 2019 (currently in preview) includes a preview of C# 8.0 and the async-streams feature.
 
@@ -12,17 +11,38 @@ Very briefly, three parts compose this feature:
 2. `await foreach`: you can asynchronously enumerate collections that implement `IAsyncEnumerable` (or implement equivalent APIs).
 3. `await using`: you can asynchronously dispose resources that implement `IAsyncDisposable`.
 
-Following a similar execution pattern as its synchronous sibling `foreach`, the `await foreach` first gets an enumerator for the collection (by calling `GetAsyncEnumerator()`, then repeatedly calls `await enumerator.MoveNextAsync()` and gets the item with `Current` until the enumerator is exhausted.
+Following a similar execution pattern as its synchronous sibling `foreach`, the `await foreach` first gets an enumerator for the enumerable (by calling `GetAsyncEnumerator()`, then repeatedly calls `await MoveNextAsync()` on the enumerator and gets the item with `Current` until the enumerator is exhausted.
 
-If you look at the relevant APIs, `IAsyncEnumerable` and `IAsyncEnumerator` (copied below), you may have noticed that `GetAsyncEnumerator` accepts a `CancellationToken` parameter. We'll look at two things: how do you write a cancellable async iterator, and how do you consume one.
+Here's the code generated for an `await foreach`:
+```C#
+    E e = ((C)(x)).GetAsyncEnumerator();
+    try
+    {
+        while (await e.MoveNextAsync())
+        {
+            V v = (V)(T)e.Current;
+            // body
+        }
+    }
+    finally
+    {
+        await e.DisposeAsync();
+    }
+```
 
-### Writing a cancellable async enumerable
+But if you look at the relevant APIs, `IAsyncEnumerable` and `IAsyncEnumerator` (copied below), you may notice that `GetAsyncEnumerator` accepts a `CancellationToken` parameter. `await foreach` doesn't make use of this parameter (it uses `default`).
+
+This raises two questions: 1) how do you write an async enumerable with support for cancellation? and 2) how do you consume one?
+
+### Writing an async enumerable supporting cancellation
 
 Let's say that you intend to write `IAsyncEnumerable<int> GetItemsAsync(int maxItems)` supporting cancellation. 
 
-You cannot just write an async iterator method `async IAsyncEnumerable<int> GetItemsAsync(int maxItems)` because that does not give you access to any cancellation token. Instead you need to implement a type for the enumerable and use an async iterator method returning `IAsyncEnumerator<int>` with your logic.
+You cannot just write an async iterator method `async IAsyncEnumerable<int> GetItemsAsync(int maxItems)` because that does not give you access to any cancellation token. 
 
-We recognize this involves some boilerplate and are considering some language design options to simplify this further.
+Instead, you need to implement the enumerable yourself and put your business logic in `async IAsyncEnumerator<int> GetAsyncEnumerable(CancellationToken cancellationToken)` (an async iterator method).
+
+Here's what that looks like:
 
 ```C#
     public static IAsyncEnumerable<int> GetItemsAsync(int maxItems)
@@ -32,9 +52,7 @@ We recognize this involves some boilerplate and are considering some language de
     {
         private int _maxItems;
         internal MyCancellableCollection(int maxItems)
-        {
-            _maxItems = maxItems;
-        }
+            => _maxItems = maxItems;
         
         public async IAsyncEnumerator<int> GetAsyncEnumerable(CancellationToken cancellationToken)
         {
@@ -47,6 +65,9 @@ We recognize this involves some boilerplate and are considering some language de
     }
 ```
 
+We recognize this involves some boilerplate, so we are considering some language design options to simplify this further.
+
+### Consuming an async enumerable with cancellation
 
 
 ### Appendix: relevant interfaces
@@ -99,3 +120,4 @@ https://github.com/dotnet/corefx/blob/master/src/Common/src/CoreLib/System/Colle
 https://github.com/dotnet/corefx/blob/master/src/Common/src/CoreLib/System/Collections/Generic/IAsyncEnumerator.cs
 https://github.com/dotnet/corefx/blob/master/src/Common/src/CoreLib/System/IAsyncDisposable.cs
 
+https://github.com/dotnet/roslyn/blob/master/docs/features/async-streams.md
