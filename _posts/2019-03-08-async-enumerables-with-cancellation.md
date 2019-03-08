@@ -20,18 +20,18 @@ Here's the code generated for an `await foreach`:
 
 ```csharp
 E e = ((C)(x)).GetAsyncEnumerator();
-    try
+try
+{
+    while (await e.MoveNextAsync())
     {
-        while (await e.MoveNextAsync())
-        {
-            V v = (V)(T)e.Current;
-            // body
-        }
+        V v = (V)(T)e.Current;
+        // body
     }
-    finally
-    {
-        await e.DisposeAsync();
-    }
+}
+finally
+{
+    await e.DisposeAsync();
+}
 ```
 
 You may notice in the relevant APIs (copied below) that `GetAsyncEnumerator` accepts a `CancellationToken` parameter. But `await foreach` doesn't make use of this parameter (it passes a `default` value).
@@ -53,24 +53,24 @@ So instead, you need to implement the enumerable yourself and put your business 
 Here's what that looks like:
 
 ```csharp
-    public static IAsyncEnumerable<int> GetItemsAsync(int maxItems)
-        => new MyCancellableCollection(maxItems);
+public static IAsyncEnumerable<int> GetItemsAsync(int maxItems)
+    => new MyCancellableCollection(maxItems);
     
-    class MyCancellableCollection : IAsyncEnumerable<int>
-    {
-        private int _maxItems;
-        internal MyCancellableCollection(int maxItems)
-            => _maxItems = maxItems;
+class MyCancellableCollection : IAsyncEnumerable<int>
+{
+    private int _maxItems;
+    internal MyCancellableCollection(int maxItems)
+        => _maxItems = maxItems;
         
-        public async IAsyncEnumerator<int> GetAsyncEnumerator(CancellationToken cancellationToken)
-        {
-            // Your method body using:
-            // - `_maxItems`
-            // - `cancellationToken.ThrowIfCancelled();`
-            // - `await`
-            // - `yield` constructs
-        }
+    public async IAsyncEnumerator<int> GetAsyncEnumerator(CancellationToken cancellationToken)
+    {
+        // Your method body using:
+        // - `_maxItems`
+        // - `cancellationToken.ThrowIfCancelled();`
+        // - `await`
+        // - `yield` constructs
     }
+}
 ```
 
 We recognize that this involves boilerplate, so we are considering some language design options to further simplify this.
