@@ -2,6 +2,7 @@
 published: false
 ---
 
+
 ## Cancellable async enumerables
 
 Visual Studio 2019 (currently in preview) includes a preview of C# 8.0 and the async-streams feature.
@@ -11,11 +12,34 @@ Very briefly, three parts compose this feature:
 2. `await foreach`: you can asynchronously enumerate collections that implement `IAsyncEnumerable` (or implement equivalent APIs).
 3. `await using`: you can asynchronously dispose resources that implement `IAsyncDisposable`.
 
-Similarly to its synchronous sibling, the `await foreach` first gets an enumerator for the collection (by calling `GetAsyncEnumerator()`, then repeatedly calls `await enumerator.MoveNextAsync()` and gets the item with `Current` until the enumerator is exhausted.
+Following a similar execution pattern as its synchronous sibling `foreach`, the `await foreach` first gets an enumerator for the collection (by calling `GetAsyncEnumerator()`, then repeatedly calls `await enumerator.MoveNextAsync()` and gets the item with `Current` until the enumerator is exhausted.
 
-If you look at the relevant APIs, `IAsyncEnumerable` and `IAsyncEnumerator` (copied below), you may have noticed that `GetAsyncEnumerator` accepts a `CancellationToken` parameter.
+If you look at the relevant APIs, `IAsyncEnumerable` and `IAsyncEnumerator` (copied below), you may have noticed that `GetAsyncEnumerator` accepts a `CancellationToken` parameter. We'll look at two things: how do you write a cancellable async iterator, and how do you consume one.
+
+### Writing a cancellable async iterator
+
+Let's say that you intend to write `IAsyncEnumerable<int> GetItemsAsync(int maxItems)` supporting cancellation.
+
+At this point, the recommended way of writing an async iterator with cancellation involves a little bit of boilerplate.
+
+ we're still consider some language design options to simplify this further.
+
+```C#
+class MyCancellableCollection : IAsyncEnumerable<int>
+{
+    public static IAsyncEnumerable<int> GetItemsAsync(int maxItems)
+    {
+    
+    }
+    public async IAsyncEnumerator<int> GetAsyncEnumerable(CancellationToken cancellationToken)
+    {
+        // use `await`, `yield` and `cancellationToken`
+    }
+}
+```
 
 
+### Appendix: relevant interfaces
 
 ```csharp
 using System.Threading;
