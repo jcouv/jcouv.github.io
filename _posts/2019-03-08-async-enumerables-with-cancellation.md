@@ -19,19 +19,19 @@ Three parts compose this feature:
 Here's the code generated for an `await foreach`:
 
 ```C#
-    E e = ((C)(x)).GetAsyncEnumerator();
-    try
+E e = ((C)(x)).GetAsyncEnumerator();
+try
+{
+    while (await e.MoveNextAsync())
     {
-        while (await e.MoveNextAsync())
-        {
-            V v = (V)(T)e.Current;
-            // body
-        }
+        V v = (V)(T)e.Current;
+        // body
     }
-    finally
-    {
-        await e.DisposeAsync();
-    }
+}
+finally
+{
+    await e.DisposeAsync();
+}
 ```
 
 You may notice in the relevant APIs (copied below) that `GetAsyncEnumerator` accepts a `CancellationToken` parameter. But `await foreach` doesn't make use of this parameter (it passes a `default` value).
