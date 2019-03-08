@@ -1,8 +1,7 @@
 ---
+title: Async enumerables with cancellation
 published: true
 ---
-
-## Async enumerables with cancellation
 
 In this post, I'll explain how to produce and consume an async enumerable with support for cancellation.
 
