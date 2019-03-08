@@ -4,7 +4,7 @@ published: false
 
 ## Async enumerables with cancellation
 
-In this post, I'll explain how to write an async enumerable with support for cancellation and how to consume one.
+In this post, I'll explain how to produce and consume an async enumerable with support for cancellation.
 
 ### Context
 
@@ -45,8 +45,8 @@ Let's say that you intend to write `IAsyncEnumerable<int> GetItemsAsync(int maxI
 You cannot just write an async iterator method `async IAsyncEnumerable<int> GetItemsAsync(int maxItems)` because that does not give you access to any cancellation token. 
 
 You also cannot write an async iterator method `async IAsyncEnumerable<int> GetItemsAsync(int maxItems, CancellationToken token)` because:
-1. the same cancellation token would be used in each enumerator (when the collection is enumerated multiple times),
-2. if a method has its own cancellation token and wants to enumerate an async enumerable it received, it could not use that token with that enumerable (the cancellation token would be built into your enumerable).
+1. if a method has its own cancellation token and wants to enumerate an async enumerable it received, it could not use the token it wants with that enumerable (the cancellation token would be already built into the enumerable),
+2. the same cancellation token would be used in every enumerator when the collection is enumerated multiple times,
 
 So instead, you need to implement the enumerable yourself and put your business logic in `async IAsyncEnumerator<int> GetAsyncEnumerable(CancellationToken cancellationToken)` (an async iterator method).
 
@@ -73,7 +73,7 @@ Here's what that looks like:
     }
 ```
 
-We recognize that this involves boilerplate, so we are considering some language design options to simplify this further.
+We recognize that this involves boilerplate, so we are considering some language design options to further simplify this.
 
 ### Consuming an async enumerable with cancellation
 
