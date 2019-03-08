@@ -3,7 +3,7 @@ title: Async Enumerables with Cancellation
 published: true
 ---
 
-In this post, I'll explain how to produce and consume an async enumerable with support for cancellation.
+In this post, I'll explain how to produce and consume async enumerables with support for cancellation.
 
 ### Context
 
@@ -67,17 +67,18 @@ class MyCancellableCollection : IAsyncEnumerable<int>
         // Your method body using:
         // - `_maxItems`
         // - `cancellationToken.ThrowIfCancelled();`
-        // - `await`
-        // - `yield` constructs
+        // - `await` and `yield` constructs
     }
 }
 ```
 
-We recognize that this involves boilerplate, so we are considering some language design options to further simplify this.
+We recognize that this involves boilerplate. We are considering some language design options to further simplify this.
 
 ### Consuming an async enumerable with cancellation
 
-With the above implementation, if you wrote `await foreach (var item in GetItemsAsync(maxItems: 10)) ...`, a `default` cancellation token would be passed to the cancellable method. And we don't want consumers of enumerables to have to expand the low-level code for an `await foreach`.
+With the above implementation, if you wrote `await foreach (var item in GetItemsAsync(maxItems: 10)) ...`, a `default` cancellation token would be passed to the cancellable method.
+
+Users of enumerables could try and expand the low-level code for an `await foreach` to pass a token, but that's a terrible solution (defeats the purpose of `await foreach`).
 
 To help with this, we provide a `WithCancellation<T>(this IAsyncEnumerable<T> source, CancellationToken cancellationToken)` [extension method](https://github.com/dotnet/coreclr/pull/21939). It allows you to pass your `token` in: 
 
