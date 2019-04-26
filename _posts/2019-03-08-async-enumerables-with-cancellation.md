@@ -3,7 +3,7 @@ title: Async Enumerables with Cancellation
 published: true
 ---
 
-In this post, I'll explain how to produce and consume async enumerables with support for cancellation.
+In this post, I'll explain how to produce and consume async enumerables with support for cancellation. Since originally publishing this post, we've added support in the language for a new attribute which solve this problem more elegantly. I've added a section detailing the new method.
 
 ### Some context
 
@@ -38,7 +38,7 @@ You may notice in the relevant APIs (copied below) that `GetAsyncEnumerator` acc
 
 This raises two questions: 1) how do you write an async enumerable with support for cancellation? and 2) how do you consume one?
 
-### Writing an async enumerable supporting cancellation
+### Writing an async enumerable supporting cancellation (original method)
 
 Let's say that you intend to write `IAsyncEnumerable<int> GetItemsAsync(int maxItems)` supporting cancellation. 
 
@@ -72,7 +72,26 @@ class MyCancellableCollection : IAsyncEnumerable<int>
 }
 ```
 
-We recognize that this involves boilerplate. We are considering some language design options to further simplify this.
+~~We recognize that this involves boilerplate. We are considering some language design options to further simplify this.~~
+Since originally publishing this, we've solved this problem more elegantly by extending the language. The next section explains the updated design.
+
+### Writing an async enumerable supporting cancellation (improved method)
+
+In an updated preview of C# 8.0 (shipping in Visual Studio 2019 version 16.1), we'll be adding support for the `[EnumeratorCancellation]` token. The attribute allows you to write an async-iterator method, returning `IAsyncEnumerable<T>` as you intend, but tells the compiler to store the token from `GetAsyncEnumerator(CancellationToken)` into one of your method's parameters.
+
+In the above example, you would just declare the method as `async IAsyncEnumerable<int> GetItemsAsync(int maxItems, [EnumeratorCancellation] CancellationToken token)`. Because of the attribute, the `token` parameter will be set to a synthesized cancellation token that combines two token: the one passed as an argument to the method, and the other given to `GetAsyncEnumerator`. This synthesized token gets cancelled when either of the two given tokens is cancelled.
+
+```csharp
+async IAsyncEnumerable<int> GetItemsAsync(int maxItems, [EnumeratorCancellation] CancellationToken token)
+{
+        // Your method body using:
+        // - `_maxItems`
+        // - `token.ThrowIfCancelled();`
+        // - `await` and `yield` constructs
+}
+```
+
+Note: in dev16.1 preview5, we have not yet implemented this method of combining tokens, we took a simpler approach whereby any non-default token given to `GetAsyncEnumerator` will override the token passed as an argument. I expect to implement the more elaborate method of combining tokens in preview6 timeframe.
 
 ### Consuming an async enumerable with cancellation
 
