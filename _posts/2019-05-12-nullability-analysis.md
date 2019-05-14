@@ -42,3 +42,16 @@ The state is generally just a simple array, but it can also be two arrays in som
 Another operation that is common is that of cloning states. If you analyze `if (b) ... else ...`, then we clone the state so that we can analyze each branch separately. Then there are rules for merging states when the branches rejoin (`Meet` takes the worst case values).
 
 There are rules for branches that are not reachable `if (false) { ... unreachable ...}`. In such unreachable code, every value you read is `NotNull` regardless of current state.
+
+## Examples
+
+In analyzing an assignment `x = y;` we're going to:
+1. visit the right-hand-side expression and get a `TypeWithState` back which tells us the nullability of `y` at this point in the program,
+2. visit the left-hand-side expression as an L-value (ie. for assigning to) and get a `TypeWithAnnotations` back which tells us the declared type of `x` (not its state),
+3. we check if the assignment from the state of `y` to the declared type of `x` poses problems, both in terms of top-level nullability (are we assigning a `null` value to a un-annotated `string` variable?), or nested nullability (are we assigning a `List<string>` value to a `List<string?>` variable?),
+4. we update the state of `x` based on the state of `y`,
+5. we return the state of `y` (and new state of `x`) as the state of the assignment expression, in case it is a nested expression like `(x = y).ToString()`.
+
+In that example, `y` might not be a simple bound node for accessing `y`, but it could also involve implicit conversions. In that case, visiting `y` at the step (1) will recursively visit a bound conversion which holds `y` as its operand. As long as the visit operation for each kind of bound node does its part (produce a `TypeWithState` for the expression, produce proper side effects on state and diagnostics) then this process composes well.
+
+Some bound nodes are more complicated. Ternary, calls, ...
