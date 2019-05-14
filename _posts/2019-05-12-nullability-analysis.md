@@ -10,12 +10,12 @@ This post assumes familiarity with the feature, including nullability [annotatio
 ## Bound tree
 
 The backbone of the compiler consists of four main stages:
-- _parsing_ source code into a syntax tree,
-- _binding_ the syntax of each method body into an initial bound tree,
+- _parsing_ source code into syntax trees,
+- building symbols from declarations and _binding_ the syntax of each method body into an initial bound tree,
 - _lowering_ the bound tree into a set of simpler bound nodes,
 - _emitting_ IL from the lowered bound nodes, along with some metadata.
 
-Nullability analysis rests on the initial bound tree. This tree composed of bound nodes and has a structure similar to the syntax tree, but instead of referencing un-interpreted identifiers (like `x` or `Method`) it references symbols. Symbols are an object model that allow differentiating different uses of a given identifier in code. You could have a parameter `x`, a local `x`, a type `x` or even a method `x`. For each kind of symbol you can ask different questions, such as the type of the parameter or local, or the return and parameter types of a method.
+Nullability analysis rests on the initial bound tree. This tree has a structure similar to the syntax tree, but instead of referencing un-interpreted identifiers (like `x` or `Method`) it references symbols. Symbols are an object model for entities declared by a program. For example, symbols allow differentiating different uses of a given identifier in code. You could have a parameter `x`, a local `x`, a type `x` or even a method `x`. For each kind of symbol you can ask different questions, such as the type of the parameter or local, or the return and parameter types of a method.
 
 When types are explicit in source (for example, `string nonNullLocal = "";`, `string? maybeNullLocal = "";` or `MakeArray<string?>(item)`), the bound nodes and symbols capture an explicit/declared nullability: `TypeWithAnnotations` with `Annotated` or `NotAnnotated` annotations in a [context](https://github.com/dotnet/csharplang/blob/master/proposals/csharp-8.0/nullable-reference-types-specification.md#nullable-contexts) with nullability annotations enabled, or `Oblivious` in a disabled context.
 When types are inferred (for example, in `var local = "";` or `MakeArray(item)`), the bound node just uses an `Oblivious` annotation, which the nullability analysis will later revise.
