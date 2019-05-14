@@ -22,7 +22,7 @@ When types are inferred (for example, in `var local = "";` or `MakeArray(item)`)
 
 ## NullableWalker
 
-`NullableWalker` is responsible for most of the analysis. It is a visitor for the initial bound tree, which:
+[`NullableWalker`](https://github.com/dotnet/roslyn/blob/master/src/Compilers/CSharp/Portable/FlowAnalysis/NullableWalker.cs) is responsible for most of the analysis. It is a visitor for the initial bound tree, which:
 1. computes the nullability state of expressions (and save those to answer queries from the IDE), 
 2. keeps track of knowledge for different variables (more on that below), and 
 3. produces warnings.
