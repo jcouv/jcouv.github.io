@@ -7,7 +7,7 @@ A regular Roslyn contributor, [Yair](https://github.com/YairHalberstadt), asked 
 
 This post assumes familiarity with the "nullable reference types" feature, including the concepts of nullability [annotations](https://github.com/dotnet/csharplang/blob/master/proposals/csharp-8.0/nullable-reference-types-specification.md#nullability-of-types) (annotated, not-annotated, oblivious) and [states](https://github.com/dotnet/csharplang/blob/master/proposals/csharp-8.0/nullable-reference-types-specification.md#null-state-and-null-tracking) (not-null, maybe-null).
 
-## Bound tree
+## Bound trees
 
 The backbone of the compiler consists of four main stages:
 - _parsing_ source code into syntax trees,
@@ -19,6 +19,7 @@ Nullability analysis rests on the initial bound tree. This tree has a structure 
 For example, symbols allow differentiating different uses of a given identifier in code. You could have a parameter `x`, a local `x`, a type `x` or even a method `x`. For each kind of symbol you can ask different questions, such as the type of the parameter or local, or the return and parameter types of a method.
 
 When types are explicit in source (for example, `string nonNullLocal = "";`, `string? maybeNullLocal = "";` or `MakeArray<string?>(item)`), the bound nodes and symbols capture an explicit/declared nullability: `TypeWithAnnotations` with `Annotated` or `NotAnnotated` annotations in a [context](https://github.com/dotnet/csharplang/blob/master/proposals/csharp-8.0/nullable-reference-types-specification.md#nullable-contexts) with nullability annotations enabled, or `Oblivious` in a disabled context.
+
 When types are inferred (for example, in `var local = "";` or `MakeArray(item)`), the bound node just uses an `Oblivious` annotation, which the nullability analysis will later revise.
 
 ## NullableWalker
@@ -35,14 +36,14 @@ For all the tracked variables, this is represented as a state array, in which ea
 
 For instance, each parameter and local in a method gets a slot, which holds either a `NotNull` or `MaybeNull` state. Consider a parameter `string? p1`: we give it a slot/index and we'll initialize its state to maybe-null (ie. `State[slot] = MaybeNull`, because its declared type is `Annotated`), then when we visit `p1 = "";` we can just override that state, and when we visit `p1.ToString()` we consult that state to decide whether to warn for possible null dereference.
 
-`NullableWalker` not only tracks variables, it also tracks fields within structs, so it also assigns slots for those. That way, it can warn on `localStruct.field1.ToString()`, but not `localStruct.field2.ToString()` independently.
-Slots are related to each other, so that when assigning `local2 = local1;` we can not only copy the slot for `local1`to set the state of `local2`, but we can copy the nested slots thereby transfering all of our knowledge of `local1` to `local2`.
+`NullableWalker` not only tracks variables, it also tracks fields, so it assigns slots for those too. That way, it can warn on `localStruct.field1.ToString()`, but not `localStruct.field2.ToString()` independently.
+Such nested slots are known to have a containing slot. With that information, we can look at an assignment like `local2 = local1;` and we can not only copy the slot for `local1` to set the state of `local2`, but we can copy the nested slots thereby transfering all of our knowledge of `local1` to `local2`.
 
 The state is generally just a simple array, but it can also be two arrays in some cases. That's called "conditional state". It is used for analyzing expressions like `x == null`. We keep track of the states "if the expression were true" and "if the expression were false" separately. Slots are still used to index into those arrays as normal.
 
-Another operation that is common is that of cloning states. When analyzing `if (b) ... else ...`, we clone the state so that we can analyze each branch separately. The states at the end of the branches are then merged when the branches rejoin (`Meet` takes the worst case values).
+Another operation that is common is that of cloning states. When analyzing `if (b) ... else ...`, we clone the state so that we can analyze each branch separately. We can merge those states when the branches rejoin (`Meet` takes the worst case values), which gives us the state following the `if` statement.
 
-In code that isn't reachable, as in `if (false) { ... unreachable ...}`, every value you read is `NotNull` regardless of tracked state.
+In code that isn't reachable, as in `if (false) { ... unreachable ...}`, every value you read is `NotNull` regardless of tracked state to minimize warnings.
 
 ## Simple example
 
