@@ -3,7 +3,7 @@ title: Overview of nullability analysis
 published: true
 ---
 
-A regular Roslyn contributor, Yair, asked for some pointers about C# 8.0's nullability analysis on the [gitter](https://gitter.im/dotnet/roslyn) channel. I thought I'd expand on my reply and share more broadly.
+A regular Roslyn contributor, [Yair](https://github.com/YairHalberstadt), asked for some pointers about C# 8.0's nullability analysis on the [gitter](https://gitter.im/dotnet/roslyn) channel. I thought I'd expand on my reply and share more broadly.
 
 This post assumes familiarity with the "nullable reference types" feature, including the concepts of nullability [annotations](https://github.com/dotnet/csharplang/blob/master/proposals/csharp-8.0/nullable-reference-types-specification.md#nullability-of-types) (annotated, not-annotated, oblivious) and [states](https://github.com/dotnet/csharplang/blob/master/proposals/csharp-8.0/nullable-reference-types-specification.md#null-state-and-null-tracking) (not-null, maybe-null).
 
