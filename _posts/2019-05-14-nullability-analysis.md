@@ -41,7 +41,7 @@ Such nested slots are known to have a containing slot. With that information, we
 
 The state is generally just a simple array, but it can also be two arrays in some cases. That's called "conditional state". It is used for analyzing expressions like `x == null`. We keep track of the states "if the expression were true" and "if the expression were false" separately. Slots are still used to index into those arrays as normal.
 
-Another operation that is common is that of cloning states. When analyzing `if (b) ... else ...`, we clone the state so that we can analyze each branch separately. We can merge those states when the branches rejoin (`Meet` takes the worst case values), which gives us the state following the `if` statement.
+Cloning states is another common operation. When analyzing `if (b) ... else ...`, we clone the state so that we can analyze each branch separately. We can merge those states when the branches rejoin (`Meet` takes the worst case values). That gives us the state following the `if` statement.
 
 In code that isn't reachable, as in `if (false) { ... unreachable ...}`, every value you read is `NotNull` regardless of tracked state to minimize warnings.
 
