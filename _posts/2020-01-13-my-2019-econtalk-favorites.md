@@ -1,7 +1,7 @@
 ---
 published: true
+title: My 2019 EconTalk favorites
 ---
-## My 2019 EconTalk favorites
 
 - [Susan Mayer on What Money Can't Buy](https://www.econtalk.org/susan-mayer-on-what-money-cant-buy/) (on effectively helping kids in poverty)
 - [Mauricio Miller on Poverty, Social Work, and the Alternative](https://www.econtalk.org/mauricio-miller-on-poverty-social-work-and-the-alternative/) (on effectively help families in poverty)
