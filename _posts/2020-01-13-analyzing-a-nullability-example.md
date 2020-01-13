@@ -3,7 +3,7 @@ published: false
 title: Analyzing a nullability example
 ---
 
-Cezary Piatek posted a good [overview of the C# nullable reference types feature](https://cezarypiatek.github.io/post/non-nullable-references-in-dotnet-core/). 
+Cezary Piątek posted a good [overview of the C# nullable reference types feature](https://cezarypiatek.github.io/post/non-nullable-references-in-dotnet-core/). 
 It includes a [critique of a code snippet](https://cezarypiatek.github.io/post/non-nullable-references-in-dotnet-core/#there-is-still-room-for-improvement). Examining that snippet is a good way to understand some of the C# LDM's decisions.
 In the following, Cezary expects a warning on a seemingly unreachable branch and no warning on the dereference.
 
