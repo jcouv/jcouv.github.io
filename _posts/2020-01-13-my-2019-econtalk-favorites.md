@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 ---
 ## My 2019 EconTalk favorites
 
