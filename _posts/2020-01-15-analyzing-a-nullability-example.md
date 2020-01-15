@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: Analyzing a nullability example
 ---
 
