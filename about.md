@@ -3,6 +3,8 @@ layout: page
 title: About
 ---
 
+You can contact me on twitter: [https://twitter.com/jcouv](https://twitter.com/jcouv)
+
 DISCLAIMER
 These postings are provided "AS IS" with no warranties, and confers no rights. The content of this site contains my own personal opinions and does not represent my employer's view in any way.
  
