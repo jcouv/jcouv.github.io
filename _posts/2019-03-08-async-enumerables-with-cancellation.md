@@ -41,8 +41,8 @@ This raises two questions: 1) how do you write an async enumerable with support 
 
 Let's say that you intend to write `IAsyncEnumerable<int> GetItemsAsync(int maxItems)` supporting cancellation. 
 
-If you just declared the method as `async IAsyncEnumerable<int> GetItemsAsync(int maxItems, CancellationToken token)`, you would be able to pass a cancellation token as an argument, then use it in the body of the method. 
-But the resulting async-iterator would not properly implement the `IAsyncEnumerable.GetAsyncEnumerator(CancellationToken)` API, because it would drop the cancellation token passed to it.
+If you just declared the method as `async IAsyncEnumerable<int> GetItemsAsync(int maxItems, CancellationToken token)`, you would be able to pass a cancellation token as an argument, then use it in the body of the method.  
+But the resulting async-iterator would not properly implement the `IAsyncEnumerable.GetAsyncEnumerator(CancellationToken)` API, because it would drop the cancellation token passed to it.  
 The solution is to declare the method as `async IAsyncEnumerable<int> GetItemsAsync(int maxItems, [EnumeratorCancellation] CancellationToken token)`.
 Because of the attribute, the `token` parameter will be set to a synthesized cancellation token that combines two token: the one passed as an argument to the method, and the other given to `GetAsyncEnumerator`. This synthesized token gets cancelled when either of the two given tokens is cancelled.
 
@@ -59,8 +59,10 @@ async IAsyncEnumerable<int> GetItemsAsync(int maxItems, [EnumeratorCancellation]
 ### Consuming an async enumerable with cancellation
 
 There are two scenarios for consuming an async enumerable:
-1. If the method that creates the async enumerable has a cancellation token parameter marked with `[EnumeratorCancellation]`, then just call that method with the cancellation token you need: `await foreach (var item in GetItemsAsync(maxItems: 10, token)) ...`.
-2. If the async enumerable instance is given to you, or is constructed in a way to doesn't capture the desired cancellation token, then you can feed the cancellation token using the  `WithCancellation<T>(this IAsyncEnumerable<T> source, CancellationToken cancellationToken)` [extension method](https://github.com/dotnet/coreclr/pull/21939): `await foreach (var item in GetItemsAsync(maxItems: 10).WithCancellation(token)) ...`.
+1. If the method that creates the async enumerable has a cancellation token parameter marked with `[EnumeratorCancellation]`, then just call that method with the cancellation token you need:  
+    `await foreach (var item in GetItemsAsync(maxItems: 10, token)) ...`
+3. If the async enumerable instance is given to you, or is constructed in a way to doesn't capture the desired cancellation token, then you can feed the cancellation token using the  `WithCancellation<T>(this IAsyncEnumerable<T> source, CancellationToken cancellationToken)` [extension method](https://github.com/dotnet/coreclr/pull/21939):  
+    `await foreach (var item in GetItemsAsync(maxItems: 10).WithCancellation(token)) ...`
 
 The `WithCancellation` helper method wraps the enumerable from `GetItemsAsync` along with the given cancellation token. When `GetAsyncEnumerator()` is invoked on this wrapper, it calls `GetAsyncEnumerator(token)` on the underlying enumerable.
 
