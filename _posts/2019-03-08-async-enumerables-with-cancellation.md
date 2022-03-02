@@ -5,12 +5,12 @@ published: true
 
 In this post, I'll explain how to produce and consume async enumerables with support for cancellation. 
 
-### Some context
-
-C# 8.0 added support for async-streams, which is composed of three parts:
+Let's start with some context. C# 8.0 added support for async-streams, which is composed of three parts:
 1. async-iterator methods: you can write methods with the `async` modifier, returning either `IAsyncEnumerable` or `IAsyncEnumerator`, and  using both `yield` and `await` syntax.
 2. `await foreach`: you can asynchronously enumerate collections that implement `IAsyncEnumerable` (or implement equivalent APIs).
 3. `await using`: you can asynchronously dispose resources that implement `IAsyncDisposable`.
+
+### `await foreach`
 
 `await foreach` follows a similar execution pattern as its synchronous sibling `foreach`: it first gets an enumerator from the enumerable (by calling `GetAsyncEnumerator()`, then repeatedly does `await MoveNextAsync()` on the enumerator and gets the item with `Current` until the enumerator is exhausted.
 
@@ -37,7 +37,6 @@ You may notice in the relevant APIs (copied below) that `GetAsyncEnumerator` acc
 This raises two questions: 1) how do you write an async enumerable with support for cancellation? and 2) how do you consume one?
 
 ### Writing an async enumerable supporting cancellation
-
 
 Let's say that you intend to write `IAsyncEnumerable<int> GetItemsAsync(int maxItems)` supporting cancellation. 
 
