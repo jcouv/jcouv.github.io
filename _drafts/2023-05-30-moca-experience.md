@@ -3,9 +3,11 @@ published: false
 ---
 ## Using MoCA
 
-The wireless signal doesn't travel well from upstairs to downstairs at my place. I considered a few options to improve the connectivity of a downstairs TV: run an ethernet wire, or set up a mesh network with wireless backhaul. Then I discovered a more suitable solution for my situation: run ethernet over coax. This works because I have coax outlets in both places.
-The standard is called "Multimedia over Coax Alliance" (MoCA). It is as simple as placing an ethernet to coax adapter on each of the coax outlets.
-Even better, it turned out that my modem/router (an ARRIS TG1682G) natively supports MoCA. So I only need to 1. turn that on and 2. place an adapter in the other room.
+I've been very pleasantly suprised discovering MoCA and want to share my experience and some tips to help the next person.  
+
+The wireless signal doesn't travel well from upstairs to downstairs at my place. I considered a few options to improve the connectivity of a downstairs TV: run an ethernet wire, or set up a mesh network with wireless backhaul. Then I discovered a more suitable solution for my situation: run ethernet over coax. This works because I have coax outlets in both places.  
+The standard is called "Multimedia over Coax Alliance" (MoCA). It is as simple as placing an ethernet to coax adapter on each of the coax outlets.  
+Even better, it turned out that my modem/router (an ARRIS TG1682G) natively supports MoCA. So I only need to 1. turn that on and 2. place an adapter in the other room.  
 
 1. Enable MoCA on router
 
