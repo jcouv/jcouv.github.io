@@ -30,3 +30,5 @@ This means that the router is not only transmitting WAN signal on the coax, but 
 ## Plug MoCA adapter
 
 All that's left to do is plug in a MoCA adapter in another room
+
+https://www.techreviewer.com/tech-setup/how-to-set-up-moca-adapters/
