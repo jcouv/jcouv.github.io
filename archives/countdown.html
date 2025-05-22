@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting Countdown Timer</title>
+    <style>
+        :root {
+            --bg-color: #f5f5f5;
+            --text-color: #333;
+            --input-bg: #fff;
+            --input-border: #ccc;
+            --button-bg: #4a90e2;
+            --button-hover: #3a7fcf;
+            --button-text: #fff;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #1e1e1e;
+                --text-color: #f0f0f0;
+                --input-bg: #2d2d2d;
+                --input-border: #444;
+                --button-bg: #4a90e2;
+                --button-hover: #5da0f2;
+                --button-text: #fff;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1 {
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+
+        .setup-form {
+            margin-bottom: 2rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            border: 2px solid var(--input-border);
+            border-radius: 6px;
+            background-color: var(--input-bg);
+            color: var(--text-color);
+        }
+
+        button {
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            padding: 12px 24px;
+            font-size: 1.2rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: var(--button-hover);
+        }
+
+        .countdown-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-color);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .countdown {
+            font-size: 15vw;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .resume-message {
+            font-size: 3vw;
+            margin-top: 3rem;
+        }
+
+        .time-up {
+            animation: pulse 1s infinite alternate;
+            font-size: 10vw;
+        }
+
+        @keyframes pulse {
+            from {
+                opacity: 0.7;
+                transform: scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1.02);
+            }
+        }
+
+        .controls {
+            margin-top: 5rem;
+        }
+
+        .small-button {
+            font-size: 1rem;
+            padding: 8px 16px;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="setupScreen">
+        <h1>Meeting Countdown</h1>
+        <div class="setup-form">
+            <label for="resumeTime">When will the meeting resume?</label>
+            <input type="text" id="resumeTime" placeholder="Enter time (e.g., 10:30, 2:45 PM, or 15 for minutes from now)" autocomplete="off">
+            <button id="startButton">Start Countdown</button>
+        </div>
+    </div>
+
+    <div class="countdown-container" id="countdownScreen">
+        <div id="countdown" class="countdown">00:00</div>
+        <div id="resumeMessage" class="resume-message">Meeting resumes at --:--</div>
+        <div class="controls">
+            <button id="resetButton" class="small-button">Reset</button>
+            <button id="pauseButton" class="small-button">Pause</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const setupScreen = document.getElementById('setupScreen');
+            const countdownScreen = document.getElementById('countdownScreen');
+            const countdownDisplay = document.getElementById('countdown');
+            const resumeMessage = document.getElementById('resumeMessage');
+            const resumeTimeInput = document.getElementById('resumeTime');
+            const startButton = document.getElementById('startButton');
+            const resetButton = document.getElementById('resetButton');
+            const pauseButton = document.getElementById('pauseButton');
+
+            let countdownInterval;
+            let targetTime;
+            let isPaused = false;
+            let remainingSeconds = 0;
+
+            // Set focus to input field when page loads
+            resumeTimeInput.focus();
+
+            // Start countdown when button clicked
+            startButton.addEventListener('click', startCountdown);
+
+            // Also start countdown when Enter key is pressed in input field
+            resumeTimeInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    startCountdown();
+                }
+            });
+
+            resetButton.addEventListener('click', function() {
+                clearInterval(countdownInterval);
+                countdownScreen.style.display = 'none';
+                setupScreen.style.display = 'block';
+                resumeTimeInput.value = '';
+                resumeTimeInput.focus();
+            });
+
+            pauseButton.addEventListener('click', function() {
+                if (isPaused) {
+                    // Resume countdown
+                    isPaused = false;
+                    pauseButton.textContent = 'Pause';
+                    
+                    // Recalculate target time based on remaining seconds
+                    targetTime = new Date(new Date().getTime() + remainingSeconds * 1000);
+                    
+                    countdownInterval = setInterval(updateCountdown, 1000);
+                } else {
+                    // Pause countdown
+                    isPaused = true;
+                    pauseButton.textContent = 'Resume';
+                    clearInterval(countdownInterval);
+                }
+            });
+
+            function startCountdown() {
+                const timeInput = resumeTimeInput.value.trim();
+                
+                if (!timeInput) {
+                    alert('Please enter a valid time');
+                    return;
+                }
+
+                targetTime = parseTimeInput(timeInput);
+                
+                if (!targetTime) {
+                    alert('Invalid time format. Please use format like "10:30", "2:45 PM", or just "15" for minutes from now.');
+                    return;
+                }
+
+                // Format the message showing when meeting resumes
+                const options = { hour: 'numeric', minute: '2-digit', hour12: true };
+                const formattedResumeTime = targetTime.toLocaleTimeString([], options);
+                resumeMessage.textContent = `Meeting resumes at ${formattedResumeTime}`;
+
+                // Show countdown screen
+                setupScreen.style.display = 'none';
+                countdownScreen.style.display = 'flex';
+
+                // Start the countdown
+                updateCountdown();
+                countdownInterval = setInterval(updateCountdown, 1000);
+            }
+
+            function parseTimeInput(input) {
+                const now = new Date();
+                
+                // Case 1: Just minutes (e.g. "15" for 15 minutes from now)
+                if (/^\d+$/.test(input)) {
+                    const minutes = parseInt(input, 10);
+                    return new Date(now.getTime() + minutes * 60000);
+                }
+                
+                // Case 2: Time in HH:MM format (e.g. "14:30" or "2:30")
+                const timeRegex = /^(\d{1,2}):(\d{2})(?:\s*(am|pm))?$/i;
+                const match = input.match(timeRegex);
+                
+                if (match) {
+                    let hours = parseInt(match[1], 10);
+                    const minutes = parseInt(match[2], 10);
+                    const period = match[3] ? match[3].toLowerCase() : null;
+                    
+                    // Adjust for AM/PM if specified
+                    if (period === 'pm' && hours < 12) {
+                        hours += 12;
+                    } else if (period === 'am' && hours === 12) {
+                        hours = 0;
+                    }
+                    
+                    const targetDate = new Date(now);
+                    targetDate.setHours(hours, minutes, 0, 0);
+                    
+                    // If the time is already past for today, assume it's for tomorrow
+                    if (targetDate < now) {
+                        targetDate.setDate(targetDate.getDate() + 1);
+                    }
+                    
+                    return targetDate;
+                }
+                
+                return null;
+            }
+
+            function updateCountdown() {
+                const now = new Date();
+                const timeDifference = targetTime - now;
+                
+                if (timeDifference <= 0) {
+                    clearInterval(countdownInterval);
+                    countdownDisplay.textContent = "TIME'S UP!";
+                    countdownDisplay.classList.add('time-up');
+                    pauseButton.style.display = 'none';
+                    return;
+                }
+                
+                remainingSeconds = Math.floor(timeDifference / 1000);
+                
+                const minutes = Math.floor(remainingSeconds / 60);
+                const seconds = remainingSeconds % 60;
+                
+                countdownDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+        });
+    </script>
+</body>
+</html>
