@@ -43,6 +43,7 @@ exclude:
 
 gems:
   - jekyll-redirect-from
+  - jekyll-sitemap
 
 encoding: UTF-8
 
