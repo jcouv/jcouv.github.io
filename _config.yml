@@ -37,10 +37,10 @@ sass:
 
 pages_list:
   Archive: /archives.html
-  Feed: /index.xml
-  About: /about.html
-  Search: /search.html
   Tools: /tools/
+  Search: /search.html
+  RSS: /index.xml
+  About: /about.html
 
 exclude:
   - .gitignore
