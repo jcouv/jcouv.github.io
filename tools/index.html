@@ -1,0 +1,185 @@
+---
+layout: page
+title: Tools
+permalink: /tools/
+---
+
+<style>
+  .tools-shell {
+    max-width: 52rem;
+  }
+
+  .tools-intro {
+    color: #555;
+    font-size: 1.05rem;
+  }
+
+  .tools-search-label {
+    display: block;
+    margin: 1.5rem 0 0.5rem;
+    font-weight: 600;
+  }
+
+  .tools-search {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    font: inherit;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.75rem;
+    box-sizing: border-box;
+  }
+
+  .tools-search:focus {
+    outline: 2px solid #93c5fd;
+    outline-offset: 2px;
+    border-color: #60a5fa;
+  }
+
+  .tools-count {
+    margin: 0.75rem 0 1.25rem;
+    color: #666;
+  }
+
+  .tool-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .tool-card {
+    padding: 1rem 1.25rem;
+    border: 1px solid #d8dee4;
+    border-radius: 0.85rem;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+  }
+
+  .tool-card h2 {
+    margin: 0 0 0.4rem;
+    font-size: 1.2rem;
+  }
+
+  .tool-card p {
+    margin: 0.4rem 0;
+  }
+
+  .tool-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 0.75rem;
+  }
+
+  .tool-tag {
+    display: inline-block;
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    background: #eef4ff;
+    color: #294c7a;
+    font-size: 0.85rem;
+  }
+
+  .tools-empty {
+    margin-top: 1rem;
+    color: #666;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .tools-intro,
+    .tools-count,
+    .tools-empty {
+      color: #cbd5e1;
+    }
+
+    .tools-search {
+      background: #111827;
+      color: #f8fafc;
+      border-color: #475569;
+    }
+
+    .tool-card {
+      background: #111827;
+      border-color: #334155;
+      box-shadow: none;
+    }
+
+    .tool-tag {
+      background: #172554;
+      color: #dbeafe;
+    }
+  }
+</style>
+
+<div class="tools-shell">
+  <p class="tools-intro">
+    Small browser-based utilities built with plain HTML and JavaScript. Search below to find a tool quickly.
+  </p>
+
+  <label class="tools-search-label" for="tool-search">Search tools</label>
+  <input
+    class="tools-search"
+    id="tool-search"
+    type="search"
+    placeholder="Try: countdown, timer, meeting"
+    autocomplete="off">
+
+  <p class="tools-count" id="tools-count">Showing 1 tool</p>
+
+  <div class="tool-list" id="tool-list">
+    <article class="tool-card" data-search="meeting countdown timer resume time full screen presentation break clock minutes">
+      <h2><a href="{{ '/tools/countdown.html' | relative_url }}">Meeting countdown timer</a></h2>
+      <p>
+        A full-screen countdown for breaks and resumes. Enter either a clock time like
+        <code>2:45 PM</code> or a number of minutes from now.
+      </p>
+      <div class="tool-tags" aria-label="Tags">
+        <span class="tool-tag">timer</span>
+        <span class="tool-tag">meeting</span>
+        <span class="tool-tag">full-screen</span>
+      </div>
+    </article>
+  </div>
+
+  <p class="tools-empty" id="tools-empty" hidden>No tools matched that search.</p>
+</div>
+
+<script>
+  (function () {
+    const searchInput = document.getElementById('tool-search');
+    const cards = Array.from(document.querySelectorAll('.tool-card'));
+    const count = document.getElementById('tools-count');
+    const empty = document.getElementById('tools-empty');
+    const params = new URLSearchParams(window.location.search);
+    const initialQuery = params.get('q');
+
+    if (initialQuery) {
+      searchInput.value = initialQuery;
+    }
+
+    function updateResults() {
+      const query = searchInput.value.trim().toLowerCase();
+      let visible = 0;
+
+      cards.forEach(function (card) {
+        const matches = card.dataset.search.toLowerCase().indexOf(query) !== -1;
+        card.hidden = !matches;
+        if (matches) {
+          visible += 1;
+        }
+      });
+
+      count.textContent = visible === 1 ? 'Showing 1 tool' : 'Showing ' + visible + ' tools';
+      empty.hidden = visible !== 0;
+
+      const url = new URL(window.location.href);
+      if (query) {
+        url.searchParams.set('q', query);
+      } else {
+        url.searchParams.delete('q');
+      }
+      window.history.replaceState({}, '', url);
+    }
+
+    searchInput.addEventListener('input', updateResults);
+    updateResults();
+  })();
+</script>

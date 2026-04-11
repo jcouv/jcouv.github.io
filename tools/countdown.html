@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting Countdown Timer</title>
+    <style>
+        :root {
+            --bg-color: #f5f5f5;
+            --text-color: #333;
+            --muted-text: #666;
+            --panel-bg: #ffffff;
+            --input-bg: #fff;
+            --input-border: #ccc;
+            --button-bg: #4a90e2;
+            --button-hover: #3a7fcf;
+            --button-text: #fff;
+            --link-color: #2f6fbc;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #1e1e1e;
+                --text-color: #f0f0f0;
+                --muted-text: #c7c7c7;
+                --panel-bg: #252525;
+                --input-bg: #2d2d2d;
+                --input-border: #444;
+                --button-bg: #4a90e2;
+                --button-hover: #5da0f2;
+                --button-text: #fff;
+                --link-color: #93c5fd;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        a {
+            color: var(--link-color);
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            width: min(100%, 680px);
+        }
+
+        .panel {
+            background: var(--panel-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        h1 {
+            margin: 0 0 0.75rem;
+            font-size: 2.4rem;
+        }
+
+        .description {
+            margin: 0 0 1.5rem;
+            color: var(--muted-text);
+            line-height: 1.5;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 0.75rem;
+            font-size: 1.2rem;
+            border: 2px solid var(--input-border);
+            border-radius: 6px;
+            background-color: var(--input-bg);
+            color: var(--text-color);
+        }
+
+        .hint {
+            margin: 0 0 1.5rem;
+            color: var(--muted-text);
+            font-size: 0.95rem;
+        }
+
+        button {
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: var(--button-hover);
+        }
+
+        .countdown-container {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background-color: var(--bg-color);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .countdown {
+            font-size: min(15vw, 10rem);
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .resume-message {
+            font-size: min(3vw, 2rem);
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .time-up {
+            animation: pulse 1s infinite alternate;
+            font-size: min(10vw, 7rem);
+        }
+
+        @keyframes pulse {
+            from {
+                opacity: 0.7;
+                transform: scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1.02);
+            }
+        }
+
+        .controls {
+            margin-top: 3rem;
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .small-button {
+            font-size: 1rem;
+            padding: 8px 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="setupScreen">
+        <div class="panel">
+            <a class="back-link" href="/tools/">&larr; All tools</a>
+            <h1>Meeting Countdown</h1>
+            <p class="description">
+                Enter a resume time or a number of minutes from now to show a clean, full-screen countdown during a break.
+            </p>
+            <label for="resumeTime">When will the meeting resume?</label>
+            <input type="text" id="resumeTime" placeholder="10:30, 2:45 PM, or 15" autocomplete="off">
+            <p class="hint">Examples: <strong>10:30</strong>, <strong>2:45 PM</strong>, or <strong>15</strong> for 15 minutes from now.</p>
+            <button id="startButton">Start Countdown</button>
+        </div>
+    </div>
+
+    <div class="countdown-container" id="countdownScreen">
+        <div id="countdown" class="countdown" aria-live="polite">00:00</div>
+        <div id="resumeMessage" class="resume-message">Meeting resumes at --:--</div>
+        <div class="controls">
+            <button id="resetButton" class="small-button">Reset</button>
+            <button id="pauseButton" class="small-button">Pause</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const setupScreen = document.getElementById('setupScreen');
+            const countdownScreen = document.getElementById('countdownScreen');
+            const countdownDisplay = document.getElementById('countdown');
+            const resumeMessage = document.getElementById('resumeMessage');
+            const resumeTimeInput = document.getElementById('resumeTime');
+            const startButton = document.getElementById('startButton');
+            const resetButton = document.getElementById('resetButton');
+            const pauseButton = document.getElementById('pauseButton');
+
+            let countdownInterval = null;
+            let targetTime = null;
+            let isPaused = false;
+            let remainingSeconds = 0;
+
+            resumeTimeInput.focus();
+
+            startButton.addEventListener('click', startCountdown);
+
+            resumeTimeInput.addEventListener('keydown', function (event) {
+                if (event.key === 'Enter') {
+                    startCountdown();
+                }
+            });
+
+            resetButton.addEventListener('click', function () {
+                resetCountdown(true);
+            });
+
+            pauseButton.addEventListener('click', function () {
+                if (isPaused) {
+                    isPaused = false;
+                    pauseButton.textContent = 'Pause';
+                    targetTime = new Date(Date.now() + remainingSeconds * 1000);
+                    countdownInterval = window.setInterval(updateCountdown, 1000);
+                } else {
+                    isPaused = true;
+                    pauseButton.textContent = 'Resume';
+                    window.clearInterval(countdownInterval);
+                }
+            });
+
+            function resetCountdown(clearInput) {
+                window.clearInterval(countdownInterval);
+                countdownInterval = null;
+                targetTime = null;
+                isPaused = false;
+                remainingSeconds = 0;
+
+                countdownDisplay.textContent = '00:00';
+                countdownDisplay.classList.remove('time-up');
+                pauseButton.textContent = 'Pause';
+                pauseButton.style.display = 'inline-block';
+
+                countdownScreen.style.display = 'none';
+                setupScreen.style.display = 'block';
+
+                if (clearInput) {
+                    resumeTimeInput.value = '';
+                }
+
+                resumeTimeInput.focus();
+            }
+
+            function startCountdown() {
+                const timeInput = resumeTimeInput.value.trim();
+
+                if (!timeInput) {
+                    alert('Please enter a valid time.');
+                    return;
+                }
+
+                const parsedTime = parseTimeInput(timeInput);
+
+                if (!parsedTime) {
+                    alert('Invalid time format. Try "10:30", "2:45 PM", or "15" for minutes from now.');
+                    return;
+                }
+
+                targetTime = parsedTime;
+                isPaused = false;
+                pauseButton.textContent = 'Pause';
+                pauseButton.style.display = 'inline-block';
+                countdownDisplay.classList.remove('time-up');
+
+                const options = { hour: 'numeric', minute: '2-digit', hour12: true };
+                resumeMessage.textContent = 'Meeting resumes at ' + targetTime.toLocaleTimeString([], options);
+
+                setupScreen.style.display = 'none';
+                countdownScreen.style.display = 'flex';
+
+                window.clearInterval(countdownInterval);
+                updateCountdown();
+                countdownInterval = window.setInterval(updateCountdown, 1000);
+            }
+
+            function parseTimeInput(input) {
+                const now = new Date();
+
+                if (/^\d+$/.test(input)) {
+                    const minutes = parseInt(input, 10);
+                    return new Date(now.getTime() + minutes * 60000);
+                }
+
+                const timeRegex = /^(\d{1,2}):(\d{2})(?:\s*(am|pm))?$/i;
+                const match = input.match(timeRegex);
+
+                if (!match) {
+                    return null;
+                }
+
+                const rawHours = parseInt(match[1], 10);
+                const minutes = parseInt(match[2], 10);
+                const period = match[3] ? match[3].toLowerCase() : null;
+
+                if (minutes > 59) {
+                    return null;
+                }
+
+                if (period) {
+                    if (rawHours < 1 || rawHours > 12) {
+                        return null;
+                    }
+                } else if (rawHours > 23) {
+                    return null;
+                }
+
+                let hours = rawHours;
+
+                if (period === 'pm' && hours < 12) {
+                    hours += 12;
+                } else if (period === 'am' && hours === 12) {
+                    hours = 0;
+                }
+
+                const targetDate = new Date(now);
+                targetDate.setHours(hours, minutes, 0, 0);
+
+                if (targetDate < now) {
+                    targetDate.setDate(targetDate.getDate() + 1);
+                }
+
+                return targetDate;
+            }
+
+            function updateCountdown() {
+                if (!targetTime) {
+                    return;
+                }
+
+                const timeDifference = targetTime - new Date();
+
+                if (timeDifference <= 0) {
+                    window.clearInterval(countdownInterval);
+                    countdownInterval = null;
+                    countdownDisplay.textContent = 'TIME\'S UP!';
+                    countdownDisplay.classList.add('time-up');
+                    pauseButton.style.display = 'none';
+                    return;
+                }
+
+                remainingSeconds = Math.floor(timeDifference / 1000);
+
+                const minutes = Math.floor(remainingSeconds / 60);
+                const seconds = remainingSeconds % 60;
+
+                countdownDisplay.textContent = String(minutes).padStart(2, '0') + ':' + String(seconds).padStart(2, '0');
+            }
+        });
+    </script>
+</body>
+</html>

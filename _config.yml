@@ -13,14 +13,14 @@ disqus_shortname:    curiosityisbliss
 defaults:
   -
     scope:
-      path: "" 
+      path: ""
       type: "posts"
     values:
       layout: "post"
       comments: True
   -
     scope:
-      path: "archives" 
+      path: "archives"
     values:
       layout: "post"
       comments: True
@@ -35,7 +35,12 @@ sass:
   sass_dir:          _sass
   style:            :compressed
 
-pages_list:       { 'Archive':'/archives.html', 'Feed':'/index.xml', 'About':'/about.html', 'Search':'/search.html' }
+pages_list:
+  Archive: /archives.html
+  Feed: /index.xml
+  About: /about.html
+  Search: /search.html
+  Tools: /tools/
 
 exclude:
   - .gitignore
