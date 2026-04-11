@@ -7,11 +7,12 @@ permalink: /tools/
 <style>
   .tools-shell {
     max-width: 52rem;
+    color-scheme: light dark;
   }
 
   .tools-intro {
-    color: #555;
     font-size: 1.05rem;
+    color: GrayText;
   }
 
   .tools-search-label {
@@ -24,20 +25,22 @@ permalink: /tools/
     width: 100%;
     padding: 0.85rem 1rem;
     font: inherit;
-    border: 1px solid #cbd5e1;
+    color: FieldText;
+    background: Field;
+    border: 1px solid GrayText;
     border-radius: 0.75rem;
     box-sizing: border-box;
   }
 
   .tools-search:focus {
-    outline: 2px solid #93c5fd;
+    outline: 2px solid Highlight;
     outline-offset: 2px;
-    border-color: #60a5fa;
+    border-color: Highlight;
   }
 
   .tools-count {
     margin: 0.75rem 0 1.25rem;
-    color: #666;
+    color: GrayText;
   }
 
   .tool-list {
@@ -47,10 +50,9 @@ permalink: /tools/
 
   .tool-card {
     padding: 1rem 1.25rem;
-    border: 1px solid #d8dee4;
+    border: 1px solid GrayText;
     border-radius: 0.85rem;
-    background: #fff;
-    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+    background: transparent;
   }
 
   .tool-card h2 {
@@ -73,39 +75,15 @@ permalink: /tools/
     display: inline-block;
     padding: 0.15rem 0.55rem;
     border-radius: 999px;
-    background: #eef4ff;
-    color: #294c7a;
+    border: 1px solid GrayText;
+    background: transparent;
+    color: inherit;
     font-size: 0.85rem;
   }
 
   .tools-empty {
     margin-top: 1rem;
-    color: #666;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .tools-intro,
-    .tools-count,
-    .tools-empty {
-      color: #cbd5e1;
-    }
-
-    .tools-search {
-      background: #111827;
-      color: #f8fafc;
-      border-color: #475569;
-    }
-
-    .tool-card {
-      background: #111827;
-      border-color: #334155;
-      box-shadow: none;
-    }
-
-    .tool-tag {
-      background: #172554;
-      color: #dbeafe;
-    }
+    color: GrayText;
   }
 </style>
 
