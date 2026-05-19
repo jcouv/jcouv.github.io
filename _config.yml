@@ -37,6 +37,7 @@ sass:
 
 pages_list:
   Archive: /archives.html
+  TIL: /til/
   Tools: /tools/
   Search: /search.html
   RSS: /index.xml
