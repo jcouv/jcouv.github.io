@@ -22,3 +22,5 @@ Agents tend to take shortcuts when evaluating their own work, and they can be to
 Examples include an [`evaluator` agent](https://github.com/jcouv/dotfiles/blob/main/.github/agents/evaluator.agent.md) and a [`csharp-design-evaluator` skill](https://github.com/jcouv/dotfiles/tree/main/copilot/skills/csharp-design-evaluator).
 
 A practical way to make one is to ask an agent: "Create a skill to evaluate `<your problem space>`. Use `<link to an existing evaluator skill>` for tone and approach." Then refine the evaluation criteria, tighten the failure modes, and apply it to real outputs.
+
+Once an evaluator skill or agent definition is satisfactory, it can be used in an agent loop between a builder and an evaluator.
