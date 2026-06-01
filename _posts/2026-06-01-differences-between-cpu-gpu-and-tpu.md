@@ -2,7 +2,6 @@
 published: true
 title: Differences between CPU, GPU and TPU
 categories: [til]
-tags: [ai, hardware]
 permalink: /til/differences-between-cpu-gpu-and-tpu.html
 comments: False
 ---
