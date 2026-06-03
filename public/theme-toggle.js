@@ -21,6 +21,9 @@
   }
 
   function writeTheme(theme) {
+    var icons = toggle.querySelectorAll(".theme-toggle-icon");
+    var activeIcon = toggle.querySelector(".theme-toggle-" + theme);
+
     if (theme === "system") {
       root.removeAttribute("data-theme");
     } else {
@@ -30,6 +33,10 @@
     toggle.setAttribute("data-theme-state", theme);
     toggle.setAttribute("aria-label", "Theme: " + theme);
     toggle.setAttribute("title", "Theme: " + theme);
+
+    for (var i = 0; i < icons.length; i++) {
+      icons[i].hidden = icons[i] !== activeIcon;
+    }
 
     try {
       if (theme === "system") {
