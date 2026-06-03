@@ -16,3 +16,7 @@ Systolic array design relies on two key ideas:
 
 - A grid of MAC nodes lets partial sums flow through the grid in a regular pattern, "systolic" by analogy with blood pulsing through the heart.
 - Weights can be preloaded into local registers or storage near the compute units, reducing repeated long-distance data movement once the array is filled.
+
+![2x2 systolic array]({{site.baseurl}}/archives/images/systolic-array.svg)
+
+In this 2x2 example, external routing only needs two routed lanes (multiplexers) into the array and two out of it. The MAC units still perform the matrix multiplication work, but the `B` values get pre-loaded by chaining slowly through local MAC registers.
