@@ -5,6 +5,7 @@ title: Home
 
 <div class="posts">
   {% for post in paginator.posts %}
+  {% unless post.categories contains "til" %}
   <article class="post">
     <h1 class="post-title">
       <a href="{{ post.url | relative_url }}">
@@ -16,6 +17,7 @@ title: Home
 
     {{ post.content }}
   </article>
+  {% endunless %}
   {% endfor %}
 </div>
 
