@@ -10,7 +10,7 @@ Search the site with Google:
   .gsc-webResult.gsc-result,
   .gsc-results .gsc-imageResult {
     background-color: var(--color-bg) !important;
-    border-color: var(--color-border) !important;
+    border: none !important;
   }
 
   table.gsc-search-box,
@@ -26,18 +26,22 @@ Search the site with Google:
     border-color: transparent !important;
   }
 
-  input.gsc-input,
+  input.gsc-input {
+    color: var(--color-text) !important;
+    background-color: var(--color-bg) !important;
+    border: none !important;
+  }
+
   .gsc-input-box,
   .gsc-input-box-hover,
   .gsc-input-box-focus {
-    color: var(--color-text) !important;
     background-color: var(--color-bg) !important;
     border-color: var(--color-border) !important;
   }
 
   .gsc-search-button-v2 {
     background-color: var(--color-surface) !important;
-    border-color: var(--color-border) !important;
+    border: none !important;
   }
 
   .gsc-search-button-v2 svg {
