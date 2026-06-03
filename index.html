@@ -4,7 +4,8 @@ title: Home
 ---
 
 <div class="posts">
-  {% for post in paginator.posts %}
+  {% assign shown_posts = 0 %}
+  {% for post in site.posts %}
   {% unless post.categories contains "til" %}
   <article class="post">
     <h1 class="post-title">
@@ -17,19 +18,15 @@ title: Home
 
     {{ post.content }}
   </article>
+  {% assign shown_posts = shown_posts | plus: 1 %}
+  {% if shown_posts == site.paginate %}
+  {% break %}
+  {% endif %}
   {% endunless %}
   {% endfor %}
 </div>
 
 <div class="pagination">
-  {% if paginator.next_page %}
-    <a class="pagination-item older" href="{{ paginator.next_page_path | relative_url }}">Older</a>
-  {% else %}
-    <span class="pagination-item older">Older</span>
-  {% endif %}
-  {% if paginator.previous_page %}
-    <a class="pagination-item newer" href="{{ paginator.previous_page_path | relative_url }}">Newer</a>
-  {% else %}
-    <span class="pagination-item newer">Newer</span>
-  {% endif %}
+  <a class="pagination-item older" href="{{ '/archives.html' | relative_url }}">Archive</a>
+  <span class="pagination-item newer">Newer</span>
 </div>
