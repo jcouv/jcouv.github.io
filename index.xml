@@ -26,7 +26,10 @@ layout: nil
 -->
 
 
-    {% for post in site.posts limit:5 -%}
+    {% assign rss_item_count = 0 -%}
+    {% for post in site.posts -%}
+    {% unless post.categories contains 'til' -%}
+    {% if rss_item_count < 5 -%}
     <item>
       <title>{{ post.title | xml_escape }}</title>
       <link>{{ site.baseurl }}{{ post.url }}</link>
@@ -34,6 +37,9 @@ layout: nil
       <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
       <pubDate>{{ post.date | date_to_xmlschema }}</pubDate>
     </item>
+    {% assign rss_item_count = rss_item_count | plus: 1 -%}
+    {% endif -%}
+    {% endunless -%}
     {% endfor -%}
 
   </channel>
