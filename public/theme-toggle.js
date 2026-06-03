@@ -35,7 +35,11 @@
     toggle.setAttribute("title", "Theme: " + theme);
 
     for (var i = 0; i < icons.length; i++) {
-      icons[i].hidden = icons[i] !== activeIcon;
+      if (icons[i] === activeIcon) {
+        icons[i].removeAttribute("hidden");
+      } else {
+        icons[i].setAttribute("hidden", "");
+      }
     }
 
     try {

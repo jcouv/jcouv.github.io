@@ -26,6 +26,39 @@
       }
     }());
   </script>
+  <style>
+    [data-theme-toggle] {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-left: .75rem;
+      padding: .125rem;
+      vertical-align: -.25rem;
+      color: var(--color-faint, #c0c0c0);
+      background: transparent;
+      border: 0;
+      border-radius: 999px;
+      appearance: none;
+      cursor: pointer;
+    }
+
+    [data-theme-toggle]:hover,
+    [data-theme-toggle]:focus {
+      color: var(--color-link, #0366d6);
+    }
+
+    [data-theme-toggle] svg {
+      display: block;
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    [data-theme-toggle] svg[hidden] {
+      display: none !important;
+    }
+  </style>
   <link rel="stylesheet" href="{{ '/styles.css' | relative_url }}">
   <link rel="canonical" href="{{ page.url | absolute_url }}">
 
