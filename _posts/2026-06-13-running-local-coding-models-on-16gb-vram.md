@@ -10,13 +10,13 @@ I've been able to run local coding models on a 16GB VRAM GPU.
 
 The general pattern is to use quantized models.
 The newer `I` quantizations, such as `IQ3_S` and `IQ4_XS`, are generally better than older quantization schemes at the same bit rate.
-Some Gemma 4 builds are quantized from quantization-aware-trained (QAT) models, which can reduce the impact from quantization.
+Some Gemma 4 builds are quantized from quantization-aware-trained ([QAT](https://unsloth.ai/docs/models/gemma-4/qat)) models, which can reduce the impact from quantization.
 
 Mixture-of-experts (MoE) models are also helpful for local performance because only part of the model is active per token. For example, `A3B` indicates that roughly 3B parameters are activated, so a much larger total-parameter model can still have practical tokens/sec on local hardware.
 
-As I'd [mentioned earlier](/til/speculative-decoding-in-inference.html), for some models it possible to boost performance with speculative decoding.
+As I'd [mentioned earlier](/til/speculative-decoding-in-inference.html), for some models it possible to boost performance with speculative decoding. Thats "multi-token prediction" ([MTP](https://unsloth.ai/docs/models/mtp)) in the last model. That uses more VRAM since two models run, so I'm using a smaller model (12B instead of 26B).
 
-One working `llama-server` setup for Qwen3.6 35B quantized with IQ3_S is:
+One working `llama-server` setup for [Qwen3.6 35B quantized with IQ3_S](https://huggingface.co/byteshape/Qwen3.6-35B-A3B-GGUF) is:
 
 ```powershell
 llama-server -hf byteshape/Qwen3.6-35B-A3B-GGUF:IQ3_S `
@@ -33,7 +33,7 @@ llama-server -hf byteshape/Qwen3.6-35B-A3B-GGUF:IQ3_S `
     --parallel 1 --cache-type-k q8_0 --cache-type-v q8_0
 ```
 
-Gemma 4 26B quantized with IQ4_XS also works:
+[Gemma 4 26B quantized with IQ4_XS](https://huggingface.co/bartowski/google_gemma-4-26B-A4B-it-GGUF) also works:
 
 ```powershell
 llama-server -hf bartowski/google_gemma-4-26B-A4B-it-GGUF:IQ4_XS `
@@ -50,7 +50,7 @@ llama-server -hf bartowski/google_gemma-4-26B-A4B-it-GGUF:IQ4_XS `
     --parallel 1 --cache-type-k q8_0 --cache-type-v q8_0
 ```
 
-I also tried Gemma 4 12B QAT model with draft-MTP speculative decoding:
+I also tried [Gemma 4 12B QAT model with draft-MTP speculative decoding](https://huggingface.co/unsloth/gemma-4-12B-it-qat-GGUF):
 
 ```powershell
 llama-server `
