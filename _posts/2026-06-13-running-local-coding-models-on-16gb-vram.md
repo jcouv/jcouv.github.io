@@ -22,7 +22,6 @@ One working `llama-server` setup for [Qwen3.6 35B quantized with IQ3_S](https://
 llama-server -hf byteshape/Qwen3.6-35B-A3B-GGUF:IQ3_S `
     --ctx-size 128000 `
     --n-gpu-layers all `
-    --device Vulkan0 `
     --threads 32 `
     --threads-batch 32 `
     --fit off `
@@ -39,7 +38,6 @@ llama-server -hf byteshape/Qwen3.6-35B-A3B-GGUF:IQ3_S `
 llama-server -hf bartowski/google_gemma-4-26B-A4B-it-GGUF:IQ4_XS `
     --ctx-size 128000 `
     --n-gpu-layers all `
-    --device Vulkan0 `
     --threads 32 `
     --threads-batch 32 `
     --fit off `
@@ -58,7 +56,6 @@ llama-server `
     --spec-type draft-mtp --spec-draft-n-max 2 `
     --ctx-size 128000 `
     --n-gpu-layers all `
-    --device Vulkan0 `
     --threads 32 `
     --threads-batch 32 `
     --flash-attn on `
@@ -82,7 +79,7 @@ Some key flags are:
 - `-hf`: downloads the model directly from Hugging Face.
 - `--ctx-size 128000`: requests a large context window.
 - `--n-gpu-layers all`: offloads every layer to the GPU.
-- `--device Vulkan0`: selects a specific GPU when multiple are available.
+- `--device CUDA0` or `--device Vulkan0`: selects a specific GPU when multiple are available. Without `--device`, llama-server auto-selects the best backend (CUDA over Vulkan on NVIDIA GPUs).
 - `--fit off`: avoids automatically shrinking the context to fit memory.
 - `--fit on`: allows `llama-server` to adjust the requested configuration to fit available memory.
 - `--flash-attn on`: enables flash attention, a more memory-efficient attention kernel that helps with long contexts.
