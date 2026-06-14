@@ -6,7 +6,7 @@ permalink: /til/running-local-coding-models-on-16gb-vram.html
 comments: False
 ---
 
-I've been able to run local coding models on a 16GB VRAM GPU.
+I've trying a few local coding models on a 16GB VRAM GPU.
 
 The general pattern is to use quantized models.
 The newer `I` quantizations, such as `IQ3_S` and `IQ4_XS`, are generally better than older quantization schemes at the same bit rate.
@@ -67,7 +67,7 @@ llama-server `
 ```
 
 
-I'll report on how well they work on various tasks once I have more hands-on experience. In the mean time, here's the throughput on some simple tasks:
+I'll report on how well they work on various tasks once I have more hands-on experience. In the mean time, here's the throughput on some simple tasks on 5070 Ti:
 | Model | Avg tok/s |
 |-------|-----------|
 | Qwen3.6-35B (IQ3_S) | 144.7 |
