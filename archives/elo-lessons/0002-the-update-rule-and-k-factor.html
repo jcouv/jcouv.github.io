@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 2: The Update Rule and K-Factor</title>
+<style>
+  body { max-width: 640px; margin: 2rem auto; padding: 0 1rem; font-family: Georgia, serif; line-height: 1.6; color: #222; }
+  h1 { font-size: 1.6rem; border-bottom: 1px solid #ccc; padding-bottom: 0.3rem; }
+  h2 { font-size: 1.2rem; margin-top: 2rem; }
+  .key-idea { background: #f9f5e8; border-left: 4px solid #d4a017; padding: 1rem; margin: 1.5rem 0; }
+  .formula { background: #f4f4f4; padding: 1rem; font-family: monospace; border-radius: 4px; margin: 1rem 0; overflow-x: auto; }
+  .example { background: #eef6ee; padding: 1rem; border-radius: 4px; margin: 1rem 0; }
+  .quiz { background: #eef0f8; padding: 1rem; border-radius: 4px; margin: 1.5rem 0; }
+  .quiz button { margin: 0.3rem 0.3rem 0.3rem 0; padding: 0.4rem 0.8rem; cursor: pointer; border: 1px solid #888; border-radius: 3px; background: #fff; }
+  .quiz button:hover { background: #dde; }
+  .feedback { margin-top: 0.5rem; font-weight: bold; min-height: 1.5rem; }
+  .citation { font-size: 0.85rem; color: #555; }
+  .nav { font-size: 0.9rem; margin-top: -0.5rem; }
+  .next { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #ccc; font-size: 0.9rem; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+  th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: center; }
+  th { background: #f4f4f4; }
+</style>
+</head>
+<body>
+
+<h1>Lesson 2: The Update Rule and K-Factor</h1>
+
+<p class="nav"><a href="0001-the-core-idea-behind-elo.html">← Lesson 1</a> | <a href="0003-convergence-how-ratings-stabilize.html">Lesson 3 →</a></p>
+
+<p>The previous lesson gave you the prediction formula. Now: what happens <em>after</em> the game?</p>
+
+<h2>The Update Rule</h2>
+
+<p>After a game, each player's rating shifts based on how <em>surprising</em> the result was:</p>
+
+<div class="formula">
+R'<sub>A</sub> = R<sub>A</sub> + K × (S<sub>A</sub> - E<sub>A</sub>)
+</div>
+
+<p>Where:</p>
+<ul>
+  <li><strong>R<sub>A</sub></strong> = current rating</li>
+  <li><strong>R'<sub>A</sub></strong> = new rating after the game</li>
+  <li><strong>S<sub>A</sub></strong> = actual score (1 = win, 0.5 = draw, 0 = loss)</li>
+  <li><strong>E<sub>A</sub></strong> = expected score (from <a href="0001-the-core-idea-behind-elo.html">Lesson 1's formula</a>)</li>
+  <li><strong>K</strong> = maximum possible adjustment per game</li>
+</ul>
+
+<div class="key-idea">
+<strong>The intuition:</strong> If you win a game you were <em>expected</em> to win, your rating barely moves. If you pull off an upset, your rating jumps. The system rewards surprises.
+</div>
+
+<h2>Worked Example</h2>
+
+<div class="example">
+<p><strong>Setup:</strong> Alice (1600) plays Bob (1400). K = 32.</p>
+<p><strong>Step 1 — Expected score:</strong></p>
+<p>E<sub>Alice</sub> = 1 / (1 + 10<sup>(1400-1600)/400</sup>) = 1 / (1 + 10<sup>-0.5</sup>) = 1 / (1 + 0.316) = <strong>0.76</strong></p>
+<p><strong>Step 2a — Alice wins (expected outcome):</strong></p>
+<p>R'<sub>Alice</sub> = 1600 + 32 × (1 - 0.76) = 1600 + 32 × 0.24 = <strong>1608</strong> (+8)</p>
+<p>R'<sub>Bob</sub> = 1400 + 32 × (0 - 0.24) = 1400 + 32 × (-0.76) = <strong>1376</strong> (−24)</p>
+<p><em>Wait — why doesn't Alice gain 24 and Bob lose 24?</em> She does from Bob's perspective: Alice gains 8 because the win was expected; Bob loses more because the loss, from his formula, was also expected (his E was 0.24). Actually: Alice gains K×0.24 = 7.7 ≈ 8, Bob loses K×0.76 = 24.3 ≈ 24. <strong>Total points gained = total points lost</strong> (zero-sum).</p>
+<hr>
+<p><strong>Step 2b — Bob upsets Alice:</strong></p>
+<p>R'<sub>Alice</sub> = 1600 + 32 × (0 - 0.76) = 1600 - 24 = <strong>1576</strong> (−24)</p>
+<p>R'<sub>Bob</sub> = 1400 + 32 × (1 - 0.24) = 1400 + 24 = <strong>1424</strong> (+24)</p>
+<p>The upset causes a <em>much</em> bigger swing for both players.</p>
+</div>
+
+<h2>What Is K?</h2>
+
+<p>K controls how <strong>reactive</strong> the system is:</p>
+
+<table>
+<tr><th>K value</th><th>Behavior</th><th>Used when</th></tr>
+<tr><td>10–16</td><td>Slow, stable</td><td>Established players (FIDE uses 10 for top players)</td></tr>
+<tr><td>20–32</td><td>Moderate</td><td>Most tournaments, Chatbot Arena</td></tr>
+<tr><td>40+</td><td>Fast, volatile</td><td>New players, provisional ratings</td></tr>
+</table>
+
+<div class="key-idea">
+<strong>The K tradeoff:</strong> High K → ratings converge quickly but are noisy. Low K → ratings are stable but slow to reflect real improvement. For a casual ping pong ladder with few games, you'd want K = 32 or higher so ratings become meaningful quickly.
+</div>
+
+<p class="citation">Source: <a href="https://en.wikipedia.org/wiki/Elo_rating_system#Most_accurate_K-factor">Wikipedia — K-factor</a>; Elo (1978), Ch. 4.</p>
+
+<h2>Quick Check</h2>
+
+<div class="quiz">
+  <p><strong>Player A (1500) beats Player B (1500). K = 32. How many points does A gain?</strong></p>
+  <p><em>Hint: what's E<sub>A</sub> when ratings are equal?</em></p>
+  <button onclick="document.getElementById('fb1').textContent='✓ Correct! E_A = 0.5, so gain = 32 × (1 - 0.5) = 16.'">16</button>
+  <button onclick="document.getElementById('fb1').textContent='✗ 32 would mean E_A = 0, implying A was expected to definitely lose.'">32</button>
+  <button onclick="document.getElementById('fb1').textContent='✗ 8 would mean E_A = 0.75, but equal ratings give E = 0.5.'"> 8</button>
+  <div class="feedback" id="fb1"></div>
+</div>
+
+<div class="quiz">
+  <p><strong>A much weaker player beats a much stronger one. Which statement is true?</strong></p>
+  <button onclick="document.getElementById('fb2').textContent='✓ Correct! Upsets cause maximum rating transfer because (S - E) is large for both players.'">Both players' ratings shift by a large amount</button>
+  <button onclick="document.getElementById('fb2').textContent='✗ Only the winner shifts — No, the loser loses the same points the winner gains (zero-sum).'">Only the winner's rating shifts significantly</button>
+  <button onclick="document.getElementById('fb2').textContent='✗ Neither shifts much — this would only happen if the result was expected.'">Neither player's rating shifts much</button>
+  <div class="feedback" id="fb2"></div>
+</div>
+
+<h2>Recommended Reading</h2>
+
+<p>Read the "Implementing Elo" section on <a href="https://en.wikipedia.org/wiki/Elo_rating_system#Implementing_Elo's_scheme">Wikipedia</a> for pseudocode and practical details on choosing K.</p>
+
+<div class="next">
+<p><strong>Next:</strong> <a href="0003-convergence-how-ratings-stabilize.html">Convergence — How Ratings Stabilize →</a></p>
+<p><strong>Questions?</strong> Ask your Copilot agent — happy to work through more examples or explain anything further.</p>
+</div>
+
+</body>
+</html>

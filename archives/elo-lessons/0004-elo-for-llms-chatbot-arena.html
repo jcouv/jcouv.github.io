@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 4: Elo for LLMs — Chatbot Arena</title>
+<style>
+  body { max-width: 640px; margin: 2rem auto; padding: 0 1rem; font-family: Georgia, serif; line-height: 1.6; color: #222; }
+  h1 { font-size: 1.6rem; border-bottom: 1px solid #ccc; padding-bottom: 0.3rem; }
+  h2 { font-size: 1.2rem; margin-top: 2rem; }
+  .key-idea { background: #f9f5e8; border-left: 4px solid #d4a017; padding: 1rem; margin: 1.5rem 0; }
+  .formula { background: #f4f4f4; padding: 1rem; font-family: monospace; border-radius: 4px; margin: 1rem 0; }
+  .example { background: #eef6ee; padding: 1rem; border-radius: 4px; margin: 1rem 0; }
+  .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+  .comparison > div { background: #f9f9f9; padding: 1rem; border-radius: 4px; }
+  .quiz { background: #eef0f8; padding: 1rem; border-radius: 4px; margin: 1.5rem 0; }
+  .quiz button { margin: 0.3rem 0.3rem 0.3rem 0; padding: 0.4rem 0.8rem; cursor: pointer; border: 1px solid #888; border-radius: 3px; background: #fff; }
+  .quiz button:hover { background: #dde; }
+  .feedback { margin-top: 0.5rem; font-weight: bold; min-height: 1.5rem; }
+  .citation { font-size: 0.85rem; color: #555; }
+  .nav { font-size: 0.9rem; margin-top: -0.5rem; }
+  .next { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #ccc; font-size: 0.9rem; }
+</style>
+</head>
+<body>
+
+<h1>Lesson 4: Elo for LLMs — Chatbot Arena</h1>
+
+<p class="nav"><a href="0003-convergence-how-ratings-stabilize.html">← Lesson 3</a> | <a href="0005-elo-as-bayesian-inference.html">Lesson 5 →</a></p>
+
+<p>You now understand Elo for games between two players. LMSYS Chatbot Arena applies the same idea to rank LLMs — with some clever adaptations.</p>
+
+<h2>The Setup</h2>
+
+<div class="example">
+<p><strong>How a "game" works in Chatbot Arena:</strong></p>
+<ol>
+  <li>A user submits a prompt</li>
+  <li>Two <em>anonymous</em> models respond (the user doesn't know which is which)</li>
+  <li>The user picks: Model A wins, Model B wins, or Tie</li>
+  <li>Elo ratings for both models are updated based on the outcome</li>
+</ol>
+</div>
+
+<div class="key-idea">
+<strong>Why this works:</strong> Just like in ping pong, you never define "what makes a good response" on an absolute scale. You only ask: "which of these two do you prefer?" Elo converts thousands of these pairwise preferences into a global ranking.
+</div>
+
+<h2>Chess vs. Chatbot Arena</h2>
+
+<div class="comparison">
+  <div>
+    <strong>Chess Elo</strong>
+    <ul>
+      <li>Two humans play</li>
+      <li>Objective outcome (win/loss/draw)</li>
+      <li>Same player, many games</li>
+      <li>Skill changes slowly</li>
+    </ul>
+  </div>
+  <div>
+    <strong>Chatbot Arena Elo</strong>
+    <ul>
+      <li>Two LLMs respond</li>
+      <li>Subjective preference (human judge)</li>
+      <li>Many different judges</li>
+      <li>Models are fixed (until updated)</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Key Adaptations</h2>
+
+<h3>1. Handling Ties</h3>
+<p>In chess, draws are common and scored as 0.5. Chatbot Arena does the same — a tie gives S = 0.5 to both models, producing minimal rating change (since the expected outcome between close models is already near 0.5).</p>
+
+<h3>2. Many Judges, Not One</h3>
+<p>In chess, the same two players face each other. In the Arena, each "game" has a <em>different</em> human judge with different preferences. This adds noise but averages out over thousands of votes — the law of large numbers ensures convergence.</p>
+
+<h3>3. Bootstrap Confidence Intervals</h3>
+<p>Because individual votes are noisy, Chatbot Arena doesn't just report a point rating. They resample the vote data (bootstrapping) to compute confidence intervals. If Model A is rated 1250 ± 15, and Model B is 1245 ± 12, you <em>can't</em> confidently say A is better.</p>
+
+<h3>4. Category-Specific Ratings</h3>
+<p>A model might be great at coding but mediocre at creative writing. The Arena computes separate Elo scores per category (coding, math, creative, etc.) in addition to the overall score.</p>
+
+<p class="citation">Source: <a href="https://arxiv.org/abs/2403.04132">Chiang et al., "Chatbot Arena" (2024)</a>; <a href="https://bryanyzhu.github.io/posts/2024-06-20-elo-part1/">Yi Zhu, "Chatbot Arena and Elo - Part 1"</a>.</p>
+
+<h2>Why Not Just Use Benchmarks?</h2>
+
+<div class="key-idea">
+<strong>The Elo advantage for LLMs:</strong>
+<ul>
+  <li><strong>No fixed rubric needed</strong> — you don't have to define "good" in advance</li>
+  <li><strong>Captures subjective quality</strong> — fluency, helpfulness, style — things hard to score automatically</li>
+  <li><strong>Resistant to gaming</strong> — you can't optimize for a specific test set</li>
+  <li><strong>New models slot in quickly</strong> — just play them against existing models</li>
+</ul>
+The cost: you need many human votes, and results are noisier than a deterministic benchmark.
+</div>
+
+<h2>Quick Check</h2>
+
+<div class="quiz">
+  <p><strong>Why does Chatbot Arena keep the model identities hidden from judges?</strong></p>
+  <button onclick="document.getElementById('fb1').textContent='✓ Correct! Anonymity prevents voters from choosing based on brand reputation rather than actual response quality.'">To prevent brand bias from influencing votes</button>
+  <button onclick="document.getElementById('fb1').textContent='✗ The models don\'t adapt to voters — they produce the same response regardless.'">To prevent models from adapting to the judge</button>
+  <button onclick="document.getElementById('fb1').textContent='✗ Privacy is not the concern here — the prompts are user-submitted voluntarily.'">To protect user privacy during evaluation</button>
+  <div class="feedback" id="fb1"></div>
+</div>
+
+<div class="quiz">
+  <p><strong>Model X is rated 1300 ± 20 and Model Y is rated 1295 ± 18. Can you confidently say X is better?</strong></p>
+  <button onclick="document.getElementById('fb2').textContent='✗ The confidence intervals overlap heavily (1280–1320 vs 1277–1313), so you can\'t distinguish them.'">Yes, X has the higher rating</button>
+  <button onclick="document.getElementById('fb2').textContent='✓ Correct! Overlapping confidence intervals mean the difference is not statistically significant. They\'re effectively tied.'">No, the confidence intervals overlap</button>
+  <div class="feedback" id="fb2"></div>
+</div>
+
+<h2>Recommended Reading</h2>
+
+<p>Visit <a href="https://arena.ai/">arena.ai</a> and try voting yourself. After 5–10 votes, you'll viscerally understand how "which is better?" is all you need — no rubric, no criteria, just preference.</p>
+
+<div class="next">
+<p><strong>Next:</strong> <a href="0005-elo-as-bayesian-inference.html">Elo as Bayesian Inference →</a></p>
+<p><strong>Questions?</strong> Ask your Copilot agent anytime.</p>
+</div>
+
+</body>
+</html>

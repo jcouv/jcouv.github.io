@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 1: The Core Idea Behind Elo</title>
+<style>
+  body { max-width: 640px; margin: 2rem auto; padding: 0 1rem; font-family: Georgia, serif; line-height: 1.6; color: #222; }
+  h1 { font-size: 1.6rem; border-bottom: 1px solid #ccc; padding-bottom: 0.3rem; }
+  h2 { font-size: 1.2rem; margin-top: 2rem; }
+  .key-idea { background: #f9f5e8; border-left: 4px solid #d4a017; padding: 1rem; margin: 1.5rem 0; }
+  .formula { background: #f4f4f4; padding: 1rem; font-family: monospace; border-radius: 4px; margin: 1rem 0; overflow-x: auto; }
+  .example { background: #eef6ee; padding: 1rem; border-radius: 4px; margin: 1rem 0; }
+  .quiz { background: #eef0f8; padding: 1rem; border-radius: 4px; margin: 1.5rem 0; }
+  .quiz button { margin: 0.3rem 0.3rem 0.3rem 0; padding: 0.4rem 0.8rem; cursor: pointer; border: 1px solid #888; border-radius: 3px; background: #fff; }
+  .quiz button:hover { background: #dde; }
+  .feedback { margin-top: 0.5rem; font-weight: bold; min-height: 1.5rem; }
+  .citation { font-size: 0.85rem; color: #555; }
+  .nav { font-size: 0.9rem; margin-top: -0.5rem; }
+  .next { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #ccc; font-size: 0.9rem; }
+</style>
+</head>
+<body>
+
+<h1>Lesson 1: The Core Idea Behind Elo</h1>
+
+<p class="nav"><a href="0002-the-update-rule-and-k-factor.html">Lesson 2 →</a></p>
+
+<p>You want to rank players (or LLMs, or ping pong colleagues) — but you have no absolute measuring stick. All you have is <strong>who beat whom</strong>.</p>
+
+<div class="key-idea">
+<strong>Key Insight:</strong> Elo assumes every player has a hidden "true strength" number. The <em>difference</em> between two players' numbers predicts the probability that one will beat the other.
+</div>
+
+<h2>The Model</h2>
+
+<p>Arpad Elo proposed: if Player A has rating <em>R<sub>A</sub></em> and Player B has rating <em>R<sub>B</sub></em>, then A's expected probability of winning is:</p>
+
+<div class="formula">
+E<sub>A</sub> = 1 / (1 + 10<sup>(R<sub>B</sub> - R<sub>A</sub>) / 400</sup>)
+</div>
+
+<p>That's it. The entire system flows from this one formula.</p>
+
+<h2>What the Numbers Mean</h2>
+
+<ul>
+  <li><strong>Equal ratings</strong> (difference = 0): each player has a 50% chance of winning.</li>
+  <li><strong>+400 difference</strong>: the stronger player is expected to win ~91% of the time.</li>
+  <li><strong>+200 difference</strong>: the stronger player wins ~76% of the time.</li>
+</ul>
+
+<p class="citation">Source: <a href="https://en.wikipedia.org/wiki/Elo_rating_system#Mathematical_details">Wikipedia — Elo rating system</a>; Elo, <em>The Rating of Chessplayers</em> (1978), Ch. 2.</p>
+
+<h2>Why This Solves Your Problem</h2>
+
+<p>In a ping pong ladder or an LLM arena, you never measure "absolute skill." You only observe: <strong>A beat B</strong>. Elo converts these pairwise outcomes into a single number per player that is <em>consistent</em> — if A usually beats B, and B usually beats C, then A's rating will be higher than C's, even if A and C never play.</p>
+
+<div class="key-idea">
+<strong>No fixed criteria needed.</strong> The ratings are entirely relative. They emerge from wins and losses alone. That's why Elo works for chess, ping pong, <em>and</em> LLM comparison — anywhere you can ask "which of these two is better?" without needing to define "better" on an absolute scale.
+</div>
+
+<h2>Quick Check</h2>
+
+<div class="quiz">
+  <p><strong>Player X has rating 1600. Player Y has rating 1400. What's the rating difference from X's perspective?</strong></p>
+  <button onclick="document.getElementById('fb1').textContent='✓ Correct! +200 means X wins about 76% of the time.'">+200</button>
+  <button onclick="document.getElementById('fb1').textContent='✗ The difference is R_Y - R_X from the formula denominator, but from X\'s perspective X is 200 points higher.'">-200</button>
+  <button onclick="document.getElementById('fb1').textContent='✗ That would mean X is massively stronger. The gap is only 200.'">+400</button>
+  <div class="feedback" id="fb1"></div>
+</div>
+
+<div class="quiz">
+  <p><strong>Two players have identical ratings. What's the expected win probability for each?</strong></p>
+  <button onclick="document.getElementById('fb2').textContent='✗ That would mean one player always wins despite equal ratings.'">100%</button>
+  <button onclick="document.getElementById('fb2').textContent='✓ Correct! When the difference is 0, 1/(1+10^0) = 1/2 = 50%.'">50%</button>
+  <button onclick="document.getElementById('fb2').textContent='✗ 75% would imply a significant rating gap.'">75%</button>
+  <div class="feedback" id="fb2"></div>
+</div>
+
+<h2>Recommended Reading</h2>
+
+<p>For the full picture, read the <a href="https://en.wikipedia.org/wiki/Elo_rating_system">Wikipedia article on Elo</a> — particularly the "Mathematical details" section. It's clear, well-sourced, and covers the formula derivation in more depth.</p>
+
+<div class="next">
+<p><strong>Next:</strong> <a href="0002-the-update-rule-and-k-factor.html">The Update Rule and K-Factor →</a></p>
+<p><strong>Questions?</strong> Ask your Copilot agent — I'm your teacher here and happy to clarify anything.</p>
+</div>
+
+</body>
+</html>

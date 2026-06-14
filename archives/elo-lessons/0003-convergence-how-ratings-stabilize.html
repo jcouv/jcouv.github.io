@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 3: Convergence — How Ratings Stabilize</title>
+<style>
+  body { max-width: 640px; margin: 2rem auto; padding: 0 1rem; font-family: Georgia, serif; line-height: 1.6; color: #222; }
+  h1 { font-size: 1.6rem; border-bottom: 1px solid #ccc; padding-bottom: 0.3rem; }
+  h2 { font-size: 1.2rem; margin-top: 2rem; }
+  .key-idea { background: #f9f5e8; border-left: 4px solid #d4a017; padding: 1rem; margin: 1.5rem 0; }
+  .formula { background: #f4f4f4; padding: 1rem; font-family: monospace; border-radius: 4px; margin: 1rem 0; }
+  .example { background: #eef6ee; padding: 1rem; border-radius: 4px; margin: 1rem 0; }
+  .quiz { background: #eef0f8; padding: 1rem; border-radius: 4px; margin: 1.5rem 0; }
+  .quiz button { margin: 0.3rem 0.3rem 0.3rem 0; padding: 0.4rem 0.8rem; cursor: pointer; border: 1px solid #888; border-radius: 3px; background: #fff; }
+  .quiz button:hover { background: #dde; }
+  .feedback { margin-top: 0.5rem; font-weight: bold; min-height: 1.5rem; }
+  .citation { font-size: 0.85rem; color: #555; }
+  .nav { font-size: 0.9rem; margin-top: -0.5rem; }
+  .next { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #ccc; font-size: 0.9rem; }
+</style>
+</head>
+<body>
+
+<h1>Lesson 3: Convergence — How Ratings Stabilize</h1>
+
+<p class="nav"><a href="0002-the-update-rule-and-k-factor.html">← Lesson 2</a> | <a href="0004-elo-for-llms-chatbot-arena.html">Lesson 4 →</a></p>
+
+<p>You now know the formula and the update rule. But does the system actually <em>work</em>? Do ratings converge to something meaningful, or do they just bounce around forever?</p>
+
+<h2>The Self-Correcting Mechanism</h2>
+
+<div class="key-idea">
+<strong>Built-in negative feedback:</strong> If your rating is too high relative to your true skill, you'll lose more often than predicted → your rating drops. If too low, you'll win more often → rating rises. The system always pushes ratings toward a stable equilibrium.
+</div>
+
+<p>This happens because <strong>(S - E)</strong> has a sign:</p>
+<ul>
+  <li>Overrated player: actual wins < expected wins → S - E is negative on average → rating decreases</li>
+  <li>Underrated player: actual wins > expected wins → S - E is positive on average → rating increases</li>
+</ul>
+
+<h2>How Many Games to Stabilize?</h2>
+
+<p>This depends on K and the rating pool:</p>
+
+<div class="example">
+<p><strong>Rule of thumb:</strong> With K = 32, a player's rating typically stabilizes within <strong>20–30 games</strong> against opponents of varied strength. FIDE uses a "provisional" label for the first 30 rated games.</p>
+<p>For a small ping pong ladder (8–12 people), expect ratings to feel "right" after everyone has played roughly <strong>15–20 matches each</strong>.</p>
+</div>
+
+<h2>The Starting Rating Problem</h2>
+
+<p>Everyone has to start <em>somewhere</em>. Common approaches:</p>
+
+<ol>
+  <li><strong>Fixed start</strong> (e.g., everyone begins at 1500). Simple, but early games produce wild swings as the system figures out who's actually good.</li>
+  <li><strong>Provisional period</strong> with high K. New players use K = 40–64 for their first N games, then drop to K = 32. This lets them find their level quickly without permanently distorting others' ratings.</li>
+  <li><strong>Placement matches</strong>. Play several games before assigning a rating. Chatbot Arena does this — a new model is matched broadly at first to quickly estimate its strength.</li>
+</ol>
+
+<div class="key-idea">
+<strong>For your ping pong ladder:</strong> Start everyone at 1500 with K = 40 for the first 10 games, then switch to K = 32. Ratings will feel reasonable after 2–3 weeks of regular play.
+</div>
+
+<h2>When Elo Doesn't Stabilize Well</h2>
+
+<p>Watch out for these failure modes:</p>
+
+<ul>
+  <li><strong>Too few games</strong> — ratings haven't had enough data to converge. Common in small pools.</li>
+  <li><strong>Non-transitive matchups</strong> — A beats B, B beats C, C beats A (like rock-paper-scissors). Elo assumes a single linear skill dimension and can't represent this.</li>
+  <li><strong>Skill changes over time</strong> — if players improve rapidly, a low K won't keep up. This is why FIDE uses higher K for juniors.</li>
+  <li><strong>Rating deflation/inflation</strong> — in closed pools, if new players always start at 1500 and then lose, they "donate" points to the pool, inflating everyone else. Or they leave with points, deflating the pool.</li>
+</ul>
+
+<p class="citation">Source: <a href="https://en.wikipedia.org/wiki/Elo_rating_system#Ratings_inflation_and_deflation">Wikipedia — Ratings inflation</a>; <a href="https://arxiv.org/abs/2403.04132">Chiang et al. (2024)</a> §3 on convergence in Chatbot Arena.</p>
+
+<h2>Quick Check</h2>
+
+<div class="quiz">
+  <p><strong>A player's rating is much higher than their true skill. Over many games, what happens?</strong></p>
+  <button onclick="document.getElementById('fb1').textContent='✗ It stays the same only if actual results match predictions.'">It stays the same</button>
+  <button onclick="document.getElementById('fb1').textContent='✓ Correct! They lose more than expected, so (S - E) is negative on average, pulling the rating down.'">It gradually decreases</button>
+  <button onclick="document.getElementById('fb1').textContent='✗ It would only increase if they win more than expected.'">It gradually increases</button>
+  <div class="feedback" id="fb1"></div>
+</div>
+
+<div class="quiz">
+  <p><strong>In a 10-person ping pong ladder, what's the main risk of starting everyone at 1500 with K = 10?</strong></p>
+  <button onclick="document.getElementById('fb1b').textContent='✓ Correct! Low K means tiny adjustments per game. With few games in a small pool, ratings will take very long to separate.'">Ratings separate too slowly to be useful</button>
+  <button onclick="document.getElementById('fb1b').textContent='✗ Ratings wouldn\'t be too volatile with K = 10 — that\'s actually the opposite problem.'">Ratings will be too volatile and noisy</button>
+  <button onclick="document.getElementById('fb1b').textContent='✗ There\'s no overflow issue — ratings are just numbers.'">The system will overflow mathematically</button>
+  <div class="feedback" id="fb1b"></div>
+</div>
+
+<h2>Recommended Reading</h2>
+
+<p>The <a href="https://bryanyzhu.github.io/posts/2024-06-20-elo-part1/">Yi Zhu blog post on Chatbot Arena Elo</a> covers how LMSYS handles convergence and bootstrapping for new models being added to an existing leaderboard.</p>
+
+<div class="next">
+<p><strong>Next:</strong> <a href="0004-elo-for-llms-chatbot-arena.html">Elo for LLMs — Chatbot Arena →</a></p>
+<p><strong>Questions?</strong> Ask your Copilot agent anytime.</p>
+</div>
+
+</body>
+</html>

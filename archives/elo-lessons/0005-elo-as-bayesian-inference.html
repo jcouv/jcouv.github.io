@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 5: Elo as Bayesian Inference — The Jaynes Connection</title>
+<style>
+  body { max-width: 640px; margin: 2rem auto; padding: 0 1rem; font-family: Georgia, serif; line-height: 1.6; color: #222; }
+  h1 { font-size: 1.6rem; border-bottom: 1px solid #ccc; padding-bottom: 0.3rem; }
+  h2 { font-size: 1.2rem; margin-top: 2rem; }
+  h3 { font-size: 1.05rem; margin-top: 1.5rem; }
+  .key-idea { background: #f9f5e8; border-left: 4px solid #d4a017; padding: 1rem; margin: 1.5rem 0; }
+  .formula { background: #f4f4f4; padding: 1rem; font-family: monospace; border-radius: 4px; margin: 1rem 0; overflow-x: auto; }
+  .example { background: #eef6ee; padding: 1rem; border-radius: 4px; margin: 1rem 0; }
+  .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+  .comparison > div { background: #f9f9f9; padding: 1rem; border-radius: 4px; }
+  .quiz { background: #eef0f8; padding: 1rem; border-radius: 4px; margin: 1.5rem 0; }
+  .quiz button { margin: 0.3rem 0.3rem 0.3rem 0; padding: 0.4rem 0.8rem; cursor: pointer; border: 1px solid #888; border-radius: 3px; background: #fff; font-size: 0.9rem; }
+  .quiz button:hover { background: #dde; }
+  .feedback { margin-top: 0.5rem; font-weight: bold; min-height: 1.5rem; }
+  .citation { font-size: 0.85rem; color: #555; }
+  .nav { font-size: 0.9rem; margin-top: -0.5rem; }
+  .next { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #ccc; font-size: 0.9rem; }
+  .aside { background: #f5f0fa; border-left: 4px solid #7b5ea7; padding: 1rem; margin: 1.5rem 0; font-size: 0.95rem; }
+</style>
+</head>
+<body>
+
+<h1>Lesson 5: Elo as Bayesian Inference</h1>
+
+<p class="nav"><a href="0004-elo-for-llms-chatbot-arena.html">← Lesson 4</a> | <a href="0006-bradley-terry-model.html">Lesson 6 →</a></p>
+
+<p>You've learned the mechanics of Elo. This lesson connects those mechanics to a deeper framework: <strong>probability as inference</strong>, as championed by E.T. Jaynes in <em>Probability Theory: The Logic of Science</em>.</p>
+
+<h2>Jaynes' Core Thesis</h2>
+
+<div class="key-idea">
+<strong>Probability is not a frequency.</strong> It is a <em>degree of plausibility</em> assigned by a reasoning agent, given the information available. Probabilities live in the map (our model), not the territory (reality).
+</div>
+
+<p>Under this view, when we say "Player A has a 76% chance of beating Player B," we are not claiming some physical mechanism produces wins 76% of the time. We are saying: <em>given what we know (their rating histories), 76% is our best-justified degree of belief.</em></p>
+
+<h2>Elo Ratings Are Beliefs</h2>
+
+<p>An Elo rating is not measuring a physical property of a player — like their height or reaction time. It is <strong>our best estimate of their latent skill given the outcomes we have observed</strong>.</p>
+
+<div class="comparison">
+  <div>
+    <strong>Frequentist framing</strong>
+    <p>"Player A's true skill is 1600. We measure it through games."</p>
+  </div>
+  <div>
+    <strong>Jaynesian framing</strong>
+    <p>"Given 40 games of evidence, our rational belief about A's skill is centred at 1600."</p>
+  </div>
+</div>
+
+<p>The Jaynesian framing is more honest: a different set of opponents, or a different sequence of games, would produce a different number. The rating is a property of <em>our state of knowledge</em>, not of the player alone.</p>
+
+<h2>The Update Rule Is Bayesian</h2>
+
+<p>Compare these two operations side by side:</p>
+
+<div class="formula">
+<strong>Bayes' theorem (conceptual):</strong>
+posterior = prior + learning_rate × (evidence − prediction)
+
+<strong>Elo update:</strong>
+R' = R + K × (S − E)
+</div>
+
+<p>They have identical structure:</p>
+
+<table style="border-collapse:collapse; width:100%; margin:1rem 0;">
+<tr style="background:#f4f4f4;"><th style="border:1px solid #ccc; padding:0.5rem;">Bayesian concept</th><th style="border:1px solid #ccc; padding:0.5rem;">Elo equivalent</th></tr>
+<tr><td style="border:1px solid #ccc; padding:0.5rem;">Prior belief</td><td style="border:1px solid #ccc; padding:0.5rem;">Current rating R</td></tr>
+<tr><td style="border:1px solid #ccc; padding:0.5rem;">Likelihood of evidence</td><td style="border:1px solid #ccc; padding:0.5rem;">Logistic model (the E formula)</td></tr>
+<tr><td style="border:1px solid #ccc; padding:0.5rem;">Surprise (data − prediction)</td><td style="border:1px solid #ccc; padding:0.5rem;">S − E</td></tr>
+<tr><td style="border:1px solid #ccc; padding:0.5rem;">Learning rate / prior weakness</td><td style="border:1px solid #ccc; padding:0.5rem;">K-factor</td></tr>
+<tr><td style="border:1px solid #ccc; padding:0.5rem;">Posterior belief</td><td style="border:1px solid #ccc; padding:0.5rem;">New rating R'</td></tr>
+</table>
+
+<div class="key-idea">
+<strong>K-factor is the strength of your prior.</strong> High K says "I don't trust my current estimate — let new evidence dominate." Low K says "I'm fairly confident already — resist large revisions." This is exactly the Bayesian tradeoff between prior conviction and likelihood weight.
+</div>
+
+<h2>The Likelihood Function</h2>
+
+<p>The Elo expected-score formula:</p>
+
+<div class="formula">E<sub>A</sub> = 1 / (1 + 10<sup>(R<sub>B</sub> − R<sub>A</sub>) / 400</sup>)</div>
+
+<p>is a <strong>likelihood function</strong>: it answers "given assumed skills R<sub>A</sub> and R<sub>B</sub>, how probable is A's win?" This is precisely what Bayes' theorem needs as input. The formal statistical model is called the <strong>Bradley-Terry model</strong> (1952) — it's maximum-likelihood estimation of latent strength parameters from pairwise comparisons.</p>
+
+<p class="citation">Source: Bradley &amp; Terry, "Rank Analysis of Incomplete Block Designs" (1952), <em>Biometrika</em> 39(3/4):324–345.</p>
+
+<h2>Where Elo Falls Short of Full Jaynes</h2>
+
+<p>Elo is a <em>point estimate</em> — a single number. A rigorous Jaynesian analysis would maintain a full probability distribution over each player's skill:</p>
+
+<div class="example">
+<p><strong>Elo says:</strong> "Alice is rated 1600."</p>
+<p><strong>Full Bayesian says:</strong> "Our belief about Alice's skill is a distribution centred at 1600 with standard deviation 45 — meaning we think there's a 68% chance her true skill is between 1555 and 1645."</p>
+</div>
+
+<p>Systems that do this properly:</p>
+<ul>
+  <li><strong>Glicko/Glicko-2</strong> (Glickman, 1999) — maintains a rating <em>and</em> a "rating deviation" (uncertainty)</li>
+  <li><strong>TrueSkill</strong> (Microsoft, 2007) — full Bayesian inference with Gaussian priors</li>
+  <li><strong>Chatbot Arena bootstrapping</strong> — uses resampling to approximate the posterior uncertainty</li>
+</ul>
+
+<p>These are all attempts to do what Jaynes would insist on: <strong>report your uncertainty, not just your best guess.</strong></p>
+
+<div class="aside">
+<strong>Jaynes' robot:</strong> In <em>Probability Theory</em>, Jaynes imagines a reasoning robot that must assign consistent plausibilities given its information. An Elo system <em>is</em> such a robot — it takes game outcomes as input and produces the most rational belief about relative skill. The only sin is that classical Elo discards the uncertainty, keeping only the mean.
+</div>
+
+<h2>The Deep Shared Insight</h2>
+
+<div class="key-idea">
+Both Jaynes and Elo answer the same question: <strong>How do you build a consistent, self-correcting model of something you cannot directly observe, using only indirect evidence?</strong>
+<br><br>
+Jaynes: assign priors, update with evidence, remain coherent.<br>
+Elo: assign ratings, update with game results, let surprises drive learning.<br><br>
+They are the same operation at different levels of mathematical rigour.
+</div>
+
+<h2>Quick Check</h2>
+
+<div class="quiz">
+  <p><strong>Under the Jaynesian view, what does an Elo rating represent?</strong></p>
+  <button onclick="document.getElementById('fb1').textContent='✗ A physical measurement would exist independently of observation. Ratings depend on which games we\'ve seen.'">A physical measurement of a player's ability</button>
+  <button onclick="document.getElementById('fb1').textContent='✓ Correct! The rating is our rational degree of belief about skill, conditional on the evidence (games observed). Different evidence → different rating.'">Our best-justified belief about skill, given observed games</button>
+  <button onclick="document.getElementById('fb1').textContent='✗ The long-run average of wins is a frequentist concept. Jaynes explicitly rejects frequency as the foundation of probability.'">The long-run average of their win percentage</button>
+  <div class="feedback" id="fb1"></div>
+</div>
+
+<div class="quiz">
+  <p><strong>What does K-factor correspond to in Bayesian inference?</strong></p>
+  <button onclick="document.getElementById('fb2').textContent='✗ The likelihood comes from the logistic formula (E), not from K.'">The likelihood function</button>
+  <button onclick="document.getElementById('fb2').textContent='✓ Correct! High K = weak prior (trust new data more). Low K = strong prior (resist revision). K controls how much weight we give evidence vs. existing belief.'">The inverse strength of the prior (how much to trust new evidence)</button>
+  <button onclick="document.getElementById('fb2').textContent='✗ The posterior is R\' (the new rating), not K itself.'">The posterior distribution</button>
+  <div class="feedback" id="fb2"></div>
+</div>
+
+<div class="quiz">
+  <p><strong>What does full Bayesian Elo (e.g., TrueSkill) provide that classical Elo doesn't?</strong></p>
+  <button onclick="document.getElementById('fb3').textContent='✗ Both systems produce ratings for all players. The difference is in what information the rating carries.'">Ratings for more than two players</button>
+  <button onclick="document.getElementById('fb3').textContent='✓ Correct! Classical Elo gives a point estimate (one number). Full Bayesian gives a distribution — telling you not just the best guess, but how confident you should be in it.'">A measure of uncertainty (how confident the rating is)</button>
+  <button onclick="document.getElementById('fb3').textContent='✗ Both systems handle new players. The difference is epistemic: knowing how sure you are.'">The ability to add new players to the pool</button>
+  <div class="feedback" id="fb3"></div>
+</div>
+
+<h2>Recommended Reading</h2>
+
+<p>Chapter 1 of Jaynes' <a href="https://bayes.wustl.edu/etj/prob/book.pdf"><em>Probability Theory: The Logic of Science</em></a> (the "plausible reasoning" chapter) lays the philosophical groundwork. For the formal connection to rating systems, see Glickman's <a href="http://www.glicko.net/glicko/glicko.pdf">"The Glicko System"</a> paper, which explicitly derives ratings as Bayesian estimation.</p>
+
+<div class="next">
+<p><strong>Next:</strong> <a href="0006-bradley-terry-model.html">The Bradley-Terry Model — Why This Formula? →</a></p>
+<p><strong>Questions?</strong> Ask your Copilot agent. This is deep territory — happy to explore further.</p>
+</div>
+
+</body>
+</html>

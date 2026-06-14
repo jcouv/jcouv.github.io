@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 6: The Bradley-Terry Model — Why This Formula?</title>
+<style>
+  body { max-width: 640px; margin: 2rem auto; padding: 0 1rem; font-family: Georgia, serif; line-height: 1.6; color: #222; }
+  h1 { font-size: 1.6rem; border-bottom: 1px solid #ccc; padding-bottom: 0.3rem; }
+  h2 { font-size: 1.2rem; margin-top: 2rem; }
+  .nav { font-size: 0.9rem; margin-top: -0.5rem; }
+  .key-idea { background: #f9f5e8; border-left: 4px solid #d4a017; padding: 1rem; margin: 1.5rem 0; }
+  .formula { background: #f4f4f4; padding: 1rem; font-family: monospace; border-radius: 4px; margin: 1rem 0; overflow-x: auto; }
+  .example { background: #eef6ee; padding: 1rem; border-radius: 4px; margin: 1rem 0; }
+  .aside { background: #f5f0fa; border-left: 4px solid #7b5ea7; padding: 1rem; margin: 1.5rem 0; font-size: 0.95rem; }
+  .quiz { background: #eef0f8; padding: 1rem; border-radius: 4px; margin: 1.5rem 0; }
+  .quiz button { margin: 0.3rem 0.3rem 0.3rem 0; padding: 0.4rem 0.8rem; cursor: pointer; border: 1px solid #888; border-radius: 3px; background: #fff; }
+  .quiz button:hover { background: #dde; }
+  .feedback { margin-top: 0.5rem; font-weight: bold; min-height: 1.5rem; }
+  .citation { font-size: 0.85rem; color: #555; }
+  .next { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #ccc; font-size: 0.9rem; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+  th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+  th { background: #f4f4f4; }
+</style>
+</head>
+<body>
+
+<h1>Lesson 6: The Bradley-Terry Model — Why This Formula?</h1>
+
+<p class="nav"><a href="0005-elo-as-bayesian-inference.html">← Lesson 5</a></p>
+
+<p>In <a href="0001-the-core-idea-behind-elo.html">Lesson 1</a> we introduced Elo's formula for predicting wins. But <em>why that formula?</em> Why not some other function of the rating difference? The answer comes from a 1952 statistical model by Ralph Bradley and Milton Terry.</p>
+
+<h2>The Setup</h2>
+
+<p>You have N players. You can't measure their skill directly — you can only observe pairwise outcomes. You want a model that:</p>
+
+<ol>
+  <li>Assigns each player a single strength parameter</li>
+  <li>Predicts win probability from those parameters</li>
+  <li>Is internally consistent (if A > B > C, the probabilities should reflect that)</li>
+</ol>
+
+<div class="key-idea">
+<strong>Bradley-Terry's answer:</strong> Give each player a positive strength parameter p<sub>i</sub>. The probability that i beats j is simply their share of the combined strength:
+</div>
+
+<div class="formula">
+P(i beats j) = p<sub>i</sub> / (p<sub>i</sub> + p<sub>j</sub>)
+</div>
+
+<p>That's it. The simplest possible "ratio model." If Alice has strength 3 and Bob has strength 1, Alice wins 3/(3+1) = 75% of the time.</p>
+
+<h2>From Ratios to Elo's Formula</h2>
+
+<p>The Bradley-Terry formula uses raw strength values. Elo uses <em>ratings on a log scale</em>. Here's the connection:</p>
+
+<div class="example">
+<p><strong>Step 1:</strong> Define the rating as the log of strength:</p>
+<p style="font-family: monospace; margin-left: 1rem;">R<sub>i</sub> = c × log₁₀(p<sub>i</sub>)</p>
+<p>where c = 400 (Elo's scaling constant).</p>
+
+<p><strong>Step 2:</strong> Substitute into Bradley-Terry:</p>
+<p style="font-family: monospace; margin-left: 1rem;">
+P(i beats j) = p<sub>i</sub> / (p<sub>i</sub> + p<sub>j</sub>)<br>
+&nbsp;&nbsp;= 1 / (1 + p<sub>j</sub>/p<sub>i</sub>)<br>
+&nbsp;&nbsp;= 1 / (1 + 10<sup>(R<sub>j</sub> - R<sub>i</sub>) / 400</sup>)
+</p>
+
+<p><strong>Result:</strong> Exactly the Elo expected score formula from Lesson 1.</p>
+</div>
+
+<div class="key-idea">
+<strong>Elo's formula IS the Bradley-Terry model expressed on a logarithmic rating scale.</strong> The logistic curve isn't arbitrary — it's the unique shape that emerges from "probability equals ratio of strengths."
+</div>
+
+<h2>Why Ratios? Three Justifications</h2>
+
+<h3>1. The Exponential Race Argument</h3>
+
+<p>Imagine each player has a random "performance time" drawn from an exponential distribution. Player i's mean time is 1/p<sub>i</sub> (stronger = faster). The probability that i finishes before j:</p>
+
+<div class="formula">P(i finishes first) = p<sub>i</sub> / (p<sub>i</sub> + p<sub>j</sub>)</div>
+
+<p>This falls directly out of the math of exponential distributions. It means: if you believe performance is memoryless and strength scales the rate, Bradley-Terry is the <em>only</em> consistent model.</p>
+
+<h3>2. The Independence of Irrelevant Alternatives</h3>
+
+<p>The Bradley-Terry model satisfies a key axiom: adding or removing other players from the tournament doesn't change the predicted probability between any pair. The ratio p<sub>i</sub>/(p<sub>i</sub> + p<sub>j</sub>) depends only on i and j — not on who else exists.</p>
+
+<p>This is exactly what you want for a rating system. Alice's chance of beating Bob shouldn't change just because Carol joined the ladder.</p>
+
+<h3>3. Log-Odds Are Linear</h3>
+
+<p>Take the log-odds of i beating j:</p>
+
+<div class="formula">
+log(P(i beats j) / P(j beats i)) = log(p<sub>i</sub>/p<sub>j</sub>) = λ<sub>i</sub> − λ<sub>j</sub>
+</div>
+
+<p>where λ = log(p). The log-odds of winning is simply the <em>difference in log-strengths</em>. This linearity is what makes ratings additive and interpretable: a 200-point gap always means the same thing, regardless of whether we're at 1200 vs 1400 or 2600 vs 2800.</p>
+
+<div class="aside">
+<strong>Why not a normal (Gaussian) model?</strong> Elo originally assumed performances were normally distributed, not logistic. The formulas are nearly identical in practice (the logistic and normal CDFs differ by < 1% in the relevant range). Bradley-Terry uses the logistic because it's algebraically cleaner — you get closed-form expressions. Modern systems (Chatbot Arena, most implementations) use the logistic/Bradley-Terry form.
+</div>
+
+<p class="citation">Sources: Bradley &amp; Terry, "Rank Analysis of Incomplete Block Designs," <em>Biometrika</em> 39(3/4):324–345, 1952. <a href="https://en.wikipedia.org/wiki/Bradley%E2%80%93Terry_model">Wikipedia: Bradley-Terry model</a>.</p>
+
+<h2>Quick Check</h2>
+
+<div class="quiz">
+  <p><strong>Player A has strength p=5, Player B has strength p=3. What's P(A beats B)?</strong></p>
+  <button onclick="document.getElementById('fb1').textContent='✗ 5/3 ≈ 1.67 — probabilities can\'t exceed 1. You need to divide by the sum.'">5/3</button>
+  <button onclick="document.getElementById('fb1').textContent='✓ Correct! 5/(5+3) = 5/8 = 0.625. A wins about 62.5% of the time.'">5/8</button>
+  <button onclick="document.getElementById('fb1').textContent='✗ 3/8 would be B\'s win probability, not A\'s.'">3/8</button>
+  <div class="feedback" id="fb1"></div>
+</div>
+
+<div class="quiz">
+  <p><strong>Why does Elo use ratings (log-scale) instead of raw Bradley-Terry strengths?</strong></p>
+  <button onclick="document.getElementById('fb2').textContent='✓ Correct! On the log scale, differences are additive and constant across the rating range. A 200-point gap always means the same win probability.'">Differences become additive and uniformly interpretable</button>
+  <button onclick="document.getElementById('fb2').textContent='✗ The log scale doesn\'t inherently improve accuracy — it changes the representation, not the predictive power.'">Log scale makes predictions more accurate than ratios</button>
+  <button onclick="document.getElementById('fb2').textContent='✗ Both representations handle negative results (losses) fine. Strength p is always positive, ratings can be any number.'">Raw strengths can\'t represent negative outcomes</button>
+  <div class="feedback" id="fb2"></div>
+</div>
+
+<div class="quiz">
+  <p><strong>What does "independence of irrelevant alternatives" mean for a rating system?</strong></p>
+  <button onclick="document.getElementById('fb3').textContent='✓ Correct! The predicted probability between any two players depends only on their own parameters — not on who else is in the pool.'">Adding/removing other players doesn\'t change any pairwise prediction</button>
+  <button onclick="document.getElementById('fb3').textContent='✗ IIA is about predictions between pairs, not about whether all players must compete against each other.'">Every player must play against every other player to get a valid rating</button>
+  <button onclick="document.getElementById('fb3').textContent='✗ IIA is a structural property of the model, not about data requirements for estimation.'">You need at least 30 games for ratings to be reliable</button>
+  <div class="feedback" id="fb3"></div>
+</div>
+
+<h2>Recommended Reading</h2>
+
+<p>The <a href="https://en.wikipedia.org/wiki/Bradley%E2%80%93Terry_model">Wikipedia article on Bradley-Terry</a> gives the formal likelihood function and connects to maximum likelihood estimation. For how this underpins modern LLM evaluation, see §2 of <a href="https://arxiv.org/abs/2403.04132">Chiang et al. (2024)</a>.</p>
+
+<div class="next">
+<p><strong>Next:</strong> Hands-on — running your own mini Elo tournament with a script (coming soon).</p>
+<p><strong>Questions?</strong> Ask your Copilot agent — happy to dig into any of the math further.</p>
+</div>
+
+</body>
+</html>

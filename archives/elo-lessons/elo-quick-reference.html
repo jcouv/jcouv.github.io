@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elo Rating System — Quick Reference</title>
+<style>
+  body { max-width: 700px; margin: 2rem auto; padding: 0 1rem; font-family: Georgia, serif; line-height: 1.5; color: #222; }
+  h1 { font-size: 1.5rem; border-bottom: 2px solid #333; padding-bottom: 0.3rem; }
+  h2 { font-size: 1.1rem; margin-top: 1.5rem; border-bottom: 1px solid #ccc; padding-bottom: 0.2rem; }
+  .formula-box { background: #f4f4f4; padding: 0.8rem 1rem; font-family: monospace; border-radius: 4px; margin: 0.8rem 0; font-size: 1.05rem; }
+  table { border-collapse: collapse; width: 100%; margin: 0.8rem 0; }
+  th, td { border: 1px solid #ccc; padding: 0.4rem 0.6rem; text-align: left; }
+  th { background: #f0f0f0; }
+  .glossary dt { font-weight: bold; margin-top: 0.5rem; }
+  .glossary dd { margin-left: 1rem; margin-bottom: 0.3rem; }
+  @media print { body { font-size: 11pt; margin: 1cm; } }
+</style>
+</head>
+<body>
+
+<h1>Elo Rating System — Quick Reference</h1>
+
+<h2>Core Formulas</h2>
+
+<p><strong>Expected score</strong> (probability A beats B):</p>
+<div class="formula-box">E<sub>A</sub> = 1 / (1 + 10<sup>(R<sub>B</sub> - R<sub>A</sub>) / 400</sup>)</div>
+
+<p><strong>Rating update</strong> after a game:</p>
+<div class="formula-box">R'<sub>A</sub> = R<sub>A</sub> + K × (S<sub>A</sub> - E<sub>A</sub>)</div>
+
+<p>Where S = 1 (win), 0.5 (draw), 0 (loss).</p>
+
+<h2>Rating Difference → Win Probability</h2>
+
+<table>
+<tr><th>Difference</th><th>Stronger player wins</th></tr>
+<tr><td>0</td><td>50%</td></tr>
+<tr><td>100</td><td>64%</td></tr>
+<tr><td>200</td><td>76%</td></tr>
+<tr><td>300</td><td>85%</td></tr>
+<tr><td>400</td><td>91%</td></tr>
+<tr><td>500</td><td>95%</td></tr>
+</table>
+
+<h2>K-Factor Guidelines</h2>
+
+<table>
+<tr><th>K</th><th>Use case</th></tr>
+<tr><td>10</td><td>Top-level established players (low volatility)</td></tr>
+<tr><td>20</td><td>Standard competitive play</td></tr>
+<tr><td>32</td><td>General purpose / Chatbot Arena / casual ladders</td></tr>
+<tr><td>40–64</td><td>Provisional / new entrants (fast convergence)</td></tr>
+</table>
+
+<h2>Ping Pong Ladder Quick-Start</h2>
+
+<ol>
+  <li>Everyone starts at <strong>1500</strong></li>
+  <li>Use <strong>K = 40</strong> for first 10 games per player, then <strong>K = 32</strong></li>
+  <li>Expect stable ratings after ~20 games per person</li>
+  <li>Update after every match: winner gains, loser loses (zero-sum)</li>
+</ol>
+
+<h2>Glossary</h2>
+
+<dl class="glossary">
+  <dt>Elo rating</dt>
+  <dd>A number representing relative skill, meaningful only in comparison to others in the same pool.</dd>
+
+  <dt>K-factor</dt>
+  <dd>Maximum points gained/lost per game. Controls how fast ratings react.</dd>
+
+  <dt>Expected score (E)</dt>
+  <dd>Predicted probability of winning, based on the rating difference.</dd>
+
+  <dt>Zero-sum</dt>
+  <dd>Points gained by the winner = points lost by the loser. Total rating in the pool is conserved.</dd>
+
+  <dt>Convergence</dt>
+  <dd>The process by which ratings approach a player's "true" skill after sufficient games.</dd>
+
+  <dt>Provisional rating</dt>
+  <dd>A rating during the first N games, often computed with higher K for faster adjustment.</dd>
+
+  <dt>Bootstrap confidence interval</dt>
+  <dd>Statistical technique (used by Chatbot Arena) to estimate uncertainty in a rating by resampling the data.</dd>
+
+  <dt>Rating inflation/deflation</dt>
+  <dd>Systematic drift in average rating over time, caused by players entering/leaving the pool.</dd>
+</dl>
+
+</body>
+</html>
