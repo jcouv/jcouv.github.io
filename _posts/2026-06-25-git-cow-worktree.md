@@ -10,8 +10,7 @@ Git worktrees share their `.git` objects but each gets a full copy of the
 working tree, which could be large (including build artifacts). On a copy-on-write
 filesystem you can reduce that cost too.
 
-I built a [`git-cow-worktree`](https://github.com/jcouv/dotfiles/tree/main/copilot/skills/git-cow-worktree)
-agent skill including a file-based C# app for this.
+I built a [`git-cow-worktree` agent skill](https://github.com/jcouv/dotfiles/tree/main/copilot/skills/git-cow-worktree) including a file-based C# app for this.
 
 CoW support is per-filesystem: Windows ReFS/Dev Drive (not NTFS), Linux
 Btrfs/XFS/ZFS (not ext4), macOS APFS.
