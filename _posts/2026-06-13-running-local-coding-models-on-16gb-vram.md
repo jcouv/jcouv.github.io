@@ -68,6 +68,7 @@ llama-server `
 
 
 I'll report on how well they work on various tasks once I have more hands-on experience. In the mean time, here's the throughput on some simple tasks on 5070 Ti:
+
 | Model | Avg tok/s |
 |-------|-----------|
 | Qwen3.6-35B (IQ3_S) | 144.7 |
