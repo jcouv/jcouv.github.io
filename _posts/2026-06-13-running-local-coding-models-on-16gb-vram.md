@@ -66,12 +66,29 @@ llama-server `
     --parallel 1
 ```
 
+Here's the setup for the model I'm currently running, [Qwen3.8 27B quantized with UD-Q3_K_XL](https://huggingface.co/unsloth/Qwen3.8-27B-GGUF):
+
+```powershell
+llama-server `
+    -hf unsloth/Qwen3.8-27B-GGUF:UD-Q3_K_XL `
+    --ctx-size 131072 `
+    --n-gpu-layers all `
+    --flash-attn on `
+    --parallel 1 `
+    --cache-type-k q4_0 `
+    --cache-type-v q4_0 `
+    --no-mmproj `
+    --port 8080
+```
+
+On the 5070 Ti, it prefills ~30k-token prompts at ~525 tok/s and generates at ~22 tok/s with ~30-40k tokens of context.
 
 I'll report on how well they work on various tasks once I have more hands-on experience. In the mean time, here's the throughput on some simple tasks on 5070 Ti:
 
 | Model | Avg tok/s |
 |-------|-----------|
 | Qwen3.6-35B (IQ3_S) | 144.7 |
+| Qwen3.8-27B (UD-Q3_K_XL) | 21.7 |
 | Gemma4-26B (IQ4_XS) | 84.1 |
 | Gemma4-12B+MTP (Q4_K_XL) | 146.3 |
 
@@ -87,7 +104,7 @@ Some key flags are:
 - `--no-mmproj`: skips loading a multimodal projector (saves VRAM).
 - `--spec-type draft-mtp --spec-draft-n-max 2`: enables [draft-MTP speculative decoding](/til/speculative-decoding-in-inference.html) with up to two draft tokens.
 - `--parallel 1`: limits concurrent sequence slots (predictable VRAM usage).
-- `--cache-type-k q8_0 --cache-type-v q8_0`: quantizes the KV cache.
+- `--cache-type-k q4_0 --cache-type-v q4_0` (or `q8_0`): quantizes the KV cache.
 
 On a 16GB card, it also matters what else is using the GPU. Other processes can consume and fragment VRAM, so a model or context size that fits after a reboot may fail later if browsers, editors, games, or other GPU workloads have already allocated memory.
 
