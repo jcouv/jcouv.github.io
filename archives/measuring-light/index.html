@@ -8,8 +8,10 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="listening.css">
+  <link rel="stylesheet" href="animation.css">
   <script src="experiment.js" defer></script>
   <script src="listening.js" defer></script>
+  <script src="animation.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -39,7 +41,22 @@
 
   <section class="chapter" id="journey">
     <div class="section-label">02 / FOLLOW THE LIGHT</div>
-    <div class="section-body"><h2>The mirror moves<br>while the light is away.</h2><p>A narrow illuminated mark is imaged through the optics. A small rotating mirror sends its light toward a fixed concave mirror, which returns it. By the time the beam comes back, the rotating mirror has changed orientation.</p>
+    <div class="section-body"><h2>The mirror moves<br>while the light is away.</h2><p>A narrow illuminated mark is imaged through the optics. A small flat rotating mirror sends its light toward a fixed concave mirror, which returns it. By the time the beam comes back, the rotating mirror has changed orientation.</p>
+      <figure class="light-animation" id="foucault-animation" aria-labelledby="fa-title">
+        <p class="eyebrow">WATCH THE LIGHT</p>
+        <h3 id="fa-title">Flashes &amp; deviation</h3>
+        <svg id="fa-scene" role="img" aria-labelledby="fa-svg-title fa-svg-desc">
+          <title id="fa-svg-title">Intermittent return flashes leave the rotating mirror along a displaced direction</title>
+          <desc id="fa-svg-desc">Elongated blue marks sample the outward light and yellow marks sample the returning light. Both faces of the rotating flat mirror reflect light, giving two return flashes per revolution. Its reflection sweeps across a fixed concave mirror, which returns only the packets that strike it. During their round trip the rotating mirror turns, so returning packets leave along a shifted direction. Thin direction guides extend for two packet spacings. The scrubber starts with the mirror vertical; its two yellow segments mark arrival at Shifted. The double-sided mirror is an illustrative variation on the single-sided 1862 apparatus. Travel time and angles are exaggerated and imaging optics are omitted.</desc>
+          <defs><clipPath id="fa-clip"><rect id="fa-clip-rect"/></clipPath></defs>
+          <g id="fa-structure"></g><g id="fa-rays" clip-path="url(#fa-clip)"></g><g id="fa-mirrors"></g><g id="fa-labels"></g>
+        </svg>
+        <div class="fa-controls"><button id="fa-play" type="button">Pause</button></div>
+        <label class="fa-position-label" for="fa-position">Animation position</label>
+        <input id="fa-position" type="range" min="0" max="10000" step="0.1" value="0" aria-label="Animation position" aria-description="The two yellow segments mark when returning light reaches the shifted position.">
+        <noscript><p>Enable JavaScript to play the animation, or follow the two static diagrams below.</p></noscript>
+        <figcaption>The elongated marks sample a continuous beam; they are visual aids for following the light. Both mirror faces reflect, giving two return flashes per turn; this is an illustrative variation on the single-sided 1862 apparatus. Faint direction guides extend for two packet spacings. Flight time and angles are greatly exaggerated, and imaging optics are omitted. The concave return mirror is centred on the rotating mirror in this simplified geometry; additional mirrors folded the light path in the historical apparatus.</figcaption>
+      </figure>
       <div class="diagram-pair">
         <figure><div class="figure-title"><span>A</span><h3>The outward journey</h3><small>t = 0 at the rotating mirror</small></div>
           <svg viewBox="0 0 480 365" role="img" aria-labelledby="out-title out-desc"><title id="out-title">Light goes from the source to the rotating mirror and then to the fixed mirror</title><desc id="out-desc">An upward incident ray meets a mirror tilted at 45 degrees and is reflected rightward. The one-way distance from this mirror to the fixed concave mirror is L.</desc><defs><marker id="out-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="#1258df"/></marker></defs><path d="M170 300 V140 H413" fill="none" stroke="#1258df" stroke-width="3"/><path d="M170 255 V218 M275 140 H327" stroke="#1258df" stroke-width="3" marker-end="url(#out-arrow)"/><path d="M140 170 L200 110" stroke="#172d43" stroke-width="8"/><circle cx="170" cy="140" r="5" fill="#172d43"/><path d="M411 91 Q439 140 411 189" fill="none" stroke="#172d43" stroke-width="7"/><path d="M179 68 H411 M179 61 V75 M411 61 V75" class="dimension"/><text x="295" y="54" text-anchor="middle">One-way path L</text><text x="53" y="104">Rotating</text><text x="53" y="124">mirror R</text><text x="401" y="221" text-anchor="end">Fixed concave mirror</text><text x="193" y="273">Incident light</text><rect x="137" y="303" width="66" height="10" fill="#172d43"/><text x="170" y="343" text-anchor="middle">Light from the illuminated mark</text></svg>
