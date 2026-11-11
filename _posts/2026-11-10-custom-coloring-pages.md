@@ -1,6 +1,8 @@
 ---
+published: true
 title: "Making a custom coloring page"
 categories: [til]
+permalink: /til/custom-coloring-pages.html
 ---
 
 Had fun with this little project: I wanted to make a custom coloring pattern for a social event.  
@@ -12,3 +14,4 @@ Finally, with the layout done, the result can be printed to PDF and printed.
 [Custom Coloring Page skill](https://github.com/jcouv/dotfiles/tree/main/codex/skills/custom-coloring-pages)
 
 ![Custom coloring page composition](/archives/images/custom-coloring-pages-composition.png)
+
